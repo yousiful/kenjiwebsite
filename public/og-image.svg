@@ -1,0 +1,43 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#EC4899;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#9333EA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3B82F6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGradient)"/>
+
+  <!-- Decorative elements -->
+  <circle cx="100" cy="100" r="40" fill="#3B82F6" opacity="0.1"/>
+  <circle cx="1100" cy="530" r="60" fill="#9333EA" opacity="0.1"/>
+  <circle cx="600" cy="315" r="200" fill="#EC4899" opacity="0.05"/>
+
+  <!-- Logo/Brand -->
+  <text x="100" y="120" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="url(#textGradient)">KenjiAI</text>
+
+  <!-- Main Headline -->
+  <text x="100" y="240" font-family="Arial, sans-serif" font-size="56" font-weight="bold" fill="#FFFFFF">AI Business Automation</text>
+  <text x="100" y="310" font-family="Arial, sans-serif" font-size="56" font-weight="bold" fill="#FFFFFF">Platform</text>
+
+  <!-- Subheadline -->
+  <text x="100" y="380" font-family="Arial, sans-serif" font-size="28" fill="#94A3B8">Voice Agents • CRM • Marketing • Free Tools</text>
+
+  <!-- CTA Badge -->
+  <rect x="100" y="430" width="300" height="60" rx="30" fill="#3B82F6"/>
+  <text x="250" y="468" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#FFFFFF" text-anchor="middle">425% Average ROI</text>
+
+  <!-- Stats -->
+  <text x="100" y="540" font-family="Arial, sans-serif" font-size="20" fill="#64748B">50,000+ Businesses Trust KenjiAI</text>
+
+  <!-- Website -->
+  <text x="1050" y="600" font-family="Arial, sans-serif" font-size="18" fill="#64748B" text-anchor="end">kenjiai.com</text>
+</svg>

@@ -1,0 +1,32 @@
+User-agent: *
+Allow: /
+
+# High priority pages for crawling
+Allow: /free-tools
+Allow: /knowledge
+Allow: /tools
+Allow: /ai-automation
+Allow: /voice-agents
+Allow: /marketing-automation
+Allow: /crm
+Allow: /pricing
+Allow: /blog/*
+
+# Sitemap location
+Sitemap: https://kenjiai.com/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1
+
+# Block admin areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+
+# Allow all images
+User-agent: Googlebot-Image
+Allow: /
+
+# Allow all videos
+User-agent: Googlebot-Video
+Allow: /

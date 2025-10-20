@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Performance optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://js.stripe.com">
+    <link rel="dns-prefetch" href="https://app.kenjicrm.com">
+    <link rel="dns-prefetch" href="https://images.pexels.com">
+    <link rel="dns-prefetch" href="https://connect.facebook.net">
+    
+    <!-- PWA manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#1E40AF">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#3B82F6">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1E40AF">
+
+    <!-- iOS PWA Support -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="KenjiAI">
+    <link rel="apple-touch-icon" href="/icons/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-192x192.png">
+
+    <!-- Windows PWA Support -->
+    <meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#1E40AF">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+
+    <!-- Standard favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-72x72.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-72x72.png">
+    <link rel="shortcut icon" href="/icons/icon-72x72.png">
+    
+    <!-- Primary Meta Tags -->
+    <title>KenjiAI - Free AI Tools, Business Automation Platform & AI Knowledge Base | Voice Agents, CRM, Marketing</title>
+    <meta name="title" content="KenjiAI - Free AI Tools, Business Automation Platform & AI Knowledge Base | Voice Agents, CRM, Marketing" />
+    <meta name="description" content="Free AI tools + Complete AI business automation platform: Voice agents that close deals 24/7, smart workflows, community building, course creation, CRM, marketing automation. Plus comprehensive AI knowledge base with latest insights. 425% average ROI." />
+    <meta name="keywords" content="free AI tools, AI automation, business automation, AI voice agents, AI marketing, AI sales, smart workflows, CRM automation, AI chatbots, business intelligence, AI platform, AI knowledge base, AI blog, AI tutorials, prompt generator, AI content creation, machine learning, artificial intelligence, Scale AI alternative, free prompt generator, AI PR tools, AI sales coach" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="language" content="English" />
+    <meta name="author" content="KenjiAI" />
+    <meta name="publisher" content="KenjiAI" />
+    <meta name="copyright" content="KenjiAI" />
+    <meta name="revisit-after" content="1 days" />
+    <meta name="distribution" content="global" />
+    <meta name="rating" content="general" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kenjiai.com/" />
+    <meta property="og:title" content="KenjiAI - Free AI Tools & Complete Business Automation Platform" />
+    <meta property="og:description" content="Free AI tools + Voice agents, smart workflows, CRM, and complete business automation in one AI platform. Plus comprehensive AI knowledge base. Join 50,000+ businesses automating with KenjiAI." />
+    <meta property="og:image" content="https://kenjiai.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="KenjiAI" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://kenjiai.com/" />
+    <meta property="twitter:title" content="KenjiAI - Free AI Tools & Complete Business Automation Platform" />
+    <meta property="twitter:description" content="Free AI tools + Voice agents, smart workflows, CRM, and complete business automation in one AI platform. Plus AI knowledge base. 425% average ROI." />
+    <meta property="twitter:image" content="https://kenjiai.com/twitter-image.jpg" />
+    <meta property="twitter:creator" content="@KenjiAI" />
+    <meta property="twitter:site" content="@KenjiAI" />
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="msapplication-TileColor" content="#3B82F6" />
+    <link rel="canonical" href="https://kenjiai.com/" />
+    <meta name="google-site-verification" content="your-google-verification-code" />
+    <meta name="msvalidate.01" content="your-bing-verification-code" />
+    
+    <!-- Structured Data for Free Tools -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "KenjiAI",
+      "description": "Free AI tools and complete AI business automation platform with voice agents, CRM, marketing automation, and smart workflows",
+      "url": "https://kenjiai.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://kenjiai.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "sameAs": [
+        "https://twitter.com/KenjiAI",
+        "https://linkedin.com/company/kenjiai"
+      ]
+    }
+    </script>
+    
+    <!-- Structured Data for Software Application -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "KenjiAI",
+      "description": "Complete AI business automation platform with voice agents, CRM, marketing automation, and smart workflows",
+      "url": "https://kenjiai.com",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "297",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2025-12-31",
+        "availability": "https://schema.org/InStock"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "ratingCount": "10000"
+      },
+      "provider": {
+        "@type": "Organization",
+        "name": "KenjiAI",
+        "url": "https://kenjiai.com"
+      },
+      "featureList": [
+        "AI Voice Agents",
+        "Smart Workflows",
+        "Marketing Automation",
+        "CRM System",
+        "Community Building",
+        "Course Creation",
+        "Free AI Tools"
+      ]
+    }
+    </script>
+    
+    <!-- Structured Data for Free Tools -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Free AI Tools by KenjiAI",
+      "description": "Collection of free AI tools for business automation and productivity",
+      "url": "https://kenjiai.com/free-tools",
+      "itemListElement": [
+        {
+          "@type": "SoftwareApplication",
+          "position": 1,
+          "name": "AI Prompt Generator",
+          "description": "Generate perfect AI prompts for any use case",
+          "url": "http://prompt.kenjiai.com",
+          "applicationCategory": "ProductivityApplication",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "position": 2,
+          "name": "PR Pro",
+          "description": "AI-powered PR campaigns and media outreach",
+          "url": "https://prpro.kenjiai.com/",
+          "applicationCategory": "BusinessApplication",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "position": 3,
+          "name": "Sales Coach AI",
+          "description": "AI sales trainer for closing more deals",
+          "url": "https://salescoach.kenjiai.com/",
+          "applicationCategory": "BusinessApplication",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "position": 4,
+          "name": "ViralPost Pro",
+          "description": "AI-powered viral content creation for social media",
+          "url": "https://viralpost.kenjiai.com",
+          "applicationCategory": "BusinessApplication",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Structured Data for Knowledge Base -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "KenjiAI Knowledge Base",
+      "description": "Expert insights, tutorials, and latest research on AI automation, machine learning, and business intelligence",
+      "url": "https://kenjiai.com/knowledge",
+      "publisher": {
+        "@type": "Organization",
+        "name": "KenjiAI",
+        "url": "https://kenjiai.com"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://kenjiai.com/knowledge"
+      }
+    }
+    </script>
+    
+    <!-- Structured Data for Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "KenjiAI",
+      "url": "https://kenjiai.com",
+      "logo": "https://kenjiai.com/logo.png",
+      "description": "Leading AI business automation platform providing free tools and complete automation solutions",
+      "foundingDate": "2023",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+1-831-263-4402",
+        "contactType": "customer service",
+        "email": "care@kenjiai.com"
+      },
+      "sameAs": [
+        "https://twitter.com/KenjiAI",
+        "https://linkedin.com/company/kenjiai"
+      ]
+    }
+    </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2406747486323295');
+    fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel Code -->
+
+    <!-- Critical CSS inlined for performance -->
+    <style>
+      /* Critical above-the-fold styles */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+        background-attachment: fixed;
+        color: white;
+        overflow-x: hidden;
+      }
+      
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+      }
+      
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #3B82F6;
+        border-top: 4px solid transparent;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      /* Hide loading screen when React loads */
+      #root:not(:empty) + .loading-screen {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Meta Pixel noscript -->
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2406747486323295&ev=PageView&noscript=1"
+    /></noscript>
+
+    <div id="root"></div>
+    
+    <!-- Loading screen for initial page load -->
+    <div class="loading-screen">
+      <div class="loading-spinner"></div>
+    </div>
+    
+    <!-- Preload critical scripts -->
+    <link rel="modulepreload" href="/src/main.tsx">
+    
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Service Worker registration -->
+    <script>
+      if ('serviceWorker' in navigator && location.protocol === 'https:') {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => console.log('SW registered'))
+            .catch(error => console.log('SW registration failed'));
+        });
+      }
+    </script>
+  </body>
+</html>
