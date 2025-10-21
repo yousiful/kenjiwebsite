@@ -127,16 +127,18 @@ const ProductSelection: React.FC = () => {
   ];
 
   const companyLogos = [
-    { name: "Google", text: "Google" },
-    { name: "Microsoft", text: "Microsoft" },
-    { name: "Amazon", text: "Amazon" },
     { name: "Salesforce", text: "Salesforce" },
     { name: "HubSpot", text: "HubSpot" },
-    { name: "Shopify", text: "Shopify" },
-    { name: "Stripe", text: "Stripe" },
-    { name: "Slack", text: "Slack" },
-    { name: "Zoom", text: "Zoom" },
-    { name: "Meta", text: "Meta" }
+    { name: "Pipedrive", text: "Pipedrive" },
+    { name: "Zoho CRM", text: "Zoho CRM" },
+    { name: "Monday.com", text: "Monday.com" },
+    { name: "Copper", text: "Copper" },
+    { name: "ActiveCampaign", text: "ActiveCampaign" },
+    { name: "Keap", text: "Keap" },
+    { name: "Freshsales", text: "Freshsales" },
+    { name: "Mailchimp", text: "Mailchimp" },
+    { name: "Constant Contact", text: "Constant Contact" },
+    { name: "SendGrid", text: "SendGrid" }
   ];
 
   return (
@@ -237,7 +239,7 @@ const ProductSelection: React.FC = () => {
             transition={{ duration: 1 }}
           >
             <p className="text-center text-gray-500 text-sm uppercase tracking-wider mb-6 font-semibold">
-              Integrates with tools you already use
+              Replace over 10+ apps you already use and save thousands
             </p>
             <div className="relative">
               <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-900 to-transparent z-10"></div>
