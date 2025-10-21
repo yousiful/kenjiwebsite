@@ -10,8 +10,8 @@ export const STRIPE_PRODUCT_ID = 'prod_SaHy0mYrFO5hEC';
 
 // Direct Stripe Payment Links
 export const STRIPE_PAYMENT_LINKS = {
-  monthly: 'https://freedom.kenjiai.com/checkout-4912-2457-3370',
-  yearly: 'https://freedom.kenjiai.com/checkout-4912-2457-3370'
+  monthly: 'https://freedom.kenjiai.com/cashflow-ads-bootcamp-17-clone',
+  yearly: 'https://freedom.kenjiai.com/cashflow-ads-bootcamp-17-clone'
 };
 
 // Updated Price IDs for reference (if needed)
