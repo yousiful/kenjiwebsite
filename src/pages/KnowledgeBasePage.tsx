@@ -4,6 +4,7 @@ import { BookOpen, Sparkles, MessageSquare, CheckCircle } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { useAutoFormatting } from '../components/AutoFormattingProvider';
 import AIKnowledgeChat from '../components/AIKnowledgeChat';
+import GeneratedBlogPosts from '../components/GeneratedBlogPosts';
 
 const KnowledgeBasePage: React.FC = () => {
   const { fixFormatting } = useAutoFormatting();
@@ -94,6 +95,8 @@ const KnowledgeBasePage: React.FC = () => {
           >
             <AIKnowledgeChat />
           </motion.div>
+
+          <GeneratedBlogPosts />
         </div>
       </div>
     </>

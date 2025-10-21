@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Bot, User, Sparkles, MessageCircle, HelpCircle, Zap, BookOpen, ExternalLink, AlertCircle } from 'lucide-react';
+import { Send, Bot, User, Sparkles, MessageCircle, HelpCircle, Zap, BookOpen, ExternalLink, AlertCircle, ThumbsUp, ThumbsDown } from 'lucide-react';
 import { askManusAI, getSourcesForResponse } from '../lib/manusAI';
+import { submitFeedback } from '../lib/supabase';
 
 interface Message {
   id: string;
@@ -9,6 +10,8 @@ interface Message {
   content: string;
   timestamp: Date;
   sources?: { name: string; url: string }[];
+  userQuery?: string;
+  feedbackGiven?: boolean;
 }
 
 const AIKnowledgeChat: React.FC = () => {
@@ -23,11 +26,33 @@ const AIKnowledgeChat: React.FC = () => {
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [sessionId] = useState(() => `session-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleFeedback = async (messageId: string, feedbackType: 'helpful' | 'not_helpful') => {
+    const message = messages.find(m => m.id === messageId);
+    if (!message || message.type !== 'bot' || message.feedbackGiven) return;
+
+    try {
+      await submitFeedback({
+        message_id: messageId,
+        user_query: message.userQuery || '',
+        ai_response: message.content,
+        feedback_type: feedbackType,
+        session_id: sessionId,
+      });
+
+      setMessages(prev => prev.map(m =>
+        m.id === messageId ? { ...m, feedbackGiven: true } : m
+      ));
+    } catch (error) {
+      console.error('Error submitting feedback:', error);
+    }
   };
 
   useEffect(() => {
@@ -90,7 +115,9 @@ const AIKnowledgeChat: React.FC = () => {
         type: 'bot',
         content: aiResponse,
         timestamp: new Date(),
-        sources: sources
+        sources: sources,
+        userQuery: text,
+        feedbackGiven: false
       };
 
       setMessages(prev => [...prev, botResponse]);
@@ -234,6 +261,30 @@ const AIKnowledgeChat: React.FC = () => {
                             {source.name}
                           </a>
                         ))}
+                      </div>
+                    )}
+                    {message.type === 'bot' && message.id !== '1' && (
+                      <div className="flex items-center gap-2 mt-2">
+                        {!message.feedbackGiven ? (
+                          <>
+                            <button
+                              onClick={() => handleFeedback(message.id, 'helpful')}
+                              className="flex items-center gap-1 text-xs text-gray-400 hover:text-green-400 transition-colors"
+                              title="Helpful"
+                            >
+                              <ThumbsUp className="w-3 h-3" />
+                            </button>
+                            <button
+                              onClick={() => handleFeedback(message.id, 'not_helpful')}
+                              className="flex items-center gap-1 text-xs text-gray-400 hover:text-red-400 transition-colors"
+                              title="Not Helpful"
+                            >
+                              <ThumbsDown className="w-3 h-3" />
+                            </button>
+                          </>
+                        ) : (
+                          <span className="text-xs text-green-400">Thank you for your feedback!</span>
+                        )}
                       </div>
                     )}
                     <p className="text-xs text-gray-500 mt-1">
