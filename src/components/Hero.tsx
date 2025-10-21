@@ -185,7 +185,7 @@ const Hero: React.FC = () => {
             className="group relative bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 hover:from-pink-500 hover:via-purple-500 hover:to-blue-500 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300 flex items-center gap-3 shadow-2xl mobile-button focus-ring"
             data-caption="Get instant access to AI automation - 425% average ROI, 30-day money-back guarantee"
           >
-            <span>Get My AI Employee Now</span>
+            <span>Start Growing with Kenji</span>
             <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-pink-400/20 via-purple-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </motion.a>

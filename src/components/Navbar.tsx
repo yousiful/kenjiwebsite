@@ -253,17 +253,6 @@ const Navbar: React.FC = () => {
                 Pricing
               </span>
             </Link>
-
-            {/* CTA Button */}
-            <motion.a
-              href="/pricing#plans"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="investor-gradient-blue text-white px-6 py-2 rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 mobile-button focus-ring flex flex-col items-center"
-            >
-              <span className="font-bold text-sm">Start Using AI</span>
-              <span className="text-xs opacity-90 font-normal">To finally profit and grow</span>
-            </motion.a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -367,7 +356,7 @@ const Navbar: React.FC = () => {
                 className="block investor-gradient-blue text-white px-4 py-3 rounded-xl font-semibold text-center mobile-button"
                 role="menuitem"
               >
-                <div className="font-bold">Start Using AI</div>
+                <div className="font-bold">Start Growing with Kenji</div>
                 <div className="text-xs opacity-90 font-normal">To finally profit and grow</div>
               </a>
             </div>

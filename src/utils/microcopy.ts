@@ -132,7 +132,7 @@ export const microcopy = {
 
   buttons: {
     primary: {
-      hero: "Get My AI Employee Now",
+      hero: "Start Growing with Kenji",
       pricing: "Subscribe Now - $275/mo",
       final_cta: "Claim My AI Business System"
     },
