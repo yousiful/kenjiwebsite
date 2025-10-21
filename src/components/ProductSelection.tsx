@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Check, Crown, Zap, Star, ArrowRight, Users, Brain, Globe, Calendar, DollarSign, Shield, AlertCircle, ExternalLink, LogIn } from 'lucide-react';
+import { Check, Crown, Zap, Star, ArrowRight, Users, Brain, Globe, Calendar, DollarSign, Shield, AlertCircle, ExternalLink, LogIn, Award, BadgeCheck, TrendingUp } from 'lucide-react';
 import { redirectToPaymentLink, STRIPE_PAYMENT_LINKS, validateCheckoutPrerequisites, prepareCheckoutData } from '../lib/stripe';
 
 const ProductSelection: React.FC = () => {
@@ -126,6 +126,19 @@ const ProductSelection: React.FC = () => {
     }
   ];
 
+  const companyLogos = [
+    { name: "Google", text: "Google" },
+    { name: "Microsoft", text: "Microsoft" },
+    { name: "Amazon", text: "Amazon" },
+    { name: "Salesforce", text: "Salesforce" },
+    { name: "HubSpot", text: "HubSpot" },
+    { name: "Shopify", text: "Shopify" },
+    { name: "Stripe", text: "Stripe" },
+    { name: "Slack", text: "Slack" },
+    { name: "Zoom", text: "Zoom" },
+    { name: "Meta", text: "Meta" }
+  ];
+
   return (
     <div className="py-24 bg-gradient-to-br from-gray-900 via-blue-900/20 to-gray-900 relative overflow-hidden">
       {/* Background Effects */}
@@ -192,28 +205,70 @@ const ProductSelection: React.FC = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12"
         >
-          <h2 className="text-5xl sm:text-6xl font-bold text-white mb-6">
-            <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-              Choose Your Plan
-            </span>
-          </h2>
-          <p className="text-xl text-gray-400 max-w-4xl mx-auto mb-8">
-            One platform with everything you need. No tiers, no limits—just complete business automation power.
-          </p>
-          
-          {/* Money-Back Guarantee Highlight */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-blue-500/20 border border-green-400/30 rounded-full px-6 py-3 mb-8"
+            transition={{ duration: 0.6 }}
+            className="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-400/30 rounded-full px-6 py-2 mb-6"
           >
-            <Shield className="w-5 h-5 text-green-400" />
-            <span className="text-green-400 font-semibold">💯 30-Day Risk-Free Money-Back Guarantee</span>
+            <Star className="w-4 h-4 text-blue-400" />
+            <span className="text-blue-400 font-semibold text-sm uppercase tracking-wide">Trusted by 10,000+ Businesses</span>
           </motion.div>
+
+          <h2 className="text-5xl sm:text-7xl font-black text-white mb-6 leading-tight">
+            Simple, Transparent
+            <br />
+            <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+              Pricing That Grows With You
+            </span>
+          </h2>
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-8 leading-relaxed">
+            One platform. All the tools. Zero limitations. Start automating your business today.
+          </p>
         </motion.div>
+
+        {/* Scrolling Company Logos */}
+        <div className="mb-16 overflow-hidden">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            <p className="text-center text-gray-500 text-sm uppercase tracking-wider mb-6 font-semibold">
+              Integrates with tools you already use
+            </p>
+            <div className="relative">
+              <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-900 to-transparent z-10"></div>
+              <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-900 to-transparent z-10"></div>
+
+              <motion.div
+                className="flex gap-12"
+                animate={{
+                  x: [0, -1800],
+                }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    duration: 30,
+                    ease: "linear",
+                  },
+                }}
+              >
+                {[...companyLogos, ...companyLogos, ...companyLogos].map((logo, index) => (
+                  <div
+                    key={`${logo.name}-${index}`}
+                    className="flex items-center justify-center px-8 py-4 bg-gray-800/30 border border-gray-700/50 rounded-xl min-w-[180px]"
+                  >
+                    <span className="text-gray-400 font-bold text-lg whitespace-nowrap">{logo.text}</span>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
 
         {/* Done-For-You Services Highlight */}
         <motion.div
@@ -272,7 +327,7 @@ const ProductSelection: React.FC = () => {
         </motion.div>
 
         {/* Plan Selection */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
           {Object.values(plans).map((plan, index) => {
             const CardWrapper = plan.link ? Link : 'div';
             const cardProps = plan.link ? { to: plan.link } : { onClick: () => setSelectedPlan(plan.id as 'monthly' | 'yearly' | 'onetime') };
@@ -283,60 +338,52 @@ const ProductSelection: React.FC = () => {
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 + index * 0.2 }}
-                whileHover={{ scale: 1.02, y: -5 }}
+                whileHover={{ scale: 1.03, y: -8 }}
                 className="relative"
               >
                 <CardWrapper
                   {...cardProps}
-                  className={`block relative bg-gray-800/50 backdrop-blur-sm border rounded-3xl p-8 transition-all duration-500 cursor-pointer ${
+                  className={`block relative bg-gradient-to-br from-gray-800/80 to-gray-900/80 backdrop-blur-sm border-2 rounded-3xl p-10 transition-all duration-500 cursor-pointer ${
                     plan.popular
-                      ? 'border-purple-400/50 shadow-2xl shadow-purple-500/20'
-                      : 'border-gray-700 hover:border-blue-400/50'
+                      ? 'border-blue-400/70 shadow-2xl shadow-blue-500/30 bg-gradient-to-br from-blue-900/30 to-gray-900/80'
+                      : 'border-gray-700 hover:border-blue-400/50 hover:shadow-xl hover:shadow-blue-500/20'
                   } ${
-                    selectedPlan === plan.id && !plan.link ? 'ring-2 ring-blue-400' : ''
+                    selectedPlan === plan.id && !plan.link ? 'ring-4 ring-blue-400 ring-offset-2 ring-offset-gray-900' : ''
                   }`}
                 >
               {/* Popular Badge */}
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2">
-                    <Crown className="w-4 h-4" />
-                    Most Popular
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                  <div className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-2 rounded-full text-sm font-bold flex items-center gap-2 shadow-lg">
+                    <Star className="w-4 h-4 fill-white" />
+                    MOST POPULAR
                   </div>
                 </div>
               )}
 
               {/* Plan Header */}
               <div className="text-center mb-8 pt-4">
-                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl mb-4 ${
+                <div className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-6 shadow-lg ${
                   plan.popular
-                    ? 'bg-gradient-to-br from-purple-500 to-pink-600'
-                    : 'bg-gradient-to-br from-blue-500 to-cyan-600'
+                    ? 'bg-gradient-to-br from-blue-500 to-cyan-600'
+                    : 'bg-gradient-to-br from-gray-700 to-gray-800'
                 }`}>
-                  {plan.id === 'onetime' ? <Crown className="w-8 h-8 text-white" /> : plan.id === 'yearly' ? <Calendar className="w-8 h-8 text-white" /> : <Zap className="w-8 h-8 text-white" />}
+                  {plan.id === 'yearly' ? <TrendingUp className="w-10 h-10 text-white" /> : <Zap className="w-10 h-10 text-white" />}
                 </div>
-                
-                <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
-                <p className="text-gray-400 text-sm mb-6">{plan.description}</p>
-                
-                {/* Money-Back Guarantee Banner */}
-                <div className="bg-gradient-to-r from-green-500/20 to-blue-500/20 border border-green-400/30 rounded-xl p-3 mb-4">
-                  <div className="flex items-center justify-center gap-2">
-                    <Shield className="w-4 h-4 text-green-400" />
-                    <span className="text-green-400 font-semibold text-sm">30-Day Money-Back Guarantee</span>
-                  </div>
-                </div>
-                
-                <div className="flex items-baseline justify-center mb-4">
+
+                <h3 className="text-3xl font-black text-white mb-3 uppercase tracking-tight">{plan.name}</h3>
+                <p className="text-gray-400 text-base mb-8 leading-relaxed">{plan.description}</p>
+
+                <div className="flex items-baseline justify-center mb-2">
                   {plan.id === 'yearly' ? (
                     <>
-                      <span className="text-5xl font-bold text-white">${plan.monthlyEquivalent}</span>
-                      <span className="text-gray-400 ml-2">/month</span>
+                      <span className="text-6xl font-black text-white">${plan.monthlyEquivalent}</span>
+                      <span className="text-gray-400 ml-3 text-xl">/mo</span>
                     </>
                   ) : (
                     <>
-                      <span className="text-5xl font-bold text-white">${plan.price}</span>
-                      <span className="text-gray-400 ml-2">/{plan.period}</span>
+                      <span className="text-6xl font-black text-white">${plan.price}</span>
+                      <span className="text-gray-400 ml-3 text-xl">/mo</span>
                     </>
                   )}
                 </div>
@@ -476,24 +523,85 @@ const ProductSelection: React.FC = () => {
               )}
             </motion.button>
 
-            {/* Guarantees */}
-            <div className="grid grid-cols-2 gap-4 text-center mt-6">
-              <div className="flex items-center justify-center text-green-400 text-sm">
-                <Star className="w-4 h-4 mr-1" />
-                30-day money-back guarantee
+            {/* Trust Badges Grid */}
+            <div className="grid grid-cols-3 gap-3 text-center mt-6">
+              <div className="flex flex-col items-center text-green-400 text-xs">
+                <Shield className="w-5 h-5 mb-1" />
+                <span className="font-semibold">30-Day Guarantee</span>
               </div>
-              <div className="flex items-center justify-center text-blue-400 text-sm">
-                <Check className="w-4 h-4 mr-1" />
-                Cancel anytime
+              <div className="flex flex-col items-center text-blue-400 text-xs">
+                <BadgeCheck className="w-5 h-5 mb-1" />
+                <span className="font-semibold">Cancel Anytime</span>
+              </div>
+              <div className="flex flex-col items-center text-purple-400 text-xs">
+                <Award className="w-5 h-5 mb-1" />
+                <span className="font-semibold">24/7 Support</span>
               </div>
             </div>
 
             {/* Security Badge */}
-            <div className="flex items-center justify-center gap-2 text-gray-400 text-xs mt-4">
+            <div className="flex items-center justify-center gap-2 text-gray-400 text-xs mt-4 pb-2">
               <Shield className="w-4 h-4" />
               <span>Secured by Stripe • SSL Encrypted • PCI Compliant</span>
             </div>
           </div>
+
+          {/* Comprehensive Guarantee Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.2 }}
+            className="max-w-5xl mx-auto mt-16 mb-16"
+          >
+            <div className="bg-gradient-to-br from-green-900/40 to-emerald-900/40 border-2 border-green-400/50 rounded-3xl p-10 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-green-400/10 rounded-full blur-3xl"></div>
+              <div className="relative z-10">
+                <div className="text-center mb-8">
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 0.5, delay: 1.4 }}
+                    className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full mb-4"
+                  >
+                    <Shield className="w-10 h-10 text-white" />
+                  </motion.div>
+                  <h3 className="text-3xl md:text-4xl font-black text-white mb-4">
+                    Our Iron-Clad 30-Day Money-Back Guarantee
+                  </h3>
+                  <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                    We're so confident you'll love KenjiAI that we offer a no-questions-asked, 30-day full refund guarantee
+                  </p>
+                </div>
+
+                <div className="grid md:grid-cols-3 gap-6 mb-8">
+                  <div className="bg-gray-800/50 border border-green-400/30 rounded-2xl p-6 text-center">
+                    <div className="text-4xl mb-3">✅</div>
+                    <h4 className="text-lg font-bold text-white mb-2">Zero Risk</h4>
+                    <p className="text-gray-400 text-sm">Try everything risk-free for 30 days. Don't like it? Get every penny back.</p>
+                  </div>
+                  <div className="bg-gray-800/50 border border-green-400/30 rounded-2xl p-6 text-center">
+                    <div className="text-4xl mb-3">⚡</div>
+                    <h4 className="text-lg font-bold text-white mb-2">Instant Refund</h4>
+                    <p className="text-gray-400 text-sm">No hassle, no waiting. Request a refund anytime within 30 days.</p>
+                  </div>
+                  <div className="bg-gray-800/50 border border-green-400/30 rounded-2xl p-6 text-center">
+                    <div className="text-4xl mb-3">💯</div>
+                    <h4 className="text-lg font-bold text-white mb-2">No Questions Asked</h4>
+                    <p className="text-gray-400 text-sm">We respect your decision. Full refund, no explanations needed.</p>
+                  </div>
+                </div>
+
+                <div className="text-center">
+                  <p className="text-green-400 font-bold text-lg mb-2">
+                    "If you don't absolutely love KenjiAI, we don't deserve your money."
+                  </p>
+                  <p className="text-gray-400 text-sm">
+                    Join over 10,000 businesses who trust KenjiAI to automate and scale their operations
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
           {/* Trust Indicators */}
           <div className="text-center">
