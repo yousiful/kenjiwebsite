@@ -33,7 +33,6 @@ const VoiceAgentsPage = lazy(() => import('./pages/VoiceAgentsPage'));
 const VoiceAILandingPage = lazy(() => import('./pages/VoiceAILandingPage'));
 const MarketingAutomationPage = lazy(() => import('./pages/MarketingAutomationPage'));
 const CRMPage = lazy(() => import('./pages/CRMPage'));
-const ClientAttractingSystemPage = lazy(() => import('./pages/ClientAttractingSystemPage'));
 const TestPage = lazy(() => import('./pages/TestPage'));
 
 // ScrollToTop component to scroll to top on route change
@@ -80,8 +79,6 @@ function App() {
                     <Route path="/blog/:slug" element={<BlogPost />} />
                     <Route path="/investors" element={<InvestorPage />} />
                     <Route path="/pricing" element={<ProductSelectionPage />} />
-                    <Route path="/client-attracting-system" element={<ClientAttractingSystemPage />} />
-                    <Route path="/cas" element={<Navigate to="/client-attracting-system" replace />} />
                     <Route path="/test" element={<TestPage />} />
                     <Route path="/success" element={<SuccessPage />} />
 

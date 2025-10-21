@@ -62,9 +62,10 @@ const ProductSelection: React.FC = () => {
       name: 'Monthly Plan',
       price: 275,
       period: 'month',
-      popular: false,
+      popular: true,
       savings: null,
-      description: 'Perfect for getting started with complete business automation'
+      description: 'Perfect for getting started with complete business automation',
+      revenueShare: '+ 10% performance-based revenue share'
     },
     yearly: {
       id: 'yearly',
@@ -74,17 +75,8 @@ const ProductSelection: React.FC = () => {
       period: 'year',
       popular: false,
       savings: 'Save $700/year',
-      description: 'Best value - save 21% when you pay annually'
-    },
-    onetime: {
-      id: 'onetime',
-      name: 'Client Attracting System',
-      price: 4670,
-      period: 'one-time',
-      popular: true,
-      savings: 'Save $64,316+ (93% off)',
-      description: 'Complete done-for-you system with lifetime access - never pay again',
-      link: '/client-attracting-system'
+      description: 'Best value - save 21% when you pay annually',
+      revenueShare: '+ 6% annual revenue share'
     }
   };
 
@@ -354,10 +346,16 @@ const ProductSelection: React.FC = () => {
                     {plan.savings}
                   </div>
                 )}
-                
+
                 {plan.id === 'yearly' && (
                   <div className="text-gray-400 text-sm mb-4">
                     Billed annually at ${plan.price}
+                  </div>
+                )}
+
+                {plan.revenueShare && (
+                  <div className="bg-blue-500/20 text-blue-400 px-4 py-2 rounded-xl text-sm font-semibold mb-4 border border-blue-400/30">
+                    {plan.revenueShare}
                   </div>
                 )}
               </div>

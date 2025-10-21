@@ -10,7 +10,6 @@ const Footer: React.FC = () => {
       { name: "About", href: "/" },
       { name: "Contact", href: "mailto:care@kenjiai.com" },
       { name: "Pricing", href: "/pricing" },
-      { name: "Client Attracting System", href: "/client-attracting-system", badge: "Popular" },
       { name: "Investors", href: "/investors" },
       { name: "Careers", href: "/investors" },
       { name: "Press", href: "/investors" }
