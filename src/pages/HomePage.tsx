@@ -7,6 +7,7 @@ import ReliabilityEngine from '../components/ReliabilityEngine';
 import EngagementEngine from '../components/EngagementEngine';
 import FutureProofFramework from '../components/FutureProofFramework';
 import Features from '../components/Features';
+import CRMReplacement from '../components/CRMReplacement';
 import Tools from '../components/Tools';
 import LiveBusinessDemo from '../components/LiveBusinessDemo';
 import PricingSection from '../components/PricingSection';
@@ -82,6 +83,7 @@ const HomePage: React.FC = () => {
         <EngagementEngine />
         <FutureProofFramework />
         <Features />
+        <CRMReplacement />
         <Tools />
         <LiveBusinessDemo />
         <PricingSection />
