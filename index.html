@@ -8,10 +8,12 @@
     <!-- Performance optimizations -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://js.stripe.com">
+    <link rel="preconnect" href="https://js.stripe.com" crossorigin>
+    <link rel="preconnect" href="https://freedom.kenjiai.com" crossorigin>
     <link rel="dns-prefetch" href="https://app.kenjicrm.com">
     <link rel="dns-prefetch" href="https://images.pexels.com">
     <link rel="dns-prefetch" href="https://connect.facebook.net">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
     
     <!-- PWA manifest -->
     <link rel="manifest" href="/manifest.json">
@@ -262,48 +264,54 @@
 
     <!-- Critical CSS inlined for performance -->
     <style>
-      /* Critical above-the-fold styles */
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-        background-attachment: fixed;
-        color: white;
-        overflow-x: hidden;
+      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+      body{
+        margin:0;
+        padding:0;
+        font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+        background:#0f172a;
+        color:#fff;
+        overflow-x:hidden;
+        -webkit-font-smoothing:antialiased;
+        -moz-osx-font-smoothing:grayscale;
+        text-rendering:optimizeLegibility
       }
-      
-      .loading-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
+      #root{min-height:100vh}
+      .loading-screen{
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#0f172a 100%);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        z-index:9999;
+        pointer-events:none
       }
-      
-      .loading-spinner {
-        width: 40px;
-        height: 40px;
-        border: 4px solid #3B82F6;
-        border-top: 4px solid transparent;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
+      .loading-spinner{
+        width:40px;
+        height:40px;
+        border:3px solid #3B82F6;
+        border-top:3px solid transparent;
+        border-radius:50%;
+        animation:spin .8s linear infinite
       }
-      
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+      @keyframes spin{
+        0%{transform:rotate(0deg)}
+        100%{transform:rotate(360deg)}
       }
-      
-      /* Hide loading screen when React loads */
-      #root:not(:empty) + .loading-screen {
-        display: none;
+      #root:not(:empty)+ .loading-screen{display:none}
+      @media(prefers-reduced-motion:reduce){
+        *,*::before,*::after{
+          animation-duration:.01ms!important;
+          animation-iteration-count:1!important;
+          transition-duration:.01ms!important
+        }
       }
+      img,video,iframe{max-width:100%;height:auto}
+      button,a{touch-action:manipulation}
     </style>
   </head>
   <body>
