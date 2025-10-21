@@ -40,7 +40,6 @@ const Navbar: React.FC = () => {
     { name: "Home", href: "/" },
     { name: "Solutions", href: "/ai-automation", hasDropdown: true, dropdownType: "solutions" },
     { name: "Free Tools", href: "/free-tools", hasDropdown: true, dropdownType: "tools" },
-    { name: "Education", href: "/knowledge" },
     { name: "Freedom Club", href: "https://learn.kenjiai.com/communities/groups/media-traffics'-freedom-closer/home?invite=68eeb20bcfc02a4072d11ac8", external: true }
   ];
 
@@ -237,9 +236,27 @@ const Navbar: React.FC = () => {
               <ExternalLink className="w-3 h-3" aria-hidden="true" />
             </motion.a>
 
+            {/* Pricing Button - Unique Design */}
+            <Link
+              to="/pricing"
+              className={`relative px-6 py-2.5 rounded-xl font-bold transition-all duration-300 mobile-button focus-ring ${
+                location.pathname === '/pricing'
+                  ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white shadow-lg shadow-purple-500/50'
+                  : 'bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white hover:shadow-lg hover:shadow-purple-500/50 animate-gradient'
+              }`}
+              style={{
+                backgroundSize: '200% 200%',
+              }}
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                <Zap className="w-4 h-4" />
+                Pricing
+              </span>
+            </Link>
+
             {/* CTA Button */}
             <motion.a
-              href="/pricing"
+              href="/pricing#plans"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="investor-gradient-blue text-white px-6 py-2 rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 mobile-button focus-ring flex flex-col items-center"
@@ -317,6 +334,20 @@ const Navbar: React.FC = () => {
                 Support
               </a>
               
+              {/* Mobile Pricing Button */}
+              <Link
+                to="/pricing"
+                onClick={() => setIsOpen(false)}
+                className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white px-4 py-3 rounded-xl font-bold text-center mobile-button animate-gradient"
+                style={{ backgroundSize: '200% 200%' }}
+                role="menuitem"
+              >
+                <div className="flex items-center justify-center gap-2">
+                  <Zap className="w-5 h-5" />
+                  View Pricing
+                </div>
+              </Link>
+
               {/* Mobile Login Button */}
               <a
                 href="https://app.kenjicrm.com"
@@ -329,10 +360,10 @@ const Navbar: React.FC = () => {
                 Login to Dashboard
                 <ExternalLink className="w-3 h-3" aria-hidden="true" />
               </a>
-              
+
               {/* Mobile CTA Button */}
               <a
-                href="/pricing"
+                href="/pricing#plans"
                 className="block investor-gradient-blue text-white px-4 py-3 rounded-xl font-semibold text-center mobile-button"
                 role="menuitem"
               >
