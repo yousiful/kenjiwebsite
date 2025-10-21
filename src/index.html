@@ -5,6 +5,24 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '2406747486323295');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=2406747486323295&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    
     <!-- Performance optimizations -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,28 +33,10 @@
     
     <!-- PWA manifest -->
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#1E40AF">
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#3B82F6">
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1E40AF">
-
-    <!-- iOS PWA Support -->
+    <meta name="theme-color" content="#3B82F6">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="KenjiAI">
-    <link rel="apple-touch-icon" href="/icons/icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-192x192.png">
-    <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-192x192.png">
-
-    <!-- Windows PWA Support -->
-    <meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
-    <meta name="msapplication-TileColor" content="#1E40AF">
-    <meta name="msapplication-config" content="/browserconfig.xml">
-
-    <!-- Standard favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-72x72.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-72x72.png">
-    <link rel="shortcut icon" href="/icons/icon-72x72.png">
     
     <!-- Primary Meta Tags -->
     <title>KenjiAI - Free AI Tools, Business Automation Platform & AI Knowledge Base | Voice Agents, CRM, Marketing</title>
@@ -184,19 +184,6 @@
             "price": "0",
             "priceCurrency": "USD"
           }
-        },
-        {
-          "@type": "SoftwareApplication",
-          "position": 4,
-          "name": "ViralPost Pro",
-          "description": "AI-powered viral content creation for social media",
-          "url": "https://viralpost.kenjiai.com",
-          "applicationCategory": "BusinessApplication",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-          }
         }
       ]
     }
@@ -244,22 +231,7 @@
       ]
     }
     </script>
-
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '2406747486323295');
-    fbq('track', 'PageView');
-    </script>
-    <!-- End Meta Pixel Code -->
-
+    
     <!-- Critical CSS inlined for performance -->
     <style>
       /* Critical above-the-fold styles */
@@ -307,11 +279,6 @@
     </style>
   </head>
   <body>
-    <!-- Meta Pixel noscript -->
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2406747486323295&ev=PageView&noscript=1"
-    /></noscript>
-
     <div id="root"></div>
     
     <!-- Loading screen for initial page load -->
