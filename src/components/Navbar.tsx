@@ -8,6 +8,7 @@ const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showToolsDropdown, setShowToolsDropdown] = useState(false);
   const [showSolutionsDropdown, setShowSolutionsDropdown] = useState(false);
+  const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -17,6 +18,15 @@ const Navbar: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (dropdownTimeout) {
+        clearTimeout(dropdownTimeout);
+      }
+    };
+  }, [dropdownTimeout]);
 
   const tools = [
     { name: "Prompt Generator", href: "http://prompt.kenjiai.com", external: true, badge: "Free" },
@@ -70,20 +80,30 @@ const Navbar: React.FC = () => {
                 {item.hasDropdown ? (
                   <div
                     className="relative"
-                    onMouseEnter={(e) => {
-                      if (item.dropdownType === 'tools') setShowToolsDropdown(true);
-                      if (item.dropdownType === 'solutions') setShowSolutionsDropdown(true);
+                    onMouseEnter={() => {
+                      // Clear any pending timeout
+                      if (dropdownTimeout) {
+                        clearTimeout(dropdownTimeout);
+                        setDropdownTimeout(null);
+                      }
+
+                      // Show the correct dropdown and hide the other
+                      if (item.dropdownType === 'tools') {
+                        setShowToolsDropdown(true);
+                        setShowSolutionsDropdown(false);
+                      }
+                      if (item.dropdownType === 'solutions') {
+                        setShowSolutionsDropdown(true);
+                        setShowToolsDropdown(false);
+                      }
                     }}
-                    onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) => {
-                      // Check if the mouse is moving to the dropdown
-                      const relatedTarget = e.relatedTarget as HTMLElement;
-                      const isMovingToDropdown = relatedTarget instanceof Element ? relatedTarget.closest('[role="menu"]') !== null : false;
-                      
-                      if (!isMovingToDropdown) {
-                        // Only hide if not moving to the dropdown
+                    onMouseLeave={() => {
+                      // Add a delay before hiding to allow moving to dropdown
+                      const timeout = setTimeout(() => {
                         if (item.dropdownType === 'tools') setShowToolsDropdown(false);
                         if (item.dropdownType === 'solutions') setShowSolutionsDropdown(false);
-                      }
+                      }, 150);
+                      setDropdownTimeout(timeout);
                     }}
                   >
                     <button 
@@ -101,13 +121,28 @@ const Navbar: React.FC = () => {
                     
                     {/* Tools Dropdown */}
                     {showToolsDropdown && item.dropdownType === 'tools' && (
-                      <motion.div 
+                      <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="absolute top-full left-0 mt-2 w-64 bg-gray-800 border border-gray-700 rounded-xl shadow-2xl overflow-hidden investor-card-shadow z-50"
                         role="menu"
                         aria-orientation="vertical"
                         aria-labelledby="tools-menu-button"
+                        onMouseEnter={() => {
+                          // Clear timeout when entering dropdown
+                          if (dropdownTimeout) {
+                            clearTimeout(dropdownTimeout);
+                            setDropdownTimeout(null);
+                          }
+                          setShowToolsDropdown(true);
+                        }}
+                        onMouseLeave={() => {
+                          // Add delay before closing
+                          const timeout = setTimeout(() => {
+                            setShowToolsDropdown(false);
+                          }, 150);
+                          setDropdownTimeout(timeout);
+                        }}
                       >
                         {tools.map((tool) => (
                           tool.external ? (
@@ -163,20 +198,24 @@ const Navbar: React.FC = () => {
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="absolute top-full left-0 mt-2 w-80 bg-gray-800 border border-gray-700 rounded-xl shadow-2xl overflow-hidden investor-card-shadow z-50" 
+                        className="absolute top-full left-0 mt-2 w-80 bg-gray-800 border border-gray-700 rounded-xl shadow-2xl overflow-hidden investor-card-shadow z-50"
                         role="menu"
                         aria-orientation="vertical"
                         aria-labelledby="solutions-menu-button"
-                        onMouseEnter={() => setShowSolutionsDropdown(true)}
-                        onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) => {
-                          // Check if moving back to the button
-                          const relatedTarget = e.relatedTarget as HTMLElement;
-                          const isMovingToButton = relatedTarget instanceof Element ? 
-                            relatedTarget.closest('[aria-haspopup="true"]') !== null : false;
-                          
-                          if (!isMovingToButton) {
-                            setShowSolutionsDropdown(false);
+                        onMouseEnter={() => {
+                          // Clear timeout when entering dropdown
+                          if (dropdownTimeout) {
+                            clearTimeout(dropdownTimeout);
+                            setDropdownTimeout(null);
                           }
+                          setShowSolutionsDropdown(true);
+                        }}
+                        onMouseLeave={() => {
+                          // Add delay before closing
+                          const timeout = setTimeout(() => {
+                            setShowSolutionsDropdown(false);
+                          }, 150);
+                          setDropdownTimeout(timeout);
                         }}
                       >
                         {solutions.map((solution) => (
