@@ -331,8 +331,8 @@ const BlogPost: React.FC = () => {
           Join thousands of professionals who have transformed their careers and businesses with AI automation. This comprehensive course provides everything you need to become an AI automation expert and start generating real results immediately.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
-          <a href="/pricing" class="bg-gradient-to-r from-purple-600 to-blue-500 text-white px-6 py-4 rounded-xl font-bold text-base sm:text-lg hover:shadow-lg transition-all duration-300 text-center">
-            Enroll Now - Free Access
+          <a href="https://freedom.kenjiai.com/checkout-4912-2457-3370" class="bg-gradient-to-r from-purple-600 to-blue-500 text-white px-6 py-4 rounded-xl font-bold text-base sm:text-lg hover:shadow-lg transition-all duration-300 text-center">
+            Get Started Now
           </a>
           <a href="/free-tools" class="bg-gray-800 border border-gray-600 hover:border-purple-400 text-white px-6 py-4 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 text-center">
             Try Free Tools First
@@ -682,12 +682,12 @@ const BlogPost: React.FC = () => {
               Join {course.students} students who are already transforming their careers and businesses with AI automation.
             </p>
             <motion.a
-              href="/pricing"
+              href="https://freedom.kenjiai.com/checkout-4912-2457-3370"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-blue-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold text-base sm:text-lg hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300"
             >
-              Enroll Now - Free Access
+              Get Started Now
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </motion.a>
             <p className="text-gray-500 text-xs sm:text-sm mt-4">

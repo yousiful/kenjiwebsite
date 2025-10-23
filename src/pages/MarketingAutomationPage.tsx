@@ -115,7 +115,7 @@ const MarketingAutomationPage: React.FC = () => {
             </div>
 
             <motion.a
-              href="/pricing"
+              href="https://freedom.kenjiai.com/checkout-4912-2457-3370"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-10 py-5 rounded-2xl font-bold text-xl hover:shadow-lg transition-all duration-300"
@@ -261,12 +261,12 @@ const MarketingAutomationPage: React.FC = () => {
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <motion.a
-                href="/pricing"
+                href="https://freedom.kenjiai.com/checkout-4912-2457-3370"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-10 py-5 rounded-2xl font-bold text-xl hover:shadow-lg transition-all duration-300 flex items-center gap-3"
               >
-                Get Started Risk-Free
+                Get Started Now
                 <ArrowRight className="w-6 h-6" />
               </motion.a>
               

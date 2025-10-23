@@ -453,12 +453,12 @@ const FreeToolsPage: React.FC = () => {
             </div>
 
             <motion.a
-              href="/pricing"
+              href="https://freedom.kenjiai.com/checkout-4912-2457-3370"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-green-500 text-white px-10 py-5 rounded-2xl font-bold text-xl hover:shadow-lg transition-all duration-300"
             >
-              Start Making Serious Money
+              Get Started Now
               <ArrowRight className="w-6 h-6" />
             </motion.a>
             

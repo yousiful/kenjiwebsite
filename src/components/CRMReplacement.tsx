@@ -150,13 +150,13 @@ const CRMReplacement: React.FC = () => {
             Your competitors are wasting money on 10+ separate tools. You'll have everything in one place for less than the cost of a single CRM.
           </p>
           <motion.a
-            href="/pricing"
+            href="https://freedom.kenjiai.com/checkout-4912-2457-3370"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
           >
             <DollarSign className="w-5 h-5" />
-            See How Much You'll Save
+            Get Started Now
           </motion.a>
         </motion.div>
       </div>

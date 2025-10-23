@@ -152,7 +152,7 @@ const FinalCTA: React.FC = () => {
         >
           <motion.a
             id="cta-button"
-            href="#pricing"
+            href="https://freedom.kenjiai.com/checkout-4912-2457-3370"
             whileHover={{ 
               scale: 1.05, 
               boxShadow: "0 0 60px rgba(59, 130, 246, 0.8)",
