@@ -1,0 +1,26 @@
+# humanstxt.org
+
+/* TEAM */
+Company: KenjiAI
+Website: https://kenjiai.com
+Location: United States
+
+/* SITE */
+Standards: HTML5, CSS3, JavaScript ES2023
+Components: React, Vite, TypeScript
+Software: VS Code, Git, Supabase
+
+/* THANKS */
+To all our users and the open-source community
+
+/* CONTACT */
+Email: care@kenjiai.com
+Phone: +1 (831) 263-4402
+Twitter: @KenjiAI
+
+/* SECURITY */
+Report vulnerabilities: security@kenjiai.com
+Security Policy: https://kenjiai.com/.well-known/security.txt
+
+/* UPDATED */
+Last update: 2024-10-23

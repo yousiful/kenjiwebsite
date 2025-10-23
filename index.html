@@ -3,7 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+
+    <!-- Security Headers (Meta Tags) -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://connect.facebook.net https://www.googletagmanager.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      img-src 'self' data: https: blob:;
+      font-src 'self' data: https://fonts.gstatic.com;
+      connect-src 'self' https://api.stripe.com https://*.supabase.co https://kenjiai.com https://*.kenjiai.com https://connect.facebook.net;
+      frame-src 'self' https://js.stripe.com https://www.facebook.com;
+      worker-src 'self' blob:;
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self' https://freedom.kenjiai.com;
+      upgrade-insecure-requests;
+    " />
+
+    <!-- Mobile Security & Optimization -->
+    <meta name="format-detection" content="telephone=yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="width" />
     
     <!-- Performance optimizations -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -77,6 +105,32 @@
     <link rel="canonical" href="https://kenjiai.com/" />
     <meta name="google-site-verification" content="your-google-verification-code" />
     <meta name="msvalidate.01" content="your-bing-verification-code" />
+
+    <!-- Mobile Carrier & Deep Linking -->
+    <meta name="apple-itunes-app" content="app-id=com.kenjiai.app" />
+    <meta name="google-play-app" content="app-id=com.kenjiai.app" />
+    <link rel="alternate" href="android-app://com.kenjiai.app/https/kenjiai.com" />
+    <link rel="alternate" href="ios-app://com.kenjiai.app/https/kenjiai.com" />
+
+    <!-- Geographic & Language Targeting -->
+    <meta name="geo.region" content="US" />
+    <meta name="geo.placename" content="United States" />
+    <meta name="geo.position" content="37.7749;-122.4194" />
+    <meta name="ICBM" content="37.7749, -122.4194" />
+
+    <!-- Business & Schema Info -->
+    <meta name="application-name" content="KenjiAI" />
+    <meta name="apple-mobile-web-app-title" content="KenjiAI" />
+    <meta name="coverage" content="Worldwide" />
+    <meta name="target" content="all" />
+    <meta name="audience" content="all" />
+    <meta name="page-type" content="product" />
+    <meta name="page-topic" content="AI Automation, Business Software, Free AI Tools" />
+
+    <!-- Enhanced Mobile SEO -->
+    <meta name="mobile-agent" content="format=html5; url=https://kenjiai.com" />
+    <meta name="skype_toolbar" content="skype_toolbar_parser_compatible" />
+    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="KenjiAI Search" />
     
     <!-- Structured Data for Free Tools -->
     <script type="application/ld+json">

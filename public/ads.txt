@@ -1,0 +1,13 @@
+# Authorized Digital Sellers for KenjiAI
+# Format: domain, publisher-id, relationship-type, certification-id
+
+# Google AdSense (example - replace with your actual IDs)
+# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
+
+# Add your authorized ad networks here
+# Example format:
+# network.com, publisher-id, DIRECT, certification-id
+# network.com, publisher-id, RESELLER, certification-id
+
+# No unauthorized sellers
+# All advertising relationships are managed directly by KenjiAI
