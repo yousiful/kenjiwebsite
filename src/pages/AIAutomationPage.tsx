@@ -131,7 +131,7 @@ const AIAutomationPage: React.FC = () => {
             </div>
 
             <motion.a
-              href="https://freedom.kenjiai.com/checkout-4912-2457-3370"
+              href="/pricing"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-5 rounded-2xl font-bold text-xl hover:shadow-lg transition-all duration-300"
@@ -248,7 +248,7 @@ const AIAutomationPage: React.FC = () => {
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <motion.a
-                href="https://freedom.kenjiai.com/checkout-4912-2457-3370"
+                href="/pricing"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-5 rounded-2xl font-bold text-xl hover:shadow-lg transition-all duration-300 flex items-center gap-3"

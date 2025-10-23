@@ -179,7 +179,7 @@ const Hero: React.FC = () => {
           className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16"
         >
           <motion.a
-            href="https://freedom.kenjiai.com/checkout-4912-2457-3370"
+            href="/pricing"
             whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(147, 51, 234, 0.8)" }}
             whileTap={{ scale: 0.95 }}
             className="group relative bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 hover:from-pink-500 hover:via-purple-500 hover:to-blue-500 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300 flex items-center gap-3 shadow-2xl mobile-button focus-ring"

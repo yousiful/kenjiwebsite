@@ -27,42 +27,16 @@ const PricingSection: React.FC = () => {
       // Clear any previous errors
       setCheckoutError(null);
       setIsLoading(planName);
-      
-      // Validate prerequisites
-      validateCheckoutPrerequisites();
-      
-      // Prepare checkout data
-      const checkoutData = prepareCheckoutData(planType);
-      console.log('Starting payment redirect for:', planName, 'with data:', checkoutData);
-      
-      // Add small delay to show loading state
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
-      await redirectToPaymentLink(planType);
-    } catch (error) {
-      console.error('Payment error:', error);
-      
-      // Enhanced error handling with specific, helpful messages
-      let errorMessage = 'Payment couldn\'t be processed. Your card wasn\'t charged. Try again or contact us: care@kenjiai.com';
 
-      if (error instanceof Error) {
-        if (error.message.includes('not found') || error.message.includes('not available')) {
-          errorMessage = 'Payment option temporarily unavailable. Please try again in a moment or contact support at care@kenjiai.com';
-        } else if (error.message.includes('network') || error.message.includes('connection')) {
-          errorMessage = 'Connection issue detected. Check your internet and try again. Your card wasn\'t charged.';
-        } else if (error.message.includes('browser')) {
-          errorMessage = 'Browser update needed for secure payments. Please use Chrome, Firefox, or Safari to continue.';
-        } else if (error.message.includes('timeout')) {
-          errorMessage = 'This is taking longer than expected. Don\'t refresh—we\'re still processing. Try again in 30 seconds.';
-        } else if (error.message.includes('declined')) {
-          errorMessage = 'Card declined by your bank. Try a different card or contact your bank to authorize this charge.';
-        } else {
-          errorMessage = error.message;
-        }
-      }
-      
-      setCheckoutError(errorMessage);
-      
+      // Add small delay to show loading state
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      // Redirect to the new checkout page
+      window.location.href = 'https://freedom.kenjiai.com/checkout-4912-2457-3370';
+    } catch (error) {
+      console.error('Redirect error:', error);
+      setCheckoutError('Unable to redirect to checkout. Please try again.');
+
       // Auto-clear error after 10 seconds
       setTimeout(() => {
         setCheckoutError(null);

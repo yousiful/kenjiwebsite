@@ -156,7 +156,7 @@ const Demo: React.FC = () => {
                   <p className="text-sm text-gray-300">Complete Business Automation Walkthrough</p>
                 </div>
                 <motion.a
-                  href="https://freedom.kenjiai.com/checkout-4912-2457-3370"
+                  href="/pricing"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="bg-gradient-to-r from-blue-600 to-green-500 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 flex items-center gap-2"
@@ -203,7 +203,7 @@ const Demo: React.FC = () => {
           className="text-center mt-16"
         >
           <motion.a
-            href="https://freedom.kenjiai.com/checkout-4912-2457-3370"
+            href="/pricing"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-green-500 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30"

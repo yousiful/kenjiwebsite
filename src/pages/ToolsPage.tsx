@@ -323,7 +323,7 @@ const ToolsPage: React.FC = () => {
                 AI chatbots, social media planner, content creator, analytics, and much more—all integrated seamlessly.
               </p>
               <motion.a
-                href="https://freedom.kenjiai.com/checkout-4912-2457-3370"
+                href="/pricing"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-green-500 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300"
