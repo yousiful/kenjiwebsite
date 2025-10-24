@@ -281,190 +281,199 @@ const PricingSection: React.FC = () => {
             ))}
           </div>
 
-          {/* Compact Billing Toggle */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="inline-flex items-center bg-gray-800/50 border border-gray-700 rounded-2xl p-2 mb-8 mobile-hover"
-          >
-            <button
-              onClick={() => setBillingCycle('monthly')}
-              className={`px-4 py-2 rounded-xl font-semibold transition-all duration-300 mobile-button ${
-                billingCycle === 'monthly'
-                  ? 'bg-gradient-to-r from-pink-600 to-purple-600 text-white shadow-lg'
-                  : 'text-gray-400 hover:text-white'
-              }`}
-            >
-              Monthly
-            </button>
-            <button
-              onClick={() => setBillingCycle('yearly')}
-              className={`px-4 py-2 rounded-xl font-semibold transition-all duration-300 relative mobile-button ${
-                billingCycle === 'yearly'
-                  ? 'bg-gradient-to-r from-blue-600 to-green-600 text-white shadow-lg'
-                  : 'text-gray-400 hover:text-white'
-              }`}
-            >
-              Yearly
-              <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full">
-                Save 21%
-              </span>
-            </button>
-          </motion.div>
         </motion.div>
 
-        {/* Compact Single Pricing Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="max-w-2xl mx-auto"
-        >
-          <div className="relative bg-gray-800/50 backdrop-blur-sm border border-purple-400/50 rounded-3xl p-6 shadow-2xl shadow-purple-500/20 investor-card-shadow">
-            {/* Enhanced Popular Badge */}
+        {/* Two Pricing Cards - Monthly and Yearly */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+
+          {/* Monthly Plan Card */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="relative bg-gray-800/50 backdrop-blur-sm border border-purple-400/50 rounded-3xl p-6 shadow-2xl shadow-purple-500/20 investor-card-shadow"
+          >
+            {/* Badge */}
             <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-              <div className="bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 text-white px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2 mobile-hover">
-                <Crown className="w-4 h-4" />
-                Complete Business Platform
+              <div className="bg-gradient-to-r from-pink-600 to-purple-600 text-white px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2 mobile-hover">
+                <Zap className="w-4 h-4" />
+                Monthly Plan
               </div>
             </div>
 
-            {/* Compact Pricing Header */}
+            {/* Pricing Header */}
             <div className="text-center mb-6 pt-4">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-500 via-pink-500 to-purple-500 rounded-3xl mb-4 mobile-hover">
-                <Zap className="w-8 h-8 text-white" />
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-pink-500 via-purple-500 to-blue-500 rounded-3xl mb-4 mobile-hover">
+                <Calendar className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-3">KenjiAI Complete</h3>
+              <h3 className="text-2xl font-bold text-white mb-3">Monthly Billing</h3>
               <p className="text-gray-400 mb-4">
-                The ultimate AI-powered business automation platform
+                Pay month-to-month with flexibility
               </p>
-              
-              {/* Money-Back Guarantee Banner */}
-              <div className="bg-gradient-to-r from-green-600/40 to-blue-600/40 border border-green-400/30 rounded-xl p-3 mb-4 mobile-hover">
-                <div className="flex items-center justify-center gap-2 mb-1">
-                  <Shield className="w-4 h-4" />
-                  <span className="text-white font-bold">30-Day Money-Back Guarantee</span>
-                </div>
-                <div className="text-white text-sm">
-                  Full access • 100% Risk-Free • Cancel anytime
-                </div>
-              </div>
-              
+
               <div className="flex items-baseline justify-center mb-3">
-                {billingCycle === 'yearly' ? (
-                  <div className="text-center">
-                    {hasEarnedDiscount ? (
-                      <>
-                        <div className="flex items-baseline justify-center gap-2">
-                          <span className="text-3xl font-bold text-gray-500 line-through">${pricing.yearly.monthlyEquivalent}</span>
-                          <span className="text-5xl font-bold text-green-400">${pricing.yearly.discountedMonthlyEquivalent}</span>
-                          <span className="text-gray-400 ml-2">/month</span>
-                        </div>
-                        <div className="text-green-400 font-semibold text-sm mt-1">
-                          Use code LUCKY for 10% OFF! 🎉
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        <span className="text-5xl font-bold text-white">${pricing.yearly.monthlyEquivalent}</span>
+                <div className="text-center">
+                  {hasEarnedDiscount ? (
+                    <>
+                      <div className="flex items-baseline justify-center gap-2">
+                        <span className="text-3xl font-bold text-gray-500 line-through">${pricing.monthly.price}</span>
+                        <span className="text-5xl font-bold text-green-400">${pricing.monthly.discountedPrice}</span>
                         <span className="text-gray-400 ml-2">/month</span>
-                      </>
-                    )}
-                  </div>
-                ) : (
-                  <div className="text-center">
-                    {hasEarnedDiscount ? (
-                      <>
-                        <div className="flex items-baseline justify-center gap-2">
-                          <span className="text-3xl font-bold text-gray-500 line-through">${pricing.monthly.price}</span>
-                          <span className="text-5xl font-bold text-green-400">${pricing.monthly.discountedPrice}</span>
-                          <span className="text-gray-400 ml-2">/month</span>
-                        </div>
-                        <div className="text-green-400 font-semibold text-sm mt-1">
-                          Use code LUCKY for 10% OFF! 🎉
-                        </div>
-                      </>
-                    ) : (
-                      <>
-                        <span className="text-5xl font-bold text-white">${pricing.monthly.price}</span>
-                        <span className="text-gray-400 ml-2">/month</span>
-                      </>
-                    )}
-                  </div>
-                )}
-              </div>
-              
-              {billingCycle === 'yearly' && (
-                <div className="text-center mb-4">
-                  <div className="text-green-400 font-semibold mb-1">{pricing.yearly.savings}</div>
-                  <div className="text-gray-400 text-sm">
-                    Billed annually at ${hasEarnedDiscount ? pricing.yearly.discountedPrice : pricing.yearly.price}
-                  </div>
+                      </div>
+                      <div className="text-green-400 font-semibold text-sm mt-1">
+                        Use code LUCKY for 10% OFF! 🎉
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <span className="text-5xl font-bold text-white">${pricing.monthly.price}</span>
+                      <span className="text-gray-400 ml-2">/month</span>
+                    </>
+                  )}
                 </div>
-              )}
-              
+              </div>
+
               <div className="investor-gradient-blue border border-blue-400/30 rounded-xl p-3 mb-4 mobile-hover">
                 <div className="text-white font-semibold mb-1">🚀 Everything Included</div>
                 <div className="text-white text-sm">
-                  No limits, no restrictions, no hidden fees. Complete access to all features.
+                  All features • Cancel anytime • 30-day guarantee
                 </div>
               </div>
             </div>
 
-            {/* Compact Features Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-6 max-h-60 overflow-y-auto smooth-scroll">
-              {allFeatures.map((feature, idx) => (
+            {/* Features Grid */}
+            <div className="grid grid-cols-1 gap-2 mb-6 max-h-60 overflow-y-auto smooth-scroll">
+              {allFeatures.slice(0, 10).map((feature, idx) => (
                 <div key={idx} className="flex items-center text-gray-300 mobile-hover text-sm">
                   <Check className="w-3 h-3 text-green-400 mr-2 flex-shrink-0" />
                   <span>{feature}</span>
                 </div>
               ))}
+              <div className="text-center text-gray-400 text-sm">+ 15 more features</div>
             </div>
 
-            {/* Enhanced CTA Button */}
-            <motion.button
-              onClick={() => handleSubscribe(billingCycle, `KenjiAI-${billingCycle}`)}
-              disabled={isLoading === `KenjiAI-${billingCycle}`}
+            {/* CTA Button */}
+            <motion.a
+              href="https://freedom.kenjiai.com/checkout-4912-2457-3370"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 hover:from-pink-500 hover:via-purple-500 hover:to-blue-500 text-white py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/30 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed mb-4 mobile-button focus-ring"
+              className="w-full bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 hover:from-pink-500 hover:via-purple-500 hover:to-blue-500 text-white py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/30 flex items-center justify-center gap-3 mb-4 mobile-button focus-ring"
             >
-              {isLoading === `KenjiAI-${billingCycle}` ? (
-                <>
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  <span>Preparing Checkout...</span>
-                </>
-              ) : (
-                <>
-                  Get Started Now
-                  {hasEarnedDiscount && <span className="text-yellow-300">+ Use LUCKY</span>}
-                  <ArrowRight className="w-5 h-5" />
-                </>
-              )}
-            </motion.button>
+              Get Started Now
+              <ArrowRight className="w-5 h-5" />
+            </motion.a>
 
-            {/* Compact Security & Guarantees */}
-            <div className="grid grid-cols-2 gap-4 text-center mb-3">
+            {/* Security & Guarantees */}
+            <div className="text-center space-y-2">
               <div className="flex items-center justify-center text-green-400 text-sm mobile-hover">
-                <Star className="w-4 h-4 mr-1" />
+                <Shield className="w-4 h-4 mr-1" />
                 30-day money-back guarantee
               </div>
-              <div className="flex items-center justify-center text-blue-400 text-sm mobile-hover">
-                <Check className="w-4 h-4 mr-1" />
-                Cancel anytime
+              <div className="flex items-center justify-center gap-2 text-gray-400 text-xs">
+                <span>Secured by Stripe • SSL Encrypted • PCI Compliant</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Yearly Plan Card */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            className="relative bg-gray-800/50 backdrop-blur-sm border-2 border-green-400/50 rounded-3xl p-6 shadow-2xl shadow-green-500/20 investor-card-shadow"
+          >
+            {/* Badge */}
+            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+              <div className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2 mobile-hover animate-pulse">
+                <Crown className="w-4 h-4" />
+                Best Value - Save 21%
               </div>
             </div>
 
-            {/* Enhanced Security Badge */}
-            <div className="flex items-center justify-center gap-2 text-gray-400 text-xs">
-              <Shield className="w-4 h-4" />
-              <span>Secured by Stripe • SSL Encrypted • PCI Compliant</span>
+            {/* Pricing Header */}
+            <div className="text-center mb-6 pt-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 via-green-500 to-teal-500 rounded-3xl mb-4 mobile-hover">
+                <DollarSign className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-3">Yearly Billing</h3>
+              <p className="text-gray-400 mb-4">
+                Save big with annual commitment
+              </p>
+
+              <div className="flex items-baseline justify-center mb-3">
+                <div className="text-center">
+                  {hasEarnedDiscount ? (
+                    <>
+                      <div className="flex items-baseline justify-center gap-2">
+                        <span className="text-3xl font-bold text-gray-500 line-through">${pricing.yearly.monthlyEquivalent}</span>
+                        <span className="text-5xl font-bold text-green-400">${pricing.yearly.discountedMonthlyEquivalent}</span>
+                        <span className="text-gray-400 ml-2">/month</span>
+                      </div>
+                      <div className="text-green-400 font-semibold text-sm mt-1">
+                        Use code LUCKY for 10% OFF! 🎉
+                      </div>
+                    </>
+                  ) : (
+                    <>
+                      <span className="text-5xl font-bold text-white">${pricing.yearly.monthlyEquivalent}</span>
+                      <span className="text-gray-400 ml-2">/month</span>
+                    </>
+                  )}
+                </div>
+              </div>
+
+              <div className="text-center mb-4">
+                <div className="text-green-400 font-semibold mb-1">{pricing.yearly.savings}</div>
+                <div className="text-gray-400 text-sm">
+                  Billed annually at ${hasEarnedDiscount ? pricing.yearly.discountedPrice : pricing.yearly.price}
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-green-600/40 to-blue-600/40 border border-green-400/30 rounded-xl p-3 mb-4 mobile-hover">
+                <div className="text-white font-semibold mb-1">🚀 Everything Included + Savings</div>
+                <div className="text-white text-sm">
+                  All features • 2 months free • 30-day guarantee
+                </div>
+              </div>
             </div>
-          </div>
-        </motion.div>
+
+            {/* Features Grid */}
+            <div className="grid grid-cols-1 gap-2 mb-6 max-h-60 overflow-y-auto smooth-scroll">
+              {allFeatures.slice(0, 10).map((feature, idx) => (
+                <div key={idx} className="flex items-center text-gray-300 mobile-hover text-sm">
+                  <Check className="w-3 h-3 text-green-400 mr-2 flex-shrink-0" />
+                  <span>{feature}</span>
+                </div>
+              ))}
+              <div className="text-center text-gray-400 text-sm">+ 15 more features</div>
+            </div>
+
+            {/* CTA Button */}
+            <motion.a
+              href="https://freedom.kenjiai.com/checkout-4912-2457-3370"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-full bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-500 hover:to-green-500 text-white py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-lg hover:shadow-green-500/30 flex items-center justify-center gap-3 mb-4 mobile-button focus-ring"
+            >
+              Get Started Now - Save 21%
+              <ArrowRight className="w-5 h-5" />
+            </motion.a>
+
+            {/* Security & Guarantees */}
+            <div className="text-center space-y-2">
+              <div className="flex items-center justify-center text-green-400 text-sm mobile-hover">
+                <Shield className="w-4 h-4 mr-1" />
+                30-day money-back guarantee
+              </div>
+              <div className="flex items-center justify-center gap-2 text-gray-400 text-xs">
+                <span>Secured by Stripe • SSL Encrypted • PCI Compliant</span>
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
 
         {/* Compact Value Proposition */}
         <motion.div
