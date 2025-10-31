@@ -275,6 +275,24 @@ const Navbar: React.FC = () => {
               <ExternalLink className="w-3 h-3" aria-hidden="true" />
             </motion.a>
 
+            {/* Book Demo Button - VIP */}
+            <motion.a
+              href="https://calendly.com/kenjiai/vip-demo"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative px-5 py-2.5 rounded-xl font-bold transition-all duration-300 mobile-button focus-ring bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 text-white hover:shadow-lg hover:shadow-yellow-500/50 animate-gradient sparkle-effect"
+              style={{
+                backgroundSize: '200% 200%',
+              }}
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                <Zap className="w-4 h-4" />
+                Book VIP Demo
+              </span>
+            </motion.a>
+
             {/* Pricing Button - Unique Design */}
             <Link
               to="/pricing"
@@ -358,6 +376,21 @@ const Navbar: React.FC = () => {
                 Support
               </a>
               
+              {/* Mobile Book Demo Button */}
+              <a
+                href="https://calendly.com/kenjiai/vip-demo"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 text-white px-4 py-3 rounded-xl font-bold text-center mobile-button animate-gradient sparkle-effect"
+                style={{ backgroundSize: '200% 200%' }}
+                role="menuitem"
+              >
+                <div className="flex items-center justify-center gap-2">
+                  <Zap className="w-5 h-5" />
+                  Book VIP Demo
+                </div>
+              </a>
+
               {/* Mobile Pricing Button */}
               <Link
                 to="/pricing"

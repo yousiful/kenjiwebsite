@@ -283,8 +283,8 @@ const PricingSection: React.FC = () => {
 
         </motion.div>
 
-        {/* Two Pricing Cards - Monthly and Yearly */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        {/* Three Pricing Cards - Monthly, Yearly, and VIP Demo */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
 
           {/* Monthly Plan Card */}
           <motion.div
@@ -469,6 +469,111 @@ const PricingSection: React.FC = () => {
               </div>
               <div className="flex items-center justify-center gap-2 text-gray-400 text-xs">
                 <span>Secured by Stripe • SSL Encrypted • PCI Compliant</span>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* VIP Demo Walkthrough Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="relative bg-gradient-to-br from-yellow-900/40 via-orange-900/40 to-red-900/40 backdrop-blur-sm border-2 border-yellow-400/70 rounded-3xl p-6 shadow-2xl shadow-yellow-500/30 investor-card-shadow md:col-span-2 lg:col-span-1"
+          >
+            {/* Exclusive Badge */}
+            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+              <div className="bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 text-white px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2 mobile-hover sparkle-effect">
+                <Crown className="w-4 h-4 animate-bounce" />
+                VIP EXCLUSIVE
+              </div>
+            </div>
+
+            {/* Pricing Header */}
+            <div className="text-center mb-6 pt-4">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-yellow-500 via-orange-500 to-red-500 rounded-3xl mb-4 mobile-hover sparkle-effect">
+                <Star className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-3">VIP Demo Walkthrough</h3>
+              <p className="text-gray-300 mb-4">
+                See how Kenji helps businesses make $500K+/month
+              </p>
+
+              <div className="flex items-baseline justify-center mb-3">
+                <div className="text-center">
+                  <span className="text-4xl font-bold text-yellow-400">Book Now</span>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-yellow-600/40 to-orange-600/40 border border-yellow-400/50 rounded-xl p-4 mb-4 mobile-hover">
+                <div className="text-white font-bold mb-2 text-lg">🎁 Exclusive Opportunity</div>
+                <div className="text-yellow-200 text-sm space-y-1">
+                  <div>✨ Private 1-on-1 demo walkthrough</div>
+                  <div>💰 Learn proven $500K+/month strategies</div>
+                  <div>🏆 Chance for LIFETIME ACCESS</div>
+                  <div>🚀 See real business transformations</div>
+                </div>
+              </div>
+
+              <div className="bg-red-900/30 border border-red-400/50 rounded-xl p-3 mb-4">
+                <div className="text-red-300 font-semibold text-sm">
+                  ⏰ Limited Slots Available
+                </div>
+                <div className="text-red-200 text-xs mt-1">
+                  Only 5 demos per week - First come, first served
+                </div>
+              </div>
+            </div>
+
+            {/* VIP Benefits List */}
+            <div className="grid grid-cols-1 gap-2 mb-6">
+              <div className="flex items-center text-yellow-200 mobile-hover text-sm font-semibold">
+                <Check className="w-4 h-4 text-yellow-400 mr-2 flex-shrink-0" />
+                <span>Personal demo with Kenji expert</span>
+              </div>
+              <div className="flex items-center text-yellow-200 mobile-hover text-sm font-semibold">
+                <Check className="w-4 h-4 text-yellow-400 mr-2 flex-shrink-0" />
+                <span>See $500K+ success strategies</span>
+              </div>
+              <div className="flex items-center text-yellow-200 mobile-hover text-sm font-semibold">
+                <Check className="w-4 h-4 text-yellow-400 mr-2 flex-shrink-0" />
+                <span>Custom growth plan for your business</span>
+              </div>
+              <div className="flex items-center text-yellow-200 mobile-hover text-sm font-semibold">
+                <Check className="w-4 h-4 text-yellow-400 mr-2 flex-shrink-0" />
+                <span>Exclusive insider tips & secrets</span>
+              </div>
+              <div className="flex items-center text-yellow-200 mobile-hover text-sm font-semibold">
+                <Check className="w-4 h-4 text-yellow-400 mr-2 flex-shrink-0" />
+                <span>Priority onboarding & support</span>
+              </div>
+              <div className="flex items-center text-yellow-200 mobile-hover text-sm font-semibold bg-yellow-900/30 border border-yellow-400/50 rounded-lg p-2">
+                <Star className="w-4 h-4 text-yellow-400 mr-2 flex-shrink-0 animate-pulse" />
+                <span>Opportunity for LIFETIME ACCESS</span>
+              </div>
+            </div>
+
+            {/* CTA Button */}
+            <motion.a
+              href="https://calendly.com/kenjiai/vip-demo"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-full bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 hover:from-yellow-400 hover:via-orange-400 hover:to-red-400 text-white py-5 rounded-2xl font-bold text-lg transition-all duration-300 hover:shadow-lg hover:shadow-yellow-500/50 flex items-center justify-center gap-3 mb-4 mobile-button focus-ring sparkle-effect"
+            >
+              Book VIP Demo Now
+              <ArrowRight className="w-5 h-5" />
+            </motion.a>
+
+            {/* Additional Info */}
+            <div className="text-center space-y-2">
+              <div className="flex items-center justify-center text-yellow-400 text-sm mobile-hover font-semibold">
+                <Users className="w-4 h-4 mr-1" />
+                Join 50+ VIP clients earning $500K+/month
+              </div>
+              <div className="flex items-center justify-center gap-2 text-gray-400 text-xs">
+                <span>🎯 100% Free Demo • No Credit Card Required</span>
               </div>
             </div>
           </motion.div>
