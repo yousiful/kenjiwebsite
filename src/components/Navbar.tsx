@@ -277,7 +277,7 @@ const Navbar: React.FC = () => {
 
             {/* Book Demo Button - VIP */}
             <motion.a
-              href="https://calendly.com/kenjiai/vip-demo"
+              href="https://go.mediatraffics.com/book"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
@@ -378,7 +378,7 @@ const Navbar: React.FC = () => {
               
               {/* Mobile Book Demo Button */}
               <a
-                href="https://calendly.com/kenjiai/vip-demo"
+                href="https://go.mediatraffics.com/book"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 text-white px-4 py-3 rounded-xl font-bold text-center mobile-button animate-gradient sparkle-effect"

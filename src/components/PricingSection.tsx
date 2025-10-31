@@ -555,7 +555,7 @@ const PricingSection: React.FC = () => {
 
             {/* CTA Button */}
             <motion.a
-              href="https://calendly.com/kenjiai/vip-demo"
+              href="https://go.mediatraffics.com/book"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
