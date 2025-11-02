@@ -14,39 +14,16 @@ const ProductSelection: React.FC = () => {
       // Clear any previous errors
       setCheckoutError(null);
       setIsLoading(planName);
-      
-      // Validate prerequisites
-      validateCheckoutPrerequisites();
-      
-      // Prepare checkout data
-      const checkoutData = prepareCheckoutData(planType);
-      console.log('Starting payment redirect for:', planName, 'with data:', checkoutData);
-      
+
       // Add small delay to show loading state
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
-      await redirectToPaymentLink(planType);
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      // Redirect to checkout page
+      window.location.href = 'https://freedom.kenjiai.com/checkout-4912-2457-3370';
     } catch (error) {
-      console.error('Payment error:', error);
-      
-      let errorMessage = 'Payment failed. Please try again.';
-      
-      if (error instanceof Error) {
-        if (error.message.includes('not found') || error.message.includes('not available')) {
-          errorMessage = 'Payment option not available. Please contact support at care@kenjiai.com';
-        } else if (error.message.includes('network') || error.message.includes('connection')) {
-          errorMessage = 'Network error. Please check your internet connection and try again.';
-        } else if (error.message.includes('browser')) {
-          errorMessage = 'Your browser does not support modern payment features. Please update your browser or try a different one.';
-        } else if (error.message.includes('timeout')) {
-          errorMessage = 'Request timed out. Please try again.';
-        } else {
-          errorMessage = error.message;
-        }
-      }
-      
-      setCheckoutError(errorMessage);
-      
+      console.error('Redirect error:', error);
+      setCheckoutError('Unable to redirect to checkout. Please try again.');
+
       // Auto-clear error after 10 seconds
       setTimeout(() => {
         setCheckoutError(null);
@@ -446,6 +423,25 @@ const ProductSelection: React.FC = () => {
                   </div>
                 </div>
               )}
+
+              {/* CTA Button on Card */}
+              {!plan.link && (
+                <div className="mt-6">
+                  <motion.a
+                    href="https://freedom.kenjiai.com/checkout-4912-2457-3370"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`w-full py-4 rounded-xl font-bold text-lg transition-all duration-300 flex items-center justify-center gap-2 ${
+                      plan.popular
+                        ? 'bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white hover:shadow-lg hover:shadow-blue-500/30'
+                        : 'bg-gradient-to-r from-gray-600 to-gray-700 hover:from-gray-500 hover:to-gray-600 text-white hover:shadow-lg'
+                    }`}
+                  >
+                    Get Started Now
+                    <ArrowRight className="w-5 h-5" />
+                  </motion.a>
+                </div>
+              )}
             </CardWrapper>
           </motion.div>
             );
@@ -505,25 +501,15 @@ const ProductSelection: React.FC = () => {
             </div>
 
             {/* CTA Button */}
-            <motion.button
-              onClick={() => handleSubscribe(selectedPlan, `KenjiAI-${selectedPlan}`)}
-              disabled={isLoading === `KenjiAI-${selectedPlan}`}
+            <motion.a
+              href="https://freedom.kenjiai.com/checkout-4912-2457-3370"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full bg-gradient-to-r from-blue-600 to-green-500 text-white py-6 rounded-2xl font-bold text-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-500 hover:to-green-400 text-white py-6 rounded-2xl font-bold text-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30 flex items-center justify-center gap-3"
             >
-              {isLoading === `KenjiAI-${selectedPlan}` ? (
-                <>
-                  <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  <span>Preparing Checkout...</span>
-                </>
-              ) : (
-                <>
-                  Get Started Risk-Free
-                  <ArrowRight className="w-6 h-6" />
-                </>
-              )}
-            </motion.button>
+              Get Started Risk-Free
+              <ArrowRight className="w-6 h-6" />
+            </motion.a>
 
             {/* Trust Badges Grid */}
             <div className="grid grid-cols-3 gap-3 text-center mt-6">
