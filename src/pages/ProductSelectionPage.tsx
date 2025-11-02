@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductSelection from '../components/ProductSelection';
+import PricingSection from '../components/PricingSection';
 import SocialProofNotifications from '../components/SocialProofNotifications';
 
 const ProductSelectionPage: React.FC = () => {
@@ -12,7 +12,7 @@ const ProductSelectionPage: React.FC = () => {
 
       <div className="pt-16 bg-gray-900 min-h-screen">
         <SocialProofNotifications />
-        <ProductSelection />
+        <PricingSection />
       </div>
     </>
   );
