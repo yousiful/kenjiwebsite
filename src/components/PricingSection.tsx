@@ -342,16 +342,8 @@ const PricingSection: React.FC = () => {
               </div>
 
               {/* Performance-Based Revenue Share */}
-              <div className="bg-gradient-to-r from-orange-900/50 to-yellow-900/50 border border-orange-400/40 rounded-xl p-3 mb-4">
-                <div className="flex items-start gap-2">
-                  <DollarSign className="w-4 h-4 text-orange-400 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <div className="text-orange-300 font-semibold text-sm mb-1">Performance-Based Revenue Share</div>
-                    <div className="text-orange-200 text-xs">
-                      + 10% of revenue generated from ads per month
-                    </div>
-                  </div>
-                </div>
+              <div className="text-center text-gray-400 text-xs mb-4">
+                + 10% performance fee on ad-generated revenue
               </div>
             </div>
 
@@ -452,16 +444,8 @@ const PricingSection: React.FC = () => {
               </div>
 
               {/* Performance-Based Revenue Share */}
-              <div className="bg-gradient-to-r from-green-900/50 to-blue-900/50 border border-green-400/40 rounded-xl p-3 mb-4">
-                <div className="flex items-start gap-2">
-                  <DollarSign className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <div className="text-green-300 font-semibold text-sm mb-1">Performance-Based Revenue Share</div>
-                    <div className="text-green-200 text-xs">
-                      + 5% of revenue generated from ads per month
-                    </div>
-                  </div>
-                </div>
+              <div className="text-center text-gray-400 text-xs mb-4">
+                + 5% performance fee on ad-generated revenue
               </div>
             </div>
 
@@ -549,6 +533,11 @@ const PricingSection: React.FC = () => {
                   Only 5 demos per week - First come, first served
                 </div>
               </div>
+            </div>
+
+            {/* No Performance Fee */}
+            <div className="text-center text-green-400 text-xs mb-4">
+              No performance fee • 100% Free Demo
             </div>
 
             {/* VIP Benefits List */}
