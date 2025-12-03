@@ -339,6 +339,9 @@ const PricingSection: React.FC = () => {
                 <div className="text-white text-sm">
                   All features • Cancel anytime • 30-day guarantee
                 </div>
+                <div className="text-blue-300 text-xs mt-2 font-medium">
+                  📨 2,500 texts/emails/AI credits per month included
+                </div>
               </div>
 
               {/* Performance-Based Revenue Share */}
@@ -440,6 +443,9 @@ const PricingSection: React.FC = () => {
                 <div className="text-white font-semibold mb-1">🚀 Everything Included + Savings</div>
                 <div className="text-white text-sm">
                   All features • 2 months free • 30-day guarantee
+                </div>
+                <div className="text-green-300 text-xs mt-2 font-medium">
+                  📨 2,500 texts/emails/AI credits per month included
                 </div>
               </div>
 
