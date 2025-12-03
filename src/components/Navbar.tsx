@@ -66,10 +66,8 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group mobile-hover focus-ring">
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent group-hover:from-purple-400 group-hover:to-blue-400 transition-all">
-              KenjiAI
-            </span>
+          <Link to="/" className="flex items-center gap-3 group mobile-hover focus-ring" aria-label="Home">
+            {/* Logo removed per user request */}
           </Link>
 
           {/* Desktop Navigation */}

@@ -73,8 +73,8 @@ const HomePage: React.FC = () => {
           {JSON.stringify(structuredData)}
         </script>
       </Helmet>
-      
-      <div className="pt-16">
+
+      <div>
         <SocialProofNotifications />
         <Hero />
         <BusinessTransformation />
