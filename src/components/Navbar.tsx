@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
     { name: "Home", href: "/" },
     { name: "Solutions", href: "/ai-automation", hasDropdown: true, dropdownType: "solutions" },
     { name: "Free Tools", href: "/free-tools", hasDropdown: true, dropdownType: "tools" },
-    { name: "Freedom Club", href: "https://learn.kenjiai.com/communities/groups/media-traffics'-freedom-closer/home?invite=68eeb20bcfc02a4072d11ac8", external: true }
+    { name: "Start Learning", href: "https://startlearning.kenjiai.com", external: true }
   ];
 
   return (

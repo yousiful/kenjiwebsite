@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Sparkles } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useHoliday } from '../hooks/useHoliday';
 
 interface ConfettiPiece {
@@ -131,8 +131,7 @@ export const HolidayThemeProvider = ({ children }: { children: React.ReactNode }
                     {currentHoliday.emoji}
                   </motion.span>
                   <div className="flex-1">
-                    <p className="text-white font-bold text-sm md:text-base flex items-center gap-2">
-                      <Sparkles className="w-4 h-4" />
+                    <p className="text-white font-bold text-sm md:text-base">
                       {currentHoliday.banner_message}
                     </p>
                   </div>
