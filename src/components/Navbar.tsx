@@ -65,10 +65,10 @@ const Navbar: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group mobile-hover focus-ring" aria-label="Home">
+          {/* Logo area - empty per user request */}
+          <div className="flex items-center gap-3">
             {/* Logo removed per user request */}
-          </Link>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8" role="menubar">
