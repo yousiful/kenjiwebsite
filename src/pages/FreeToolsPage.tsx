@@ -1,8 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, Search, TrendingUp, Share2 } from 'lucide-react';
+import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, Search, TrendingUp } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
-import SocialProofNotifications from '../components/SocialProofNotifications';
 
 const FreeToolsPage: React.FC = () => {
   const freeTools = [
@@ -57,19 +56,6 @@ const FreeToolsPage: React.FC = () => {
       users: "15K+",
       keywords: ["free investor tools", "startup tools", "pitch deck generator", "investor matching", "funding tools", "startup AI"],
       revenue: "Helps raise $50M+ in funding"
-    },
-    {
-      name: "ViralPost Pro - Free Viral Content Creator",
-      description: "Create viral social media content that gets maximum engagement and shares. AI-powered viral content templates, trending hashtags, and engagement optimization. Free viral content creation tool.",
-      url: "https://viralpost.kenjiai.com",
-      icon: Share2,
-      gradient: "from-pink-500 to-rose-600",
-      features: ["Viral Templates", "Trending Hashtags", "Engagement Analytics", "Content Optimization"],
-      category: "Marketing",
-      rating: 4.8,
-      users: "20K+",
-      keywords: ["free viral content creator", "viral social media posts", "AI content creation", "viral marketing", "social media automation", "viral post generator"],
-      revenue: "Generates 500% more engagement"
     }
   ];
 
@@ -156,7 +142,6 @@ const FreeToolsPage: React.FC = () => {
       </Helmet>
       
       <div className="pt-24 pb-16 bg-gray-900 min-h-screen">
-        <SocialProofNotifications />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Hero Section */}
           <motion.div
@@ -458,12 +443,12 @@ const FreeToolsPage: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-green-500 text-white px-10 py-5 rounded-2xl font-bold text-xl hover:shadow-lg transition-all duration-300"
             >
-              Get Started Now
+              Start Making Serious Money
               <ArrowRight className="w-6 h-6" />
             </motion.a>
             
             <p className="text-gray-500 text-sm mt-4">
-              30-day money-back guarantee • Full access • 425% average ROI
+              16-day free trial • No credit card required • 425% average ROI
             </p>
           </motion.div>
         </div>

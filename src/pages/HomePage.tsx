@@ -7,14 +7,11 @@ import ReliabilityEngine from '../components/ReliabilityEngine';
 import EngagementEngine from '../components/EngagementEngine';
 import FutureProofFramework from '../components/FutureProofFramework';
 import Features from '../components/Features';
-import CRMReplacement from '../components/CRMReplacement';
 import Tools from '../components/Tools';
 import LiveBusinessDemo from '../components/LiveBusinessDemo';
 import PricingSection from '../components/PricingSection';
 import SocialProof from '../components/SocialProof';
 import FinalCTA from '../components/FinalCTA';
-import LocalBusinessSchema from '../components/LocalBusinessSchema';
-import LocalSEO from '../components/LocalSEO';
 
 const HomePage: React.FC = () => {
   const structuredData = {
@@ -36,7 +33,7 @@ const HomePage: React.FC = () => {
         },
         {
           "@type": "Offer",
-          "price": "275",
+          "price": "297",
           "priceCurrency": "USD",
           "description": "Complete AI business automation platform"
         }
@@ -57,13 +54,6 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      <LocalBusinessSchema pageType="home" />
-      <LocalSEO
-        title="AI Business Automation Platform"
-        description="AI voice agents that close deals 24/7, smart workflows that run your business, and automation that generates revenue while you sleep. 425% average ROI."
-        additionalKeywords={['AI automation platform', 'voice agents', 'business automation software', 'CRM automation', 'marketing automation']}
-        canonical="https://kenjiai.com"
-      />
       <Helmet>
         <title>KenjiAI - AI That Closes Deals While You Sleep | Free AI Tools & Revenue-Generating Automation</title>
         <meta name="description" content="AI voice agents that close deals 24/7, smart workflows that run your business, and automation that generates revenue while you sleep. 425% average ROI in 90 days. Free AI tools available: prompt generator, PR tools, sales coach. Start making money with AI today." />
@@ -72,8 +62,9 @@ const HomePage: React.FC = () => {
           {JSON.stringify(structuredData)}
         </script>
       </Helmet>
-
-      <div>
+      
+      <div className="pt-16" aria-labelledby="home-heading">
+        <h1 id="home-heading" className="sr-only">KenjiAI - AI That Closes Deals While You Sleep</h1>
         <Hero />
         <BusinessTransformation />
         <IntelligentCore />
@@ -81,7 +72,6 @@ const HomePage: React.FC = () => {
         <EngagementEngine />
         <FutureProofFramework />
         <Features />
-        <CRMReplacement />
         <Tools />
         <LiveBusinessDemo />
         <PricingSection />

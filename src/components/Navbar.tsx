@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, ExternalLink, LogIn } from 'lucide-react';
+import { Menu, X, Zap, ChevronDown, ExternalLink, LogIn, ChevronRight } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showToolsDropdown, setShowToolsDropdown] = useState(false);
   const [showSolutionsDropdown, setShowSolutionsDropdown] = useState(false);
-  const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -19,20 +18,10 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Cleanup timeout on unmount
-  useEffect(() => {
-    return () => {
-      if (dropdownTimeout) {
-        clearTimeout(dropdownTimeout);
-      }
-    };
-  }, [dropdownTimeout]);
-
   const tools = [
     { name: "Prompt Generator", href: "http://prompt.kenjiai.com", external: true, badge: "Free" },
     { name: "PR Pro", href: "https://prpro.kenjiai.com/", external: true, badge: "Free" },
     { name: "Sales Coach", href: "https://salescoach.kenjiai.com/", external: true, badge: "Free" },
-    { name: "ViralPost Pro", href: "https://viralpost.kenjiai.com", external: true, badge: "Free" },
     { name: "Support", href: "https://support.kenjiai.com/", external: true },
     { name: "All Free Tools", href: "/free-tools", external: false, badge: "Popular" },
     { name: "All Tools", href: "/tools", external: false }
@@ -50,7 +39,9 @@ const Navbar: React.FC = () => {
     { name: "Home", href: "/" },
     { name: "Solutions", href: "/ai-automation", hasDropdown: true, dropdownType: "solutions" },
     { name: "Free Tools", href: "/free-tools", hasDropdown: true, dropdownType: "tools" },
-    { name: "Start Learning", href: "https://startlearning.kenjiai.com", external: true }
+    { name: "Education", href: "/knowledge" },
+    { name: "Pricing", href: "/pricing" },
+    { name: "Investors", href: "/investors" }
   ];
 
   return (
@@ -65,10 +56,13 @@ const Navbar: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo area - empty per user request */}
-          <div className="flex items-center gap-3">
-            {/* Logo removed per user request */}
-          </div>
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-3 group mobile-hover focus-ring">
+            <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-300">
+              KenjiAI
+            </span>
+            <ChevronRight className="w-4 h-4 text-blue-400 group-hover:text-purple-400 transition-colors" />
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8" role="menubar">
@@ -77,30 +71,20 @@ const Navbar: React.FC = () => {
                 {item.hasDropdown ? (
                   <div
                     className="relative"
-                    onMouseEnter={() => {
-                      // Clear any pending timeout
-                      if (dropdownTimeout) {
-                        clearTimeout(dropdownTimeout);
-                        setDropdownTimeout(null);
-                      }
-
-                      // Show the correct dropdown and hide the other
-                      if (item.dropdownType === 'tools') {
-                        setShowToolsDropdown(true);
-                        setShowSolutionsDropdown(false);
-                      }
-                      if (item.dropdownType === 'solutions') {
-                        setShowSolutionsDropdown(true);
-                        setShowToolsDropdown(false);
-                      }
+                    onMouseEnter={(e) => {
+                      if (item.dropdownType === 'tools') setShowToolsDropdown(true);
+                      if (item.dropdownType === 'solutions') setShowSolutionsDropdown(true);
                     }}
-                    onMouseLeave={() => {
-                      // Add a delay before hiding to allow moving to dropdown
-                      const timeout = setTimeout(() => {
+                    onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) => {
+                      // Check if the mouse is moving to the dropdown
+                      const relatedTarget = e.relatedTarget as HTMLElement;
+                      const isMovingToDropdown = relatedTarget instanceof Element ? relatedTarget.closest('[role="menu"]') !== null : false;
+                      
+                      if (!isMovingToDropdown) {
+                        // Only hide if not moving to the dropdown
                         if (item.dropdownType === 'tools') setShowToolsDropdown(false);
                         if (item.dropdownType === 'solutions') setShowSolutionsDropdown(false);
-                      }, 150);
-                      setDropdownTimeout(timeout);
+                      }
                     }}
                   >
                     <button 
@@ -118,28 +102,13 @@ const Navbar: React.FC = () => {
                     
                     {/* Tools Dropdown */}
                     {showToolsDropdown && item.dropdownType === 'tools' && (
-                      <motion.div
+                      <motion.div 
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="absolute top-full left-0 mt-2 w-64 bg-gray-800 border border-gray-700 rounded-xl shadow-2xl overflow-hidden investor-card-shadow z-50"
                         role="menu"
                         aria-orientation="vertical"
                         aria-labelledby="tools-menu-button"
-                        onMouseEnter={() => {
-                          // Clear timeout when entering dropdown
-                          if (dropdownTimeout) {
-                            clearTimeout(dropdownTimeout);
-                            setDropdownTimeout(null);
-                          }
-                          setShowToolsDropdown(true);
-                        }}
-                        onMouseLeave={() => {
-                          // Add delay before closing
-                          const timeout = setTimeout(() => {
-                            setShowToolsDropdown(false);
-                          }, 150);
-                          setDropdownTimeout(timeout);
-                        }}
                       >
                         {tools.map((tool) => (
                           tool.external ? (
@@ -195,24 +164,20 @@ const Navbar: React.FC = () => {
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="absolute top-full left-0 mt-2 w-80 bg-gray-800 border border-gray-700 rounded-xl shadow-2xl overflow-hidden investor-card-shadow z-50"
+                        className="absolute top-full left-0 mt-2 w-80 bg-gray-800 border border-gray-700 rounded-xl shadow-2xl overflow-hidden investor-card-shadow z-50" 
                         role="menu"
                         aria-orientation="vertical"
                         aria-labelledby="solutions-menu-button"
-                        onMouseEnter={() => {
-                          // Clear timeout when entering dropdown
-                          if (dropdownTimeout) {
-                            clearTimeout(dropdownTimeout);
-                            setDropdownTimeout(null);
-                          }
-                          setShowSolutionsDropdown(true);
-                        }}
-                        onMouseLeave={() => {
-                          // Add delay before closing
-                          const timeout = setTimeout(() => {
+                        onMouseEnter={() => setShowSolutionsDropdown(true)}
+                        onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) => {
+                          // Check if moving back to the button
+                          const relatedTarget = e.relatedTarget as HTMLElement;
+                          const isMovingToButton = relatedTarget instanceof Element ? 
+                            relatedTarget.closest('[aria-haspopup="true"]') !== null : false;
+                          
+                          if (!isMovingToButton) {
                             setShowSolutionsDropdown(false);
-                          }, 150);
-                          setDropdownTimeout(timeout);
+                          }
                         }}
                       >
                         {solutions.map((solution) => (
@@ -230,17 +195,6 @@ const Navbar: React.FC = () => {
                       </motion.div>
                     )}
                   </div>
-                ) : item.external ? (
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover focus-ring touch-target"
-                    role="menuitem"
-                  >
-                    {item.name}
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
                 ) : (
                   <Link
                     to={item.href}
@@ -272,35 +226,15 @@ const Navbar: React.FC = () => {
               <ExternalLink className="w-3 h-3" aria-hidden="true" />
             </motion.a>
 
-            {/* Book Demo Button - VIP */}
+            {/* Start Trial Button */}
             <motion.a
-              href="https://go.mediatraffics.com/book"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/pricing"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="relative px-5 py-2.5 rounded-xl font-bold transition-all duration-300 mobile-button focus-ring bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 text-white hover:shadow-lg hover:shadow-yellow-500/50 animate-gradient sparkle-effect"
-              style={{
-                backgroundSize: '200% 200%',
-              }}
+              className="investor-gradient-blue text-white px-6 py-2 rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 mobile-button focus-ring"
             >
-              <span className="relative z-10 flex items-center gap-2">
-                Book VIP Demo
-              </span>
+              Start Free Trial
             </motion.a>
-
-            {/* Pricing Button - Unique Design */}
-            <Link
-              to="/pricing"
-              className="relative px-6 py-2.5 rounded-xl font-bold transition-all duration-300 mobile-button focus-ring bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white hover:shadow-lg hover:shadow-purple-500/50 animate-gradient"
-              style={{
-                backgroundSize: '200% 200%',
-              }}
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                Pricing
-              </span>
-            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -328,30 +262,15 @@ const Navbar: React.FC = () => {
           >
             <div className="px-4 py-4 space-y-4">
               {navItems.map((item) => (
-                item.external ? (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-2"
-                    role="menuitem"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.name}
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                ) : (
-                  <Link
-                    key={item.name}
-                    to={item.href}
-                    className="block text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-2"
-                    role="menuitem"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                )
+                <Link
+                  key={item.name}
+                  to={item.href}
+                  className="block text-green-400 hover:text-green-300 transition-colors font-medium mobile-hover touch-target py-2 font-bold"
+                  className="block text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-2"
+                  role="menuitem"
+                >
+                  {item.name}
+                </Link>
               ))}
               <Link
                 to="/free-tools"
@@ -371,33 +290,6 @@ const Navbar: React.FC = () => {
                 Support
               </a>
               
-              {/* Mobile Book Demo Button */}
-              <a
-                href="https://go.mediatraffics.com/book"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block bg-gradient-to-r from-yellow-500 via-orange-500 to-red-500 text-white px-4 py-3 rounded-xl font-bold text-center mobile-button animate-gradient sparkle-effect"
-                style={{ backgroundSize: '200% 200%' }}
-                role="menuitem"
-              >
-                <div className="flex items-center justify-center gap-2">
-                  Book VIP Demo
-                </div>
-              </a>
-
-              {/* Mobile Pricing Button */}
-              <Link
-                to="/pricing"
-                onClick={() => setIsOpen(false)}
-                className="block bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white px-4 py-3 rounded-xl font-bold text-center mobile-button animate-gradient"
-                style={{ backgroundSize: '200% 200%' }}
-                role="menuitem"
-              >
-                <div className="flex items-center justify-center gap-2">
-                  View Pricing
-                </div>
-              </Link>
-
               {/* Mobile Login Button */}
               <a
                 href="https://app.kenjicrm.com"
@@ -410,17 +302,15 @@ const Navbar: React.FC = () => {
                 Login to Dashboard
                 <ExternalLink className="w-3 h-3" aria-hidden="true" />
               </a>
-
-              {/* Mobile CTA Button */}
-              <Link
-                to="/pricing"
-                onClick={() => setIsOpen(false)}
+              
+              {/* Mobile Start Trial Button */}
+              <a
+                href="/pricing"
                 className="block investor-gradient-blue text-white px-4 py-3 rounded-xl font-semibold text-center mobile-button"
                 role="menuitem"
               >
-                <div className="font-bold">Start Growing with Kenji</div>
-                <div className="text-xs opacity-90 font-normal">To finally profit and grow</div>
-              </Link>
+                Start Free Trial
+              </a>
             </div>
           </motion.div>
         )}

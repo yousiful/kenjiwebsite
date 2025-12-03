@@ -776,16 +776,16 @@ const VoiceAILandingPage: React.FC = () => {
               <div>
                 <h3 className="text-white font-semibold mb-4">Resources</h3>
                 <ul className="space-y-2">
-                  <li><Link to="/knowledge" className="text-gray-400 hover:text-blue-400 transition-colors">Documentation</Link></li>
-                  <li><Link to="/knowledge" className="text-gray-400 hover:text-blue-400 transition-colors">API Reference</Link></li>
-                  <li><a href="mailto:care@kenjiai.com" className="text-gray-400 hover:text-blue-400 transition-colors">Support</a></li>
+                  <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Documentation</a></li>
+                  <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">API Reference</a></li>
+                  <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Support</a></li>
                 </ul>
               </div>
               <div>
                 <h3 className="text-white font-semibold mb-4">Contact</h3>
                 <ul className="space-y-2">
-                  <li className="text-gray-400">Email: <a href="mailto:care@kenjiai.com" className="hover:text-blue-400 transition-colors">care@kenjiai.com</a></li>
-                  <li className="text-gray-400">Phone: <a href="tel:+18312634402" className="hover:text-blue-400 transition-colors">(831) 263-4402</a></li>
+                  <li className="text-gray-400">Email: care@kenjiai.com</li>
+                  <li className="text-gray-400">Phone: (831) 263-4402</li>
                 </ul>
               </div>
             </div>

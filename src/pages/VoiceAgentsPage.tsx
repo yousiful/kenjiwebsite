@@ -257,7 +257,7 @@ const VoiceAgentsPage: React.FC = () => {
               Ready to Deploy Your Voice Agent?
             </h3>
             <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
-              Test our AI voice agents risk-free with our 30-day money-back guarantee.
+              Start with a free trial and see how AI voice agents can transform your business. 
               No setup fees, no long-term contracts, just results.
             </p>
             
@@ -268,7 +268,7 @@ const VoiceAgentsPage: React.FC = () => {
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-10 py-5 rounded-2xl font-bold text-xl hover:shadow-lg transition-all duration-300 flex items-center gap-3"
               >
-                Get Started Now
+                Start Free Trial
                 <ArrowRight className="w-6 h-6" />
               </motion.a>
               
@@ -283,7 +283,7 @@ const VoiceAgentsPage: React.FC = () => {
             </div>
             
             <p className="text-gray-500 text-sm mt-6">
-              30-day money-back guarantee • Setup in minutes • Cancel anytime
+              16-day free trial • No credit card required • Setup in minutes
             </p>
           </motion.div>
         </div>

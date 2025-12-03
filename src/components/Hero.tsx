@@ -1,81 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Play, Users, Zap, Sparkles } from 'lucide-react';
-import { getAnimationConfig, prefersReducedMotion } from '../utils/mobileOptimizations';
 
 const Hero: React.FC = () => {
-  const headlines = [
-    "Turn Every Lead Into Revenue With AI",
-    "AI That Closes Deals While You Sleep",
-    "Automate Your Sales, 10X Your Revenue",
-    "Get Paid 24/7 With AI Voice Agents",
-    "Stop Wasting Time, Start Making Money"
-  ];
-
-  const [currentHeadline, setCurrentHeadline] = useState(0);
   const [text, setText] = useState('');
-  const [isTyping, setIsTyping] = useState(true);
-  const animConfig = getAnimationConfig();
-  const reduceMotion = prefersReducedMotion();
-
+  const fullText = "AI That Closes Deals While You Sleep";
+  
   useEffect(() => {
-    const fullText = headlines[currentHeadline];
     let i = 0;
-
     const timer = setInterval(() => {
       if (i < fullText.length) {
         setText(fullText.slice(0, i + 1));
         i++;
       } else {
         clearInterval(timer);
-        setIsTyping(false);
       }
     }, 50);
-
+    
     return () => clearInterval(timer);
-  }, [currentHeadline]);
-
-  useEffect(() => {
-    const rotateTimer = setInterval(() => {
-      setIsTyping(true);
-      setText('');
-      setCurrentHeadline((prev) => (prev + 1) % headlines.length);
-    }, 5000);
-
-    return () => clearInterval(rotateTimer);
   }, []);
 
-  const valueProps = [
-    {
-      text: "Stop losing money to manual work. Our AI voice agents close deals 24/7, smart workflows run your business, and automated systems generate revenue while you focus on growth.",
-      highlight: "Average ROI: 425% in first 90 days."
-    },
-    {
-      text: "Your competitors are sleeping. Your AI isn't. Convert leads into customers automatically with voice agents that never take a day off.",
-      highlight: "Close 10X more deals without hiring."
-    },
-    {
-      text: "Every minute you spend on repetitive tasks costs you money. Let AI handle the boring stuff while you focus on what actually grows your business.",
-      highlight: "Save 40+ hours per week instantly."
-    },
-    {
-      text: "Small team? No problem. KenjiAI gives you the power of a 50-person team at a fraction of the cost. Scale without the overhead.",
-      highlight: "Replace 10+ tools with one platform."
-    },
-    {
-      text: "Stop chasing leads manually. AI voice agents qualify, nurture, and close deals while you sleep. Wake up to new revenue, every single day.",
-      highlight: "Average customer saves $8,400/month."
-    }
-  ];
-
-  const currentValue = valueProps[currentHeadline];
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900/50 via-purple-900/30 to-gray-900 pt-16" aria-labelledby="hero-heading">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900" aria-labelledby="hero-heading">
       {/* Enhanced Animated Background */}
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 via-orange-500/20 via-yellow-500/20 via-green-500/20 via-blue-500/20 via-indigo-500/20 to-violet-500/20 animate-pulse"></div>
-        {animConfig.enabled && !reduceMotion && [...Array(animConfig.particleCount)].map((_, i) => (
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/30 to-green-400/30 animate-pulse"></div>
+        {[...Array(150)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-blue-400 rounded-full"
@@ -93,7 +43,6 @@ const Hero: React.FC = () => {
               duration: Math.random() * 3 + 2,
               repeat: Infinity,
               delay: Math.random() * 2,
-              ease: "linear"
             }}
           />
         ))}
@@ -109,40 +58,37 @@ const Hero: React.FC = () => {
         >
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/30 to-green-400/30 border border-blue-400/50 rounded-full px-6 py-3 mobile-hover">
             <Sparkles className="w-5 h-5 text-blue-400" />
-            <span className="bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent font-semibold">The AI Revolution That Pays You Back</span>
+            <span className="text-blue-300 font-semibold">The AI Revolution That Pays You Back</span>
           </div>
         </motion.div>
 
-        {/* Main Page Headline - H1 for SEO */}
-        <motion.h1
+        {/* Enhanced Animated Headline */}
+        <motion.h2
           id="hero-heading"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
           className="text-5xl sm:text-6xl lg:text-8xl font-bold text-white mb-8 leading-tight"
         >
-          <span className="bg-gradient-to-r from-red-400 via-yellow-400 via-green-400 via-blue-400 via-indigo-400 to-violet-400 bg-clip-text text-transparent">
+          <span className="text-gradient-blue">
             {text}
-            <span className="animate-pulse text-pink-400">|</span>
+            <span className="animate-pulse text-green-400">|</span>
           </span>
-        </motion.h1>
+        </motion.h2>
 
         {/* Enhanced Subheadline */}
-        <motion.div
-          key={currentHeadline}
+        <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -30 }}
-          transition={{ duration: 0.6 }}
-          className="text-xl sm:text-2xl text-gray-300 mb-12 max-w-6xl mx-auto leading-relaxed"
+          transition={{ duration: 0.8, delay: 1 }}
+          className="text-2xl sm:text-3xl text-gray-300 mb-12 max-w-6xl mx-auto leading-relaxed"
         >
-          <p className="mb-4">
-            {currentValue.text}
-          </p>
-          <p className="text-yellow-400 font-bold text-2xl">
-            {currentValue.highlight}
-          </p>
-        </motion.div>
+          Stop losing money to manual work. Our <span className="text-blue-400 font-semibold">AI voice agents close deals 24/7</span>, 
+          <span className="text-green-400 font-semibold"> smart workflows run your business</span>, and 
+          <span className="text-purple-400 font-semibold"> automated systems generate revenue</span> while you focus on growth.
+          <br />
+          <span className="text-yellow-400 font-bold text-xl">Average ROI: 425% in first 90 days.</span>
+        </motion.p>
 
         {/* Enhanced Feature Highlights */}
         <motion.div
@@ -184,14 +130,14 @@ const Hero: React.FC = () => {
         >
           <motion.a
             href="/pricing"
-            whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(147, 51, 234, 0.8)" }}
+            whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(59, 130, 246, 0.8)" }}
             whileTap={{ scale: 0.95 }}
-            className="group relative bg-gradient-to-r from-pink-600 via-purple-600 to-blue-600 hover:from-pink-500 hover:via-purple-500 hover:to-blue-500 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300 flex items-center gap-3 shadow-2xl mobile-button focus-ring"
-            data-caption="Get instant access to AI automation - 425% average ROI, 30-day money-back guarantee"
+            className="group relative investor-gradient-blue text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300 flex items-center gap-3 shadow-2xl mobile-button focus-ring"
+            data-caption="Start making money with AI today - 16-day free trial, 425% average ROI"
           >
-            <span>Start Growing with Kenji</span>
+            <span>Start Making Money with AI</span>
             <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-pink-400/20 via-purple-400/20 to-blue-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-400/20 to-green-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </motion.a>
         </motion.div>
 

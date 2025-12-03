@@ -256,7 +256,7 @@ const MarketingAutomationPage: React.FC = () => {
             </h3>
             <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
               Join thousands of marketers using KenjiAI to create campaigns that convert. 
-              Get started risk-free with our 30-day money-back guarantee and see results in the first week.
+              Start your free trial and see results in the first week.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -266,7 +266,7 @@ const MarketingAutomationPage: React.FC = () => {
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-10 py-5 rounded-2xl font-bold text-xl hover:shadow-lg transition-all duration-300 flex items-center gap-3"
               >
-                Get Started Now
+                Start Free Trial
                 <ArrowRight className="w-6 h-6" />
               </motion.a>
               
@@ -281,7 +281,7 @@ const MarketingAutomationPage: React.FC = () => {
             </div>
             
             <p className="text-gray-500 text-sm mt-6">
-              30-day money-back guarantee • Full feature access • Cancel anytime
+              16-day free trial • No credit card required • Full feature access
             </p>
           </motion.div>
         </div>

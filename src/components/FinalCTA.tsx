@@ -4,11 +4,11 @@ import { ArrowRight, CheckCircle, Zap, Rocket, Crown, Star } from 'lucide-react'
 
 const FinalCTA: React.FC = () => {
   const benefits = [
-    "Risk-free 30-day money-back guarantee",
-    "Cancel anytime, no questions asked",
+    "No credit card required for trial",
+    "Cancel anytime, no questions asked", 
     "Full access to all features",
     "24/7 AI support included",
-    "100% satisfaction guaranteed",
+    "30-day money-back guarantee",
     "White-glove onboarding"
   ];
 
@@ -22,16 +22,16 @@ const FinalCTA: React.FC = () => {
     <section className="py-32 bg-gradient-to-br from-gray-900 via-blue-900/30 to-purple-900/30 relative overflow-hidden" aria-labelledby="cta-heading">
       {/* Epic Background Effects */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-red-500/15 via-orange-500/15 via-yellow-500/15 via-green-500/15 via-blue-500/15 via-indigo-500/15 to-violet-500/15 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-green-400/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-blue-600/5 to-green-400/5"></div>
       </div>
 
-      {/* Animated Particles - Reduced for mobile performance */}
-      <div className="absolute inset-0 hidden md:block">
-        {[...Array(30)].map((_, i) => (
+      {/* Animated Particles */}
+      <div className="absolute inset-0">
+        {[...Array(100)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-blue-400/40 rounded-full"
+            className="absolute w-1 h-1 bg-blue-400/60 rounded-full"
             initial={{
               x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
               y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
@@ -39,8 +39,8 @@ const FinalCTA: React.FC = () => {
             }}
             animate={{
               y: [null, -30],
-              opacity: [0, 0.6, 0],
-              scale: [1, 1.3, 1],
+              opacity: [0, 0.8, 0],
+              scale: [1, 1.5, 1],
             }}
             transition={{
               duration: Math.random() * 4 + 3,
@@ -58,7 +58,7 @@ const FinalCTA: React.FC = () => {
           whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, type: "spring", bounce: 0.4 }}
-          className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-yellow-400 via-orange-400 to-pink-500 rounded-3xl mb-8 shadow-2xl"
+          className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-500 rounded-3xl mb-8 shadow-2xl"
           role="presentation"
         >
           <Crown className="w-12 h-12 text-white" />
@@ -74,7 +74,7 @@ const FinalCTA: React.FC = () => {
           className="text-6xl sm:text-7xl lg:text-8xl font-bold text-white mb-8 leading-tight"
         >
           Ready to Build Your{' '}
-          <span className="bg-gradient-to-r from-pink-400 via-purple-400 via-blue-400 to-green-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 bg-clip-text text-transparent">
             Business Empire?
           </span>
         </motion.h2>
@@ -152,14 +152,14 @@ const FinalCTA: React.FC = () => {
         >
           <motion.a
             id="cta-button"
-            href="/pricing"
+            href="#pricing"
             whileHover={{ 
               scale: 1.05, 
               boxShadow: "0 0 60px rgba(59, 130, 246, 0.8)",
               y: -5
             }}
             whileTap={{ scale: 0.95 }}
-            className="group relative inline-flex items-center gap-4 bg-gradient-to-r from-pink-600 via-purple-600 via-blue-600 to-green-500 hover:from-pink-500 hover:via-purple-500 hover:via-blue-500 hover:to-green-400 text-white px-16 py-8 rounded-3xl font-bold text-2xl transition-all duration-500 shadow-2xl"
+            className="group relative inline-flex items-center gap-4 bg-gradient-to-r from-blue-600 via-purple-600 to-green-500 hover:from-blue-500 hover:via-purple-500 hover:to-green-400 text-white px-16 py-8 rounded-3xl font-bold text-2xl transition-all duration-500 shadow-2xl"
             data-caption="Start your business transformation today - complete automation platform"
           >
             <Rocket className="w-8 h-8 group-hover:animate-bounce" />
@@ -167,7 +167,7 @@ const FinalCTA: React.FC = () => {
             <ArrowRight className="w-8 h-8 group-hover:translate-x-2 transition-transform" />
             
             {/* Epic Glow Effect */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-pink-400 via-purple-400 via-blue-400 to-green-400 opacity-0 group-hover:opacity-40 blur-2xl transition-opacity duration-500"></div>
+            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 opacity-0 group-hover:opacity-40 blur-2xl transition-opacity duration-500"></div>
             
             {/* Shine Effect */}
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 group-hover:animate-pulse"></div>

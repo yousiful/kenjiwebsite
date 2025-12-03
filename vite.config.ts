@@ -6,7 +6,6 @@ export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
     exclude: ['lucide-react'],
-    include: ['framer-motion'],
   },
   build: {
     target: 'esnext',
@@ -15,14 +14,6 @@ export default defineConfig({
       compress: {
         drop_console: true,
         drop_debugger: true,
-        passes: 2,
-        pure_funcs: ['console.log', 'console.info', 'console.debug'],
-      },
-      mangle: {
-        safari10: true,
-      },
-      format: {
-        comments: false,
       },
     },
     rollupOptions: {
@@ -37,29 +28,14 @@ export default defineConfig({
       },
     },
     chunkSizeWarningLimit: 1000,
-    reportCompressedSize: true,
-    cssCodeSplit: true,
-    sourcemap: false,
   },
   server: {
     port: 5173,
     host: true,
     open: true,
-    headers: {
-      'X-Content-Type-Options': 'nosniff',
-      'X-Frame-Options': 'SAMEORIGIN',
-      'X-XSS-Protection': '1; mode=block',
-      'Referrer-Policy': 'strict-origin-when-cross-origin',
-    },
   },
   preview: {
     port: 4173,
     host: true,
-    headers: {
-      'X-Content-Type-Options': 'nosniff',
-      'X-Frame-Options': 'SAMEORIGIN',
-      'X-XSS-Protection': '1; mode=block',
-      'Referrer-Policy': 'strict-origin-when-cross-origin',
-    },
   },
 });

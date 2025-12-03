@@ -18,7 +18,7 @@ const NotFoundPage: React.FC = () => {
     { name: "Free AI Tools", href: "/free-tools", icon: Zap, description: "Access powerful AI tools completely free" },
     { name: "AI Knowledge Base", href: "/knowledge", icon: Brain, description: "Latest AI insights and tutorials" },
     { name: "Voice Agents", href: "/voice-agents", icon: Users, description: "AI that handles calls 24/7" },
-    { name: "Get Started Risk-Free", href: "/pricing", icon: Zap, description: "Begin your AI transformation" }
+    { name: "Start Free Trial", href: "/pricing", icon: Zap, description: "Begin your AI transformation" }
   ];
 
   return (
@@ -40,10 +40,10 @@ const NotFoundPage: React.FC = () => {
             <AlertCircle className="w-24 h-24 text-blue-400 mx-auto mb-6" />
             <div className="text-8xl font-bold text-blue-400 mb-4">404</div>
             <h1 className="text-4xl font-bold text-white mb-4">
-              Page Not Found
+              Oops! Page Not Found
             </h1>
             <p className="text-xl text-gray-400 mb-8">
-              This page doesn't exist, but we have plenty of powerful AI tools and resources to help you succeed!
+              The page you're looking for doesn't exist, but we have plenty of amazing AI tools and content to explore!
             </p>
           </motion.div>
 
@@ -55,7 +55,7 @@ const NotFoundPage: React.FC = () => {
             className="bg-blue-500/20 border border-blue-400/30 rounded-2xl p-4 mb-8"
           >
             <p className="text-blue-300 text-sm">
-              Don't worry! We'll automatically redirect you home in 10 seconds, or jump to any popular page below.
+              🚀 Don't worry! We'll automatically redirect you to our homepage in 10 seconds, or choose from the popular pages below.
             </p>
           </motion.div>
 

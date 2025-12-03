@@ -265,7 +265,7 @@ const CRMPage: React.FC = () => {
             </h3>
             <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
               Join thousands of sales teams using KenjiAI CRM to close more deals faster. 
-              Get started risk-free with our 30-day money-back guarantee and see results immediately.
+              Start your free trial and see results immediately.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -275,7 +275,7 @@ const CRMPage: React.FC = () => {
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-10 py-5 rounded-2xl font-bold text-xl hover:shadow-lg transition-all duration-300 flex items-center gap-3"
               >
-                Get Started Now
+                Start Free Trial
                 <ArrowRight className="w-6 h-6" />
               </motion.a>
               
@@ -290,7 +290,7 @@ const CRMPage: React.FC = () => {
             </div>
             
             <p className="text-gray-500 text-sm mt-6">
-              30-day money-back guarantee • Full access • Import your existing data
+              16-day free trial • No credit card required • Import your existing data
             </p>
           </motion.div>
         </div>

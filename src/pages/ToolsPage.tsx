@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Zap, Users, Megaphone, MessageSquare, Brain, Code, BarChart3, Globe, Palette, ArrowRight, TrendingUp } from 'lucide-react';
+import { ExternalLink, Zap, Users, Megaphone, MessageSquare, Brain, Code, BarChart3, Globe, Palette, ArrowRight } from 'lucide-react';
 
 const ToolsPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
@@ -42,15 +42,6 @@ const ToolsPage: React.FC = () => {
       gradient: "from-green-500 to-emerald-600",
       features: ["Pitch Decks", "Investor Matching", "Due Diligence"],
       category: "Business"
-    },
-    {
-      name: "ViralPost Pro",
-      description: "Create viral social media content that gets maximum engagement and shares",
-      url: "https://viralpost.kenjiai.com",
-      icon: TrendingUp,
-      gradient: "from-pink-500 to-rose-600",
-      features: ["Viral Templates", "Engagement Optimization", "Trending Analytics"],
-      category: "Marketing"
     },
     {
       name: "AI Content Creator",
@@ -328,7 +319,7 @@ const ToolsPage: React.FC = () => {
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-green-500 text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300"
               >
-                Get Started Now
+                Start Free Trial
                 <ArrowRight className="w-5 h-5" />
               </motion.a>
             </div>

@@ -132,30 +132,31 @@ const EnhancedInteractiveElements: React.FC = () => {
     // Initial setup
     addGamifiedEffects();
     
-    // Disabled observer to prevent performance issues
-    // const observer = new MutationObserver(addGamifiedEffects);
-    // observer.observe(document.body, { childList: true, subtree: true });
-
-    // Disabled global color shifting - causes performance issues
-    // const addGlobalColorShift = () => {
-    //   const body = document.body;
-    //   body.style.background = 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)';
-    //   body.style.backgroundAttachment = 'fixed';
-    //
-    //   let hue = 0;
-    //   const colorShiftInterval = setInterval(() => {
-    //     hue = (hue + 0.5) % 360;
-    //     body.style.filter = `hue-rotate(${hue * 0.1}deg) saturate(1.1)`;
-    //   }, 100);
-    //
-    //   return () => clearInterval(colorShiftInterval);
-    // };
-
-    // const cleanupColorShift = addGlobalColorShift();
-
+    // Re-run when new elements are added (for dynamic content)
+    const observer = new MutationObserver(addGamifiedEffects);
+    observer.observe(document.body, { childList: true, subtree: true });
+    
+    // Add global color shifting effect
+    const addGlobalColorShift = () => {
+      const body = document.body;
+      body.style.background = 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)';
+      body.style.backgroundAttachment = 'fixed';
+      
+      // Add subtle color animation to the background
+      let hue = 0;
+      const colorShiftInterval = setInterval(() => {
+        hue = (hue + 0.5) % 360;
+        body.style.filter = `hue-rotate(${hue * 0.1}deg) saturate(1.1)`;
+      }, 100);
+      
+      return () => clearInterval(colorShiftInterval);
+    };
+    
+    const cleanupColorShift = addGlobalColorShift();
+    
     return () => {
-      // observer.disconnect();
-      // cleanupColorShift();
+      observer.disconnect();
+      cleanupColorShift();
     };
   }, []);
 

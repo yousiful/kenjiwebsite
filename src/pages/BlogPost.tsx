@@ -332,7 +332,7 @@ const BlogPost: React.FC = () => {
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="/pricing" class="bg-gradient-to-r from-purple-600 to-blue-500 text-white px-6 py-4 rounded-xl font-bold text-base sm:text-lg hover:shadow-lg transition-all duration-300 text-center">
-            Get Started Now
+            Enroll Now - Free Access
           </a>
           <a href="/free-tools" class="bg-gray-800 border border-gray-600 hover:border-purple-400 text-white px-6 py-4 rounded-xl font-bold text-base sm:text-lg transition-all duration-300 text-center">
             Try Free Tools First
@@ -687,7 +687,7 @@ const BlogPost: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-blue-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold text-base sm:text-lg hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300"
             >
-              Get Started Now
+              Enroll Now - Free Access
               <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </motion.a>
             <p className="text-gray-500 text-xs sm:text-sm mt-4">

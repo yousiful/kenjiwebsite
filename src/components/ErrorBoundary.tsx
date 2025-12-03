@@ -50,30 +50,27 @@ class ErrorBoundary extends Component<Props, State> {
             <div className="bg-gray-800/50 border border-red-500/50 rounded-3xl p-8">
               <AlertTriangle className="w-16 h-16 text-red-400 mx-auto mb-6" />
               <h1 className="text-2xl font-bold text-white mb-4">
-                We Hit a Snag
+                Oops! Something went wrong
               </h1>
-              <p className="text-gray-400 mb-4">
-                Don't worry—your data is safe. This usually fixes itself in seconds.
+              <p className="text-gray-400 mb-8">
+                We're sorry, but something unexpected happened. Our team has been notified.
               </p>
-              <p className="text-gray-500 text-sm mb-8">
-                Still stuck? Text us at <a href="tel:+18312634402" className="text-blue-400 hover:text-blue-300 underline">(831) 263-4402</a> for instant help
-              </p>
-
+              
               <div className="space-y-4">
                 <button
                   onClick={this.handleReload}
                   className="w-full bg-gradient-to-r from-blue-600 to-green-500 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
                 >
                   <RefreshCw className="w-5 h-5" />
-                  Refresh & Continue
+                  Try Again
                 </button>
-
+                
                 <button
                   onClick={this.handleGoHome}
                   className="w-full bg-gray-700 hover:bg-gray-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2"
                 >
                   <Home className="w-5 h-5" />
-                  Back to Dashboard
+                  Go Home
                 </button>
               </div>
               

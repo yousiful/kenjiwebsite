@@ -158,7 +158,7 @@ const Features: React.FC = () => {
         >
           <h2 id="features-heading" className="text-4xl sm:text-5xl font-bold text-white mb-6">
             <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-              AI Automation Platform Features That Drive Revenue
+              Every Feature Designed to Make You Money
             </span>
           </h2>
           <p className="text-xl text-gray-400 max-w-4xl mx-auto">

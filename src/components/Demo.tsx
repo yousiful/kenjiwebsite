@@ -161,7 +161,7 @@ const Demo: React.FC = () => {
                   whileTap={{ scale: 0.95 }}
                   className="bg-gradient-to-r from-blue-600 to-green-500 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transition-all duration-300 flex items-center gap-2"
                 >
-                  Get Started
+                  Try It Free
                   <ArrowRight className="w-4 h-4" />
                 </motion.a>
               </div>
@@ -209,7 +209,7 @@ const Demo: React.FC = () => {
             className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-green-500 text-white px-10 py-5 rounded-2xl font-bold text-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30"
             data-caption="Start your business transformation today"
           >
-            Get Started Now
+            Start Your Free Trial
             <ArrowRight className="w-6 h-6" />
           </motion.a>
         </motion.div>

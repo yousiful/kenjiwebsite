@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Zap, Users, Megaphone, Brain, TrendingUp } from 'lucide-react';
+import { ExternalLink, Zap, Users, Megaphone, Brain } from 'lucide-react';
 
 const Tools: React.FC = () => {
   const tools = [
@@ -35,14 +35,6 @@ const Tools: React.FC = () => {
       icon: Users,
       gradient: "from-green-500 to-emerald-600",
       features: ["Pitch Decks", "Investor Matching", "Due Diligence"]
-    },
-    {
-      name: "ViralPost Pro",
-      description: "Create viral social media content that maximizes engagement",
-      url: "https://viralpost.kenjiai.com",
-      icon: TrendingUp,
-      gradient: "from-pink-500 to-rose-600",
-      features: ["Viral Templates", "Engagement Optimization", "Trending Analytics"]
     }
   ];
 
@@ -65,11 +57,11 @@ const Tools: React.FC = () => {
         >
           <h2 id="tools-heading" className="text-4xl sm:text-5xl font-bold text-white mb-6">
             <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-              Free AI Tools for Business Growth
+              Specialized AI Tools
             </span>
           </h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Purpose-built AI tools for sales, marketing, and automation
+            Purpose-built AI tools for specific business needs
           </p>
         </motion.div>
 

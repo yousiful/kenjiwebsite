@@ -4,24 +4,23 @@ const PerformanceOptimizer: React.FC = () => {
   useEffect(() => {
     // Preload critical resources
     const preloadCriticalResources = () => {
-      // Only preload hero image on desktop
-      if (window.innerWidth > 768) {
-        const heroImage = new Image();
-        heroImage.src = 'https://assets.cdn.filesafe.space/q5L4ttbBMHNxieXIcTVJ/media/5adccaae-527e-49d4-befc-6410b918c624.gif';
-      }
-
+      // Preload hero image
+      const heroImage = new Image();
+      heroImage.src = 'https://assets.cdn.filesafe.space/q5L4ttbBMHNxieXIcTVJ/media/5adccaae-527e-49d4-befc-6410b918c624.gif';
+      
       // Preload Stripe
       const stripeScript = document.createElement('link');
       stripeScript.rel = 'dns-prefetch';
       stripeScript.href = 'https://js.stripe.com';
       document.head.appendChild(stripeScript);
-
+      
       // Preload external domains
       const domains = [
         'https://app.kenjicrm.com',
-        'https://js.stripe.com'
+        'https://support.kenjiai.com',
+        'https://images.pexels.com'
       ];
-
+      
       domains.forEach(domain => {
         const link = document.createElement('link');
         link.rel = 'dns-prefetch';
@@ -43,19 +42,38 @@ const PerformanceOptimizer: React.FC = () => {
       });
     };
 
-    // Add performance observers - Only in development
+    // Add performance observers
     const addPerformanceObservers = () => {
-      if ('PerformanceObserver' in window && process.env.NODE_ENV === 'development') {
-        try {
-          const lcpObserver = new PerformanceObserver((list) => {
-            const entries = list.getEntries();
-            const lastEntry = entries[entries.length - 1];
-            console.log('LCP:', lastEntry.startTime);
+      if ('PerformanceObserver' in window) {
+        // Observe Largest Contentful Paint
+        const lcpObserver = new PerformanceObserver((list) => {
+          const entries = list.getEntries();
+          const lastEntry = entries[entries.length - 1];
+          console.log('LCP:', lastEntry.startTime);
+        });
+        lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+
+        // Observe First Input Delay
+        const fidObserver = new PerformanceObserver((list) => {
+          const entries = list.getEntries();
+          entries.forEach(entry => {
+            console.log('FID:', entry.processingStart - entry.startTime);
           });
-          lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
-        } catch (e) {
-          // Observer not supported
-        }
+        });
+        fidObserver.observe({ entryTypes: ['first-input'] });
+
+        // Observe Cumulative Layout Shift
+        const clsObserver = new PerformanceObserver((list) => {
+          let clsValue = 0;
+          const entries = list.getEntries();
+          entries.forEach(entry => {
+            if (!entry.hadRecentInput) {
+              clsValue += entry.value;
+            }
+          });
+          console.log('CLS:', clsValue);
+        });
+        clsObserver.observe({ entryTypes: ['layout-shift'] });
       }
     };
 

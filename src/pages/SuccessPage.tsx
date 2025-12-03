@@ -18,14 +18,14 @@ const SuccessPage: React.FC = () => {
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('event', 'purchase', {
         transaction_id: sessionIdParam || Date.now().toString(),
-        value: 275,
+        value: 297,
         currency: 'USD',
         items: [{
           item_id: 'kenjiai_subscription',
           item_name: 'KenjiAI Subscription',
           category: 'Software',
           quantity: 1,
-          price: 275
+          price: 297
         }]
       });
     }
@@ -35,7 +35,7 @@ const SuccessPage: React.FC = () => {
       // Facebook Pixel
       if ((window as any).fbq) {
         (window as any).fbq('track', 'Purchase', {
-          value: 275,
+          value: 297,
           currency: 'USD'
         });
       }
@@ -44,7 +44,7 @@ const SuccessPage: React.FC = () => {
       if ((window as any).analytics) {
         (window as any).analytics.track('Subscription Created', {
           plan: 'KenjiAI Complete',
-          value: 275,
+          value: 297,
           currency: 'USD',
           session_id: sessionIdParam
         });
@@ -250,8 +250,8 @@ const SuccessPage: React.FC = () => {
                 <div className="text-white font-semibold text-sm">Payment Confirmed</div>
               </div>
               <div className="bg-blue-500/20 border border-blue-400/30 rounded-2xl p-4 text-center">
-                <div className="text-2xl font-bold text-blue-400">30</div>
-                <div className="text-white font-semibold text-sm">Day Guarantee</div>
+                <div className="text-2xl font-bold text-blue-400">16</div>
+                <div className="text-white font-semibold text-sm">Days Free Trial</div>
               </div>
               <div className="bg-purple-500/20 border border-purple-400/30 rounded-2xl p-4 text-center">
                 <div className="text-2xl font-bold text-purple-400">∞</div>

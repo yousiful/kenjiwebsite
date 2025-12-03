@@ -6,7 +6,6 @@ import InteractiveMouseCaption from './components/InteractiveMouseCaption';
 import GamificationSystem from './components/GamificationSystem';
 import GamifiedInteractions from './components/GamifiedInteractions';
 import UserActivityNotifications from './components/UserActivityNotifications';
-import SocialProofNotifications from './components/SocialProofNotifications';
 import ScrollProgressBar from './components/ScrollProgressBar';
 import RedirectSystem from './components/RedirectSystem';
 import EnhancedInteractiveElements from './components/EnhancedInteractiveElements';
@@ -16,10 +15,6 @@ import LoadingSpinner from './components/LoadingSpinner';
 import NotFoundPage from './components/NotFoundPage';
 import AutoFormattingProvider from './components/AutoFormattingProvider';
 import LinkValidator from './components/LinkValidator';
-import PWAInstallPrompt from './components/PWAInstallPrompt';
-import ScrollButtons from './components/ScrollButtons';
-import { HolidayThemeProvider } from './components/HolidayThemeProvider';
-import { FloatingHolidayElements } from './components/FloatingHolidayElements';
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -35,7 +30,6 @@ const VoiceAgentsPage = lazy(() => import('./pages/VoiceAgentsPage'));
 const VoiceAILandingPage = lazy(() => import('./pages/VoiceAILandingPage'));
 const MarketingAutomationPage = lazy(() => import('./pages/MarketingAutomationPage'));
 const CRMPage = lazy(() => import('./pages/CRMPage'));
-const TestPage = lazy(() => import('./pages/TestPage'));
 
 // ScrollToTop component to scroll to top on route change
 const ScrollToTop: React.FC = () => {
@@ -56,18 +50,17 @@ function App() {
           <ScrollToTop />
           <LinkValidator />
           <RedirectSystem />
-          <HolidayThemeProvider>
-            <InteractiveMouseCaption>
-              <div className="min-h-screen bg-gray-900" id="app-container">
-                <PerformanceOptimizer />
-                <ScrollProgressBar />
-                <ScrollButtons />
-                <PWAInstallPrompt />
-                <SocialProofNotifications />
-                <FloatingHolidayElements />
-                <header role="banner">
-                  <Navbar />
-                </header>
+          <InteractiveMouseCaption>
+            <div className="min-h-screen bg-gray-900" id="app-container">
+              <PerformanceOptimizer />
+              <ScrollProgressBar />
+              <GamificationSystem />
+              <GamifiedInteractions />
+              <EnhancedInteractiveElements />
+              <UserActivityNotifications />
+              <header role="banner">
+                <Navbar />
+              </header>
               <Suspense fallback={<LoadingSpinner />}>
                 <main id="main-content" role="main">
                   <Routes>
@@ -83,9 +76,8 @@ function App() {
                     <Route path="/blog/:slug" element={<BlogPost />} />
                     <Route path="/investors" element={<InvestorPage />} />
                     <Route path="/pricing" element={<ProductSelectionPage />} />
-                    <Route path="/test" element={<TestPage />} />
                     <Route path="/success" element={<SuccessPage />} />
-
+                    
                     {/* Redirect legacy routes */}
                     <Route path="/blog" element={<Navigate to="/knowledge" replace />} />
                     
@@ -99,7 +91,6 @@ function App() {
               </footer>
             </div>
           </InteractiveMouseCaption>
-          </HolidayThemeProvider>
         </Router>
       </AutoFormattingProvider>
     </ErrorBoundary>

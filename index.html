@@ -3,79 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
-
-    <!-- Security Headers (Meta Tags) -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
-    <meta name="referrer" content="strict-origin-when-cross-origin" />
-
-    <!-- Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="
-      default-src 'self';
-      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://connect.facebook.net https://www.googletagmanager.com;
-      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-      img-src 'self' data: https: blob:;
-      font-src 'self' data: https://fonts.gstatic.com;
-      connect-src 'self' https://api.stripe.com https://*.supabase.co https://kenjiai.com https://*.kenjiai.com https://connect.facebook.net;
-      frame-src 'self' https://js.stripe.com https://www.facebook.com;
-      worker-src 'self' blob:;
-      object-src 'none';
-      base-uri 'self';
-      form-action 'self' https://freedom.kenjiai.com;
-      upgrade-insecure-requests;
-    " />
-
-    <!-- Mobile Security & Optimization -->
-    <meta name="format-detection" content="telephone=yes" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="HandheldFriendly" content="true" />
-    <meta name="MobileOptimized" content="width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Performance optimizations -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Critical API connections -->
-    <link rel="preconnect" href="https://ggycgcxqdzpycdnqdvtw.supabase.co" crossorigin>
-    <link rel="preconnect" href="https://js.stripe.com" crossorigin>
-
-    <!-- Secondary resources -->
+    <link rel="dns-prefetch" href="https://js.stripe.com">
     <link rel="dns-prefetch" href="https://app.kenjicrm.com">
     <link rel="dns-prefetch" href="https://images.pexels.com">
-    <link rel="dns-prefetch" href="https://connect.facebook.net">
-    <link rel="dns-prefetch" href="https://go.mediatraffics.com">
+    <link rel="dns-prefetch" href="https://beta.leadconnectorhq.com">
     
     <!-- PWA manifest -->
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#1E40AF">
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#3B82F6">
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1E40AF">
-
-    <!-- iOS PWA Support -->
+    <meta name="theme-color" content="#3B82F6">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="KenjiAI">
-    <link rel="apple-touch-icon" href="/icons/icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/icons/icon-192x192.png">
-    <link rel="apple-touch-icon" sizes="167x167" href="/icons/icon-192x192.png">
-
-    <!-- Windows PWA Support -->
-    <meta name="msapplication-TileImage" content="/icons/icon-144x144.png">
-    <meta name="msapplication-TileColor" content="#1E40AF">
-    <meta name="msapplication-config" content="/browserconfig.xml">
-
-    <!-- Standard favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-72x72.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-72x72.png">
-    <link rel="shortcut icon" href="/icons/icon-72x72.png">
     
     <!-- Primary Meta Tags -->
     <title>KenjiAI - Free AI Tools, Business Automation Platform & AI Knowledge Base | Voice Agents, CRM, Marketing</title>
     <meta name="title" content="KenjiAI - Free AI Tools, Business Automation Platform & AI Knowledge Base | Voice Agents, CRM, Marketing" />
-    <meta name="description" content="Free AI tools + Complete AI business automation platform: Voice agents that close deals 24/7, smart workflows, community building, course creation, CRM, marketing automation. Plus comprehensive AI knowledge base with latest insights. 425% average ROI." />
+    <meta name="description" content="Free AI tools + Complete AI business automation platform: Voice agents that close deals 24/7, smart workflows, community building, course creation, CRM, marketing automation. Plus comprehensive AI knowledge base with latest insights. Start your 16-day free trial." />
     <meta name="keywords" content="free AI tools, AI automation, business automation, AI voice agents, AI marketing, AI sales, smart workflows, CRM automation, AI chatbots, business intelligence, AI platform, AI knowledge base, AI blog, AI tutorials, prompt generator, AI content creation, machine learning, artificial intelligence, Scale AI alternative, free prompt generator, AI PR tools, AI sales coach" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="language" content="English" />
@@ -101,7 +49,7 @@
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://kenjiai.com/" />
     <meta property="twitter:title" content="KenjiAI - Free AI Tools & Complete Business Automation Platform" />
-    <meta property="twitter:description" content="Free AI tools + Voice agents, smart workflows, CRM, and complete business automation in one AI platform. Plus AI knowledge base. 425% average ROI." />
+    <meta property="twitter:description" content="Free AI tools + Voice agents, smart workflows, CRM, and complete business automation in one AI platform. Plus AI knowledge base. Start your 16-day free trial." />
     <meta property="twitter:image" content="https://kenjiai.com/twitter-image.jpg" />
     <meta property="twitter:creator" content="@KenjiAI" />
     <meta property="twitter:site" content="@KenjiAI" />
@@ -111,32 +59,6 @@
     <link rel="canonical" href="https://kenjiai.com/" />
     <meta name="google-site-verification" content="your-google-verification-code" />
     <meta name="msvalidate.01" content="your-bing-verification-code" />
-
-    <!-- Mobile Carrier & Deep Linking -->
-    <meta name="apple-itunes-app" content="app-id=com.kenjiai.app" />
-    <meta name="google-play-app" content="app-id=com.kenjiai.app" />
-    <link rel="alternate" href="android-app://com.kenjiai.app/https/kenjiai.com" />
-    <link rel="alternate" href="ios-app://com.kenjiai.app/https/kenjiai.com" />
-
-    <!-- Geographic & Language Targeting -->
-    <meta name="geo.region" content="US" />
-    <meta name="geo.placename" content="United States" />
-    <meta name="geo.position" content="37.7749;-122.4194" />
-    <meta name="ICBM" content="37.7749, -122.4194" />
-
-    <!-- Business & Schema Info -->
-    <meta name="application-name" content="KenjiAI" />
-    <meta name="apple-mobile-web-app-title" content="KenjiAI" />
-    <meta name="coverage" content="Worldwide" />
-    <meta name="target" content="all" />
-    <meta name="audience" content="all" />
-    <meta name="page-type" content="product" />
-    <meta name="page-topic" content="AI Automation, Business Software, Free AI Tools" />
-
-    <!-- Enhanced Mobile SEO -->
-    <meta name="mobile-agent" content="format=html5; url=https://kenjiai.com" />
-    <meta name="skype_toolbar" content="skype_toolbar_parser_compatible" />
-    <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="KenjiAI Search" />
     
     <!-- Structured Data for Free Tools -->
     <script type="application/ld+json">
@@ -244,19 +166,6 @@
             "price": "0",
             "priceCurrency": "USD"
           }
-        },
-        {
-          "@type": "SoftwareApplication",
-          "position": 4,
-          "name": "ViralPost Pro",
-          "description": "AI-powered viral content creation for social media",
-          "url": "https://viralpost.kenjiai.com",
-          "applicationCategory": "BusinessApplication",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-          }
         }
       ]
     }
@@ -304,24 +213,7 @@
       ]
     }
     </script>
-
-    <!-- Meta Pixel Code - Deferred for performance -->
-    <script>
-    window.addEventListener('load', function() {
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '2406747486323295');
-      fbq('track', 'PageView');
-    });
-    </script>
-    <!-- End Meta Pixel Code -->
-
+    
     <!-- Critical CSS inlined for performance -->
     <style>
       /* Critical above-the-fold styles */
@@ -369,11 +261,6 @@
     </style>
   </head>
   <body>
-    <!-- Meta Pixel noscript -->
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=2406747486323295&ev=PageView&noscript=1"
-    /></noscript>
-
     <div id="root"></div>
     
     <!-- Loading screen for initial page load -->
@@ -385,7 +272,14 @@
     <link rel="modulepreload" href="/src/main.tsx">
     
     <script type="module" src="/src/main.tsx"></script>
-
+    
+    <!-- Chatbot Embed Code -->
+    <script 
+      src="https://beta.leadconnectorhq.com/loader.js"  
+      data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" 
+      data-widget-id="67e1d177e87e911e4e73f032"   > 
+    </script>
+    
     <!-- Service Worker registration -->
     <script>
       if ('serviceWorker' in navigator && location.protocol === 'https:') {

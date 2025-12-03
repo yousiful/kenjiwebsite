@@ -1,10 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Brain, Zap, TrendingUp, Users, ArrowRight, CheckCircle, Star, Target, Rocket } from 'lucide-react';
-import Breadcrumbs from '../components/Breadcrumbs';
-import RelatedLinks from '../components/RelatedLinks';
-import { getRelatedLinks } from '../utils/internalLinks';
 
 const AIAutomationPage: React.FC = () => {
   const automationFeatures = [
@@ -62,17 +58,13 @@ const AIAutomationPage: React.FC = () => {
     { metric: "99.9%", label: "Accuracy", description: "Eliminate human errors" }
   ];
 
-  const relatedLinks = getRelatedLinks('/ai-automation', 6);
-
   return (
     <>
       {/* SEO Head */}
       <title>AI Business Automation Platform | KenjiAI - Automate Operations & Scale Growth</title>
-      <meta name="description" content="Transform your business with AI automation. Automate workflows, customer service, sales processes, and operations. 85% time savings, 300% ROI increase. 30-day money-back guarantee." />
+      <meta name="description" content="Transform your business with AI automation. Automate workflows, customer service, sales processes, and operations. 85% time savings, 300% ROI increase. Start free trial." />
       <meta name="keywords" content="AI automation, business automation, workflow automation, AI business processes, intelligent automation, business AI platform" />
-
-      <Breadcrumbs />
-
+      
       <div className="pt-24 pb-16 bg-gray-900 min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Hero Section */}
@@ -101,16 +93,8 @@ const AIAutomationPage: React.FC = () => {
             </h1>
             
             <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed mb-12">
-              Transform your business operations with AI that thinks, learns, and optimizes.
-              Combine our platform with{' '}
-              <Link to="/voice-agents" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold hover:underline" title="24/7 AI voice agents that close deals automatically">
-                AI voice agents
-              </Link>{' '}
-              and{' '}
-              <Link to="/crm" className="text-blue-400 hover:text-blue-300 transition-colors font-semibold hover:underline" title="Intelligent CRM with automated sales processes">
-                intelligent CRM
-              </Link>{' '}
-              for complete business automation.
+              Transform your business operations with AI that thinks, learns, and optimizes. 
+              Automate complex workflows, eliminate manual tasks, and scale without limits.
             </p>
 
             {/* Benefits Grid */}
@@ -238,12 +222,12 @@ const AIAutomationPage: React.FC = () => {
             transition={{ duration: 0.8, delay: 1 }}
             className="text-center bg-gradient-to-r from-blue-900/30 to-purple-900/30 border border-blue-400/30 rounded-3xl p-12"
           >
-            <h2 className="text-4xl font-bold text-white mb-6">
-              Ready to Transform Your Business with AI Automation?
-            </h2>
+            <h3 className="text-4xl font-bold text-white mb-6">
+              Ready to Automate Your Business?
+            </h3>
             <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
               Join thousands of businesses using KenjiAI to automate operations, 
-              reduce costs, and scale without limits. Get started risk-free today.
+              reduce costs, and scale without limits. Start your free trial today.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -253,7 +237,7 @@ const AIAutomationPage: React.FC = () => {
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-5 rounded-2xl font-bold text-xl hover:shadow-lg transition-all duration-300 flex items-center gap-3"
               >
-                Get Started Now
+                Start Free Trial
                 <ArrowRight className="w-6 h-6" />
               </motion.a>
               
@@ -268,18 +252,9 @@ const AIAutomationPage: React.FC = () => {
             </div>
             
             <p className="text-gray-500 text-sm mt-6">
-              30-day money-back guarantee • Full access • Cancel anytime
+              16-day free trial • No credit card required • Cancel anytime
             </p>
           </motion.div>
-
-          {/* Related Solutions */}
-          <div className="mt-20 mb-12">
-            <RelatedLinks
-              links={relatedLinks}
-              title="Explore Related Solutions"
-              variant="grid"
-            />
-          </div>
         </div>
       </div>
     </>

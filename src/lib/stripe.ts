@@ -5,19 +5,19 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || 
 
 export { stripePromise };
 
-// Your KenjiAI Complete product with 30-day money-back guarantee
+// Your KenjiAI Complete product with 16-day free trial
 export const STRIPE_PRODUCT_ID = 'prod_SaHy0mYrFO5hEC';
 
 // Direct Stripe Payment Links
 export const STRIPE_PAYMENT_LINKS = {
-  monthly: 'https://freedom.kenjiai.com/cashflow-ads-bootcamp-17-clone',
-  yearly: 'https://freedom.kenjiai.com/cashflow-ads-bootcamp-17-clone'
+  monthly: 'https://buy.stripe.com/9B65kC1Dvc0g6LJ60XaMU1g',
+  yearly: 'https://buy.stripe.com/dRm4gy95X9S84DBahdaMU1h'
 };
 
 // Updated Price IDs for reference (if needed)
 export const STRIPE_PRICE_IDS = {
-  monthly: 'price_1Rf7OfAFtO7OZUieg3UtHcyK', // Monthly - $275
-  yearly: 'price_1Rf7OgAFtO7OZUieV7GjTset'    // Yearly - $2600
+  monthly: 'price_1Rf7OfAFtO7OZUieg3UtHcyK', // Monthly with 16-day trial
+  yearly: 'price_1Rf7OgAFtO7OZUieV7GjTset'    // Yearly with 16-day trial
 };
 
 // Simplified redirect function using payment links
@@ -149,13 +149,13 @@ export const redirectToPaymentLink = async (planType: 'monthly' | 'yearly') => {
     if (typeof window !== 'undefined' && (window as any).gtag) {
       (window as any).gtag('event', 'begin_checkout', {
         currency: 'USD',
-        value: planType === 'yearly' ? 2600 : 275,
+        value: planType === 'yearly' ? 2970 : 297,
         items: [{
           item_id: `kenjiai_${planType}`,
           item_name: `KenjiAI ${planType} Plan`,
           category: 'Software',
           quantity: 1,
-          price: planType === 'yearly' ? 2600 : 275
+          price: planType === 'yearly' ? 2970 : 297
         }]
       });
     }
