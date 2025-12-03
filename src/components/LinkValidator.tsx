@@ -29,57 +29,54 @@ const LinkValidator: React.FC = () => {
   }, [location.pathname]);
   
   useEffect(() => {
+    let isValidating = false;
+
     const validateLinks = () => {
-      // Get all links on the page
-      const links = document.querySelectorAll('a');
-      
-      links.forEach(link => {
-        const href = link.getAttribute('href');
-        
-        // Skip if no href
-        if (!href) return;
-        
-        // Handle hash links properly
-        if (href === '#' || href.startsWith('#')) return;
-        
-        // Skip external links
-        if (href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
-        
-        // Check if it's a valid route
-        if (!isValidRoute(href)) {
-          console.warn(`Found invalid link: ${href}`);
-          
-          // Fix the link
-          const fallbackRoute = getFallbackRoute(href);
-          link.setAttribute('href', fallbackRoute);
-          
-          // Add a visual indicator in development
-          if (process.env.NODE_ENV === 'development') {
-            link.style.border = '1px dashed red';
-            link.title = `Invalid link: ${href}, redirected to ${fallbackRoute}`;
+      // Prevent feedback loop
+      if (isValidating) return;
+      isValidating = true;
+
+      try {
+        // Get all links on the page
+        const links = document.querySelectorAll('a');
+
+        links.forEach(link => {
+          const href = link.getAttribute('href');
+
+          // Skip if no href
+          if (!href) return;
+
+          // Handle hash links properly
+          if (href === '#' || href.startsWith('#')) return;
+
+          // Skip external links
+          if (href.startsWith('http') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+
+          // Check if it's a valid route
+          if (!isValidRoute(href)) {
+            console.warn(`Found invalid link: ${href}`);
+
+            // Fix the link
+            const fallbackRoute = getFallbackRoute(href);
+            link.setAttribute('href', fallbackRoute);
+
+            // Add a visual indicator in development
+            if (process.env.NODE_ENV === 'development') {
+              link.style.border = '1px dashed red';
+              link.title = `Invalid link: ${href}, redirected to ${fallbackRoute}`;
+            }
           }
-        }
-      });
+        });
+      } finally {
+        isValidating = false;
+      }
     };
-    
-    // Run validation whenever the location changes
+
+    // Run validation once on mount
     validateLinks();
-    
-    // Create a MutationObserver to watch for DOM changes
-    const observer = new MutationObserver(validateLinks);
-    
-    // Start observing the document with the configured parameters
-    observer.observe(document.body, { 
-      childList: true, 
-      subtree: true,
-      attributes: true,
-      attributeFilter: ['href']
-    });
-    
-    // Cleanup
-    return () => {
-      observer.disconnect();
-    };
+
+    // Cleanup - no observer needed
+    return () => {};
   }, [location]);
 
   return null; // This component doesn't render anything

@@ -10,10 +10,19 @@ const GeneratedBlogPosts: React.FC = () => {
   useEffect(() => {
     const loadPosts = async () => {
       try {
-        const data = await getPublishedBlogPosts(6);
+        // Add timeout to prevent infinite loading
+        const timeoutPromise = new Promise<never>((_, reject) =>
+          setTimeout(() => reject(new Error('Request timeout')), 5000)
+        );
+
+        const data = await Promise.race([
+          getPublishedBlogPosts(6),
+          timeoutPromise
+        ]);
         setPosts(data);
       } catch (error) {
         console.error('Error loading blog posts:', error);
+        setPosts([]); // Set empty array on error
       } finally {
         setLoading(false);
       }

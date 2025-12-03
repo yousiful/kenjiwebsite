@@ -13,7 +13,6 @@ import LiveBusinessDemo from '../components/LiveBusinessDemo';
 import PricingSection from '../components/PricingSection';
 import SocialProof from '../components/SocialProof';
 import FinalCTA from '../components/FinalCTA';
-import SocialProofNotifications from '../components/SocialProofNotifications';
 import LocalBusinessSchema from '../components/LocalBusinessSchema';
 import LocalSEO from '../components/LocalSEO';
 
@@ -75,7 +74,6 @@ const HomePage: React.FC = () => {
       </Helmet>
 
       <div>
-        <SocialProofNotifications />
         <Hero />
         <BusinessTransformation />
         <IntelligentCore />
