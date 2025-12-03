@@ -776,9 +776,9 @@ const VoiceAILandingPage: React.FC = () => {
               <div>
                 <h3 className="text-white font-semibold mb-4">Resources</h3>
                 <ul className="space-y-2">
-                  <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Documentation</a></li>
-                  <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">API Reference</a></li>
-                  <li><a href="#" className="text-gray-400 hover:text-blue-400 transition-colors">Support</a></li>
+                  <li><Link to="/knowledge" className="text-gray-400 hover:text-blue-400 transition-colors">Documentation</Link></li>
+                  <li><Link to="/knowledge" className="text-gray-400 hover:text-blue-400 transition-colors">API Reference</Link></li>
+                  <li><a href="mailto:care@kenjiai.com" className="text-gray-400 hover:text-blue-400 transition-colors">Support</a></li>
                 </ul>
               </div>
               <div>
