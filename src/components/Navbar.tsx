@@ -67,10 +67,7 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group mobile-hover focus-ring">
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-300">
-              KenjiAI
-            </span>
-            <ChevronRight className="w-4 h-4 text-blue-400 group-hover:text-purple-400 transition-colors" />
+            <Zap className="w-8 h-8 text-blue-400 group-hover:text-purple-400 transition-colors" />
           </Link>
 
           {/* Desktop Navigation */}
