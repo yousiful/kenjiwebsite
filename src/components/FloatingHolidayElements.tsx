@@ -38,14 +38,14 @@ export const FloatingHolidayElements = () => {
     const emojis = holidayEmojis[currentHoliday.name] || [currentHoliday.emoji];
     const newElements: FloatingElement[] = [];
 
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 3; i++) {
       newElements.push({
         id: i,
         emoji: emojis[Math.floor(Math.random() * emojis.length)],
         x: Math.random() * 100,
         delay: Math.random() * 5,
-        duration: 10 + Math.random() * 10,
-        size: 20 + Math.random() * 20,
+        duration: 15 + Math.random() * 10,
+        size: 16 + Math.random() * 8,
       });
     }
 
@@ -61,7 +61,7 @@ export const FloatingHolidayElements = () => {
       {elements.map((element) => (
         <motion.div
           key={element.id}
-          className="absolute opacity-20 hover:opacity-40 transition-opacity"
+          className="absolute opacity-10 hover:opacity-20 transition-opacity"
           initial={{ y: '100vh', x: `${element.x}%`, rotate: 0 }}
           animate={{
             y: '-10vh',

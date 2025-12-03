@@ -37,7 +37,7 @@ export const HolidayThemeProvider = ({ children }: { children: React.ReactNode }
 
       const interval = setInterval(() => {
         createConfetti();
-      }, 3000);
+      }, 8000);
 
       return () => {
         clearInterval(interval);
@@ -52,14 +52,14 @@ export const HolidayThemeProvider = ({ children }: { children: React.ReactNode }
     const colors = currentHoliday?.confetti_colors || ['#ff0000', '#00ff00', '#0000ff'];
     const newConfetti: ConfettiPiece[] = [];
 
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 15; i++) {
       newConfetti.push({
         id: Math.random(),
         x: Math.random() * window.innerWidth,
         y: -20,
         rotation: Math.random() * 360,
         color: colors[Math.floor(Math.random() * colors.length)],
-        size: Math.random() * 8 + 4,
+        size: Math.random() * 6 + 3,
         speedX: (Math.random() - 0.5) * 2,
         speedY: Math.random() * 2 + 1,
         rotationSpeed: (Math.random() - 0.5) * 10,
@@ -119,11 +119,10 @@ export const HolidayThemeProvider = ({ children }: { children: React.ReactNode }
                   <motion.span
                     className="text-2xl"
                     animate={{
-                      scale: [1, 1.2, 1],
-                      rotate: [0, 10, -10, 0],
+                      scale: [1, 1.05, 1],
                     }}
                     transition={{
-                      duration: 2,
+                      duration: 3,
                       repeat: Infinity,
                       repeatType: 'reverse',
                     }}
@@ -147,7 +146,7 @@ export const HolidayThemeProvider = ({ children }: { children: React.ReactNode }
             </div>
 
             <div
-              className="absolute inset-0 opacity-10"
+              className="absolute inset-0 opacity-5"
               style={{
                 backgroundImage: `radial-gradient(circle at 20% 50%, ${currentHoliday.secondary_color} 0%, transparent 50%), radial-gradient(circle at 80% 80%, ${currentHoliday.theme_color} 0%, transparent 50%)`,
               }}
