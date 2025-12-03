@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Play, Users, Zap, Sparkles } from 'lucide-react';
+import { getAnimationConfig, prefersReducedMotion } from '../utils/mobileOptimizations';
 
 const Hero: React.FC = () => {
   const headlines = [
@@ -14,6 +15,8 @@ const Hero: React.FC = () => {
   const [currentHeadline, setCurrentHeadline] = useState(0);
   const [text, setText] = useState('');
   const [isTyping, setIsTyping] = useState(true);
+  const animConfig = getAnimationConfig();
+  const reduceMotion = prefersReducedMotion();
 
   useEffect(() => {
     const fullText = headlines[currentHeadline];
@@ -72,7 +75,7 @@ const Hero: React.FC = () => {
       {/* Enhanced Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 via-orange-500/20 via-yellow-500/20 via-green-500/20 via-blue-500/20 via-indigo-500/20 to-violet-500/20 animate-pulse"></div>
-        {[...Array(150)].map((_, i) => (
+        {animConfig.enabled && !reduceMotion && [...Array(animConfig.particleCount)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-blue-400 rounded-full"
@@ -90,6 +93,7 @@ const Hero: React.FC = () => {
               duration: Math.random() * 3 + 2,
               repeat: Infinity,
               delay: Math.random() * 2,
+              ease: "linear"
             }}
           />
         ))}
