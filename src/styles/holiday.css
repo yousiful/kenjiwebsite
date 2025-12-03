@@ -1,0 +1,152 @@
+@keyframes float-holiday {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+  75% {
+    transform: translateY(-10px) rotate(-5deg);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px currentColor);
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 20px currentColor);
+    transform: scale(1.05);
+  }
+}
+
+@keyframes snow-fall {
+  0% {
+    transform: translateY(-10px) translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) translateX(50px);
+    opacity: 0.3;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+@keyframes firework-burst {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.3) rotate(-10deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.05) rotate(5deg);
+  }
+  70% {
+    transform: scale(0.9) rotate(-2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.holiday-float {
+  animation: float-holiday 3s ease-in-out infinite;
+}
+
+.holiday-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.holiday-sparkle {
+  animation: sparkle 1.5s ease-in-out infinite;
+}
+
+.holiday-bounce {
+  animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.holiday-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 3s infinite;
+}
+
+.holiday-snow {
+  animation: snow-fall linear infinite;
+}
+
+.holiday-firework {
+  animation: firework-burst 1s ease-out forwards;
+}
+
+.holiday-themed-gradient {
+  position: relative;
+  overflow: hidden;
+}
+
+.holiday-themed-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  background: radial-gradient(
+    circle at 20% 50%,
+    var(--holiday-primary) 0%,
+    transparent 50%
+  ),
+  radial-gradient(
+    circle at 80% 80%,
+    var(--holiday-secondary) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .holiday-float,
+  .holiday-glow,
+  .holiday-sparkle,
+  .holiday-bounce,
+  .holiday-shimmer,
+  .holiday-snow,
+  .holiday-firework {
+    animation: none;
+  }
+}

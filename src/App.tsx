@@ -18,6 +18,8 @@ import AutoFormattingProvider from './components/AutoFormattingProvider';
 import LinkValidator from './components/LinkValidator';
 import PWAInstallPrompt from './components/PWAInstallPrompt';
 import ScrollButtons from './components/ScrollButtons';
+import { HolidayThemeProvider } from './components/HolidayThemeProvider';
+import { FloatingHolidayElements } from './components/FloatingHolidayElements';
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -54,16 +56,18 @@ function App() {
           <ScrollToTop />
           <LinkValidator />
           <RedirectSystem />
-          <InteractiveMouseCaption>
-            <div className="min-h-screen bg-gray-900" id="app-container">
-              <PerformanceOptimizer />
-              <ScrollProgressBar />
-              <ScrollButtons />
-              <PWAInstallPrompt />
-              <SocialProofNotifications />
-              <header role="banner">
-                <Navbar />
-              </header>
+          <HolidayThemeProvider>
+            <InteractiveMouseCaption>
+              <div className="min-h-screen bg-gray-900" id="app-container">
+                <PerformanceOptimizer />
+                <ScrollProgressBar />
+                <ScrollButtons />
+                <PWAInstallPrompt />
+                <SocialProofNotifications />
+                <FloatingHolidayElements />
+                <header role="banner">
+                  <Navbar />
+                </header>
               <Suspense fallback={<LoadingSpinner />}>
                 <main id="main-content" role="main">
                   <Routes>
@@ -95,6 +99,7 @@ function App() {
               </footer>
             </div>
           </InteractiveMouseCaption>
+          </HolidayThemeProvider>
         </Router>
       </AutoFormattingProvider>
     </ErrorBoundary>

@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import App from './App.tsx';
 import './index.css';
+import './styles/holiday.css';
 
 // Initialize Meta Pixel
 const AppWithTracking = () => {
