@@ -68,7 +68,7 @@ const Hero: React.FC = () => {
   const currentValue = valueProps[currentHeadline];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900/50 via-purple-900/30 to-gray-900" aria-labelledby="hero-heading">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-blue-900/50 via-purple-900/30 to-gray-900 pt-16" aria-labelledby="hero-heading">
       {/* Enhanced Animated Background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-r from-red-500/20 via-orange-500/20 via-yellow-500/20 via-green-500/20 via-blue-500/20 via-indigo-500/20 to-violet-500/20 animate-pulse"></div>

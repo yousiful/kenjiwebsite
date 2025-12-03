@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Zap, ChevronDown, ExternalLink, LogIn, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronDown, ExternalLink, LogIn } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -67,7 +67,9 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group mobile-hover focus-ring">
-            <Zap className="w-8 h-8 text-blue-400 group-hover:text-purple-400 transition-colors" />
+            <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent group-hover:from-purple-400 group-hover:to-blue-400 transition-all">
+              KenjiAI
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -285,7 +287,6 @@ const Navbar: React.FC = () => {
               }}
             >
               <span className="relative z-10 flex items-center gap-2">
-                <Zap className="w-4 h-4" />
                 Book VIP Demo
               </span>
             </motion.a>
@@ -299,7 +300,6 @@ const Navbar: React.FC = () => {
               }}
             >
               <span className="relative z-10 flex items-center gap-2">
-                <Zap className="w-4 h-4" />
                 Pricing
               </span>
             </Link>
@@ -383,7 +383,6 @@ const Navbar: React.FC = () => {
                 role="menuitem"
               >
                 <div className="flex items-center justify-center gap-2">
-                  <Zap className="w-5 h-5" />
                   Book VIP Demo
                 </div>
               </a>
@@ -397,7 +396,6 @@ const Navbar: React.FC = () => {
                 role="menuitem"
               >
                 <div className="flex items-center justify-center gap-2">
-                  <Zap className="w-5 h-5" />
                   View Pricing
                 </div>
               </Link>
