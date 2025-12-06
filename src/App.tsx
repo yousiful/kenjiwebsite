@@ -15,6 +15,7 @@ import LoadingSpinner from './components/LoadingSpinner';
 import NotFoundPage from './components/NotFoundPage';
 import AutoFormattingProvider from './components/AutoFormattingProvider';
 import LinkValidator from './components/LinkValidator';
+import { HolidayThemeProvider } from './contexts/HolidayThemeContext';
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -45,22 +46,23 @@ const ScrollToTop: React.FC = () => {
 function App() {
   return (
     <ErrorBoundary>
-      <AutoFormattingProvider>
-        <Router>
-          <ScrollToTop />
-          <LinkValidator />
-          <RedirectSystem />
-          <InteractiveMouseCaption>
-            <div className="min-h-screen bg-gray-900" id="app-container">
-              <PerformanceOptimizer />
-              <ScrollProgressBar />
-              <GamificationSystem />
-              <GamifiedInteractions />
-              <EnhancedInteractiveElements />
-              <UserActivityNotifications />
-              <header role="banner">
-                <Navbar />
-              </header>
+      <HolidayThemeProvider>
+        <AutoFormattingProvider>
+          <Router>
+            <ScrollToTop />
+            <LinkValidator />
+            <RedirectSystem />
+            <InteractiveMouseCaption>
+              <div className="min-h-screen bg-gray-900" id="app-container">
+                <PerformanceOptimizer />
+                <ScrollProgressBar />
+                <GamificationSystem />
+                <GamifiedInteractions />
+                <EnhancedInteractiveElements />
+                <UserActivityNotifications />
+                <header role="banner">
+                  <Navbar />
+                </header>
               <Suspense fallback={<LoadingSpinner />}>
                 <main id="main-content" role="main">
                   <Routes>
@@ -93,6 +95,7 @@ function App() {
           </InteractiveMouseCaption>
         </Router>
       </AutoFormattingProvider>
+      </HolidayThemeProvider>
     </ErrorBoundary>
   );
 }

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Play, Users, Zap, Sparkles } from 'lucide-react';
+import { useHolidayTheme } from '../contexts/HolidayThemeContext';
 
 const Hero: React.FC = () => {
   const [text, setText] = useState('');
   const fullText = "AI That Closes Deals While You Sleep";
-  
+  const { textGradientClass, currentHoliday } = useHolidayTheme();
+
   useEffect(() => {
     let i = 0;
     const timer = setInterval(() => {
@@ -16,7 +18,7 @@ const Hero: React.FC = () => {
         clearInterval(timer);
       }
     }, 50);
-    
+
     return () => clearInterval(timer);
   }, []);
 
@@ -68,13 +70,27 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5 }}
-          className="text-5xl sm:text-6xl lg:text-8xl font-bold text-white mb-8 leading-tight"
+          className="text-5xl sm:text-6xl lg:text-8xl font-bold mb-8 leading-tight"
         >
-          <span className="text-gradient-blue">
+          <span className={`bg-gradient-to-r ${textGradientClass} bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(59,130,246,0.5)]`}>
             {text}
-            <span className="animate-pulse text-green-400">|</span>
+            <span className={`animate-pulse bg-gradient-to-r ${textGradientClass} bg-clip-text text-transparent`}>|</span>
           </span>
         </motion.h2>
+
+        {currentHoliday && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="mb-6"
+          >
+            <span className="text-4xl">{currentHoliday.emoji}</span>
+            {currentHoliday.banner_message && (
+              <p className="text-xl text-gray-300 mt-2">{currentHoliday.banner_message}</p>
+            )}
+          </motion.div>
+        )}
 
         {/* Enhanced Subheadline */}
         <motion.p
