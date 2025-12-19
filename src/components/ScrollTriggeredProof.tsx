@@ -147,13 +147,13 @@ export function ScrollTriggeredProof() {
   }, []);
 
   return (
-    <div className="fixed bottom-4 right-4 z-40 pointer-events-none">
+    <div className="fixed bottom-4 left-4 z-40 pointer-events-none">
       <AnimatePresence>
         {show && currentNotification && (
           <motion.div
-            initial={{ opacity: 0, x: 100, scale: 0.8 }}
+            initial={{ opacity: 0, x: -100, scale: 0.8 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: 100, scale: 0.8 }}
+            exit={{ opacity: 0, x: -100, scale: 0.8 }}
             transition={{ duration: 0.5, type: 'spring', bounce: 0.4 }}
             className="pointer-events-auto"
           >

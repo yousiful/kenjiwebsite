@@ -162,7 +162,8 @@ const Features: React.FC = () => {
             </span>
           </h2>
           <p className="text-xl text-gray-400 max-w-4xl mx-auto">
-            Stop paying for tools that don't generate revenue. Every feature in KenjiAI automates your business, closes more deals, and puts money in your pocket while you sleep.
+            Stop paying for tools that don't generate revenue. Every feature in KenjiAI is built to automate your business, 
+            close more deals, and put money in your pocket while you sleep.
           </p>
         </motion.div>
 

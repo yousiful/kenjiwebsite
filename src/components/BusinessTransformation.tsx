@@ -59,7 +59,8 @@ const BusinessTransformation: React.FC = () => {
             </span>
           </h2>
           <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
-            We don't replace humans. We amplify them. KenjiAI combines artificial intelligence with human creativity to create more powerful, more efficient businesses.
+            We don't replace humans—we amplify them. KenjiAI combines artificial intelligence with human creativity 
+            to create businesses that are more powerful, more efficient, and more human than ever before.
           </p>
         </motion.div>
 

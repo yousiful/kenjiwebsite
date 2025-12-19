@@ -62,8 +62,8 @@ const FinalCTA: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-2xl sm:text-3xl text-gray-300 mb-12 leading-relaxed max-w-5xl mx-auto"
         >
-          Join the AI revolution creating the next generation of business empires.
-          One platform. Infinite possibilities. Unlimited growth.
+          Join the AI revolution that's creating the next generation of business empires. 
+          One platform, infinite possibilities, unlimited growth.
         </motion.p>
 
         {/* Success Indicators */}
@@ -190,7 +190,7 @@ const FinalCTA: React.FC = () => {
           transition={{ duration: 0.8, delay: 1.6 }}
           className="text-gray-400 text-xl mb-8"
         >
-          Your business empire starts now.
+          The future belongs to those who embrace AI today. Your business empire starts now.
         </motion.p>
 
         {/* Trust Indicators */}

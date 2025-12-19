@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-lg sm:text-xl text-gray-400 mb-8 max-w-4xl mx-auto"
         >
-          Every minute on repetitive tasks costs you money. Let AI handle the boring stuff. You focus on growth.
+          Every minute you spend on repetitive tasks costs you money. Let AI handle the boring stuff while you focus on what actually grows your business.
         </motion.p>
 
         <motion.p
