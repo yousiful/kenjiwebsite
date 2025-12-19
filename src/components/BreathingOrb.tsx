@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
 interface BreathingOrbProps {
@@ -14,7 +14,7 @@ interface BreathingOrbProps {
   delay?: number;
 }
 
-export const BreathingOrb: React.FC<BreathingOrbProps> = memo(({
+export const BreathingOrb: React.FC<BreathingOrbProps> = ({
   size = 400,
   color = '#3B82F6',
   intensity = 0.3,
@@ -23,7 +23,7 @@ export const BreathingOrb: React.FC<BreathingOrbProps> = memo(({
 }) => {
   return (
     <motion.div
-      className="absolute rounded-full blur-3xl pointer-events-none will-change-transform"
+      className="absolute rounded-full blur-3xl pointer-events-none"
       style={{
         width: size,
         height: size,
@@ -32,6 +32,7 @@ export const BreathingOrb: React.FC<BreathingOrbProps> = memo(({
       animate={{
         scale: [1, 1.2, 1],
         opacity: [intensity, intensity * 1.5, intensity],
+        filter: ['blur(60px)', 'blur(80px)', 'blur(60px)'],
       }}
       transition={{
         duration: 4,
@@ -48,17 +49,17 @@ export const BreathingOrb: React.FC<BreathingOrbProps> = memo(({
       />
     </motion.div>
   );
-});
+};
 
 export const FloatingParticle: React.FC<{
   delay?: number;
   duration?: number;
   x?: number;
   y?: number;
-}> = memo(({ delay = 0, duration = 4, x = 0, y = 0 }) => {
+}> = ({ delay = 0, duration = 4, x = 0, y = 0 }) => {
   return (
     <motion.div
-      className="absolute w-2 h-2 rounded-full will-change-transform"
+      className="absolute w-2 h-2 rounded-full"
       style={{
         left: x,
         top: y,
@@ -79,4 +80,4 @@ export const FloatingParticle: React.FC<{
       }}
     />
   );
-});
+};

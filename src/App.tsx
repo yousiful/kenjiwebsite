@@ -2,26 +2,25 @@ import React, { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import LoadingSpinner from './components/LoadingSpinner';
+import InteractiveMouseCaption from './components/InteractiveMouseCaption';
+import GamificationSystem from './components/GamificationSystem';
+import GamifiedInteractions from './components/GamifiedInteractions';
+import UserActivityNotifications from './components/UserActivityNotifications';
+import ScrollProgressBar from './components/ScrollProgressBar';
+import RedirectSystem from './components/RedirectSystem';
+import EnhancedInteractiveElements from './components/EnhancedInteractiveElements';
+import PerformanceOptimizer from './components/PerformanceOptimizer';
 import ErrorBoundary from './components/ErrorBoundary';
+import LoadingSpinner from './components/LoadingSpinner';
+import NotFoundPage from './components/NotFoundPage';
 import AutoFormattingProvider from './components/AutoFormattingProvider';
+import LinkValidator from './components/LinkValidator';
 import { HolidayThemeProvider } from './contexts/HolidayThemeContext';
-
-const InteractiveMouseCaption = lazy(() => import('./components/InteractiveMouseCaption'));
-const GamificationSystem = lazy(() => import('./components/GamificationSystem'));
-const GamifiedInteractions = lazy(() => import('./components/GamifiedInteractions'));
-const UserActivityNotifications = lazy(() => import('./components/UserActivityNotifications'));
-const ScrollProgressBar = lazy(() => import('./components/ScrollProgressBar'));
-const RedirectSystem = lazy(() => import('./components/RedirectSystem'));
-const EnhancedInteractiveElements = lazy(() => import('./components/EnhancedInteractiveElements'));
-const PerformanceOptimizer = lazy(() => import('./components/PerformanceOptimizer'));
-const NotFoundPage = lazy(() => import('./components/NotFoundPage'));
-const LinkValidator = lazy(() => import('./components/LinkValidator'));
-const LiveNotification = lazy(() => import('./components/LiveNotification'));
-const HolidayFloatingElements = lazy(() => import('./components/HolidayFloatingElements'));
-const HolidaySnowfall = lazy(() => import('./components/HolidaySnowfall'));
-const HolidaySparkles = lazy(() => import('./components/HolidaySparkles'));
-const BottomSocialProof = lazy(() => import('./components/BottomSocialProof'));
+import { LiveNotification } from './components/LiveNotification';
+import { HolidayFloatingElements } from './components/HolidayFloatingElements';
+import { HolidaySnowfall } from './components/HolidaySnowfall';
+import { HolidaySparkles } from './components/HolidaySparkles';
+import { BottomSocialProof } from './components/BottomSocialProof';
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -60,64 +59,62 @@ function App() {
         <AutoFormattingProvider>
           <Router>
             <ScrollToTop />
-            <Suspense fallback={null}>
-              <LinkValidator />
-              <RedirectSystem />
-              <LiveNotification />
-              <InteractiveMouseCaption>
-                <div className="min-h-screen bg-gray-900" id="app-container">
-                  <PerformanceOptimizer />
-                  <ScrollProgressBar />
-                  <GamificationSystem />
-                  <GamifiedInteractions />
-                  <EnhancedInteractiveElements />
-                  <UserActivityNotifications />
-                  <HolidayFloatingElements />
-                  <HolidaySnowfall />
-                  <HolidaySparkles />
-                  <BottomSocialProof />
-                  <header role="banner">
-                    <Navbar />
-                  </header>
-                  <Suspense fallback={<LoadingSpinner />}>
-                    <main id="main-content" role="main">
-                      <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route path="/tools" element={<Navigate to="/free-tools" replace />} />
-                        <Route path="/free-tools" element={<FreeToolsPage />} />
-                        <Route path="/ai-automation" element={<AIAutomationPage />} />
-                        <Route path="/voice-agents" element={<VoiceAgentsPage />} />
-                        <Route path="/voice-ai" element={<VoiceAILandingPage />} />
-                        <Route path="/marketing-automation" element={<MarketingAutomationPage />} />
-                        <Route path="/crm" element={<CRMPage />} />
-                        <Route path="/knowledge" element={<KnowledgeBasePage />} />
-                        <Route path="/ai-education" element={<AIEducationPage />} />
-                        <Route path="/blog/:slug" element={<BlogPost />} />
-                        <Route path="/investors" element={<InvestorPage />} />
-                        <Route path="/pricing" element={<ProductSelectionPage />} />
-                        <Route path="/success" element={<SuccessPage />} />
+            <LinkValidator />
+            <RedirectSystem />
+            <LiveNotification />
+            <InteractiveMouseCaption>
+              <div className="min-h-screen bg-gray-900" id="app-container">
+                <PerformanceOptimizer />
+                <ScrollProgressBar />
+                <GamificationSystem />
+                <GamifiedInteractions />
+                <EnhancedInteractiveElements />
+                <UserActivityNotifications />
+                <HolidayFloatingElements />
+                <HolidaySnowfall />
+                <HolidaySparkles />
+                <BottomSocialProof />
+                <header role="banner">
+                  <Navbar />
+                </header>
+              <Suspense fallback={<LoadingSpinner />}>
+                <main id="main-content" role="main">
+                  <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/tools" element={<Navigate to="/free-tools" replace />} />
+                    <Route path="/free-tools" element={<FreeToolsPage />} />
+                    <Route path="/ai-automation" element={<AIAutomationPage />} />
+                    <Route path="/voice-agents" element={<VoiceAgentsPage />} />
+                    <Route path="/voice-ai" element={<VoiceAILandingPage />} />
+                    <Route path="/marketing-automation" element={<MarketingAutomationPage />} />
+                    <Route path="/crm" element={<CRMPage />} />
+                    <Route path="/knowledge" element={<KnowledgeBasePage />} />
+                    <Route path="/ai-education" element={<AIEducationPage />} />
+                    <Route path="/blog/:slug" element={<BlogPost />} />
+                    <Route path="/investors" element={<InvestorPage />} />
+                    <Route path="/pricing" element={<ProductSelectionPage />} />
+                    <Route path="/success" element={<SuccessPage />} />
 
-                        {/* Legal Pages */}
-                        <Route path="/privacy" element={<PrivacyPolicyPage />} />
-                        <Route path="/disclaimer" element={<DisclaimerPage />} />
-                        <Route path="/terms" element={<TermsOfServicePage />} />
+                    {/* Legal Pages */}
+                    <Route path="/privacy" element={<PrivacyPolicyPage />} />
+                    <Route path="/disclaimer" element={<DisclaimerPage />} />
+                    <Route path="/terms" element={<TermsOfServicePage />} />
 
-                        {/* Redirect legacy routes */}
-                        <Route path="/blog" element={<Navigate to="/knowledge" replace />} />
+                    {/* Redirect legacy routes */}
+                    <Route path="/blog" element={<Navigate to="/knowledge" replace />} />
 
-                        {/* Catch all route for 404s */}
-                        <Route path="*" element={<NotFoundPage />} />
-                      </Routes>
-                    </main>
-                  </Suspense>
-                  <footer role="contentinfo">
-                    <Footer />
-                  </footer>
-                </div>
-              </InteractiveMouseCaption>
-            </Suspense>
-          </Router>
-        </AutoFormattingProvider>
+                    {/* Catch all route for 404s */}
+                    <Route path="*" element={<NotFoundPage />} />
+                  </Routes>
+                </main>
+              </Suspense>
+              <footer role="contentinfo">
+                <Footer />
+              </footer>
+            </div>
+          </InteractiveMouseCaption>
+        </Router>
+      </AutoFormattingProvider>
       </HolidayThemeProvider>
     </ErrorBoundary>
   );

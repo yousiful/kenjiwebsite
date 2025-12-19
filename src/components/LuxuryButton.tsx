@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import { motion, MotionProps } from 'framer-motion';
 
 interface LuxuryButtonProps {
@@ -10,7 +10,7 @@ interface LuxuryButtonProps {
   className?: string;
 }
 
-export const LuxuryButton: React.FC<LuxuryButtonProps> = memo(({
+export const LuxuryButton: React.FC<LuxuryButtonProps> = ({
   children,
   href,
   onClick,
@@ -70,7 +70,7 @@ export const LuxuryButton: React.FC<LuxuryButtonProps> = memo(({
           duration: 0.2,
         },
       }}
-      className={`group relative inline-flex items-center justify-center gap-3 font-bold rounded-2xl overflow-hidden cursor-pointer will-change-transform ${sizeClass} ${className}`}
+      className={`group relative inline-flex items-center justify-center gap-3 font-bold rounded-2xl overflow-hidden cursor-pointer ${sizeClass} ${className}`}
       style={{
         background: style.background,
         boxShadow: style.shadow,
@@ -138,4 +138,4 @@ export const LuxuryButton: React.FC<LuxuryButtonProps> = memo(({
   }
 
   return <div onClick={onClick}>{buttonContent}</div>;
-});
+};
