@@ -8,12 +8,16 @@ export function HolidayFloatingElements() {
   if (!isHolidayActive || !currentHoliday) return null;
 
   const positions = [
-    { top: '10%', left: '5%', delay: 0 },
-    { top: '25%', right: '8%', delay: 0.5 },
-    { top: '45%', left: '3%', delay: 1 },
-    { top: '60%', right: '5%', delay: 1.5 },
-    { top: '80%', left: '7%', delay: 2 },
-    { top: '90%', right: '10%', delay: 2.5 }
+    { top: '5%', left: '5%', delay: 0 },
+    { top: '15%', right: '8%', delay: 0.3 },
+    { top: '25%', left: '10%', delay: 0.6 },
+    { top: '35%', right: '12%', delay: 0.9 },
+    { top: '45%', left: '3%', delay: 1.2 },
+    { top: '55%', right: '5%', delay: 1.5 },
+    { top: '65%', left: '15%', delay: 1.8 },
+    { top: '75%', right: '7%', delay: 2.1 },
+    { top: '85%', left: '7%', delay: 2.4 },
+    { top: '95%', right: '10%', delay: 2.7 }
   ];
 
   return (
@@ -23,12 +27,13 @@ export function HolidayFloatingElements() {
           key={index}
           initial={{ opacity: 0, scale: 0 }}
           animate={{
-            opacity: [0.3, 0.6, 0.3],
-            scale: [1, 1.2, 1],
-            rotate: [0, 360]
+            opacity: [0.2, 0.7, 0.2],
+            scale: [0.8, 1.3, 0.8],
+            rotate: [0, 360],
+            y: [0, -20, 0]
           }}
           transition={{
-            duration: 8,
+            duration: 6 + (index % 3),
             repeat: Infinity,
             delay: pos.delay,
             ease: "easeInOut"
@@ -38,7 +43,7 @@ export function HolidayFloatingElements() {
             top: pos.top,
             left: pos.left,
             right: pos.right,
-            fontSize: '2rem'
+            fontSize: index % 2 === 0 ? '2.5rem' : '1.8rem'
           }}
         >
           {currentHoliday.emoji}
@@ -48,18 +53,28 @@ export function HolidayFloatingElements() {
       <motion.div
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
-        className="fixed bottom-8 left-4 bg-gradient-to-r from-emerald-600 to-blue-600 text-white px-4 py-2 rounded-lg shadow-lg z-[45] hidden lg:flex items-center gap-2"
+        className="fixed bottom-8 left-4 bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 text-white px-5 py-3 rounded-xl shadow-2xl z-[45] hidden lg:flex items-center gap-3 border-2 border-white/20"
       >
         <motion.span
-          animate={{ rotate: [0, 15, -15, 0] }}
+          animate={{
+            rotate: [0, 15, -15, 0],
+            scale: [1, 1.2, 1]
+          }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="text-xl"
+          className="text-2xl"
         >
           {currentHoliday.emoji}
         </motion.span>
         <div className="text-sm">
-          <div className="font-bold">{currentHoliday.offer_badge}</div>
+          <motion.div
+            className="font-bold text-yellow-300 mb-1"
+            animate={{ opacity: [1, 0.7, 1] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          >
+            {currentHoliday.offer_badge}
+          </motion.div>
           <div className="text-xs opacity-90">{currentHoliday.offer_text}</div>
+          <div className="text-xs text-yellow-200 mt-1 font-semibold">{currentHoliday.urgency_text}</div>
         </div>
       </motion.div>
     </>

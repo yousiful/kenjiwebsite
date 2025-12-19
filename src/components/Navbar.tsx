@@ -224,7 +224,7 @@ const Navbar: React.FC = () => {
           <div className="hidden md:flex items-center gap-3" role="none">
             {/* Login Button */}
             <motion.a
-              href="https://app.kenjicrm.com"
+              href="https://app.kenjiai.com"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
@@ -328,7 +328,7 @@ const Navbar: React.FC = () => {
               
               {/* Mobile Login Button */}
               <a
-                href="https://app.kenjicrm.com"
+                href="https://app.kenjiai.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-2"
