@@ -33,7 +33,7 @@ export function HolidaySnowfall() {
   const isWinterHoliday = currentHoliday.name === 'Christmas' || currentHoliday.name === 'New Year' || currentHoliday.name === 'New Year Eve';
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-[3] overflow-hidden">
+    <div className="fixed inset-0 pointer-events-none z-[1] overflow-hidden">
       {snowflakes.map((flake) => (
         <motion.div
           key={flake.id}
@@ -41,7 +41,7 @@ export function HolidaySnowfall() {
           animate={{
             y: '100vh',
             x: [0, Math.sin(flake.id) * 50, 0],
-            opacity: [0, 1, 1, 0],
+            opacity: [0, 0.4, 0.4, 0],
             rotate: [0, 360]
           }}
           transition={{
@@ -53,7 +53,7 @@ export function HolidaySnowfall() {
           className="absolute text-white"
           style={{
             left: `${flake.left}%`,
-            fontSize: `${flake.size}rem`,
+            fontSize: `${flake.size * 0.5}rem`,
           }}
         >
           {isWinterHoliday ? '❄️' : currentHoliday.emoji}

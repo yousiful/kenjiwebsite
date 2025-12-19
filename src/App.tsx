@@ -18,7 +18,6 @@ import LinkValidator from './components/LinkValidator';
 import { HolidayThemeProvider } from './contexts/HolidayThemeContext';
 import { LiveNotification } from './components/LiveNotification';
 import { HolidayFloatingElements } from './components/HolidayFloatingElements';
-import { HolidayBanner } from './components/HolidayBanner';
 import { HolidaySnowfall } from './components/HolidaySnowfall';
 import { HolidaySparkles } from './components/HolidaySparkles';
 import { BottomSocialProof } from './components/BottomSocialProof';
@@ -77,7 +76,6 @@ function App() {
                 <BottomSocialProof />
                 <header role="banner">
                   <Navbar />
-                  <HolidayBanner />
                 </header>
               <Suspense fallback={<LoadingSpinner />}>
                 <main id="main-content" role="main">
