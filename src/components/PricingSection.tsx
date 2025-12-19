@@ -222,7 +222,7 @@ const PricingSection: React.FC = () => {
             No tiers, no limits—just complete business automation power.
           </p>
           
-          {/* Enhanced Free Trial Highlight */}
+          {/* Value Proposition */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -230,8 +230,8 @@ const PricingSection: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="inline-flex items-center gap-2 investor-gradient-green text-white border border-green-400/50 rounded-full px-6 py-3 mb-6 mobile-hover"
           >
-            <Gift className="w-5 h-5" />
-            <span className="font-semibold">🎉 16 Days FREE Trial - No Credit Card Required</span>
+            <Zap className="w-5 h-5" />
+            <span className="font-semibold">Complete Business Automation Platform</span>
           </motion.div>
 
           {/* Enhanced Earned Discount Banner */}
@@ -327,14 +327,14 @@ const PricingSection: React.FC = () => {
                 The ultimate AI-powered business automation platform
               </p>
               
-              {/* Compact Free Trial Banner */}
+              {/* Platform Access Banner */}
               <div className="investor-gradient-green border border-green-400/30 rounded-xl p-3 mb-4 mobile-hover">
                 <div className="flex items-center justify-center gap-2 mb-1">
-                  <Gift className="w-4 h-4" />
-                  <span className="text-white font-bold">16 Days FREE Trial</span>
+                  <Zap className="w-4 h-4" />
+                  <span className="text-white font-bold">Instant Platform Access</span>
                 </div>
                 <div className="text-white text-sm">
-                  Full access • No credit card required • Cancel anytime
+                  Full features • Complete automation • Unlimited usage
                 </div>
               </div>
               
@@ -386,7 +386,7 @@ const PricingSection: React.FC = () => {
                 <div className="text-center mb-4">
                   <div className="text-green-400 font-semibold mb-1">{pricing.yearly.savings}</div>
                   <div className="text-gray-400 text-sm">
-                    Billed annually at ${hasEarnedDiscount ? pricing.yearly.discountedPrice : pricing.yearly.price} (after trial)
+                    Billed annually at ${hasEarnedDiscount ? pricing.yearly.discountedPrice : pricing.yearly.price}
                   </div>
                 </div>
               )}
@@ -424,7 +424,7 @@ const PricingSection: React.FC = () => {
                 </>
               ) : (
                 <>
-                  Start Your 16-Day FREE Trial
+                  Get Started Now
                   {hasEarnedDiscount && <span className="text-yellow-300">+ Use LUCKY</span>}
                   <ArrowRight className="w-5 h-5" />
                 </>
@@ -435,11 +435,11 @@ const PricingSection: React.FC = () => {
             <div className="grid grid-cols-2 gap-4 text-center mb-3">
               <div className="flex items-center justify-center text-green-400 text-sm mobile-hover">
                 <Star className="w-4 h-4 mr-1" />
-                30-day money-back guarantee
+                Instant activation
               </div>
               <div className="flex items-center justify-center text-blue-400 text-sm mobile-hover">
                 <Check className="w-4 h-4 mr-1" />
-                Cancel anytime
+                Full platform access
               </div>
             </div>
 

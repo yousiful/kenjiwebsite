@@ -2,16 +2,13 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import Hero from '../components/Hero';
 import BusinessTransformation from '../components/BusinessTransformation';
-import IntelligentCore from '../components/IntelligentCore';
-import ReliabilityEngine from '../components/ReliabilityEngine';
-import EngagementEngine from '../components/EngagementEngine';
-import FutureProofFramework from '../components/FutureProofFramework';
 import Features from '../components/Features';
 import Tools from '../components/Tools';
-import LiveBusinessDemo from '../components/LiveBusinessDemo';
 import PricingSection from '../components/PricingSection';
 import SocialProof from '../components/SocialProof';
 import FinalCTA from '../components/FinalCTA';
+import { ProofNotification } from '../components/ProofNotification';
+import { ScrollControls } from '../components/ScrollControls';
 
 const HomePage: React.FC = () => {
   const structuredData = {
@@ -67,16 +64,13 @@ const HomePage: React.FC = () => {
         <h1 id="home-heading" className="sr-only">KenjiAI - AI That Closes Deals While You Sleep</h1>
         <Hero />
         <BusinessTransformation />
-        <IntelligentCore />
-        <ReliabilityEngine />
-        <EngagementEngine />
-        <FutureProofFramework />
         <Features />
         <Tools />
-        <LiveBusinessDemo />
         <PricingSection />
         <SocialProof />
         <FinalCTA />
+        <ProofNotification />
+        <ScrollControls />
       </div>
     </>
   );

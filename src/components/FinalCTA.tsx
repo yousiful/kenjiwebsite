@@ -4,12 +4,12 @@ import { ArrowRight, CheckCircle, Zap, Rocket, Crown, Star } from 'lucide-react'
 
 const FinalCTA: React.FC = () => {
   const benefits = [
-    "No credit card required for trial",
-    "Cancel anytime, no questions asked", 
+    "Instant platform activation",
+    "Complete automation toolkit",
     "Full access to all features",
     "24/7 AI support included",
-    "30-day money-back guarantee",
-    "White-glove onboarding"
+    "Proven ROI framework",
+    "Expert onboarding support"
   ];
 
   const urgencyIndicators = [
