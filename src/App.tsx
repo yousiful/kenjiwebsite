@@ -23,6 +23,7 @@ import { HolidayBanner } from './components/HolidayBanner';
 const HomePage = lazy(() => import('./pages/HomePage'));
 const ToolsPage = lazy(() => import('./pages/ToolsPage'));
 const KnowledgeBasePage = lazy(() => import('./pages/KnowledgeBasePage'));
+const AIEducationPage = lazy(() => import('./pages/AIEducationPage'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
 const InvestorPage = lazy(() => import('./pages/InvestorPage'));
 const ProductSelectionPage = lazy(() => import('./pages/ProductSelectionPage'));
@@ -79,14 +80,15 @@ function App() {
                     <Route path="/marketing-automation" element={<MarketingAutomationPage />} />
                     <Route path="/crm" element={<CRMPage />} />
                     <Route path="/knowledge" element={<KnowledgeBasePage />} />
+                    <Route path="/ai-education" element={<AIEducationPage />} />
                     <Route path="/blog/:slug" element={<BlogPost />} />
                     <Route path="/investors" element={<InvestorPage />} />
                     <Route path="/pricing" element={<ProductSelectionPage />} />
                     <Route path="/success" element={<SuccessPage />} />
-                    
+
                     {/* Redirect legacy routes */}
                     <Route path="/blog" element={<Navigate to="/knowledge" replace />} />
-                    
+
                     {/* Catch all route for 404s */}
                     <Route path="*" element={<NotFoundPage />} />
                   </Routes>

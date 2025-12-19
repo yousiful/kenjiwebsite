@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
     { name: "Home", href: "/" },
     { name: "Solutions", href: "/ai-automation", hasDropdown: true, dropdownType: "solutions" },
     { name: "Free Tools", href: "/free-tools", hasDropdown: true, dropdownType: "tools" },
-    { name: "Education", href: "/knowledge" },
+    { name: "AI Education", href: "/ai-education" },
     { name: "Pricing", href: "/pricing" },
     { name: "Investors", href: "/investors" }
   ];

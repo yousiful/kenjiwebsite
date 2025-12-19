@@ -4,7 +4,6 @@ import Hero from '../components/Hero';
 import BusinessTransformation from '../components/BusinessTransformation';
 import Features from '../components/Features';
 import Tools from '../components/Tools';
-import PricingSection from '../components/PricingSection';
 import SocialProof from '../components/SocialProof';
 import FinalCTA from '../components/FinalCTA';
 import { ProofNotification } from '../components/ProofNotification';
@@ -66,7 +65,6 @@ const HomePage: React.FC = () => {
         <BusinessTransformation />
         <Features />
         <Tools />
-        <PricingSection />
         <SocialProof />
         <FinalCTA />
         <ProofNotification />

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Play, Users, Zap, Sparkles } from 'lucide-react';
 import { useHolidayTheme } from '../contexts/HolidayThemeContext';
+import { TypingHeadline } from './TypingHeadline';
 
 const Hero: React.FC = () => {
   const { textGradientClass, currentHoliday } = useHolidayTheme();
@@ -33,25 +34,14 @@ const Hero: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Headline with Gradient */}
+        {/* Headline with Typing Animation */}
         <motion.h1
           id="hero-heading"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-5xl sm:text-6xl lg:text-8xl font-bold mb-6 leading-tight"
-          style={{fontFamily: 'Inter, Montserrat, sans-serif'}}
         >
-          <span style={{
-            background: 'linear-gradient(90deg, #ff6b9d 0%, #ffa69e 20%, #ffd97d 40%, #f9ed69 60%, #c9f0ff 80%, #a1c4fd 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            letterSpacing: '0.02em'
-          }}>
-            Automate Your Sales, 10X Your Revenue
-          </span>
-          <span className="text-pink-500">|</span>
+          <TypingHeadline />
         </motion.h1>
 
         {/* Subheadline */}
