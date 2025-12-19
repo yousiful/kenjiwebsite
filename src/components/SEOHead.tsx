@@ -19,11 +19,11 @@ export interface SEOHeadProps {
 }
 
 const SEOHead: React.FC<SEOHeadProps> = ({
-  title = "KenjiAI - Free AI Tools, Business Automation Platform & AI Knowledge Base",
-  description = "Free AI tools + Complete AI business automation platform: Voice agents that close deals 24/7, smart workflows, community building, course creation, CRM, marketing automation. Plus comprehensive AI knowledge base with latest insights.",
-  keywords = "free AI tools, AI automation, business automation, AI voice agents, AI marketing, AI sales, smart workflows, CRM automation, AI chatbots, business intelligence, AI platform, AI knowledge base, AI blog, AI tutorials, prompt generator",
+  title = "KenjiAI - Transform Your Business with AI Automation | Free Tools + Voice Agents That Close Deals 24/7",
+  description = "🚀 Scale your business with AI that works while you sleep. Free AI tools + Voice agents closing deals 24/7, smart CRM, marketing automation. Join 50,000+ businesses earning $500K+/month. Book your VIP demo today!",
+  keywords = "free AI tools, AI automation, business automation, AI voice agents, AI marketing, AI sales, smart workflows, CRM automation, AI chatbots, business intelligence, AI platform, AI knowledge base, AI blog, AI tutorials, prompt generator, make money with AI, AI business growth, passive income AI, AI sales automation, AI lead generation",
   canonical,
-  ogImage = "https://kenjiai.com/og-image.jpg",
+  ogImage = "https://kenjiai.com/og-image.svg",
   ogType = "website",
   article,
   structuredData
@@ -64,17 +64,28 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content="KenjiAI - AI Business Automation Platform with Voice Agents, Smart CRM, and Free AI Tools" />
       <meta property="og:site_name" content="KenjiAI" />
       <meta property="og:locale" content="en_US" />
-      
+
+      {/* Additional Meta Tags for Better Indexing */}
+      <meta name="format-detection" content="telephone=yes" />
+      <meta name="HandheldFriendly" content="true" />
+      <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+
       {/* Twitter */}
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={canonicalUrl} />
       <meta property="twitter:title" content={fullTitle} />
       <meta property="twitter:description" content={description} />
       <meta property="twitter:image" content={ogImage} />
+      <meta property="twitter:image:alt" content="KenjiAI - AI Business Automation Platform" />
       <meta property="twitter:creator" content="@KenjiAI" />
       <meta property="twitter:site" content="@KenjiAI" />
+      <meta name="twitter:label1" content="Built for" />
+      <meta name="twitter:data1" content="Business Owners & Entrepreneurs" />
+      <meta name="twitter:label2" content="Pricing" />
+      <meta name="twitter:data2" content="Performance-Based" />
       
       {/* Article specific meta tags */}
       {article && (

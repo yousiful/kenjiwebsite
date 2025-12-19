@@ -7,10 +7,12 @@ Allow: /knowledge
 Allow: /tools
 Allow: /ai-automation
 Allow: /voice-agents
+Allow: /voice-ai
 Allow: /marketing-automation
 Allow: /crm
 Allow: /pricing
 Allow: /blog/*
+Allow: /investors
 
 # Sitemap location
 Sitemap: https://kenjiai.com/sitemap.xml
