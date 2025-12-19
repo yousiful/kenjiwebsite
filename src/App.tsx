@@ -18,6 +18,7 @@ import LinkValidator from './components/LinkValidator';
 import { HolidayThemeProvider } from './contexts/HolidayThemeContext';
 import { LiveNotification } from './components/LiveNotification';
 import { HolidayFloatingElements } from './components/HolidayFloatingElements';
+import { BottomSocialProof } from './components/BottomSocialProof';
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -68,6 +69,7 @@ function App() {
                 <EnhancedInteractiveElements />
                 <UserActivityNotifications />
                 <HolidayFloatingElements />
+                <BottomSocialProof />
                 <header role="banner">
                   <Navbar />
                 </header>

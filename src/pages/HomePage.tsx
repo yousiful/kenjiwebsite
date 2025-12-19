@@ -9,6 +9,9 @@ import FinalCTA from '../components/FinalCTA';
 import { ProofNotification } from '../components/ProofNotification';
 import { ScrollControls } from '../components/ScrollControls';
 import { ResultsDisclaimer } from '../components/ResultsDisclaimer';
+import { TrustBadges } from '../components/TrustBadges';
+import { MoneyBackGuarantee } from '../components/MoneyBackGuarantee';
+import { RealTimeStats } from '../components/RealTimeStats';
 
 const HomePage: React.FC = () => {
   const structuredData = {
@@ -63,10 +66,15 @@ const HomePage: React.FC = () => {
       <div className="pt-16" aria-labelledby="home-heading">
         <h1 id="home-heading" className="sr-only">KenjiAI - AI That Closes Deals While You Sleep</h1>
         <Hero />
+        <TrustBadges />
         <BusinessTransformation />
+        <RealTimeStats />
         <Features />
         <Tools />
         <SocialProof />
+        <div className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+          <MoneyBackGuarantee />
+        </div>
         <div className="py-8 px-4 sm:px-6 lg:px-8">
           <ResultsDisclaimer />
         </div>
