@@ -1,8 +1,29 @@
-import React from 'react';
+import React, { memo, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { BreathingOrb, FloatingParticle } from './BreathingOrb';
 
-export const AmbientBackground: React.FC = () => {
+export const AmbientBackground: React.FC<{ reducedMotion?: boolean }> = memo(({ reducedMotion = false }) => {
+  const particleCount = reducedMotion ? 10 : 30;
+
+  const particles = useMemo(() => {
+    return [...Array(particleCount)].map((_, i) => ({
+      key: i,
+      delay: i * 0.3,
+      duration: 4 + Math.random() * 3,
+      x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
+      y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
+    }));
+  }, [particleCount]);
+
+  if (reducedMotion) {
+    return (
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl" />
+      </div>
+    );
+  }
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <BreathingOrb
@@ -45,13 +66,13 @@ export const AmbientBackground: React.FC = () => {
         delay={2.5}
       />
 
-      {[...Array(30)].map((_, i) => (
+      {particles.map(({ key, delay, duration, x, y }) => (
         <FloatingParticle
-          key={i}
-          delay={i * 0.3}
-          duration={4 + Math.random() * 3}
-          x={Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200)}
-          y={Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800)}
+          key={key}
+          delay={delay}
+          duration={duration}
+          x={x}
+          y={y}
         />
       ))}
 
@@ -72,4 +93,4 @@ export const AmbientBackground: React.FC = () => {
       />
     </div>
   );
-};
+});
