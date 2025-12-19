@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check, Star, ArrowRight, Calendar, Zap, Shield, CreditCard, TrendingUp, Target, Rocket } from 'lucide-react';
+import { Check, Star, ArrowRight, Calendar, Zap, Shield, CreditCard, TrendingUp, Target, Rocket, Video, LogIn } from 'lucide-react';
 import { ToolReplacementBar } from './ToolReplacementBar';
 
 export function PricingNew() {
@@ -209,7 +209,7 @@ export function PricingNew() {
                 <span className="text-white font-semibold">Everything Included</span>
               </div>
               <p className="text-gray-300 text-sm text-center">
-                All features • Cancel anytime • 30-day guarantee
+                All features • Full platform access
               </p>
             </div>
 
@@ -255,7 +255,7 @@ export function PricingNew() {
 
             <div className="flex items-center justify-center gap-2 mt-4 text-gray-500 text-xs">
               <Shield className="w-4 h-4" />
-              <span>30-day money-back guarantee</span>
+              <span>Secured by Stripe • SSL Encrypted</span>
             </div>
           </motion.div>
 
@@ -304,7 +304,7 @@ export function PricingNew() {
                 <span className="text-white font-semibold">Everything Included + Savings</span>
               </div>
               <p className="text-gray-300 text-sm text-center">
-                All features • 2 months free • 30-day guarantee
+                All features • 2 months free • Best value
               </p>
             </div>
 
@@ -350,7 +350,7 @@ export function PricingNew() {
 
             <div className="flex items-center justify-center gap-2 mt-4 text-gray-500 text-xs">
               <Shield className="w-4 h-4" />
-              <span>30-day money-back guarantee • Secured by Stripe • SSL Encrypted • PCI Compliant</span>
+              <span>Secured by Stripe • SSL Encrypted • PCI Compliant</span>
             </div>
           </motion.div>
 
@@ -447,7 +447,7 @@ export function PricingNew() {
 
             {/* CTA Button */}
             <motion.a
-              href="https://calendly.com/kenjiai-demo"
+              href="https://go.mediatraffics.com/leads"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
@@ -471,6 +471,99 @@ export function PricingNew() {
             </div>
           </motion.div>
         </div>
+
+        {/* CTA Section - 2 Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="mt-20 max-w-4xl mx-auto"
+        >
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">
+              Ready to Transform Your Business?
+            </h2>
+            <p className="text-lg text-gray-400">
+              Book a VIP call or login to your existing account
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+            {/* Book VIP Call Button */}
+            <motion.a
+              href="https://go.mediatraffics.com/leads"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.03, y: -5 }}
+              whileTap={{ scale: 0.98 }}
+              className="group relative bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl p-8 flex flex-col items-center justify-center text-center overflow-hidden shadow-2xl"
+            >
+              {/* Animated background gradient */}
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-red-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+              {/* Shine effect */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shine-slow"></div>
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                  <Video className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">Book VIP Call</h3>
+                <p className="text-orange-100 text-sm mb-4">
+                  Schedule a personalized demo with our team
+                </p>
+                <div className="flex items-center justify-center gap-2 text-white font-semibold">
+                  <span>Get Started</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </div>
+              </div>
+
+              {/* Glow effect */}
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                   style={{boxShadow: '0 0 40px rgba(249, 115, 22, 0.6)'}}></div>
+            </motion.a>
+
+            {/* Login Button */}
+            <motion.a
+              href="https://app.kenjiai.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.03, y: -5 }}
+              whileTap={{ scale: 0.98 }}
+              className="group relative bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-8 flex flex-col items-center justify-center text-center overflow-hidden shadow-2xl"
+            >
+              {/* Animated background gradient */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-purple-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+              {/* Shine effect */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shine-slow"></div>
+              </div>
+
+              {/* Content */}
+              <div className="relative z-10">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                  <LogIn className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">Login to KenjiAI</h3>
+                <p className="text-blue-100 text-sm mb-4">
+                  Access your dashboard and start automating
+                </p>
+                <div className="flex items-center justify-center gap-2 text-white font-semibold">
+                  <span>Enter Dashboard</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </div>
+              </div>
+
+              {/* Glow effect */}
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                   style={{boxShadow: '0 0 40px rgba(59, 130, 246, 0.6)'}}></div>
+            </motion.a>
+          </div>
+        </motion.div>
       </div>
 
       <style>{`
