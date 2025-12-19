@@ -5,7 +5,6 @@ import Footer from './components/Footer';
 import InteractiveMouseCaption from './components/InteractiveMouseCaption';
 import GamificationSystem from './components/GamificationSystem';
 import GamifiedInteractions from './components/GamifiedInteractions';
-import UserActivityNotifications from './components/UserActivityNotifications';
 import ScrollProgressBar from './components/ScrollProgressBar';
 import RedirectSystem from './components/RedirectSystem';
 import EnhancedInteractiveElements from './components/EnhancedInteractiveElements';
@@ -20,7 +19,8 @@ import { LiveNotification } from './components/LiveNotification';
 import { HolidayFloatingElements } from './components/HolidayFloatingElements';
 import { HolidaySnowfall } from './components/HolidaySnowfall';
 import { HolidaySparkles } from './components/HolidaySparkles';
-import { BottomSocialProof } from './components/BottomSocialProof';
+import { ChatButton } from './components/ChatButton';
+import { ScrollTriggeredProof } from './components/ScrollTriggeredProof';
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -69,11 +69,11 @@ function App() {
                 <GamificationSystem />
                 <GamifiedInteractions />
                 <EnhancedInteractiveElements />
-                <UserActivityNotifications />
+                <ScrollTriggeredProof />
+                <ChatButton />
                 <HolidayFloatingElements />
                 <HolidaySnowfall />
                 <HolidaySparkles />
-                <BottomSocialProof />
                 <header role="banner">
                   <Navbar />
                 </header>

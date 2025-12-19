@@ -6,7 +6,6 @@ import Features from '../components/Features';
 import Tools from '../components/Tools';
 import SocialProof from '../components/SocialProof';
 import FinalCTA from '../components/FinalCTA';
-import { ProofNotification } from '../components/ProofNotification';
 import { ScrollControls } from '../components/ScrollControls';
 import { ResultsDisclaimer } from '../components/ResultsDisclaimer';
 import { TrustBadges } from '../components/TrustBadges';
@@ -79,7 +78,6 @@ const HomePage: React.FC = () => {
           <ResultsDisclaimer />
         </div>
         <FinalCTA />
-        <ProofNotification />
         <ScrollControls />
       </div>
     </>
