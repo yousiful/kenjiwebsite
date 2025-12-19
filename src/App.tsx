@@ -77,9 +77,9 @@ function App() {
                 <HolidayFloatingElements />
                 <HolidaySnowfall />
                 <HolidaySparkles />
+                <HolidayBanner />
                 <header role="banner">
                   <Navbar />
-                  <HolidayBanner />
                 </header>
               <Suspense fallback={<LoadingSpinner />}>
                 <main id="main-content" role="main">

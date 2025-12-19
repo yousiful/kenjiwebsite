@@ -13,7 +13,7 @@ export function HolidayBanner() {
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="sticky top-0 left-0 right-0 z-[60] bg-gradient-to-r from-red-600 via-green-600 to-red-600 border-b-2 border-yellow-400/30 shadow-lg"
+      className="fixed top-0 left-0 right-0 z-[60] bg-gradient-to-r from-red-600 via-green-600 to-red-600 border-b-2 border-yellow-400/30 shadow-lg"
       style={{
         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(220, 38, 38, 0.3)'
       }}

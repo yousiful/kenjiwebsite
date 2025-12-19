@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Zap, ChevronDown, ExternalLink, LogIn, ChevronRight, Calendar, DollarSign } from 'lucide-react';
+import { useHolidayTheme } from '../contexts/HolidayThemeContext';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,6 +10,7 @@ const Navbar: React.FC = () => {
   const [showToolsDropdown, setShowToolsDropdown] = useState(false);
   const [showSolutionsDropdown, setShowSolutionsDropdown] = useState(false);
   const location = useLocation();
+  const { isHolidayActive } = useHolidayTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,11 +50,14 @@ const Navbar: React.FC = () => {
     <motion.nav role="navigation" aria-label="Main Navigation"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-gray-900/95 backdrop-blur-lg border-b border-gray-800' 
+      className={`fixed left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'bg-gray-900/95 backdrop-blur-lg border-b border-gray-800'
           : 'bg-transparent'
       }`}
+      style={{
+        top: isHolidayActive ? '52px' : '0'
+      }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
