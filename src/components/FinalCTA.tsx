@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, Zap, Rocket, Crown, Star } from 'lucide-react';
 import { useHolidayTheme } from '../contexts/HolidayThemeContext';
+import { LuxuryButton } from './LuxuryButton';
+import { AmbientBackground } from './AmbientBackground';
 
 const FinalCTA: React.FC = () => {
   const { currentHoliday } = useHolidayTheme();
@@ -22,36 +24,7 @@ const FinalCTA: React.FC = () => {
 
   return (
     <section className="py-32 bg-gradient-to-br from-gray-900 via-blue-900/30 to-purple-900/30 relative overflow-hidden" aria-labelledby="cta-heading">
-      {/* Epic Background Effects */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-green-400/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-blue-600/5 to-green-400/5"></div>
-      </div>
-
-      {/* Animated Particles */}
-      <div className="absolute inset-0">
-        {[...Array(100)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-blue-400/60 rounded-full"
-            initial={{
-              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1200),
-              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
-              opacity: 0,
-            }}
-            animate={{
-              y: [null, -30],
-              opacity: [0, 0.8, 0],
-              scale: [1, 1.5, 1],
-            }}
-            transition={{
-              duration: Math.random() * 4 + 3,
-              repeat: Infinity,
-              delay: Math.random() * 3,
-            }}
-          />
-        ))}
-      </div>
+      <AmbientBackground />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Crown Icon */}
@@ -148,51 +121,35 @@ const FinalCTA: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 1.2 }}
-          className="mb-12"
+          className="mb-12 flex justify-center"
           role="region"
           aria-labelledby="cta-button"
         >
-          <motion.a
-            id="cta-button"
-            href="#pricing"
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0 0 60px rgba(59, 130, 246, 0.8)",
-              y: -5
-            }}
-            whileTap={{ scale: 0.95 }}
-            className="group relative inline-flex items-center gap-4 bg-gradient-to-r from-blue-600 via-purple-600 to-green-500 hover:from-blue-500 hover:via-purple-500 hover:to-green-400 text-white px-16 py-8 rounded-3xl font-bold text-2xl transition-all duration-500 shadow-2xl"
-            data-caption="Start your business transformation today - complete automation platform"
-          >
-            {currentHoliday && (
-              <motion.span
-                animate={{ rotate: [0, 15, -15, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="text-3xl"
-              >
-                {currentHoliday.emoji}
-              </motion.span>
-            )}
-            <Rocket className="w-8 h-8 group-hover:animate-bounce" />
-            <span>Start Building Your Empire</span>
-            <ArrowRight className="w-8 h-8 group-hover:translate-x-2 transition-transform" />
-
+          <div className="relative">
+            <LuxuryButton href="#pricing" variant="primary" size="xl">
+              {currentHoliday && (
+                <motion.span
+                  animate={{ rotate: [0, 15, -15, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="text-3xl"
+                >
+                  {currentHoliday.emoji}
+                </motion.span>
+              )}
+              <Rocket className="w-8 h-8" />
+              <span>Start Building Your Empire</span>
+              <ArrowRight className="w-8 h-8" />
+            </LuxuryButton>
             {currentHoliday && (
               <motion.span
                 animate={{ scale: [1, 1.15, 1] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
-                className="absolute -top-3 -right-3 bg-yellow-400 text-gray-900 text-xs font-black px-3 py-1.5 rounded-full uppercase shadow-lg"
+                className="absolute -top-3 -right-3 bg-yellow-400 text-gray-900 text-xs font-black px-3 py-1.5 rounded-full uppercase shadow-lg z-20"
               >
                 {currentHoliday.offer_badge}
               </motion.span>
             )}
-
-            {/* Epic Glow Effect */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 opacity-0 group-hover:opacity-40 blur-2xl transition-opacity duration-500"></div>
-
-            {/* Shine Effect */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 group-hover:animate-pulse"></div>
-          </motion.a>
+          </div>
         </motion.div>
 
         {/* Social Proof */}
