@@ -235,9 +235,9 @@ const Navbar: React.FC = () => {
               Login
             </motion.a>
 
-            {/* Book Consultation Button */}
+            {/* VIP Demo Button */}
             <motion.a
-              href="https://calendly.com/care-kenjiai/30min"
+              href="https://go.mediatraffics.com/leads"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
@@ -245,7 +245,7 @@ const Navbar: React.FC = () => {
               className="flex items-center gap-2 bg-gray-800 border border-gray-700 text-white px-4 py-2 rounded-xl font-semibold hover:border-blue-500 hover:shadow-lg transition-all duration-300 mobile-button focus-ring"
             >
               <Calendar className="w-4 h-4" aria-hidden="true" />
-              Book Call
+              VIP Demo
             </motion.a>
 
             {/* See Pricing Button */}
@@ -339,16 +339,16 @@ const Navbar: React.FC = () => {
                 <ExternalLink className="w-3 h-3" aria-hidden="true" />
               </a>
 
-              {/* Mobile Book Call Button */}
+              {/* Mobile VIP Demo Button */}
               <a
-                href="https://calendly.com/care-kenjiai/30min"
+                href="https://go.mediatraffics.com/leads"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-gray-800 border border-gray-700 text-white px-4 py-3 rounded-xl font-semibold mobile-button"
                 role="menuitem"
               >
                 <Calendar className="w-4 h-4" aria-hidden="true" />
-                Book Call
+                VIP Demo
               </a>
 
               {/* Mobile See Pricing Button */}

@@ -489,7 +489,7 @@ export function PricingNew() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
-            {/* Book VIP Call Button */}
+            {/* VIP Demo Button */}
             <motion.a
               href="https://go.mediatraffics.com/leads"
               target="_blank"
@@ -511,7 +511,7 @@ export function PricingNew() {
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                   <Video className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">Book VIP Call</h3>
+                <h3 className="text-2xl font-bold text-white mb-2">VIP Demo</h3>
                 <p className="text-orange-100 text-sm mb-4">
                   Schedule a personalized demo with our team
                 </p>

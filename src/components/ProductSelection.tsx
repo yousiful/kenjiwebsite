@@ -313,7 +313,7 @@ const ProductSelection: React.FC = () => {
                 </div>
               </div>
               <motion.a
-                href="https://calendly.com/kenjiai-demo"
+                href="https://go.mediatraffics.com/leads"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05 }}
@@ -321,7 +321,7 @@ const ProductSelection: React.FC = () => {
                 className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300"
               >
                 <Video className="w-6 h-6" />
-                Book Your VIP Demo Call
+                VIP Demo
                 <ArrowRight className="w-6 h-6" />
               </motion.a>
               <p className="text-gray-400 text-sm mt-4">
