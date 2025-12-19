@@ -63,7 +63,7 @@ const HomePage: React.FC = () => {
         </script>
       </Helmet>
       
-      <div className="pt-16" aria-labelledby="home-heading">
+      <div className="pt-0" aria-labelledby="home-heading">
         <h1 id="home-heading" className="sr-only">KenjiAI - AI That Closes Deals While You Sleep</h1>
         <Hero />
         <TrustBadges />
@@ -72,10 +72,10 @@ const HomePage: React.FC = () => {
         <Features />
         <Tools />
         <SocialProof />
-        <div className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <MoneyBackGuarantee />
         </div>
-        <div className="py-8 px-4 sm:px-6 lg:px-8">
+        <div className="py-4 px-4 sm:px-6 lg:px-8">
           <ResultsDisclaimer />
         </div>
         <FinalCTA />

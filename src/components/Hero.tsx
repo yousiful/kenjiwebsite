@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
   const { textGradientClass, currentHoliday } = useHolidayTheme();
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{backgroundColor: '#0B0E14'}} aria-labelledby="hero-heading">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20" style={{backgroundColor: '#0B0E14'}} aria-labelledby="hero-heading">
       <AmbientBackground />
 
       {/* Starfield Background */}
@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
         }}></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pb-16">
         {/* Mission Statement */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

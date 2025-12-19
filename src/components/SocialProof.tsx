@@ -62,7 +62,7 @@ const SocialProof: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-br from-gray-900 via-blue-900/10 to-gray-900 relative overflow-hidden" aria-labelledby="testimonials-heading">
+    <section className="py-12 bg-gradient-to-br from-gray-900 via-blue-900/10 to-gray-900 relative overflow-hidden" aria-labelledby="testimonials-heading">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-green-500/5 rounded-full blur-3xl"></div>

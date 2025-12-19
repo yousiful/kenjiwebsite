@@ -141,7 +141,7 @@ const Features: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 bg-gray-900 relative overflow-hidden" aria-labelledby="features-heading">
+    <section className="py-12 bg-gray-900 relative overflow-hidden" aria-labelledby="features-heading">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-green-400/20"></div>
