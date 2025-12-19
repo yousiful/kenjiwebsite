@@ -19,6 +19,7 @@ import { LiveNotification } from './components/LiveNotification';
 import { HolidayFloatingElements } from './components/HolidayFloatingElements';
 import { HolidaySnowfall } from './components/HolidaySnowfall';
 import { HolidaySparkles } from './components/HolidaySparkles';
+import { HolidayBanner } from './components/HolidayBanner';
 import { ChatButton } from './components/ChatButton';
 import { ScrollTriggeredProof } from './components/ScrollTriggeredProof';
 import { ErrorLogger } from './components/ErrorLogger';
@@ -78,6 +79,7 @@ function App() {
                 <HolidaySparkles />
                 <header role="banner">
                   <Navbar />
+                  <HolidayBanner />
                 </header>
               <Suspense fallback={<LoadingSpinner />}>
                 <main id="main-content" role="main">
