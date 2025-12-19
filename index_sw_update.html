@@ -1,0 +1,37 @@
+    <!-- Service Worker registration with aggressive cache clearing -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', async () => {
+          try {
+            const registrations = await navigator.serviceWorker.getRegistrations();
+            
+            for (let registration of registrations) {
+              await registration.unregister();
+              console.log('[SW] Unregistered old service worker');
+            }
+            
+            const cacheNames = await caches.keys();
+            for (let cacheName of cacheNames) {
+              await caches.delete(cacheName);
+              console.log('[SW] Deleted cache:', cacheName);
+            }
+            
+            if (location.protocol === 'https:') {
+              const registration = await navigator.serviceWorker.register('/sw.js');
+              console.log('[SW] New service worker registered');
+              
+              registration.addEventListener('updatefound', () => {
+                const newWorker = registration.installing;
+                newWorker.addEventListener('statechange', () => {
+                  if (newWorker.state === 'activated') {
+                    console.log('[SW] New service worker activated');
+                  }
+                });
+              });
+            }
+          } catch (error) {
+            console.log('[SW] Registration failed:', error);
+          }
+        });
+      }
+    </script>

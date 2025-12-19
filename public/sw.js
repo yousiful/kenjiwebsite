@@ -1,22 +1,25 @@
-const CACHE_NAME = 'kenjiai-v2-2025';
-const CACHE_VERSION = '2.0';
-
-const urlsToCache = [
-  '/',
-  '/manifest.json',
-  '/favicon.svg',
-  '/apple-touch-icon.png'
-];
+const CACHE_NAME = 'kenjiai-v3-2025-clean';
+const CACHE_VERSION = '3.0';
 
 self.addEventListener('install', (event) => {
+  console.log('[SW] Installing new service worker');
+  self.skipWaiting();
+});
+
+self.addEventListener('activate', (event) => {
+  console.log('[SW] Activating new service worker');
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => {
-        return cache.addAll(urlsToCache).catch(err => {
-          console.log('Cache addAll failed:', err);
-        });
-      })
-      .then(() => self.skipWaiting())
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          console.log('[SW] Deleting cache:', cacheName);
+          return caches.delete(cacheName);
+        })
+      );
+    }).then(() => {
+      console.log('[SW] All caches cleared');
+      return self.clients.claim();
+    })
   );
 });
 
@@ -25,51 +28,40 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  if (event.request.url.includes('/api/') ||
-      event.request.url.includes('.hot-update.') ||
-      event.request.url.includes('chrome-extension')) {
+  const url = new URL(event.request.url);
+  
+  if (url.pathname === '/' || 
+      url.pathname.endsWith('.html') ||
+      url.pathname.includes('/api/') ||
+      url.hostname !== self.location.hostname) {
     return;
   }
 
   event.respondWith(
-    caches.open(CACHE_NAME).then((cache) => {
-      return fetch(event.request)
-        .then((response) => {
-          if (response.status === 200) {
-            const shouldCache =
-              event.request.url.includes('.js') ||
-              event.request.url.includes('.css') ||
-              event.request.url.includes('.woff') ||
-              event.request.url.includes('.woff2') ||
-              event.request.url.includes('.png') ||
-              event.request.url.includes('.jpg') ||
-              event.request.url.includes('.svg');
+    fetch(event.request)
+      .then((response) => {
+        if (response && response.status === 200 && response.type === 'basic') {
+          const shouldCache = 
+            url.pathname.endsWith('.js') ||
+            url.pathname.endsWith('.css') ||
+            url.pathname.endsWith('.woff') ||
+            url.pathname.endsWith('.woff2') ||
+            url.pathname.endsWith('.png') ||
+            url.pathname.endsWith('.jpg') ||
+            url.pathname.endsWith('.svg');
 
-            if (shouldCache) {
-              cache.put(event.request, response.clone());
-            }
+          if (shouldCache) {
+            const responseToCache = response.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(event.request, responseToCache);
+            });
           }
-          return response;
-        })
-        .catch(() => {
-          return caches.match(event.request);
-        });
-    })
-  );
-});
-
-self.addEventListener('activate', (event) => {
-  event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
-            console.log('Deleting old cache:', cacheName);
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    }).then(() => self.clients.claim())
+        }
+        return response;
+      })
+      .catch(() => {
+        return caches.match(event.request);
+      })
   );
 });
 
@@ -77,13 +69,15 @@ self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
     self.skipWaiting();
   }
-
-  if (event.data && event.data.type === 'CLEAR_CACHE') {
+  
+  if (event.data && event.data.type === 'CLEAR_ALL') {
     event.waitUntil(
       caches.keys().then((cacheNames) => {
         return Promise.all(
           cacheNames.map((cacheName) => caches.delete(cacheName))
         );
+      }).then(() => {
+        return self.registration.unregister();
       })
     );
   }
