@@ -1,6 +1,7 @@
 import React from 'react';
-import { motion, MotionProps } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { animationConfig, generateGlowAnimation, generateHoverAnimation } from '../lib/animationConfig';
 
 interface LuxuryButtonProps {
   children: React.ReactNode;
@@ -19,82 +20,38 @@ export const LuxuryButton: React.FC<LuxuryButtonProps> = ({
   size = 'lg',
   className = '',
 }) => {
-  const variants = {
-    primary: {
-      background: 'linear-gradient(135deg, #E9338E 0%, #4B52FF 50%, #10B981 100%)',
-      shadow: '0 20px 60px rgba(233, 51, 142, 0.5), 0 0 100px rgba(75, 82, 255, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.2)',
-      border: 'rgba(255, 255, 255, 0.3)',
-    },
-    secondary: {
-      background: 'linear-gradient(135deg, #3B82F6 0%, #8B5CF6 50%, #10B981 100%)',
-      shadow: '0 20px 60px rgba(59, 130, 246, 0.5), 0 0 100px rgba(139, 92, 246, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.2)',
-      border: 'rgba(255, 255, 255, 0.3)',
-    },
-    premium: {
-      background: 'linear-gradient(135deg, #FBBF24 0%, #F59E0B 50%, #D97706 100%)',
-      shadow: '0 20px 60px rgba(251, 191, 36, 0.6), 0 0 100px rgba(245, 158, 11, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.5), inset 0 -2px 4px rgba(0, 0, 0, 0.2)',
-      border: 'rgba(255, 255, 255, 0.4)',
-    },
-  };
-
-  const sizes = {
-    sm: 'px-6 py-3 text-sm',
-    md: 'px-8 py-4 text-base',
-    lg: 'px-10 py-5 text-lg',
-    xl: 'px-14 py-6 text-2xl',
-  };
-
-  const style = variants[variant];
-  const sizeClass = sizes[size];
-
   const isInternalRoute = href && (href.startsWith('/') || href.startsWith('#'));
+  const reducedMotion = animationConfig.performance.reducedMotion;
 
   const buttonContent = (
     <motion.div
       whileHover={{
-        scale: 1.05,
-        y: -3,
+        scale: reducedMotion ? 1 : animationConfig.hover.scale,
+        y: reducedMotion ? 0 : animationConfig.hover.yOffset,
       }}
-      whileTap={{ scale: 0.98 }}
-      animate={{
-        boxShadow: [
-          style.shadow,
-          style.shadow.replace('0.5', '0.7').replace('0.4', '0.6'),
-          style.shadow,
-        ],
+      whileTap={{
+        scale: reducedMotion ? 1 : animationConfig.tap.scale
       }}
+      animate={
+        reducedMotion
+          ? {}
+          : {
+              boxShadow: generateGlowAnimation(variant).boxShadow,
+            }
+      }
       transition={{
         boxShadow: {
-          duration: 2,
+          duration: animationConfig.glow.duration,
           repeat: Infinity,
-          ease: 'easeInOut',
+          ease: animationConfig.pulse.easing,
         },
         scale: {
-          duration: 0.2,
+          duration: animationConfig.hover.duration,
         },
       }}
-      className={`group relative inline-flex items-center justify-center gap-3 font-bold rounded-2xl overflow-hidden cursor-pointer ${sizeClass} ${className}`}
-      style={{
-        background: style.background,
-        boxShadow: style.shadow,
-        border: `2px solid ${style.border}`,
-      }}
+      className={`luxury-button-base luxury-button-${variant} luxury-button-${size} luxury-button-glow group ${className}`}
     >
-      <motion.div
-        className="absolute inset-0"
-        style={{
-          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%, rgba(255, 255, 255, 0.15) 100%)',
-          backdropFilter: 'blur(10px)',
-        }}
-        animate={{
-          x: ['-100%', '200%'],
-        }}
-        transition={{
-          duration: 3,
-          repeat: Infinity,
-          ease: 'linear',
-        }}
-      />
+      <div className="luxury-button-shine" />
 
       <motion.div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -103,37 +60,15 @@ export const LuxuryButton: React.FC<LuxuryButtonProps> = ({
         }}
       />
 
-      <div className="absolute inset-0 rounded-2xl" style={{
-        background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(0, 0, 0, 0.1) 100%)',
-      }} />
+      <div className="luxury-button-laminate" />
 
-      <motion.div
-        className="absolute top-0 left-0 right-0 h-1"
-        style={{
-          background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent)',
-          borderRadius: '16px 16px 0 0',
-        }}
-        animate={{
-          x: ['-100%', '100%'],
-        }}
-        transition={{
-          duration: 2,
-          repeat: Infinity,
-          ease: 'linear',
-        }}
-      />
+      <div className="luxury-button-top-shine" />
 
       <span className="relative z-10 text-white drop-shadow-lg flex items-center gap-3">
         {children}
       </span>
 
-      <motion.div
-        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100"
-        style={{
-          background: 'radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.15), transparent 60%)',
-        }}
-        transition={{ duration: 0.3 }}
-      />
+      <div className="luxury-button-hover-glow" />
     </motion.div>
   );
 

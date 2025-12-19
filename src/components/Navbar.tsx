@@ -229,7 +229,8 @@ const Navbar: React.FC = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover focus-ring touch-target"
+              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="nav-button flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors font-medium focus-ring touch-target"
             >
               <LogIn className="w-4 h-4" aria-hidden="true" />
               Login
@@ -240,9 +241,13 @@ const Navbar: React.FC = () => {
               href="https://go.mediatraffics.com/leads"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 bg-gray-800 border border-gray-700 text-white px-4 py-2 rounded-xl font-semibold hover:border-blue-500 hover:shadow-lg transition-all duration-300 mobile-button focus-ring"
+              transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+              className="flex items-center gap-2 bg-gray-800 border-2 border-gray-700 text-white px-4 py-2 rounded-xl font-semibold hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 focus-ring card-interactive"
+              style={{
+                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+              }}
             >
               <Calendar className="w-4 h-4" aria-hidden="true" />
               VIP Demo
@@ -251,9 +256,13 @@ const Navbar: React.FC = () => {
             {/* See Pricing Button */}
             <Link to="/pricing">
               <motion.div
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 investor-gradient-blue text-white px-4 py-2 rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 mobile-button focus-ring"
+                transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="flex items-center gap-2 investor-gradient-blue text-white px-4 py-2 rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/40 transition-all duration-300 focus-ring card-interactive"
+                style={{
+                  boxShadow: '0 4px 12px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+                }}
               >
                 <DollarSign className="w-4 h-4" aria-hidden="true" />
                 See Pricing
@@ -344,8 +353,11 @@ const Navbar: React.FC = () => {
                 href="https://go.mediatraffics.com/leads"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-gray-800 border border-gray-700 text-white px-4 py-3 rounded-xl font-semibold mobile-button"
+                className="flex items-center justify-center gap-2 bg-gray-800 border-2 border-gray-700 text-white px-4 py-3 rounded-xl font-semibold mobile-button card-interactive"
                 role="menuitem"
+                style={{
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1)'
+                }}
               >
                 <Calendar className="w-4 h-4" aria-hidden="true" />
                 VIP Demo
@@ -355,8 +367,11 @@ const Navbar: React.FC = () => {
               <Link
                 to="/pricing"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-2 investor-gradient-blue text-white px-4 py-3 rounded-xl font-semibold mobile-button"
+                className="flex items-center justify-center gap-2 investor-gradient-blue text-white px-4 py-3 rounded-xl font-semibold mobile-button card-interactive"
                 role="menuitem"
+                style={{
+                  boxShadow: '0 4px 12px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+                }}
               >
                 <DollarSign className="w-4 h-4" aria-hidden="true" />
                 See Pricing
