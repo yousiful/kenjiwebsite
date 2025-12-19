@@ -249,15 +249,16 @@ const Navbar: React.FC = () => {
             </motion.a>
 
             {/* See Pricing Button */}
-            <motion.a
-              href="/pricing"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 investor-gradient-blue text-white px-4 py-2 rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 mobile-button focus-ring"
-            >
-              <DollarSign className="w-4 h-4" aria-hidden="true" />
-              See Pricing
-            </motion.a>
+            <Link to="/pricing">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="flex items-center gap-2 investor-gradient-blue text-white px-4 py-2 rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 mobile-button focus-ring"
+              >
+                <DollarSign className="w-4 h-4" aria-hidden="true" />
+                See Pricing
+              </motion.div>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -351,14 +352,15 @@ const Navbar: React.FC = () => {
               </a>
 
               {/* Mobile See Pricing Button */}
-              <a
-                href="/pricing"
+              <Link
+                to="/pricing"
+                onClick={() => setIsOpen(false)}
                 className="flex items-center justify-center gap-2 investor-gradient-blue text-white px-4 py-3 rounded-xl font-semibold mobile-button"
                 role="menuitem"
               >
                 <DollarSign className="w-4 h-4" aria-hidden="true" />
                 See Pricing
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}

@@ -10,28 +10,44 @@ export function HolidayBanner() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: -20 }}
+      initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-gradient-to-r from-blue-600/90 to-cyan-600/90 backdrop-blur-sm border-b-2 border-blue-400/50 shadow-lg"
+      transition={{ duration: 0.5 }}
+      className="relative bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 border-b border-white/10"
+      style={{ zIndex: 40 }}
     >
-      <div className="max-w-7xl mx-auto px-4 py-3">
-        <div className="flex items-center justify-center gap-3 text-center">
+      <div className="absolute inset-0 bg-black/20"></div>
+      <div className="relative max-w-7xl mx-auto px-4 py-2.5">
+        <div className="flex items-center justify-center gap-2 sm:gap-4 text-center flex-wrap">
           <motion.span
-            animate={{ scale: [1, 1.15, 1] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="text-2xl drop-shadow-lg"
+            animate={{
+              rotate: [0, 15, -15, 0],
+              scale: [1, 1.1, 1]
+            }}
+            transition={{
+              duration: 3,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+            className="text-xl sm:text-2xl"
           >
             {currentHoliday.emoji}
           </motion.span>
-          <span className="text-white text-sm sm:text-base font-medium drop-shadow">
+          <span className="text-white text-xs sm:text-sm font-semibold tracking-wide">
             {currentHoliday.offer_text}
           </span>
           <motion.span
-            animate={{ opacity: [0.7, 1, 0.7] }}
+            animate={{
+              boxShadow: [
+                '0 0 10px rgba(255,255,255,0.3)',
+                '0 0 20px rgba(255,255,255,0.5)',
+                '0 0 10px rgba(255,255,255,0.3)'
+              ]
+            }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-white text-xs sm:text-sm font-bold flex items-center gap-1 shadow-md"
+            className="bg-white/95 px-2.5 py-1 rounded-md text-gray-900 text-[10px] sm:text-xs font-black uppercase flex items-center gap-1"
           >
-            <Sparkles className="w-4 h-4" />
+            <Sparkles className="w-3 h-3 text-yellow-500" />
             {currentHoliday.offer_badge}
           </motion.span>
         </div>
