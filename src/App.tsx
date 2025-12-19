@@ -17,6 +17,7 @@ import AutoFormattingProvider from './components/AutoFormattingProvider';
 import LinkValidator from './components/LinkValidator';
 import { HolidayThemeProvider } from './contexts/HolidayThemeContext';
 import { LiveNotification } from './components/LiveNotification';
+import { HolidayBanner } from './components/HolidayBanner';
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -64,6 +65,7 @@ function App() {
                 <UserActivityNotifications />
                 <header role="banner">
                   <Navbar />
+                  <HolidayBanner />
                 </header>
               <Suspense fallback={<LoadingSpinner />}>
                 <main id="main-content" role="main">

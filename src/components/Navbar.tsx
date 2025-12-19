@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Zap, ChevronDown, ExternalLink, LogIn, ChevronRight } from 'lucide-react';
+import { Menu, X, Zap, ChevronDown, ExternalLink, LogIn, ChevronRight, Calendar, DollarSign } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -211,7 +211,7 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* CTA Buttons */}
-          <div className="hidden md:flex items-center gap-4" role="none">
+          <div className="hidden md:flex items-center gap-3" role="none">
             {/* Login Button */}
             <motion.a
               href="https://app.kenjicrm.com"
@@ -223,17 +223,30 @@ const Navbar: React.FC = () => {
             >
               <LogIn className="w-4 h-4" aria-hidden="true" />
               Login
-              <ExternalLink className="w-3 h-3" aria-hidden="true" />
             </motion.a>
 
-            {/* Start Trial Button */}
+            {/* Book Consultation Button */}
+            <motion.a
+              href="https://calendly.com/care-kenjiai/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-2 bg-gray-800 border border-gray-700 text-white px-4 py-2 rounded-xl font-semibold hover:border-blue-500 hover:shadow-lg transition-all duration-300 mobile-button focus-ring"
+            >
+              <Calendar className="w-4 h-4" aria-hidden="true" />
+              Book Call
+            </motion.a>
+
+            {/* See Pricing Button */}
             <motion.a
               href="/pricing"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="investor-gradient-blue text-white px-6 py-2 rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 mobile-button focus-ring"
+              className="flex items-center gap-2 investor-gradient-blue text-white px-4 py-2 rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 mobile-button focus-ring"
             >
-              Start Free Trial
+              <DollarSign className="w-4 h-4" aria-hidden="true" />
+              See Pricing
             </motion.a>
           </div>
 
@@ -265,7 +278,6 @@ const Navbar: React.FC = () => {
                 <Link
                   key={item.name}
                   to={item.href}
-                  className="block text-green-400 hover:text-green-300 transition-colors font-medium mobile-hover touch-target py-2 font-bold"
                   className="block text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-2"
                   role="menuitem"
                 >
@@ -302,14 +314,27 @@ const Navbar: React.FC = () => {
                 Login to Dashboard
                 <ExternalLink className="w-3 h-3" aria-hidden="true" />
               </a>
-              
-              {/* Mobile Start Trial Button */}
+
+              {/* Mobile Book Call Button */}
               <a
-                href="/pricing"
-                className="block investor-gradient-blue text-white px-4 py-3 rounded-xl font-semibold text-center mobile-button"
+                href="https://calendly.com/care-kenjiai/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-gray-800 border border-gray-700 text-white px-4 py-3 rounded-xl font-semibold mobile-button"
                 role="menuitem"
               >
-                Start Free Trial
+                <Calendar className="w-4 h-4" aria-hidden="true" />
+                Book Call
+              </a>
+
+              {/* Mobile See Pricing Button */}
+              <a
+                href="/pricing"
+                className="flex items-center justify-center gap-2 investor-gradient-blue text-white px-4 py-3 rounded-xl font-semibold mobile-button"
+                role="menuitem"
+              >
+                <DollarSign className="w-4 h-4" aria-hidden="true" />
+                See Pricing
               </a>
             </div>
           </motion.div>
