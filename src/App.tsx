@@ -20,6 +20,7 @@ import { HolidayFloatingElements } from './components/HolidayFloatingElements';
 import { HolidaySnowfall } from './components/HolidaySnowfall';
 import { HolidaySparkles } from './components/HolidaySparkles';
 import { HolidayBanner } from './components/HolidayBanner';
+import { ChatButton } from './components/ChatButton';
 import { ScrollTriggeredProof } from './components/ScrollTriggeredProof';
 import { ErrorLogger } from './components/ErrorLogger';
 
@@ -72,6 +73,7 @@ function App() {
                 <GamifiedInteractions />
                 <EnhancedInteractiveElements />
                 <ScrollTriggeredProof />
+                <ChatButton />
                 <HolidayFloatingElements />
                 <HolidaySnowfall />
                 <HolidaySparkles />
