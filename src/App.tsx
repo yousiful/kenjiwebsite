@@ -16,6 +16,7 @@ import NotFoundPage from './components/NotFoundPage';
 import AutoFormattingProvider from './components/AutoFormattingProvider';
 import LinkValidator from './components/LinkValidator';
 import { HolidayThemeProvider } from './contexts/HolidayThemeContext';
+import { LiveNotification } from './components/LiveNotification';
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -52,6 +53,7 @@ function App() {
             <ScrollToTop />
             <LinkValidator />
             <RedirectSystem />
+            <LiveNotification />
             <InteractiveMouseCaption>
               <div className="min-h-screen bg-gray-900" id="app-container">
                 <PerformanceOptimizer />
