@@ -88,18 +88,7 @@ const PerformanceOptimizer: React.FC = () => {
       });
     };
 
-    // Service Worker registration for caching
-    const registerServiceWorker = () => {
-      if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
-        navigator.serviceWorker.register('/sw.js')
-          .then(registration => {
-            console.log('SW registered:', registration);
-          })
-          .catch(error => {
-            console.log('SW registration failed:', error);
-          });
-      }
-    };
+    // Service Worker is registered in index.html to avoid double registration
 
     // Memory management
     const optimizeMemory = () => {
@@ -133,7 +122,6 @@ const PerformanceOptimizer: React.FC = () => {
     optimizeImages();
     addPerformanceObservers();
     optimizeThirdPartyScripts();
-    registerServiceWorker();
     const memoryCleanup = optimizeMemory();
 
     // Cleanup on unmount

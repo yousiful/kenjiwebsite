@@ -21,6 +21,7 @@ import { HolidaySnowfall } from './components/HolidaySnowfall';
 import { HolidaySparkles } from './components/HolidaySparkles';
 import { ChatButton } from './components/ChatButton';
 import { ScrollTriggeredProof } from './components/ScrollTriggeredProof';
+import { ErrorLogger } from './components/ErrorLogger';
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -62,6 +63,7 @@ function App() {
             <LinkValidator />
             <RedirectSystem />
             <LiveNotification />
+            <ErrorLogger />
             <InteractiveMouseCaption>
               <div className="min-h-screen bg-gray-900" id="app-container">
                 <PerformanceOptimizer />
