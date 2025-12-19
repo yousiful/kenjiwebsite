@@ -19,7 +19,6 @@ import { HolidayFloatingElements } from './components/HolidayFloatingElements';
 import { HolidaySnowfall } from './components/HolidaySnowfall';
 import { HolidaySparkles } from './components/HolidaySparkles';
 import { HolidayBanner } from './components/HolidayBanner';
-import { ChatButton } from './components/ChatButton';
 import { ErrorLogger } from './components/ErrorLogger';
 
 // Lazy load pages for better performance
@@ -69,7 +68,6 @@ function App() {
                 <GamificationSystem />
                 <GamifiedInteractions />
                 <EnhancedInteractiveElements />
-                <ChatButton />
                 <HolidayFloatingElements />
                 <HolidaySnowfall />
                 <HolidaySparkles />

@@ -451,19 +451,11 @@
 
     <script type="module" src="/src/main.tsx"></script>
     
-    <!-- Chatbot Embed Code (non-blocking) -->
-    <script>
-      (function() {
-        const script = document.createElement('script');
-        script.src = 'https://beta.leadconnectorhq.com/loader.js';
-        script.setAttribute('data-resources-url', 'https://beta.leadconnectorhq.com/chat-widget/loader.js');
-        script.setAttribute('data-widget-id', '67e1d177e87e911e4e73f032');
-        script.async = true;
-        script.onerror = function() {
-          console.warn('External chatbot failed to load');
-        };
-        document.body.appendChild(script);
-      })();
+    <!-- Chatbot Embed Code -->
+    <script
+      src="https://beta.leadconnectorhq.com/loader.js"
+      data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js"
+      data-widget-id="6945c3be4ca1825fa709c1f4"   >
     </script>
     
     <!-- Service Worker registration with smart cache clearing -->
