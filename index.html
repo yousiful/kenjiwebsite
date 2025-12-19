@@ -404,9 +404,17 @@
     <!-- Loading timeout and cache clearing -->
     <script>
       setTimeout(function() {
-        if (document.querySelector('.loading-screen') &&
-            window.getComputedStyle(document.querySelector('.loading-screen')).display !== 'none') {
-          console.log('[Loader] Page stuck loading, clearing cache and reloading...');
+        var loadingScreen = document.querySelector('.loading-screen');
+        var reloadCount = parseInt(sessionStorage.getItem('reload-count') || '0');
+        var lastReload = parseInt(sessionStorage.getItem('last-reload') || '0');
+        var timeSinceReload = Date.now() - lastReload;
+
+        if (loadingScreen &&
+            window.getComputedStyle(loadingScreen).display !== 'none' &&
+            reloadCount < 1 &&
+            timeSinceReload > 5000) {
+          console.log('[Loader] Page stuck loading, clearing cache...');
+
           if ('caches' in window) {
             caches.keys().then(function(names) {
               for (let name of names) caches.delete(name);
@@ -419,10 +427,23 @@
               }
             });
           }
-          sessionStorage.setItem('cache-cleared', Date.now());
+
+          sessionStorage.setItem('reload-count', '1');
+          sessionStorage.setItem('last-reload', Date.now());
           location.reload(true);
+        } else if (reloadCount >= 1) {
+          console.log('[Loader] Already reloaded once, not reloading again');
+          sessionStorage.removeItem('reload-count');
+          sessionStorage.removeItem('last-reload');
         }
-      }, 10000);
+      }, 15000);
+
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          sessionStorage.removeItem('reload-count');
+          sessionStorage.removeItem('last-reload');
+        }, 2000);
+      });
     </script>
 
     <!-- Preload critical scripts -->
@@ -445,42 +466,56 @@
       })();
     </script>
     
-    <!-- Service Worker registration with aggressive cache clearing -->
+    <!-- Service Worker registration with smart cache clearing -->
     <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', async () => {
+      if ('serviceWorker' in navigator && location.protocol === 'https:') {
+        (async function() {
           try {
-            const registrations = await navigator.serviceWorker.getRegistrations();
+            if ('caches' in window) {
+              const cacheNames = await caches.keys();
+              const hasOldCaches = cacheNames.some(name =>
+                name.includes('kenjiai-v1') ||
+                name.includes('kenjiai-v2') ||
+                (name.includes('kenjiai') && !name.includes('v3-2025-clean'))
+              );
 
-            for (let registration of registrations) {
-              await registration.unregister();
-              console.log('[SW] Unregistered old service worker');
-            }
-
-            const cacheNames = await caches.keys();
-            for (let cacheName of cacheNames) {
-              await caches.delete(cacheName);
-              console.log('[SW] Deleted cache:', cacheName);
-            }
-
-            if (location.protocol === 'https:') {
-              const registration = await navigator.serviceWorker.register('/sw.js');
-              console.log('[SW] New service worker registered');
-
-              registration.addEventListener('updatefound', () => {
-                const newWorker = registration.installing;
-                newWorker.addEventListener('statechange', () => {
-                  if (newWorker.state === 'activated') {
-                    console.log('[SW] New service worker activated');
-                    window.location.reload();
+              if (hasOldCaches) {
+                console.log('[SW] Old caches detected, cleaning up...');
+                for (let cacheName of cacheNames) {
+                  if (!cacheName.includes('v3-2025-clean')) {
+                    await caches.delete(cacheName);
+                    console.log('[SW] Deleted old cache:', cacheName);
                   }
-                });
-              });
+                }
+
+                const registrations = await navigator.serviceWorker.getRegistrations();
+                for (let registration of registrations) {
+                  await registration.unregister();
+                  console.log('[SW] Unregistered old service worker');
+                }
+              }
             }
+
+            window.addEventListener('load', async () => {
+              try {
+                const registration = await navigator.serviceWorker.register('/sw.js');
+                console.log('[SW] Service worker registered');
+
+                registration.addEventListener('updatefound', () => {
+                  console.log('[SW] Update found, installing new version');
+                });
+
+                if (navigator.serviceWorker.controller) {
+                  console.log('[SW] Page is controlled by service worker');
+                }
+              } catch (error) {
+                console.log('[SW] Registration failed:', error);
+              }
+            });
           } catch (error) {
-            console.log('[SW] Registration failed:', error);
+            console.log('[SW] Cleanup failed:', error);
           }
-        });
+        })();
       }
     </script>
   </body>
