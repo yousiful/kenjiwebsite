@@ -6,17 +6,29 @@ import { useHolidayTheme } from '../contexts/HolidayThemeContext';
 export function HolidayBanner() {
   const { currentHoliday, isHolidayActive } = useHolidayTheme();
   const [isVisible, setIsVisible] = useState(true);
-  const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; delay: number }>>([]);
+  const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; delay: number; size: number }>>([]);
+  const [confetti, setConfetti] = useState<Array<{ id: number; x: number; delay: number; color: string; rotation: number }>>([]);
 
   useEffect(() => {
     if (isHolidayActive && currentHoliday) {
-      const newParticles = Array.from({ length: 15 }, (_, i) => ({
+      const newParticles = Array.from({ length: 25 }, (_, i) => ({
         id: i,
         x: Math.random() * 100,
         y: Math.random() * 100,
-        delay: Math.random() * 2
+        delay: Math.random() * 3,
+        size: Math.random() * 3 + 1
       }));
       setParticles(newParticles);
+
+      const colors = currentHoliday.confetti_colors;
+      const newConfetti = Array.from({ length: 30 }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        delay: Math.random() * 5,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rotation: Math.random() * 360
+      }));
+      setConfetti(newConfetti);
     }
   }, [isHolidayActive, currentHoliday]);
 
@@ -33,27 +45,58 @@ export function HolidayBanner() {
           background: `linear-gradient(135deg, ${currentHoliday.theme_color}dd, ${currentHoliday.secondary_color}dd)`,
         }}
       >
-        {/* Animated particles */}
+        {/* Enhanced animated particles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {particles.map((particle) => (
             <motion.div
               key={particle.id}
-              className="absolute w-2 h-2 rounded-full"
+              className="absolute rounded-full"
               style={{
                 left: `${particle.x}%`,
                 top: `${particle.y}%`,
-                backgroundColor: 'rgba(255, 255, 255, 0.3)',
+                width: `${particle.size}px`,
+                height: `${particle.size}px`,
+                backgroundColor: 'rgba(255, 255, 255, 0.4)',
+                boxShadow: '0 0 10px rgba(255, 255, 255, 0.3)'
               }}
               animate={{
-                y: [0, -30, 0],
-                opacity: [0.2, 0.8, 0.2],
-                scale: [1, 1.5, 1],
+                y: [0, -40, 0],
+                opacity: [0.2, 1, 0.2],
+                scale: [1, 1.8, 1],
               }}
               transition={{
-                duration: 3,
+                duration: 4,
                 repeat: Infinity,
                 delay: particle.delay,
                 ease: "easeInOut",
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Falling confetti */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {confetti.map((piece) => (
+            <motion.div
+              key={`confetti-${piece.id}`}
+              className="absolute w-2 h-3 rounded-sm"
+              style={{
+                left: `${piece.x}%`,
+                top: '-10px',
+                backgroundColor: piece.color,
+                rotate: piece.rotation
+              }}
+              animate={{
+                y: ['0vh', '110vh'],
+                rotate: [piece.rotation, piece.rotation + 720],
+                x: [0, Math.sin(piece.id) * 50],
+                opacity: [0, 1, 1, 0]
+              }}
+              transition={{
+                duration: 8 + Math.random() * 4,
+                repeat: Infinity,
+                delay: piece.delay,
+                ease: "linear",
               }}
             />
           ))}

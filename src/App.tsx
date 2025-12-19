@@ -34,6 +34,9 @@ const VoiceAgentsPage = lazy(() => import('./pages/VoiceAgentsPage'));
 const VoiceAILandingPage = lazy(() => import('./pages/VoiceAILandingPage'));
 const MarketingAutomationPage = lazy(() => import('./pages/MarketingAutomationPage'));
 const CRMPage = lazy(() => import('./pages/CRMPage'));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
+const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage'));
+const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage'));
 
 // ScrollToTop component to scroll to top on route change
 const ScrollToTop: React.FC = () => {
@@ -85,6 +88,11 @@ function App() {
                     <Route path="/investors" element={<InvestorPage />} />
                     <Route path="/pricing" element={<ProductSelectionPage />} />
                     <Route path="/success" element={<SuccessPage />} />
+
+                    {/* Legal Pages */}
+                    <Route path="/privacy" element={<PrivacyPolicyPage />} />
+                    <Route path="/disclaimer" element={<DisclaimerPage />} />
+                    <Route path="/terms" element={<TermsOfServicePage />} />
 
                     {/* Redirect legacy routes */}
                     <Route path="/blog" element={<Navigate to="/knowledge" replace />} />

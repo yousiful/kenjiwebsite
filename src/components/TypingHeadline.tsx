@@ -44,15 +44,18 @@ export function TypingHeadline() {
   }, [displayedText, isDeleting, currentHeadlineIndex, typingSpeed]);
 
   return (
-    <div className="text-5xl sm:text-6xl lg:text-8xl font-bold mb-6 leading-tight min-h-[200px] sm:min-h-[250px] lg:min-h-[300px] flex items-center justify-center">
+    <div className="text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-bold mb-6 leading-tight min-h-[120px] sm:min-h-[200px] md:min-h-[250px] lg:min-h-[300px] flex items-center justify-center px-4">
       <span
+        className="text-center"
         style={{
           background: 'linear-gradient(90deg, #ff6b9d 0%, #ffa69e 20%, #ffd97d 40%, #f9ed69 60%, #c9f0ff 80%, #a1c4fd 100%)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
           backgroundClip: 'text',
           letterSpacing: '0.02em',
-          fontFamily: 'Inter, Montserrat, sans-serif'
+          fontFamily: 'Inter, Montserrat, sans-serif',
+          wordBreak: 'break-word',
+          hyphens: 'auto'
         }}
       >
         {displayedText}

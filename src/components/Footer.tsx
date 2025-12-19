@@ -12,10 +12,10 @@ const Footer: React.FC = () => {
       { name: "Press", href: "/investors" }
     ],
     legal: [
-      { name: "Terms", href: "/knowledge" },
-      { name: "Privacy", href: "/knowledge" },
-      { name: "Security", href: "/knowledge" },
-      { name: "Compliance", href: "/knowledge" }
+      { name: "Terms of Service", href: "/terms" },
+      { name: "Privacy Policy", href: "/privacy" },
+      { name: "Disclaimer", href: "/disclaimer" },
+      { name: "Security", href: "/knowledge" }
     ],
     solutions: [
       { name: "AI Automation", href: "/ai-automation" },
@@ -335,9 +335,9 @@ const Footer: React.FC = () => {
               © {new Date().getFullYear()} KenjiAI. All Rights Reserved.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-gray-400">
-              <Link to="/knowledge" className="hover:text-blue-400 transition-colors">Terms of Service</Link>
-              <Link to="/knowledge" className="hover:text-blue-400 transition-colors">Privacy Policy</Link>
-              <Link to="/knowledge" className="hover:text-blue-400 transition-colors">Cookie Policy</Link>
+              <Link to="/terms" className="hover:text-blue-400 transition-colors">Terms of Service</Link>
+              <Link to="/privacy" className="hover:text-blue-400 transition-colors">Privacy Policy</Link>
+              <Link to="/disclaimer" className="hover:text-blue-400 transition-colors">Disclaimer</Link>
             </div>
           </div>
         </motion.div>

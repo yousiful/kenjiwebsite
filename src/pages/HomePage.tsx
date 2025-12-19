@@ -8,6 +8,7 @@ import SocialProof from '../components/SocialProof';
 import FinalCTA from '../components/FinalCTA';
 import { ProofNotification } from '../components/ProofNotification';
 import { ScrollControls } from '../components/ScrollControls';
+import { ResultsDisclaimer } from '../components/ResultsDisclaimer';
 
 const HomePage: React.FC = () => {
   const structuredData = {
@@ -66,6 +67,9 @@ const HomePage: React.FC = () => {
         <Features />
         <Tools />
         <SocialProof />
+        <div className="py-8 px-4 sm:px-6 lg:px-8">
+          <ResultsDisclaimer />
+        </div>
         <FinalCTA />
         <ProofNotification />
         <ScrollControls />
