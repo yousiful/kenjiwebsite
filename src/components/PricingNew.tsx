@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check, Star, ArrowRight, Calendar, Zap, Shield, CreditCard } from 'lucide-react';
+import { Check, Star, ArrowRight, Calendar, Zap, Shield, CreditCard, TrendingUp, Target, Rocket } from 'lucide-react';
+import { ToolReplacementBar } from './ToolReplacementBar';
 
 export function PricingNew() {
   const [isLoading, setIsLoading] = useState<string | null>(null);
@@ -61,7 +62,110 @@ export function PricingNew() {
 
   return (
     <div className="py-24 px-4" style={{backgroundColor: '#0B0E14'}}>
-      <div className="max-w-7xl mx-auto">
+      {/* Hero Section */}
+      <div className="max-w-5xl mx-auto mb-16 text-center px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-400/40 rounded-full px-6 py-3 mb-6">
+            <Rocket className="w-5 h-5 text-purple-400" />
+            <span className="text-purple-300 font-semibold">One-of-a-Kind Growth Program</span>
+          </div>
+
+          <h1 className="text-5xl sm:text-6xl font-bold mb-6" style={{fontFamily: 'Inter, Montserrat, sans-serif'}}>
+            <span style={{
+              background: 'linear-gradient(90deg, #E9338E 0%, #4B52FF 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              letterSpacing: '0.02em'
+            }}>
+              The Last Growth Platform You'll Ever Need
+            </span>
+          </h1>
+
+          <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
+            Stop duct-taping 17 different tools together. Our Growth Program replaces your entire tech stack with one AI-powered platform that actually grows your business—not just your monthly bills.
+          </p>
+
+          {/* Value Props Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+            {[
+              {
+                icon: TrendingUp,
+                title: 'Performance-First',
+                description: 'We only win when you win. Pay based on actual results, not empty promises.',
+                color: 'from-green-400 to-emerald-500'
+              },
+              {
+                icon: Target,
+                title: 'Done-For-You',
+                description: 'Expert team handles setup, ads, and support. You focus on closing deals.',
+                color: 'from-blue-400 to-cyan-500'
+              },
+              {
+                icon: Rocket,
+                title: 'Scale on Autopilot',
+                description: 'AI handles lead gen, nurturing, and follow-ups 24/7 while you sleep.',
+                color: 'from-purple-400 to-pink-500'
+              }
+            ].map((prop, idx) => (
+              <motion.div
+                key={prop.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 + idx * 0.1 }}
+                className="group relative bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-gray-600 transition-all duration-300"
+              >
+                {/* Hover glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl blur-xl"
+                     style={{background: `linear-gradient(to bottom right, var(--tw-gradient-stops))`}}></div>
+
+                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${prop.color} mb-4`}>
+                  <prop.icon className="w-6 h-6 text-white" />
+                </div>
+
+                <h3 className="text-lg font-bold text-white mb-2">{prop.title}</h3>
+                <p className="text-gray-400 text-sm">{prop.description}</p>
+
+                {/* Shine effect on hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl overflow-hidden pointer-events-none">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shine-slow"></div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Tool Replacement Bar */}
+      <ToolReplacementBar />
+
+      <div className="max-w-7xl mx-auto mt-16">
+        {/* Pricing Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            <span style={{
+              background: 'linear-gradient(90deg, #10B981 0%, #34D399 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>
+              Choose Your Growth Path
+            </span>
+          </h2>
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            Select the plan that fits your revenue goals. Both include full done-for-you service, expert support, and all platform features.
+          </p>
+        </motion.div>
+
         {/* 3-Column Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Monthly Billing */}
@@ -383,6 +487,19 @@ export function PricingNew() {
         }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
           background: rgba(59, 130, 246, 0.7);
+        }
+
+        @keyframes shine-slow {
+          0% {
+            transform: translateX(-100%) skewX(-15deg);
+          }
+          100% {
+            transform: translateX(200%) skewX(-15deg);
+          }
+        }
+
+        .animate-shine-slow {
+          animation: shine-slow 3s ease-in-out infinite;
         }
       `}</style>
     </div>
