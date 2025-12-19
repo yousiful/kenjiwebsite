@@ -147,7 +147,7 @@ export function ScrollTriggeredProof() {
   }, []);
 
   return (
-    <div className="fixed bottom-4 left-4 z-40 pointer-events-none">
+    <div className="fixed bottom-4 left-4 z-[9998] pointer-events-none">
       <AnimatePresence>
         {show && currentNotification && (
           <motion.div
