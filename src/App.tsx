@@ -15,13 +15,11 @@ import NotFoundPage from './components/NotFoundPage';
 import AutoFormattingProvider from './components/AutoFormattingProvider';
 import LinkValidator from './components/LinkValidator';
 import { HolidayThemeProvider } from './contexts/HolidayThemeContext';
-import { LiveNotification } from './components/LiveNotification';
 import { HolidayFloatingElements } from './components/HolidayFloatingElements';
 import { HolidaySnowfall } from './components/HolidaySnowfall';
 import { HolidaySparkles } from './components/HolidaySparkles';
 import { HolidayBanner } from './components/HolidayBanner';
 import { ChatButton } from './components/ChatButton';
-import { ScrollTriggeredProof } from './components/ScrollTriggeredProof';
 import { ErrorLogger } from './components/ErrorLogger';
 
 // Lazy load pages for better performance
@@ -63,7 +61,6 @@ function App() {
             <ScrollToTop />
             <LinkValidator />
             <RedirectSystem />
-            <LiveNotification />
             <ErrorLogger />
             <InteractiveMouseCaption>
               <div className="min-h-screen bg-gray-900" id="app-container">
@@ -72,7 +69,6 @@ function App() {
                 <GamificationSystem />
                 <GamifiedInteractions />
                 <EnhancedInteractiveElements />
-                <ScrollTriggeredProof />
                 <ChatButton />
                 <HolidayFloatingElements />
                 <HolidaySnowfall />

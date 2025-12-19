@@ -990,30 +990,30 @@ body {
 
   /* Variants */
   .luxury-button-primary {
-    --glow-color-1: rgba(233, 51, 142, 0.5);
-    --glow-color-1-intense: rgba(233, 51, 142, 0.75);
-    --glow-color-2: rgba(75, 82, 255, 0.4);
-    --glow-color-2-intense: rgba(75, 82, 255, 0.6);
-    background: linear-gradient(135deg, #E9338E 0%, #4B52FF 50%, #10B981 100%);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    --glow-color-1: rgba(255, 0, 128, 0.7);
+    --glow-color-1-intense: rgba(255, 0, 128, 0.9);
+    --glow-color-2: rgba(0, 128, 255, 0.6);
+    --glow-color-2-intense: rgba(0, 128, 255, 0.8);
+    background: linear-gradient(135deg, #FF0080 0%, #FF00FF 25%, #0080FF 50%, #00FFFF 75%, #00FF80 100%);
+    border: 2px solid rgba(255, 255, 255, 0.4);
   }
 
   .luxury-button-secondary {
-    --glow-color-1: rgba(59, 130, 246, 0.5);
-    --glow-color-1-intense: rgba(59, 130, 246, 0.75);
-    --glow-color-2: rgba(139, 92, 246, 0.4);
-    --glow-color-2-intense: rgba(139, 92, 246, 0.6);
-    background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 50%, #10B981 100%);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    --glow-color-1: rgba(0, 200, 255, 0.7);
+    --glow-color-1-intense: rgba(0, 200, 255, 0.9);
+    --glow-color-2: rgba(0, 255, 150, 0.6);
+    --glow-color-2-intense: rgba(0, 255, 150, 0.8);
+    background: linear-gradient(135deg, #00C8FF 0%, #00FFAA 50%, #7FFF00 100%);
+    border: 2px solid rgba(255, 255, 255, 0.4);
   }
 
   .luxury-button-premium {
-    --glow-color-1: rgba(251, 191, 36, 0.6);
-    --glow-color-1-intense: rgba(251, 191, 36, 0.9);
-    --glow-color-2: rgba(245, 158, 11, 0.5);
-    --glow-color-2-intense: rgba(245, 158, 11, 0.75);
-    background: linear-gradient(135deg, #FBBF24 0%, #F59E0B 50%, #D97706 100%);
-    border: 2px solid rgba(255, 255, 255, 0.4);
+    --glow-color-1: rgba(255, 215, 0, 0.8);
+    --glow-color-1-intense: rgba(255, 215, 0, 1);
+    --glow-color-2: rgba(255, 140, 0, 0.7);
+    --glow-color-2-intense: rgba(255, 140, 0, 0.9);
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 25%, #FF8C00 50%, #FF6347 75%, #FF1493 100%);
+    border: 2px solid rgba(255, 255, 255, 0.5);
   }
 
   /* Sizes */
