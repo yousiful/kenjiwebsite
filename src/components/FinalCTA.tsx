@@ -1,8 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, Zap, Rocket, Crown, Star } from 'lucide-react';
+import { useHolidayTheme } from '../contexts/HolidayThemeContext';
 
 const FinalCTA: React.FC = () => {
+  const { currentHoliday } = useHolidayTheme();
   const benefits = [
     "Instant platform activation",
     "Complete automation toolkit",
@@ -153,8 +155,8 @@ const FinalCTA: React.FC = () => {
           <motion.a
             id="cta-button"
             href="#pricing"
-            whileHover={{ 
-              scale: 1.05, 
+            whileHover={{
+              scale: 1.05,
               boxShadow: "0 0 60px rgba(59, 130, 246, 0.8)",
               y: -5
             }}
@@ -162,13 +164,32 @@ const FinalCTA: React.FC = () => {
             className="group relative inline-flex items-center gap-4 bg-gradient-to-r from-blue-600 via-purple-600 to-green-500 hover:from-blue-500 hover:via-purple-500 hover:to-green-400 text-white px-16 py-8 rounded-3xl font-bold text-2xl transition-all duration-500 shadow-2xl"
             data-caption="Start your business transformation today - complete automation platform"
           >
+            {currentHoliday && (
+              <motion.span
+                animate={{ rotate: [0, 15, -15, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="text-3xl"
+              >
+                {currentHoliday.emoji}
+              </motion.span>
+            )}
             <Rocket className="w-8 h-8 group-hover:animate-bounce" />
             <span>Start Building Your Empire</span>
             <ArrowRight className="w-8 h-8 group-hover:translate-x-2 transition-transform" />
-            
+
+            {currentHoliday && (
+              <motion.span
+                animate={{ scale: [1, 1.15, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                className="absolute -top-3 -right-3 bg-yellow-400 text-gray-900 text-xs font-black px-3 py-1.5 rounded-full uppercase shadow-lg"
+              >
+                {currentHoliday.offer_badge}
+              </motion.span>
+            )}
+
             {/* Epic Glow Effect */}
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 opacity-0 group-hover:opacity-40 blur-2xl transition-opacity duration-500"></div>
-            
+
             {/* Shine Effect */}
             <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 group-hover:animate-pulse"></div>
           </motion.a>

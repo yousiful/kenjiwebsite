@@ -110,7 +110,25 @@ const Hero: React.FC = () => {
               background: 'linear-gradient(90deg, #E9338E 0%, #4B52FF 100%)'
             }}
           >
+            {currentHoliday && (
+              <motion.span
+                animate={{ rotate: [0, 15, -15, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="text-2xl"
+              >
+                {currentHoliday.emoji}
+              </motion.span>
+            )}
             <span>Start Growing with Kenji</span>
+            {currentHoliday && (
+              <motion.span
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+                className="absolute -top-2 -right-2 bg-yellow-400 text-gray-900 text-[10px] font-black px-2 py-0.5 rounded-full uppercase"
+              >
+                {currentHoliday.offer_badge}
+              </motion.span>
+            )}
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </motion.a>
         </motion.div>
