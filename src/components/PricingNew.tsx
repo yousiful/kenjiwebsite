@@ -87,7 +87,7 @@ export function PricingNew() {
           </h1>
 
           <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Stop duct-taping 17 different tools together. Our Growth Program replaces your entire tech stack with one AI-powered platform that actually grows your business—not just your monthly bills.
+            Stop duct-taping 17 different tools together. One AI platform replaces your entire tech stack. Grows your business, not your bills.
           </p>
 
           {/* Value Props Grid */}
@@ -162,7 +162,7 @@ export function PricingNew() {
             </span>
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            Select the plan that fits your revenue goals. Both include full done-for-you service, expert support, and all platform features.
+            Pick your plan. Both include full done-for-you service, expert support, and all features.
           </p>
         </motion.div>
 

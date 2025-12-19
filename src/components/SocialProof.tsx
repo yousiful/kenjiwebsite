@@ -9,7 +9,7 @@ const SocialProof: React.FC = () => {
       role: "Digital Marketing Agency Owner",
       company: "Growth Labs",
       avatar: "SC",
-      content: "KenjiAI transformed our agency completely. We went from managing 20 clients manually to handling 100+ with AI automation. Our revenue tripled in 6 months.",
+      content: "KenjiAI changed everything for our agency. We went from 20 clients to 100+ with AI automation. Revenue tripled in 6 months.",
       metric: "3x Revenue Growth"
     },
     {
@@ -17,7 +17,7 @@ const SocialProof: React.FC = () => {
       role: "E-commerce Entrepreneur",
       company: "TechGear Pro",
       avatar: "MJ",
-      content: "The voice agents alone have closed over $500K in deals while I sleep. This isn't just software, it's like having a team of expert salespeople working 24/7.",
+      content: "Voice agents alone closed over $500K in deals while I sleep. It's like having expert salespeople working 24/7.",
       metric: "$500K+ in Sales"
     },
     {
@@ -25,7 +25,7 @@ const SocialProof: React.FC = () => {
       role: "SaaS Founder",
       company: "DataSync Solutions",
       avatar: "ER",
-      content: "We reduced our customer acquisition cost by 70% and increased conversion rates by 250%. KenjiAI pays for itself within the first week.",
+      content: "Customer acquisition cost down 70%. Conversion rates up 250%. KenjiAI pays for itself within the first week.",
       metric: "70% Lower CAC"
     },
     {
@@ -33,7 +33,7 @@ const SocialProof: React.FC = () => {
       role: "Real Estate Investor",
       company: "Park Properties",
       avatar: "DP",
-      content: "From lead generation to deal closing, KenjiAI handles everything. I've scaled from 2 deals per month to 15 deals per month with the same effort.",
+      content: "Lead generation to deal closing. KenjiAI handles everything. Scaled from 2 deals per month to 15. Same effort.",
       metric: "650% Deal Increase"
     },
     {
@@ -41,7 +41,7 @@ const SocialProof: React.FC = () => {
       role: "Consultant",
       company: "Thompson Consulting",
       avatar: "LT",
-      content: "The AI blog writer and social media planner have made me a thought leader in my industry. My LinkedIn following grew from 500 to 50K in 8 months.",
+      content: "AI blog writer and social media planner made me a thought leader. LinkedIn following: 500 to 50K in 8 months.",
       metric: "10,000% Growth"
     },
     {
