@@ -448,7 +448,7 @@ const FreeToolsPage: React.FC = () => {
             </motion.a>
             
             <p className="text-gray-500 text-sm mt-4">
-              16-day free trial • No credit card required • 425% average ROI
+              Quick setup • Start automating today • 425% average ROI
             </p>
           </motion.div>
         </div>

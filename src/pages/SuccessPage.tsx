@@ -250,8 +250,8 @@ const SuccessPage: React.FC = () => {
                 <div className="text-white font-semibold text-sm">Payment Confirmed</div>
               </div>
               <div className="bg-blue-500/20 border border-blue-400/30 rounded-2xl p-4 text-center">
-                <div className="text-2xl font-bold text-blue-400">16</div>
-                <div className="text-white font-semibold text-sm">Days Free Trial</div>
+                <div className="text-2xl font-bold text-blue-400">1</div>
+                <div className="text-white font-semibold text-sm">Day Setup Time</div>
               </div>
               <div className="bg-purple-500/20 border border-purple-400/30 rounded-2xl p-4 text-center">
                 <div className="text-2xl font-bold text-purple-400">∞</div>

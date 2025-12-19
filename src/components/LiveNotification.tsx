@@ -4,7 +4,7 @@ import { Check } from 'lucide-react';
 
 const notifications = [
   { name: 'Lauren M.', location: 'Charlotte, NC', action: 'just joined KenjiAI automation' },
-  { name: 'Michael R.', location: 'Austin, TX', action: 'started their free trial' },
+  { name: 'Michael R.', location: 'Austin, TX', action: 'started using KenjiAI' },
   { name: 'Sarah K.', location: 'New York, NY', action: 'booked a VIP demo' },
   { name: 'James T.', location: 'Los Angeles, CA', action: 'upgraded to yearly plan' },
   { name: 'Emily W.', location: 'Chicago, IL', action: 'just joined KenjiAI automation' },

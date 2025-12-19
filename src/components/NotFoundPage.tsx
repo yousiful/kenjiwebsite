@@ -18,7 +18,7 @@ const NotFoundPage: React.FC = () => {
     { name: "Free AI Tools", href: "/free-tools", icon: Zap, description: "Access powerful AI tools completely free" },
     { name: "AI Knowledge Base", href: "/knowledge", icon: Brain, description: "Latest AI insights and tutorials" },
     { name: "Voice Agents", href: "/voice-agents", icon: Users, description: "AI that handles calls 24/7" },
-    { name: "Start Free Trial", href: "/pricing", icon: Zap, description: "Begin your AI transformation" }
+    { name: "Get Started", href: "/pricing", icon: Zap, description: "Begin your AI transformation" }
   ];
 
   return (

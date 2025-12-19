@@ -257,10 +257,10 @@ const VoiceAgentsPage: React.FC = () => {
               Ready to Deploy Your Voice Agent?
             </h3>
             <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
-              Start with a free trial and see how AI voice agents can transform your business. 
+              Get started today and see how AI voice agents can transform your business.
               No setup fees, no long-term contracts, just results.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <motion.a
                 href="/pricing"
@@ -268,10 +268,10 @@ const VoiceAgentsPage: React.FC = () => {
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-10 py-5 rounded-2xl font-bold text-xl hover:shadow-lg transition-all duration-300 flex items-center gap-3"
               >
-                Start Free Trial
+                Get Started Now
                 <ArrowRight className="w-6 h-6" />
               </motion.a>
-              
+
               <motion.a
                 href="/free-tools"
                 whileHover={{ scale: 1.05 }}
@@ -281,9 +281,9 @@ const VoiceAgentsPage: React.FC = () => {
                 Try Free Tools First
               </motion.a>
             </div>
-            
+
             <p className="text-gray-500 text-sm mt-6">
-              16-day free trial • No credit card required • Setup in minutes
+              Quick setup • Start closing deals 24/7 • Setup in minutes
             </p>
           </motion.div>
         </div>

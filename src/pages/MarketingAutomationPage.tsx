@@ -255,10 +255,10 @@ const MarketingAutomationPage: React.FC = () => {
               Ready to Automate Your Marketing?
             </h3>
             <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
-              Join thousands of marketers using KenjiAI to create campaigns that convert. 
-              Start your free trial and see results in the first week.
+              Join thousands of marketers using KenjiAI to create campaigns that convert.
+              Get started today and see results in the first week.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <motion.a
                 href="/pricing"
@@ -266,10 +266,10 @@ const MarketingAutomationPage: React.FC = () => {
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-10 py-5 rounded-2xl font-bold text-xl hover:shadow-lg transition-all duration-300 flex items-center gap-3"
               >
-                Start Free Trial
+                Get Started Now
                 <ArrowRight className="w-6 h-6" />
               </motion.a>
-              
+
               <motion.a
                 href="/free-tools"
                 whileHover={{ scale: 1.05 }}
@@ -279,9 +279,9 @@ const MarketingAutomationPage: React.FC = () => {
                 Try Free Tools First
               </motion.a>
             </div>
-            
+
             <p className="text-gray-500 text-sm mt-6">
-              16-day free trial • No credit card required • Full feature access
+              Quick setup • See results fast • Full feature access
             </p>
           </motion.div>
         </div>

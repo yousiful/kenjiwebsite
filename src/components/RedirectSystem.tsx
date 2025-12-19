@@ -24,6 +24,7 @@ const RedirectSystem: React.FC = () => {
     '/signup': '/pricing',
     '/register': '/pricing',
     '/trial': '/pricing',
+    '/start': '/pricing',
     '/demo': '/pricing',
   };
   

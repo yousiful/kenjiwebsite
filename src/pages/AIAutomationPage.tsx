@@ -62,7 +62,7 @@ const AIAutomationPage: React.FC = () => {
     <>
       {/* SEO Head */}
       <title>AI Business Automation Platform | KenjiAI - Automate Operations & Scale Growth</title>
-      <meta name="description" content="Transform your business with AI automation. Automate workflows, customer service, sales processes, and operations. 85% time savings, 300% ROI increase. Start free trial." />
+      <meta name="description" content="Transform your business with AI automation. Automate workflows, customer service, sales processes, and operations. 85% time savings, 300% ROI increase. Get started today." />
       <meta name="keywords" content="AI automation, business automation, workflow automation, AI business processes, intelligent automation, business AI platform" />
       
       <div className="pt-24 pb-16 bg-gray-900 min-h-screen">
@@ -226,10 +226,10 @@ const AIAutomationPage: React.FC = () => {
               Ready to Automate Your Business?
             </h3>
             <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
-              Join thousands of businesses using KenjiAI to automate operations, 
-              reduce costs, and scale without limits. Start your free trial today.
+              Join thousands of businesses using KenjiAI to automate operations,
+              reduce costs, and scale without limits. Get started today.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <motion.a
                 href="/pricing"
@@ -237,10 +237,10 @@ const AIAutomationPage: React.FC = () => {
                 whileTap={{ scale: 0.95 }}
                 className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-10 py-5 rounded-2xl font-bold text-xl hover:shadow-lg transition-all duration-300 flex items-center gap-3"
               >
-                Start Free Trial
+                Get Started Now
                 <ArrowRight className="w-6 h-6" />
               </motion.a>
-              
+
               <motion.a
                 href="/free-tools"
                 whileHover={{ scale: 1.05 }}
@@ -250,9 +250,9 @@ const AIAutomationPage: React.FC = () => {
                 Try Free Tools First
               </motion.a>
             </div>
-            
+
             <p className="text-gray-500 text-sm mt-6">
-              16-day free trial • No credit card required • Cancel anytime
+              Quick setup • Start automating immediately • Scale without limits
             </p>
           </motion.div>
         </div>
