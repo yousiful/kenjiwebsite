@@ -6,10 +6,10 @@ import { Helmet } from 'react-helmet-async';
 
 const NotFoundPage: React.FC = () => {
   useEffect(() => {
-    // Auto-redirect to home after 10 seconds
+    // Auto-redirect to pricing after 5 seconds
     const timer = setTimeout(() => {
-      window.location.href = '/';
-    }, 10000);
+      window.location.href = '/pricing';
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -43,7 +43,7 @@ const NotFoundPage: React.FC = () => {
               Oops! Page Not Found
             </h1>
             <p className="text-xl text-gray-400 mb-8">
-              The page you're looking for doesn't exist, but we have plenty of amazing AI tools and content to explore!
+              The page you're looking for doesn't exist, but let's get you started with the perfect AI solution for your business!
             </p>
           </motion.div>
 
@@ -52,10 +52,10 @@ const NotFoundPage: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="bg-blue-500/20 border border-blue-400/30 rounded-2xl p-4 mb-8"
+            className="bg-gradient-to-r from-green-500/20 to-blue-500/20 border border-green-400/30 rounded-2xl p-4 mb-8"
           >
-            <p className="text-blue-300 text-sm">
-              🚀 Don't worry! We'll automatically redirect you to our homepage in 10 seconds, or choose from the popular pages below.
+            <p className="text-green-300 text-sm font-semibold">
+              🚀 Redirecting you to our pricing page in 5 seconds to get started with AI automation!
             </p>
           </motion.div>
 
@@ -89,24 +89,25 @@ const NotFoundPage: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Link to="/">
+            <Link to="/pricing">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full bg-gradient-to-r from-blue-600 to-green-500 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-lg transition-all duration-300 flex items-center gap-3"
+                className="w-full bg-gradient-to-r from-green-600 to-blue-500 text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-lg transition-all duration-300 flex items-center gap-3"
+              >
+                <Zap className="w-5 h-5" />
+                View Pricing & Get Started
+              </motion.button>
+            </Link>
+
+            <Link to="/">
+              <button
+                className="w-full bg-gray-800 border border-gray-600 hover:border-blue-400 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 flex items-center gap-3"
               >
                 <Home className="w-5 h-5" />
                 Go to Homepage
-              </motion.button>
+              </button>
             </Link>
-            
-            <button
-              onClick={() => window.history.back()}
-              className="w-full bg-gray-800 border border-gray-600 hover:border-blue-400 text-white px-8 py-4 rounded-2xl font-bold text-lg transition-all duration-300 flex items-center gap-3"
-            >
-              <ArrowLeft className="w-5 h-5" />
-              Go Back
-            </button>
           </motion.div>
 
           {/* Search suggestion */}
