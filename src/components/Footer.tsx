@@ -31,16 +31,16 @@ const Footer: React.FC = () => {
       { name: "Sales Coach", href: "https://salescoach.kenjiai.com/", external: true, badge: "Free" }
     ],
     support: [
-      { name: "Help Center", href: "https://support.kenjiai.com/" },
-      { name: "Community", href: "/knowledge" },
-      { name: "Status", href: "https://support.kenjiai.com/" },
-      { name: "Contact Support", href: "https://support.kenjiai.com/" }
+      { name: "Help Center", href: "https://support.kenjiai.com/", external: true },
+      { name: "Community", href: "https://startlearning.kenjiai.com/", external: true },
+      { name: "Status", href: "https://support.kenjiai.com/", external: true },
+      { name: "Contact Support", href: "https://support.kenjiai.com/", external: true }
     ],
     education: [
-      { name: "Educational Hub", href: "/knowledge", badge: "New" },
-      { name: "AI Courses", href: "/knowledge" },
-      { name: "Tax Strategies", href: "/knowledge" },
-      { name: "Investment Training", href: "/knowledge" }
+      { name: "Educational Hub", href: "https://startlearning.kenjiai.com/", badge: "New", external: true },
+      { name: "AI Courses", href: "https://startlearning.kenjiai.com/", external: true },
+      { name: "Become a Partner", href: "https://closers.kenjiai.com/", external: true },
+      { name: "Tax Strategies", href: "https://startlearning.kenjiai.com/", external: true }
     ]
   };
 
@@ -237,20 +237,39 @@ const Footer: React.FC = () => {
                 <ul className="space-y-2 sm:space-y-3" role="list">
                   {links.education.map((link) => (
                     <li key={link.name}>
-                      <Link
-                        to={link.href}
-                        className="text-gray-400 hover:text-blue-400 transition-colors duration-200 flex items-center gap-2 text-xs sm:text-sm"
-                      >
-                        {link.name}
-                        {link.badge && (
-                          <span className={`text-xs px-1.5 py-0.5 rounded-full ${
-                            link.badge === 'New' ? 'bg-purple-500/20 text-purple-400' :
-                            'bg-gray-500/20 text-gray-400'
-                          }`}>
-                            {link.badge}
-                          </span>
-                        )}
-                      </Link>
+                      {link.external ? (
+                        <a
+                          href={link.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-400 hover:text-blue-400 transition-colors duration-200 flex items-center gap-2 text-xs sm:text-sm"
+                        >
+                          {link.name}
+                          {link.badge && (
+                            <span className={`text-xs px-1.5 py-0.5 rounded-full ${
+                              link.badge === 'New' ? 'bg-purple-500/20 text-purple-400' :
+                              'bg-gray-500/20 text-gray-400'
+                            }`}>
+                              {link.badge}
+                            </span>
+                          )}
+                        </a>
+                      ) : (
+                        <Link
+                          to={link.href}
+                          className="text-gray-400 hover:text-blue-400 transition-colors duration-200 flex items-center gap-2 text-xs sm:text-sm"
+                        >
+                          {link.name}
+                          {link.badge && (
+                            <span className={`text-xs px-1.5 py-0.5 rounded-full ${
+                              link.badge === 'New' ? 'bg-purple-500/20 text-purple-400' :
+                              'bg-gray-500/20 text-gray-400'
+                            }`}>
+                              {link.badge}
+                            </span>
+                          )}
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -279,7 +298,7 @@ const Footer: React.FC = () => {
                 <ul className="space-y-2 sm:space-y-3" role="list">
                   {links.support.map((link) => (
                     <li key={link.name}>
-                      {link.href.startsWith('http') ? (
+                      {link.external ? (
                         <a
                           href={link.href}
                           target="_blank"

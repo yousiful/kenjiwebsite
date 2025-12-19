@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
     { name: "Home", href: "/" },
     { name: "Solutions", href: "/ai-automation", hasDropdown: true, dropdownType: "solutions" },
     { name: "Free Tools", href: "/free-tools", hasDropdown: true, dropdownType: "tools" },
-    { name: "AI Education", href: "/ai-education" },
+    { name: "AI Education", href: "https://startlearning.kenjiai.com/", external: true },
     { name: "Pricing", href: "/pricing" },
     { name: "Investors", href: "/investors" }
   ];
@@ -195,6 +195,16 @@ const Navbar: React.FC = () => {
                       </motion.div>
                     )}
                   </div>
+                ) : item.external ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover focus-ring touch-target"
+                    role="menuitem"
+                  >
+                    {item.name}
+                  </a>
                 ) : (
                   <Link
                     to={item.href}
@@ -275,14 +285,27 @@ const Navbar: React.FC = () => {
           >
             <div className="px-4 py-4 space-y-4">
               {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className="block text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-2"
-                  role="menuitem"
-                >
-                  {item.name}
-                </Link>
+                item.external ? (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-2"
+                    role="menuitem"
+                  >
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className="block text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-2"
+                    role="menuitem"
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
               <Link
                 to="/free-tools"

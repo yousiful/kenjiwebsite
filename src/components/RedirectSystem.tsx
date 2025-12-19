@@ -26,6 +26,13 @@ const RedirectSystem: React.FC = () => {
     '/trial': '/pricing',
     '/start': '/pricing',
     '/demo': '/pricing',
+    '/ai-education': 'https://startlearning.kenjiai.com/',
+    '/education': 'https://startlearning.kenjiai.com/',
+    '/learn': 'https://startlearning.kenjiai.com/',
+    '/community': 'https://startlearning.kenjiai.com/',
+    '/partner': 'https://closers.kenjiai.com/',
+    '/partners': 'https://closers.kenjiai.com/',
+    '/become-partner': 'https://closers.kenjiai.com/',
   };
   
   // List of valid routes
