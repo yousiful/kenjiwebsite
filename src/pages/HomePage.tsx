@@ -10,6 +10,8 @@ import { ScrollControls } from '../components/ScrollControls';
 import { ResultsDisclaimer } from '../components/ResultsDisclaimer';
 import { TrustBadges } from '../components/TrustBadges';
 import { MoneyBackGuarantee } from '../components/MoneyBackGuarantee';
+import { RealTimeStats } from '../components/RealTimeStats';
+import { ProofNotification } from '../components/ProofNotification';
 
 const HomePage: React.FC = () => {
   const structuredData = {
@@ -66,6 +68,7 @@ const HomePage: React.FC = () => {
         <Hero />
         <TrustBadges />
         <BusinessTransformation />
+        <RealTimeStats />
         <Features />
         <Tools />
         <SocialProof />
@@ -77,6 +80,7 @@ const HomePage: React.FC = () => {
         </div>
         <FinalCTA />
         <ScrollControls />
+        <ProofNotification />
       </div>
     </>
   );
