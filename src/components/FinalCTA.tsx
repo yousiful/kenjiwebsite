@@ -126,7 +126,7 @@ const FinalCTA: React.FC = () => {
           aria-labelledby="cta-button"
         >
           <div className="relative">
-            <LuxuryButton href="#pricing" variant="primary" size="xl">
+            <LuxuryButton href="/pricing" variant="primary" size="xl">
               {currentHoliday && (
                 <motion.span
                   animate={{ rotate: [0, 15, -15, 0] }}

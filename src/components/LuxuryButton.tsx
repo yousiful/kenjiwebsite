@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion, MotionProps } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 interface LuxuryButtonProps {
   children: React.ReactNode;
@@ -21,18 +22,18 @@ export const LuxuryButton: React.FC<LuxuryButtonProps> = ({
   const variants = {
     primary: {
       background: 'linear-gradient(135deg, #E9338E 0%, #4B52FF 50%, #10B981 100%)',
-      shadow: '0 20px 60px rgba(233, 51, 142, 0.4), 0 0 80px rgba(75, 82, 255, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
-      border: 'rgba(255, 255, 255, 0.2)',
+      shadow: '0 20px 60px rgba(233, 51, 142, 0.5), 0 0 100px rgba(75, 82, 255, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.2)',
+      border: 'rgba(255, 255, 255, 0.3)',
     },
     secondary: {
       background: 'linear-gradient(135deg, #3B82F6 0%, #8B5CF6 50%, #10B981 100%)',
-      shadow: '0 20px 60px rgba(59, 130, 246, 0.4), 0 0 80px rgba(139, 92, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.3)',
-      border: 'rgba(255, 255, 255, 0.2)',
+      shadow: '0 20px 60px rgba(59, 130, 246, 0.5), 0 0 100px rgba(139, 92, 246, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.2)',
+      border: 'rgba(255, 255, 255, 0.3)',
     },
     premium: {
       background: 'linear-gradient(135deg, #FBBF24 0%, #F59E0B 50%, #D97706 100%)',
-      shadow: '0 20px 60px rgba(251, 191, 36, 0.5), 0 0 80px rgba(245, 158, 11, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4)',
-      border: 'rgba(255, 255, 255, 0.3)',
+      shadow: '0 20px 60px rgba(251, 191, 36, 0.6), 0 0 100px rgba(245, 158, 11, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.5), inset 0 -2px 4px rgba(0, 0, 0, 0.2)',
+      border: 'rgba(255, 255, 255, 0.4)',
     },
   };
 
@@ -46,6 +47,8 @@ export const LuxuryButton: React.FC<LuxuryButtonProps> = ({
   const style = variants[variant];
   const sizeClass = sizes[size];
 
+  const isInternalRoute = href && (href.startsWith('/') || href.startsWith('#'));
+
   const buttonContent = (
     <motion.div
       whileHover={{
@@ -56,7 +59,7 @@ export const LuxuryButton: React.FC<LuxuryButtonProps> = ({
       animate={{
         boxShadow: [
           style.shadow,
-          style.shadow.replace('0.4', '0.6').replace('0.3', '0.5'),
+          style.shadow.replace('0.5', '0.7').replace('0.4', '0.6'),
           style.shadow,
         ],
       }}
@@ -74,13 +77,13 @@ export const LuxuryButton: React.FC<LuxuryButtonProps> = ({
       style={{
         background: style.background,
         boxShadow: style.shadow,
-        border: `1px solid ${style.border}`,
+        border: `2px solid ${style.border}`,
       }}
     >
       <motion.div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.1) 100%)',
+          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%, rgba(255, 255, 255, 0.15) 100%)',
           backdropFilter: 'blur(10px)',
         }}
         animate={{
@@ -101,13 +104,14 @@ export const LuxuryButton: React.FC<LuxuryButtonProps> = ({
       />
 
       <div className="absolute inset-0 rounded-2xl" style={{
-        background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%)',
+        background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.05) 50%, rgba(0, 0, 0, 0.1) 100%)',
       }} />
 
       <motion.div
-        className="absolute bottom-0 left-0 right-0 h-px"
+        className="absolute top-0 left-0 right-0 h-1"
         style={{
-          background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent)',
+          background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent)',
+          borderRadius: '16px 16px 0 0',
         }}
         animate={{
           x: ['-100%', '100%'],
@@ -126,7 +130,7 @@ export const LuxuryButton: React.FC<LuxuryButtonProps> = ({
       <motion.div
         className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100"
         style={{
-          background: 'radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.1), transparent 60%)',
+          background: 'radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.15), transparent 60%)',
         }}
         transition={{ duration: 0.3 }}
       />
@@ -134,7 +138,10 @@ export const LuxuryButton: React.FC<LuxuryButtonProps> = ({
   );
 
   if (href) {
-    return <a href={href}>{buttonContent}</a>;
+    if (isInternalRoute) {
+      return <Link to={href}>{buttonContent}</Link>;
+    }
+    return <a href={href} target="_blank" rel="noopener noreferrer">{buttonContent}</a>;
   }
 
   return <div onClick={onClick}>{buttonContent}</div>;
