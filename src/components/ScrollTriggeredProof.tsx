@@ -28,44 +28,54 @@ const locations = [
 
 const activities = [
   {
-    action: 'just signed up for KenjiAI',
-    icon: User,
-    color: 'from-blue-500 to-cyan-500'
-  },
-  {
-    action: 'purchased the Yearly Program',
+    action: 'subscribed to Yearly Plan',
     icon: ShoppingCart,
     color: 'from-green-500 to-emerald-500'
   },
   {
-    action: 'activated Voice AI Agents',
-    icon: Zap,
-    color: 'from-blue-500 to-pink-500'
-  },
-  {
-    action: 'gave KenjiAI 5 stars',
-    icon: Star,
-    color: 'from-yellow-500 to-orange-500'
-  },
-  {
-    action: 'achieved $10K revenue milestone',
-    icon: Award,
-    color: 'from-pink-500 to-rose-500'
-  },
-  {
-    action: 'upgraded to Yearly Plan',
-    icon: TrendingUp,
+    action: 'booked a demo call',
+    icon: User,
     color: 'from-blue-500 to-cyan-500'
   },
   {
-    action: 'deployed automation workflows',
-    icon: Zap,
-    color: 'from-cyan-500 to-blue-500'
+    action: 'purchased Yearly Program',
+    icon: Award,
+    color: 'from-green-500 to-emerald-500'
   },
   {
-    action: 'closed their first AI deal',
+    action: 'scheduled a consultation',
     icon: CheckCircle,
-    color: 'from-emerald-500 to-green-500'
+    color: 'from-blue-500 to-cyan-500'
+  },
+  {
+    action: 'joined Yearly Plan',
+    icon: TrendingUp,
+    color: 'from-green-500 to-emerald-500'
+  },
+  {
+    action: 'booked a strategy session',
+    icon: User,
+    color: 'from-blue-500 to-cyan-500'
+  },
+  {
+    action: 'upgraded to Yearly Plan',
+    icon: ShoppingCart,
+    color: 'from-green-500 to-emerald-500'
+  },
+  {
+    action: 'reserved a demo slot',
+    icon: Star,
+    color: 'from-blue-500 to-cyan-500'
+  },
+  {
+    action: 'signed up for Yearly Plan',
+    icon: Award,
+    color: 'from-green-500 to-emerald-500'
+  },
+  {
+    action: 'scheduled an onboarding call',
+    icon: CheckCircle,
+    color: 'from-blue-500 to-cyan-500'
   }
 ];
 
@@ -112,11 +122,11 @@ export function ScrollTriggeredProof() {
 
   useEffect(() => {
     const showNotificationAtProgress = (progress: number) => {
-      const thresholds = [10, 20, 30, 40, 50, 60, 70, 80];
-      const threshold = thresholds.find(t => progress >= t && progress < t + 5);
+      const thresholds = [15, 30, 45, 60, 75, 90];
+      const threshold = thresholds.find(t => progress >= t && progress < t + 8);
 
       if (threshold) {
-        const index = Math.floor(threshold / 10);
+        const index = thresholds.indexOf(threshold);
         if (index !== currentIndex && index < notificationQueue.length) {
           const notification = notificationQueue[index];
           setCurrentNotification(notification);
@@ -125,7 +135,7 @@ export function ScrollTriggeredProof() {
 
           setTimeout(() => {
             setShow(false);
-          }, 5000);
+          }, 6000);
         }
       }
     };
@@ -141,27 +151,32 @@ export function ScrollTriggeredProof() {
 
         setTimeout(() => {
           setShow(false);
-        }, 5000);
+        }, 6000);
       }
-    }, 3000);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <div
-      className="fixed left-4 z-40 pointer-events-none transition-all duration-500 ease-out"
+      className="fixed left-4 z-40 pointer-events-none"
       style={{
-        top: `${Math.min(viewportPosition + window.innerHeight * 0.7, document.documentElement.scrollHeight - 200)}px`
+        top: `${Math.min(Math.max(100, viewportPosition + window.innerHeight * 0.6), document.documentElement.scrollHeight - 300)}px`,
+        transition: 'top 0.8s cubic-bezier(0.4, 0.0, 0.2, 1)'
       }}
     >
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {show && currentNotification && (
           <motion.div
-            initial={{ opacity: 0, x: -80, scale: 0.85 }}
+            key={currentNotification.id}
+            initial={{ opacity: 0, x: -50, scale: 0.95 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: -80, scale: 0.85 }}
-            transition={{ duration: 0.6, type: 'spring', bounce: 0.3 }}
+            exit={{ opacity: 0, x: -30, scale: 0.95 }}
+            transition={{
+              duration: 0.5,
+              ease: [0.4, 0.0, 0.2, 1]
+            }}
             className="pointer-events-none"
           >
             <div
@@ -196,7 +211,7 @@ export function ScrollTriggeredProof() {
               <motion.div
                 initial={{ scaleX: 1 }}
                 animate={{ scaleX: 0 }}
-                transition={{ duration: 5, ease: 'linear' }}
+                transition={{ duration: 6, ease: 'linear' }}
                 className="absolute bottom-0 left-0 h-0.5 bg-white/20 rounded-full origin-left"
                 style={{ width: '100%' }}
               />

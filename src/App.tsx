@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'r
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import InteractiveMouseCaption from './components/InteractiveMouseCaption';
-import GamificationSystem from './components/GamificationSystem';
 import GamifiedInteractions from './components/GamifiedInteractions';
 import ScrollProgressBar from './components/ScrollProgressBar';
 import RedirectSystem from './components/RedirectSystem';
@@ -69,7 +68,6 @@ function App() {
               <div className="min-h-screen bg-gray-900" id="app-container">
                 <PerformanceOptimizer />
                 <ScrollProgressBar />
-                <GamificationSystem />
                 <GamifiedInteractions />
                 <EnhancedInteractiveElements />
                 <ScrollTriggeredProof />
