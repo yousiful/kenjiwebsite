@@ -26,7 +26,7 @@ export function ChatButton() {
             className="fixed bottom-24 right-6 z-50 w-80 sm:w-96"
           >
             <div className="bg-gray-900/95 backdrop-blur-lg border-2 border-blue-500/30 rounded-2xl shadow-2xl overflow-hidden">
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-4 flex items-center justify-between">
+              <div className="bg-gradient-to-r from-blue-600 to-cyan-500 p-4 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
                     <MessageCircle className="w-5 h-5 text-white" />
@@ -110,9 +110,9 @@ export function ChatButton() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full shadow-2xl flex items-center justify-center hover:shadow-blue-500/50 transition-shadow"
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-full shadow-2xl flex items-center justify-center hover:shadow-blue-500/50 transition-shadow"
         style={{
-          boxShadow: '0 10px 40px rgba(59, 130, 246, 0.5), 0 0 20px rgba(147, 51, 234, 0.3)'
+          boxShadow: '0 10px 40px rgba(59, 130, 246, 0.5), 0 0 20px rgba(6, 182, 212, 0.3)'
         }}
       >
         <AnimatePresence mode="wait">

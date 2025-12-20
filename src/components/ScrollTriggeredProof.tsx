@@ -40,7 +40,7 @@ const activities = [
   {
     action: 'activated Voice AI Agents',
     icon: Zap,
-    color: 'from-purple-500 to-pink-500'
+    color: 'from-blue-500 to-pink-500'
   },
   {
     action: 'gave KenjiAI 5 stars',
@@ -55,7 +55,7 @@ const activities = [
   {
     action: 'upgraded to Yearly Plan',
     icon: TrendingUp,
-    color: 'from-indigo-500 to-purple-500'
+    color: 'from-blue-500 to-cyan-500'
   },
   {
     action: 'deployed automation workflows',
