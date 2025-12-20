@@ -69,11 +69,6 @@ export function PricingNew() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-400/40 rounded-full px-6 py-3 mb-6">
-            <TrendingUp className="w-5 h-5 text-green-400" />
-            <span className="text-green-300 font-semibold">The Only Hub That Grows With You</span>
-          </div>
-
           <h1 className="text-5xl sm:text-6xl font-bold mb-6" style={{fontFamily: 'Inter, Montserrat, sans-serif'}}>
             <span style={{
               background: 'linear-gradient(90deg, #10B981 0%, #34D399 100%)',
@@ -86,12 +81,8 @@ export function PricingNew() {
             </span>
           </h1>
 
-          <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
-            The only platform where our success is tied to yours. We handle everything—from launching your ads to building your workflows to providing expert support—so you can focus on growing your revenue.
-          </p>
-
           {/* Value Props Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
             {[
               {
                 icon: Target,
