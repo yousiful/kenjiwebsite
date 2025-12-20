@@ -19,8 +19,6 @@ import { HolidayFloatingElements } from './components/HolidayFloatingElements';
 import { HolidaySnowfall } from './components/HolidaySnowfall';
 import { HolidaySparkles } from './components/HolidaySparkles';
 import { HolidayBanner } from './components/HolidayBanner';
-import { ChatButton } from './components/ChatButton';
-import { ScrollTriggeredProof } from './components/ScrollTriggeredProof';
 import { ErrorLogger } from './components/ErrorLogger';
 
 // Lazy load pages for better performance
@@ -70,8 +68,6 @@ function App() {
                 <ScrollProgressBar />
                 <GamifiedInteractions />
                 <EnhancedInteractiveElements />
-                <ScrollTriggeredProof />
-                <ChatButton />
                 <HolidayFloatingElements />
                 <HolidaySnowfall />
                 <HolidaySparkles />
