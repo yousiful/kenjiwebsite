@@ -69,47 +69,47 @@ export function PricingNew() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-400/40 rounded-full px-6 py-3 mb-6">
-            <Rocket className="w-5 h-5 text-purple-400" />
-            <span className="text-purple-300 font-semibold">One-of-a-Kind Growth Program</span>
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-400/40 rounded-full px-6 py-3 mb-6">
+            <TrendingUp className="w-5 h-5 text-green-400" />
+            <span className="text-green-300 font-semibold">The Only Hub That Grows With You</span>
           </div>
 
           <h1 className="text-5xl sm:text-6xl font-bold mb-6" style={{fontFamily: 'Inter, Montserrat, sans-serif'}}>
             <span style={{
-              background: 'linear-gradient(90deg, #E9338E 0%, #4B52FF 100%)',
+              background: 'linear-gradient(90deg, #10B981 0%, #34D399 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
               letterSpacing: '0.02em'
             }}>
-              The Last Growth Platform You'll Ever Need
+              Your AI Automation Hub That Scales With Your Success
             </span>
           </h1>
 
           <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Stop duct-taping 17 different tools together. Our Growth Program replaces your entire tech stack with one AI-powered platform that actually grows your business—not just your monthly bills.
+            The only platform where our success is tied to yours. We handle everything—from launching your ads to building your workflows to providing expert support—so you can focus on growing your revenue.
           </p>
 
           {/* Value Props Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
             {[
               {
-                icon: TrendingUp,
-                title: 'Performance-First',
-                description: 'We only win when you win. Pay based on actual results, not empty promises.',
-                color: 'from-green-400 to-emerald-500'
-              },
-              {
                 icon: Target,
-                title: 'Done-For-You',
-                description: 'Expert team handles setup, ads, and support. You focus on closing deals.',
+                title: 'Done-For-You Ads',
+                description: 'We create, launch, and optimize your ad campaigns to fill your CRM with qualified leads.',
                 color: 'from-blue-400 to-cyan-500'
               },
               {
                 icon: Rocket,
-                title: 'Scale on Autopilot',
-                description: 'AI handles lead gen, nurturing, and follow-ups 24/7 while you sleep.',
+                title: 'Done-For-You Sites & Workflows',
+                description: 'Complete website setup and automated workflows built specifically for your business needs.',
                 color: 'from-purple-400 to-pink-500'
+              },
+              {
+                icon: Shield,
+                title: 'Done-For-You Expert Support',
+                description: 'Industry experts handle strategy, management, and optimization so you can focus on revenue.',
+                color: 'from-green-400 to-emerald-500'
               }
             ].map((prop, idx) => (
               <motion.div
