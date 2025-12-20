@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
   const { textGradientClass, currentHoliday } = useHolidayTheme();
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20" style={{backgroundColor: '#0B0E14'}} aria-labelledby="hero-heading">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-4" style={{backgroundColor: '#0B0E14'}} aria-labelledby="hero-heading">
       <AmbientBackground />
 
       {/* Starfield Background */}
@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-8"
+          className="mb-3"
         >
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-cyan-400/40 rounded-full px-6 py-3">
             <Sparkles className="w-5 h-5 text-cyan-400" />
