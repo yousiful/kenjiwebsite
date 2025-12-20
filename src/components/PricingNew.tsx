@@ -13,6 +13,9 @@ export function PricingNew() {
   };
 
   const monthlyFeatures = [
+    "Done-For-You Setup & Team Training",
+    "Done-For-You Ads to Fill Your CRM",
+    "Done-For-You Support & Management",
     "Unlimited AI Voice Agents",
     "Smart Workflows & Automation",
     "Advanced Email & SMS Campaigns",
@@ -30,7 +33,7 @@ export function PricingNew() {
   ];
 
   const yearlyFeatures = [
-    "Done-For-You Setup & Maintenance",
+    "Done-For-You Setup & Team Training",
     "Done-For-You Ads to Fill Your CRM",
     "Done-For-You Support & Management",
     "Unlimited AI Voice Agents",
@@ -190,17 +193,6 @@ export function PricingNew() {
               </div>
             </div>
 
-            {/* Setup Only Highlight Box */}
-            <div className="bg-gradient-to-br from-yellow-500/10 to-amber-500/10 backdrop-blur-sm border border-yellow-400/30 rounded-2xl p-4 mb-4">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <Rocket className="w-5 h-5 text-yellow-400" />
-                <span className="text-white font-semibold">Setup Only</span>
-              </div>
-              <p className="text-gray-300 text-sm text-center">
-                One-time setup to get you started
-              </p>
-            </div>
-
             {/* Everything Included Box */}
             <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 backdrop-blur-sm border border-blue-400/30 rounded-2xl p-4 mb-6">
               <div className="flex items-center justify-center gap-2 mb-2">
@@ -294,17 +286,6 @@ export function PricingNew() {
                 Save $700/year (21% off)
               </div>
               <p className="text-gray-500 text-sm mt-1">Billed annually at $2600</p>
-            </div>
-
-            {/* Setup & Maintenance Highlight Box */}
-            <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 backdrop-blur-sm border border-green-400/30 rounded-2xl p-4 mb-4">
-              <div className="flex items-center justify-center gap-2 mb-2">
-                <Shield className="w-5 h-5 text-green-400" />
-                <span className="text-white font-semibold">Setup & Maintenance</span>
-              </div>
-              <p className="text-gray-300 text-sm text-center">
-                Complete setup + ongoing maintenance included
-              </p>
             </div>
 
             {/* Everything Included Box */}
