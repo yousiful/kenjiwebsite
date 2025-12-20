@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { CheckCircle, User, ShoppingCart, Zap, Star, Award, TrendingUp, ChevronUp, ChevronDown } from 'lucide-react';
+import { CheckCircle, User, ShoppingCart, Zap, Star, Award, TrendingUp } from 'lucide-react';
 
 interface Notification {
   id: string;
@@ -148,107 +148,62 @@ export function ScrollTriggeredProof() {
     return () => clearTimeout(timer);
   }, []);
 
-  const handlePrevious = () => {
-    const newIndex = currentIndex > 0 ? currentIndex - 1 : notificationQueue.length - 1;
-    setCurrentIndex(newIndex);
-    setCurrentNotification(notificationQueue[newIndex]);
-    setShow(true);
-
-    setTimeout(() => {
-      setShow(false);
-    }, 5000);
-  };
-
-  const handleNext = () => {
-    const newIndex = currentIndex < notificationQueue.length - 1 ? currentIndex + 1 : 0;
-    setCurrentIndex(newIndex);
-    setCurrentNotification(notificationQueue[newIndex]);
-    setShow(true);
-
-    setTimeout(() => {
-      setShow(false);
-    }, 5000);
-  };
-
   return (
     <div
-      className="fixed left-4 z-40 pointer-events-none transition-all duration-300"
+      className="fixed left-4 z-40 pointer-events-none transition-all duration-500 ease-out"
       style={{
-        top: `${Math.min(viewportPosition + window.innerHeight * 0.5, document.documentElement.scrollHeight - 400)}px`
+        top: `${Math.min(viewportPosition + window.innerHeight * 0.7, document.documentElement.scrollHeight - 200)}px`
       }}
     >
-      <div className="flex items-center gap-3">
-        <AnimatePresence>
-          {show && currentNotification && (
-            <motion.div
-              initial={{ opacity: 0, x: -100, scale: 0.8 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{ opacity: 0, x: -100, scale: 0.8 }}
-              transition={{ duration: 0.5, type: 'spring', bounce: 0.4 }}
-              className="pointer-events-auto"
+      <AnimatePresence>
+        {show && currentNotification && (
+          <motion.div
+            initial={{ opacity: 0, x: -80, scale: 0.85 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: -80, scale: 0.85 }}
+            transition={{ duration: 0.6, type: 'spring', bounce: 0.3 }}
+            className="pointer-events-none"
+          >
+            <div
+              className={`bg-gradient-to-r ${currentNotification.color} rounded-xl shadow-lg p-2.5 border border-white/10 backdrop-blur-md bg-opacity-40 max-w-[280px] sm:max-w-xs`}
+              style={{
+                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.15)',
+                backgroundColor: 'rgba(255, 255, 255, 0.08)'
+              }}
             >
-              <div
-                className={`bg-gradient-to-r ${currentNotification.color} rounded-2xl shadow-2xl p-4 border-2 border-white/20 max-w-sm`}
-                style={{
-                  boxShadow: '0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.2)'
-                }}
-              >
-                <div className="flex items-start gap-3">
-                  <div className="flex-shrink-0 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                    <currentNotification.icon className="w-5 h-5 text-white" />
-                  </div>
-
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                      <CheckCircle className="w-4 h-4 text-white animate-pulse" />
-                      <span className="text-white font-bold text-sm">Live Activity</span>
-                    </div>
-                    <p className="text-white text-sm font-semibold mb-1">
-                      {currentNotification.name}
-                    </p>
-                    <p className="text-white/90 text-xs">
-                      {currentNotification.action}
-                    </p>
-                    <p className="text-white/80 text-xs mt-1">
-                      {currentNotification.location} • Just now
-                    </p>
-                  </div>
+              <div className="flex items-start gap-2">
+                <div className="flex-shrink-0 w-7 h-7 bg-white/15 backdrop-blur-sm rounded-full flex items-center justify-center">
+                  <currentNotification.icon className="w-3.5 h-3.5 text-white" />
                 </div>
 
-                <motion.div
-                  initial={{ scaleX: 1 }}
-                  animate={{ scaleX: 0 }}
-                  transition={{ duration: 5, ease: 'linear' }}
-                  className="absolute bottom-0 left-0 h-1 bg-white/30 rounded-full origin-left"
-                  style={{ width: '100%' }}
-                />
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-1.5 mb-0.5">
+                    <CheckCircle className="w-2.5 h-2.5 text-white/90" />
+                    <span className="text-white/90 font-semibold text-[10px] tracking-wide uppercase">Live</span>
+                  </div>
+                  <p className="text-white text-xs font-semibold mb-0.5 leading-tight">
+                    {currentNotification.name}
+                  </p>
+                  <p className="text-white/85 text-[11px] leading-snug">
+                    {currentNotification.action}
+                  </p>
+                  <p className="text-white/70 text-[10px] mt-0.5">
+                    {currentNotification.location}
+                  </p>
+                </div>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
-        <div className="flex flex-col gap-2 pointer-events-auto">
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={handlePrevious}
-            className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg flex items-center justify-center hover:shadow-xl transition-all border-2 border-white/20"
-            aria-label="Previous notification"
-          >
-            <ChevronUp className="w-5 h-5 text-white" />
-          </motion.button>
-
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={handleNext}
-            className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 shadow-lg flex items-center justify-center hover:shadow-xl transition-all border-2 border-white/20"
-            aria-label="Next notification"
-          >
-            <ChevronDown className="w-5 h-5 text-white" />
-          </motion.button>
-        </div>
-      </div>
+              <motion.div
+                initial={{ scaleX: 1 }}
+                animate={{ scaleX: 0 }}
+                transition={{ duration: 5, ease: 'linear' }}
+                className="absolute bottom-0 left-0 h-0.5 bg-white/20 rounded-full origin-left"
+                style={{ width: '100%' }}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
