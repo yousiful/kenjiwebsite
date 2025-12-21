@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Zap, ChevronDown, ExternalLink, LogIn, ChevronRight, Calendar, DollarSign, Phone } from 'lucide-react';
 
@@ -263,106 +263,154 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Mobile Menu */}
-        {isOpen && (
-          <motion.div
-            id="mobile-menu"
-            role="menu"
-            aria-label="Mobile Navigation Menu"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-gray-800 border-t border-gray-700 mt-2 rounded-b-xl investor-card-shadow"
-          >
-            <div className="px-4 py-4 space-y-4">
-              {navItems.map((item) => (
-                item.external ? (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-2"
-                    role="menuitem"
-                  >
-                    {item.name}
-                  </a>
-                ) : (
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              id="mobile-menu"
+              role="menu"
+              aria-label="Mobile Navigation Menu"
+              initial={{ opacity: 0, y: -20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{
+                opacity: 0,
+                y: -20,
+                scale: 0.95,
+                transition: { duration: 0.2, ease: "easeInOut" }
+              }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="md:hidden bg-gray-800 border-t border-gray-700 mt-2 rounded-b-xl investor-card-shadow overflow-hidden"
+            >
+              <motion.div
+                className="px-4 py-4 space-y-4"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                {navItems.map((item, index) => (
+                  item.external ? (
+                    <motion.a
+                      key={item.name}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-2"
+                      role="menuitem"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                    >
+                      {item.name}
+                    </motion.a>
+                  ) : (
+                    <motion.div
+                      key={item.name}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                    >
+                      <Link
+                        to={item.href}
+                        onClick={() => setIsOpen(false)}
+                        className="block text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-2"
+                        role="menuitem"
+                      >
+                        {item.name}
+                      </Link>
+                    </motion.div>
+                  )
+                ))}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: navItems.length * 0.05 }}
+                >
                   <Link
-                    key={item.name}
-                    to={item.href}
-                    className="block text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-2"
+                    to="/free-tools"
+                    onClick={() => setIsOpen(false)}
+                    className="block text-green-400 hover:text-green-300 transition-colors font-medium mobile-hover touch-target py-2"
                     role="menuitem"
                   >
-                    {item.name}
+                    Free Tools ✨
                   </Link>
-                )
-              ))}
-              <Link
-                to="/free-tools"
-                onClick={() => setIsOpen(false)}
-                className="block text-green-400 hover:text-green-300 transition-colors font-medium mobile-hover touch-target py-2"
-                role="menuitem"
-              >
-                Free Tools ✨
-              </Link>
-              <a
-                href="https://support.kenjiai.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-2"
-                role="menuitem"
-              >
-                Support
-              </a>
+                </motion.div>
+                <motion.a
+                  href="https://support.kenjiai.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-2"
+                  role="menuitem"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: (navItems.length + 1) * 0.05 }}
+                >
+                  Support
+                </motion.a>
 
-              {/* Mobile Phone Number */}
-              <a
-                href="tel:+18286772148"
-                className="flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors font-medium mobile-hover touch-target py-2"
-                role="menuitem"
-              >
-                <Phone className="w-4 h-4" aria-hidden="true" />
-                (828) 677-2148 - Speak with Kenji
-              </a>
+                {/* Mobile Phone Number */}
+                <motion.a
+                  href="tel:+18286772148"
+                  className="flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors font-medium mobile-hover touch-target py-2"
+                  role="menuitem"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: (navItems.length + 2) * 0.05 }}
+                >
+                  <Phone className="w-4 h-4" aria-hidden="true" />
+                  (828) 677-2148 - Speak with Kenji
+                </motion.a>
 
-              {/* Mobile Login Button */}
-              <a
-                href="https://app.kenjiai.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-2"
-                role="menuitem"
-              >
-                <LogIn className="w-4 h-4" aria-hidden="true" />
-                Login to Dashboard
-                <ExternalLink className="w-3 h-3" aria-hidden="true" />
-              </a>
+                {/* Mobile Login Button */}
+                <motion.a
+                  href="https://app.kenjiai.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-2"
+                  role="menuitem"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: (navItems.length + 3) * 0.05 }}
+                >
+                  <LogIn className="w-4 h-4" aria-hidden="true" />
+                  Login to Dashboard
+                  <ExternalLink className="w-3 h-3" aria-hidden="true" />
+                </motion.a>
 
-              {/* Mobile VIP Demo Button */}
-              <a
-                href="https://go.mediatraffics.com/leads"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-gray-800 border border-gray-700 text-white px-4 py-3 rounded-xl font-semibold mobile-button"
-                role="menuitem"
-              >
-                <Calendar className="w-4 h-4" aria-hidden="true" />
-                VIP Demo
-              </a>
+                {/* Mobile VIP Demo Button */}
+                <motion.a
+                  href="https://go.mediatraffics.com/leads"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 bg-gray-800 border border-gray-700 text-white px-4 py-3 rounded-xl font-semibold mobile-button"
+                  role="menuitem"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: (navItems.length + 4) * 0.05 }}
+                >
+                  <Calendar className="w-4 h-4" aria-hidden="true" />
+                  VIP Demo
+                </motion.a>
 
-              {/* Mobile See Pricing Button */}
-              <Link
-                to="/pricing"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center justify-center gap-2 investor-gradient-blue text-white px-4 py-3 rounded-xl font-semibold mobile-button"
-                role="menuitem"
-              >
-                <DollarSign className="w-4 h-4" aria-hidden="true" />
-                See Pricing
-              </Link>
-            </div>
-          </motion.div>
-        )}
+                {/* Mobile See Pricing Button */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: (navItems.length + 5) * 0.05 }}
+                >
+                  <Link
+                    to="/pricing"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center justify-center gap-2 investor-gradient-blue text-white px-4 py-3 rounded-xl font-semibold mobile-button"
+                    role="menuitem"
+                  >
+                    <DollarSign className="w-4 h-4" aria-hidden="true" />
+                    See Pricing
+                  </Link>
+                </motion.div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.nav>
   );
