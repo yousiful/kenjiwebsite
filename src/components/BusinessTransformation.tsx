@@ -6,31 +6,31 @@ const BusinessTransformation: React.FC = () => {
   const transformationSteps = [
     {
       icon: Users,
-      title: "Human Insight",
-      description: "Your team's creativity, intuition, and strategic thinking",
+      title: "Strategic Leadership",
+      description: "Executive vision, domain expertise, and critical decision-making",
       color: "from-blue-500 to-cyan-400",
       position: { x: 0, y: 0 }
     },
     {
       icon: Brain,
-      title: "AI Intelligence",
-      description: "Machine learning, automation, and data processing power",
+      title: "AI Systems",
+      description: "Advanced automation, predictive analytics, and operational execution",
       color: "from-green-500 to-emerald-400",
       position: { x: 1, y: 0 }
     },
     {
       icon: Zap,
-      title: "Fusion Power",
-      description: "The magical combination that amplifies both capabilities",
+      title: "Integrated Excellence",
+      description: "Unified platform delivering exponential performance improvements",
       color: "from-purple-500 to-pink-400",
       position: { x: 0.5, y: 1 }
     }
   ];
 
   const businessOutcomes = [
-    { icon: TrendingUp, label: "300% Growth", value: "Average Revenue Increase" },
-    { icon: Target, label: "85% Efficiency", value: "Process Automation" },
-    { icon: Heart, label: "95% Satisfaction", value: "Customer Experience" }
+    { icon: TrendingUp, label: "425% ROI", value: "Average Return on Investment" },
+    { icon: Target, label: "85% Efficiency", value: "Operational Optimization" },
+    { icon: Heart, label: "95% Satisfaction", value: "Client Success Rate" }
   ];
 
   return (
@@ -51,16 +51,16 @@ const BusinessTransformation: React.FC = () => {
         >
           <h2 className="text-5xl sm:text-6xl font-bold text-white mb-6">
             <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-              AI + Human = 
+              Strategic Intelligence
             </span>
             <br />
             <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Business Magic
+              Meets Operational Scale
             </span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
-            We don't replace humans—we amplify them. KenjiAI combines artificial intelligence with human creativity 
-            to create businesses that are more powerful, more efficient, and more human than ever before.
+          <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            Intelligent systems augment executive decision-making with real-time insights and automated execution.
+            The result is unprecedented operational leverage and sustainable competitive positioning.
           </p>
         </motion.div>
 

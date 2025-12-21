@@ -6,59 +6,59 @@ const SocialProof: React.FC = () => {
   const testimonials = [
     {
       name: "Sarah Chen",
-      role: "Digital Marketing Agency Owner",
+      role: "CEO",
       company: "Growth Labs",
       avatar: "SC",
-      content: "KenjiAI transformed our agency completely. We went from managing 20 clients manually to handling 100+ with AI automation. Our revenue tripled in 6 months.",
+      content: "KenjiAI's intelligent automation platform enabled us to scale from 20 to 100+ clients without expanding our team. The operational efficiency gains translated to a 300% revenue increase within six months.",
       metric: "3x Revenue Growth"
     },
     {
       name: "Marcus Johnson",
-      role: "E-commerce Entrepreneur",
+      role: "Chief Revenue Officer",
       company: "TechGear Pro",
       avatar: "MJ",
-      content: "The voice agents alone have closed over $500K in deals while I sleep. This isn't just software, it's like having a team of expert salespeople working 24/7.",
-      metric: "$500K+ in Sales"
+      content: "The AI-powered systems have generated over $500K in qualified pipeline while maintaining consistent conversion rates. This represents a fundamental shift in how we approach revenue generation.",
+      metric: "$500K+ Pipeline"
     },
     {
       name: "Elena Rodriguez",
-      role: "SaaS Founder",
+      role: "Founder & CEO",
       company: "DataSync Solutions",
       avatar: "ER",
-      content: "We reduced our customer acquisition cost by 70% and increased conversion rates by 250%. KenjiAI pays for itself within the first week.",
+      content: "We achieved a 70% reduction in customer acquisition costs and 250% improvement in conversion efficiency. The ROI was immediate and continues to compound monthly.",
       metric: "70% Lower CAC"
     },
     {
       name: "David Park",
-      role: "Real Estate Investor",
+      role: "Managing Partner",
       company: "Park Properties",
       avatar: "DP",
-      content: "From lead generation to deal closing, KenjiAI handles everything. I've scaled from 2 deals per month to 15 deals per month with the same effort.",
-      metric: "650% Deal Increase"
+      content: "End-to-end automation from lead qualification to transaction close increased our monthly deal volume by 650%. The systems deliver predictable, scalable results.",
+      metric: "650% Deal Volume"
     },
     {
       name: "Lisa Thompson",
-      role: "Consultant",
+      role: "Principal",
       company: "Thompson Consulting",
       avatar: "LT",
-      content: "The AI blog writer and social media planner have made me a thought leader in my industry. My LinkedIn following grew from 500 to 50K in 8 months.",
-      metric: "10,000% Growth"
+      content: "Strategic content automation established market authority and grew our professional network from 500 to 50,000 qualified connections. The brand visibility translated directly to client acquisition.",
+      metric: "100x Network Growth"
     },
     {
       name: "Alex Rivera",
-      role: "Agency Owner",
+      role: "Managing Director",
       company: "Digital Dominance",
       avatar: "AR",
-      content: "Client retention went from 60% to 95% because our AI systems deliver consistent results. We're the go-to agency in our market now.",
+      content: "Client retention improved from 60% to 95% through consistent, AI-driven delivery. Our position as the preferred partner in our vertical is now unassailable.",
       metric: "95% Retention Rate"
     }
   ];
 
   const stats = [
-    { icon: Users, value: "10,000+", label: "Active Users" },
-    { icon: DollarSign, value: "$50M+", label: "Revenue Generated" },
-    { icon: TrendingUp, value: "300%", label: "Average ROI" },
-    { icon: Star, value: "4.9/5", label: "User Rating" }
+    { icon: Users, value: "10,000+", label: "Enterprise Clients" },
+    { icon: DollarSign, value: "$50M+", label: "Value Created" },
+    { icon: TrendingUp, value: "425%", label: "Average ROI" },
+    { icon: Star, value: "4.9/5", label: "Client Satisfaction" }
   ];
 
   return (

@@ -22,25 +22,13 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pb-16">
-        {/* Mission Statement */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mb-6"
-        >
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-cyan-400/40 rounded-full px-6 py-3">
-            <Sparkles className="w-5 h-5 text-cyan-400" />
-            <span className="text-cyan-300 font-semibold">The AI Revolution That Pays You Back</span>
-          </div>
-        </motion.div>
-
         {/* Headline with Typing Animation */}
         <motion.h1
           id="hero-heading"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="pt-12"
         >
           <TypingHeadline />
         </motion.h1>
@@ -49,38 +37,37 @@ const Hero: React.FC = () => {
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-lg sm:text-xl text-gray-400 mb-8 max-w-4xl mx-auto"
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-lg sm:text-xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed"
         >
-          Every minute you spend on repetitive tasks costs you money. Let AI handle the boring stuff while you focus on what actually grows your business.
+          Trusted by industry leaders to streamline operations, accelerate growth, and maintain competitive advantage through intelligent automation.
         </motion.p>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="text-2xl font-bold mb-12"
-          style={{color: '#FBBF24'}}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="text-xl font-semibold mb-12 text-gray-400"
         >
-          Save 40+ hours per week instantly.
+          Proven systems delivering measurable ROI in under 30 days.
         </motion.p>
 
         {/* Benefit Tags - 8 pills */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12 max-w-5xl mx-auto"
         >
           {[
-            "Closes Deals 24/7",
-            "300% More Leads",
-            "85% Cost Reduction",
-            "Zero Manual Work",
-            "Instant ROI",
-            "Never Sleeps",
-            "Scales Infinitely",
-            "Pays For Itself"
+            "24/7 Operations",
+            "Scalable Infrastructure",
+            "85% Cost Efficiency",
+            "Zero Downtime",
+            "Rapid Deployment",
+            "Enterprise Security",
+            "Unlimited Capacity",
+            "Predictable ROI"
           ].map((feature, index) => (
             <motion.div
               key={feature}
@@ -96,7 +83,7 @@ const Hero: React.FC = () => {
               }}
               transition={{
                 duration: 0.4,
-                delay: 1.2 + index * 0.05,
+                delay: 1.0 + index * 0.05,
                 boxShadow: {
                   duration: 2,
                   repeat: Infinity,
@@ -125,7 +112,7 @@ const Hero: React.FC = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.5 }}
+          transition={{ duration: 0.8, delay: 1.3 }}
           className="flex justify-center mb-16"
         >
           <div className="relative">
@@ -139,7 +126,7 @@ const Hero: React.FC = () => {
                   {currentHoliday.emoji}
                 </motion.span>
               )}
-              <span>Start Growing with Kenji</span>
+              <span>Explore Solutions</span>
               <ArrowRight className="w-6 h-6" />
             </LuxuryButton>
             {currentHoliday && (

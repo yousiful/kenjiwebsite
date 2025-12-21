@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const headlines = [
-  "Automate Your Sales, 10X Your Revenue",
-  "AI That Closes Deals While You Sleep",
-  "Turn Conversations Into Revenue 24/7",
-  "Scale Your Business Without Hiring",
-  "Let AI Handle Your Entire Sales Team",
-  "Revenue on Autopilot, Growth on Demand",
-  "Work Smarter, Earn More, Stress Less"
+  "Enterprise AI That Drives Measurable Growth",
+  "Intelligent Automation for Market Leaders",
+  "Scale Operations Without Adding Headcount",
+  "Turn Strategic Vision Into Execution",
+  "AI-Powered Systems That Deliver Results",
+  "Operational Excellence Through Automation",
+  "Transform Complexity Into Competitive Advantage"
 ];
 
 export function TypingHeadline() {
