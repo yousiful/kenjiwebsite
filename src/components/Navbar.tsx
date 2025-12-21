@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Zap, ChevronDown, ExternalLink, LogIn, ChevronRight, Calendar, DollarSign } from 'lucide-react';
+import { Menu, X, Zap, ChevronDown, ExternalLink, LogIn, ChevronRight, Calendar, DollarSign, Phone } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -222,6 +222,18 @@ const Navbar: React.FC = () => {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-3" role="none">
+            {/* Phone Number */}
+            <motion.a
+              href="tel:+18286772148"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-2 text-gray-300 hover:text-green-400 transition-colors font-medium mobile-hover focus-ring touch-target"
+              title="Speak with Kenji"
+            >
+              <Phone className="w-4 h-4" aria-hidden="true" />
+              <span className="hidden lg:inline">(828) 677-2148</span>
+            </motion.a>
+
             {/* Login Button */}
             <motion.a
               href="https://app.kenjiai.com"
@@ -325,7 +337,17 @@ const Navbar: React.FC = () => {
               >
                 Support
               </a>
-              
+
+              {/* Mobile Phone Number */}
+              <a
+                href="tel:+18286772148"
+                className="flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors font-medium mobile-hover touch-target py-2"
+                role="menuitem"
+              >
+                <Phone className="w-4 h-4" aria-hidden="true" />
+                (828) 677-2148 - Speak with Kenji
+              </a>
+
               {/* Mobile Login Button */}
               <a
                 href="https://app.kenjiai.com"

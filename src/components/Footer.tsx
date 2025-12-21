@@ -120,9 +120,12 @@ const Footer: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-3 text-gray-400 text-sm">
                   <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400 flex-shrink-0" />
-                  <a href="tel:+18312634402" className="hover:text-blue-400 transition-colors">
-                    (831) 263-4402
-                  </a>
+                  <div className="flex flex-col">
+                    <a href="tel:+18286772148" className="hover:text-blue-400 transition-colors font-medium">
+                      (828) 677-2148
+                    </a>
+                    <span className="text-xs text-gray-500">Speak directly with Kenji</span>
+                  </div>
                 </div>
                 <div className="flex items-center gap-3 text-gray-400 text-sm">
                   <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400 flex-shrink-0" />

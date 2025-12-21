@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Play, Users, Zap, Sparkles } from 'lucide-react';
+import { ArrowRight, Play, Users, Zap, Sparkles, Phone } from 'lucide-react';
 import { useHolidayTheme } from '../contexts/HolidayThemeContext';
 import { TypingHeadline } from './TypingHeadline';
 import { LuxuryButton } from './LuxuryButton';
@@ -139,6 +139,23 @@ const Hero: React.FC = () => {
               </motion.span>
             )}
           </div>
+        </motion.div>
+
+        {/* Contact Option */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 1.5 }}
+          className="text-center"
+        >
+          <p className="text-gray-400 text-sm mb-2">Prefer to speak with our team?</p>
+          <a
+            href="tel:+18286772148"
+            className="inline-flex items-center gap-2 text-gray-300 hover:text-green-400 transition-colors font-medium group"
+          >
+            <Phone className="w-4 h-4 group-hover:animate-pulse" />
+            <span>(828) 677-2148</span>
+          </a>
         </motion.div>
 
       </div>
