@@ -36,8 +36,8 @@ export function HolidayBanner() {
         />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 py-1.5">
-        <div className="flex items-center justify-center gap-1.5 sm:gap-3 text-center flex-wrap">
+      <div className="relative max-w-7xl mx-auto px-2 sm:px-4 py-1 sm:py-1.5">
+        <div className="flex items-center justify-center gap-1 sm:gap-3 text-center flex-wrap">
           <motion.span
             animate={{
               rotate: [0, 15, -15, 15, 0],
@@ -48,12 +48,12 @@ export function HolidayBanner() {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="text-xl sm:text-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
+            className="text-sm sm:text-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
           >
             {currentHoliday.emoji}
           </motion.span>
 
-          <span className="text-white text-xs sm:text-sm font-extrabold tracking-wide drop-shadow-[0_1px_5px_rgba(0,0,0,0.8)]">
+          <span className="text-white text-[10px] sm:text-sm font-extrabold tracking-wide drop-shadow-[0_1px_5px_rgba(0,0,0,0.8)] leading-tight max-w-[140px] sm:max-w-none">
             {currentHoliday.offer_text}
           </span>
 
@@ -67,13 +67,13 @@ export function HolidayBanner() {
               ]
             }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="bg-gradient-to-r from-yellow-300 via-yellow-200 to-yellow-300 px-2.5 py-0.5 rounded-full text-red-600 text-xs font-black uppercase flex items-center gap-1.5 shadow-xl border border-yellow-400"
+            className="bg-gradient-to-r from-yellow-300 via-yellow-200 to-yellow-300 px-1.5 sm:px-2.5 py-0.5 rounded-full text-red-600 text-[9px] sm:text-xs font-black uppercase flex items-center gap-1 sm:gap-1.5 shadow-xl border border-yellow-400 whitespace-nowrap"
           >
             <motion.div
               animate={{ rotate: [0, 360] }}
               transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
             >
-              <Sparkles className="w-3 h-3" />
+              <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
             </motion.div>
             {currentHoliday.offer_badge}
           </motion.span>
