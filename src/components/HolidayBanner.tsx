@@ -13,9 +13,9 @@ export function HolidayBanner() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="relative w-full bg-gradient-to-r from-red-600 via-green-600 to-red-600 shadow-2xl border-y-4 border-yellow-400/50"
+      className="relative w-full bg-gradient-to-r from-red-600 via-green-600 to-red-600 shadow-lg border-y border-yellow-400/50"
       style={{
-        boxShadow: '0 8px 30px rgba(0, 0, 0, 0.5), 0 0 60px rgba(220, 38, 38, 0.4), inset 0 2px 10px rgba(255, 255, 255, 0.1)',
+        boxShadow: '0 4px 15px rgba(0, 0, 0, 0.3), 0 0 30px rgba(220, 38, 38, 0.3), inset 0 1px 5px rgba(255, 255, 255, 0.1)',
         marginTop: '64px'
       }}
     >
@@ -37,8 +37,8 @@ export function HolidayBanner() {
         />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 py-4">
-        <div className="flex items-center justify-center gap-2 sm:gap-4 text-center flex-wrap">
+      <div className="relative max-w-7xl mx-auto px-4 py-1.5">
+        <div className="flex items-center justify-center gap-1.5 sm:gap-3 text-center flex-wrap">
           <motion.span
             animate={{
               rotate: [0, 15, -15, 15, 0],
@@ -49,12 +49,12 @@ export function HolidayBanner() {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="text-3xl sm:text-4xl drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]"
+            className="text-xl sm:text-2xl drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]"
           >
             {currentHoliday.emoji}
           </motion.span>
 
-          <span className="text-white text-base sm:text-lg font-extrabold tracking-wide drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]">
+          <span className="text-white text-xs sm:text-sm font-extrabold tracking-wide drop-shadow-[0_1px_5px_rgba(0,0,0,0.8)]">
             {currentHoliday.offer_text}
           </span>
 
@@ -68,13 +68,13 @@ export function HolidayBanner() {
               ]
             }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="bg-gradient-to-r from-yellow-300 via-yellow-200 to-yellow-300 px-4 py-2 rounded-full text-red-600 text-sm sm:text-base font-black uppercase flex items-center gap-2 shadow-2xl border-3 border-yellow-400"
+            className="bg-gradient-to-r from-yellow-300 via-yellow-200 to-yellow-300 px-2.5 py-0.5 rounded-full text-red-600 text-xs font-black uppercase flex items-center gap-1.5 shadow-xl border border-yellow-400"
           >
             <motion.div
               animate={{ rotate: [0, 360] }}
               transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
             >
-              <Sparkles className="w-4 h-4" />
+              <Sparkles className="w-3 h-3" />
             </motion.div>
             {currentHoliday.offer_badge}
           </motion.span>
@@ -82,7 +82,7 @@ export function HolidayBanner() {
           {/* Decorative snowflakes */}
           <motion.span
             animate={{
-              y: [0, -5, 0],
+              y: [0, -3, 0],
               rotate: [0, 360]
             }}
             transition={{
@@ -90,7 +90,7 @@ export function HolidayBanner() {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="text-xl sm:text-2xl drop-shadow-lg hidden sm:inline"
+            className="text-base sm:text-lg drop-shadow-md hidden sm:inline"
           >
             ❄️
           </motion.span>
