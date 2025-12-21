@@ -10,10 +10,10 @@ export function HolidayBanner() {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: -50 }}
+      initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="sticky top-0 left-0 right-0 z-[60] bg-gradient-to-r from-red-600 via-green-600 to-red-600 border-b-2 border-yellow-400/30 shadow-lg"
+      className="relative w-full bg-gradient-to-r from-red-600 via-green-600 to-red-600 border-b-2 border-yellow-400/30 shadow-lg mt-16"
       style={{
         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3), 0 0 40px rgba(220, 38, 38, 0.3)'
       }}
@@ -36,7 +36,7 @@ export function HolidayBanner() {
         />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 py-3">
+      <div className="relative max-w-7xl mx-auto px-4 py-2">
         <div className="flex items-center justify-center gap-2 sm:gap-4 text-center flex-wrap">
           <motion.span
             animate={{
