@@ -75,6 +75,7 @@ function App() {
                   <Navbar />
                 </header>
                 <HolidayBanner />
+                <div className="h-12"></div>
               <Suspense fallback={<LoadingSpinner />}>
                 <main id="main-content" role="main">
                   <Routes>
