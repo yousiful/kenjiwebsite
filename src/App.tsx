@@ -14,7 +14,8 @@ import NotFoundPage from './components/NotFoundPage';
 import AutoFormattingProvider from './components/AutoFormattingProvider';
 import LinkValidator from './components/LinkValidator';
 import { HolidayThemeProvider } from './contexts/HolidayThemeContext';
-import { LiveNotification } from './components/LiveNotification';
+import { LeftSideNotifications } from './components/LeftSideNotifications';
+import { BottomBadgeStats } from './components/BottomBadgeStats';
 import { HolidayFloatingElements } from './components/HolidayFloatingElements';
 import { HolidaySnowfall } from './components/HolidaySnowfall';
 import { HolidaySparkles } from './components/HolidaySparkles';
@@ -60,7 +61,7 @@ function App() {
             <ScrollToTop />
             <LinkValidator />
             <RedirectSystem />
-            <LiveNotification />
+            <LeftSideNotifications />
             <ErrorLogger />
             <InteractiveMouseCaption>
               <div className="min-h-screen bg-gray-900" id="app-container">
@@ -107,6 +108,7 @@ function App() {
                   </Routes>
                 </main>
               </Suspense>
+              <BottomBadgeStats />
               <footer role="contentinfo">
                 <Footer />
               </footer>

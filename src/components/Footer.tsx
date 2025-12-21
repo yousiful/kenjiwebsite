@@ -25,10 +25,10 @@ const Footer: React.FC = () => {
       { name: "CRM & Sales", href: "/crm" }
     ],
     tools: [
-      { name: "Free Tools", href: "/free-tools", badge: "Popular" },
-      { name: "Prompt Generator", href: "https://prompt.kenjiai.com", external: true, badge: "Free" },
-      { name: "PR Pro", href: "https://prpro.kenjiai.com/", external: true, badge: "Free" },
-      { name: "Sales Coach", href: "https://salescoach.kenjiai.com/", external: true, badge: "Free" }
+      { name: "Free Tools", href: "/free-tools" },
+      { name: "Prompt Generator", href: "https://prompt.kenjiai.com", external: true },
+      { name: "PR Pro", href: "https://prpro.kenjiai.com/", external: true },
+      { name: "Sales Coach", href: "https://salescoach.kenjiai.com/", external: true }
     ],
     support: [
       { name: "Help Center", href: "https://support.kenjiai.com/", external: true },
@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
       { name: "Contact Support", href: "https://support.kenjiai.com/", external: true }
     ],
     education: [
-      { name: "Educational Hub", href: "https://startlearning.kenjiai.com/", badge: "New", external: true },
+      { name: "Educational Hub", href: "https://startlearning.kenjiai.com/", external: true },
       { name: "AI Courses", href: "https://startlearning.kenjiai.com/", external: true },
       { name: "Become a Partner", href: "https://closers.kenjiai.com/", external: true },
       { name: "Tax Strategies", href: "https://startlearning.kenjiai.com/", external: true }
@@ -199,34 +199,16 @@ const Footer: React.FC = () => {
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-blue-400 transition-colors duration-200 flex items-center gap-2 text-xs sm:text-sm"
+                          className="text-gray-400 hover:text-blue-400 transition-colors duration-200 text-xs sm:text-sm"
                         >
                           {link.name}
-                          {link.badge && (
-                            <span className={`text-xs px-1.5 py-0.5 rounded-full ${
-                              link.badge === 'Free' ? 'bg-green-500/20 text-green-400' :
-                              link.badge === 'Popular' ? 'bg-blue-500/20 text-blue-400' :
-                              'bg-gray-500/20 text-gray-400'
-                            }`}>
-                              {link.badge}
-                            </span>
-                          )}
                         </a>
                       ) : (
                         <Link
                           to={link.href}
-                          className="text-gray-400 hover:text-blue-400 transition-colors duration-200 flex items-center gap-2 text-xs sm:text-sm"
+                          className="text-gray-400 hover:text-blue-400 transition-colors duration-200 text-xs sm:text-sm"
                         >
                           {link.name}
-                          {link.badge && (
-                            <span className={`text-xs px-1.5 py-0.5 rounded-full ${
-                              link.badge === 'Free' ? 'bg-green-500/20 text-green-400' :
-                              link.badge === 'Popular' ? 'bg-blue-500/20 text-blue-400' :
-                              'bg-gray-500/20 text-gray-400'
-                            }`}>
-                              {link.badge}
-                            </span>
-                          )}
                         </Link>
                       )}
                     </li>
@@ -245,32 +227,16 @@ const Footer: React.FC = () => {
                           href={link.href}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-blue-400 transition-colors duration-200 flex items-center gap-2 text-xs sm:text-sm"
+                          className="text-gray-400 hover:text-blue-400 transition-colors duration-200 text-xs sm:text-sm"
                         >
                           {link.name}
-                          {link.badge && (
-                            <span className={`text-xs px-1.5 py-0.5 rounded-full ${
-                              link.badge === 'New' ? 'bg-purple-500/20 text-purple-400' :
-                              'bg-gray-500/20 text-gray-400'
-                            }`}>
-                              {link.badge}
-                            </span>
-                          )}
                         </a>
                       ) : (
                         <Link
                           to={link.href}
-                          className="text-gray-400 hover:text-blue-400 transition-colors duration-200 flex items-center gap-2 text-xs sm:text-sm"
+                          className="text-gray-400 hover:text-blue-400 transition-colors duration-200 text-xs sm:text-sm"
                         >
                           {link.name}
-                          {link.badge && (
-                            <span className={`text-xs px-1.5 py-0.5 rounded-full ${
-                              link.badge === 'New' ? 'bg-purple-500/20 text-purple-400' :
-                              'bg-gray-500/20 text-gray-400'
-                            }`}>
-                              {link.badge}
-                            </span>
-                          )}
                         </Link>
                       )}
                     </li>

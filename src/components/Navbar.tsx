@@ -19,11 +19,11 @@ const Navbar: React.FC = () => {
   }, []);
 
   const tools = [
-    { name: "Prompt Generator", href: "http://prompt.kenjiai.com", external: true, badge: "Free" },
-    { name: "PR Pro", href: "https://prpro.kenjiai.com/", external: true, badge: "Free" },
-    { name: "Sales Coach", href: "https://salescoach.kenjiai.com/", external: true, badge: "Free" },
+    { name: "Prompt Generator", href: "http://prompt.kenjiai.com", external: true },
+    { name: "PR Pro", href: "https://prpro.kenjiai.com/", external: true },
+    { name: "Sales Coach", href: "https://salescoach.kenjiai.com/", external: true },
     { name: "Support", href: "https://support.kenjiai.com/", external: true },
-    { name: "All Free Tools", href: "/free-tools", external: false, badge: "Popular" },
+    { name: "All Free Tools", href: "/free-tools", external: false },
     { name: "All Tools", href: "/tools", external: false }
   ];
 
@@ -120,18 +120,7 @@ const Navbar: React.FC = () => {
                               className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-700 transition-colors mobile-hover touch-target relative"
                               role="menuitem"
                             >
-                              <div className="flex items-center justify-between">
-                                <span>{tool.name}</span>
-                                {tool.badge && (
-                                  <span className={`text-xs px-2 py-1 rounded-full ${
-                                    tool.badge === 'Free' ? 'bg-green-500/20 text-green-400' :
-                                    tool.badge === 'Popular' ? 'bg-blue-500/20 text-blue-400' :
-                                    'bg-gray-500/20 text-gray-400'
-                                  }`}>
-                                    {tool.badge}
-                                  </span>
-                                )}
-                              </div>
+                              <span>{tool.name}</span>
                             </a>
                           ) : (
                             <Link
@@ -141,18 +130,7 @@ const Navbar: React.FC = () => {
                               role="menuitem"
                               onClick={() => setShowToolsDropdown(false)}
                             >
-                              <div className="flex items-center justify-between">
-                                <span>{tool.name}</span>
-                                {tool.badge && (
-                                  <span className={`text-xs px-2 py-1 rounded-full ${
-                                    tool.badge === 'Free' ? 'bg-green-500/20 text-green-400' :
-                                    tool.badge === 'Popular' ? 'bg-blue-500/20 text-blue-400' :
-                                    'bg-gray-500/20 text-gray-400'
-                                  }`}>
-                                    {tool.badge}
-                                  </span>
-                                )}
-                              </div>
+                              <span>{tool.name}</span>
                             </Link>
                           )
                         ))}
