@@ -73,8 +73,8 @@ function App() {
                 <HolidaySparkles />
                 <header role="banner">
                   <Navbar />
-                  <HolidayBanner />
                 </header>
+                <HolidayBanner />
               <Suspense fallback={<LoadingSpinner />}>
                 <main id="main-content" role="main">
                   <Routes>
