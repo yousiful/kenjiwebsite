@@ -77,7 +77,7 @@ export function PricingNew() {
               backgroundClip: 'text',
               letterSpacing: '0.02em'
             }}>
-              Your AI Automation Hub That Scales With Your Success
+              The Growth Partner Your Business Deserves
             </span>
           </h1>
 
