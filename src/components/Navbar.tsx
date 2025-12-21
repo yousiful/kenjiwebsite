@@ -200,16 +200,15 @@ const Navbar: React.FC = () => {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-3" role="none">
-            {/* Phone Number */}
+            {/* Phone Icon */}
             <motion.a
               href="tel:+18286772148"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="flex items-center gap-2 text-gray-300 hover:text-green-400 transition-colors font-medium mobile-hover focus-ring touch-target"
-              title="Speak with Kenji"
+              title="Call (828) 677-2148"
             >
               <Phone className="w-4 h-4" aria-hidden="true" />
-              <span className="hidden lg:inline">(828) 677-2148</span>
             </motion.a>
 
             {/* Login Button */}
