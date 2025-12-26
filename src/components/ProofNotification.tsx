@@ -113,7 +113,7 @@ export function ProofNotification() {
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: -100, scale: 0.8 }}
             transition={{ duration: 0.5, type: "spring", bounce: 0.4 }}
-            className="fixed bottom-6 left-6 z-50 max-w-sm"
+            className="fixed bottom-4 left-4 z-50 max-w-[260px]"
           >
             {/* Glow effect */}
             <motion.div
@@ -134,9 +134,9 @@ export function ProofNotification() {
             />
 
             <div
-              className="relative bg-gradient-to-br from-green-500 via-emerald-500 to-green-600 rounded-2xl shadow-2xl p-3.5 border border-green-300/30"
+              className="relative bg-gradient-to-br from-green-500 via-emerald-500 to-green-600 rounded-xl shadow-2xl p-2.5 border border-green-300/30"
               style={{
-                boxShadow: '0 10px 40px rgba(16, 185, 129, 0.5), 0 0 30px rgba(16, 185, 129, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+                boxShadow: '0 8px 30px rgba(16, 185, 129, 0.4), 0 0 20px rgba(16, 185, 129, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
               }}
             >
               {/* Shimmer effect */}
@@ -150,14 +150,14 @@ export function ProofNotification() {
                   ease: "easeInOut",
                   repeatDelay: 1
                 }}
-                className="absolute inset-0 overflow-hidden rounded-2xl"
+                className="absolute inset-0 overflow-hidden rounded-xl"
                 style={{
                   background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent)',
                   width: '50%',
                 }}
               />
 
-              <div className="relative flex items-start gap-3">
+              <div className="relative flex items-start gap-2">
                 <motion.div
                   animate={{
                     scale: [1, 1.1, 1],
@@ -168,27 +168,27 @@ export function ProofNotification() {
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
-                  className="flex-shrink-0 w-10 h-10 bg-white/25 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30"
+                  className="flex-shrink-0 w-7 h-7 bg-white/25 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30"
                 >
-                  <User className="w-5 h-5 text-white" />
+                  <User className="w-3.5 h-3.5 text-white" />
                 </motion.div>
 
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <CheckCircle className="w-3.5 h-3.5 text-white animate-pulse" />
-                    <span className="text-white/90 font-semibold text-xs tracking-wide uppercase">Live Activity</span>
+                  <div className="flex items-center gap-1 mb-0.5">
+                    <CheckCircle className="w-2.5 h-2.5 text-white animate-pulse" />
+                    <span className="text-white/90 font-semibold text-[9px] tracking-wide uppercase">Live Activity</span>
                   </div>
-                  <p className="text-white text-sm font-bold mb-0.5">
+                  <p className="text-white text-xs font-bold mb-0.5">
                     {currentNotification.name}
                   </p>
-                  <p className="text-white/95 text-xs font-medium">
+                  <p className="text-white/95 text-[10px] font-medium leading-tight">
                     {currentNotification.action}
                   </p>
-                  <p className="text-green-100/80 text-xs mt-1 flex items-center gap-1">
+                  <p className="text-green-100/80 text-[9px] mt-1 flex items-center gap-1">
                     <span>{currentNotification.location}</span>
                     <span>•</span>
                     <span className="flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                      <span className="w-1 h-1 rounded-full bg-white animate-pulse"></span>
                       Just now
                     </span>
                   </p>

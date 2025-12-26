@@ -1012,9 +1012,9 @@ Pre-approved anchor text variations for consistent usage across the site:
 ## Document Version
 
 **Version:** 1.0
-**Date:** 2025-12-23
+**Date:** January 2025
 **Author:** Internal Linking Strategy Analysis
-**Next Review:** 2025-01-23
+**Next Review:** April 2025
 
 ---
 

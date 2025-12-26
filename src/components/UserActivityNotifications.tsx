@@ -180,15 +180,15 @@ const UserActivityNotifications: React.FC = () => {
             animate={{ opacity: 1, x: 0, y: 0 }}
             exit={{ opacity: 0, x: -100, y: 0 }}
             transition={{ duration: 0.5, type: 'spring', bounce: 0.3 }}
-            className="bg-gray-900/95 backdrop-blur-sm border border-gray-700 rounded-xl p-4 shadow-xl max-w-xs"
+            className="bg-gray-900/95 backdrop-blur-sm border border-gray-700 rounded-xl p-2.5 shadow-xl max-w-[260px]"
           >
-            <div className="flex items-center gap-3">
-              <div className={`w-10 h-10 bg-gradient-to-br ${currentNotification.color} rounded-full flex items-center justify-center`}>
-                <currentNotification.icon className="w-5 h-5 text-white" />
+            <div className="flex items-center gap-2">
+              <div className={`w-7 h-7 bg-gradient-to-br ${currentNotification.color} rounded-full flex items-center justify-center flex-shrink-0`}>
+                <currentNotification.icon className="w-3.5 h-3.5 text-white" />
               </div>
-              <div className="flex-1">
-                <p className="text-white text-sm">{currentNotification.message}</p>
-                <p className="text-gray-400 text-xs">Just now</p>
+              <div className="flex-1 min-w-0">
+                <p className="text-white text-[10px] leading-tight truncate">{currentNotification.message}</p>
+                <p className="text-gray-400 text-[9px] mt-0.5">Just now</p>
               </div>
             </div>
           </motion.div>

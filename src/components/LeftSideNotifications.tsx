@@ -127,7 +127,7 @@ export function LeftSideNotifications() {
           animate={{ opacity: 1, x: 0, scale: 1 }}
           exit={{ opacity: 0, x: -120, scale: 0.9 }}
           transition={{ duration: 0.5, type: "spring", bounce: 0.3 }}
-          className="fixed left-6 top-1/2 -translate-y-1/2 z-40 max-w-xs"
+          className="fixed left-4 top-1/2 -translate-y-1/2 z-40 max-w-[260px]"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
@@ -153,9 +153,9 @@ export function LeftSideNotifications() {
           />
 
           <div
-            className={`relative bg-gradient-to-br ${getNotificationColor(currentNotification.type)} rounded-2xl shadow-2xl p-4 border border-white/20`}
+            className={`relative bg-gradient-to-br ${getNotificationColor(currentNotification.type)} rounded-xl shadow-2xl p-2.5 border border-white/20`}
             style={{
-              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
+              boxShadow: '0 15px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)'
             }}
           >
             <motion.div
@@ -168,14 +168,14 @@ export function LeftSideNotifications() {
                 ease: "easeInOut",
                 repeatDelay: 2
               }}
-              className="absolute inset-0 overflow-hidden rounded-2xl"
+              className="absolute inset-0 overflow-hidden rounded-xl"
               style={{
                 background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent)',
                 width: '40%',
               }}
             />
 
-            <div className="relative flex items-start gap-3">
+            <div className="relative flex items-start gap-2">
               {React.createElement(
                 motion.div,
                 {
@@ -188,29 +188,29 @@ export function LeftSideNotifications() {
                     repeat: Infinity,
                     ease: "easeInOut"
                   },
-                  className: "flex-shrink-0 w-11 h-11 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center border-2 border-white/40 shadow-lg"
+                  className: "flex-shrink-0 w-8 h-8 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/40 shadow-lg"
                 },
                 React.createElement(getNotificationIcon(currentNotification.type), {
-                  className: "w-5 h-5 text-white"
+                  className: "w-4 h-4 text-white"
                 })
               )}
 
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-1">
-                  <CheckCircle className="w-3.5 h-3.5 text-white animate-pulse" />
-                  <span className="text-white/95 font-bold text-xs tracking-wider uppercase">Live Activity</span>
+                <div className="flex items-center gap-1.5 mb-0.5">
+                  <CheckCircle className="w-2.5 h-2.5 text-white animate-pulse" />
+                  <span className="text-white/95 font-bold text-[9px] tracking-wider uppercase">Live Activity</span>
                 </div>
-                <p className="text-white text-sm font-bold mb-1 drop-shadow-md">
+                <p className="text-white text-xs font-bold mb-0.5 drop-shadow-md">
                   {currentNotification.name}
                 </p>
-                <p className="text-white/95 text-xs font-medium drop-shadow">
+                <p className="text-white/95 text-[10px] font-medium drop-shadow leading-tight">
                   {currentNotification.action}
                 </p>
-                <div className="flex items-center gap-2 mt-2 text-xs">
+                <div className="flex items-center gap-1.5 mt-1.5 text-[9px]">
                   <span className="text-white/80">{currentNotification.location}</span>
                   <span className="text-white/60">•</span>
-                  <div className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse shadow-lg"></span>
+                  <div className="flex items-center gap-1">
+                    <span className="w-1 h-1 rounded-full bg-white animate-pulse shadow-lg"></span>
                     <span className="text-white/90 font-medium">Just now</span>
                   </div>
                 </div>

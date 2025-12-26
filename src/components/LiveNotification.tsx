@@ -33,44 +33,44 @@ export function LiveNotification() {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          initial={{ x: -400, opacity: 0 }}
+          initial={{ x: -300, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          exit={{ x: -400, opacity: 0 }}
+          exit={{ x: -300, opacity: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="fixed bottom-8 left-8 z-50 max-w-sm"
+          className="fixed bottom-6 left-6 z-50 max-w-xs"
         >
-          <div className="bg-gray-900/95 backdrop-blur-lg border border-gray-700 rounded-2xl p-4 shadow-2xl">
-            <div className="flex items-center gap-4">
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center">
-                <span className="text-white font-bold text-lg">
+          <div className="bg-gray-900/95 backdrop-blur-lg border border-gray-700 rounded-xl p-2.5 shadow-2xl">
+            <div className="flex items-center gap-2.5">
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center">
+                <span className="text-white font-bold text-sm">
                   {notification.name.charAt(0)}
                 </span>
               </div>
 
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-1">
-                  <p className="text-white font-semibold text-sm truncate">
+                <div className="flex items-center gap-1.5 mb-0.5">
+                  <p className="text-white font-semibold text-xs truncate">
                     {notification.name}
                   </p>
-                  <Check className="w-4 h-4 text-green-400 flex-shrink-0" />
+                  <Check className="w-3 h-3 text-green-400 flex-shrink-0" />
                 </div>
-                <p className="text-gray-400 text-xs truncate">
+                <p className="text-gray-400 text-[10px] truncate leading-tight">
                   {notification.action}
                 </p>
-                <div className="flex items-center gap-1 mt-1">
-                  <svg className="w-3 h-3 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                <div className="flex items-center gap-1 mt-0.5">
+                  <svg className="w-2.5 h-2.5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-gray-500 text-xs">{notification.location}</span>
+                  <span className="text-gray-500 text-[10px]">{notification.location}</span>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-2 mt-3">
-              <span className="text-xs text-gray-500">Just now</span>
-              <div className="flex gap-1">
-                <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></div>
-                <span className="text-xs text-green-400 font-medium">Verified</span>
+            <div className="flex items-center gap-2 mt-2 pt-2 border-t border-gray-700/50">
+              <span className="text-[10px] text-gray-500">Just now</span>
+              <div className="flex gap-1 items-center">
+                <div className="w-1 h-1 rounded-full bg-green-400 animate-pulse"></div>
+                <span className="text-[10px] text-green-400 font-medium">Verified</span>
               </div>
             </div>
           </div>
