@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Zap, ChevronDown, ExternalLink, LogIn, ChevronRight, Calendar, DollarSign, Phone } from 'lucide-react';
+import { DynamicDateTime } from './DynamicDateTime';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,12 +58,17 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group mobile-hover focus-ring">
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-300">
-              KenjiAI
-            </span>
-            <ChevronRight className="w-4 h-4 text-blue-400 group-hover:text-purple-400 transition-colors" />
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link to="/" className="flex items-center gap-3 group mobile-hover focus-ring">
+              <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-300">
+                KenjiAI
+              </span>
+              <ChevronRight className="w-4 h-4 text-blue-400 group-hover:text-purple-400 transition-colors" />
+            </Link>
+            <div className="hidden lg:block">
+              <DynamicDateTime format="time" showIcon className="text-gray-400 text-xs" />
+            </div>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8" role="menubar">

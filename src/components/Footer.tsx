@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Zap, Mail, Phone, MapPin, Twitter, Linkedin, Github, HelpCircle, Gift, Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { DynamicDateTime } from './DynamicDateTime';
 
 const Footer: React.FC = () => {
   const links = {
@@ -318,14 +319,19 @@ const Footer: React.FC = () => {
           className="border-t border-gray-800 py-6 sm:py-8"
           role="contentinfo"
         >
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
-            <p className="text-gray-400 text-xs sm:text-sm">
-              © {new Date().getFullYear()} KenjiAI. All Rights Reserved.
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-gray-400">
-              <Link to="/terms" className="hover:text-blue-400 transition-colors">Terms of Service</Link>
-              <Link to="/privacy" className="hover:text-blue-400 transition-colors">Privacy Policy</Link>
-              <Link to="/disclaimer" className="hover:text-blue-400 transition-colors">Disclaimer</Link>
+          <div className="flex flex-col items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 w-full">
+              <p className="text-gray-400 text-xs sm:text-sm">
+                © {new Date().getFullYear()} KenjiAI. All Rights Reserved.
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-gray-400">
+                <Link to="/terms" className="hover:text-blue-400 transition-colors">Terms of Service</Link>
+                <Link to="/privacy" className="hover:text-blue-400 transition-colors">Privacy Policy</Link>
+                <Link to="/disclaimer" className="hover:text-blue-400 transition-colors">Disclaimer</Link>
+              </div>
+            </div>
+            <div className="flex items-center gap-2 text-gray-500 text-xs">
+              <DynamicDateTime format="short" showIcon className="text-gray-500" />
             </div>
           </div>
         </motion.div>
