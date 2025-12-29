@@ -142,6 +142,20 @@ export function PricingNew() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-center mb-12"
         >
+          {/* Urgency Banner */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="inline-block bg-gradient-to-r from-red-600 to-orange-600 text-white px-6 py-3 rounded-full text-sm font-bold mb-6 shadow-lg"
+          >
+            <div className="flex items-center gap-2">
+              <span className="animate-pulse">🚨</span>
+              <span>PRICE INCREASING EVERY 15 DAYS - Lock in your rate now!</span>
+              <span className="animate-pulse">🚨</span>
+            </div>
+          </motion.div>
+
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
             <span style={{
               background: 'linear-gradient(90deg, #10B981 0%, #34D399 100%)',
@@ -188,8 +202,13 @@ export function PricingNew() {
             {/* Price */}
             <div className="text-center mb-6">
               <div className="text-6xl font-bold text-white mb-2">
-                $275
+                $377
                 <span className="text-2xl text-gray-400">/month</span>
+              </div>
+              <div className="mt-2 text-yellow-400 font-bold text-sm flex items-center justify-center gap-2">
+                <span className="animate-pulse">⚠️</span>
+                Price increasing every 15 days
+                <span className="animate-pulse">⚠️</span>
               </div>
             </div>
 
@@ -279,13 +298,18 @@ export function PricingNew() {
             {/* Price */}
             <div className="text-center mb-6">
               <div className="text-6xl font-bold text-white mb-2">
-                $216.67
+                $314.17
                 <span className="text-2xl text-gray-400">/month</span>
               </div>
               <div className="text-green-400 font-semibold text-lg">
-                Save $700/year (21% off)
+                Save $954/year (21% off)
               </div>
-              <p className="text-gray-500 text-sm mt-1">Billed annually at $2600</p>
+              <p className="text-gray-500 text-sm mt-1">Billed annually at $3770</p>
+              <div className="mt-2 text-yellow-400 font-bold text-sm flex items-center justify-center gap-2">
+                <span className="animate-pulse">⚠️</span>
+                Price increasing every 15 days
+                <span className="animate-pulse">⚠️</span>
+              </div>
             </div>
 
             {/* Everything Included Box */}

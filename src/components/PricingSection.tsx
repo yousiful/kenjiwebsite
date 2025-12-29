@@ -72,16 +72,16 @@ const PricingSection: React.FC = () => {
 
   const pricing = {
     monthly: {
-      price: 297,
-      discountedPrice: 267, // 10% off
+      price: 377,
+      discountedPrice: 339, // 10% off
       savings: null
     },
     yearly: {
-      price: 2970, // $247.50/month when billed yearly
-      discountedPrice: 2673, // 10% off yearly
-      monthlyEquivalent: 247.50,
-      discountedMonthlyEquivalent: 222.75, // 10% off monthly equivalent
-      savings: "Save $594/year"
+      price: 3770, // $314.17/month when billed yearly
+      discountedPrice: 3393, // 10% off yearly
+      monthlyEquivalent: 314.17,
+      discountedMonthlyEquivalent: 282.75, // 10% off monthly equivalent
+      savings: "Save $754/year"
     }
   };
 
@@ -212,13 +212,27 @@ const PricingSection: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
+          {/* Urgency Banner */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="inline-block bg-gradient-to-r from-red-600 to-orange-600 text-white px-6 py-3 rounded-full text-sm font-bold mb-6 shadow-lg"
+          >
+            <div className="flex items-center gap-2">
+              <span className="animate-pulse">🚨</span>
+              <span>PRICE INCREASING EVERY 15 DAYS - Lock in your rate now!</span>
+              <span className="animate-pulse">🚨</span>
+            </div>
+          </motion.div>
+
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
             <span className="text-gradient-blue">
               One Platform, Infinite Possibilities
             </span>
           </h2>
           <p className="text-lg text-gray-400 max-w-3xl mx-auto mb-6">
-            Everything you need to automate, scale, and dominate your market. 
+            Everything you need to automate, scale, and dominate your market.
             No tiers, no limits—just complete business automation power.
           </p>
           
@@ -358,6 +372,11 @@ const PricingSection: React.FC = () => {
                         <span className="text-gray-400 ml-2">/month</span>
                       </>
                     )}
+                    <div className="mt-2 text-yellow-400 font-bold text-xs flex items-center justify-center gap-2">
+                      <span className="animate-pulse">⚠️</span>
+                      Price increasing every 15 days
+                      <span className="animate-pulse">⚠️</span>
+                    </div>
                   </div>
                 ) : (
                   <div className="text-center">
@@ -378,6 +397,11 @@ const PricingSection: React.FC = () => {
                         <span className="text-gray-400 ml-2">/month</span>
                       </>
                     )}
+                    <div className="mt-2 text-yellow-400 font-bold text-xs flex items-center justify-center gap-2">
+                      <span className="animate-pulse">⚠️</span>
+                      Price increasing every 15 days
+                      <span className="animate-pulse">⚠️</span>
+                    </div>
                   </div>
                 )}
               </div>
