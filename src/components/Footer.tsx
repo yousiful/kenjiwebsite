@@ -1,8 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Zap, Mail, Phone, MapPin, Twitter, Linkedin, Github, HelpCircle, Gift, Star } from 'lucide-react';
+import { Zap, Mail, Phone, MapPin, Twitter, Linkedin, Github, HelpCircle, Gift, Star, Tag, Clock } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { DynamicDateTime } from './DynamicDateTime';
 
 const Footer: React.FC = () => {
   const links = {
@@ -320,6 +319,43 @@ const Footer: React.FC = () => {
           role="contentinfo"
         >
           <div className="flex flex-col items-center gap-4">
+            {/* Urgent Coupon Code Section */}
+            <div className="w-full bg-gradient-to-r from-red-500/20 via-orange-500/20 to-red-500/20 border border-red-500/50 rounded-xl p-4 sm:p-6 mb-4 relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-red-500/10 to-orange-500/10 animate-pulse"></div>
+              <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div className="flex flex-col items-center sm:items-start gap-2">
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-5 h-5 text-red-400 animate-pulse" />
+                    <span className="text-red-400 font-bold text-sm sm:text-base uppercase tracking-wider">Limited Time Offer!</span>
+                  </div>
+                  <p className="text-gray-200 text-xs sm:text-sm text-center sm:text-left">
+                    Get started today - Use coupon code for exclusive savings
+                  </p>
+                </div>
+                <div className="flex flex-col items-center gap-2">
+                  <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border-2 border-yellow-400 rounded-lg px-6 py-3">
+                    <Tag className="w-5 h-5 text-yellow-400" />
+                    <span className="text-white font-bold text-lg sm:text-xl tracking-wider">KENJ4LFE</span>
+                  </div>
+                  <span className="text-yellow-400 text-xs font-semibold animate-pulse">Offer expires soon!</span>
+                </div>
+                <Link
+                  to="/pricing"
+                  className="bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white px-6 py-3 rounded-lg font-bold text-sm sm:text-base transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                  Claim Now
+                </Link>
+              </div>
+            </div>
+
+            {/* Quick Access */}
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-gray-400 mb-4">
+              <Link to="/free-tools" className="flex items-center gap-2 hover:text-green-400 transition-colors font-medium">
+                <Gift className="w-4 h-4" />
+                Free Tools
+              </Link>
+            </div>
+
             <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 w-full">
               <p className="text-gray-400 text-xs sm:text-sm">
                 © {new Date().getFullYear()} KenjiAI. All Rights Reserved.
@@ -329,9 +365,6 @@ const Footer: React.FC = () => {
                 <Link to="/privacy" className="hover:text-blue-400 transition-colors">Privacy Policy</Link>
                 <Link to="/disclaimer" className="hover:text-blue-400 transition-colors">Disclaimer</Link>
               </div>
-            </div>
-            <div className="flex items-center gap-2 text-gray-500 text-xs">
-              <DynamicDateTime format="short" showIcon className="text-gray-500" />
             </div>
           </div>
         </motion.div>
