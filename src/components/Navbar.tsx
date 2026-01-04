@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Zap, ChevronDown, ExternalLink, LogIn, ChevronRight, Calendar, DollarSign, Phone } from 'lucide-react';
-import { DynamicDateTime } from './DynamicDateTime';
+import { Menu, X, Zap, ChevronDown, ExternalLink, LogIn, ChevronRight, Calendar, DollarSign } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,9 +64,6 @@ const Navbar: React.FC = () => {
               </span>
               <ChevronRight className="w-4 h-4 text-blue-400 group-hover:text-purple-400 transition-colors" />
             </Link>
-            <div className="hidden lg:block">
-              <DynamicDateTime format="time" showIcon className="text-gray-400 text-xs" />
-            </div>
           </div>
 
           {/* Desktop Navigation */}
@@ -206,17 +202,6 @@ const Navbar: React.FC = () => {
 
           {/* CTA Buttons */}
           <div className="hidden md:flex items-center gap-3" role="none">
-            {/* Phone Icon */}
-            <motion.a
-              href="tel:+18286772148"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 text-gray-300 hover:text-green-400 transition-colors font-medium mobile-hover focus-ring touch-target"
-              title="Call (828) 677-2148"
-            >
-              <Phone className="w-4 h-4" aria-hidden="true" />
-            </motion.a>
-
             {/* Login Button */}
             <motion.a
               href="https://app.kenjiai.com"
@@ -353,19 +338,6 @@ const Navbar: React.FC = () => {
                   Support
                 </motion.a>
 
-                {/* Mobile Phone Number */}
-                <motion.a
-                  href="tel:+18286772148"
-                  className="flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors font-medium mobile-hover touch-target py-2"
-                  role="menuitem"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: (navItems.length + 2) * 0.05 }}
-                >
-                  <Phone className="w-4 h-4" aria-hidden="true" />
-                  (828) 677-2148 - Speak with Kenji
-                </motion.a>
-
                 {/* Mobile Login Button */}
                 <motion.a
                   href="https://app.kenjiai.com"
@@ -375,7 +347,7 @@ const Navbar: React.FC = () => {
                   role="menuitem"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: (navItems.length + 3) * 0.05 }}
+                  transition={{ delay: (navItems.length + 2) * 0.05 }}
                 >
                   <LogIn className="w-4 h-4" aria-hidden="true" />
                   Login to Dashboard
@@ -391,7 +363,7 @@ const Navbar: React.FC = () => {
                   role="menuitem"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: (navItems.length + 4) * 0.05 }}
+                  transition={{ delay: (navItems.length + 3) * 0.05 }}
                 >
                   <Calendar className="w-4 h-4" aria-hidden="true" />
                   VIP Demo
@@ -401,7 +373,7 @@ const Navbar: React.FC = () => {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: (navItems.length + 5) * 0.05 }}
+                  transition={{ delay: (navItems.length + 4) * 0.05 }}
                 >
                   <Link
                     to="/pricing"
