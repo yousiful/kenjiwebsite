@@ -202,7 +202,7 @@ export function PricingNew() {
             {/* Price */}
             <div className="text-center mb-6">
               <div className="text-6xl font-bold text-white mb-2">
-                $275
+                $375
                 <span className="text-2xl text-gray-400">/month</span>
               </div>
               <div className="mt-2 text-yellow-400 font-bold text-sm flex items-center justify-center gap-2">
@@ -281,7 +281,7 @@ export function PricingNew() {
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
               <div className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2">
                 <Star className="w-4 h-4" />
-                Best Value - Save 21%
+                Best Value - Save 27%
               </div>
             </div>
 
@@ -298,13 +298,13 @@ export function PricingNew() {
             {/* Price */}
             <div className="text-center mb-6">
               <div className="text-6xl font-bold text-white mb-2">
-                $229.17
+                $275
                 <span className="text-2xl text-gray-400">/month</span>
               </div>
               <div className="text-green-400 font-semibold text-lg">
-                Save $696/year (21% off)
+                Save $1,200/year (27% off)
               </div>
-              <p className="text-gray-500 text-sm mt-1">Billed annually at $2750</p>
+              <p className="text-gray-500 text-sm mt-1">Billed annually at $3,300</p>
               <div className="mt-2 text-yellow-400 font-bold text-sm flex items-center justify-center gap-2">
                 <span className="animate-pulse">⚠️</span>
                 Price increasing in 2026
@@ -357,7 +357,7 @@ export function PricingNew() {
                 </>
               ) : (
                 <>
-                  Get Started Now - Save 21%
+                  Get Started Now - Save 27%
                   <ArrowRight className="w-5 h-5" />
                 </>
               )}
