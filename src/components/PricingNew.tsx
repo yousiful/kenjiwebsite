@@ -151,7 +151,7 @@ export function PricingNew() {
           >
             <div className="flex items-center gap-2">
               <span className="animate-pulse">🚨</span>
-              <span>PRICE INCREASING EVERY 15 DAYS - Lock in your rate now!</span>
+              <span>2026 PRICING INCREASE COMING - Lock in your rate now!</span>
               <span className="animate-pulse">🚨</span>
             </div>
           </motion.div>
@@ -202,12 +202,12 @@ export function PricingNew() {
             {/* Price */}
             <div className="text-center mb-6">
               <div className="text-6xl font-bold text-white mb-2">
-                $377
+                $275
                 <span className="text-2xl text-gray-400">/month</span>
               </div>
               <div className="mt-2 text-yellow-400 font-bold text-sm flex items-center justify-center gap-2">
                 <span className="animate-pulse">⚠️</span>
-                Price increasing every 15 days
+                Price increasing in 2026
                 <span className="animate-pulse">⚠️</span>
               </div>
             </div>
@@ -298,16 +298,16 @@ export function PricingNew() {
             {/* Price */}
             <div className="text-center mb-6">
               <div className="text-6xl font-bold text-white mb-2">
-                $314.17
+                $229.17
                 <span className="text-2xl text-gray-400">/month</span>
               </div>
               <div className="text-green-400 font-semibold text-lg">
-                Save $954/year (21% off)
+                Save $696/year (21% off)
               </div>
-              <p className="text-gray-500 text-sm mt-1">Billed annually at $3770</p>
+              <p className="text-gray-500 text-sm mt-1">Billed annually at $2750</p>
               <div className="mt-2 text-yellow-400 font-bold text-sm flex items-center justify-center gap-2">
                 <span className="animate-pulse">⚠️</span>
-                Price increasing every 15 days
+                Price increasing in 2026
                 <span className="animate-pulse">⚠️</span>
               </div>
             </div>
