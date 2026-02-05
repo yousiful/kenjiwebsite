@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check, Star, ArrowRight, Calendar, Zap, Shield, CreditCard, TrendingUp, Target, Rocket, Video, LogIn } from 'lucide-react';
+import { Check, Star, ArrowRight, Calendar, Zap, Shield, CreditCard, TrendingUp, Target, Rocket, Video, LogIn, HelpCircle } from 'lucide-react';
 import { ToolReplacementBar } from './ToolReplacementBar';
+import { MoneyBackGuarantee } from './MoneyBackGuarantee';
 
 export function PricingNew() {
   const [isLoading, setIsLoading] = useState<string | null>(null);
@@ -223,9 +224,23 @@ export function PricingNew() {
               </p>
             </div>
 
-            <p className="text-gray-400 text-center text-sm mb-6">
-              + 10% performance fee on ad-generated revenue
-            </p>
+            <div className="group relative mb-6">
+              <div className="flex items-center justify-center gap-2 text-gray-400 text-sm">
+                <p className="text-center">
+                  + 10% performance fee on ad-generated revenue
+                </p>
+                <div className="relative">
+                  <HelpCircle className="w-4 h-4 text-gray-500 cursor-help" />
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 bg-gray-950 border border-blue-400/50 rounded-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 shadow-2xl">
+                    <div className="text-xs text-white space-y-2">
+                      <p className="font-bold text-green-400 text-center">Success Guarantee</p>
+                      <p className="text-gray-300">We only win when you win. Our performance fee means we're invested in your success.</p>
+                      <p className="text-blue-400 font-semibold">Your growth is our growth.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             {/* Features List - Scrollable */}
             <div className="flex-1 mb-6 max-h-96 overflow-y-auto pr-2 custom-scrollbar">
@@ -277,6 +292,13 @@ export function PricingNew() {
             className="relative bg-gray-900/60 backdrop-blur-sm border border-green-500/40 rounded-3xl p-8 flex flex-col"
             style={{borderWidth: '1px', boxShadow: '0 0 30px rgba(16, 185, 129, 0.2)'}}
           >
+            {/* Most Popular Ribbon */}
+            <div className="absolute -top-3 -right-3 z-20">
+              <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 px-4 py-2 rounded-lg text-xs font-black shadow-xl transform rotate-6">
+                MOST POPULAR
+              </div>
+            </div>
+
             {/* Best Value Badge */}
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
               <div className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2">
@@ -323,9 +345,23 @@ export function PricingNew() {
               </p>
             </div>
 
-            <p className="text-gray-400 text-center text-sm mb-6">
-              + 5% performance fee on ad-generated revenue
-            </p>
+            <div className="group relative mb-6">
+              <div className="flex items-center justify-center gap-2 text-gray-400 text-sm">
+                <p className="text-center">
+                  + 5% performance fee on ad-generated revenue
+                </p>
+                <div className="relative">
+                  <HelpCircle className="w-4 h-4 text-gray-500 cursor-help" />
+                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 bg-gray-950 border border-green-400/50 rounded-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 shadow-2xl">
+                    <div className="text-xs text-white space-y-2">
+                      <p className="font-bold text-green-400 text-center">Success Guarantee</p>
+                      <p className="text-gray-300">We only win when you win. Our performance fee means we're invested in your success.</p>
+                      <p className="text-blue-400 font-semibold">Your growth is our growth.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             {/* Features List - Scrollable */}
             <div className="flex-1 mb-6 max-h-96 overflow-y-auto pr-2 custom-scrollbar">
@@ -400,6 +436,31 @@ export function PricingNew() {
               <div className="text-5xl font-bold mb-4" style={{color: '#FBBF24'}}>
                 Book Now
               </div>
+            </div>
+
+            {/* Pre-Call Checklist */}
+            <div className="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-sm border border-blue-400/40 rounded-2xl p-6 mb-6">
+              <div className="flex items-center justify-center gap-2 mb-4">
+                <span className="text-2xl">📋</span>
+                <span className="text-white font-bold text-lg">Pre-Call Checklist</span>
+              </div>
+              <p className="text-gray-200 text-sm mb-4 text-center">
+                To ensure a successful partnership walkthrough:
+              </p>
+              <ul className="space-y-3 text-gray-200 text-sm">
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-400">1.</span>
+                  <span>Join via laptop/tablet (no mobile)</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-400">2.</span>
+                  <span>Ensure all decision-making partners are present</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-blue-400">3.</span>
+                  <span>Have investment funds ready for ad-spend scaling</span>
+                </li>
+              </ul>
             </div>
 
             {/* Exclusive Opportunity Box */}
@@ -577,6 +638,17 @@ export function PricingNew() {
               <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                    style={{boxShadow: '0 0 40px rgba(59, 130, 246, 0.6)'}}></div>
             </motion.a>
+          </div>
+
+          {/* Money-Back Guarantee - Large and Prominent */}
+          <div className="mt-16 px-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              <MoneyBackGuarantee />
+            </motion.div>
           </div>
         </motion.div>
       </div>

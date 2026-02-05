@@ -55,16 +55,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-lg sm:text-xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed"
         >
-          Trusted by industry leaders to streamline operations, accelerate growth, and maintain competitive advantage through intelligent automation.
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-xl font-semibold mb-12 text-gray-400"
-        >
-          Proven systems delivering measurable ROI in under 30 days.
+          The only all-in-one AI partner that automates your lead generation, sales calls, and client delivery. Get a proven ROI in under 30 days.
         </motion.p>
 
         {/* Benefit Tags - 8 pills */}

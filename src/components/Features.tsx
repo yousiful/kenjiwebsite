@@ -25,118 +25,150 @@ import {
 } from 'lucide-react';
 
 const Features: React.FC = () => {
-  const features = [
+  const featureGroups = [
     {
-      icon: Mic,
-      title: "AI Voice Agents That Close Deals",
-      description: "AI agents that handle sales calls, qualify leads, and close deals 24/7 - generating revenue while you sleep",
-      color: "from-blue-500 to-blue-600",
-      roi: "300% more deals closed"
+      title: "Lead Generation & Ads",
+      color: "from-blue-400 to-cyan-500",
+      features: [
+        {
+          icon: Target,
+          title: "AI-Powered Ad Campaigns",
+          description: "Done-for-you ads that fill your CRM with qualified leads on autopilot",
+          color: "from-blue-500 to-blue-600",
+          roi: "3x more qualified leads"
+        },
+        {
+          icon: Globe,
+          title: "High-Converting Landing Pages",
+          description: "AI-built pages and funnels optimized for maximum conversion rates",
+          color: "from-cyan-500 to-cyan-600",
+          roi: "85% higher conversions"
+        },
+        {
+          icon: Search,
+          title: "SEO That Drives Traffic",
+          description: "Automated SEO optimization that ranks your content and brings organic leads",
+          color: "from-lime-500 to-lime-600",
+          roi: "500% more organic traffic"
+        },
+        {
+          icon: Edit,
+          title: "Content Marketing Engine",
+          description: "AI blog writer creating SEO content that attracts and converts prospects",
+          color: "from-red-500 to-red-600",
+          roi: "300% more organic leads"
+        },
+        {
+          icon: Calendar,
+          title: "Social Media Automation",
+          description: "AI-generated content that engages followers and converts them to customers",
+          color: "from-sky-500 to-sky-600",
+          roi: "250% more social sales"
+        },
+        {
+          icon: BarChart3,
+          title: "Marketing Analytics",
+          description: "Real-time insights showing what's working and where to invest more",
+          color: "from-amber-500 to-amber-600",
+          roi: "Data-driven decisions"
+        }
+      ]
     },
     {
-      icon: DollarSign,
-      title: "Revenue-Generating Workflows",
-      description: "Smart automation that identifies opportunities, nurtures leads, and converts prospects into paying customers",
-      color: "from-green-500 to-green-600",
-      roi: "425% average ROI"
+      title: "AI Sales & CRM",
+      color: "from-green-400 to-emerald-500",
+      features: [
+        {
+          icon: Mic,
+          title: "AI Voice Agents",
+          description: "AI agents handling sales calls, qualifying leads, and closing deals 24/7",
+          color: "from-blue-500 to-blue-600",
+          roi: "300% more deals closed"
+        },
+        {
+          icon: MessageCircle,
+          title: "Smart Chatbots",
+          description: "Intelligent conversations that qualify leads and guide prospects to purchase",
+          color: "from-sky-500 to-sky-600",
+          roi: "24/7 sales automation"
+        },
+        {
+          icon: TrendingUp,
+          title: "Predictive CRM",
+          description: "Advanced CRM with lifetime value prediction and retention automation",
+          color: "from-slate-500 to-slate-600",
+          roi: "Higher customer value"
+        },
+        {
+          icon: Mail,
+          title: "Email & SMS Campaigns",
+          description: "AI-powered campaigns optimized for maximum revenue and conversions",
+          color: "from-purple-500 to-purple-600",
+          roi: "400% higher conversions"
+        },
+        {
+          icon: DollarSign,
+          title: "Revenue Workflows",
+          description: "Smart automation that nurtures leads and converts them to customers",
+          color: "from-green-500 to-green-600",
+          roi: "425% average ROI"
+        },
+        {
+          icon: Star,
+          title: "Review & Reputation System",
+          description: "Automated review collection building trust and driving more sales",
+          color: "from-yellow-500 to-yellow-600",
+          roi: "Trust-driven growth"
+        }
+      ]
     },
     {
-      icon: Mail,
-      title: "Profit-Driven Email Campaigns",
-      description: "AI-powered campaigns that automatically optimize for maximum revenue and customer lifetime value",
-      color: "from-purple-500 to-purple-600",
-      roi: "400% higher conversions"
-    },
-    {
-      icon: Users,
-      title: "Community That Pays You",
-      description: "Build engaged communities with automated monetization, membership tiers, and revenue-sharing features",
-      color: "from-pink-500 to-pink-600",
-      roi: "Recurring revenue streams"
-    },
-    {
-      icon: BookOpen,
-      title: "Courses That Sell Themselves",
-      description: "AI-created courses with automated marketing, sales funnels, and student engagement that maximize profits",
-      color: "from-indigo-500 to-indigo-600",
-      roi: "Passive income generation"
-    },
-    {
-      icon: Edit,
-      title: "Content That Converts to Cash",
-      description: "AI blog writer that creates SEO-optimized content designed to drive traffic and generate leads",
-      color: "from-red-500 to-red-600",
-      roi: "300% more organic leads"
-    },
-    {
-      icon: UserCheck,
-      title: "Memberships That Scale Revenue",
-      description: "Automated membership management with tiered pricing, retention optimization, and churn prevention",
-      color: "from-teal-500 to-teal-600",
-      roi: "Predictable monthly revenue"
-    },
-    {
-      icon: Target,
-      title: "Affiliate System That Multiplies Income",
-      description: "Complete affiliate program with automated tracking, commissions, and partner recruitment",
-      color: "from-violet-500 to-violet-600",
-      roi: "10x revenue multiplication"
-    },
-    {
-      icon: Calendar,
-      title: "Social Media That Sells",
-      description: "AI-generated content with automated posting designed to drive engagement and convert followers to customers",
-      color: "from-cyan-500 to-cyan-600",
-      roi: "250% more social sales"
-    },
-    {
-      icon: BarChart3,
-      title: "Analytics That Predict Profit",
-      description: "Real-time insights and predictive analytics that identify the highest-value opportunities",
-      color: "from-amber-500 to-amber-600",
-      roi: "Data-driven growth"
-    },
-    {
-      icon: Search,
-      title: "SEO That Drives Revenue",
-      description: "Automated SEO optimization that ranks your content and drives high-converting organic traffic",
-      color: "from-lime-500 to-lime-600",
-      roi: "500% more organic revenue"
-    },
-    {
-      icon: Globe,
-      title: "Websites That Convert Visitors to Buyers",
-      description: "AI-built websites and funnels optimized for maximum conversion rates and customer acquisition",
-      color: "from-rose-500 to-rose-600",
-      roi: "85% higher conversion rates"
-    },
-    {
-      icon: MessageCircle,
-      title: "Chatbots That Qualify and Close",
-      description: "Intelligent conversations that qualify leads, handle objections, and guide prospects to purchase",
-      color: "from-sky-500 to-sky-600",
-      roi: "24/7 sales automation"
-    },
-    {
-      icon: CreditCard,
-      title: "Payment Systems That Maximize Revenue",
-      description: "Integrated payment processing with subscription optimization, upsells, and revenue recovery",
-      color: "from-fuchsia-500 to-fuchsia-600",
-      roi: "Optimized payment flows"
-    },
-    {
-      icon: TrendingUp,
-      title: "CRM That Predicts Customer Value",
-      description: "Advanced customer relationship management with lifetime value prediction and retention automation",
-      color: "from-slate-500 to-slate-600",
-      roi: "Higher customer lifetime value"
-    },
-    {
-      icon: Star,
-      title: "Review System That Builds Trust & Sales",
-      description: "Automated review collection and reputation management that builds trust and drives more sales",
-      color: "from-yellow-500 to-yellow-600",
-      roi: "Trust-driven revenue growth"
+      title: "Operations & Automation",
+      color: "from-purple-400 to-pink-500",
+      features: [
+        {
+          icon: Users,
+          title: "Community Management",
+          description: "Build engaged communities with automated monetization and membership tiers",
+          color: "from-pink-500 to-pink-600",
+          roi: "Recurring revenue"
+        },
+        {
+          icon: BookOpen,
+          title: "Course Creation Platform",
+          description: "AI-created courses with automated marketing and sales funnels",
+          color: "from-indigo-500 to-indigo-600",
+          roi: "Passive income"
+        },
+        {
+          icon: UserCheck,
+          title: "Membership Management",
+          description: "Automated membership system with tiered pricing and churn prevention",
+          color: "from-teal-500 to-teal-600",
+          roi: "Predictable revenue"
+        },
+        {
+          icon: Target,
+          title: "Affiliate Program System",
+          description: "Complete affiliate program with tracking, commissions, and recruitment",
+          color: "from-violet-500 to-violet-600",
+          roi: "10x multiplication"
+        },
+        {
+          icon: CreditCard,
+          title: "Payment Processing",
+          description: "Integrated payments with subscription optimization and upsells",
+          color: "from-fuchsia-500 to-fuchsia-600",
+          roi: "Optimized revenue"
+        },
+        {
+          icon: Workflow,
+          title: "Business Automation",
+          description: "Smart workflows automating repetitive tasks and operations",
+          color: "from-cyan-500 to-cyan-600",
+          roi: "85% time savings"
+        }
+      ]
     }
   ];
 
@@ -162,51 +194,66 @@ const Features: React.FC = () => {
             </span>
           </h2>
           <p className="text-xl text-gray-400 max-w-4xl mx-auto">
-            Stop paying for tools that don't generate revenue. Every feature in KenjiAI is built to automate your business, 
+            Stop paying for tools that don't generate revenue. Every feature in KenjiAI is built to automate your business,
             close more deals, and put money in your pocket while you sleep.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
-          {features.map((feature, index) => (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8" role="list">
+          {featureGroups.map((group, groupIndex) => (
             <motion.div
-              key={feature.title}
+              key={group.title}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.05 }}
-              whileHover={{ 
-                scale: 1.05, 
-                y: -10,
-                transition: { duration: 0.3 }
-              }}
-              role="listitem"
-              className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-blue-400/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/20"
-              data-caption={`${feature.title}: ${feature.roi}`}
+              transition={{ duration: 0.6, delay: groupIndex * 0.2 }}
+              className="space-y-6"
             >
-              {/* Gradient Background on Hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300`}></div>
-              
-              {/* Icon */}
-              <div className={`inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br ${feature.color} rounded-xl mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                <feature.icon className="w-6 h-6 text-white" />
+              <div className="text-center pb-4 border-b border-gray-700">
+                <h3 className={`text-2xl font-bold bg-gradient-to-r ${group.color} bg-clip-text text-transparent`}>
+                  {group.title}
+                </h3>
               </div>
 
-              {/* Content */}
-              <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-blue-300 transition-colors">
-                {feature.title}
-              </h3>
-              <p className="text-gray-400 text-sm leading-relaxed group-hover:text-gray-300 transition-colors mb-4">
-                {feature.description}
-              </p>
+              {group.features.map((feature, featureIndex) => (
+                <motion.div
+                  key={feature.title}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: groupIndex * 0.2 + featureIndex * 0.1 }}
+                  whileHover={{
+                    scale: 1.03,
+                    y: -5,
+                    transition: { duration: 0.3 }
+                  }}
+                  role="listitem"
+                  className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-blue-400/50 rounded-xl p-5 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/20"
+                  data-caption={`${feature.title}: ${feature.roi}`}
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-10 rounded-xl transition-opacity duration-300`}></div>
 
-              {/* ROI Badge */}
-              <div className="bg-green-500/20 text-green-400 px-3 py-1 rounded-lg text-xs font-semibold inline-block">
-                💰 {feature.roi}
-              </div>
+                  <div className="flex items-start gap-4">
+                    <div className={`flex-shrink-0 w-10 h-10 bg-gradient-to-br ${feature.color} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                      <feature.icon className="w-5 h-5 text-white" />
+                    </div>
 
-              {/* Hover Effect Glow */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-600/0 via-blue-600/5 to-green-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors">
+                        {feature.title}
+                      </h4>
+                      <p className="text-gray-400 text-xs leading-relaxed group-hover:text-gray-300 transition-colors mb-3">
+                        {feature.description}
+                      </p>
+                      <div className="bg-green-500/20 text-green-400 px-2 py-1 rounded text-xs font-semibold inline-block">
+                        {feature.roi}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-600/0 via-blue-600/5 to-green-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </motion.div>
+              ))}
             </motion.div>
           ))}
         </div>
