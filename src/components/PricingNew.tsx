@@ -3,9 +3,11 @@ import { motion } from 'framer-motion';
 import { Check, Star, ArrowRight, Calendar, Zap, Shield, CreditCard, TrendingUp, Target, Rocket, Video, LogIn, HelpCircle } from 'lucide-react';
 import { ToolReplacementBar } from './ToolReplacementBar';
 import { MoneyBackGuarantee } from './MoneyBackGuarantee';
+import { BookingPopup } from './BookingPopup';
 
 export function PricingNew() {
   const [isLoading, setIsLoading] = useState<string | null>(null);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   const handlePlanClick = async (url: string, planName: string) => {
     setIsLoading(planName);
@@ -164,11 +166,11 @@ export function PricingNew() {
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
             }}>
-              Choose Your Growth Path
+              Your Path to $500K+/Month Starts Here
             </span>
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            Select the plan that fits your revenue goals. Both include full done-for-you service, expert support, and all platform features.
+            Join 50+ businesses already generating life-changing revenue. Every plan includes done-for-you ads, AI voice agents, and expert support that actually delivers results.
           </p>
         </motion.div>
 
@@ -198,7 +200,7 @@ export function PricingNew() {
             </div>
 
             <h3 className="text-2xl font-bold text-white text-center mb-2">Monthly Billing</h3>
-            <p className="text-gray-400 text-center mb-6 text-sm">Pay month-to-month with flexibility</p>
+            <p className="text-gray-400 text-center mb-6 text-sm">Test-drive success with maximum flexibility</p>
 
             {/* Price */}
             <div className="text-center mb-6">
@@ -272,7 +274,7 @@ export function PricingNew() {
                 </>
               ) : (
                 <>
-                  Get Started Now
+                  Start Making Money Now
                   <ArrowRight className="w-5 h-5" />
                 </>
               )}
@@ -315,7 +317,7 @@ export function PricingNew() {
             </div>
 
             <h3 className="text-2xl font-bold text-white text-center mb-2">Yearly Billing</h3>
-            <p className="text-gray-400 text-center mb-6 text-sm">Save big with annual commitment</p>
+            <p className="text-gray-400 text-center mb-6 text-sm">Maximum savings for serious growth</p>
 
             {/* Price */}
             <div className="text-center mb-6">
@@ -393,7 +395,7 @@ export function PricingNew() {
                 </>
               ) : (
                 <>
-                  Get Started Now - Save 27%
+                  Lock In Best Price - Save $1,200
                   <ArrowRight className="w-5 h-5" />
                 </>
               )}
@@ -428,8 +430,8 @@ export function PricingNew() {
               </div>
             </div>
 
-            <h3 className="text-3xl font-bold text-white text-center mb-2">VIP Demo Walkthrough</h3>
-            <p className="text-gray-300 text-center mb-6 text-sm">See how Kenji helps businesses make $500K+/month</p>
+            <h3 className="text-3xl font-bold text-white text-center mb-2">VIP Strategy Session</h3>
+            <p className="text-gray-300 text-center mb-6 text-sm">Discover the exact blueprint our clients use to generate $500K+/month</p>
 
             {/* Book Now CTA */}
             <div className="text-center mb-8">
@@ -522,10 +524,8 @@ export function PricingNew() {
             </div>
 
             {/* CTA Button */}
-            <motion.a
-              href="https://go.mediatraffics.com/leads"
-              target="_blank"
-              rel="noopener noreferrer"
+            <motion.button
+              onClick={() => setIsBookingOpen(true)}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="w-full text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 shadow-xl"
@@ -535,14 +535,14 @@ export function PricingNew() {
             >
               Book VIP Demo Now
               <ArrowRight className="w-5 h-5" />
-            </motion.a>
+            </motion.button>
 
             <div className="text-center mt-4">
               <p className="text-amber-400 text-sm font-semibold">
-                Join 50+ VIP clients earning $500K+/month
+                Join 50+ VIP clients who've already transformed their business
               </p>
-              <p className="text-gray-500 text-xs mt-2">
-                100% Free Demo • No Credit Card Required
+              <p className="text-gray-400 text-xs mt-2">
+                100% Free Strategy Session • Zero Obligation • No Credit Card
               </p>
             </div>
           </motion.div>
@@ -557,22 +557,20 @@ export function PricingNew() {
         >
           <div className="text-center mb-10">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">
-              Ready to Transform Your Business?
+              Ready to Scale to $500K+/Month?
             </h2>
             <p className="text-lg text-gray-400">
-              Book a VIP call or login to your existing account
+              Book your free VIP strategy session or access your dashboard now
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
             {/* VIP Demo Button */}
-            <motion.a
-              href="https://go.mediatraffics.com/leads"
-              target="_blank"
-              rel="noopener noreferrer"
+            <motion.button
+              onClick={() => setIsBookingOpen(true)}
               whileHover={{ scale: 1.03, y: -5 }}
               whileTap={{ scale: 0.98 }}
-              className="group relative bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl p-8 flex flex-col items-center justify-center text-center overflow-hidden shadow-2xl"
+              className="group relative bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl p-8 flex flex-col items-center justify-center text-center overflow-hidden shadow-2xl w-full"
             >
               {/* Animated background gradient */}
               <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-red-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -587,12 +585,12 @@ export function PricingNew() {
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                   <Video className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">VIP Demo</h3>
+                <h3 className="text-2xl font-bold text-white mb-2">Free VIP Strategy Call</h3>
                 <p className="text-orange-100 text-sm mb-4">
-                  Schedule a personalized demo with our team
+                  Get your custom $500K+ revenue roadmap
                 </p>
                 <div className="flex items-center justify-center gap-2 text-white font-semibold">
-                  <span>Get Started</span>
+                  <span>Claim Your Spot Now</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
               </div>
@@ -600,7 +598,7 @@ export function PricingNew() {
               {/* Glow effect */}
               <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                    style={{boxShadow: '0 0 40px rgba(249, 115, 22, 0.6)'}}></div>
-            </motion.a>
+            </motion.button>
 
             {/* Login Button */}
             <motion.a
@@ -682,6 +680,8 @@ export function PricingNew() {
           animation: shine-slow 3s ease-in-out infinite;
         }
       `}</style>
+
+      <BookingPopup isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </div>
   );
 }
