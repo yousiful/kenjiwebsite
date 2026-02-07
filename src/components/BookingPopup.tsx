@@ -10,6 +10,8 @@ interface BookingPopupProps {
 export function BookingPopup({ isOpen, onClose }: BookingPopupProps) {
   const [spotsLeft, setSpotsLeft] = useState(3);
   const [timeLeft, setTimeLeft] = useState({ hours: 2, minutes: 47, seconds: 33 });
+  const [iframeHeight, setIframeHeight] = useState(800);
+  const [isCalendarLoaded, setIsCalendarLoaded] = useState(false);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -34,17 +36,35 @@ export function BookingPopup({ isOpen, onClose }: BookingPopupProps) {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
 
-      const script = document.createElement('script');
-      script.src = 'https://safeclick.kenjiai.com/js/form_embed.js';
-      script.type = 'text/javascript';
-      script.async = true;
-      document.body.appendChild(script);
+      // Load the GHL form embed script
+      const existingScript = document.getElementById('ghl-embed-script');
+      if (!existingScript) {
+        const script = document.createElement('script');
+        script.id = 'ghl-embed-script';
+        script.src = 'https://safeclick.kenjiai.com/js/form_embed.js';
+        script.type = 'text/javascript';
+        script.async = false;
+        document.head.appendChild(script);
+
+        script.onload = () => {
+          console.log('GHL embed script loaded');
+        };
+      }
+
+      // Listen for iframe height messages
+      const handleMessage = (event: MessageEvent) => {
+        if (event.origin === 'https://safeclick.kenjiai.com') {
+          if (event.data.height) {
+            setIframeHeight(event.data.height);
+          }
+        }
+      };
+
+      window.addEventListener('message', handleMessage);
 
       return () => {
         document.body.style.overflow = 'unset';
-        if (script.parentNode) {
-          script.parentNode.removeChild(script);
-        }
+        window.removeEventListener('message', handleMessage);
       };
     }
   }, [isOpen]);
@@ -65,7 +85,7 @@ export function BookingPopup({ isOpen, onClose }: BookingPopupProps) {
           animate={{ scale: 1, opacity: 1, y: 0 }}
           exit={{ scale: 0.9, opacity: 0, y: 20 }}
           transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-          className="relative bg-gradient-to-br from-gray-900 to-gray-950 border-2 border-orange-500/50 rounded-3xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl"
+          className="relative bg-gradient-to-br from-gray-900 to-gray-950 border-2 border-orange-500/50 rounded-3xl max-w-5xl w-full max-h-[95vh] overflow-hidden shadow-2xl"
           style={{ boxShadow: '0 0 80px rgba(249, 115, 22, 0.5)' }}
           onClick={(e) => e.stopPropagation()}
         >
@@ -81,7 +101,7 @@ export function BookingPopup({ isOpen, onClose }: BookingPopupProps) {
           </button>
 
           {/* Content */}
-          <div className="relative z-10 overflow-y-auto max-h-[90vh]">
+          <div className="relative z-10 overflow-y-auto max-h-[95vh] custom-scrollbar">
             {/* Header with urgency */}
             <div className="bg-gradient-to-r from-orange-600 to-red-600 p-6 text-center">
               <motion.div
@@ -192,14 +212,46 @@ export function BookingPopup({ isOpen, onClose }: BookingPopupProps) {
 
             {/* Calendar iframe */}
             <div className="p-6 bg-gray-900/40">
-              <div className="max-w-3xl mx-auto bg-white rounded-2xl overflow-hidden shadow-2xl">
-                <iframe
-                  src="https://safeclick.kenjiai.com/widget/booking/jB82SG2CBq9Nh8103IfC"
-                  style={{ width: '100%', border: 'none', overflow: 'hidden', minHeight: '700px' }}
-                  scrolling="no"
-                  id="BcIemEVdNzY7eDxTJD3q_1770498301373"
-                  title="Book Your VIP Call"
-                />
+              <div className="max-w-4xl mx-auto mb-6">
+                <div className="bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/50 rounded-xl p-4 text-center">
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    Choose Your Time Slot
+                  </h3>
+                  <p className="text-orange-200 text-sm">
+                    Select a date and time that works best for your schedule
+                  </p>
+                </div>
+              </div>
+
+              <div className="max-w-4xl mx-auto relative">
+                {!isCalendarLoaded && (
+                  <div className="absolute inset-0 flex items-center justify-center bg-white rounded-2xl z-10">
+                    <div className="text-center">
+                      <div className="w-12 h-12 border-4 border-orange-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                      <p className="text-gray-600 font-semibold">Loading calendar...</p>
+                    </div>
+                  </div>
+                )}
+                <div className="bg-white rounded-2xl overflow-hidden shadow-2xl">
+                  <iframe
+                    src="https://safeclick.kenjiai.com/widget/booking/jB82SG2CBq9Nh8103IfC"
+                    style={{
+                      width: '100%',
+                      height: `${iframeHeight}px`,
+                      minHeight: '700px',
+                      border: 'none',
+                      display: 'block',
+                      overflow: 'hidden'
+                    }}
+                    scrolling="no"
+                    id="BcIemEVdNzY7eDxTJD3q_1770498301373"
+                    title="Book Your VIP Call"
+                    onLoad={() => {
+                      setIsCalendarLoaded(true);
+                      console.log('Calendar iframe loaded');
+                    }}
+                  />
+                </div>
               </div>
             </div>
 
@@ -215,6 +267,23 @@ export function BookingPopup({ isOpen, onClose }: BookingPopupProps) {
           </div>
         </motion.div>
       </motion.div>
+
+      <style>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: rgba(31, 41, 55, 0.5);
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(249, 115, 22, 0.6);
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: rgba(249, 115, 22, 0.8);
+        }
+      `}</style>
     </AnimatePresence>
   );
 }
