@@ -1,0 +1,338 @@
+/**
+ * Cross-Browser Compatibility Styles
+ * Ensures consistent appearance across all major browsers
+ */
+
+/* Reset and Normalization */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* Fix for older browsers */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Smooth scrolling for all browsers */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Safari specific fixes */
+@supports (-webkit-appearance: none) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  textarea {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+}
+
+/* Fix for iOS Safari bottom bar issue */
+@supports (-webkit-touch-callout: none) {
+  .full-height {
+    height: -webkit-fill-available;
+  }
+}
+
+/* Firefox specific fixes */
+@-moz-document url-prefix() {
+  select {
+    text-indent: 0.01px;
+    text-overflow: '';
+  }
+}
+
+/* IE 10-11 fixes */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .flex-container {
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+/* Ensure gradients work cross-browser */
+.gradient-text {
+  background: -webkit-linear-gradient(90deg, #10B981 0%, #34D399 100%);
+  background: -moz-linear-gradient(90deg, #10B981 0%, #34D399 100%);
+  background: -o-linear-gradient(90deg, #10B981 0%, #34D399 100%);
+  background: linear-gradient(90deg, #10B981 0%, #34D399 100%);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  text-fill-color: transparent;
+}
+
+/* Fix for Safari backdrop-filter */
+.backdrop-blur {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+/* Ensure transforms work cross-browser */
+.transform {
+  -webkit-transform: translate(0, 0);
+  -moz-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+
+/* Fix for flexbox gaps in older browsers */
+@supports not (gap: 1rem) {
+  .flex-gap > * + * {
+    margin-left: 1rem;
+  }
+}
+
+/* Fix for grid gaps in older browsers */
+@supports not (gap: 1rem) {
+  .grid-gap > * {
+    margin: 0.5rem;
+  }
+}
+
+/* Fix for sticky positioning in older Safari */
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+/* Fix for object-fit in IE */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .object-fit {
+    height: 100%;
+  }
+  .object-fit img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* Ensure animations work cross-browser */
+@-webkit-keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@-moz-keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@-o-keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Fix for CSS Grid in IE 11 */
+@supports (display: -ms-grid) {
+  .grid-container {
+    display: -ms-grid;
+  }
+}
+
+/* Fix for calc() in older browsers */
+.calc-width {
+  width: -webkit-calc(100% - 2rem);
+  width: -moz-calc(100% - 2rem);
+  width: calc(100% - 2rem);
+}
+
+/* Touch action for better mobile support */
+button,
+a,
+[role="button"] {
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+}
+
+/* Fix for scrollbar styling cross-browser */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(31, 41, 55, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.6);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.8);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(59, 130, 246, 0.6) rgba(31, 41, 55, 0.5);
+}
+
+/* Prevent text selection issues in Safari */
+.user-select-none {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Fix for focus outline in all browsers */
+*:focus-visible {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+}
+
+/* Remove default focus outline in older browsers */
+*:focus {
+  outline: none;
+}
+
+/* But keep it for keyboard navigation */
+*:focus-visible {
+  outline: revert;
+}
+
+/* Fix for input zoom on mobile Safari */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* Fix for iframe sizing issues */
+iframe {
+  border: 0;
+  display: block;
+  max-width: 100%;
+}
+
+/* Ensure SVGs scale properly */
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fix for button appearances in Safari */
+button,
+input[type="button"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+
+/* Fix for disabled button state */
+button:disabled,
+input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Ensure consistent line-height */
+body {
+  line-height: 1.5;
+}
+
+/* Fix for font rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Fix for image rendering */
+img {
+  max-width: 100%;
+  height: auto;
+  -ms-interpolation-mode: bicubic;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Fix for video elements */
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ensure buttons and links have proper tap targets on mobile */
+@media (pointer: coarse) {
+  button,
+  a,
+  input,
+  select,
+  textarea,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Fix for Edge and older Chrome */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset;
+  -webkit-text-fill-color: #000;
+}
+
+/* Dark mode autofill fix */
+@media (prefers-color-scheme: dark) {
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #1f2937 inset;
+    -webkit-text-fill-color: white;
+  }
+}
+
+/* Prevent font boosting in mobile browsers */
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* Fix for position fixed on mobile keyboards */
+@supports (-webkit-touch-callout: none) {
+  .fixed-bottom {
+    position: fixed;
+    bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Ensure safe areas for notched devices */
+@supports (padding: max(0px)) {
+  .safe-area-padding {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+}

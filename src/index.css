@@ -1,3 +1,6 @@
+/* Import cross-browser compatibility styles */
+@import './styles/browser-compatibility.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
