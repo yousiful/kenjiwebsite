@@ -35,6 +35,7 @@ export function BookingPopup({ isOpen, onClose }: BookingPopupProps) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      setIsCalendarLoaded(false);
 
       // Load the GHL form embed script
       const existingScript = document.getElementById('ghl-embed-script');
@@ -66,42 +67,51 @@ export function BookingPopup({ isOpen, onClose }: BookingPopupProps) {
         document.body.style.overflow = 'unset';
         window.removeEventListener('message', handleMessage);
       };
+    } else {
+      document.body.style.overflow = 'unset';
     }
   }, [isOpen]);
 
-  if (!isOpen) return null;
-
   return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-        onClick={onClose}
-      >
+    <AnimatePresence mode="wait">
+      {isOpen && (
         <motion.div
-          initial={{ scale: 0.9, opacity: 0, y: 20 }}
-          animate={{ scale: 1, opacity: 1, y: 0 }}
-          exit={{ scale: 0.9, opacity: 0, y: 20 }}
-          transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-          className="relative bg-gradient-to-br from-gray-900 to-gray-950 border-2 border-orange-500/50 rounded-3xl max-w-5xl w-full max-h-[95vh] overflow-hidden shadow-2xl"
-          style={{ boxShadow: '0 0 80px rgba(249, 115, 22, 0.5)' }}
-          onClick={(e) => e.stopPropagation()}
+          key="booking-popup-overlay"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[9999] flex items-center justify-center p-4 overflow-y-auto"
+          onClick={onClose}
         >
-          {/* Animated background effect */}
-          <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-red-500/10 to-orange-500/10 animate-pulse"></div>
-
-          {/* Close button */}
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 z-20 bg-gray-800/80 hover:bg-gray-700 text-white p-2 rounded-full transition-all duration-300 hover:scale-110"
+          <motion.div
+            key="booking-popup-content"
+            initial={{ scale: 0.9, opacity: 0, y: 20 }}
+            animate={{ scale: 1, opacity: 1, y: 0 }}
+            exit={{ scale: 0.9, opacity: 0, y: 20 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+            className="relative bg-gradient-to-br from-gray-900 to-gray-950 border-2 border-orange-500/50 rounded-3xl max-w-5xl w-full my-8 shadow-2xl"
+            style={{
+              boxShadow: '0 0 80px rgba(249, 115, 22, 0.5)',
+              maxHeight: 'calc(100vh - 4rem)'
+            }}
+            onClick={(e) => e.stopPropagation()}
           >
-            <X className="w-6 h-6" />
-          </button>
+          {/* Animated background effect */}
+          <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 via-red-500/10 to-orange-500/10 animate-pulse rounded-3xl"></div>
+
+          {/* Close button container */}
+          <div className="sticky top-0 z-30 flex justify-end p-4">
+            <button
+              onClick={onClose}
+              className="bg-gray-800/90 hover:bg-gray-700 text-white p-2.5 rounded-full transition-all duration-300 hover:scale-110 shadow-xl backdrop-blur-sm"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
 
           {/* Content */}
-          <div className="relative z-10 overflow-y-auto max-h-[95vh] custom-scrollbar">
+          <div className="relative z-10 overflow-y-auto custom-scrollbar -mt-16" style={{ maxHeight: 'calc(100vh - 8rem)' }}>
             {/* Header with urgency */}
             <div className="bg-gradient-to-r from-orange-600 to-red-600 p-6 text-center">
               <motion.div
@@ -288,23 +298,7 @@ export function BookingPopup({ isOpen, onClose }: BookingPopupProps) {
           </div>
         </motion.div>
       </motion.div>
-
-      <style>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 8px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: rgba(31, 41, 55, 0.5);
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: rgba(249, 115, 22, 0.6);
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: rgba(249, 115, 22, 0.8);
-        }
-      `}</style>
+      )}
     </AnimatePresence>
   );
 }
