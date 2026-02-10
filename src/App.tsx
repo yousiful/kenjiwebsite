@@ -15,6 +15,8 @@ import AutoFormattingProvider from './components/AutoFormattingProvider';
 import LinkValidator from './components/LinkValidator';
 import { HolidayThemeProvider } from './contexts/HolidayThemeContext';
 import { LeftSideNotifications } from './components/LeftSideNotifications';
+import { RightSideNotifications } from './components/RightSideNotifications';
+import { MobileBottomNotification } from './components/MobileBottomNotification';
 import { BottomBadgeStats } from './components/BottomBadgeStats';
 import { HolidayFloatingElements } from './components/HolidayFloatingElements';
 import { HolidaySnowfall } from './components/HolidaySnowfall';
@@ -62,6 +64,8 @@ function App() {
             <LinkValidator />
             <RedirectSystem />
             <LeftSideNotifications />
+            <RightSideNotifications />
+            <MobileBottomNotification />
             <ErrorLogger />
             <InteractiveMouseCaption>
               <div className="min-h-screen bg-gray-900" id="app-container">
