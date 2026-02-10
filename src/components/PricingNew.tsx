@@ -228,13 +228,16 @@ export function PricingNew() {
               </div>
             </div>
 
-            {/* Features List - Scrollable */}
-            <div className="flex-1 mb-6 max-h-96 overflow-y-auto pr-2 custom-scrollbar">
-              <div className="space-y-3">
+            {/* Features List */}
+            <div className="flex-1 mb-6">
+              <div className="space-y-2">
                 {monthlyFeatures.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300 text-sm">{feature}</span>
+                  <div
+                    key={idx}
+                    className="flex items-start gap-2 p-2 rounded-lg transition-all duration-300 hover:bg-purple-500/10 hover:border-l-2 hover:border-purple-400 hover:pl-3 group cursor-default"
+                  >
+                    <Check className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:text-green-300 group-hover:scale-110" />
+                    <span className="text-gray-300 text-xs leading-relaxed transition-all duration-300 group-hover:text-white group-hover:font-medium">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -344,13 +347,16 @@ export function PricingNew() {
               </div>
             </div>
 
-            {/* Features List - Scrollable */}
-            <div className="flex-1 mb-6 max-h-96 overflow-y-auto pr-2 custom-scrollbar">
-              <div className="space-y-3">
+            {/* Features List */}
+            <div className="flex-1 mb-6">
+              <div className="space-y-2">
                 {yearlyFeatures.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300 text-sm">{feature}</span>
+                  <div
+                    key={idx}
+                    className="flex items-start gap-2 p-2 rounded-lg transition-all duration-300 hover:bg-green-500/10 hover:border-l-2 hover:border-green-400 hover:pl-3 group cursor-default"
+                  >
+                    <Check className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:text-green-300 group-hover:scale-110" />
+                    <span className="text-gray-300 text-xs leading-relaxed transition-all duration-300 group-hover:text-white group-hover:font-medium">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -485,11 +491,14 @@ export function PricingNew() {
                 Completely free • No obligation • No pressure
               </p>
 
-              <div className="space-y-3">
+              <div className="space-y-2">
                 {vipFeatures.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-200 text-sm font-medium">{feature}</span>
+                  <div
+                    key={idx}
+                    className="flex items-start gap-2 p-2 rounded-lg transition-all duration-300 hover:bg-amber-500/10 hover:border-l-2 hover:border-amber-400 hover:pl-3 group cursor-default"
+                  >
+                    <Check className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:text-amber-300 group-hover:scale-110" />
+                    <span className="text-gray-200 text-xs leading-relaxed font-medium transition-all duration-300 group-hover:text-white">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -630,21 +639,6 @@ export function PricingNew() {
       </div>
 
       <style>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: rgba(31, 41, 55, 0.3);
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: rgba(59, 130, 246, 0.5);
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: rgba(59, 130, 246, 0.7);
-        }
-
         @keyframes shine-slow {
           0% {
             transform: translateX(-100%) skewX(-15deg);
