@@ -1,13 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useHolidayTheme } from '../contexts/HolidayThemeContext';
+import { useLocation } from 'react-router-dom';
 
 export function HolidayFloatingElements() {
   const { currentHoliday, isHolidayActive } = useHolidayTheme();
+  const location = useLocation();
 
   if (!isHolidayActive || !currentHoliday) return null;
 
-  const positions = [
+  const isPricingPage = location.pathname === '/pricing';
+
+  const allPositions = [
     { top: '5%', left: '5%', delay: 0 },
     { top: '15%', right: '8%', delay: 0.3 },
     { top: '25%', left: '10%', delay: 0.6 },
@@ -19,6 +23,8 @@ export function HolidayFloatingElements() {
     { top: '85%', left: '7%', delay: 2.4 },
     { top: '95%', right: '10%', delay: 2.7 }
   ];
+
+  const positions = isPricingPage ? allPositions.slice(0, 4) : allPositions;
 
   return (
     <>
