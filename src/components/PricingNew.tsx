@@ -56,11 +56,11 @@ export function PricingNew() {
   ];
 
   const vipFeatures = [
-    "Personal demo with Kenji expert",
-    "See $500K+ success strategies",
-    "Custom growth plan for your business",
-    "Exclusive insider tips & secrets",
-    "Priority onboarding & support",
+    "Personal walkthrough with our team",
+    "See how successful clients use the platform",
+    "Discuss solutions tailored to your needs",
+    "Get honest advice about what's right for you",
+    "Learn about our approach and values",
   ];
 
   return (
@@ -80,7 +80,7 @@ export function PricingNew() {
               backgroundClip: 'text',
               letterSpacing: '0.02em'
             }}>
-              The Growth Partner Your Business Deserves
+              Let's Grow Your Business Together
             </span>
           </h1>
 
@@ -145,20 +145,6 @@ export function PricingNew() {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-center mb-12"
         >
-          {/* Urgency Banner */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="inline-block bg-gradient-to-r from-red-600 to-orange-600 text-white px-6 py-3 rounded-full text-sm font-bold mb-6 shadow-lg"
-          >
-            <div className="flex items-center gap-2">
-              <span className="animate-pulse">🚨</span>
-              <span>2026 PRICING INCREASE COMING - Lock in your rate now!</span>
-              <span className="animate-pulse">🚨</span>
-            </div>
-          </motion.div>
-
           <h2 className="text-4xl sm:text-5xl font-bold mb-4">
             <span style={{
               background: 'linear-gradient(90deg, #10B981 0%, #34D399 100%)',
@@ -166,11 +152,11 @@ export function PricingNew() {
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
             }}>
-              Your Path to $500K+/Month Starts Here
+              Choose Your Growth Plan
             </span>
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-            Join 50+ businesses already generating life-changing revenue. Every plan includes done-for-you ads, AI voice agents, and expert support that actually delivers results.
+            Transparent pricing for complete AI automation. Every plan includes done-for-you setup, AI voice agents, and ongoing expert support to help you succeed.
           </p>
         </motion.div>
 
@@ -200,7 +186,7 @@ export function PricingNew() {
             </div>
 
             <h3 className="text-2xl font-bold text-white text-center mb-2">Monthly Billing</h3>
-            <p className="text-gray-400 text-center mb-6 text-sm">Test-drive success with maximum flexibility</p>
+            <p className="text-gray-400 text-center mb-6 text-sm">Flexible monthly plan with full features</p>
 
             {/* Price */}
             <div className="text-center mb-6">
@@ -208,10 +194,8 @@ export function PricingNew() {
                 $375
                 <span className="text-2xl text-gray-400">/month</span>
               </div>
-              <div className="mt-2 text-yellow-400 font-bold text-sm flex items-center justify-center gap-2">
-                <span className="animate-pulse">⚠️</span>
-                Price increasing in 2026
-                <span className="animate-pulse">⚠️</span>
+              <div className="mt-2 text-gray-500 text-sm">
+                Cancel anytime
               </div>
             </div>
 
@@ -274,7 +258,7 @@ export function PricingNew() {
                 </>
               ) : (
                 <>
-                  Start Making Money Now
+                  Get Started with Monthly
                   <ArrowRight className="w-5 h-5" />
                 </>
               )}
@@ -317,7 +301,7 @@ export function PricingNew() {
             </div>
 
             <h3 className="text-2xl font-bold text-white text-center mb-2">Yearly Billing</h3>
-            <p className="text-gray-400 text-center mb-6 text-sm">Maximum savings for serious growth</p>
+            <p className="text-gray-400 text-center mb-6 text-sm">Best value for long-term growth</p>
 
             {/* Price */}
             <div className="text-center mb-6">
@@ -329,11 +313,6 @@ export function PricingNew() {
                 Save $1,200/year (27% off)
               </div>
               <p className="text-gray-500 text-sm mt-1">Billed annually at $3,300</p>
-              <div className="mt-2 text-yellow-400 font-bold text-sm flex items-center justify-center gap-2">
-                <span className="animate-pulse">⚠️</span>
-                Price increasing in 2026
-                <span className="animate-pulse">⚠️</span>
-              </div>
             </div>
 
             {/* Everything Included Box */}
@@ -395,7 +374,7 @@ export function PricingNew() {
                 </>
               ) : (
                 <>
-                  Lock In Best Price - Save $1,200
+                  Get Started with Yearly
                   <ArrowRight className="w-5 h-5" />
                 </>
               )}
@@ -430,80 +409,80 @@ export function PricingNew() {
               </div>
             </div>
 
-            <h3 className="text-3xl font-bold text-white text-center mb-2">VIP Strategy Session</h3>
-            <p className="text-gray-300 text-center mb-6 text-sm">Discover the exact blueprint our clients use to generate $500K+/month</p>
+            <h3 className="text-3xl font-bold text-white text-center mb-2">Free Consultation</h3>
+            <p className="text-gray-300 text-center mb-6 text-sm">Let's explore how AI automation can work for your specific business</p>
 
             {/* Book Now CTA */}
             <div className="text-center mb-8">
               <div className="text-5xl font-bold mb-4" style={{color: '#FBBF24'}}>
-                Book Now
+                Free Call
               </div>
             </div>
 
-            {/* Pre-Call Checklist */}
+            {/* What to Expect */}
             <div className="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-sm border border-blue-400/40 rounded-2xl p-6 mb-6">
               <div className="flex items-center justify-center gap-2 mb-4">
-                <span className="text-2xl">📋</span>
-                <span className="text-white font-bold text-lg">Pre-Call Checklist</span>
+                <span className="text-2xl">💬</span>
+                <span className="text-white font-bold text-lg">What to Expect</span>
               </div>
               <p className="text-gray-200 text-sm mb-4 text-center">
-                To ensure a successful partnership walkthrough:
+                A friendly conversation to explore if we're a good fit:
               </p>
               <ul className="space-y-3 text-gray-200 text-sm">
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-400">1.</span>
-                  <span>Join via laptop/tablet (no mobile)</span>
+                  <span className="text-blue-400">•</span>
+                  <span>Learn about your business and goals</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-400">2.</span>
-                  <span>Ensure all decision-making partners are present</span>
+                  <span className="text-blue-400">•</span>
+                  <span>Show you how our platform works</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-blue-400">3.</span>
-                  <span>Have investment funds ready for ad-spend scaling</span>
+                  <span className="text-blue-400">•</span>
+                  <span>Answer all your questions honestly</span>
                 </li>
               </ul>
             </div>
 
-            {/* Exclusive Opportunity Box */}
+            {/* What You'll Get */}
             <div className="bg-gradient-to-br from-amber-500/20 to-orange-500/20 backdrop-blur-sm border border-amber-400/40 rounded-2xl p-6 mb-6">
               <div className="flex items-center justify-center gap-2 mb-4">
-                <span className="text-2xl">🎁</span>
-                <span className="text-white font-bold text-lg">Exclusive Opportunity</span>
+                <span className="text-2xl">✨</span>
+                <span className="text-white font-bold text-lg">What You'll Get</span>
               </div>
               <ul className="space-y-3 text-gray-200 text-sm">
                 <li className="flex items-start gap-2">
-                  <span className="text-amber-400">✨</span>
-                  <span>Private 1-on-1 demo walkthrough</span>
+                  <span className="text-amber-400">•</span>
+                  <span>Personalized demo of the platform</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-amber-400">💰</span>
-                  <span>Learn proven $500K+/month strategies</span>
+                  <span className="text-amber-400">•</span>
+                  <span>See how AI automation fits your business</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-amber-400">🔓</span>
-                  <span className="font-bold text-amber-300">Chance for LIFETIME ACCESS</span>
+                  <span className="text-amber-400">•</span>
+                  <span>Discuss custom solutions for your needs</span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="text-amber-400">🚀</span>
-                  <span>See real business transformations</span>
+                  <span className="text-amber-400">•</span>
+                  <span>Learn from real client success stories</span>
                 </li>
               </ul>
             </div>
 
-            {/* Limited Slots */}
-            <div className="bg-red-900/40 border border-red-500/40 rounded-xl p-4 mb-6">
+            {/* Availability Note */}
+            <div className="bg-blue-900/30 border border-blue-500/30 rounded-xl p-4 mb-6">
               <div className="flex items-center justify-center gap-2 mb-2">
-                <span className="text-red-400 font-bold text-sm">⚠️ Limited Slots Available</span>
+                <span className="text-blue-400 font-semibold text-sm">📅 Schedule Your Call</span>
               </div>
               <p className="text-gray-300 text-xs text-center">
-                Only 5 demos per week - First come, first served
+                We limit calls to ensure quality time with each business
               </p>
             </div>
 
             <div className="flex-1 mb-6">
               <p className="text-green-400 font-semibold text-center mb-4">
-                No performance fee • 100% Free Demo
+                Completely free • No obligation • No pressure
               </p>
 
               <div className="space-y-3">
@@ -515,10 +494,9 @@ export function PricingNew() {
                 ))}
               </div>
 
-              <div className="mt-6 space-y-2 text-amber-300 font-semibold text-sm">
-                <p className="flex items-center gap-2">
-                  <Star className="w-4 h-4" />
-                  Opportunity for LIFETIME ACCESS
+              <div className="mt-6 space-y-2 text-gray-400 text-sm text-center">
+                <p>
+                  Just a friendly conversation about your business
                 </p>
               </div>
             </div>
@@ -533,16 +511,16 @@ export function PricingNew() {
                 background: 'linear-gradient(90deg, #F59E0B 0%, #EF4444 100%)'
               }}
             >
-              Book VIP Demo Now
+              Schedule Free Call
               <ArrowRight className="w-5 h-5" />
             </motion.button>
 
             <div className="text-center mt-4">
-              <p className="text-amber-400 text-sm font-semibold">
-                Join 50+ VIP clients who've already transformed their business
+              <p className="text-gray-300 text-sm">
+                Let's chat about your business goals
               </p>
               <p className="text-gray-400 text-xs mt-2">
-                100% Free Strategy Session • Zero Obligation • No Credit Card
+                No credit card required • No sales pressure • Just conversation
               </p>
             </div>
           </motion.div>
@@ -557,10 +535,10 @@ export function PricingNew() {
         >
           <div className="text-center mb-10">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">
-              Ready to Scale to $500K+/Month?
+              Ready to Get Started?
             </h2>
             <p className="text-lg text-gray-400">
-              Book your free VIP strategy session or access your dashboard now
+              Book a free consultation or log in to your dashboard
             </p>
           </div>
 
@@ -585,12 +563,12 @@ export function PricingNew() {
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                   <Video className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">Free VIP Strategy Call</h3>
+                <h3 className="text-2xl font-bold text-white mb-2">Free Consultation Call</h3>
                 <p className="text-orange-100 text-sm mb-4">
-                  Get your custom $500K+ revenue roadmap
+                  Let's explore if we're a good fit for each other
                 </p>
                 <div className="flex items-center justify-center gap-2 text-white font-semibold">
-                  <span>Claim Your Spot Now</span>
+                  <span>Book a Call</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
               </div>
