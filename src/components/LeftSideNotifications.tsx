@@ -127,11 +127,7 @@ export function LeftSideNotifications() {
           animate={{ opacity: 1, x: 0, scale: 1 }}
           exit={{ opacity: 0, x: -120, scale: 0.9 }}
           transition={{ duration: 0.5, type: "spring", bounce: 0.3 }}
-          className="fixed left-2 sm:left-4 z-40 max-w-[240px] sm:max-w-[260px] hidden md:block"
-          style={{
-            top: '50vh',
-            transform: 'translateY(-50%)',
-          }}
+          className="fixed left-4 top-1/2 -translate-y-1/2 z-40 max-w-[260px]"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
