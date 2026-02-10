@@ -200,8 +200,8 @@ export function PricingNew() {
             </div>
 
             {/* Everything Included Box */}
-            <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 backdrop-blur-sm border border-blue-400/30 rounded-2xl p-4 mb-6">
-              <div className="flex items-center justify-center gap-2 mb-2">
+            <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 backdrop-blur-sm border border-blue-400/30 rounded-2xl p-3 mb-5">
+              <div className="flex items-center justify-center gap-2 mb-1.5">
                 <Zap className="w-5 h-5 text-blue-400" />
                 <span className="text-white font-semibold">Everything Included</span>
               </div>
@@ -210,7 +210,7 @@ export function PricingNew() {
               </p>
             </div>
 
-            <div className="space-y-3 mb-6">
+            <div className="space-y-2.5 mb-5">
               <div className="bg-purple-900/30 border border-purple-500/30 rounded-xl p-3">
                 <p className="text-purple-300 text-sm text-center font-semibold">
                   $1,000/month ad spend required
@@ -238,14 +238,14 @@ export function PricingNew() {
 
             {/* Features List */}
             <div className="flex-1 mb-6">
-              <div className="space-y-2">
+              <div className="space-y-1.5">
                 {monthlyFeatures.map((feature, idx) => (
                   <div
                     key={idx}
-                    className="flex items-start gap-2 p-2 rounded-lg transition-all duration-300 hover:bg-purple-500/10 hover:border-l-2 hover:border-purple-400 hover:pl-3 group cursor-default"
+                    className="flex items-start gap-3 p-2.5 rounded-lg transition-all duration-300 hover:bg-purple-500/10 hover:border-l-2 hover:border-purple-400 hover:pl-3 group cursor-default"
                   >
-                    <Check className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:text-green-300 group-hover:scale-110" />
-                    <span className="text-gray-300 text-xs leading-relaxed transition-all duration-300 group-hover:text-white group-hover:font-medium">{feature}</span>
+                    <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:text-green-300 group-hover:scale-110" />
+                    <span className="text-gray-200 text-sm font-semibold leading-snug transition-all duration-300 group-hover:text-white">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -327,8 +327,8 @@ export function PricingNew() {
             </div>
 
             {/* Everything Included Box */}
-            <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 backdrop-blur-sm border border-green-400/30 rounded-2xl p-4 mb-6">
-              <div className="flex items-center justify-center gap-2 mb-2">
+            <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 backdrop-blur-sm border border-green-400/30 rounded-2xl p-3 mb-5">
+              <div className="flex items-center justify-center gap-2 mb-1.5">
                 <Zap className="w-5 h-5 text-green-400" />
                 <span className="text-white font-semibold">Everything Included + Savings</span>
               </div>
@@ -337,7 +337,7 @@ export function PricingNew() {
               </p>
             </div>
 
-            <div className="space-y-3 mb-6">
+            <div className="space-y-2.5 mb-5">
               <div className="bg-green-900/30 border border-green-500/30 rounded-xl p-3">
                 <p className="text-green-300 text-sm text-center font-semibold">
                   No ad spend required
@@ -365,14 +365,14 @@ export function PricingNew() {
 
             {/* Features List */}
             <div className="flex-1 mb-6">
-              <div className="space-y-2">
+              <div className="space-y-1.5">
                 {yearlyFeatures.map((feature, idx) => (
                   <div
                     key={idx}
-                    className="flex items-start gap-2 p-2 rounded-lg transition-all duration-300 hover:bg-green-500/10 hover:border-l-2 hover:border-green-400 hover:pl-3 group cursor-default"
+                    className="flex items-start gap-3 p-2.5 rounded-lg transition-all duration-300 hover:bg-green-500/10 hover:border-l-2 hover:border-green-400 hover:pl-3 group cursor-default"
                   >
-                    <Check className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:text-green-300 group-hover:scale-110" />
-                    <span className="text-gray-300 text-xs leading-relaxed transition-all duration-300 group-hover:text-white group-hover:font-medium">{feature}</span>
+                    <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:text-green-300 group-hover:scale-110" />
+                    <span className="text-gray-200 text-sm font-semibold leading-snug transition-all duration-300 group-hover:text-white">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -432,11 +432,11 @@ export function PricingNew() {
             </div>
 
             <h3 className="text-3xl font-bold text-white text-center mb-2">Lifetime Access</h3>
-            <p className="text-gray-300 text-center mb-6 text-sm">Exclusive access for serious business owners ready to scale with AI automation</p>
+            <p className="text-gray-300 text-center mb-5 text-sm">Exclusive access for serious business owners ready to scale with AI automation</p>
 
             {/* Book Now CTA */}
-            <div className="text-center mb-8">
-              <div className="text-5xl font-bold mb-4" style={{color: '#FBBF24'}}>
+            <div className="text-center mb-6">
+              <div className="text-5xl font-bold mb-3" style={{color: '#FBBF24'}}>
                 Book Call
               </div>
             </div>
@@ -446,7 +446,7 @@ export function PricingNew() {
               onClick={() => setIsBookingOpen(true)}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="group relative bg-gradient-to-br from-blue-600/30 to-purple-600/30 backdrop-blur-sm border border-blue-400/50 rounded-2xl p-8 mb-6 overflow-hidden transition-all duration-300 hover:border-blue-400"
+              className="group relative bg-gradient-to-br from-blue-600/30 to-purple-600/30 backdrop-blur-sm border border-blue-400/50 rounded-2xl p-6 mb-5 overflow-hidden transition-all duration-300 hover:border-blue-400"
             >
               {/* Animated background on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-600/40 to-purple-600/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -477,8 +477,8 @@ export function PricingNew() {
             </motion.button>
 
             {/* Availability Note */}
-            <div className="bg-blue-900/30 border border-blue-500/30 rounded-xl p-4 mb-6">
-              <div className="flex items-center justify-center gap-2 mb-2">
+            <div className="bg-blue-900/30 border border-blue-500/30 rounded-xl p-3 mb-5">
+              <div className="flex items-center justify-center gap-2 mb-1.5">
                 <span className="text-blue-400 font-semibold text-sm">📅 Limited Availability</span>
               </div>
               <p className="text-gray-300 text-xs text-center">
@@ -487,24 +487,24 @@ export function PricingNew() {
             </div>
 
             <div className="flex-1 mb-6">
-              <p className="text-amber-400 font-semibold text-center mb-4">
+              <p className="text-amber-400 font-bold text-center mb-4 text-base">
                 Exclusive lifetime platform access for serious business owners
               </p>
 
-              <div className="space-y-2">
+              <div className="space-y-1.5">
                 {vipFeatures.map((feature, idx) => (
                   <div
                     key={idx}
-                    className="flex items-start gap-2 p-2 rounded-lg transition-all duration-300 hover:bg-amber-500/10 hover:border-l-2 hover:border-amber-400 hover:pl-3 group cursor-default"
+                    className="flex items-start gap-3 p-2.5 rounded-lg transition-all duration-300 hover:bg-amber-500/10 hover:border-l-2 hover:border-amber-400 hover:pl-3 group cursor-default"
                   >
-                    <Check className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:text-amber-300 group-hover:scale-110" />
-                    <span className="text-gray-200 text-xs leading-relaxed font-medium transition-all duration-300 group-hover:text-white">{feature}</span>
+                    <Check className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:text-amber-300 group-hover:scale-110" />
+                    <span className="text-gray-200 text-sm font-semibold leading-snug transition-all duration-300 group-hover:text-white">{feature}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-6 space-y-2 text-gray-400 text-sm text-center">
-                <p>
+              <div className="mt-5 space-y-2 text-gray-400 text-sm text-center">
+                <p className="font-medium">
                   Qualify for exclusive lifetime access to our platform
                 </p>
               </div>
