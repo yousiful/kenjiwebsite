@@ -425,56 +425,40 @@ export function PricingNew() {
               </div>
             </div>
 
-            {/* What to Expect */}
-            <div className="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-sm border border-blue-400/40 rounded-2xl p-6 mb-6">
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <span className="text-2xl">💬</span>
-                <span className="text-white font-bold text-lg">What to Expect</span>
-              </div>
-              <p className="text-gray-200 text-sm mb-4 text-center">
-                A friendly conversation to explore if we're a good fit:
-              </p>
-              <ul className="space-y-3 text-gray-200 text-sm">
-                <li className="flex items-start gap-2">
-                  <span className="text-blue-400">•</span>
-                  <span>Learn about your business and goals</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-blue-400">•</span>
-                  <span>Show you how our platform works</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-blue-400">•</span>
-                  <span>Answer all your questions honestly</span>
-                </li>
-              </ul>
-            </div>
+            {/* Book System Walkthrough Button */}
+            <motion.button
+              onClick={() => setIsBookingOpen(true)}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="group relative bg-gradient-to-br from-blue-600/30 to-purple-600/30 backdrop-blur-sm border border-blue-400/50 rounded-2xl p-8 mb-6 overflow-hidden transition-all duration-300 hover:border-blue-400"
+            >
+              {/* Animated background on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/40 to-purple-600/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-            {/* What You'll Get */}
-            <div className="bg-gradient-to-br from-amber-500/20 to-orange-500/20 backdrop-blur-sm border border-amber-400/40 rounded-2xl p-6 mb-6">
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <span className="text-2xl">✨</span>
-                <span className="text-white font-bold text-lg">What You'll Get</span>
+              {/* Shine effect */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shine-slow"></div>
               </div>
-              <ul className="space-y-3 text-gray-200 text-sm">
-                <li className="flex items-start gap-2">
-                  <span className="text-amber-400">•</span>
-                  <span>Personalized demo of the platform</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-amber-400">•</span>
-                  <span>See how AI automation fits your business</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-amber-400">•</span>
-                  <span>Discuss custom solutions for your needs</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-amber-400">•</span>
-                  <span>Learn from real client success stories</span>
-                </li>
-              </ul>
-            </div>
+
+              {/* Content */}
+              <div className="relative z-10">
+                <div className="flex items-center justify-center gap-3 mb-3">
+                  <Video className="w-8 h-8 text-blue-400 group-hover:text-blue-300 transition-colors duration-300" />
+                  <span className="text-white font-bold text-2xl">Book System Walkthrough</span>
+                </div>
+                <p className="text-gray-300 text-sm text-center mb-4 group-hover:text-white transition-colors duration-300">
+                  See the platform in action and discover how it works for your business
+                </p>
+                <div className="flex items-center justify-center gap-2 text-blue-400 font-semibold group-hover:text-blue-300 transition-colors duration-300">
+                  <span>Schedule Now</span>
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </div>
+              </div>
+
+              {/* Glow effect */}
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                   style={{boxShadow: '0 0 30px rgba(59, 130, 246, 0.4)'}}></div>
+            </motion.button>
 
             {/* Availability Note */}
             <div className="bg-blue-900/30 border border-blue-500/30 rounded-xl p-4 mb-6">
