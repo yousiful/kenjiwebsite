@@ -56,11 +56,11 @@ export function PricingNew() {
   ];
 
   const vipFeatures = [
-    "Personal walkthrough with our team",
-    "See how successful clients use the platform",
-    "Discuss solutions tailored to your needs",
-    "Get honest advice about what's right for you",
-    "Learn about our approach and values",
+    "Personal strategy session with our team",
+    "Comprehensive platform walkthrough and demo",
+    "Custom solutions designed for your business",
+    "Lifetime platform access opportunity",
+    "VIP support and dedicated account management",
   ];
 
   return (
@@ -210,18 +210,26 @@ export function PricingNew() {
               </p>
             </div>
 
-            <div className="group relative mb-6">
-              <div className="flex items-center justify-center gap-2 text-gray-400 text-sm">
-                <p className="text-center">
-                  + 10% performance fee on ad-generated revenue
+            <div className="space-y-3 mb-6">
+              <div className="bg-purple-900/30 border border-purple-500/30 rounded-xl p-3">
+                <p className="text-purple-300 text-sm text-center font-semibold">
+                  $1,000/month ad spend required
                 </p>
-                <div className="relative">
-                  <HelpCircle className="w-4 h-4 text-gray-500 cursor-help" />
-                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 bg-gray-950 border border-blue-400/50 rounded-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 shadow-2xl">
-                    <div className="text-xs text-white space-y-2">
-                      <p className="font-bold text-green-400 text-center">Success Guarantee</p>
-                      <p className="text-gray-300">We only win when you win. Our performance fee means we're invested in your success.</p>
-                      <p className="text-blue-400 font-semibold">Your growth is our growth.</p>
+              </div>
+
+              <div className="group relative">
+                <div className="flex items-center justify-center gap-2 text-gray-400 text-sm">
+                  <p className="text-center">
+                    + 10% performance fee on ad-generated revenue
+                  </p>
+                  <div className="relative">
+                    <HelpCircle className="w-4 h-4 text-gray-500 cursor-help" />
+                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 bg-gray-950 border border-blue-400/50 rounded-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 shadow-2xl">
+                      <div className="text-xs text-white space-y-2">
+                        <p className="font-bold text-green-400 text-center">Success Guarantee</p>
+                        <p className="text-gray-300">We only win when you win. Our performance fee means we're invested in your success.</p>
+                        <p className="text-blue-400 font-semibold">Your growth is our growth.</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -329,18 +337,26 @@ export function PricingNew() {
               </p>
             </div>
 
-            <div className="group relative mb-6">
-              <div className="flex items-center justify-center gap-2 text-gray-400 text-sm">
-                <p className="text-center">
-                  + 5% performance fee on ad-generated revenue
+            <div className="space-y-3 mb-6">
+              <div className="bg-green-900/30 border border-green-500/30 rounded-xl p-3">
+                <p className="text-green-300 text-sm text-center font-semibold">
+                  No ad spend required
                 </p>
-                <div className="relative">
-                  <HelpCircle className="w-4 h-4 text-gray-500 cursor-help" />
-                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 bg-gray-950 border border-green-400/50 rounded-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 shadow-2xl">
-                    <div className="text-xs text-white space-y-2">
-                      <p className="font-bold text-green-400 text-center">Success Guarantee</p>
-                      <p className="text-gray-300">We only win when you win. Our performance fee means we're invested in your success.</p>
-                      <p className="text-blue-400 font-semibold">Your growth is our growth.</p>
+              </div>
+
+              <div className="group relative">
+                <div className="flex items-center justify-center gap-2 text-gray-400 text-sm">
+                  <p className="text-center">
+                    + 5% performance fee on ad-generated revenue
+                  </p>
+                  <div className="relative">
+                    <HelpCircle className="w-4 h-4 text-gray-500 cursor-help" />
+                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 bg-gray-950 border border-green-400/50 rounded-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 shadow-2xl">
+                      <div className="text-xs text-white space-y-2">
+                        <p className="font-bold text-green-400 text-center">Success Guarantee</p>
+                        <p className="text-gray-300">We only win when you win. Our performance fee means we're invested in your success.</p>
+                        <p className="text-blue-400 font-semibold">Your growth is our growth.</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -415,13 +431,13 @@ export function PricingNew() {
               </div>
             </div>
 
-            <h3 className="text-3xl font-bold text-white text-center mb-2">Free Consultation</h3>
-            <p className="text-gray-300 text-center mb-6 text-sm">Let's explore how AI automation can work for your specific business</p>
+            <h3 className="text-3xl font-bold text-white text-center mb-2">Lifetime Access</h3>
+            <p className="text-gray-300 text-center mb-6 text-sm">Exclusive access for serious business owners ready to scale with AI automation</p>
 
             {/* Book Now CTA */}
             <div className="text-center mb-8">
               <div className="text-5xl font-bold mb-4" style={{color: '#FBBF24'}}>
-                Free Call
+                Book Call
               </div>
             </div>
 
@@ -463,16 +479,16 @@ export function PricingNew() {
             {/* Availability Note */}
             <div className="bg-blue-900/30 border border-blue-500/30 rounded-xl p-4 mb-6">
               <div className="flex items-center justify-center gap-2 mb-2">
-                <span className="text-blue-400 font-semibold text-sm">📅 Schedule Your Call</span>
+                <span className="text-blue-400 font-semibold text-sm">📅 Limited Availability</span>
               </div>
               <p className="text-gray-300 text-xs text-center">
-                We limit calls to ensure quality time with each business
+                We work with select businesses ready to scale
               </p>
             </div>
 
             <div className="flex-1 mb-6">
-              <p className="text-green-400 font-semibold text-center mb-4">
-                Completely free • No obligation • No pressure
+              <p className="text-amber-400 font-semibold text-center mb-4">
+                Exclusive lifetime platform access for serious business owners
               </p>
 
               <div className="space-y-2">
@@ -489,7 +505,7 @@ export function PricingNew() {
 
               <div className="mt-6 space-y-2 text-gray-400 text-sm text-center">
                 <p>
-                  Just a friendly conversation about your business
+                  Qualify for exclusive lifetime access to our platform
                 </p>
               </div>
             </div>
@@ -504,16 +520,16 @@ export function PricingNew() {
                 background: 'linear-gradient(90deg, #F59E0B 0%, #EF4444 100%)'
               }}
             >
-              Schedule Free Call
+              Book VIP Strategy Call
               <ArrowRight className="w-5 h-5" />
             </motion.button>
 
             <div className="text-center mt-4">
               <p className="text-gray-300 text-sm">
-                Let's chat about your business goals
+                Exclusive opportunity for qualified business owners
               </p>
               <p className="text-gray-400 text-xs mt-2">
-                No credit card required • No sales pressure • Just conversation
+                Discover lifetime platform access and VIP support
               </p>
             </div>
           </motion.div>
@@ -528,10 +544,10 @@ export function PricingNew() {
         >
           <div className="text-center mb-10">
             <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">
-              Ready to Get Started?
+              Ready to Scale Your Business?
             </h2>
             <p className="text-lg text-gray-400">
-              Book a free consultation or log in to your dashboard
+              Book your VIP strategy call or access your dashboard
             </p>
           </div>
 
@@ -556,12 +572,12 @@ export function PricingNew() {
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                   <Video className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">Free Consultation Call</h3>
+                <h3 className="text-2xl font-bold text-white mb-2">VIP Strategy Call</h3>
                 <p className="text-orange-100 text-sm mb-4">
-                  Let's explore if we're a good fit for each other
+                  Exclusive access for serious business owners ready to scale
                 </p>
                 <div className="flex items-center justify-center gap-2 text-white font-semibold">
-                  <span>Book a Call</span>
+                  <span>Book Strategy Call</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
               </div>
