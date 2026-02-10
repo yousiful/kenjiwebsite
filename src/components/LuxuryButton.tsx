@@ -38,10 +38,10 @@ export const LuxuryButton: React.FC<LuxuryButtonProps> = ({
   };
 
   const sizes = {
-    sm: 'px-6 py-3 text-sm',
-    md: 'px-8 py-4 text-base',
-    lg: 'px-10 py-5 text-lg',
-    xl: 'px-14 py-6 text-2xl',
+    sm: 'px-5 py-2.5 sm:px-6 sm:py-3 text-sm',
+    md: 'px-6 py-3 sm:px-8 sm:py-4 text-base',
+    lg: 'px-8 py-4 sm:px-10 sm:py-5 text-base sm:text-lg',
+    xl: 'px-10 py-4 sm:px-14 sm:py-6 text-lg sm:text-2xl',
   };
 
   const style = variants[variant];
@@ -73,7 +73,7 @@ export const LuxuryButton: React.FC<LuxuryButtonProps> = ({
           duration: 0.2,
         },
       }}
-      className={`group relative inline-flex items-center justify-center gap-3 font-bold rounded-2xl overflow-hidden cursor-pointer ${sizeClass} ${className}`}
+      className={`group relative inline-flex items-center justify-center gap-2 sm:gap-3 font-bold rounded-xl sm:rounded-2xl overflow-hidden cursor-pointer touch-manipulation min-h-[48px] ${sizeClass} ${className}`}
       style={{
         background: style.background,
         boxShadow: style.shadow,

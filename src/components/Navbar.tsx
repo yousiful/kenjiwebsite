@@ -244,12 +244,12 @@ const Navbar: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white hover:text-blue-400 transition-colors mobile-hover focus-ring touch-target"
+            className="md:hidden text-white hover:text-blue-400 transition-colors mobile-hover focus-ring touch-target p-2 -mr-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-expanded={isOpen}
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-controls="mobile-menu"
           >
-            {isOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
+            {isOpen ? <X className="w-7 h-7" aria-hidden="true" /> : <Menu className="w-7 h-7" aria-hidden="true" />}
           </button>
         </div>
 
@@ -272,7 +272,7 @@ const Navbar: React.FC = () => {
               className="md:hidden bg-gray-800 border-t border-gray-700 mt-2 rounded-b-xl investor-card-shadow overflow-hidden"
             >
               <motion.div
-                className="px-4 py-4 space-y-4"
+                className="px-4 py-5 space-y-2"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -285,7 +285,7 @@ const Navbar: React.FC = () => {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-2"
+                      className="block text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-3 min-h-[44px] flex items-center text-base"
                       role="menuitem"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -303,7 +303,7 @@ const Navbar: React.FC = () => {
                       <Link
                         to={item.href}
                         onClick={() => setIsOpen(false)}
-                        className="block text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-2"
+                        className="block text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-3 min-h-[44px] flex items-center text-base"
                         role="menuitem"
                       >
                         {item.name}
@@ -319,7 +319,7 @@ const Navbar: React.FC = () => {
                   <Link
                     to="/free-tools"
                     onClick={() => setIsOpen(false)}
-                    className="block text-green-400 hover:text-green-300 transition-colors font-medium mobile-hover touch-target py-2"
+                    className="block text-green-400 hover:text-green-300 transition-colors font-medium mobile-hover touch-target py-3 min-h-[44px] flex items-center text-base"
                     role="menuitem"
                   >
                     Free Tools ✨
@@ -329,7 +329,7 @@ const Navbar: React.FC = () => {
                   href="https://support.kenjiai.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-2"
+                  className="block text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-3 min-h-[44px] flex items-center text-base"
                   role="menuitem"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -338,20 +338,23 @@ const Navbar: React.FC = () => {
                   Support
                 </motion.a>
 
+                {/* Divider */}
+                <div className="border-t border-gray-700 my-3"></div>
+
                 {/* Mobile Login Button */}
                 <motion.a
                   href="https://app.kenjiai.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-2"
+                  className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-3 min-h-[44px] text-base"
                   role="menuitem"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: (navItems.length + 2) * 0.05 }}
                 >
-                  <LogIn className="w-4 h-4" aria-hidden="true" />
+                  <LogIn className="w-5 h-5" aria-hidden="true" />
                   Login to Dashboard
-                  <ExternalLink className="w-3 h-3" aria-hidden="true" />
+                  <ExternalLink className="w-4 h-4" aria-hidden="true" />
                 </motion.a>
 
                 {/* Mobile VIP Demo Button */}
@@ -359,13 +362,13 @@ const Navbar: React.FC = () => {
                   href="https://go.mediatraffics.com/leads"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 bg-gray-800 border border-gray-700 text-white px-4 py-3 rounded-xl font-semibold mobile-button"
+                  className="flex items-center justify-center gap-2 bg-gray-800 border border-gray-700 text-white px-5 py-4 rounded-xl font-semibold mobile-button mt-4 min-h-[48px] text-base hover:border-blue-500 transition-all touch-manipulation"
                   role="menuitem"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: (navItems.length + 3) * 0.05 }}
                 >
-                  <Calendar className="w-4 h-4" aria-hidden="true" />
+                  <Calendar className="w-5 h-5" aria-hidden="true" />
                   VIP Demo
                 </motion.a>
 
@@ -378,10 +381,10 @@ const Navbar: React.FC = () => {
                   <Link
                     to="/pricing"
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-center gap-2 investor-gradient-blue text-white px-4 py-3 rounded-xl font-semibold mobile-button"
+                    className="flex items-center justify-center gap-2 investor-gradient-blue text-white px-5 py-4 rounded-xl font-semibold mobile-button min-h-[48px] text-base touch-manipulation"
                     role="menuitem"
                   >
-                    <DollarSign className="w-4 h-4" aria-hidden="true" />
+                    <DollarSign className="w-5 h-5" aria-hidden="true" />
                     See Pricing
                   </Link>
                 </motion.div>

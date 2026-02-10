@@ -22,17 +22,17 @@ const Hero: React.FC = () => {
         }}></div>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pb-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pb-12 sm:pb-16">
         {/* Live Date/Time Badge */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="pt-4 sm:pt-8 mb-2 flex justify-center"
+          className="pt-6 sm:pt-8 mb-3 sm:mb-2 flex justify-center"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gray-800/60 backdrop-blur-sm border border-blue-500/30 rounded-full">
+          <div className="inline-flex items-center gap-2 px-4 py-2.5 sm:py-2 bg-gray-800/60 backdrop-blur-sm border border-blue-500/30 rounded-full touch-manipulation">
             <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
-            <DynamicDateTime format="short" className="text-gray-300 text-xs font-medium" />
+            <DynamicDateTime format="short" className="text-gray-300 text-xs sm:text-xs font-medium" />
             <span className="text-gray-500 text-xs">EST</span>
           </div>
         </motion.div>
@@ -53,7 +53,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-lg sm:text-xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed"
+          className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed px-2"
         >
           The only all-in-one AI partner that automates your lead generation, sales calls, and client delivery. Get a proven ROI in under 30 days.
         </motion.p>
@@ -63,7 +63,7 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-12 max-w-5xl mx-auto"
+          className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3 mb-10 sm:mb-12 max-w-5xl mx-auto"
         >
           {[
             "24/7 Operations",
@@ -102,14 +102,14 @@ const Hero: React.FC = () => {
                 y: -5,
                 boxShadow: '0 10px 40px rgba(59, 130, 246, 0.5)',
               }}
-              className="relative bg-gray-800/60 backdrop-blur-sm border border-gray-700/50 rounded-xl px-4 py-3 text-center overflow-hidden cursor-pointer group"
+              className="relative bg-gray-800/60 backdrop-blur-sm border border-gray-700/50 rounded-lg sm:rounded-xl px-3 sm:px-4 py-3 sm:py-3 text-center overflow-hidden cursor-pointer group touch-manipulation min-h-[44px] flex items-center justify-center"
               style={{
                 backgroundColor: 'rgba(31, 41, 55, 0.6)',
                 boxShadow: '0 0 20px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1)',
               }}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/10 to-blue-500/0 group-hover:via-blue-500/20 transition-all duration-500" />
-              <span className="relative z-10 text-gray-300 font-medium text-sm">{feature}</span>
+              <span className="relative z-10 text-gray-300 font-medium text-xs sm:text-sm">{feature}</span>
             </motion.div>
           ))}
         </motion.div>
@@ -119,21 +119,21 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.3 }}
-          className="flex justify-center mb-16"
+          className="flex justify-center mb-10 sm:mb-16 px-4"
         >
-          <div className="relative">
+          <div className="relative w-full sm:w-auto">
             <LuxuryButton href="/pricing" variant="primary" size="xl">
               {currentHoliday && (
                 <motion.span
                   animate={{ rotate: [0, 15, -15, 0] }}
                   transition={{ duration: 2, repeat: Infinity }}
-                  className="text-2xl"
+                  className="text-xl sm:text-2xl"
                 >
                   {currentHoliday.emoji}
                 </motion.span>
               )}
-              <span>Explore Solutions</span>
-              <ArrowRight className="w-6 h-6" />
+              <span className="text-base sm:text-lg">Explore Solutions</span>
+              <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />
             </LuxuryButton>
             {currentHoliday && (
               <motion.span
@@ -152,15 +152,15 @@ const Hero: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.5 }}
-          className="text-center"
+          className="text-center px-4"
         >
           <p className="text-gray-400 text-sm mb-2">Prefer to speak with our team?</p>
           <a
             href="tel:+18286772148"
-            className="inline-flex items-center gap-2 text-gray-300 hover:text-green-400 transition-colors font-medium group"
+            className="inline-flex items-center gap-2 text-gray-300 hover:text-green-400 transition-colors font-medium group touch-manipulation min-h-[44px]"
           >
-            <Phone className="w-4 h-4 group-hover:animate-pulse" />
-            <span>(828) 677-2148</span>
+            <Phone className="w-5 h-5 sm:w-4 sm:h-4 group-hover:animate-pulse" />
+            <span className="text-base sm:text-base">(828) 677-2148</span>
           </a>
         </motion.div>
 

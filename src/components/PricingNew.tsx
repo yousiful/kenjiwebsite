@@ -3,11 +3,9 @@ import { motion } from 'framer-motion';
 import { Check, Star, ArrowRight, Calendar, Zap, Shield, CreditCard, TrendingUp, Target, Rocket, Video, LogIn, HelpCircle } from 'lucide-react';
 import { ToolReplacementBar } from './ToolReplacementBar';
 import { MoneyBackGuarantee } from './MoneyBackGuarantee';
-import { BookingPopup } from './BookingPopup';
 
 export function PricingNew() {
   const [isLoading, setIsLoading] = useState<string | null>(null);
-  const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   const handlePlanClick = async (url: string, planName: string) => {
     setIsLoading(planName);
@@ -64,15 +62,15 @@ export function PricingNew() {
   ];
 
   return (
-    <div className="py-24 px-4" style={{backgroundColor: '#0B0E14'}}>
+    <div className="py-16 sm:py-24 px-4" style={{backgroundColor: '#0B0E14'}}>
       {/* Hero Section */}
-      <div className="max-w-5xl mx-auto mb-16 text-center px-4">
+      <div className="max-w-5xl mx-auto mb-12 sm:mb-16 text-center px-2 sm:px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-5xl sm:text-6xl font-bold mb-6" style={{fontFamily: 'Inter, Montserrat, sans-serif'}}>
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6" style={{fontFamily: 'Inter, Montserrat, sans-serif'}}>
             <span style={{
               background: 'linear-gradient(90deg, #10B981 0%, #34D399 100%)',
               WebkitBackgroundClip: 'text',
@@ -85,7 +83,7 @@ export function PricingNew() {
           </h1>
 
           {/* Value Props Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mt-6 sm:mt-8">
             {[
               {
                 icon: Target,
@@ -137,15 +135,15 @@ export function PricingNew() {
       {/* Tool Replacement Bar */}
       <ToolReplacementBar />
 
-      <div className="max-w-7xl mx-auto mt-16">
+      <div className="max-w-7xl mx-auto mt-12 sm:mt-16">
         {/* Pricing Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-center mb-12"
+          className="text-center mb-10 sm:mb-12 px-2"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
             <span style={{
               background: 'linear-gradient(90deg, #10B981 0%, #34D399 100%)',
               WebkitBackgroundClip: 'text',
@@ -155,13 +153,13 @@ export function PricingNew() {
               Choose Your Growth Plan
             </span>
           </h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto px-2">
             Transparent pricing for complete AI automation. Every plan includes done-for-you setup, AI voice agents, and ongoing expert support to help you succeed.
           </p>
         </motion.div>
 
         {/* 3-Column Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6 px-2">
           {/* Monthly Billing */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -468,11 +466,13 @@ export function PricingNew() {
             </div>
 
             {/* Book System Walkthrough Button */}
-            <motion.button
-              onClick={() => setIsBookingOpen(true)}
+            <motion.a
+              href="https://go.mediatraffics.com/leads"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="group relative bg-gradient-to-br from-blue-600/30 to-purple-600/30 backdrop-blur-sm border border-blue-400/50 rounded-2xl p-6 mb-5 overflow-hidden transition-all duration-300 hover:border-blue-400"
+              className="group relative bg-gradient-to-br from-blue-600/30 to-purple-600/30 backdrop-blur-sm border border-blue-400/50 rounded-2xl p-6 mb-5 overflow-hidden transition-all duration-300 hover:border-blue-400 block cursor-pointer"
             >
               {/* Animated background on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-600/40 to-purple-600/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -500,7 +500,7 @@ export function PricingNew() {
               {/* Glow effect */}
               <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                    style={{boxShadow: '0 0 30px rgba(59, 130, 246, 0.4)'}}></div>
-            </motion.button>
+            </motion.a>
 
             {/* Availability Note */}
             <div className="bg-blue-900/30 border border-blue-500/30 rounded-xl p-3 mb-5">
@@ -537,18 +537,20 @@ export function PricingNew() {
             </div>
 
             {/* CTA Button */}
-            <motion.button
-              onClick={() => setIsBookingOpen(true)}
+            <motion.a
+              href="https://go.mediatraffics.com/leads"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 shadow-xl"
+              className="w-full text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 shadow-xl cursor-pointer"
               style={{
                 background: 'linear-gradient(90deg, #F59E0B 0%, #EF4444 100%)'
               }}
             >
               Book VIP Strategy Call
               <ArrowRight className="w-5 h-5" />
-            </motion.button>
+            </motion.a>
 
             <div className="text-center mt-4">
               <p className="text-gray-300 text-sm">
@@ -566,24 +568,26 @@ export function PricingNew() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-20 max-w-4xl mx-auto"
+          className="mt-16 sm:mt-20 max-w-4xl mx-auto"
         >
-          <div className="text-center mb-10">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white">
+          <div className="text-center mb-8 sm:mb-10 px-2">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-white">
               Ready to Scale Your Business?
             </h2>
-            <p className="text-lg text-gray-400">
+            <p className="text-base sm:text-lg text-gray-400">
               Book your VIP strategy call or access your dashboard
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 px-4">
             {/* VIP Demo Button */}
-            <motion.button
-              onClick={() => setIsBookingOpen(true)}
+            <motion.a
+              href="https://go.mediatraffics.com/leads"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.03, y: -5 }}
               whileTap={{ scale: 0.98 }}
-              className="group relative bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl p-8 flex flex-col items-center justify-center text-center overflow-hidden shadow-2xl w-full"
+              className="group relative bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl p-8 flex flex-col items-center justify-center text-center overflow-hidden shadow-2xl w-full cursor-pointer"
             >
               {/* Animated background gradient */}
               <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-red-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -611,7 +615,7 @@ export function PricingNew() {
               {/* Glow effect */}
               <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                    style={{boxShadow: '0 0 40px rgba(249, 115, 22, 0.6)'}}></div>
-            </motion.button>
+            </motion.a>
 
             {/* Login Button */}
             <motion.a
@@ -678,8 +682,6 @@ export function PricingNew() {
           animation: shine-slow 3s ease-in-out infinite;
         }
       `}</style>
-
-      <BookingPopup isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
     </div>
   );
 }
