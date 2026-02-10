@@ -255,18 +255,31 @@ export function PricingNew() {
             <motion.button
               onClick={() => handlePlanClick('https://freedom.kenjiai.com/checkout-4912-2457-3370', 'monthly')}
               disabled={isLoading === 'monthly'}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 shadow-xl"
+              whileHover={{ scale: isLoading === 'monthly' ? 1 : 1.02 }}
+              whileTap={{ scale: isLoading === 'monthly' ? 1 : 0.98 }}
+              className={`w-full text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 shadow-xl transition-all duration-300 ${isLoading === 'monthly' ? 'opacity-90 cursor-wait' : ''}`}
               style={{
                 background: 'linear-gradient(90deg, #E9338E 0%, #4B52FF 100%)'
               }}
             >
               {isLoading === 'monthly' ? (
-                <>
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  Redirecting...
-                </>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="flex items-center gap-3"
+                >
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    className="w-6 h-6 border-3 border-white border-t-transparent rounded-full"
+                  />
+                  <motion.span
+                    animate={{ opacity: [1, 0.5, 1] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    Redirecting to checkout...
+                  </motion.span>
+                </motion.div>
               ) : (
                 <>
                   Get Started with Monthly
@@ -382,18 +395,31 @@ export function PricingNew() {
             <motion.button
               onClick={() => handlePlanClick('https://freedom.kenjiai.com/checkout-4912-2457-3370', 'yearly')}
               disabled={isLoading === 'yearly'}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 shadow-xl"
+              whileHover={{ scale: isLoading === 'yearly' ? 1 : 1.02 }}
+              whileTap={{ scale: isLoading === 'yearly' ? 1 : 0.98 }}
+              className={`w-full text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 shadow-xl transition-all duration-300 ${isLoading === 'yearly' ? 'opacity-90 cursor-wait' : ''}`}
               style={{
                 background: 'linear-gradient(90deg, #10B981 0%, #34D399 100%)'
               }}
             >
               {isLoading === 'yearly' ? (
-                <>
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                  Redirecting...
-                </>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="flex items-center gap-3"
+                >
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    className="w-6 h-6 border-3 border-white border-t-transparent rounded-full"
+                  />
+                  <motion.span
+                    animate={{ opacity: [1, 0.5, 1] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    Redirecting to checkout...
+                  </motion.span>
+                </motion.div>
               ) : (
                 <>
                   Get Started with Yearly
