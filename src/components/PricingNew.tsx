@@ -62,28 +62,31 @@ export function PricingNew() {
   ];
 
   return (
-    <div className="py-12 sm:py-24 px-4" style={{backgroundColor: '#0B0E14'}}>
+    <div className="py-16 sm:py-24 px-4" style={{backgroundColor: '#0B0E14'}}>
       {/* Hero Section */}
-      <div className="max-w-5xl mx-auto mb-8 sm:mb-12 text-center px-2 sm:px-4">
+      <div className="max-w-6xl mx-auto mb-12 sm:mb-16 text-center px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6" style={{fontFamily: 'Inter, Montserrat, sans-serif'}}>
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-tight" style={{fontFamily: 'Inter, Montserrat, sans-serif'}}>
             <span style={{
               background: 'linear-gradient(90deg, #10B981 0%, #34D399 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
-              letterSpacing: '0.02em'
+              letterSpacing: '-0.01em'
             }}>
               Let's Grow Your Business Together
             </span>
           </h1>
+          <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-10 sm:mb-12 leading-relaxed">
+            Choose the perfect plan for your business growth. All plans include done-for-you setup and expert support.
+          </p>
 
           {/* Value Props Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mt-6 sm:mt-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {[
               {
                 icon: Target,
@@ -109,14 +112,14 @@ export function PricingNew() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 + idx * 0.1 }}
-                className="group relative bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-5 sm:p-6 hover:border-gray-600 transition-all duration-300"
+                className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/60 rounded-2xl p-6 sm:p-8 hover:border-gray-600 hover:bg-gray-800/60 transition-all duration-300"
               >
-                <div className={`inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${prop.color} mb-3 sm:mb-4`}>
-                  <prop.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                <div className={`inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br ${prop.color} mb-4 sm:mb-5`}>
+                  <prop.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                 </div>
 
-                <h3 className="text-base sm:text-lg font-bold text-white mb-1.5 sm:mb-2">{prop.title}</h3>
-                <p className="text-gray-400 text-sm">{prop.description}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 leading-snug">{prop.title}</h3>
+                <p className="text-gray-300 text-base leading-relaxed">{prop.description}</p>
               </motion.div>
             ))}
           </div>
@@ -128,31 +131,32 @@ export function PricingNew() {
         <ToolReplacementBar />
       </div>
 
-      <div className="max-w-7xl mx-auto mt-8 sm:mt-16">
+      <div className="max-w-7xl mx-auto mt-12 sm:mt-20">
         {/* Pricing Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-center mb-10 sm:mb-12 px-2"
+          className="text-center mb-12 sm:mb-16 px-4"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
             <span style={{
               background: 'linear-gradient(90deg, #10B981 0%, #34D399 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
+              backgroundClip: 'text',
+              letterSpacing: '-0.01em'
             }}>
               Choose Your Growth Plan
             </span>
           </h2>
-          <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto px-2">
+          <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Transparent pricing for complete AI automation. Every plan includes done-for-you setup, AI voice agents, and ongoing expert support to help you succeed.
           </p>
         </motion.div>
 
         {/* 3-Column Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6 px-2">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 px-4">
           {/* Monthly Billing */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -176,57 +180,57 @@ export function PricingNew() {
               </div>
             </div>
 
-            <h3 className="text-2xl font-bold text-white text-center mb-2">Monthly Billing</h3>
-            <p className="text-gray-400 text-center mb-6 text-sm">Flexible monthly plan with full features</p>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-3">Monthly Billing</h3>
+            <p className="text-gray-300 text-center mb-8 text-base leading-relaxed">Flexible monthly plan with full features</p>
 
             {/* Price */}
-            <div className="text-center mb-6">
-              <div className="text-6xl font-bold text-white mb-2">
+            <div className="text-center mb-8">
+              <div className="text-5xl sm:text-6xl font-bold text-white mb-3">
                 $375
-                <span className="text-2xl text-gray-400">/month</span>
+                <span className="text-xl sm:text-2xl text-gray-400">/month</span>
               </div>
-              <div className="mt-2 text-gray-500 text-sm">
+              <div className="mt-2 text-gray-400 text-base">
                 Cancel anytime
               </div>
             </div>
 
             {/* Everything Included Box */}
-            <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 backdrop-blur-sm border border-blue-400/30 rounded-2xl p-3 mb-5">
-              <div className="flex items-center justify-center gap-2 mb-1.5">
+            <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 backdrop-blur-sm border border-blue-400/30 rounded-2xl p-4 mb-6">
+              <div className="flex items-center justify-center gap-2 mb-2">
                 <Zap className="w-5 h-5 text-blue-400" />
-                <span className="text-white font-semibold">Everything Included</span>
+                <span className="text-white font-semibold text-base">Everything Included</span>
               </div>
-              <p className="text-gray-300 text-sm text-center">
+              <p className="text-gray-200 text-base text-center leading-relaxed">
                 All features • Full platform access
               </p>
             </div>
 
-            <div className="space-y-2.5 mb-5">
-              <div className="bg-purple-900/30 border border-purple-500/30 rounded-xl p-3">
-                <p className="text-purple-300 text-sm text-center font-semibold">
+            <div className="space-y-3 mb-6">
+              <div className="bg-purple-900/30 border border-purple-500/30 rounded-xl p-4">
+                <p className="text-purple-200 text-base text-center font-semibold leading-relaxed">
                   $1,000/month ad spend required
                 </p>
               </div>
 
-              <p className="text-gray-400 text-sm text-center">
+              <p className="text-gray-300 text-base text-center leading-relaxed">
                 + 10% performance fee on ad-generated revenue
               </p>
             </div>
 
             {/* Features List */}
-            <div className="flex-1 mb-6 relative">
-              <div className="flex items-center gap-2 mb-3 lg:hidden">
-                <ChevronDown className="w-4 h-4 text-gray-500 animate-bounce" />
-                <span className="text-gray-500 text-xs">Scroll to see all features</span>
+            <div className="flex-1 mb-8 relative">
+              <div className="flex items-center gap-2 mb-4 lg:hidden">
+                <ChevronDown className="w-4 h-4 text-gray-400 animate-bounce" />
+                <span className="text-gray-400 text-sm">Scroll to see all features</span>
               </div>
-              <div className="space-y-1.5 max-h-[280px] lg:max-h-none overflow-y-auto scrollbar-thin pr-1">
+              <div className="space-y-2 max-h-[280px] lg:max-h-none overflow-y-auto scrollbar-thin pr-2">
                 {monthlyFeatures.map((feature, idx) => (
                   <div
                     key={idx}
-                    className="flex items-start gap-3 p-2 sm:p-2.5 rounded-lg group cursor-default"
+                    className="flex items-start gap-3 p-3 rounded-lg group cursor-default hover:bg-gray-800/30 transition-colors"
                   >
-                    <Check className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-200 text-sm font-semibold leading-snug">{feature}</span>
+                    <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-100 text-base font-medium leading-relaxed">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -238,7 +242,7 @@ export function PricingNew() {
               disabled={isLoading === 'monthly'}
               whileHover={{ scale: isLoading === 'monthly' ? 1 : 1.02 }}
               whileTap={{ scale: isLoading === 'monthly' ? 1 : 0.98 }}
-              className={`w-full text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 shadow-xl transition-all duration-300 ${isLoading === 'monthly' ? 'opacity-90 cursor-wait' : ''}`}
+              className={`w-full text-white py-5 rounded-xl font-bold text-lg sm:text-xl flex items-center justify-center gap-3 shadow-xl transition-all duration-300 ${isLoading === 'monthly' ? 'opacity-90 cursor-wait' : ''}`}
               style={{
                 background: 'linear-gradient(90deg, #E9338E 0%, #4B52FF 100%)'
               }}
@@ -269,7 +273,7 @@ export function PricingNew() {
               )}
             </motion.button>
 
-            <div className="flex items-center justify-center gap-2 mt-4 text-gray-500 text-xs">
+            <div className="flex items-center justify-center gap-2 mt-5 text-gray-400 text-sm">
               <Shield className="w-4 h-4" />
               <span>Secured by Stripe • SSL Encrypted</span>
             </div>
@@ -305,58 +309,58 @@ export function PricingNew() {
               </div>
             </div>
 
-            <h3 className="text-2xl font-bold text-white text-center mb-2">Yearly Billing</h3>
-            <p className="text-gray-400 text-center mb-6 text-sm">Best value for long-term growth</p>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-3">Yearly Billing</h3>
+            <p className="text-gray-300 text-center mb-8 text-base leading-relaxed">Best value for long-term growth</p>
 
             {/* Price */}
-            <div className="text-center mb-6">
-              <div className="text-6xl font-bold text-white mb-2">
+            <div className="text-center mb-8">
+              <div className="text-5xl sm:text-6xl font-bold text-white mb-3">
                 $275
-                <span className="text-2xl text-gray-400">/month</span>
+                <span className="text-xl sm:text-2xl text-gray-400">/month</span>
               </div>
-              <div className="text-green-400 font-semibold text-lg">
+              <div className="text-green-400 font-semibold text-lg sm:text-xl">
                 Save $1,200/year (27% off)
               </div>
-              <p className="text-gray-500 text-sm mt-1">Billed annually at $3,300</p>
+              <p className="text-gray-400 text-base mt-2">Billed annually at $3,300</p>
             </div>
 
             {/* Everything Included Box */}
-            <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 backdrop-blur-sm border border-green-400/30 rounded-2xl p-3 mb-5">
-              <div className="flex items-center justify-center gap-2 mb-1.5">
+            <div className="bg-gradient-to-br from-green-500/10 to-emerald-500/10 backdrop-blur-sm border border-green-400/30 rounded-2xl p-4 mb-6">
+              <div className="flex items-center justify-center gap-2 mb-2">
                 <Zap className="w-5 h-5 text-green-400" />
-                <span className="text-white font-semibold">Everything Included + Savings</span>
+                <span className="text-white font-semibold text-base">Everything Included + Savings</span>
               </div>
-              <p className="text-gray-300 text-sm text-center">
+              <p className="text-gray-200 text-base text-center leading-relaxed">
                 All features • 2 months free • Best value
               </p>
             </div>
 
-            <div className="space-y-2.5 mb-5">
-              <div className="bg-green-900/30 border border-green-500/30 rounded-xl p-3">
-                <p className="text-green-300 text-sm text-center font-semibold">
+            <div className="space-y-3 mb-6">
+              <div className="bg-green-900/30 border border-green-500/30 rounded-xl p-4">
+                <p className="text-green-200 text-base text-center font-semibold leading-relaxed">
                   No ad spend required
                 </p>
               </div>
 
-              <p className="text-gray-400 text-sm text-center">
+              <p className="text-gray-300 text-base text-center leading-relaxed">
                 + 5% performance fee on ad-generated revenue
               </p>
             </div>
 
             {/* Features List */}
-            <div className="flex-1 mb-6 relative">
-              <div className="flex items-center gap-2 mb-3 lg:hidden">
-                <ChevronDown className="w-4 h-4 text-gray-500 animate-bounce" />
-                <span className="text-gray-500 text-xs">Scroll to see all features</span>
+            <div className="flex-1 mb-8 relative">
+              <div className="flex items-center gap-2 mb-4 lg:hidden">
+                <ChevronDown className="w-4 h-4 text-gray-400 animate-bounce" />
+                <span className="text-gray-400 text-sm">Scroll to see all features</span>
               </div>
-              <div className="space-y-1.5 max-h-[280px] lg:max-h-none overflow-y-auto scrollbar-thin pr-1">
+              <div className="space-y-2 max-h-[280px] lg:max-h-none overflow-y-auto scrollbar-thin pr-2">
                 {yearlyFeatures.map((feature, idx) => (
                   <div
                     key={idx}
-                    className="flex items-start gap-3 p-2 sm:p-2.5 rounded-lg group cursor-default"
+                    className="flex items-start gap-3 p-3 rounded-lg group cursor-default hover:bg-gray-800/30 transition-colors"
                   >
-                    <Check className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-200 text-sm font-semibold leading-snug">{feature}</span>
+                    <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-100 text-base font-medium leading-relaxed">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -368,7 +372,7 @@ export function PricingNew() {
               disabled={isLoading === 'yearly'}
               whileHover={{ scale: isLoading === 'yearly' ? 1 : 1.02 }}
               whileTap={{ scale: isLoading === 'yearly' ? 1 : 0.98 }}
-              className={`w-full text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 shadow-xl transition-all duration-300 ${isLoading === 'yearly' ? 'opacity-90 cursor-wait' : ''}`}
+              className={`w-full text-white py-5 rounded-xl font-bold text-lg sm:text-xl flex items-center justify-center gap-3 shadow-xl transition-all duration-300 ${isLoading === 'yearly' ? 'opacity-90 cursor-wait' : ''}`}
               style={{
                 background: 'linear-gradient(90deg, #10B981 0%, #34D399 100%)'
               }}
@@ -399,7 +403,7 @@ export function PricingNew() {
               )}
             </motion.button>
 
-            <div className="flex items-center justify-center gap-2 mt-4 text-gray-500 text-xs">
+            <div className="flex items-center justify-center gap-2 mt-5 text-gray-400 text-sm">
               <Shield className="w-4 h-4" />
               <span>Secured by Stripe • SSL Encrypted • PCI Compliant</span>
             </div>
@@ -428,12 +432,12 @@ export function PricingNew() {
               </div>
             </div>
 
-            <h3 className="text-3xl font-bold text-white text-center mb-2">Lifetime Access</h3>
-            <p className="text-gray-300 text-center mb-5 text-sm">Exclusive access for serious business owners ready to scale with AI automation</p>
+            <h3 className="text-3xl sm:text-4xl font-bold text-white text-center mb-3">Lifetime Access</h3>
+            <p className="text-gray-200 text-center mb-8 text-base leading-relaxed">Exclusive access for serious business owners ready to scale with AI automation</p>
 
             {/* Book Now CTA */}
-            <div className="text-center mb-6">
-              <div className="text-5xl font-bold mb-3" style={{color: '#FBBF24'}}>
+            <div className="text-center mb-8">
+              <div className="text-4xl sm:text-5xl font-bold mb-3" style={{color: '#FBBF24'}}>
                 Book Call
               </div>
             </div>
@@ -476,34 +480,34 @@ export function PricingNew() {
             </motion.a>
 
             {/* Availability Note */}
-            <div className="bg-blue-900/30 border border-blue-500/30 rounded-xl p-3 mb-5">
-              <div className="flex items-center justify-center gap-2 mb-1.5">
-                <span className="text-blue-400 font-semibold text-sm">📅 Limited Availability</span>
+            <div className="bg-blue-900/30 border border-blue-500/30 rounded-xl p-4 mb-6">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <span className="text-blue-300 font-semibold text-base">📅 Limited Availability</span>
               </div>
-              <p className="text-gray-300 text-xs text-center">
+              <p className="text-gray-200 text-sm text-center leading-relaxed">
                 We work with select businesses ready to scale
               </p>
             </div>
 
-            <div className="flex-1 mb-6">
-              <p className="text-amber-400 font-bold text-center mb-4 text-base">
+            <div className="flex-1 mb-8">
+              <p className="text-amber-300 font-bold text-center mb-6 text-lg leading-relaxed">
                 Exclusive lifetime platform access for serious business owners
               </p>
 
-              <div className="space-y-1.5">
+              <div className="space-y-2">
                 {vipFeatures.map((feature, idx) => (
                   <div
                     key={idx}
-                    className="flex items-start gap-3 p-2.5 rounded-lg transition-all duration-300 hover:bg-amber-500/10 hover:border-l-2 hover:border-amber-400 hover:pl-3 group cursor-default"
+                    className="flex items-start gap-3 p-3 rounded-lg transition-all duration-300 hover:bg-amber-500/10 hover:border-l-2 hover:border-amber-400 hover:pl-4 group cursor-default"
                   >
                     <Check className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:text-amber-300 group-hover:scale-110" />
-                    <span className="text-gray-200 text-sm font-semibold leading-snug transition-all duration-300 group-hover:text-white">{feature}</span>
+                    <span className="text-gray-100 text-base font-medium leading-relaxed transition-all duration-300 group-hover:text-white">{feature}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="mt-5 space-y-2 text-gray-400 text-sm text-center">
-                <p className="font-medium">
+              <div className="mt-6 space-y-2 text-gray-300 text-base text-center">
+                <p className="font-medium leading-relaxed">
                   Qualify for exclusive lifetime access to our platform
                 </p>
               </div>
@@ -516,7 +520,7 @@ export function PricingNew() {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="w-full text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 shadow-xl cursor-pointer"
+              className="w-full text-white py-5 rounded-xl font-bold text-lg sm:text-xl flex items-center justify-center gap-3 shadow-xl cursor-pointer"
               style={{
                 background: 'linear-gradient(90deg, #F59E0B 0%, #EF4444 100%)'
               }}
@@ -525,11 +529,11 @@ export function PricingNew() {
               <ArrowRight className="w-5 h-5" />
             </motion.a>
 
-            <div className="text-center mt-4">
-              <p className="text-gray-300 text-sm">
+            <div className="text-center mt-5">
+              <p className="text-gray-200 text-base leading-relaxed">
                 Exclusive opportunity for qualified business owners
               </p>
-              <p className="text-gray-400 text-xs mt-2">
+              <p className="text-gray-300 text-sm mt-2 leading-relaxed">
                 Discover lifetime platform access and VIP support
               </p>
             </div>
@@ -541,18 +545,18 @@ export function PricingNew() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-16 sm:mt-20 max-w-4xl mx-auto"
+          className="mt-20 sm:mt-28 max-w-5xl mx-auto"
         >
-          <div className="text-center mb-8 sm:mb-10 px-2">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-white">
+          <div className="text-center mb-10 sm:mb-12 px-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white leading-tight">
               Ready to Scale Your Business?
             </h2>
-            <p className="text-base sm:text-lg text-gray-400">
+            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
               Book your VIP strategy call or access your dashboard
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 px-4">
             {/* VIP Demo Button */}
             <motion.a
               href="https://go.mediatraffics.com/leads"
@@ -572,14 +576,14 @@ export function PricingNew() {
 
               {/* Content */}
               <div className="relative z-10">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                  <Video className="w-8 h-8 text-white" />
+                <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-5 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                  <Video className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">VIP Strategy Call</h3>
-                <p className="text-orange-100 text-sm mb-4">
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 leading-tight">VIP Strategy Call</h3>
+                <p className="text-orange-100 text-base sm:text-lg mb-5 leading-relaxed">
                   Exclusive access for serious business owners ready to scale
                 </p>
-                <div className="flex items-center justify-center gap-2 text-white font-semibold">
+                <div className="flex items-center justify-center gap-2 text-white font-semibold text-lg">
                   <span>Book Strategy Call</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
@@ -609,14 +613,14 @@ export function PricingNew() {
 
               {/* Content */}
               <div className="relative z-10">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                  <LogIn className="w-8 h-8 text-white" />
+                <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-5 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                  <LogIn className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">Login to KenjiAI</h3>
-                <p className="text-blue-100 text-sm mb-4">
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 leading-tight">Login to KenjiAI</h3>
+                <p className="text-blue-100 text-base sm:text-lg mb-5 leading-relaxed">
                   Access your dashboard and start automating
                 </p>
-                <div className="flex items-center justify-center gap-2 text-white font-semibold">
+                <div className="flex items-center justify-center gap-2 text-white font-semibold text-lg">
                   <span>Enter Dashboard</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
@@ -629,7 +633,7 @@ export function PricingNew() {
           </div>
 
           {/* Money-Back Guarantee - Large and Prominent */}
-          <div className="mt-16 px-4">
+          <div className="mt-20 sm:mt-24 px-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
