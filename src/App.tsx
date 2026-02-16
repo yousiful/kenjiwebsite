@@ -21,6 +21,7 @@ import { HolidaySnowfall } from './components/HolidaySnowfall';
 import { HolidaySparkles } from './components/HolidaySparkles';
 import { HolidayBanner } from './components/HolidayBanner';
 import { ErrorLogger } from './components/ErrorLogger';
+import { ExitIntentPopup } from './components/ExitIntentPopup';
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -41,7 +42,6 @@ const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
 const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage'));
 const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage'));
 
-// ScrollToTop component to scroll to top on route change
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
 
@@ -51,6 +51,25 @@ const ScrollToTop: React.FC = () => {
 
   return null;
 };
+
+const NAVBAR_HIDDEN_ROUTES = ['/pricing'];
+
+function ConditionalNavbar() {
+  const { pathname } = useLocation();
+  const hideNavbar = NAVBAR_HIDDEN_ROUTES.includes(pathname);
+
+  if (hideNavbar) return null;
+
+  return (
+    <>
+      <header role="banner">
+        <Navbar />
+      </header>
+      <HolidayBanner />
+      <div className="h-12"></div>
+    </>
+  );
+}
 
 function App() {
   return (
@@ -72,11 +91,8 @@ function App() {
                 <HolidayFloatingElements />
                 <HolidaySnowfall />
                 <HolidaySparkles />
-                <header role="banner">
-                  <Navbar />
-                </header>
-                <HolidayBanner />
-                <div className="h-12"></div>
+                <ConditionalNavbar />
+                <ExitIntentPopup />
               <Suspense fallback={<LoadingSpinner />}>
                 <main id="main-content" role="main">
                   <Routes>
