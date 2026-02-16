@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check, Star, ArrowRight, Calendar, Zap, Shield, CreditCard, TrendingUp, Target, Rocket, Video, LogIn, HelpCircle } from 'lucide-react';
+import { Check, Star, ArrowRight, Calendar, Zap, Shield, CreditCard, Target, Rocket, Video, LogIn, ChevronDown } from 'lucide-react';
 import { ToolReplacementBar } from './ToolReplacementBar';
 import { MoneyBackGuarantee } from './MoneyBackGuarantee';
 
@@ -62,9 +62,9 @@ export function PricingNew() {
   ];
 
   return (
-    <div className="py-16 sm:py-24 px-4" style={{backgroundColor: '#0B0E14'}}>
+    <div className="py-12 sm:py-24 px-4" style={{backgroundColor: '#0B0E14'}}>
       {/* Hero Section */}
-      <div className="max-w-5xl mx-auto mb-12 sm:mb-16 text-center px-2 sm:px-4">
+      <div className="max-w-5xl mx-auto mb-8 sm:mb-12 text-center px-2 sm:px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -95,7 +95,7 @@ export function PricingNew() {
                 icon: Rocket,
                 title: 'Done-For-You Sites & Workflows',
                 description: 'Complete website setup and automated workflows built specifically for your business needs.',
-                color: 'from-purple-400 to-pink-500'
+                color: 'from-blue-400 to-teal-500'
               },
               {
                 icon: Shield,
@@ -109,33 +109,26 @@ export function PricingNew() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 + idx * 0.1 }}
-                className="group relative bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 hover:border-gray-600 transition-all duration-300"
+                className="group relative bg-gray-800/40 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-5 sm:p-6 hover:border-gray-600 transition-all duration-300"
               >
-                {/* Hover glow effect */}
-                <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl blur-xl"
-                     style={{background: `linear-gradient(to bottom right, var(--tw-gradient-stops))`}}></div>
-
-                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${prop.color} mb-4`}>
-                  <prop.icon className="w-6 h-6 text-white" />
+                <div className={`inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${prop.color} mb-3 sm:mb-4`}>
+                  <prop.icon className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                 </div>
 
-                <h3 className="text-lg font-bold text-white mb-2">{prop.title}</h3>
+                <h3 className="text-base sm:text-lg font-bold text-white mb-1.5 sm:mb-2">{prop.title}</h3>
                 <p className="text-gray-400 text-sm">{prop.description}</p>
-
-                {/* Shine effect on hover */}
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl overflow-hidden pointer-events-none">
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shine-slow"></div>
-                </div>
               </motion.div>
             ))}
           </div>
         </motion.div>
       </div>
 
-      {/* Tool Replacement Bar */}
-      <ToolReplacementBar />
+      {/* Tool Replacement Bar - hidden on mobile, shown on desktop */}
+      <div className="hidden sm:block">
+        <ToolReplacementBar />
+      </div>
 
-      <div className="max-w-7xl mx-auto mt-12 sm:mt-16">
+      <div className="max-w-7xl mx-auto mt-8 sm:mt-16">
         {/* Pricing Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -165,7 +158,7 @@ export function PricingNew() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="relative bg-gray-900/60 backdrop-blur-sm border border-blue-500/30 rounded-3xl p-8 flex flex-col"
+            className="relative bg-gray-900/60 backdrop-blur-sm border border-blue-500/30 rounded-3xl p-5 sm:p-8 flex flex-col"
             style={{borderWidth: '1px'}}
           >
             {/* Badge */}
@@ -215,35 +208,25 @@ export function PricingNew() {
                 </p>
               </div>
 
-              <div className="group relative">
-                <div className="flex items-center justify-center gap-2 text-gray-400 text-sm">
-                  <p className="text-center">
-                    + 10% performance fee on ad-generated revenue
-                  </p>
-                  <div className="relative">
-                    <HelpCircle className="w-4 h-4 text-gray-500 cursor-help" />
-                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 bg-gray-950 border border-blue-400/50 rounded-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 shadow-2xl">
-                      <div className="text-xs text-white space-y-2">
-                        <p className="font-bold text-green-400 text-center">Success Guarantee</p>
-                        <p className="text-gray-300">We only win when you win. Our performance fee means we're invested in your success.</p>
-                        <p className="text-blue-400 font-semibold">Your growth is our growth.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <p className="text-gray-400 text-sm text-center">
+                + 10% performance fee on ad-generated revenue
+              </p>
             </div>
 
             {/* Features List */}
-            <div className="flex-1 mb-6">
-              <div className="space-y-1.5">
+            <div className="flex-1 mb-6 relative">
+              <div className="flex items-center gap-2 mb-3 lg:hidden">
+                <ChevronDown className="w-4 h-4 text-gray-500 animate-bounce" />
+                <span className="text-gray-500 text-xs">Scroll to see all features</span>
+              </div>
+              <div className="space-y-1.5 max-h-[280px] lg:max-h-none overflow-y-auto scrollbar-thin pr-1">
                 {monthlyFeatures.map((feature, idx) => (
                   <div
                     key={idx}
-                    className="flex items-start gap-3 p-2.5 rounded-lg transition-all duration-300 hover:bg-purple-500/10 hover:border-l-2 hover:border-purple-400 hover:pl-3 group cursor-default"
+                    className="flex items-start gap-3 p-2 sm:p-2.5 rounded-lg group cursor-default"
                   >
-                    <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:text-green-300 group-hover:scale-110" />
-                    <span className="text-gray-200 text-sm font-semibold leading-snug transition-all duration-300 group-hover:text-white">{feature}</span>
+                    <Check className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-200 text-sm font-semibold leading-snug">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -297,7 +280,7 @@ export function PricingNew() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="relative bg-gray-900/60 backdrop-blur-sm border border-green-500/40 rounded-3xl p-8 flex flex-col"
+            className="relative bg-gray-900/60 backdrop-blur-sm border border-green-500/40 rounded-3xl p-5 sm:p-8 flex flex-col"
             style={{borderWidth: '1px', boxShadow: '0 0 30px rgba(16, 185, 129, 0.2)'}}
           >
             {/* Most Popular Ribbon */}
@@ -355,35 +338,25 @@ export function PricingNew() {
                 </p>
               </div>
 
-              <div className="group relative">
-                <div className="flex items-center justify-center gap-2 text-gray-400 text-sm">
-                  <p className="text-center">
-                    + 5% performance fee on ad-generated revenue
-                  </p>
-                  <div className="relative">
-                    <HelpCircle className="w-4 h-4 text-gray-500 cursor-help" />
-                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 w-64 bg-gray-950 border border-green-400/50 rounded-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 shadow-2xl">
-                      <div className="text-xs text-white space-y-2">
-                        <p className="font-bold text-green-400 text-center">Success Guarantee</p>
-                        <p className="text-gray-300">We only win when you win. Our performance fee means we're invested in your success.</p>
-                        <p className="text-blue-400 font-semibold">Your growth is our growth.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <p className="text-gray-400 text-sm text-center">
+                + 5% performance fee on ad-generated revenue
+              </p>
             </div>
 
             {/* Features List */}
-            <div className="flex-1 mb-6">
-              <div className="space-y-1.5">
+            <div className="flex-1 mb-6 relative">
+              <div className="flex items-center gap-2 mb-3 lg:hidden">
+                <ChevronDown className="w-4 h-4 text-gray-500 animate-bounce" />
+                <span className="text-gray-500 text-xs">Scroll to see all features</span>
+              </div>
+              <div className="space-y-1.5 max-h-[280px] lg:max-h-none overflow-y-auto scrollbar-thin pr-1">
                 {yearlyFeatures.map((feature, idx) => (
                   <div
                     key={idx}
-                    className="flex items-start gap-3 p-2.5 rounded-lg transition-all duration-300 hover:bg-green-500/10 hover:border-l-2 hover:border-green-400 hover:pl-3 group cursor-default"
+                    className="flex items-start gap-3 p-2 sm:p-2.5 rounded-lg group cursor-default"
                   >
-                    <Check className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5 transition-all duration-300 group-hover:text-green-300 group-hover:scale-110" />
-                    <span className="text-gray-200 text-sm font-semibold leading-snug transition-all duration-300 group-hover:text-white">{feature}</span>
+                    <Check className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-200 text-sm font-semibold leading-snug">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -437,7 +410,7 @@ export function PricingNew() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative bg-gradient-to-br from-amber-900/40 to-orange-900/40 backdrop-blur-sm border border-amber-500/40 rounded-3xl p-8 flex flex-col"
+            className="relative bg-gradient-to-br from-amber-900/40 to-orange-900/40 backdrop-blur-sm border border-amber-500/40 rounded-3xl p-5 sm:p-8 flex flex-col"
             style={{borderWidth: '1px'}}
           >
             {/* VIP Badge */}
@@ -680,6 +653,21 @@ export function PricingNew() {
 
         .animate-shine-slow {
           animation: shine-slow 3s ease-in-out infinite;
+        }
+
+        .scrollbar-thin::-webkit-scrollbar {
+          width: 4px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb {
+          background: rgba(107, 114, 128, 0.3);
+          border-radius: 4px;
+        }
+        .scrollbar-thin {
+          scrollbar-width: thin;
+          scrollbar-color: rgba(107, 114, 128, 0.3) transparent;
         }
       `}</style>
     </div>

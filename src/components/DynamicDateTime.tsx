@@ -6,13 +6,15 @@ interface DynamicDateTimeProps {
   showIcon?: boolean;
   className?: string;
   updateInterval?: number;
+  timezone?: string;
 }
 
 export function DynamicDateTime({
   format = 'full',
   showIcon = false,
   className = '',
-  updateInterval = 1000
+  updateInterval = 1000,
+  timezone = 'America/Chicago'
 }: DynamicDateTimeProps) {
   const [currentTime, setCurrentTime] = useState(new Date());
 
@@ -25,13 +27,16 @@ export function DynamicDateTime({
   }, [updateInterval]);
 
   const formatDateTime = (date: Date) => {
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const year = date.getFullYear();
+    const options: Intl.DateTimeFormatOptions = { timeZone: timezone };
+    const tzDate = new Date(date.toLocaleString('en-US', options));
 
-    let hours = date.getHours();
-    const minutes = date.getMinutes();
-    const seconds = date.getSeconds();
+    const month = tzDate.getMonth() + 1;
+    const day = tzDate.getDate();
+    const year = tzDate.getFullYear();
+
+    let hours = tzDate.getHours();
+    const minutes = tzDate.getMinutes();
+    const seconds = tzDate.getSeconds();
     const ampm = hours >= 12 ? 'PM' : 'AM';
 
     hours = hours % 12;
