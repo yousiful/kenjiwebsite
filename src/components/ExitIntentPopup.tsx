@@ -8,8 +8,22 @@ export function ExitIntentPopup() {
 
   const showPopup = useCallback(() => {
     if (hasFired) return;
+
+    const dismissed = sessionStorage.getItem('exit-popup-dismissed');
+    const lastShown = sessionStorage.getItem('exit-popup-last-shown');
+
+    if (dismissed) return;
+
+    if (lastShown) {
+      const timeSinceLastShown = Date.now() - parseInt(lastShown);
+      if (timeSinceLastShown < 300000) {
+        return;
+      }
+    }
+
     setIsVisible(true);
     setHasFired(true);
+    sessionStorage.setItem('exit-popup-last-shown', Date.now().toString());
   }, [hasFired]);
 
   useEffect(() => {
@@ -19,19 +33,42 @@ export function ExitIntentPopup() {
       return;
     }
 
+    let isMouseInViewport = true;
+    let lastY = 0;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      lastY = e.clientY;
+      isMouseInViewport = true;
+    };
+
     const handleMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 5 && e.relatedTarget === null) {
+      if (e.clientY <= 0 || (e.clientY <= 10 && lastY > e.clientY)) {
+        isMouseInViewport = false;
+        setTimeout(() => {
+          if (!isMouseInViewport) {
+            showPopup();
+          }
+        }, 100);
+      }
+    };
+
+    const handleMouseOut = (e: MouseEvent) => {
+      if (!e.relatedTarget && e.clientY < 10) {
         showPopup();
       }
     };
 
     const timeout = setTimeout(() => {
+      document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseleave', handleMouseLeave);
-    }, 5000);
+      document.addEventListener('mouseout', handleMouseOut);
+    }, 3000);
 
     return () => {
       clearTimeout(timeout);
+      document.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('mouseout', handleMouseOut);
     };
   }, [showPopup]);
 
@@ -44,24 +81,52 @@ export function ExitIntentPopup() {
       return;
     }
 
+    let scrollTimeout: NodeJS.Timeout;
     let touchStartY = 0;
+    let touchStartTime = 0;
+    let isScrolling = false;
+
+    const handleScroll = () => {
+      isScrolling = true;
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        isScrolling = false;
+      }, 150);
+    };
+
     const handleTouchStart = (e: TouchEvent) => {
       touchStartY = e.touches[0].clientY;
+      touchStartTime = Date.now();
     };
-    const handleTouchEnd = (e: TouchEvent) => {
-      const touchEndY = e.changedTouches[0].clientY;
-      const diff = touchEndY - touchStartY;
-      if (diff > 150 && window.scrollY < 100) {
-        showPopup();
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (isScrolling || window.scrollY > 50) return;
+
+      const touchCurrentY = e.touches[0].clientY;
+      const diff = touchCurrentY - touchStartY;
+
+      if (diff > 100 && window.scrollY === 0) {
+        const duration = Date.now() - touchStartTime;
+        if (duration < 500) {
+          showPopup();
+        }
       }
     };
 
+    const visibilityTimeout = setTimeout(() => {
+      showPopup();
+    }, 30000);
+
+    document.addEventListener('scroll', handleScroll, { passive: true });
     document.addEventListener('touchstart', handleTouchStart, { passive: true });
-    document.addEventListener('touchend', handleTouchEnd, { passive: true });
+    document.addEventListener('touchmove', handleTouchMove, { passive: true });
 
     return () => {
+      clearTimeout(scrollTimeout);
+      clearTimeout(visibilityTimeout);
+      document.removeEventListener('scroll', handleScroll);
       document.removeEventListener('touchstart', handleTouchStart);
-      document.removeEventListener('touchend', handleTouchEnd);
+      document.removeEventListener('touchmove', handleTouchMove);
     };
   }, [hasFired, showPopup]);
 
@@ -69,6 +134,33 @@ export function ExitIntentPopup() {
     setIsVisible(false);
     sessionStorage.setItem('exit-popup-dismissed', 'true');
   };
+
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      handleClose();
+    }
+  };
+
+  useEffect(() => {
+    if (isVisible) {
+      document.body.style.overflow = 'hidden';
+
+      const handleEscape = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          handleClose();
+        }
+      };
+
+      document.addEventListener('keydown', handleEscape);
+
+      return () => {
+        document.body.style.overflow = '';
+        document.removeEventListener('keydown', handleEscape);
+      };
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [isVisible]);
 
   return (
     <AnimatePresence>
@@ -78,10 +170,10 @@ export function ExitIntentPopup() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-          onClick={handleClose}
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+          onClick={handleBackdropClick}
         >
-          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
 
           <motion.div
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -95,9 +187,10 @@ export function ExitIntentPopup() {
 
             <button
               onClick={handleClose}
-              className="absolute top-4 right-4 z-10 text-gray-400 hover:text-white transition-colors p-1 touch-manipulation min-h-[44px] min-w-[44px] flex items-center justify-center"
+              aria-label="Close popup"
+              className="absolute top-4 right-4 z-20 text-gray-400 hover:text-white transition-colors p-2 touch-manipulation min-h-[44px] min-w-[44px] flex items-center justify-center rounded-full hover:bg-gray-800"
             >
-              <X className="w-5 h-5" />
+              <X className="w-6 h-6" />
             </button>
 
             <div className="p-6 sm:p-8">
