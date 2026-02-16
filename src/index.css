@@ -849,3 +849,123 @@ body {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgba(249, 115, 22, 0.8);
 }
+/* Offline Mode Styles */
+body.offline {
+  filter: grayscale(0.3);
+}
+
+body.offline::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  z-index: 199;
+}
+
+/* Social Media Browser Compatibility */
+.social-media-browser {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: none;
+}
+
+.social-media-browser * {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.social-media-browser a {
+  -webkit-touch-callout: none;
+}
+
+.social-media-browser video,
+.social-media-browser iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* iOS Safari Fixes */
+.ios-browser {
+  -webkit-text-size-adjust: 100%;
+}
+
+.ios-browser input,
+.ios-browser textarea,
+.ios-browser select {
+  font-size: 16px !important;
+  transform: translateZ(0);
+}
+
+/* Enhanced Loading States */
+.loading-skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(31, 41, 55, 0.5) 0%,
+    rgba(55, 65, 81, 0.5) 50%,
+    rgba(31, 41, 55, 0.5) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Better Error Display */
+.error-state {
+  animation: error-shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes error-shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+/* Improved Focus States for Accessibility */
+*:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Prevent text selection issues on touch devices */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Better Image Loading */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+img[loading="lazy"] {
+  background: linear-gradient(90deg, #1f2937 0%, #374151 50%, #1f2937 100%);
+  background-size: 200% 100%;
+}

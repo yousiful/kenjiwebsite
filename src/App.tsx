@@ -22,6 +22,8 @@ import { HolidaySparkles } from './components/HolidaySparkles';
 import { HolidayBanner } from './components/HolidayBanner';
 import { ErrorLogger } from './components/ErrorLogger';
 import { ExitIntentPopup } from './components/ExitIntentPopup';
+import { BrowserCompatibility } from './components/BrowserCompatibility';
+import { OfflineIndicator } from './components/OfflineIndicator';
 
 // Lazy load pages for better performance
 const HomePage = lazy(() => import('./pages/HomePage'));
@@ -80,6 +82,8 @@ function App() {
             <ScrollToTop />
             <LinkValidator />
             <RedirectSystem />
+            <BrowserCompatibility />
+            <OfflineIndicator />
             <LeftSideNotifications />
             <ErrorLogger />
             <InteractiveMouseCaption>
