@@ -386,8 +386,14 @@
         align-items: center;
         justify-content: center;
         z-index: 9999;
+        transition: opacity 0.3s ease-out;
       }
-      
+
+      .loading-screen.hide {
+        opacity: 0;
+        pointer-events: none;
+      }
+
       .loading-spinner {
         width: 40px;
         height: 40px;
@@ -396,15 +402,10 @@
         border-radius: 50%;
         animation: spin 1s linear infinite;
       }
-      
+
       @keyframes spin {
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
-      }
-      
-      /* Hide loading screen when React loads */
-      #root:not(:empty) + .loading-screen {
-        display: none;
       }
     </style>
   </head>
@@ -417,53 +418,63 @@
     <div id="root"></div>
     
     <!-- Loading screen for initial page load -->
-    <div class="loading-screen">
+    <div class="loading-screen" id="app-loading">
       <div class="loading-spinner"></div>
     </div>
-    
-    <!-- Loading timeout and cache clearing -->
+
+    <!-- Hide loading screen when app loads -->
     <script>
-      setTimeout(function() {
-        var loadingScreen = document.querySelector('.loading-screen');
-        var reloadCount = parseInt(sessionStorage.getItem('reload-count') || '0');
-        var lastReload = parseInt(sessionStorage.getItem('last-reload') || '0');
-        var timeSinceReload = Date.now() - lastReload;
+      (function() {
+        var checkReactLoaded = setInterval(function() {
+          var root = document.getElementById('root');
+          var loader = document.getElementById('app-loading');
 
-        if (loadingScreen &&
-            window.getComputedStyle(loadingScreen).display !== 'none' &&
-            reloadCount < 1 &&
-            timeSinceReload > 5000) {
-          console.log('[Loader] Page stuck loading, clearing cache...');
-
-          if ('caches' in window) {
-            caches.keys().then(function(names) {
-              for (let name of names) caches.delete(name);
-            });
+          if (root && root.children.length > 0) {
+            loader.classList.add('hide');
+            setTimeout(function() {
+              loader.style.display = 'none';
+            }, 300);
+            clearInterval(checkReactLoaded);
+            sessionStorage.removeItem('reload-count');
+            sessionStorage.removeItem('last-reload');
           }
-          if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistrations().then(function(registrations) {
-              for (let registration of registrations) {
-                registration.unregister();
-              }
-            });
-          }
+        }, 100);
 
-          sessionStorage.setItem('reload-count', '1');
-          sessionStorage.setItem('last-reload', Date.now());
-          location.reload(true);
-        } else if (reloadCount >= 1) {
-          console.log('[Loader] Already reloaded once, not reloading again');
-          sessionStorage.removeItem('reload-count');
-          sessionStorage.removeItem('last-reload');
-        }
-      }, 15000);
-
-      window.addEventListener('load', function() {
         setTimeout(function() {
-          sessionStorage.removeItem('reload-count');
-          sessionStorage.removeItem('last-reload');
-        }, 2000);
-      });
+          var loader = document.getElementById('app-loading');
+          var reloadCount = parseInt(sessionStorage.getItem('reload-count') || '0');
+          var lastReload = parseInt(sessionStorage.getItem('last-reload') || '0');
+          var timeSinceReload = Date.now() - lastReload;
+
+          if (loader && !loader.classList.contains('hide') && reloadCount < 1 && timeSinceReload > 5000) {
+            console.log('[Loader] Page stuck loading, clearing cache...');
+
+            if ('caches' in window) {
+              caches.keys().then(function(names) {
+                for (let name of names) caches.delete(name);
+              });
+            }
+            if ('serviceWorker' in navigator) {
+              navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                for (let registration of registrations) {
+                  registration.unregister();
+                }
+              });
+            }
+
+            sessionStorage.setItem('reload-count', '1');
+            sessionStorage.setItem('last-reload', Date.now().toString());
+            location.reload();
+          } else if (reloadCount >= 1) {
+            loader.classList.add('hide');
+            setTimeout(function() {
+              loader.style.display = 'none';
+            }, 300);
+            sessionStorage.removeItem('reload-count');
+            sessionStorage.removeItem('last-reload');
+          }
+        }, 10000);
+      })();
     </script>
 
     <!-- Preload critical scripts -->
