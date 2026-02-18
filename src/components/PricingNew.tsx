@@ -89,24 +89,20 @@ export function PricingNew() {
             className="flex items-center gap-1.5"
           >
             <span className="text-yellow-400 font-bold">$76 OFF</span>
-            <span className="text-gray-400">any plan — code</span>
+            <span className="text-gray-400">any plan —</span>
+            <span className="text-gray-500">·</span>
             <span
-              className="font-mono font-bold px-1.5 py-0.5 rounded text-xs tracking-widest"
-              style={{
-                color: '#39FF14',
-                border: '1px solid rgba(57,255,20,0.4)',
-                textShadow: '0 0 8px rgba(57,255,20,0.8)',
-                boxShadow: '0 0 6px rgba(57,255,20,0.2)'
-              }}
+              style={{ color: '#FF4444', textShadow: '0 0 8px rgba(255,68,68,0.6)' }}
+              className="font-bold"
             >
-              KENJ4LFE
+              Spots Filling Fast
             </span>
             <span className="text-gray-500">·</span>
             <span
               style={{ color: '#00FFFF', textShadow: '0 0 8px rgba(0,255,255,0.6)' }}
               className="font-semibold"
             >
-              Today Only
+              Offer Ends Tonight
             </span>
           </motion.span>
           <span className="hidden sm:block text-gray-700">|</span>
