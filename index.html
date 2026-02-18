@@ -19,7 +19,7 @@
     <link rel="dns-prefetch" href="https://js.stripe.com">
     <link rel="dns-prefetch" href="https://app.kenjicrm.com">
     <link rel="dns-prefetch" href="https://images.pexels.com">
-    <link rel="dns-prefetch" href="https://beta.leadconnectorhq.com">
+
     <link rel="dns-prefetch" href="https://freedom.kenjiai.com">
     <link rel="dns-prefetch" href="https://calendly.com">
     
@@ -481,21 +481,6 @@
     <link rel="modulepreload" href="/src/main.tsx">
 
     <script type="module" src="/src/main.tsx"></script>
-    
-    <!-- Chatbot Embed Code (non-blocking) -->
-    <script>
-      (function() {
-        const script = document.createElement('script');
-        script.src = 'https://beta.leadconnectorhq.com/loader.js';
-        script.setAttribute('data-resources-url', 'https://beta.leadconnectorhq.com/chat-widget/loader.js');
-        script.setAttribute('data-widget-id', '67e1d177e87e911e4e73f032');
-        script.async = true;
-        script.onerror = function() {
-          console.warn('External chatbot failed to load');
-        };
-        document.body.appendChild(script);
-      })();
-    </script>
     
     <!-- Service Worker registration with smart cache clearing -->
     <script>
