@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check, Star, ArrowRight, Calendar, Zap, Shield, CreditCard, Target, Rocket, Video, LogIn, ChevronDown } from 'lucide-react';
+import { Check, Star, ArrowRight, Calendar, Zap, Shield, CreditCard, Target, Rocket, Video, LogIn, ChevronDown, Gift, Mail, MessageSquare, Sparkles } from 'lucide-react';
 import { ToolReplacementBar } from './ToolReplacementBar';
 import { MoneyBackGuarantee } from './MoneyBackGuarantee';
 
@@ -130,6 +130,129 @@ export function PricingNew() {
       <div className="hidden sm:block">
         <ToolReplacementBar />
       </div>
+
+      {/* Promotional Banner */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+        className="max-w-6xl mx-auto mt-8 sm:mt-12 mb-8 px-4"
+      >
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 p-[2px]">
+          <motion.div
+            animate={{
+              background: [
+                'linear-gradient(90deg, #F59E0B 0%, #EF4444 100%)',
+                'linear-gradient(90deg, #EF4444 0%, #F59E0B 100%)',
+                'linear-gradient(90deg, #F59E0B 0%, #EF4444 100%)',
+              ]
+            }}
+            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-0"
+          />
+
+          <div className="relative bg-gray-900 rounded-3xl p-6 sm:p-8">
+            {/* Sparkles animation */}
+            <div className="absolute top-4 left-4 sm:top-6 sm:left-8">
+              <motion.div
+                animate={{
+                  scale: [1, 1.2, 1],
+                  rotate: [0, 180, 360]
+                }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400" />
+              </motion.div>
+            </div>
+
+            <div className="absolute top-4 right-4 sm:top-6 sm:right-8">
+              <motion.div
+                animate={{
+                  scale: [1, 1.2, 1],
+                  rotate: [360, 180, 0]
+                }}
+                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+              >
+                <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-400" />
+              </motion.div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-center">
+              {/* Left side - Discount */}
+              <motion.div
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="flex items-center gap-3"
+              >
+                <div className="bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl p-3 sm:p-4">
+                  <Gift className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                </div>
+                <div className="text-left">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="text-2xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">
+                      $75 OFF
+                    </span>
+                    <motion.div
+                      animate={{ rotate: [0, 10, -10, 0] }}
+                      transition={{ duration: 1, repeat: Infinity, repeatDelay: 1 }}
+                      className="text-2xl"
+                    >
+                      🔥
+                    </motion.div>
+                  </div>
+                  <div className="bg-gray-800 rounded-lg px-3 py-1.5 inline-block">
+                    <span className="text-green-400 font-mono font-bold text-sm sm:text-base tracking-wider">
+                      Code: KENJ4LFE
+                    </span>
+                  </div>
+                  <p className="text-gray-300 text-xs sm:text-sm mt-1 font-semibold">
+                    Any Plan - Today Only!
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Divider */}
+              <div className="hidden sm:block w-px h-16 bg-gradient-to-b from-transparent via-gray-600 to-transparent" />
+              <div className="sm:hidden w-full h-px bg-gradient-to-r from-transparent via-gray-600 to-transparent" />
+
+              {/* Right side - Bonus Credits */}
+              <motion.div
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                className="flex items-center gap-3"
+              >
+                <div className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl p-3 sm:p-4">
+                  <div className="relative">
+                    <Mail className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
+                    <MessageSquare className="w-3 h-3 sm:w-4 sm:h-4 text-white absolute -bottom-1 -right-1" />
+                  </div>
+                </div>
+                <div className="text-left">
+                  <div className="text-2xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+                    $50 Bonus
+                  </div>
+                  <p className="text-gray-300 text-xs sm:text-sm font-semibold">
+                    Text/Email & AI Credits
+                  </p>
+                  <p className="text-green-400 text-xs font-bold mt-0.5">
+                    FREE with any plan
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Pulse effect */}
+            <motion.div
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="absolute inset-0 rounded-3xl"
+              style={{
+                background: 'radial-gradient(circle at center, rgba(251, 191, 36, 0.1) 0%, transparent 70%)'
+              }}
+            />
+          </div>
+        </div>
+      </motion.div>
 
       <div className="max-w-7xl mx-auto mt-12 sm:mt-20">
         {/* Pricing Header */}
