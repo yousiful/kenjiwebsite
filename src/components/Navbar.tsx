@@ -49,20 +49,33 @@ const Navbar: React.FC = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-gray-900/95 backdrop-blur-lg border-b border-gray-800' 
+        isScrolled
+          ? 'bg-gray-950/95 backdrop-blur-lg'
           : 'bg-transparent'
       }`}
+      style={isScrolled ? {
+        borderBottom: '1px solid rgba(0,255,255,0.12)',
+        boxShadow: '0 1px 30px rgba(0,255,255,0.05)'
+      } : {}}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-4">
             <Link to="/" className="flex items-center gap-3 group mobile-hover focus-ring">
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-300">
+              <span
+                className="text-xl font-bold transition-all duration-300"
+                style={{
+                  background: 'linear-gradient(90deg, #00FFFF, #39FF14)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  filter: 'drop-shadow(0 0 8px rgba(0,255,255,0.5))'
+                }}
+              >
                 KenjiAI
               </span>
-              <ChevronRight className="w-4 h-4 text-blue-400 group-hover:text-purple-400 transition-colors" />
+              <ChevronRight className="w-4 h-4 transition-colors" style={{ color: '#00FFFF' }} />
             </Link>
           </div>
 
@@ -89,8 +102,8 @@ const Navbar: React.FC = () => {
                       }
                     }}
                   >
-                    <button 
-                      className="flex items-center gap-1 text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover focus-ring touch-target"
+                    <button
+                      className="flex items-center gap-1 text-gray-300 hover:text-cyan-400 transition-colors font-medium mobile-hover focus-ring touch-target"
                       aria-expanded={
                         (item.dropdownType === 'tools' && showToolsDropdown) || 
                         (item.dropdownType === 'solutions' && showSolutionsDropdown)
@@ -107,7 +120,8 @@ const Navbar: React.FC = () => {
                       <motion.div 
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="absolute top-full left-0 mt-2 w-64 bg-gray-800 border border-gray-700 rounded-xl shadow-2xl overflow-hidden investor-card-shadow z-50"
+                        className="absolute top-full left-0 mt-2 w-64 rounded-xl overflow-hidden z-50"
+                        style={{ background: '#0a0f1a', border: '1px solid rgba(0,255,255,0.2)', boxShadow: '0 10px 40px rgba(0,255,255,0.12)' }}
                         role="menu"
                         aria-orientation="vertical"
                         aria-labelledby="tools-menu-button"
@@ -119,7 +133,7 @@ const Navbar: React.FC = () => {
                               href={tool.href}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-700 transition-colors mobile-hover touch-target relative"
+                              className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-cyan-950/40 transition-colors mobile-hover touch-target relative"
                               role="menuitem"
                             >
                               <span>{tool.name}</span>
@@ -128,7 +142,7 @@ const Navbar: React.FC = () => {
                             <Link
                               key={`${tool.name}-${tool.href}`}
                               to={tool.href}
-                              className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-700 transition-colors mobile-hover touch-target relative"
+                              className="block px-4 py-3 text-gray-300 hover:text-white hover:bg-cyan-950/40 transition-colors mobile-hover touch-target relative"
                               role="menuitem"
                               onClick={() => setShowToolsDropdown(false)}
                             >
@@ -144,7 +158,8 @@ const Navbar: React.FC = () => {
                       <motion.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="absolute top-full left-0 mt-2 w-80 bg-gray-800 border border-gray-700 rounded-xl shadow-2xl overflow-hidden investor-card-shadow z-50" 
+                        className="absolute top-full left-0 mt-2 w-80 rounded-xl overflow-hidden z-50"
+                        style={{ background: '#0a0f1a', border: '1px solid rgba(0,255,255,0.2)', boxShadow: '0 10px 40px rgba(0,255,255,0.12)' }} 
                         role="menu"
                         aria-orientation="vertical"
                         aria-labelledby="solutions-menu-button"
@@ -164,7 +179,8 @@ const Navbar: React.FC = () => {
                           <Link
                             key={`${solution.name}-${solution.href}`}
                             to={solution.href}
-                            className="block px-4 py-4 text-gray-300 hover:text-white hover:bg-gray-700 transition-colors mobile-hover touch-target border-b border-gray-700 last:border-b-0"
+                            className="block px-4 py-4 text-gray-300 hover:text-white hover:bg-cyan-950/40 transition-colors mobile-hover touch-target border-b last:border-b-0"
+                            style={{ borderColor: 'rgba(0,255,255,0.08)' }}
                             role="menuitem"
                             onClick={() => setShowSolutionsDropdown(false)}
                           >
@@ -180,7 +196,7 @@ const Navbar: React.FC = () => {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover focus-ring touch-target"
+                    className="text-gray-300 hover:text-cyan-400 transition-colors font-medium mobile-hover focus-ring touch-target"
                     role="menuitem"
                   >
                     {item.name}
@@ -188,8 +204,8 @@ const Navbar: React.FC = () => {
                 ) : (
                   <Link
                     to={item.href}
-                    className={`text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover focus-ring touch-target ${
-                      location.pathname === item.href ? 'text-blue-400' : ''
+                    className={`text-gray-300 hover:text-cyan-400 transition-colors font-medium mobile-hover focus-ring touch-target ${
+                      location.pathname === item.href ? 'text-cyan-400' : ''
                     }`}
                     role="menuitem"
                   >
@@ -209,7 +225,7 @@ const Navbar: React.FC = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover focus-ring touch-target"
+              className="flex items-center gap-2 text-gray-300 hover:text-cyan-400 transition-colors font-medium mobile-hover focus-ring touch-target"
             >
               <LogIn className="w-4 h-4" aria-hidden="true" />
               Login
@@ -222,7 +238,22 @@ const Navbar: React.FC = () => {
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-2 bg-gray-800 border border-gray-700 text-white px-4 py-2 rounded-xl font-semibold hover:border-blue-500 hover:shadow-lg transition-all duration-300 mobile-button focus-ring"
+              className="flex items-center gap-2 text-white px-4 py-2 rounded-xl font-semibold transition-all duration-300 mobile-button focus-ring"
+              style={{
+                background: 'transparent',
+                border: '1px solid rgba(0,255,255,0.3)',
+                color: '#00FFFF',
+                textShadow: '0 0 8px rgba(0,255,255,0.5)',
+                boxShadow: '0 0 10px rgba(0,255,255,0.1)',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.boxShadow = '0 0 20px rgba(0,255,255,0.35), inset 0 0 10px rgba(0,255,255,0.05)';
+                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(0,255,255,0.6)';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.boxShadow = '0 0 10px rgba(0,255,255,0.1)';
+                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(0,255,255,0.3)';
+              }}
             >
               <Calendar className="w-4 h-4" aria-hidden="true" />
               VIP Demo
@@ -233,7 +264,11 @@ const Navbar: React.FC = () => {
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 investor-gradient-blue text-white px-4 py-2 rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 mobile-button focus-ring"
+                className="flex items-center gap-2 text-gray-900 px-4 py-2 rounded-xl font-bold transition-all duration-300 mobile-button focus-ring"
+                style={{
+                  background: 'linear-gradient(90deg, #39FF14, #00FFFF)',
+                  boxShadow: '0 0 18px rgba(57,255,20,0.45), 0 0 6px rgba(0,255,255,0.3)',
+                }}
               >
                 <DollarSign className="w-4 h-4" aria-hidden="true" />
                 See Pricing
@@ -244,7 +279,7 @@ const Navbar: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white hover:text-blue-400 transition-colors mobile-hover focus-ring touch-target p-2 -mr-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
+            className="md:hidden text-white hover:text-cyan-400 transition-colors mobile-hover focus-ring touch-target p-2 -mr-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-expanded={isOpen}
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-controls="mobile-menu"
@@ -269,7 +304,8 @@ const Navbar: React.FC = () => {
                 transition: { duration: 0.2, ease: "easeInOut" }
               }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="md:hidden bg-gray-800 border-t border-gray-700 mt-2 rounded-b-xl investor-card-shadow overflow-hidden"
+              className="md:hidden mt-2 rounded-b-xl overflow-hidden"
+              style={{ background: '#0a0f1a', borderTop: '1px solid rgba(0,255,255,0.15)', boxShadow: '0 10px 40px rgba(0,255,255,0.08)' }}
             >
               <motion.div
                 className="px-4 py-5 space-y-2"
@@ -285,7 +321,7 @@ const Navbar: React.FC = () => {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-3 min-h-[44px] flex items-center text-base"
+                      className="block text-gray-300 hover:text-cyan-400 transition-colors font-medium mobile-hover touch-target py-3 min-h-[44px] flex items-center text-base"
                       role="menuitem"
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -303,7 +339,7 @@ const Navbar: React.FC = () => {
                       <Link
                         to={item.href}
                         onClick={() => setIsOpen(false)}
-                        className="block text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-3 min-h-[44px] flex items-center text-base"
+                        className="block text-gray-300 hover:text-cyan-400 transition-colors font-medium mobile-hover touch-target py-3 min-h-[44px] flex items-center text-base"
                         role="menuitem"
                       >
                         {item.name}
@@ -329,7 +365,7 @@ const Navbar: React.FC = () => {
                   href="https://support.kenjiai.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-3 min-h-[44px] flex items-center text-base"
+                  className="block text-gray-300 hover:text-cyan-400 transition-colors font-medium mobile-hover touch-target py-3 min-h-[44px] flex items-center text-base"
                   role="menuitem"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -339,14 +375,14 @@ const Navbar: React.FC = () => {
                 </motion.a>
 
                 {/* Divider */}
-                <div className="border-t border-gray-700 my-3"></div>
+                <div className="border-t my-3" style={{ borderColor: 'rgba(0,255,255,0.12)' }}></div>
 
                 {/* Mobile Login Button */}
                 <motion.a
                   href="https://app.kenjiai.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors font-medium mobile-hover touch-target py-3 min-h-[44px] text-base"
+                  className="flex items-center gap-2 text-gray-300 hover:text-cyan-400 transition-colors font-medium mobile-hover touch-target py-3 min-h-[44px] text-base"
                   role="menuitem"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -362,8 +398,14 @@ const Navbar: React.FC = () => {
                   href="https://go.mediatraffics.com/leads"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 bg-gray-800 border border-gray-700 text-white px-5 py-4 rounded-xl font-semibold mobile-button mt-4 min-h-[48px] text-base hover:border-blue-500 transition-all touch-manipulation"
+                  className="flex items-center justify-center gap-2 px-5 py-4 rounded-xl font-semibold mobile-button mt-4 min-h-[48px] text-base transition-all touch-manipulation"
                   role="menuitem"
+                  style={{
+                    border: '1px solid rgba(0,255,255,0.35)',
+                    color: '#00FFFF',
+                    background: 'rgba(0,255,255,0.05)',
+                    textShadow: '0 0 8px rgba(0,255,255,0.5)',
+                  }}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: (navItems.length + 3) * 0.05 }}
@@ -381,8 +423,12 @@ const Navbar: React.FC = () => {
                   <Link
                     to="/pricing"
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-center gap-2 investor-gradient-blue text-white px-5 py-4 rounded-xl font-semibold mobile-button min-h-[48px] text-base touch-manipulation"
+                    className="flex items-center justify-center gap-2 text-gray-900 px-5 py-4 rounded-xl font-bold mobile-button min-h-[48px] text-base touch-manipulation"
                     role="menuitem"
+                    style={{
+                      background: 'linear-gradient(90deg, #39FF14, #00FFFF)',
+                      boxShadow: '0 0 18px rgba(57,255,20,0.4)',
+                    }}
                   >
                     <DollarSign className="w-5 h-5" aria-hidden="true" />
                     See Pricing

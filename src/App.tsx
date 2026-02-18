@@ -2,11 +2,8 @@ import React, { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import InteractiveMouseCaption from './components/InteractiveMouseCaption';
-import GamifiedInteractions from './components/GamifiedInteractions';
 import ScrollProgressBar from './components/ScrollProgressBar';
 import RedirectSystem from './components/RedirectSystem';
-import EnhancedInteractiveElements from './components/EnhancedInteractiveElements';
 import PerformanceOptimizer from './components/PerformanceOptimizer';
 import ErrorBoundary from './components/ErrorBoundary';
 import LoadingSpinner from './components/LoadingSpinner';
@@ -14,17 +11,10 @@ import NotFoundPage from './components/NotFoundPage';
 import AutoFormattingProvider from './components/AutoFormattingProvider';
 import LinkValidator from './components/LinkValidator';
 import { HolidayThemeProvider } from './contexts/HolidayThemeContext';
-import { LeftSideNotifications } from './components/LeftSideNotifications';
-import { BottomBadgeStats } from './components/BottomBadgeStats';
-import { HolidayFloatingElements } from './components/HolidayFloatingElements';
-import { HolidaySnowfall } from './components/HolidaySnowfall';
-import { HolidaySparkles } from './components/HolidaySparkles';
-import { HolidayBanner } from './components/HolidayBanner';
 import { ErrorLogger } from './components/ErrorLogger';
 import { BrowserCompatibility } from './components/BrowserCompatibility';
 import { OfflineIndicator } from './components/OfflineIndicator';
 
-// Lazy load pages for better performance
 const HomePage = lazy(() => import('./pages/HomePage'));
 const ToolsPage = lazy(() => import('./pages/ToolsPage'));
 const KnowledgeBasePage = lazy(() => import('./pages/KnowledgeBasePage'));
@@ -62,13 +52,9 @@ function ConditionalNavbar() {
   if (hideNavbar) return null;
 
   return (
-    <>
-      <header role="banner">
-        <Navbar />
-      </header>
-      <HolidayBanner />
-      <div className="h-12"></div>
-    </>
+    <header role="banner">
+      <Navbar />
+    </header>
   );
 }
 
@@ -83,18 +69,11 @@ function App() {
             <RedirectSystem />
             <BrowserCompatibility />
             <OfflineIndicator />
-            <LeftSideNotifications />
             <ErrorLogger />
-            <InteractiveMouseCaption>
-              <div className="min-h-screen bg-gray-900" id="app-container">
-                <PerformanceOptimizer />
-                <ScrollProgressBar />
-                <GamifiedInteractions />
-                <EnhancedInteractiveElements />
-                <HolidayFloatingElements />
-                <HolidaySnowfall />
-                <HolidaySparkles />
-                <ConditionalNavbar />
+            <div className="min-h-screen bg-gray-900" id="app-container">
+              <PerformanceOptimizer />
+              <ScrollProgressBar />
+              <ConditionalNavbar />
               <Suspense fallback={<LoadingSpinner />}>
                 <main id="main-content" role="main">
                   <Routes>
@@ -112,28 +91,20 @@ function App() {
                     <Route path="/investors" element={<InvestorPage />} />
                     <Route path="/pricing" element={<ProductSelectionPage />} />
                     <Route path="/success" element={<SuccessPage />} />
-
-                    {/* Legal Pages */}
                     <Route path="/privacy" element={<PrivacyPolicyPage />} />
                     <Route path="/disclaimer" element={<DisclaimerPage />} />
                     <Route path="/terms" element={<TermsOfServicePage />} />
-
-                    {/* Redirect legacy routes */}
                     <Route path="/blog" element={<Navigate to="/knowledge" replace />} />
-
-                    {/* Catch all route for 404s */}
                     <Route path="*" element={<NotFoundPage />} />
                   </Routes>
                 </main>
               </Suspense>
-              <BottomBadgeStats />
               <footer role="contentinfo">
                 <Footer />
               </footer>
             </div>
-          </InteractiveMouseCaption>
-        </Router>
-      </AutoFormattingProvider>
+          </Router>
+        </AutoFormattingProvider>
       </HolidayThemeProvider>
     </ErrorBoundary>
   );
