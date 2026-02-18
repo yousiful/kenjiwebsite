@@ -88,7 +88,7 @@ export function PricingNew() {
             transition={{ duration: 2, repeat: Infinity }}
             className="flex items-center gap-1.5"
           >
-            <span className="text-yellow-400 font-bold">$75 OFF</span>
+            <span className="text-yellow-400 font-bold">$76 OFF</span>
             <span className="text-gray-400">any plan — code</span>
             <span
               className="font-mono font-bold px-1.5 py-0.5 rounded text-xs tracking-widest"
