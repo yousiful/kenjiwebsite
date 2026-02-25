@@ -1,27 +1,19 @@
 import React, { useEffect } from 'react';
+import { logVital } from '../lib/telemetry';
 
 const PerformanceOptimizer: React.FC = () => {
   useEffect(() => {
-    // Preload critical resources
     const preloadCriticalResources = () => {
-      // Preload hero image
       const heroImage = new Image();
       heroImage.src = 'https://assets.cdn.filesafe.space/q5L4ttbBMHNxieXIcTVJ/media/5adccaae-527e-49d4-befc-6410b918c624.gif';
-      
-      // Preload Stripe
-      const stripeScript = document.createElement('link');
-      stripeScript.rel = 'dns-prefetch';
-      stripeScript.href = 'https://js.stripe.com';
-      document.head.appendChild(stripeScript);
-      
-      // Preload external domains
+
       const domains = [
         'https://app.kenjicrm.com',
         'https://support.kenjiai.com',
-        'https://images.pexels.com'
+        'https://images.pexels.com',
+        'https://js.stripe.com',
       ];
-      
-      domains.forEach(domain => {
+      domains.forEach((domain) => {
         const link = document.createElement('link');
         link.rel = 'dns-prefetch';
         link.href = domain;
@@ -29,108 +21,75 @@ const PerformanceOptimizer: React.FC = () => {
       });
     };
 
-    // Optimize images
     const optimizeImages = () => {
-      const images = document.querySelectorAll('img');
-      images.forEach(img => {
-        if (!img.loading) {
-          img.loading = 'lazy';
-        }
-        if (!img.decoding) {
-          img.decoding = 'async';
-        }
+      document.querySelectorAll('img').forEach((img) => {
+        if (!img.loading) img.loading = 'lazy';
+        if (!img.decoding) img.decoding = 'async';
       });
     };
 
-    // Add performance observers
     const addPerformanceObservers = () => {
-      if ('PerformanceObserver' in window) {
-        // Observe Largest Contentful Paint
-        const lcpObserver = new PerformanceObserver((list) => {
-          const entries = list.getEntries();
-          const lastEntry = entries[entries.length - 1];
-          console.log('LCP:', lastEntry.startTime);
-        });
-        lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+      if (!('PerformanceObserver' in window)) return;
 
-        // Observe First Input Delay
-        const fidObserver = new PerformanceObserver((list) => {
-          const entries = list.getEntries();
-          entries.forEach(entry => {
-            console.log('FID:', entry.processingStart - entry.startTime);
-          });
-        });
-        fidObserver.observe({ entryTypes: ['first-input'] });
+      const lcpObserver = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        const last = entries[entries.length - 1] as PerformanceEntry & { startTime: number };
+        logVital('LCP', last.startTime);
+      });
+      lcpObserver.observe({ entryTypes: ['largest-contentful-paint'] });
 
-        // Observe Cumulative Layout Shift
-        const clsObserver = new PerformanceObserver((list) => {
-          let clsValue = 0;
-          const entries = list.getEntries();
-          entries.forEach(entry => {
-            if (!entry.hadRecentInput) {
-              clsValue += entry.value;
-            }
-          });
-          console.log('CLS:', clsValue);
+      const fidObserver = new PerformanceObserver((list) => {
+        list.getEntries().forEach((entry) => {
+          const e = entry as PerformanceEntry & { processingStart: number; startTime: number };
+          logVital('FID', e.processingStart - e.startTime);
         });
-        clsObserver.observe({ entryTypes: ['layout-shift'] });
+      });
+      fidObserver.observe({ entryTypes: ['first-input'] });
+
+      let clsTotal = 0;
+      const clsObserver = new PerformanceObserver((list) => {
+        list.getEntries().forEach((entry) => {
+          const e = entry as PerformanceEntry & { hadRecentInput: boolean; value: number };
+          if (!e.hadRecentInput) clsTotal += e.value;
+        });
+        logVital('CLS', clsTotal);
+      });
+      clsObserver.observe({ entryTypes: ['layout-shift'] });
+
+      const navEntry = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+      if (navEntry) {
+        const ttfb = navEntry.responseStart - navEntry.requestStart;
+        const fcp = navEntry.loadEventStart - navEntry.fetchStart;
+        if (ttfb > 0) logVital('TTFB', ttfb);
+        if (fcp > 0) logVital('FCP', fcp);
       }
     };
 
-    // Optimize third-party scripts
     const optimizeThirdPartyScripts = () => {
-      // Defer non-critical scripts
-      const scripts = document.querySelectorAll('script[src]');
-      scripts.forEach(script => {
-        if (!script.async && !script.defer) {
-          script.defer = true;
-        }
+      document.querySelectorAll<HTMLScriptElement>('script[src]').forEach((script) => {
+        if (!script.async && !script.defer) script.defer = true;
       });
     };
 
-    // Service Worker is registered in index.html to avoid double registration
-
-    // Memory management
     const optimizeMemory = () => {
-      // Clean up unused event listeners
-      const cleanupEventListeners = () => {
-        const elements = document.querySelectorAll('[data-cleanup]');
-        elements.forEach(element => {
-          element.removeAttribute('data-cleanup');
-        });
-      };
-
-      // Throttle resize events
-      let resizeTimeout: NodeJS.Timeout;
+      let resizeTimeout: ReturnType<typeof setTimeout>;
       const handleResize = () => {
         clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-          window.dispatchEvent(new Event('optimizedResize'));
-        }, 250);
+        resizeTimeout = setTimeout(() => window.dispatchEvent(new Event('optimizedResize')), 250);
       };
-
       window.addEventListener('resize', handleResize, { passive: true });
-      
-      return () => {
-        window.removeEventListener('resize', handleResize);
-        cleanupEventListeners();
-      };
+      return () => window.removeEventListener('resize', handleResize);
     };
 
-    // Initialize optimizations
     preloadCriticalResources();
     optimizeImages();
     addPerformanceObservers();
     optimizeThirdPartyScripts();
-    const memoryCleanup = optimizeMemory();
-
-    // Cleanup on unmount
-    return () => {
-      memoryCleanup();
-    };
+    const cleanup = optimizeMemory();
+    return cleanup;
   }, []);
 
-  return null; // This component doesn't render anything
+  return null;
 };
 
 export default PerformanceOptimizer;

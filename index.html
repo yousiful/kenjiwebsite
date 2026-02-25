@@ -489,18 +489,15 @@
           try {
             if ('caches' in window) {
               const cacheNames = await caches.keys();
+              const CURRENT_CACHE = 'kenjiai-v4-2025';
               const hasOldCaches = cacheNames.some(name =>
-                name.includes('kenjiai-v1') ||
-                name.includes('kenjiai-v2') ||
-                (name.includes('kenjiai') && !name.includes('v3-2025-clean'))
+                name.includes('kenjiai') && name !== CURRENT_CACHE
               );
 
               if (hasOldCaches) {
-                console.log('[SW] Old caches detected, cleaning up...');
                 for (let cacheName of cacheNames) {
-                  if (!cacheName.includes('v3-2025-clean')) {
+                  if (cacheName !== CURRENT_CACHE) {
                     await caches.delete(cacheName);
-                    console.log('[SW] Deleted old cache:', cacheName);
                   }
                 }
 
