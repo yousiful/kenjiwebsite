@@ -1,6 +1,21 @@
-import { supabase } from './supabaseClient';
-
 const SESSION_KEY = 'kenjiai_session_id';
+
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
+
+function supabasePost(table: string, body: Record<string, unknown>) {
+  if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return;
+  fetch(`${SUPABASE_URL}/rest/v1/${table}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      apikey: SUPABASE_ANON_KEY,
+      Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+      Prefer: 'return=minimal',
+    },
+    body: JSON.stringify(body),
+  }).catch(() => {});
+}
 
 function getSessionId(): string {
   let id = sessionStorage.getItem(SESSION_KEY);
@@ -35,43 +50,35 @@ function rateVital(name: string, value: number): string {
   return 'poor';
 }
 
-export async function logVital(name: string, value: number): Promise<void> {
-  try {
-    await supabase.from('perf_vitals').insert({
-      metric_name: name,
-      metric_value: Math.round(value * 100) / 100,
-      rating: rateVital(name, value),
-      page_path: window.location.pathname,
-      session_id: getSessionId(),
-      connection_type: getConnectionType(),
-      user_agent: truncate(navigator.userAgent, 200),
-    });
-  } catch {
-    // non-blocking — silently ignore telemetry failures
-  }
+export function logVital(name: string, value: number): void {
+  supabasePost('perf_vitals', {
+    metric_name: name,
+    metric_value: Math.round(value * 100) / 100,
+    rating: rateVital(name, value),
+    page_path: window.location.pathname,
+    session_id: getSessionId(),
+    connection_type: getConnectionType(),
+    user_agent: truncate(navigator.userAgent, 200),
+  });
 }
 
-export async function logError(params: {
+export function logError(params: {
   error_type: 'runtime' | 'promise_rejection' | 'resource' | 'chunk_load';
   message: string;
   filename?: string;
   lineno?: number;
   colno?: number;
   stack?: string;
-}): Promise<void> {
-  try {
-    await supabase.from('error_events').insert({
-      error_type: params.error_type,
-      message: truncate(params.message, 500),
-      filename: truncate(params.filename ?? '', 300),
-      lineno: params.lineno ?? 0,
-      colno: params.colno ?? 0,
-      stack: truncate(params.stack ?? '', 1000),
-      page_path: window.location.pathname,
-      session_id: getSessionId(),
-      user_agent: truncate(navigator.userAgent, 200),
-    });
-  } catch {
-    // non-blocking — silently ignore telemetry failures
-  }
+}): void {
+  supabasePost('error_events', {
+    error_type: params.error_type,
+    message: truncate(params.message, 500),
+    filename: truncate(params.filename ?? '', 300),
+    lineno: params.lineno ?? 0,
+    colno: params.colno ?? 0,
+    stack: truncate(params.stack ?? '', 1000),
+    page_path: window.location.pathname,
+    session_id: getSessionId(),
+    user_agent: truncate(navigator.userAgent, 200),
+  });
 }
