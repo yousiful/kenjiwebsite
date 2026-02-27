@@ -28,6 +28,12 @@ body {
   overflow-x: hidden;
 }
 
+@supports (-webkit-touch-callout: none) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
 /* Enhanced Mobile Touch Interactions */
 @layer utilities {
   /* GPU Acceleration for better performance */
@@ -309,8 +315,7 @@ body {
   /* Image optimization */
   .optimized-image {
     image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-    image-rendering: pixelated;
+    image-rendering: high-quality;
   }
   
   /* Performance optimizations */
@@ -512,12 +517,12 @@ body {
 
 /* Enhanced selection colors */
 ::selection {
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  background: rgba(59, 130, 246, 0.4);
   color: white;
 }
 
 ::-moz-selection {
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  background: rgba(59, 130, 246, 0.4);
   color: white;
 }
 
@@ -744,12 +749,7 @@ body {
 
 /* Fix for mobile grid layouts */
 @media (max-width: 640px) {
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
-    gap: 1rem !important;
-  }
-  
+
   .course-header,
   .learning-objectives,
   .curriculum-section,
