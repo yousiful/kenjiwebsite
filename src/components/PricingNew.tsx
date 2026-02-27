@@ -121,7 +121,7 @@ export function PricingNew() {
             >
               +$25
             </span>
-            <span className="text-gray-400">free credit for Text, Email &amp; AI calls</span>
+            <span className="text-gray-400">free credit for Text, Email and AI calls</span>
           </span>
         </motion.div>
       </motion.div>
@@ -149,15 +149,15 @@ export function PricingNew() {
               backgroundClip: 'text',
               letterSpacing: '-0.01em'
             }}>
-              Your Sales Team Sleeps.
+              We Build It.
             </span>
             <br />
-            <span className="text-white">Ours Never Does.</span>
+            <span className="text-white">You Grow It. Together.</span>
           </h1>
 
           <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-            KenjiAI replaces $8,000+/month in tools and staff. AI voice agents closing deals 24/7,
-            done-for-you ads, and a smart CRM — all managed by our team so you can focus on growth.
+            KenjiAI replaces what costs $8,000 or more per month in tools and staff. Our team handles
+            the setup, the ads, and the automation — so you can focus entirely on serving your clients and scaling your revenue.
           </p>
 
           {/* Social Proof Bar */}
@@ -248,7 +248,7 @@ export function PricingNew() {
           </h2>
           <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-4">
             One platform replaces your CRM, email tool, ad agency, chatbot, course platform, and more.
-            Most clients save $5,000–$8,000/month in tool and agency costs — and actually grow faster.
+            Our clients consistently save between $5,000 and $8,000 per month in tools and agency costs — and grow faster because of it.
           </p>
           <div className="inline-flex items-center gap-2 text-emerald-400 font-semibold text-base">
             <Check className="w-4 h-4" />
@@ -280,16 +280,16 @@ export function PricingNew() {
             </div>
 
             <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Monthly Plan</h3>
-            <p className="text-gray-400 text-center mb-8 text-sm leading-relaxed">
-              Start with zero lock-in. Cancel anytime, no questions asked.
+            <p className="text-gray-400 text-center mb-6 text-sm leading-relaxed">
+              Start with full access and complete flexibility. We will be with you every step of the way.
             </p>
 
-            <div className="text-center mb-6">
+            <div className="text-center mb-5">
               <div className="text-5xl sm:text-6xl font-bold text-white mb-1">
                 $375
                 <span className="text-xl sm:text-2xl text-gray-400">/mo</span>
               </div>
-              <div className="text-gray-400 text-sm mt-1">vs. $8,000+/mo in tools &amp; staff</div>
+              <div className="text-gray-400 text-sm mt-1">Replaces over $8,000 per month in tools and staff</div>
             </div>
 
             <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-400/30 rounded-2xl p-4 mb-4">
@@ -297,16 +297,17 @@ export function PricingNew() {
                 <Zap className="w-4 h-4 text-blue-400" />
                 <span className="text-white font-semibold text-sm">Everything Included</span>
               </div>
-              <p className="text-gray-300 text-sm text-center">Full platform access · No feature limits</p>
+              <p className="text-gray-300 text-sm text-center">Full platform access · No feature limits · No hidden fees</p>
             </div>
 
-            <div className="space-y-2 mb-6">
-              <div className="bg-gray-800/60 border border-gray-700/50 rounded-xl p-3">
-                <p className="text-gray-200 text-sm text-center leading-relaxed">
-                  $1,000/mo ad spend included in the system
-                </p>
+            <div className="bg-emerald-950/60 border border-emerald-500/40 rounded-xl p-4 mb-6">
+              <div className="flex items-center justify-center gap-2 mb-1.5">
+                <span className="text-emerald-300 font-bold text-sm tracking-wide">COUPON CODE</span>
               </div>
-              <p className="text-gray-400 text-sm text-center">+ 10% performance fee on ad-generated revenue</p>
+              <div className="flex items-center justify-center gap-2 mb-1">
+                <span className="font-mono font-black text-lg tracking-widest text-white bg-emerald-900/60 border border-emerald-500/50 px-3 py-1 rounded-lg select-all">KENJ4LFE</span>
+              </div>
+              <p className="text-emerald-300 text-xs text-center mt-2">Apply at checkout to save $76 on your first month</p>
             </div>
 
             <div className="flex-1 mb-6 relative">
@@ -348,7 +349,7 @@ export function PricingNew() {
                 </motion.div>
               ) : (
                 <>
-                  Claim My Spot — Start Today
+                  Let's Get Started Together
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}
@@ -389,35 +390,36 @@ export function PricingNew() {
 
             <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Annual Plan</h3>
             <p className="text-gray-300 text-center mb-6 text-sm leading-relaxed">
-              Our top earners choose annual. Lock in the lowest rate and maximize ROI.
+              The plan our highest-growth clients choose. We commit more deeply when you do.
             </p>
 
-            <div className="text-center mb-6">
+            <div className="text-center mb-5">
               <div className="text-5xl sm:text-6xl font-bold text-white mb-1">
                 $275
                 <span className="text-xl sm:text-2xl text-gray-400">/mo</span>
               </div>
               <div className="text-emerald-400 font-bold text-base">
-                $1,200/year saved vs monthly · Billed at $3,300
+                Save $1,200 per year compared to monthly
               </div>
-              <div className="text-gray-400 text-sm mt-1">That's 2 months completely free</div>
+              <div className="text-gray-400 text-sm mt-1">Billed at $3,300 annually — 2 months completely free</div>
             </div>
 
             <div className="bg-emerald-500/10 border border-emerald-400/30 rounded-2xl p-4 mb-4">
               <div className="flex items-center justify-center gap-2 mb-1">
                 <Zap className="w-4 h-4 text-emerald-400" />
-                <span className="text-white font-semibold text-sm">Everything Included + More Savings</span>
+                <span className="text-white font-semibold text-sm">Everything Included — Nothing Held Back</span>
               </div>
               <p className="text-gray-200 text-sm text-center">Full platform · 2 months free · Priority onboarding</p>
             </div>
 
-            <div className="space-y-2 mb-6">
-              <div className="bg-emerald-900/25 border border-emerald-500/30 rounded-xl p-3">
-                <p className="text-emerald-200 text-sm text-center font-semibold">
-                  No minimum ad spend required
-                </p>
+            <div className="bg-emerald-950/60 border border-emerald-500/40 rounded-xl p-4 mb-6">
+              <div className="flex items-center justify-center gap-2 mb-1.5">
+                <span className="text-emerald-300 font-bold text-sm tracking-wide">COUPON CODE</span>
               </div>
-              <p className="text-gray-400 text-sm text-center">+ 5% performance fee on ad-generated revenue</p>
+              <div className="flex items-center justify-center gap-2 mb-1">
+                <span className="font-mono font-black text-lg tracking-widest text-white bg-emerald-900/60 border border-emerald-500/50 px-3 py-1 rounded-lg select-all">KENJ4LFE</span>
+              </div>
+              <p className="text-emerald-300 text-xs text-center mt-2">Apply at checkout to save $76 on your first month</p>
             </div>
 
             <div className="flex-1 mb-6 relative">
@@ -459,7 +461,7 @@ export function PricingNew() {
                 </motion.div>
               ) : (
                 <>
-                  Lock In My Rate &amp; Save $1,200
+                  Join Annually and Save $1,200
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}
@@ -493,7 +495,7 @@ export function PricingNew() {
 
             <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Lifetime Access</h3>
             <p className="text-gray-200 text-center mb-6 text-sm leading-relaxed">
-              Pay once. Own it forever. For serious operators ready to scale without limits.
+              One payment. Lifetime access. We partner with you directly to build a business that compounds.
             </p>
 
             <div className="text-center mb-6">
@@ -579,10 +581,10 @@ export function PricingNew() {
         >
           <div className="text-center mb-10 sm:mb-12 px-4">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white leading-tight">
-              Ready to Let AI Grow Your Business?
+              Let's Build Something Real Together
             </h2>
             <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-              Book a strategy call to see if KenjiAI is the right fit, or log straight into your dashboard.
+              Book a no-pressure strategy call and we will show you exactly what KenjiAI would do for your specific business. Or jump straight into your dashboard if you are already a member.
             </p>
           </div>
 
@@ -603,12 +605,12 @@ export function PricingNew() {
                 <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-5 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                   <Video className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 leading-tight">Free Strategy Call</h3>
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 leading-tight">Book a Strategy Call</h3>
                 <p className="text-orange-100 text-base sm:text-lg mb-5 leading-relaxed">
-                  30 minutes. No pitch. Just a real look at how AI can transform your business.
+                  30 minutes. We map out exactly how KenjiAI fits your business — no obligation, no pressure.
                 </p>
                 <div className="flex items-center justify-center gap-2 text-white font-semibold text-base">
-                  <span>Book My Free Call</span>
+                  <span>Let's Talk — Book Your Call</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
               </div>
