@@ -156,69 +156,10 @@ export function PricingNew() {
             <span className="text-white">You Grow It. Together.</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-            KenjiAI replaces tools and services that usually cost $8,000+ per month. We handle
-            the setup, run your ads, and manage the automation. You focus on serving clients and growing your business.
+          <p className="text-xl sm:text-2xl text-gray-200 font-semibold max-w-3xl mx-auto mb-8 leading-relaxed">
+            Complete business automation. We handle the setup and management.
           </p>
 
-          {/* Social Proof Bar */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 mb-12 sm:mb-14">
-            {SOCIAL_PROOF_STATS.map((stat, idx) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: idx * 0.1 }}
-                className="flex items-center gap-3"
-              >
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/15 flex items-center justify-center flex-shrink-0">
-                  <stat.icon className="w-5 h-5 text-emerald-400" />
-                </div>
-                <div className="text-left">
-                  <div className="text-xl font-bold text-white">{stat.value}</div>
-                  <div className="text-sm text-gray-400">{stat.label}</div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Value Props Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            {[
-              {
-                icon: Target,
-                title: 'We Run Your Ads',
-                description: 'We create and manage your ad campaigns to bring qualified leads straight into your CRM.',
-                color: 'from-blue-400 to-cyan-500'
-              },
-              {
-                icon: Rocket,
-                title: 'We Build Your System',
-                description: 'Website, funnels, and automation. We set it all up and keep it running smoothly.',
-                color: 'from-blue-400 to-teal-500'
-              },
-              {
-                icon: Shield,
-                title: 'We Support You',
-                description: 'Our team handles strategy and optimization. You focus on growing revenue while we manage the tech.',
-                color: 'from-green-400 to-emerald-500'
-              }
-            ].map((prop, idx) => (
-              <motion.div
-                key={prop.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 + idx * 0.1 }}
-                className="group relative bg-gray-800/50 backdrop-blur-sm border border-gray-700/60 rounded-2xl p-6 sm:p-8 hover:border-gray-600 hover:bg-gray-800/60 transition-all duration-300"
-              >
-                <div className={`inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br ${prop.color} mb-4 sm:mb-5`}>
-                  <prop.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 leading-snug">{prop.title}</h3>
-                <p className="text-gray-300 text-base leading-relaxed">{prop.description}</p>
-              </motion.div>
-            ))}
-          </div>
         </motion.div>
       </div>
 
@@ -229,33 +170,6 @@ export function PricingNew() {
 
       <div className="max-w-7xl mx-auto mt-12 sm:mt-20">
 
-        {/* Pricing Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-center mb-12 sm:mb-16 px-4"
-        >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
-            <span style={{
-              background: 'linear-gradient(90deg, #10B981 0%, #34D399 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              letterSpacing: '-0.01em'
-            }}>
-              Simple, Transparent Pricing
-            </span>
-          </h2>
-          <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-4">
-            One platform that replaces your CRM, email tool, ad agency, chatbot, and course platform.
-            Most clients save $5,000 to $8,000 per month on tools and agency fees.
-          </p>
-          <div className="inline-flex items-center gap-2 text-emerald-400 font-semibold text-base">
-            <Check className="w-4 h-4" />
-            <span>30-day money-back guarantee on all plans</span>
-          </div>
-        </motion.div>
 
         {/* Mobile-Only Booking CTA - Appears at Top */}
         <motion.div
@@ -313,24 +227,22 @@ export function PricingNew() {
             </div>
 
             <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Monthly Plan</h3>
-            <p className="text-gray-400 text-center mb-6 text-sm leading-relaxed">
-              Full access with no long-term commitment. Cancel anytime.
+            <p className="text-gray-200 text-center mb-6 text-base font-semibold leading-relaxed">
+              Cancel anytime.
             </p>
 
             <div className="text-center mb-5">
-              <div className="text-5xl sm:text-6xl font-bold text-white mb-1">
+              <div className="text-5xl sm:text-6xl font-bold text-white">
                 $375
                 <span className="text-xl sm:text-2xl text-gray-400">/mo</span>
               </div>
-              <div className="text-gray-400 text-sm mt-1">Replaces over $8,000 per month in tools and staff</div>
             </div>
 
             <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-400/30 rounded-2xl p-4 mb-4">
-              <div className="flex items-center justify-center gap-2 mb-1">
-                <Zap className="w-4 h-4 text-blue-400" />
-                <span className="text-white font-semibold text-sm">Everything Included</span>
+              <div className="flex items-center justify-center gap-2">
+                <Zap className="w-5 h-5 text-blue-400" />
+                <span className="text-white font-bold text-base">Everything Included</span>
               </div>
-              <p className="text-gray-300 text-sm text-center">Full platform access · No feature limits · No hidden fees</p>
             </div>
 
             <div className="bg-emerald-950/60 border border-emerald-500/40 rounded-xl p-4 mb-6">
@@ -388,9 +300,9 @@ export function PricingNew() {
               )}
             </motion.button>
 
-            <div className="flex items-center justify-center gap-1.5 mt-4 text-gray-500 text-xs">
-              <Shield className="w-3.5 h-3.5" />
-              <span>Secured by Stripe · SSL Encrypted · Cancel anytime</span>
+            <div className="flex items-center justify-center gap-1.5 mt-4 text-gray-400 text-sm font-semibold">
+              <Shield className="w-4 h-4" />
+              <span>Secured by Stripe • SSL Encrypted • Cancel anytime</span>
             </div>
           </motion.div>
 
@@ -422,8 +334,8 @@ export function PricingNew() {
             </div>
 
             <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Annual Plan</h3>
-            <p className="text-gray-300 text-center mb-6 text-sm leading-relaxed">
-              Save over $1,200 per year. Our most popular plan for growing businesses.
+            <p className="text-gray-200 text-center mb-6 text-base font-semibold leading-relaxed">
+              Save $1,200 per year.
             </p>
 
             <div className="text-center mb-5">
@@ -438,11 +350,10 @@ export function PricingNew() {
             </div>
 
             <div className="bg-emerald-500/10 border border-emerald-400/30 rounded-2xl p-4 mb-4">
-              <div className="flex items-center justify-center gap-2 mb-1">
-                <Zap className="w-4 h-4 text-emerald-400" />
-                <span className="text-white font-semibold text-sm">Everything Included - Nothing Held Back</span>
+              <div className="flex items-center justify-center gap-2">
+                <Zap className="w-5 h-5 text-emerald-400" />
+                <span className="text-white font-bold text-base">Everything Included</span>
               </div>
-              <p className="text-gray-200 text-sm text-center">Full platform · 2 months free · Priority onboarding</p>
             </div>
 
             <div className="bg-emerald-950/60 border border-emerald-500/40 rounded-xl p-4 mb-6">
@@ -500,9 +411,9 @@ export function PricingNew() {
               )}
             </motion.button>
 
-            <div className="flex items-center justify-center gap-1.5 mt-4 text-gray-500 text-xs">
-              <Shield className="w-3.5 h-3.5" />
-              <span>Stripe Secured · 30-Day Guarantee · PCI Compliant</span>
+            <div className="flex items-center justify-center gap-1.5 mt-4 text-gray-400 text-sm font-semibold">
+              <Shield className="w-4 h-4" />
+              <span>Stripe Secured • 30-Day Guarantee • PCI Compliant</span>
             </div>
           </motion.div>
 

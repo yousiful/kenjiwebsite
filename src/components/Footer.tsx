@@ -110,85 +110,10 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
-      {/* Social Proof Strip */}
-      <div className="relative z-10 border-b border-gray-800 bg-gray-900/40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
-            {socialProof.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.07 }}
-                className="flex items-center gap-3"
-              >
-                <div
-                  className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
-                  style={{ backgroundColor: `${stat.color}18`, border: `1px solid ${stat.color}30` }}
-                >
-                  <stat.icon className="w-4 h-4" style={{ color: stat.color }} />
-                </div>
-                <div>
-                  <p className="text-white font-bold text-sm leading-none">{stat.value}</p>
-                  <p className="text-gray-500 text-xs mt-0.5">{stat.label}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-12">
-
-          {/* Brand Column */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55 }}
-            className="lg:col-span-4"
-          >
-            <div className="flex items-center gap-3 mb-5">
-              <div
-                className="w-9 h-9 rounded-full"
-                aria-label="KenjiAI Logo"
-                style={{
-                  backgroundImage: `url('https://assets.cdn.filesafe.space/q5L4ttbBMHNxieXIcTVJ/media/5adccaae-527e-49d4-befc-6410b918c624.gif')`,
-                  backgroundSize: 'contain',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundPosition: 'center',
-                  filter: 'drop-shadow(0 0 10px rgba(59,130,246,0.35))',
-                  mixBlendMode: 'screen',
-                }}
-              />
-              <span className="text-xl font-bold text-white tracking-tight">KenjiAI</span>
-            </div>
-
-            <p className="text-gray-400 text-sm leading-relaxed mb-8 max-w-xs">
-              AI tools that actually help you make money. We handle the tech so you can focus on growing your business.
-            </p>
-
-            {/* Social */}
-            <div className="flex items-center gap-3">
-              {socialLinks.map((s) => (
-                <motion.a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={s.label}
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.92 }}
-                  className="w-9 h-9 rounded-lg bg-gray-800 hover:bg-gradient-to-r hover:from-blue-500 hover:to-green-400 flex items-center justify-center transition-all duration-300 group border border-gray-700 hover:border-transparent"
-                >
-                  <s.icon className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors" />
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
 
           {/* Nav Links */}
           <motion.nav
@@ -196,7 +121,7 @@ const Footer: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: 0.15 }}
-            className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8"
+            className="lg:col-span-12 grid grid-cols-2 sm:grid-cols-3 gap-8"
             aria-label="Footer Navigation"
           >
             {/* Company */}
