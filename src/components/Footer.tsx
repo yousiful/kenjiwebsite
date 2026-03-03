@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import {
-  Zap, Mail, Phone, MapPin, Twitter, Linkedin, Youtube,
-  ArrowRight, Shield, Star, Users, Clock, CheckCircle,
-  Gift, HeadphonesIcon, Lock, Award
-} from 'lucide-react';
+import { Zap, Mail, Phone, MapPin, Twitter, Linkedin, Youtube, ArrowRight, Shield, Star, Users, Clock, CheckCircle, Gift, Headphones as HeadphonesIcon, Lock, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
