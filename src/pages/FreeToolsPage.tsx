@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, Search, TrendingUp } from 'lucide-react';
+import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, Search, TrendingUp, AlertCircle } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 const FreeToolsPage: React.FC = () => {
@@ -56,6 +56,45 @@ const FreeToolsPage: React.FC = () => {
       users: "15K+",
       keywords: ["free investor tools", "startup tools", "pitch deck generator", "investor matching", "funding tools", "startup AI"],
       revenue: "Helps raise $50M+ in funding"
+    },
+    {
+      name: "AI Dispute Resolution",
+      description: "Resolve disputes efficiently with AI-powered mediation, conflict analysis, and resolution strategies. Free AI dispute management and resolution tool for businesses.",
+      url: "https://dispute.kenjiai.com",
+      icon: AlertCircle,
+      gradient: "from-red-500 to-orange-600",
+      features: ["Dispute Analysis", "Resolution Strategies", "Mediation Support", "Documentation"],
+      category: "Business",
+      rating: 4.8,
+      users: "12K+",
+      keywords: ["dispute resolution", "AI mediation", "conflict management", "business disputes", "resolution tool", "AI arbitration"],
+      revenue: "Saves $25K+ in legal fees"
+    },
+    {
+      name: "Live Webinar Platform",
+      description: "Host engaging live webinars with AI-powered audience insights, automated follow-ups, and conversion tracking. Free webinar hosting and automation tool.",
+      url: "https://webinar.kenjiai.com",
+      icon: Users,
+      gradient: "from-blue-500 to-purple-600",
+      features: ["Live Streaming", "Audience Analytics", "Auto Follow-ups", "Registration Tools"],
+      category: "Marketing",
+      rating: 4.9,
+      users: "30K+",
+      keywords: ["free webinar platform", "live webinars", "webinar hosting", "online events", "virtual events", "webinar automation"],
+      revenue: "Generates 3x more leads"
+    },
+    {
+      name: "AI Business Planner",
+      description: "Create comprehensive business plans with AI-powered financial projections, market analysis, and growth strategies. Free AI business planning tool for entrepreneurs.",
+      url: "https://plan.kenjiai.com",
+      icon: TrendingUp,
+      gradient: "from-green-500 to-teal-600",
+      features: ["Financial Projections", "Market Analysis", "Growth Strategies", "Investor-Ready Plans"],
+      category: "Business",
+      rating: 4.8,
+      users: "20K+",
+      keywords: ["business plan generator", "AI business planning", "financial projections", "market analysis", "startup planning", "business strategy"],
+      revenue: "Helps secure $100K+ funding"
     }
   ];
 

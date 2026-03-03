@@ -116,6 +116,72 @@ export function BookingPopup({ isOpen, onClose }: BookingPopupProps) {
 
           {/* Content */}
           <div className="relative z-10 overflow-y-auto overflow-x-hidden custom-scrollbar -mt-16 w-full" style={{ maxHeight: 'calc(100vh - 4rem)' }}>
+            {/* Calendar iframe - MOVED TO TOP ON MOBILE */}
+            <div className="block md:hidden p-3 sm:p-4 bg-gray-900/40 border-b border-gray-700">
+              <div className="max-w-4xl mx-auto mb-4 px-2">
+                <div className="bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/50 rounded-lg p-3 text-center">
+                  <h3 className="text-lg font-bold text-white mb-1">
+                    Choose Your Time Slot
+                  </h3>
+                  <p className="text-orange-200 text-xs">
+                    Select a date and time that works best for your schedule
+                  </p>
+                </div>
+              </div>
+
+              <div className="max-w-4xl mx-auto relative px-2">
+                {!isCalendarLoaded && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-white to-gray-100 rounded-2xl z-10"
+                  >
+                    <div className="text-center">
+                      <motion.div
+                        animate={{
+                          rotate: 360,
+                          scale: [1, 1.1, 1]
+                        }}
+                        transition={{
+                          rotate: { duration: 1, repeat: Infinity, ease: "linear" },
+                          scale: { duration: 0.5, repeat: Infinity, repeatType: "reverse" }
+                        }}
+                        className="w-16 h-16 border-4 border-orange-500 border-t-transparent rounded-full mx-auto mb-4"
+                      />
+                      <motion.p
+                        animate={{ opacity: [0.5, 1, 0.5] }}
+                        transition={{ duration: 1.5, repeat: Infinity }}
+                        className="text-gray-700 font-bold text-lg"
+                      >
+                        Loading calendar...
+                      </motion.p>
+                      <p className="text-gray-500 text-sm mt-2">Please wait while we prepare your booking options</p>
+                    </div>
+                  </motion.div>
+                )}
+                <div className="bg-white rounded-2xl overflow-hidden shadow-2xl">
+                  <iframe
+                    src="https://safeclick.kenjiai.com/widget/booking/jB82SG2CBq9Nh8103IfC"
+                    style={{
+                      width: '100%',
+                      height: `${iframeHeight}px`,
+                      minHeight: '700px',
+                      border: 'none',
+                      display: 'block',
+                      overflow: 'hidden'
+                    }}
+                    scrolling="no"
+                    id="BcIemEVdNzY7eDxTJD3q_1770498301373"
+                    title="Book Your VIP Call"
+                    onLoad={() => {
+                      setIsCalendarLoaded(true);
+                      console.log('Calendar iframe loaded');
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+
             {/* Header with urgency */}
             <div className="bg-gradient-to-r from-orange-600 to-red-600 p-4 sm:p-6 text-center">
               <motion.div
@@ -135,8 +201,8 @@ export function BookingPopup({ isOpen, onClose }: BookingPopupProps) {
               </p>
             </div>
 
-            {/* Calendar iframe - MOVED TO TOP */}
-            <div className="p-3 sm:p-4 md:p-6 bg-gray-900/40 border-b border-gray-700">
+            {/* Calendar iframe - DESKTOP VIEW */}
+            <div className="hidden md:block p-3 sm:p-4 md:p-6 bg-gray-900/40 border-b border-gray-700">
               <div className="max-w-4xl mx-auto mb-4 sm:mb-6 px-2">
                 <div className="bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/50 rounded-lg sm:rounded-xl p-3 sm:p-4 text-center">
                   <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-1 sm:mb-2">
