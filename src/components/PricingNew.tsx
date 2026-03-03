@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { ToolReplacementBar } from './ToolReplacementBar';
 import { MoneyBackGuarantee } from './MoneyBackGuarantee';
+import FAQ from './FAQ';
 
 const MONTHLY_FEATURES = [
   "Done-For-You Setup & Team Training",
@@ -53,7 +54,7 @@ const VIP_FEATURES = [
   "Custom platform setup for your business",
   "Dedicated account manager and priority support",
   "Custom AI workflows built specifically for you",
-  "Pay once, use forever — no recurring fees",
+  "Pay once, use forever. No recurring fees.",
 ];
 
 const SOCIAL_PROOF_STATS = [
@@ -157,7 +158,7 @@ export function PricingNew() {
 
           <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
             KenjiAI replaces tools and services that usually cost $8,000+ per month. We handle
-            the setup, run your ads, and manage the automation — you focus on serving clients and growing your business.
+            the setup, run your ads, and manage the automation. You focus on serving clients and growing your business.
           </p>
 
           {/* Social Proof Bar */}
@@ -193,7 +194,7 @@ export function PricingNew() {
               {
                 icon: Rocket,
                 title: 'We Build Your System',
-                description: 'Website, funnels, and automation — we set it all up and keep it running smoothly.',
+                description: 'Website, funnels, and automation. We set it all up and keep it running smoothly.',
                 color: 'from-blue-400 to-teal-500'
               },
               {
@@ -393,7 +394,7 @@ export function PricingNew() {
             </div>
           </motion.div>
 
-          {/* Yearly Plan — Best Value */}
+          {/* Yearly Plan - Best Value */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -410,7 +411,7 @@ export function PricingNew() {
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
               <div className="bg-gradient-to-r from-emerald-500 to-green-500 text-white px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2 whitespace-nowrap">
                 <Star className="w-4 h-4" />
-                Best Value — Save $1,200/yr
+                Best Value - Save $1,200/yr
               </div>
             </div>
 
@@ -433,13 +434,13 @@ export function PricingNew() {
               <div className="text-emerald-400 font-bold text-base">
                 Save $1,200 per year compared to monthly
               </div>
-              <div className="text-gray-400 text-sm mt-1">Billed at $3,300 annually — 2 months completely free</div>
+              <div className="text-gray-400 text-sm mt-1">Billed at $3,300 annually. Get 2 months free.</div>
             </div>
 
             <div className="bg-emerald-500/10 border border-emerald-400/30 rounded-2xl p-4 mb-4">
               <div className="flex items-center justify-center gap-2 mb-1">
                 <Zap className="w-4 h-4 text-emerald-400" />
-                <span className="text-white font-semibold text-sm">Everything Included — Nothing Held Back</span>
+                <span className="text-white font-semibold text-sm">Everything Included - Nothing Held Back</span>
               </div>
               <p className="text-gray-200 text-sm text-center">Full platform · 2 months free · Priority onboarding</p>
             </div>
@@ -691,6 +692,8 @@ export function PricingNew() {
           </div>
         </motion.div>
       </div>
+
+      <FAQ />
 
       <style>{`
         @keyframes shine-slow {

@@ -14,6 +14,7 @@ import { HolidayThemeProvider } from './contexts/HolidayThemeContext';
 import { ErrorLogger } from './components/ErrorLogger';
 import { BrowserCompatibility } from './components/BrowserCompatibility';
 import { OfflineIndicator } from './components/OfflineIndicator';
+import QuickContact from './components/QuickContact';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const ToolsPage = lazy(() => import('./pages/ToolsPage'));
@@ -102,6 +103,7 @@ function App() {
               <footer role="contentinfo">
                 <Footer />
               </footer>
+              <QuickContact />
             </div>
           </Router>
         </AutoFormattingProvider>

@@ -96,7 +96,7 @@ const IntelligentCore: React.FC = () => {
             <span className="text-white">Your AI Brain</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
-            Not just automation—true artificial intelligence that learns, predicts, and evolves with your business
+            True artificial intelligence that learns, predicts, and evolves with your business
           </p>
         </motion.div>
 

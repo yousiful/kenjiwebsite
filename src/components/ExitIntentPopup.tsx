@@ -201,11 +201,11 @@ export function ExitIntentPopup() {
               </div>
 
               <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-3">
-                Wait — Before You Go
+                Wait! Before You Go
               </h2>
 
               <p className="text-gray-300 text-center text-sm sm:text-base mb-6 leading-relaxed">
-                Most businesses waste thousands on tools that don't work together. See how we replace 17+ tools with one AI-powered platform — in a free strategy call.
+                Most businesses waste thousands on tools that don't work together. See how we replace 17+ tools with one AI-powered platform in a free strategy call.
               </p>
 
               <div className="grid grid-cols-2 gap-3 mb-6">

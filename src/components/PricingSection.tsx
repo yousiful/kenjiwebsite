@@ -233,7 +233,7 @@ const PricingSection: React.FC = () => {
           </h2>
           <p className="text-lg text-gray-400 max-w-3xl mx-auto mb-6">
             Everything you need to automate, scale, and dominate your market.
-            No tiers, no limits—just complete business automation power.
+            No tiers, no limits. Complete business automation power.
           </p>
           
           {/* Value Proposition */}

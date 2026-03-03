@@ -14,7 +14,7 @@ const FutureProofFramework: React.FC = () => {
     {
       icon: Cloud,
       title: "Serverless Architecture",
-      description: "Auto-scaling infrastructure that grows with your business—pay only for what you use",
+      description: "Auto-scaling infrastructure that grows with your business. Pay only for what you use.",
       capability: "Infinite scalability",
       color: "from-blue-500 to-cyan-600"
     },
@@ -35,7 +35,7 @@ const FutureProofFramework: React.FC = () => {
     {
       icon: Database,
       title: "Data Portability",
-      description: "Your data, your control—export anytime, anywhere, in any format",
+      description: "Your data, your control. Export anytime, anywhere, in any format.",
       capability: "Complete data ownership",
       color: "from-orange-500 to-red-600"
     }
@@ -114,7 +114,7 @@ const FutureProofFramework: React.FC = () => {
             <span className="text-white">Built for Infinite Scale</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
-            Architecture designed for the next decade—scalable, adaptable, and ready for whatever the future brings
+            Architecture designed for the next decade. Scalable, adaptable, and ready for whatever comes next.
           </p>
         </motion.div>
 

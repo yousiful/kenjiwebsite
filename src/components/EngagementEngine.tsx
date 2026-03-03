@@ -28,14 +28,14 @@ const EngagementEngine: React.FC = () => {
     {
       icon: Bell,
       title: "Smart Notifications",
-      description: "AI-powered alerts that deliver value, not noise—perfectly timed insights",
+      description: "AI-powered alerts that deliver value, not noise. Perfectly timed insights.",
       metric: "94% open rate",
       color: "from-green-500 to-emerald-600"
     },
     {
       icon: MessageSquare,
       title: "Feedback Loop",
-      description: "Your voice shapes our roadmap—every suggestion is heard and considered",
+      description: "Your voice shapes our roadmap. Every suggestion is heard and considered.",
       metric: "72% feature adoption",
       color: "from-orange-500 to-red-600"
     }
@@ -109,7 +109,7 @@ const EngagementEngine: React.FC = () => {
             <span className="text-white">Building Loyal Communities</span>
           </h2>
           <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed">
-            More than software—it's a community of entrepreneurs helping each other succeed
+            A community of entrepreneurs helping each other succeed
           </p>
         </motion.div>
 

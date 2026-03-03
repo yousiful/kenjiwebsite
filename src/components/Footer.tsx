@@ -260,12 +260,12 @@ const Footer: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-center">
             <div className="flex items-center gap-2 text-sm text-gray-400">
               <Award className="w-4 h-4 text-yellow-400 shrink-0" />
-              <span><span className="text-white font-semibold">30-Day Money-Back Guarantee</span> — No questions asked</span>
+              <span><span className="text-white font-semibold">30-Day Money-Back Guarantee</span> • No questions asked</span>
             </div>
             <div className="hidden sm:block w-px h-4 bg-gray-700" />
             <div className="flex items-center gap-2 text-sm text-gray-400">
               <Shield className="w-4 h-4 text-blue-400 shrink-0" />
-              <span><span className="text-white font-semibold">Your data is always secure</span> — 256-bit encryption</span>
+              <span><span className="text-white font-semibold">Your data is always secure</span> • 256-bit encryption</span>
             </div>
             <div className="hidden sm:block w-px h-4 bg-gray-700" />
             <div className="flex items-center gap-2 text-sm text-gray-400">

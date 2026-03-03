@@ -11,6 +11,8 @@ import { ResultsDisclaimer } from '../components/ResultsDisclaimer';
 import { TrustBadges } from '../components/TrustBadges';
 import { MoneyBackGuarantee } from '../components/MoneyBackGuarantee';
 import { RealTimeStats } from '../components/RealTimeStats';
+import FAQ from '../components/FAQ';
+import QuickContact from '../components/QuickContact';
 
 const HomePage: React.FC = () => {
   const structuredData = {
@@ -74,10 +76,12 @@ const HomePage: React.FC = () => {
         <div className="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <MoneyBackGuarantee />
         </div>
+        <FAQ />
         <div className="py-4 px-4 sm:px-6 lg:px-8">
           <ResultsDisclaimer />
         </div>
         <FinalCTA />
+        <QuickContact />
         <ScrollControls />
       </div>
     </>
