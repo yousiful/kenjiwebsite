@@ -85,7 +85,7 @@ const SuccessPage: React.FC = () => {
     {
       icon: Calendar,
       title: "Book Onboarding",
-      description: "Free 30-min setup call with AI experts",
+      description: "Free 15-min setup call with AI experts",
       action: "Schedule Now",
       link: "https://calendly.com/kenjiai-onboarding",
       color: "from-green-600 to-emerald-500",

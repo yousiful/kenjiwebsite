@@ -193,7 +193,7 @@ export function PricingNew() {
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 leading-tight">Not Sure Which Plan?</h3>
               <p className="text-orange-100 text-sm mb-4 leading-relaxed">
-                Book a free 30-minute call. We'll show you exactly what works for your business.
+                Book a free 15-minute call. We'll show you exactly what works for your business.
               </p>
               <div className="flex items-center justify-center gap-2 text-white font-semibold text-sm">
                 <span>Schedule Your Call Now</span>
@@ -464,7 +464,7 @@ export function PricingNew() {
                   <span className="text-white font-bold text-lg">Book a Demo</span>
                 </div>
                 <p className="text-gray-300 text-xs text-center mb-3 group-hover:text-white transition-colors">
-                  See how KenjiAI works for your business in a quick 30-minute call
+                  See how KenjiAI works for your business in a quick 15-minute call
                 </p>
                 <div className="flex items-center justify-center gap-2 text-amber-400 font-semibold text-sm group-hover:text-amber-300 transition-colors">
                   <span>Schedule Now</span>
@@ -551,7 +551,7 @@ export function PricingNew() {
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 leading-tight">Book a Free Call</h3>
                 <p className="text-orange-100 text-base sm:text-lg mb-5 leading-relaxed">
-                  30 minutes. We'll walk you through how KenjiAI works for your business. No pressure, no obligation.
+                  15 minutes. We'll walk you through how KenjiAI works for your business. No pressure, no obligation.
                 </p>
                 <div className="flex items-center justify-center gap-2 text-white font-semibold text-base">
                   <span>Schedule Your Call</span>

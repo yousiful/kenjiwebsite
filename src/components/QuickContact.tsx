@@ -66,7 +66,7 @@ const QuickContact: React.FC = () => {
                 </div>
                 <div className="flex-1">
                   <div className="text-white font-semibold text-sm">Book a Call</div>
-                  <div className="text-gray-400 text-xs">Free 30-min strategy call</div>
+                  <div className="text-gray-400 text-xs">Free 15-min strategy call</div>
                 </div>
               </a>
 
