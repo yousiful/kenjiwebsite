@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed px-2"
         >
-          The only all-in-one AI partner that automates your lead generation, sales calls, and client delivery. Get a proven ROI in under 30 days.
+          One platform that handles your leads, sales calls, and follow-ups automatically. Most clients see results in the first 30 days.
         </motion.p>
 
         {/* Benefit Tags - 8 pills */}

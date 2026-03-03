@@ -20,26 +20,12 @@ const Footer: React.FC = () => {
   };
 
   const navLinks = {
-    solutions: [
-      { name: 'AI Automation', href: '/ai-automation' },
-      { name: 'Voice Agents', href: '/voice-agents' },
-      { name: 'Voice AI', href: '/voice-ai' },
-      { name: 'Marketing Automation', href: '/marketing-automation' },
-      { name: 'CRM & Sales', href: '/crm' },
-    ],
-    resources: [
-      { name: 'Free AI Tools', href: '/free-tools' },
-      { name: 'Knowledge Base', href: '/knowledge' },
-      { name: 'AI Education', href: '/ai-education' },
-      { name: 'Prompt Generator', href: 'https://prompt.kenjiai.com', external: true },
-      { name: 'Sales Coach AI', href: 'https://salescoach.kenjiai.com/', external: true },
-    ],
     company: [
       { name: 'Pricing', href: '/pricing' },
+      { name: 'Free Tools', href: '/free-tools' },
+      { name: 'Knowledge Base', href: '/knowledge' },
       { name: 'Investors', href: '/investors' },
-      { name: 'Contact Us', href: 'mailto:care@kenjiai.com', external: true },
       { name: 'Become a Partner', href: 'https://closers.kenjiai.com/', external: true },
-      { name: 'Support Center', href: 'https://support.kenjiai.com/', external: true },
     ],
     legal: [
       { name: 'Terms of Service', href: '/terms' },
@@ -89,17 +75,16 @@ const Footer: React.FC = () => {
           >
             <div className="text-center lg:text-left max-w-xl">
               <p className="text-xs font-semibold tracking-widest uppercase text-blue-400 mb-2">
-                Ready to automate your revenue?
+                Ready to get started?
               </p>
               <h3 className="text-2xl sm:text-3xl font-bold text-white leading-tight mb-2">
-                Your AI team is waiting.{' '}
+                See what KenjiAI can do.{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-green-400">
-                  Start in 5 minutes.
+                  Get started in minutes.
                 </span>
               </h3>
               <p className="text-gray-400 text-sm sm:text-base">
-                Join 2,400+ businesses running on KenjiAI — voice agents, CRM, and automation
-                that close deals while you sleep.
+                Join 2,400+ businesses using KenjiAI to handle calls, manage leads, and close more deals.
               </p>
             </div>
 
@@ -186,68 +171,9 @@ const Footer: React.FC = () => {
               <span className="text-xl font-bold text-white tracking-tight">KenjiAI</span>
             </div>
 
-            <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-xs">
-              The AI platform that makes you money while you sleep. Voice agents that close deals 24/7,
-              smart workflows, and automation that pays for itself from day one.
+            <p className="text-gray-400 text-sm leading-relaxed mb-8 max-w-xs">
+              AI tools that actually help you make money. We handle the tech so you can focus on growing your business.
             </p>
-
-            {/* Newsletter Signup */}
-            <div className="mb-6">
-              <p className="text-white text-sm font-semibold mb-1 flex items-center gap-2">
-                <Gift className="w-4 h-4 text-green-400" />
-                Get free AI tips & resources
-              </p>
-              <p className="text-gray-500 text-xs mb-3">Weekly strategies that generate real revenue.</p>
-              {submitted ? (
-                <div className="flex items-center gap-2 text-green-400 text-sm font-medium">
-                  <CheckCircle className="w-4 h-4" />
-                  You're in! Check your inbox.
-                </div>
-              ) : (
-                <form onSubmit={handleLeadSubmit} className="flex gap-2">
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="your@email.com"
-                    required
-                    className="flex-1 min-w-0 px-3 py-2 rounded-lg bg-gray-800 border border-gray-700 text-white text-sm placeholder-gray-500 focus:outline-none focus:border-blue-500 transition-colors"
-                  />
-                  <button
-                    type="submit"
-                    className="px-4 py-2 rounded-lg text-sm font-semibold text-white transition-all duration-300 shrink-0"
-                    style={{ background: 'linear-gradient(135deg, #3B82F6, #10B981)' }}
-                  >
-                    Join
-                  </button>
-                </form>
-              )}
-            </div>
-
-            {/* Contact Info */}
-            <div className="space-y-2.5 mb-6">
-              <a
-                href="mailto:care@kenjiai.com"
-                className="flex items-center gap-2.5 text-gray-400 text-sm hover:text-blue-400 transition-colors"
-              >
-                <Mail className="w-4 h-4 text-blue-400 shrink-0" />
-                care@kenjiai.com
-              </a>
-              <a
-                href="tel:+18286772148"
-                className="flex items-center gap-2.5 text-gray-400 text-sm hover:text-blue-400 transition-colors"
-              >
-                <Phone className="w-4 h-4 text-blue-400 shrink-0" />
-                <span>
-                  (828) 677-2148
-                  <span className="text-gray-600 text-xs ml-1">— Speak with Kenji directly</span>
-                </span>
-              </a>
-              <div className="flex items-center gap-2.5 text-gray-400 text-sm">
-                <MapPin className="w-4 h-4 text-blue-400 shrink-0" />
-                San Francisco, CA
-              </div>
-            </div>
 
             {/* Social */}
             <div className="flex items-center gap-3">
@@ -274,48 +200,9 @@ const Footer: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: 0.15 }}
-            className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-8"
+            className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8"
             aria-label="Footer Navigation"
           >
-            {/* Solutions */}
-            <div>
-              <h4 className="text-white font-semibold text-sm mb-4 tracking-wide">Solutions</h4>
-              <ul className="space-y-2.5">
-                {navLinks.solutions.map((link) => (
-                  <li key={link.name}>
-                    <Link to={link.href} className="text-gray-500 hover:text-blue-400 text-sm transition-colors duration-200">
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Resources */}
-            <div>
-              <h4 className="text-white font-semibold text-sm mb-4 tracking-wide">Resources</h4>
-              <ul className="space-y-2.5">
-                {navLinks.resources.map((link) => (
-                  <li key={link.name}>
-                    {link.external ? (
-                      <a
-                        href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-gray-500 hover:text-blue-400 text-sm transition-colors duration-200"
-                      >
-                        {link.name}
-                      </a>
-                    ) : (
-                      <Link to={link.href} className="text-gray-500 hover:text-blue-400 text-sm transition-colors duration-200">
-                        {link.name}
-                      </Link>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
             {/* Company */}
             <div>
               <h4 className="text-white font-semibold text-sm mb-4 tracking-wide">Company</h4>
@@ -341,10 +228,10 @@ const Footer: React.FC = () => {
               </ul>
             </div>
 
-            {/* Legal + Trust */}
+            {/* Legal */}
             <div>
               <h4 className="text-white font-semibold text-sm mb-4 tracking-wide">Legal</h4>
-              <ul className="space-y-2.5 mb-6">
+              <ul className="space-y-2.5">
                 {navLinks.legal.map((link) => (
                   <li key={link.name}>
                     <Link to={link.href} className="text-gray-500 hover:text-blue-400 text-sm transition-colors duration-200">
@@ -353,8 +240,11 @@ const Footer: React.FC = () => {
                   </li>
                 ))}
               </ul>
+            </div>
 
-              {/* Trust Badges */}
+            {/* Trust Badges */}
+            <div>
+              <h4 className="text-white font-semibold text-sm mb-4 tracking-wide">Security</h4>
               <div className="space-y-2">
                 {trustBadges.map((badge) => (
                   <div key={badge.label} className="flex items-center gap-2">
@@ -395,13 +285,12 @@ const Footer: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-gray-600 text-xs">
-              © {new Date().getFullYear()} KenjiAI. All Rights Reserved. Built for entrepreneurs who refuse to slow down.
+              © {new Date().getFullYear()} KenjiAI. All Rights Reserved.
             </p>
             <div className="flex items-center gap-5 text-xs text-gray-600">
               <Link to="/terms" className="hover:text-blue-400 transition-colors">Terms</Link>
               <Link to="/privacy" className="hover:text-blue-400 transition-colors">Privacy</Link>
               <Link to="/disclaimer" className="hover:text-blue-400 transition-colors">Disclaimer</Link>
-              <a href="mailto:care@kenjiai.com" className="hover:text-blue-400 transition-colors">Contact</a>
             </div>
           </div>
         </div>

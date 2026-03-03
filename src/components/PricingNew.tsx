@@ -49,11 +49,11 @@ const YEARLY_FEATURES = [
 ];
 
 const VIP_FEATURES = [
-  "1-on-1 strategy session with our senior team",
-  "Full platform walkthrough custom to your business",
-  "Dedicated account manager & priority support",
-  "Custom AI workflows built for your exact use case",
-  "Lifetime platform access — pay once, own it forever",
+  "Personal strategy session with our senior team",
+  "Custom platform setup for your business",
+  "Dedicated account manager and priority support",
+  "Custom AI workflows built specifically for you",
+  "Pay once, use forever — no recurring fees",
 ];
 
 const SOCIAL_PROOF_STATS = [
@@ -156,8 +156,8 @@ export function PricingNew() {
           </h1>
 
           <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
-            KenjiAI replaces what costs $8,000 or more per month in tools and staff. Our team handles
-            the setup, the ads, and the automation — so you can focus entirely on serving your clients and scaling your revenue.
+            KenjiAI replaces tools and services that usually cost $8,000+ per month. We handle
+            the setup, run your ads, and manage the automation — you focus on serving clients and growing your business.
           </p>
 
           {/* Social Proof Bar */}
@@ -186,20 +186,20 @@ export function PricingNew() {
             {[
               {
                 icon: Target,
-                title: 'Done-For-You Ads',
-                description: 'We create, launch, and optimize your ad campaigns to fill your CRM with qualified leads ready to buy.',
+                title: 'We Run Your Ads',
+                description: 'We create and manage your ad campaigns to bring qualified leads straight into your CRM.',
                 color: 'from-blue-400 to-cyan-500'
               },
               {
                 icon: Rocket,
-                title: 'Done-For-You Sites & Workflows',
-                description: 'Your entire tech stack — website, funnels, and automation — built and managed by our experts.',
+                title: 'We Build Your System',
+                description: 'Website, funnels, and automation — we set it all up and keep it running smoothly.',
                 color: 'from-blue-400 to-teal-500'
               },
               {
                 icon: Shield,
-                title: 'Done-For-You Expert Support',
-                description: 'A dedicated team handles strategy, management, and optimization. You focus on revenue, we handle the rest.',
+                title: 'We Support You',
+                description: 'Our team handles strategy and optimization. You focus on growing revenue while we manage the tech.',
                 color: 'from-green-400 to-emerald-500'
               }
             ].map((prop, idx) => (
@@ -247,13 +247,45 @@ export function PricingNew() {
             </span>
           </h2>
           <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-4">
-            One platform replaces your CRM, email tool, ad agency, chatbot, course platform, and more.
-            Our clients consistently save between $5,000 and $8,000 per month in tools and agency costs — and grow faster because of it.
+            One platform that replaces your CRM, email tool, ad agency, chatbot, and course platform.
+            Most clients save $5,000 to $8,000 per month on tools and agency fees.
           </p>
           <div className="inline-flex items-center gap-2 text-emerald-400 font-semibold text-base">
             <Check className="w-4 h-4" />
             <span>30-day money-back guarantee on all plans</span>
           </div>
+        </motion.div>
+
+        {/* Mobile-Only Booking CTA - Appears at Top */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="lg:hidden mb-8 px-4"
+        >
+          <motion.a
+            href="https://go.mediatraffics.com/leads"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="block group relative bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl p-6 text-center overflow-hidden shadow-2xl"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-red-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            <div className="relative z-10">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                <Video className="w-7 h-7 text-white" />
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 leading-tight">Not Sure Which Plan?</h3>
+              <p className="text-orange-100 text-sm mb-4 leading-relaxed">
+                Book a free 30-minute call. We'll show you exactly what works for your business.
+              </p>
+              <div className="flex items-center justify-center gap-2 text-white font-semibold text-sm">
+                <span>Schedule Your Call Now</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+              </div>
+            </div>
+          </motion.a>
         </motion.div>
 
         {/* 3-Column Pricing Grid */}
@@ -281,7 +313,7 @@ export function PricingNew() {
 
             <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Monthly Plan</h3>
             <p className="text-gray-400 text-center mb-6 text-sm leading-relaxed">
-              Start with full access and complete flexibility. We will be with you every step of the way.
+              Full access with no long-term commitment. Cancel anytime.
             </p>
 
             <div className="text-center mb-5">
@@ -390,7 +422,7 @@ export function PricingNew() {
 
             <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Annual Plan</h3>
             <p className="text-gray-300 text-center mb-6 text-sm leading-relaxed">
-              The plan our highest-growth clients choose. We commit more deeply when you do.
+              Save over $1,200 per year. Our most popular plan for growing businesses.
             </p>
 
             <div className="text-center mb-5">
@@ -495,7 +527,7 @@ export function PricingNew() {
 
             <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Lifetime Access</h3>
             <p className="text-gray-200 text-center mb-6 text-sm leading-relaxed">
-              One payment. Lifetime access. We partner with you directly to build a business that compounds.
+              Pay once, use forever. We work directly with you to build long-term growth.
             </p>
 
             <div className="text-center mb-6">
@@ -517,10 +549,10 @@ export function PricingNew() {
               <div className="relative z-10">
                 <div className="flex items-center justify-center gap-2.5 mb-2">
                   <Video className="w-6 h-6 text-blue-400 group-hover:text-blue-300 transition-colors" />
-                  <span className="text-white font-bold text-lg">Book a System Walkthrough</span>
+                  <span className="text-white font-bold text-lg">Book a Demo</span>
                 </div>
                 <p className="text-gray-300 text-xs text-center mb-3 group-hover:text-white transition-colors">
-                  See exactly how KenjiAI would work for your business in 30 minutes
+                  See how KenjiAI works for your business in a quick 30-minute call
                 </p>
                 <div className="flex items-center justify-center gap-2 text-amber-400 font-semibold text-sm group-hover:text-amber-300 transition-colors">
                   <span>Schedule Now</span>
@@ -581,10 +613,10 @@ export function PricingNew() {
         >
           <div className="text-center mb-10 sm:mb-12 px-4">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white leading-tight">
-              Let's Build Something Real Together
+              Ready to Get Started?
             </h2>
             <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-              Book a no-pressure strategy call and we will show you exactly what KenjiAI would do for your specific business. Or jump straight into your dashboard if you are already a member.
+              Book a quick call and we'll show you exactly how KenjiAI fits your business. Or if you're already a member, jump straight into your dashboard.
             </p>
           </div>
 
@@ -605,12 +637,12 @@ export function PricingNew() {
                 <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-5 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                   <Video className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 leading-tight">Book a Strategy Call</h3>
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 leading-tight">Book a Free Call</h3>
                 <p className="text-orange-100 text-base sm:text-lg mb-5 leading-relaxed">
-                  30 minutes. We map out exactly how KenjiAI fits your business — no obligation, no pressure.
+                  30 minutes. We'll walk you through how KenjiAI works for your business. No pressure, no obligation.
                 </p>
                 <div className="flex items-center justify-center gap-2 text-white font-semibold text-base">
-                  <span>Let's Talk — Book Your Call</span>
+                  <span>Schedule Your Call</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
               </div>
