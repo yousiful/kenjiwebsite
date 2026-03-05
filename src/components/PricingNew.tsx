@@ -79,7 +79,7 @@ export function PricingNew() {
       <motion.div
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.25 }}
         className="w-full -mt-16 sm:-mt-24 mb-6"
         style={{
           background: 'linear-gradient(90deg, #0a0a0a 0%, #111827 50%, #0a0a0a 100%)',
@@ -88,7 +88,7 @@ export function PricingNew() {
       >
         <motion.div
           animate={{ backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
-          transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: 'linear' }}
           className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 px-4 py-2 text-xs sm:text-sm text-center"
           style={{
             background: 'linear-gradient(90deg, rgba(0,255,255,0.05), rgba(57,255,20,0.05), rgba(0,255,255,0.05))',
@@ -132,7 +132,7 @@ export function PricingNew() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
         >
           <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full px-4 py-2 mb-6 text-sm text-emerald-400 font-semibold">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse inline-block"></span>
@@ -175,7 +175,7 @@ export function PricingNew() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.3, delay: 0.15 }}
           className="lg:hidden mb-8 px-4"
         >
           <motion.a
@@ -210,7 +210,7 @@ export function PricingNew() {
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.3 }}
             className="relative bg-gray-900/60 backdrop-blur-sm border border-blue-500/30 rounded-3xl p-5 sm:p-8 flex flex-col order-2 lg:order-1"
           >
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -236,23 +236,16 @@ export function PricingNew() {
                 $375
                 <span className="text-xl sm:text-2xl text-gray-400">/mo</span>
               </div>
+              <div className="text-blue-300 font-semibold text-sm mt-2">
+                + 10% Performance Fee on Revenue Generated
+              </div>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-400/30 rounded-2xl p-4 mb-4">
+            <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-400/30 rounded-2xl p-4 mb-6">
               <div className="flex items-center justify-center gap-2">
                 <Zap className="w-5 h-5 text-blue-400" />
                 <span className="text-white font-bold text-base">Everything Included</span>
               </div>
-            </div>
-
-            <div className="bg-emerald-950/60 border border-emerald-500/40 rounded-xl p-4 mb-6">
-              <div className="flex items-center justify-center gap-2 mb-1.5">
-                <span className="text-emerald-300 font-bold text-sm tracking-wide">COUPON CODE</span>
-              </div>
-              <div className="flex items-center justify-center gap-2 mb-1">
-                <span className="font-mono font-black text-lg tracking-widest text-white bg-emerald-900/60 border border-emerald-500/50 px-3 py-1 rounded-lg select-all">KENJ4LFE</span>
-              </div>
-              <p className="text-emerald-300 text-xs text-center mt-2">Apply at checkout to save $76 on your first month</p>
             </div>
 
             <div className="flex-1 mb-6 relative">
@@ -285,10 +278,10 @@ export function PricingNew() {
                 <motion.div className="flex items-center gap-3">
                   <motion.div
                     animate={{ rotate: 360 }}
-                    transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                    transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }}
                     className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
                   />
-                  <motion.span animate={{ opacity: [1, 0.5, 1] }} transition={{ duration: 1.5, repeat: Infinity }}>
+                  <motion.span animate={{ opacity: [1, 0.5, 1] }} transition={{ duration: 1, repeat: Infinity }}>
                     Redirecting to checkout...
                   </motion.span>
                 </motion.div>
@@ -310,7 +303,7 @@ export function PricingNew() {
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.3, delay: 0.05 }}
             className="relative bg-gray-900/60 backdrop-blur-sm border border-emerald-500/40 rounded-3xl p-5 sm:p-8 flex flex-col order-3 lg:order-2"
             style={{ boxShadow: '0 0 40px rgba(16, 185, 129, 0.18)' }}
           >
@@ -343,27 +336,20 @@ export function PricingNew() {
                 $275
                 <span className="text-xl sm:text-2xl text-gray-400">/mo</span>
               </div>
-              <div className="text-emerald-400 font-bold text-base">
+              <div className="text-emerald-300 font-semibold text-sm mt-2">
+                + 5% Performance Fee on Revenue Generated
+              </div>
+              <div className="text-emerald-400 font-bold text-base mt-3">
                 Save $1,200 per year compared to monthly
               </div>
               <div className="text-gray-400 text-sm mt-1">Billed at $3,300 annually. Get 2 months free.</div>
             </div>
 
-            <div className="bg-emerald-500/10 border border-emerald-400/30 rounded-2xl p-4 mb-4">
+            <div className="bg-emerald-500/10 border border-emerald-400/30 rounded-2xl p-4 mb-6">
               <div className="flex items-center justify-center gap-2">
                 <Zap className="w-5 h-5 text-emerald-400" />
                 <span className="text-white font-bold text-base">Everything Included</span>
               </div>
-            </div>
-
-            <div className="bg-emerald-950/60 border border-emerald-500/40 rounded-xl p-4 mb-6">
-              <div className="flex items-center justify-center gap-2 mb-1.5">
-                <span className="text-emerald-300 font-bold text-sm tracking-wide">COUPON CODE</span>
-              </div>
-              <div className="flex items-center justify-center gap-2 mb-1">
-                <span className="font-mono font-black text-lg tracking-widest text-white bg-emerald-900/60 border border-emerald-500/50 px-3 py-1 rounded-lg select-all">KENJ4LFE</span>
-              </div>
-              <p className="text-emerald-300 text-xs text-center mt-2">Apply at checkout to save $76 on your first month</p>
             </div>
 
             <div className="flex-1 mb-6 relative">
@@ -396,10 +382,10 @@ export function PricingNew() {
                 <motion.div className="flex items-center gap-3">
                   <motion.div
                     animate={{ rotate: 360 }}
-                    transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+                    transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }}
                     className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
                   />
-                  <motion.span animate={{ opacity: [1, 0.5, 1] }} transition={{ duration: 1.5, repeat: Infinity }}>
+                  <motion.span animate={{ opacity: [1, 0.5, 1] }} transition={{ duration: 1, repeat: Infinity }}>
                     Redirecting to checkout...
                   </motion.span>
                 </motion.div>
@@ -421,7 +407,7 @@ export function PricingNew() {
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
             className="relative bg-gradient-to-br from-amber-900/35 to-orange-900/35 backdrop-blur-sm border border-amber-500/40 rounded-3xl p-5 sm:p-8 flex flex-col order-1 lg:order-3"
           >
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
@@ -520,7 +506,7 @@ export function PricingNew() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
           className="mt-20 sm:mt-28 max-w-5xl mx-auto"
         >
           <div className="text-center mb-10 sm:mb-12 px-4">
@@ -596,13 +582,52 @@ export function PricingNew() {
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
+              transition={{ duration: 0.4, delay: 0.4 }}
             >
               <MoneyBackGuarantee />
             </motion.div>
           </div>
         </motion.div>
       </div>
+
+      {/* Coupon Code Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: 0.2 }}
+        className="mt-24 sm:mt-32 px-4 max-w-4xl mx-auto mb-20"
+      >
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 leading-tight">
+            Limited Time Offer
+          </h2>
+          <p className="text-lg text-gray-300">Save on your first month with our exclusive coupon code</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <motion.div
+            whileHover={{ y: -5 }}
+            className="bg-emerald-950/60 border border-emerald-500/40 rounded-2xl p-8 flex flex-col items-center justify-center"
+          >
+            <div className="text-emerald-300 font-bold text-sm tracking-wide mb-3">MONTHLY PLAN</div>
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <span className="font-mono font-black text-2xl tracking-widest text-white bg-emerald-900/60 border border-emerald-500/50 px-4 py-2 rounded-lg select-all">KENJ4LFE</span>
+            </div>
+            <p className="text-emerald-300 text-sm text-center">Save $76 on your first month</p>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ y: -5 }}
+            className="bg-emerald-950/60 border border-emerald-500/40 rounded-2xl p-8 flex flex-col items-center justify-center"
+          >
+            <div className="text-emerald-300 font-bold text-sm tracking-wide mb-3">ANNUAL PLAN</div>
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <span className="font-mono font-black text-2xl tracking-widest text-white bg-emerald-900/60 border border-emerald-500/50 px-4 py-2 rounded-lg select-all">KENJ4LFE</span>
+            </div>
+            <p className="text-emerald-300 text-sm text-center">Save $76 on your first month</p>
+          </motion.div>
+        </div>
+      </motion.div>
 
       <FAQ />
 
@@ -611,7 +636,7 @@ export function PricingNew() {
           0% { transform: translateX(-100%) skewX(-15deg); }
           100% { transform: translateX(200%) skewX(-15deg); }
         }
-        .animate-shine-slow { animation: shine-slow 3s ease-in-out infinite; }
+        .animate-shine-slow { animation: shine-slow 2s ease-in-out infinite; }
 
         .scrollbar-thin::-webkit-scrollbar { width: 4px; }
         .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
