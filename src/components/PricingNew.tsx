@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { ToolReplacementBar } from './ToolReplacementBar';
 import { MoneyBackGuarantee } from './MoneyBackGuarantee';
+import { ExitIntentPopup } from './ExitIntentPopup';
 import FAQ from './FAQ';
 
 const MONTHLY_FEATURES = [
@@ -134,11 +135,6 @@ export function PricingNew() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
-          <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full px-4 py-2 mb-6 text-sm text-emerald-400 font-semibold">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse inline-block"></span>
-            Trusted by 50,000+ businesses worldwide
-          </div>
-
           <h1
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-tight"
             style={{ fontFamily: 'Inter, Montserrat, sans-serif' }}
@@ -150,14 +146,14 @@ export function PricingNew() {
               backgroundClip: 'text',
               letterSpacing: '-0.01em'
             }}>
-              We Build It.
+              Your Success Partner
             </span>
             <br />
-            <span className="text-white">You Grow It. Together.</span>
+            <span className="text-white">Let's Grow Your Business Together</span>
           </h1>
 
           <p className="text-xl sm:text-2xl text-gray-200 font-semibold max-w-3xl mx-auto mb-8 leading-relaxed">
-            Complete business automation. We handle the setup and management.
+            We don't just provide tools—we partner with you every step. From setup to scaling, we're invested in your success.
           </p>
 
         </motion.div>
@@ -228,7 +224,7 @@ export function PricingNew() {
 
             <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Monthly Plan</h3>
             <p className="text-gray-200 text-center mb-6 text-base font-semibold leading-relaxed">
-              Cancel anytime.
+              Test drive with flexibility. No long-term commitment needed.
             </p>
 
             <div className="text-center mb-5">
@@ -328,7 +324,7 @@ export function PricingNew() {
 
             <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Annual Plan</h3>
             <p className="text-gray-200 text-center mb-6 text-base font-semibold leading-relaxed">
-              Save $1,200 per year.
+              Commit to growth. Save and unlock extra benefits designed for partners.
             </p>
 
             <div className="text-center mb-5">
@@ -423,9 +419,9 @@ export function PricingNew() {
               </div>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Lifetime Access</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">VIP Partnership</h3>
             <p className="text-gray-200 text-center mb-6 text-sm leading-relaxed">
-              Pay once, use forever. We work directly with you to build long-term growth.
+              For serious founders. We become your growth partner—forever. Custom solutions, dedicated support, unlimited potential.
             </p>
 
             <div className="text-center mb-6">
@@ -511,10 +507,10 @@ export function PricingNew() {
         >
           <div className="text-center mb-10 sm:mb-12 px-4">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white leading-tight">
-              Ready to Get Started?
+              Let's Partner Together
             </h2>
             <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-              Book a quick call and we'll show you exactly how KenjiAI fits your business. Or if you're already a member, jump straight into your dashboard.
+              Whether you're ready to get started or want to talk through your vision, we're here to support your journey. Your success is our success.
             </p>
           </div>
 
@@ -630,6 +626,8 @@ export function PricingNew() {
       </motion.div>
 
       <FAQ />
+
+      <ExitIntentPopup />
 
       <style>{`
         @keyframes shine-slow {

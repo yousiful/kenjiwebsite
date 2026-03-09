@@ -201,38 +201,48 @@ export function ExitIntentPopup() {
               </div>
 
               <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-3">
-                Wait! Before You Go
+                Price Increase Coming Soon
               </h2>
 
-              <p className="text-gray-300 text-center text-sm sm:text-base mb-6 leading-relaxed">
-                Most businesses waste thousands on tools that don't work together. See how we replace 17+ tools with one AI-powered platform in a free strategy call.
+              <p className="text-gray-300 text-center text-sm sm:text-base mb-4 leading-relaxed">
+                Lock in today's pricing before we raise rates next month. Your investment in growth shouldn't wait.
+              </p>
+
+              <div className="bg-amber-500/15 border border-amber-500/30 rounded-lg px-4 py-3 mb-6">
+                <p className="text-amber-200 text-sm text-center font-semibold">
+                  Current pricing guaranteed through this month only
+                </p>
+              </div>
+
+              <p className="text-gray-400 text-center text-xs sm:text-sm mb-6">
+                We're investing heavily in new AI features and support. We'd love to have you on board at the current rate.
               </p>
 
               <div className="grid grid-cols-2 gap-3 mb-6">
                 {[
-                  'Done-For-You Setup',
-                  'AI Voice Agents',
-                  'Full CRM Included',
-                  'Proven ROI'
+                  'Secure Your Rate',
+                  'Limited Time Only',
+                  'No Price Lock-in',
+                  'Start Anytime'
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-2 bg-gray-800/60 border border-gray-700/50 rounded-lg px-3 py-2">
-                    <Zap className="w-3.5 h-3.5 text-green-400 flex-shrink-0" />
+                    <Zap className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
                     <span className="text-gray-200 text-xs font-medium">{item}</span>
                   </div>
                 ))}
               </div>
 
               <a
-                href="https://go.mediatraffics.com/leads"
+                href="https://freedom.kenjiai.com/checkout-4912-2457-3370"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full text-center text-white font-bold text-base sm:text-lg py-4 rounded-xl touch-manipulation transition-all duration-300 hover:brightness-110"
                 style={{
-                  background: 'linear-gradient(90deg, #10B981 0%, #34D399 100%)',
+                  background: 'linear-gradient(90deg, #F59E0B 0%, #EF4444 100%)',
                 }}
               >
                 <span className="flex items-center justify-center gap-2">
-                  Book Free Strategy Call
+                  Lock In Current Pricing Now
                   <ArrowRight className="w-5 h-5" />
                 </span>
               </a>
@@ -241,7 +251,7 @@ export function ExitIntentPopup() {
                 onClick={handleClose}
                 className="block w-full text-center text-gray-500 text-sm mt-4 py-2 hover:text-gray-300 transition-colors touch-manipulation min-h-[44px]"
               >
-                No thanks, I'll figure it out myself
+                I'll decide later
               </button>
             </div>
           </motion.div>
