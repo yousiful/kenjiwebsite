@@ -201,29 +201,25 @@ export function ExitIntentPopup() {
               </div>
 
               <h2 className="text-2xl sm:text-3xl font-bold text-white text-center mb-3">
-                Price Increase Coming Soon
+                Pricing Changes Next Month
               </h2>
 
               <p className="text-gray-300 text-center text-sm sm:text-base mb-4 leading-relaxed">
-                Lock in today's pricing before we raise rates next month. Your investment in growth shouldn't wait.
+                We're increasing our rates to fund product improvements. Lock in today's pricing before that happens.
               </p>
 
               <div className="bg-amber-500/15 border border-amber-500/30 rounded-lg px-4 py-3 mb-6">
                 <p className="text-amber-200 text-sm text-center font-semibold">
-                  Current pricing guaranteed through this month only
+                  This rate expires at the end of the month
                 </p>
               </div>
 
-              <p className="text-gray-400 text-center text-xs sm:text-sm mb-6">
-                We're investing heavily in new AI features and support. We'd love to have you on board at the current rate.
-              </p>
-
               <div className="grid grid-cols-2 gap-3 mb-6">
                 {[
-                  'Secure Your Rate',
-                  'Limited Time Only',
-                  'No Price Lock-in',
-                  'Start Anytime'
+                  'Lock in Today',
+                  'Expires End of Month',
+                  'Cancel Anytime',
+                  'No Setup Fees'
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-2 bg-gray-800/60 border border-gray-700/50 rounded-lg px-3 py-2">
                     <Zap className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
@@ -233,7 +229,7 @@ export function ExitIntentPopup() {
               </div>
 
               <a
-                href="https://freedom.kenjiai.com/checkout-4912-2457-3370"
+                href="https://freedom.kenjiai.com/checkout"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full text-center text-white font-bold text-base sm:text-lg py-4 rounded-xl touch-manipulation transition-all duration-300 hover:brightness-110"
@@ -242,7 +238,7 @@ export function ExitIntentPopup() {
                 }}
               >
                 <span className="flex items-center justify-center gap-2">
-                  Lock In Current Pricing Now
+                  Lock In Pricing
                   <ArrowRight className="w-5 h-5" />
                 </span>
               </a>
@@ -251,7 +247,7 @@ export function ExitIntentPopup() {
                 onClick={handleClose}
                 className="block w-full text-center text-gray-500 text-sm mt-4 py-2 hover:text-gray-300 transition-colors touch-manipulation min-h-[44px]"
               >
-                I'll decide later
+                Not now
               </button>
             </div>
           </motion.div>

@@ -102,29 +102,19 @@ export function PricingNew() {
             className="flex items-center gap-1.5"
           >
             <span
-              style={{ color: '#FF4444', textShadow: '0 0 8px rgba(255,68,68,0.6)' }}
+              style={{ color: '#FF4444' }}
               className="font-bold"
             >
-              Limited Onboarding Spots
+              Pricing increases next month
             </span>
             <span className="text-gray-500">·</span>
             <span
-              style={{ color: '#00FFFF', textShadow: '0 0 8px rgba(0,255,255,0.6)' }}
+              style={{ color: '#F59E0B' }}
               className="font-semibold"
             >
-              New clients this month filling fast
+              Lock in today's rate
             </span>
           </motion.span>
-          <span className="hidden sm:block text-gray-700">|</span>
-          <span className="flex items-center gap-1.5">
-            <span
-              style={{ color: '#39FF14', textShadow: '0 0 8px rgba(57,255,20,0.6)' }}
-              className="font-bold"
-            >
-              +$25
-            </span>
-            <span className="text-gray-400">free credit for Text, Email and AI calls</span>
-          </span>
         </motion.div>
       </motion.div>
 
@@ -146,14 +136,14 @@ export function PricingNew() {
               backgroundClip: 'text',
               letterSpacing: '-0.01em'
             }}>
-              Your Success Partner
+              Simple Plans That Scale
             </span>
             <br />
-            <span className="text-white">Let's Grow Your Business Together</span>
+            <span className="text-white">With You</span>
           </h1>
 
           <p className="text-xl sm:text-2xl text-gray-200 font-semibold max-w-3xl mx-auto mb-8 leading-relaxed">
-            We don't just provide tools—we partner with you every step. From setup to scaling, we're invested in your success.
+            Pick the plan that fits your business and grow with dedicated support every step of the way.
           </p>
 
         </motion.div>
@@ -222,9 +212,9 @@ export function PricingNew() {
               </div>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Monthly Plan</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Monthly</h3>
             <p className="text-gray-200 text-center mb-6 text-base font-semibold leading-relaxed">
-              Test drive with flexibility. No long-term commitment needed.
+              Start here and see what we can do for your business.
             </p>
 
             <div className="text-center mb-5">
@@ -322,9 +312,9 @@ export function PricingNew() {
               </div>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Annual Plan</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Annual</h3>
             <p className="text-gray-200 text-center mb-6 text-base font-semibold leading-relaxed">
-              Commit to growth. Save and unlock extra benefits designed for partners.
+              Save money and get exclusive benefits. For committed growth.
             </p>
 
             <div className="text-center mb-5">
@@ -419,9 +409,9 @@ export function PricingNew() {
               </div>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">VIP Partnership</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Lifetime</h3>
             <p className="text-gray-200 text-center mb-6 text-sm leading-relaxed">
-              For serious founders. We become your growth partner—forever. Custom solutions, dedicated support, unlimited potential.
+              One-time investment. Dedicated support and custom setup built just for you.
             </p>
 
             <div className="text-center mb-6">
@@ -507,10 +497,10 @@ export function PricingNew() {
         >
           <div className="text-center mb-10 sm:mb-12 px-4">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white leading-tight">
-              Let's Partner Together
+              Questions?
             </h2>
             <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-              Whether you're ready to get started or want to talk through your vision, we're here to support your journey. Your success is our success.
+              Book a call with our team and we'll walk you through everything.
             </p>
           </div>
 
