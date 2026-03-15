@@ -95,6 +95,19 @@ const FreeToolsPage: React.FC = () => {
       users: "20K+",
       keywords: ["business plan generator", "AI business planning", "financial projections", "market analysis", "startup planning", "business strategy"],
       revenue: "Helps secure $100K+ funding"
+    },
+    {
+      name: "The Closer - AI Agent Prompt Builder",
+      description: "Build elite AI sales agent prompts that close deals on autopilot. Engineer battle-tested prompts for voice agents, chat bots, and outbound automation. The only free tool that turns your AI into a top-performing closer.",
+      url: "https://agentprompt.kenjiai.com",
+      icon: Search,
+      gradient: "from-amber-500 to-orange-600",
+      features: ["Agent Prompt Engineering", "Sales Script Builder", "Objection Sequences", "Multi-Channel Templates"],
+      category: "Sales",
+      rating: 4.9,
+      users: "18K+",
+      keywords: ["AI agent prompts", "sales agent builder", "AI closer", "agent prompt engineering", "sales automation prompts", "AI sales scripts"],
+      revenue: "Closes deals 24/7 on autopilot"
     }
   ];
 
