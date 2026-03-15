@@ -576,44 +576,6 @@ export function PricingNew() {
         </motion.div>
       </div>
 
-      {/* Coupon Code Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3, delay: 0.2 }}
-        className="mt-24 sm:mt-32 px-4 max-w-4xl mx-auto mb-20"
-      >
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 leading-tight">
-            Limited Time Offer
-          </h2>
-          <p className="text-lg text-gray-300">Save on your first month with our exclusive coupon code</p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <motion.div
-            whileHover={{ y: -5 }}
-            className="bg-emerald-950/60 border border-emerald-500/40 rounded-2xl p-8 flex flex-col items-center justify-center"
-          >
-            <div className="text-emerald-300 font-bold text-sm tracking-wide mb-3">MONTHLY PLAN</div>
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <span className="font-mono font-black text-2xl tracking-widest text-white bg-emerald-900/60 border border-emerald-500/50 px-4 py-2 rounded-lg select-all">KENJ4LFE</span>
-            </div>
-            <p className="text-emerald-300 text-sm text-center">Save $76 on your first month</p>
-          </motion.div>
-
-          <motion.div
-            whileHover={{ y: -5 }}
-            className="bg-emerald-950/60 border border-emerald-500/40 rounded-2xl p-8 flex flex-col items-center justify-center"
-          >
-            <div className="text-emerald-300 font-bold text-sm tracking-wide mb-3">ANNUAL PLAN</div>
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <span className="font-mono font-black text-2xl tracking-widest text-white bg-emerald-900/60 border border-emerald-500/50 px-4 py-2 rounded-lg select-all">KENJ4LFE</span>
-            </div>
-            <p className="text-emerald-300 text-sm text-center">Save $76 on your first month</p>
-          </motion.div>
-        </div>
-      </motion.div>
 
       <FAQ />
 
