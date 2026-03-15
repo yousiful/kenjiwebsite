@@ -9,7 +9,7 @@ const BENEFITS = [
   {
     icon: Megaphone,
     title: 'Done-For-You Ads',
-    description: 'We build, launch, and manage your ad campaigns. Leads flow directly into your CRM — no agency needed.',
+    description: 'We build, launch, and manage your ad campaigns. Leads go straight into your CRM.',
     color: 'from-blue-500 to-cyan-500',
     border: 'border-blue-500/30',
     glow: 'rgba(59,130,246,0.15)',
@@ -17,7 +17,7 @@ const BENEFITS = [
   {
     icon: Bot,
     title: 'Done-For-You AI Workflows & Funnels',
-    description: 'Custom AI automations and high-converting funnels built specifically for your business — ready from day one.',
+    description: 'Custom AI automations and high-converting funnels built for your business, ready from day one.',
     color: 'from-emerald-500 to-green-500',
     border: 'border-emerald-500/30',
     glow: 'rgba(16,185,129,0.15)',
@@ -25,7 +25,7 @@ const BENEFITS = [
   {
     icon: Video,
     title: 'Done-For-You Zoom Support',
-    description: 'Live strategy calls and hands-on support from our team. We\'re in the trenches with you every step of the way.',
+    description: 'Live strategy calls and hands-on support from our team whenever you need it.',
     color: 'from-amber-500 to-orange-500',
     border: 'border-amber-500/30',
     glow: 'rgba(245,158,11,0.15)',
@@ -58,7 +58,7 @@ const ProductSelectionPage: React.FC = () => {
                   We Do the Heavy Lifting
                 </h2>
                 <p className="text-xl font-bold text-gray-300 max-w-2xl mx-auto">
-                  Every plan includes three done-for-you pillars that drive real revenue.
+                  Every plan includes three pillars that drive real revenue.
                 </p>
               </motion.div>
 

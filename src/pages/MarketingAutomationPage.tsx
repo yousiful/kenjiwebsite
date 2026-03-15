@@ -106,7 +106,7 @@ const MarketingAutomationPage: React.FC = () => {
           "name": "Can KenjiAI automate my entire marketing funnel?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, KenjiAI Marketing Automation handles your complete funnel from lead capture and nurturing through email, SMS, and social media, to conversion and re-engagement — all automated with AI."
+            "text": "Yes, KenjiAI Marketing Automation handles your complete funnel from lead capture through email, SMS, and social media to conversion and re-engagement, all automated with AI."
           }
         },
         {

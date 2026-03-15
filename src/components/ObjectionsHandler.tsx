@@ -16,40 +16,40 @@ const OBJECTIONS: Objection[] = [
     id: 'team',
     title: 'Do I need a technical team?',
     icon: <Users className="w-6 h-6" />,
-    description: 'Many businesses worry about needing developers or tech experts to implement AI automation.',
-    response: 'No technical skills required. Our platform is designed for non-technical users. We handle the setup for you, provide training for your team, and offer 24/7 support. Most clients are up and running within 5 minutes.',
+    description: 'No developers or tech experts needed.',
+    response: 'No technical skills required. We handle setup, train your team, and offer 24/7 support. Most clients are live within 5 minutes.',
     cta: 'Learn About Our Setup Service'
   },
   {
     id: 'time',
     title: 'How much time does implementation take?',
     icon: <Clock className="w-6 h-6" />,
-    description: 'Businesses often worry about lengthy implementation periods that disrupt operations.',
-    response: 'Implementation takes about 1 day from start to finish. We handle the technical setup, configure your automations, and train your team. You\'ll be generating results within 24 hours. Most clients report measurable ROI within 30 days.',
+    description: 'Fast setup that does not disrupt your operations.',
+    response: 'Implementation takes about 1 day. We handle setup, configure automations, and train your team. Results within 24 hours. Most clients see measurable ROI within 30 days.',
     cta: 'See Our Implementation Timeline'
   },
   {
     id: 'integration',
     title: 'Will this work with our current tools?',
     icon: <Shield className="w-6 h-6" />,
-    description: 'Companies with existing software stacks worry about compatibility and data migration.',
-    response: 'KenjiAI integrates with 500+ tools and platforms including Stripe, HubSpot, Salesforce, Gmail, Zapier, and more. Our team manages all integrations and data migration for you. No manual work required—everything syncs automatically.',
+    description: 'Works with your existing software stack.',
+    response: 'KenjiAI integrates with 500+ tools including Stripe, HubSpot, Salesforce, Gmail, and Zapier. Our team handles all integrations and data migration. Everything syncs automatically.',
     cta: 'See All Integrations'
   },
   {
     id: 'guarantee',
     title: 'What if it doesn\'t work for us?',
     icon: <CheckCircle className="w-6 h-6" />,
-    description: 'The risk of paying for something that doesn\'t deliver results is a common concern.',
-    response: '100% Money-Back Guarantee. If you\'re not seeing results within 30 days, we refund every penny. No questions asked. That\'s how confident we are. Plus, you keep all bonuses and training materials we provide.',
+    description: 'Zero risk. We back every plan with a guarantee.',
+    response: '100% Money-Back Guarantee. No results within 30 days? We refund every penny, no questions asked. You keep all bonuses and training materials.',
     cta: 'Learn About Our Guarantee'
   },
   {
     id: 'support',
     title: 'What kind of support do you offer?',
     icon: <MessageCircle className="w-6 h-6" />,
-    description: 'Businesses need assurance that help is available when problems arise.',
-    response: 'You get 24/7 email support, daily training sessions, and a dedicated Slack channel with our team. Annual clients get priority support and a dedicated account manager. We\'re here to help you succeed.',
+    description: 'Real support from a real team, not a chatbot.',
+    response: '24/7 email support, daily training sessions, and a dedicated Slack channel. Annual clients get priority support and a dedicated account manager.',
     cta: 'View Support Options'
   }
 ];
@@ -74,7 +74,7 @@ export function ObjectionsHandler() {
               Common Questions <span className="text-cyan-400">Answered</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Still unsure? Here are answers to the questions we hear most from businesses considering KenjiAI.
+              Answers to the questions we hear most.
             </p>
           </motion.div>
 
@@ -165,7 +165,7 @@ export function ObjectionsHandler() {
           >
             <h3 className="text-2xl font-bold text-white mb-3">Still Have Questions?</h3>
             <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
-              Book a 15-minute call with our team. We'll answer any questions and show you exactly how KenjiAI works for your business.
+              Book a 15-minute call. We'll show you how KenjiAI works for your business.
             </p>
             <motion.a
               href="https://go.mediatraffics.com/leads"

@@ -310,8 +310,7 @@ const ToolsPage: React.FC = () => {
                 Get All Tools in One Platform
               </h3>
               <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
-                Instead of paying for multiple tools separately, get everything you need in the KenjiAI platform. 
-                AI chatbots, social media planner, content creator, analytics, and much more—all integrated seamlessly.
+                One platform. AI chatbots, social media planner, content creator, analytics, and more. All integrated.
               </p>
               <motion.a
                 href="/pricing"
