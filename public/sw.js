@@ -1,11 +1,11 @@
-const CACHE_NAME = 'kenjiai-v4-2025';
+const CACHE_NAME = 'kenjiai-v5-2026';
+const STATIC_CACHE = 'kenjiai-static-v5-2026';
+const FONT_CACHE = 'kenjiai-fonts-v5-2026';
 const OFFLINE_URL = '/offline.html';
 
-const PRECACHE_URLS = [
-  '/offline.html',
-];
+const PRECACHE_URLS = ['/offline.html'];
 
-// Install: pre-cache the offline page immediately
+// Install: pre-cache offline page
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
@@ -14,14 +14,15 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Activate: delete ONLY caches from older versions, not the current one
+// Activate: delete old caches
 self.addEventListener('activate', (event) => {
+  const CURRENT_CACHES = [CACHE_NAME, STATIC_CACHE, FONT_CACHE];
   event.waitUntil(
     caches.keys()
-      .then((cacheNames) =>
+      .then((names) =>
         Promise.all(
-          cacheNames
-            .filter((name) => name !== CACHE_NAME)
+          names
+            .filter((name) => !CURRENT_CACHES.includes(name))
             .map((name) => caches.delete(name))
         )
       )
@@ -29,27 +30,73 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch: tiered strategy based on request type
+function isStaticAsset(pathname) {
+  return /\.(js|css|woff2?|png|jpe?g|svg|ico|webp|avif|gif)(\?.*)?$/.test(pathname);
+}
+
+function isFont(url) {
+  return (
+    url.hostname.includes('fonts.gstatic.com') ||
+    url.hostname.includes('fonts.googleapis.com') ||
+    /\.(woff2?|ttf|otf)(\?.*)?$/.test(url.pathname)
+  );
+}
+
+function isApi(pathname) {
+  return (
+    pathname.includes('/rest/v1/') ||
+    pathname.includes('/auth/v1/') ||
+    pathname.includes('/functions/v1/')
+  );
+}
+
+// Stale-while-revalidate: return cache immediately, update in background
+function staleWhileRevalidate(request, cacheName) {
+  return caches.open(cacheName).then((cache) =>
+    cache.match(request).then((cached) => {
+      const networkFetch = fetch(request).then((response) => {
+        if (response && response.status === 200) {
+          cache.put(request, response.clone());
+        }
+        return response;
+      });
+      return cached || networkFetch;
+    })
+  );
+}
+
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
 
   const url = new URL(event.request.url);
 
-  // Pass through all cross-origin requests
-  if (url.hostname !== self.location.hostname) return;
+  // Always pass through API calls
+  if (isApi(url.pathname)) return;
 
-  // Pass through Supabase / API calls without caching
-  if (
-    url.pathname.includes('/rest/v1/') ||
-    url.pathname.includes('/auth/v1/') ||
-    url.pathname.includes('/functions/v1/')
-  ) return;
+  // Font caching: cache-first, long TTL
+  if (isFont(url)) {
+    event.respondWith(
+      caches.open(FONT_CACHE).then((cache) =>
+        cache.match(event.request).then((cached) => {
+          if (cached) return cached;
+          return fetch(event.request).then((response) => {
+            if (response && response.status === 200) {
+              cache.put(event.request, response.clone());
+            }
+            return response;
+          });
+        })
+      )
+    );
+    return;
+  }
 
+  const isSameOrigin = url.hostname === self.location.hostname;
   const isNavigation = event.request.mode === 'navigate';
-  const isStaticAsset = /\.(js|css|woff2?|png|jpe?g|svg|ico|webp|gif)(\?.*)?$/.test(url.pathname);
+  const isAsset = isSameOrigin && isStaticAsset(url.pathname);
 
   if (isNavigation) {
-    // HTML pages: Network-first → cached page → offline fallback
+    // HTML shell: network-first with offline fallback
     event.respondWith(
       fetch(event.request)
         .then((response) => {
@@ -65,24 +112,31 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  if (isStaticAsset) {
-    // JS/CSS/fonts/images: Cache-first → network → cache result
+  if (isAsset) {
+    // Hashed static assets: cache-first (they never change with same URL)
     event.respondWith(
       caches.match(event.request).then((cached) => {
         if (cached) return cached;
         return fetch(event.request).then((response) => {
           if (response && response.status === 200 && response.type === 'basic') {
-            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, response.clone()));
+            caches.open(STATIC_CACHE).then((cache) => cache.put(event.request, response.clone()));
           }
           return response;
         });
       })
     );
+    return;
   }
-  // All other same-origin requests: pass through without SW intervention
+
+  // Pexels/external images: stale-while-revalidate
+  if (url.hostname.includes('pexels.com') || url.hostname.includes('images.pexels.com')) {
+    event.respondWith(staleWhileRevalidate(event.request, STATIC_CACHE));
+    return;
+  }
+
+  // All other same-origin non-asset requests: network only
 });
 
-// Message handler for manual cache control
 self.addEventListener('message', (event) => {
   if (!event.data) return;
 

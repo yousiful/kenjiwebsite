@@ -12,16 +12,18 @@
     <meta http-equiv="Expires" content="0" />
     <meta name="cache-version" content="3.0.0" />
 
-    <!-- Performance optimizations -->
+    <!-- Performance optimizations: preconnect for render-critical origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://huoemgfrilnfwcrduczc.supabase.co">
+    <link rel="preconnect" href="https://huoemgfrilnfwcrduczc.supabase.co" crossorigin>
+    <link rel="preconnect" href="https://images.pexels.com" crossorigin>
+    <!-- DNS prefetch for non-critical third parties -->
     <link rel="dns-prefetch" href="https://js.stripe.com">
     <link rel="dns-prefetch" href="https://app.kenjicrm.com">
-    <link rel="dns-prefetch" href="https://images.pexels.com">
-
     <link rel="dns-prefetch" href="https://freedom.kenjiai.com">
     <link rel="dns-prefetch" href="https://calendly.com">
+    <link rel="dns-prefetch" href="https://safeclick.kenjiai.com">
+    <link rel="dns-prefetch" href="https://go.mediatraffics.com">
     
     <!-- PWA manifest -->
     <link rel="manifest" href="/manifest.json">
@@ -31,9 +33,9 @@
     <meta name="apple-mobile-web-app-title" content="KenjiAI">
     
     <!-- Primary Meta Tags -->
-    <title>KenjiAI - Transform Your Business with AI Automation | Free Tools + Voice Agents That Close Deals 24/7</title>
-    <meta name="title" content="KenjiAI - Transform Your Business with AI Automation | Free Tools + Voice Agents That Close Deals 24/7" />
-    <meta name="description" content="🚀 Scale your business with AI that works while you sleep. Free AI tools + Voice agents closing deals 24/7, smart CRM, marketing automation. Join 50,000+ businesses earning $500K+/month. Book your VIP demo today!" />
+    <title>KenjiAI - AI Business Automation Platform | Voice Agents, CRM & Marketing Automation</title>
+    <meta name="title" content="KenjiAI - AI Business Automation Platform | Voice Agents, CRM & Marketing Automation" />
+    <meta name="description" content="Scale your business with done-for-you AI automation. Voice agents that close deals 24/7, smart CRM, email/SMS campaigns, and free AI tools. Performance-based pricing — pay only when you earn. Book a demo today." />
     <meta name="keywords" content="free AI tools, AI automation, business automation, AI voice agents, AI marketing, AI sales, smart workflows, CRM automation, AI chatbots, business intelligence, AI platform, AI knowledge base, AI blog, AI tutorials, prompt generator, AI content creation, machine learning, artificial intelligence, Scale AI alternative, free prompt generator, AI PR tools, AI sales coach" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="language" content="English" />
@@ -47,21 +49,22 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://kenjiai.com/" />
-    <meta property="og:title" content="KenjiAI - AI That Closes Deals While You Sleep 💰" />
-    <meta property="og:description" content="Join 50,000+ businesses earning $500K+/month with AI automation. Voice agents, smart CRM, free tools. Performance-based pricing - only pay when you earn. Book your VIP demo now!" />
-    <meta property="og:image" content="https://kenjiai.com/og-image.svg" />
+    <meta property="og:title" content="KenjiAI - AI Business Automation Platform" />
+    <meta property="og:description" content="Done-for-you AI automation: voice agents, smart CRM, email/SMS campaigns. Performance-based pricing — only pay when you earn. Join businesses generating $100K+/month." />
+    <meta property="og:image" content="https://kenjiai.com/og-image.png" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:alt" content="KenjiAI - AI Business Automation Platform with Voice Agents, Smart CRM, and Free AI Tools" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:site_name" content="KenjiAI" />
     <meta property="og:locale" content="en_US" />
-    
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://kenjiai.com/" />
-    <meta property="twitter:title" content="KenjiAI - AI That Closes Deals While You Sleep 💰" />
-    <meta property="twitter:description" content="Join 50,000+ businesses earning $500K+/month. Voice agents working 24/7, smart CRM, free AI tools. Performance-based pricing. Book VIP demo!" />
-    <meta property="twitter:image" content="https://kenjiai.com/og-image.svg" />
+    <meta property="twitter:title" content="KenjiAI - AI Business Automation Platform" />
+    <meta property="twitter:description" content="Done-for-you AI voice agents, CRM, and marketing automation. Performance-based pricing — only pay when you earn." />
+    <meta property="twitter:image" content="https://kenjiai.com/og-image.png" />
     <meta property="twitter:image:alt" content="KenjiAI - AI Business Automation Platform" />
     <meta property="twitter:creator" content="@KenjiAI" />
     <meta property="twitter:site" content="@KenjiAI" />
@@ -81,10 +84,11 @@
     <meta name="contact" content="care@kenjiai.com" />
     <meta name="phone" content="+1-831-263-4402" />
 
-    <!-- GHL Tracking -->
+    <!-- GHL Tracking (deferred to not block render) -->
     <script
       src="https://safeclick.kenjiai.com/js/external-tracking.js"
-      data-tracking-id="tk_76d68546c8534d479179b49a1784584c">
+      data-tracking-id="tk_76d68546c8534d479179b49a1784584c"
+      defer>
     </script>
 
     <!-- Structured Data for Free Tools -->
@@ -351,26 +355,60 @@
     }
     </script>
     
+    <!-- Preload LCP hero image -->
+    <link rel="preload" as="image" href="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1200" fetchpriority="high">
+
     <!-- Critical CSS inlined for performance -->
     <style>
-      /* Critical above-the-fold styles */
+      /* Prevent FOUT with font-display swap */
+      @font-face {
+        font-family: 'Inter';
+        font-display: swap;
+      }
+
+      /* Critical above-the-fold styles — prevents CLS */
+      *, *::before, *::after { box-sizing: border-box; }
+
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+
       body {
         margin: 0;
         padding: 0;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-        background-attachment: fixed;
+        background: #0f172a;
         color: white;
         overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
-      
+
+      /* Reserve space for navbar to prevent CLS */
+      #root > nav, #root > header {
+        min-height: 64px;
+      }
+
+      /* Reserve space for hero section */
+      #root > main, #root > div > main {
+        min-height: 100vh;
+      }
+
+      /* Prevent image layout shifts */
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+
       .loading-screen {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+        background: #0f172a;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -386,15 +424,14 @@
       .loading-spinner {
         width: 40px;
         height: 40px;
-        border: 4px solid #3B82F6;
-        border-top: 4px solid transparent;
+        border: 3px solid rgba(59,130,246,0.3);
+        border-top: 3px solid #3B82F6;
         border-radius: 50%;
-        animation: spin 1s linear infinite;
+        animation: spin 0.8s linear infinite;
       }
 
       @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+        to { transform: rotate(360deg); }
       }
     </style>
   </head>
@@ -475,7 +512,7 @@
           try {
             if ('caches' in window) {
               const cacheNames = await caches.keys();
-              const CURRENT_CACHE = 'kenjiai-v4-2025';
+              const CURRENT_CACHE = 'kenjiai-v5-2026';
               const hasOldCaches = cacheNames.some(name =>
                 name.includes('kenjiai') && name !== CURRENT_CACHE
               );
