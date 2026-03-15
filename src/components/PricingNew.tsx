@@ -9,6 +9,7 @@ import { ToolReplacementBar } from './ToolReplacementBar';
 import { MoneyBackGuarantee } from './MoneyBackGuarantee';
 import { ExitIntentPopup } from './ExitIntentPopup';
 import FAQ from './FAQ';
+import { getSeasonCopy } from '../utils/seasonCopy';
 
 const MONTHLY_FEATURES = [
   "Done-For-You Setup & Team Training",
@@ -60,6 +61,7 @@ const VIP_FEATURES = [
 
 export function PricingNew() {
   const [isLoading, setIsLoading] = useState<string | null>(null);
+  const season = getSeasonCopy();
 
   const handlePlanClick = async (url: string, planName: string) => {
     setIsLoading(planName);
@@ -87,11 +89,11 @@ export function PricingNew() {
             transition={{ duration: 2, repeat: Infinity }}
             className="flex items-center gap-1.5"
           >
-            <span style={{ color: '#F59E0B' }} className="font-bold">Holiday Offer</span>
+            <span style={{ color: '#F59E0B' }} className="font-bold">{season.stripLabel}</span>
             <span className="text-gray-500">·</span>
-            <span style={{ color: '#34D399' }} className="font-semibold">$5,000 in bonuses included this season</span>
+            <span style={{ color: '#34D399' }} className="font-semibold">{season.stripBonus}</span>
             <span className="text-gray-500">·</span>
-            <span style={{ color: '#FF4444' }} className="font-semibold">Rates increase in January</span>
+            <span style={{ color: '#FF4444' }} className="font-semibold">{season.stripUrgency}</span>
           </motion.span>
         </div>
       </motion.div>
@@ -105,7 +107,7 @@ export function PricingNew() {
         >
           <div className="inline-flex items-center gap-2 bg-amber-500/15 border border-amber-500/30 rounded-full px-5 py-2 mb-6">
             <span className="text-amber-300 font-bold text-xs sm:text-sm uppercase tracking-widest">
-              Holiday Pricing — Won't Return Until Next Year
+              {season.badge}
             </span>
           </div>
 
@@ -127,7 +129,7 @@ export function PricingNew() {
           </h1>
 
           <p className="text-xl sm:text-2xl text-gray-200 font-semibold max-w-3xl mx-auto mb-8 leading-relaxed">
-            Pick a plan, get set up, and start the new year ahead — not catching up.
+            {season.subheadline}
           </p>
         </motion.div>
       </div>
@@ -184,7 +186,7 @@ export function PricingNew() {
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
               <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2 whitespace-nowrap">
                 <Calendar className="w-4 h-4" />
-                Month-to-Month
+                {season.planBadge}
               </div>
             </div>
 
@@ -284,7 +286,7 @@ export function PricingNew() {
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
               <div className="bg-gradient-to-r from-emerald-500 to-green-500 text-white px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2 whitespace-nowrap">
                 <Star className="w-4 h-4" />
-                Holiday Special — Save $1,200
+                {season.annualBadge}
               </div>
             </div>
 
@@ -312,7 +314,7 @@ export function PricingNew() {
               </div>
               <div className="text-gray-400 text-sm mt-1">Billed at $3,300 annually. 2 months free.</div>
               <div className="mt-3 bg-amber-500/10 border border-amber-500/30 rounded-lg px-3 py-2">
-                <p className="text-amber-300 text-xs font-semibold">Holiday rate — grandfathered for life. Rates rise in January.</p>
+                <p className="text-amber-300 text-xs font-semibold">{season.rateNote}</p>
               </div>
             </div>
 

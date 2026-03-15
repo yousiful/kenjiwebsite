@@ -1,21 +1,24 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Gift, Zap, ArrowRight, Lock, Star, TrendingUp } from 'lucide-react';
-
-const HOLIDAY_BONUSES = [
-  { icon: '🎙️', title: 'Voice Agent — Done-For-You Setup', value: '$2,000' },
-  { icon: '📧', title: 'Holiday Email Campaign Flow', value: '$1,500' },
-  { icon: '🎓', title: 'VIP Onboarding & Strategy Session', value: '$1,000' },
-  { icon: '📊', title: 'Custom Revenue Dashboard', value: '$500' },
-];
-
-const URGENCY_ITEMS = [
-  { icon: Lock, color: 'text-red-400', bg: 'bg-red-950/40 border-red-500/40', text: 'Holiday pricing ends this season', highlight: true },
-  { icon: Star, color: 'text-amber-400', bg: 'bg-amber-950/40 border-amber-500/40', text: 'Rates increase in the new year', highlight: false },
-  { icon: TrendingUp, color: 'text-emerald-400', bg: 'bg-emerald-950/40 border-emerald-500/40', text: 'Done-For-You onboarding spots are limited', highlight: false },
-];
+import { getSeasonCopy } from '../utils/seasonCopy';
 
 export function LimitedTimeBonusBanner() {
+  const season = getSeasonCopy();
+
+  const bonuses = [
+    { icon: '🎙️', title: 'Voice Agent — Done-For-You Setup', value: '$2,000' },
+    { icon: '📧', title: season.emailBonus, value: '$1,500' },
+    { icon: '🎓', title: 'VIP Onboarding & Strategy Session', value: '$1,000' },
+    { icon: '📊', title: 'Custom Revenue Dashboard', value: '$500' },
+  ];
+
+  const urgencyItems = [
+    { icon: Lock, color: 'text-red-400', bg: 'bg-red-950/40 border-red-500/40', text: `${season.stripLabel} pricing ends soon`, highlight: true },
+    { icon: Star, color: 'text-amber-400', bg: 'bg-amber-950/40 border-amber-500/40', text: season.stripUrgency, highlight: false },
+    { icon: TrendingUp, color: 'text-emerald-400', bg: 'bg-emerald-950/40 border-emerald-500/40', text: 'Done-For-You onboarding spots are limited', highlight: false },
+  ];
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -20 }}
@@ -37,23 +40,23 @@ export function LimitedTimeBonusBanner() {
                 <div className="inline-flex items-center gap-2 bg-amber-500/20 border border-amber-500/40 rounded-full px-4 py-2 mb-6">
                   <Gift className="w-5 h-5 text-amber-400" />
                   <span className="text-amber-300 font-bold text-sm uppercase tracking-widest">
-                    Holiday Exclusive
+                    {season.stripLabel}
                   </span>
                 </div>
 
                 <h2 className="text-4xl sm:text-5xl font-black text-white mb-4 leading-tight">
-                  Start the New Year at{' '}
+                  {season.bonusTitle.split(' ').slice(0, -1).join(' ')}{' '}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400">
-                    Full Speed
+                    {season.bonusTitle.split(' ').slice(-1)[0]}
                   </span>
                 </h2>
 
                 <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-                  Join before this season closes and get $5,000 in setup bonuses included at no extra cost.
+                  {season.bonusSubtitle}
                 </p>
 
                 <div className="space-y-3 mb-8">
-                  {HOLIDAY_BONUSES.map((bonus, idx) => (
+                  {bonuses.map((bonus, idx) => (
                     <div
                       key={idx}
                       className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-lg px-4 py-3"
@@ -87,34 +90,33 @@ export function LimitedTimeBonusBanner() {
               {/* Right */}
               <div className="flex flex-col gap-6">
                 <div className="bg-gray-900/80 border border-gray-700/50 rounded-2xl p-6">
-                  <p className="text-white font-bold text-sm mb-4">Why this season matters</p>
+                  <p className="text-white font-bold text-sm mb-4">{season.whyNowTitle}</p>
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
                       <span className="text-xl mt-0.5">📅</span>
                       <div>
-                        <p className="text-white font-semibold text-sm">Set up now, close deals in January</p>
-                        <p className="text-gray-400 text-xs mt-0.5">Businesses that get set up in Q4 hit the ground running when their market opens back up.</p>
+                        <p className="text-white font-semibold text-sm">{season.whyNowBody}</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
                       <span className="text-xl mt-0.5">🎁</span>
                       <div>
-                        <p className="text-white font-semibold text-sm">These bonuses are once a year</p>
-                        <p className="text-gray-400 text-xs mt-0.5">We bundle this package for the holiday season only. Once it closes, so does this offer.</p>
+                        <p className="text-white font-semibold text-sm">These bonuses are limited</p>
+                        <p className="text-gray-400 text-xs mt-0.5">We bundle this package for the current promotion only. Once it closes, so does this offer.</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
                       <span className="text-xl mt-0.5">🔒</span>
                       <div>
                         <p className="text-white font-semibold text-sm">Today's rate is locked in</p>
-                        <p className="text-gray-400 text-xs mt-0.5">Everyone who joins now keeps this price. Rates go up in January.</p>
+                        <p className="text-gray-400 text-xs mt-0.5">{season.rateNote}</p>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-3">
-                  {URGENCY_ITEMS.map((item, idx) => (
+                  {urgencyItems.map((item, idx) => (
                     <motion.div
                       key={idx}
                       animate={item.highlight ? {
@@ -140,7 +142,7 @@ export function LimitedTimeBonusBanner() {
         </div>
 
         <p className="text-center text-gray-500 text-xs mt-8 max-w-2xl mx-auto">
-          Bonus offer valid for new customers only. Includes Voice Agent Setup ($2,000), Email Campaign Flow ($1,500), VIP Onboarding Session ($1,000), and Custom Dashboard ($500). Offer ends at the close of this holiday season. Not combinable with other promotions. Revenue figures represent exceptional results and are not typical.
+          Bonus offer valid for new customers only. Includes Voice Agent Setup ($2,000), {season.emailBonus} ($1,500), VIP Onboarding Session ($1,000), and Custom Dashboard ($500). {season.bonusClosing} Not combinable with other promotions. Revenue figures represent exceptional results and are not typical.
         </p>
       </div>
     </motion.div>
