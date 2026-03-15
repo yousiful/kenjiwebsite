@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Check, Star, ArrowRight, Calendar, Zap, Shield,
-  CreditCard, Video, LogIn, ChevronDown,
-  Users, TrendingUp, Award
+  CreditCard, Video, ChevronDown
 } from 'lucide-react';
 import { ToolReplacementBar } from './ToolReplacementBar';
 import { MoneyBackGuarantee } from './MoneyBackGuarantee';
@@ -140,38 +139,6 @@ export function PricingNew() {
       </div>
 
       <div className="max-w-7xl mx-auto mt-12 sm:mt-20">
-
-        {/* Mobile-Only Booking CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 0.15 }}
-          className="lg:hidden mb-8 px-4"
-        >
-          <motion.a
-            href="https://go.mediatraffics.com/leads"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="block group relative bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl p-6 text-center overflow-hidden shadow-2xl"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-red-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div className="relative z-10">
-              <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                <Video className="w-7 h-7 text-white" />
-              </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 leading-tight">Not Sure Which Plan?</h3>
-              <p className="text-orange-100 text-sm mb-4 leading-relaxed">
-                Book a free 15-minute call. We'll walk you through what works for your business.
-              </p>
-              <div className="flex items-center justify-center gap-2 text-white font-semibold text-sm">
-                <span>Schedule a Call</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </div>
-            </div>
-          </motion.a>
-        </motion.div>
 
         {/* 3-Column Pricing Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 px-4">
@@ -475,92 +442,15 @@ export function PricingNew() {
           </motion.div>
         </div>
 
-        {/* Bottom CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-          className="mt-20 sm:mt-28 max-w-5xl mx-auto"
-        >
-          <div className="text-center mb-10 sm:mb-12 px-4">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white leading-tight">
-              Have Questions?
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-xl mx-auto">
-              Book a free 15-minute call and we'll walk you through everything.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 px-4">
-            <motion.a
-              href="https://go.mediatraffics.com/leads"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.03, y: -5 }}
-              whileTap={{ scale: 0.98 }}
-              className="group relative bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl p-8 flex flex-col items-center justify-center text-center overflow-hidden shadow-2xl w-full cursor-pointer"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-red-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shine-slow"></div>
-              </div>
-              <div className="relative z-10">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-5 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                  <Video className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 leading-tight">Book a Free Call</h3>
-                <p className="text-orange-100 text-base sm:text-lg mb-5 leading-relaxed">
-                  15 minutes. No pressure. We'll show you exactly how this works for your business.
-                </p>
-                <div className="flex items-center justify-center gap-2 text-white font-semibold text-base">
-                  <span>Schedule Your Call</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </div>
-              </div>
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ boxShadow: '0 0 40px rgba(249, 115, 22, 0.5)' }}></div>
-            </motion.a>
-
-            <motion.a
-              href="https://app.kenjiai.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.03, y: -5 }}
-              whileTap={{ scale: 0.98 }}
-              className="group relative bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl p-8 flex flex-col items-center justify-center text-center overflow-hidden shadow-2xl"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-cyan-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shine-slow"></div>
-              </div>
-              <div className="relative z-10">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-5 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                  <LogIn className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
-                </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 leading-tight">Already a Member?</h3>
-                <p className="text-blue-100 text-base sm:text-lg mb-5 leading-relaxed">
-                  Jump back into your dashboard and keep building.
-                </p>
-                <div className="flex items-center justify-center gap-2 text-white font-semibold text-base">
-                  <span>Log In to KenjiAI</span>
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </div>
-              </div>
-              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ boxShadow: '0 0 40px rgba(59, 130, 246, 0.5)' }}></div>
-            </motion.a>
-          </div>
-
-          <div className="mt-20 sm:mt-24 px-4">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: 0.4 }}
-            >
-              <MoneyBackGuarantee />
-            </motion.div>
-          </div>
-        </motion.div>
+        <div className="mt-16 sm:mt-20 px-4">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+          >
+            <MoneyBackGuarantee />
+          </motion.div>
+        </div>
       </div>
 
       <FAQ />
