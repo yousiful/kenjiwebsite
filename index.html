@@ -402,37 +402,6 @@
         display: block;
       }
 
-      .loading-screen {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: #0f172a;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 9999;
-        transition: opacity 0.3s ease-out;
-      }
-
-      .loading-screen.hide {
-        opacity: 0;
-        pointer-events: none;
-      }
-
-      .loading-spinner {
-        width: 40px;
-        height: 40px;
-        border: 3px solid rgba(59,130,246,0.3);
-        border-top: 3px solid #3B82F6;
-        border-radius: 50%;
-        animation: spin 0.8s linear infinite;
-      }
-
-      @keyframes spin {
-        to { transform: rotate(360deg); }
-      }
     </style>
   </head>
   <body>
@@ -443,21 +412,6 @@
 
     <div id="root"></div>
     
-    <!-- Loading screen for initial page load -->
-    <div class="loading-screen" id="app-loading">
-      <div class="loading-spinner"></div>
-    </div>
-
-    <!-- Safety-net: hide loader if React hasn't dismissed it within 8s (network error, etc.) -->
-    <script>
-      setTimeout(function() {
-        var loader = document.getElementById('app-loading');
-        if (loader && !loader.classList.contains('hide')) {
-          loader.classList.add('hide');
-          setTimeout(function() { loader.style.display = 'none'; }, 350);
-        }
-      }, 8000);
-    </script>
 
     <script type="module" src="/src/main.tsx"></script>
     

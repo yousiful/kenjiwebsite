@@ -44,18 +44,3 @@ const AppWithTracking = () => {
 
 const root = document.getElementById('root')!;
 createRoot(root).render(<AppWithTracking />);
-
-function hideLoader() {
-  const loader = document.getElementById('app-loading');
-  if (!loader) return;
-  loader.classList.add('hide');
-  setTimeout(() => { loader.style.display = 'none'; }, 350);
-  sessionStorage.removeItem('reload-count');
-  sessionStorage.removeItem('last-reload');
-}
-
-if (document.readyState === 'complete') {
-  hideLoader();
-} else {
-  window.addEventListener('load', hideLoader, { once: true });
-}
