@@ -7,6 +7,21 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type, Authorization, X-Client-Info, Apikey",
 };
 
+async function pushToGHL(payload: Record<string, string>) {
+  const webhookUrl = Deno.env.get("GHL_WEBHOOK_URL");
+  if (!webhookUrl) return;
+
+  try {
+    await fetch(webhookUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+  } catch {
+    // GHL push failed — don't block visitor logging
+  }
+}
+
 Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { status: 200, headers: corsHeaders });
@@ -48,12 +63,31 @@ Deno.serve(async (req: Request) => {
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
     );
 
+    const visitedAt = new Date().toISOString();
+
     await supabase.from("visitor_logs").insert({
       ip,
       page: page || "",
       referrer: referrer || "",
       user_agent: userAgent || "",
       ...geoData,
+    });
+
+    await pushToGHL({
+      source: "kenjiai_visitor_log",
+      visited_at: visitedAt,
+      ip,
+      page: page || "",
+      referrer: referrer || "",
+      user_agent: userAgent || "",
+      country: geoData.country || "",
+      city: geoData.city || "",
+      region: geoData.region || "",
+      org: geoData.org || "",
+      timezone: geoData.timezone || "",
+      latitude: geoData.latitude || "",
+      longitude: geoData.longitude || "",
+      hostname: geoData.hostname || "",
     });
 
     return new Response(JSON.stringify({ ok: true }), {
