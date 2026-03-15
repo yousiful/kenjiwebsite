@@ -257,7 +257,7 @@ export function PricingNew() {
                 </motion.div>
               ) : (
                 <>
-                  Get Started — Lock In Your Rate
+                  Get Started. Lock In Your Rate
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}
@@ -364,7 +364,7 @@ export function PricingNew() {
                 </motion.div>
               ) : (
                 <>
-                  Join Annual — Save $1,200
+                  Join Annual. Save $1,200
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}

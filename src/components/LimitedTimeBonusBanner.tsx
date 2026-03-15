@@ -7,7 +7,7 @@ export function LimitedTimeBonusBanner() {
   const season = getSeasonCopy();
 
   const bonuses = [
-    { icon: '🎙️', title: 'Voice Agent — Done-For-You Setup', value: '$2,000' },
+    { icon: '🎙️', title: 'Voice Agent. Done-For-You Setup', value: '$2,000' },
     { icon: '📧', title: season.emailBonus, value: '$1,500' },
     { icon: '🎓', title: 'VIP Onboarding & Strategy Session', value: '$1,000' },
     { icon: '📊', title: 'Custom Revenue Dashboard', value: '$500' },
