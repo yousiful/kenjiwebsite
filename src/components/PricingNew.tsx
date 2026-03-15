@@ -76,7 +76,7 @@ export function PricingNew() {
   return (
     <div className="py-16 sm:py-24 px-4" style={{ backgroundColor: '#0B0E14' }}>
 
-      {/* Urgency Strip */}
+      {/* Holiday Urgency Strip */}
       <motion.div
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
@@ -101,18 +101,16 @@ export function PricingNew() {
             transition={{ duration: 2, repeat: Infinity }}
             className="flex items-center gap-1.5"
           >
-            <span
-              style={{ color: '#FF4444' }}
-              className="font-bold"
-            >
-              Pricing increases next month
+            <span style={{ color: '#F59E0B' }} className="font-bold">
+              Holiday Season Exclusive
             </span>
             <span className="text-gray-500">·</span>
-            <span
-              style={{ color: '#F59E0B' }}
-              className="font-semibold"
-            >
-              Lock in today's rate
+            <span style={{ color: '#34D399' }} className="font-semibold">
+              $5,000 bonus package included — this season only
+            </span>
+            <span className="text-gray-500">·</span>
+            <span style={{ color: '#FF4444' }} className="font-semibold">
+              Rates increase in the new year
             </span>
           </motion.span>
         </motion.div>
@@ -125,6 +123,12 @@ export function PricingNew() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
+          <div className="inline-flex items-center gap-2 bg-amber-500/15 border border-amber-500/30 rounded-full px-5 py-2 mb-6">
+            <span className="text-amber-300 font-bold text-xs sm:text-sm uppercase tracking-widest">
+              Holiday Season Offer — This Pricing Won't Return Until Next Year
+            </span>
+          </div>
+
           <h1
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-tight"
             style={{ fontFamily: 'Inter, Montserrat, sans-serif' }}
@@ -136,14 +140,18 @@ export function PricingNew() {
               backgroundClip: 'text',
               letterSpacing: '-0.01em'
             }}>
-              Simple Plans That Scale
+              Stop Leaving Money
             </span>
             <br />
-            <span className="text-white">With You</span>
+            <span className="text-white">on the Table This Season</span>
           </h1>
 
-          <p className="text-xl sm:text-2xl text-gray-200 font-semibold max-w-3xl mx-auto mb-8 leading-relaxed">
-            Pick the plan that fits your business and grow with dedicated support every step of the way.
+          <p className="text-xl sm:text-2xl text-gray-200 font-semibold max-w-3xl mx-auto mb-4 leading-relaxed">
+            Every day you run your business without AI automation is a day your competitors gain ground. This is the season to change that — permanently.
+          </p>
+
+          <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto mb-8 leading-relaxed italic">
+            "The difference between where you are and where you want to be is the systems you're willing to install."
           </p>
 
         </motion.div>
@@ -177,9 +185,9 @@ export function PricingNew() {
               <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                 <Video className="w-7 h-7 text-white" />
               </div>
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 leading-tight">Not Sure Which Plan?</h3>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 leading-tight">Not Sure Which Plan Is Right?</h3>
               <p className="text-orange-100 text-sm mb-4 leading-relaxed">
-                Book a free 15-minute call. We'll show you exactly what works for your business.
+                Book a free 15-minute strategy call. We'll show you exactly what this looks like for your business — and what it's worth.
               </p>
               <div className="flex items-center justify-center gap-2 text-white font-semibold text-sm">
                 <span>Schedule Your Call Now</span>
@@ -202,7 +210,7 @@ export function PricingNew() {
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
               <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2 whitespace-nowrap">
                 <Calendar className="w-4 h-4" />
-                Flexible Monthly
+                No-Risk Monthly Start
               </div>
             </div>
 
@@ -214,7 +222,7 @@ export function PricingNew() {
 
             <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Monthly</h3>
             <p className="text-gray-200 text-center mb-6 text-base font-semibold leading-relaxed">
-              Start here and see what we can do for your business.
+              Get in the game this season. Zero long-term commitment — just results.
             </p>
 
             <div className="text-center mb-5">
@@ -273,7 +281,7 @@ export function PricingNew() {
                 </motion.div>
               ) : (
                 <>
-                  Let's Get Started Together
+                  Start This Season — Lock In Your Rate
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}
@@ -302,7 +310,7 @@ export function PricingNew() {
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
               <div className="bg-gradient-to-r from-emerald-500 to-green-500 text-white px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2 whitespace-nowrap">
                 <Star className="w-4 h-4" />
-                Best Value - Save $1,200/yr
+                Holiday Special — Save $1,200 This Season
               </div>
             </div>
 
@@ -314,7 +322,7 @@ export function PricingNew() {
 
             <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Annual</h3>
             <p className="text-gray-200 text-center mb-6 text-base font-semibold leading-relaxed">
-              Save money and get exclusive benefits. For committed growth.
+              Serious operators don't do month-to-month. This is the plan for people who are committed to winning next year.
             </p>
 
             <div className="text-center mb-5">
@@ -329,6 +337,9 @@ export function PricingNew() {
                 Save $1,200 per year compared to monthly
               </div>
               <div className="text-gray-400 text-sm mt-1">Billed at $3,300 annually. Get 2 months free.</div>
+              <div className="mt-3 bg-amber-500/10 border border-amber-500/30 rounded-lg px-3 py-2">
+                <p className="text-amber-300 text-xs font-semibold">Holiday rate — locked in for the life of your plan. Rates rise in January.</p>
+              </div>
             </div>
 
             <div className="bg-emerald-500/10 border border-emerald-400/30 rounded-2xl p-4 mb-6">
@@ -377,7 +388,7 @@ export function PricingNew() {
                 </motion.div>
               ) : (
                 <>
-                  Join Annually and Save $1,200
+                  Claim This Season's Best Deal
                   <ArrowRight className="w-4 h-4" />
                 </>
               )}
@@ -411,7 +422,7 @@ export function PricingNew() {
 
             <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Lifetime</h3>
             <p className="text-gray-200 text-center mb-6 text-sm leading-relaxed">
-              One-time investment. Dedicated support and custom setup built just for you.
+              One-time investment. Fully custom. Built for operators who don't want a subscription — they want a machine.
             </p>
 
             <div className="text-center mb-6">
@@ -497,10 +508,10 @@ export function PricingNew() {
         >
           <div className="text-center mb-10 sm:mb-12 px-4">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-white leading-tight">
-              Questions?
+              Still on the Fence?
             </h2>
-            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-              Book a call with our team and we'll walk you through everything.
+            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
+              Every week you wait is a week your pipeline isn't growing on autopilot. Book a 15-minute call — we'll show you exactly what your business looks like with KenjiAI running it.
             </p>
           </div>
 
@@ -521,12 +532,12 @@ export function PricingNew() {
                 <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-5 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                   <Video className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
                 </div>
-                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 leading-tight">Book a Free Call</h3>
+                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 leading-tight">Book Your Free Strategy Call</h3>
                 <p className="text-orange-100 text-base sm:text-lg mb-5 leading-relaxed">
-                  15 minutes. We'll walk you through how KenjiAI works for your business. No pressure, no obligation.
+                  15 minutes. We'll map out exactly how AI automation would work in your business — and what it would be worth. No sales pitch. Just clarity.
                 </p>
                 <div className="flex items-center justify-center gap-2 text-white font-semibold text-base">
-                  <span>Schedule Your Call</span>
+                  <span>Claim Your Free Session</span>
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </div>
               </div>
@@ -552,7 +563,7 @@ export function PricingNew() {
                 </div>
                 <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 leading-tight">Already a Member?</h3>
                 <p className="text-blue-100 text-base sm:text-lg mb-5 leading-relaxed">
-                  Jump straight into your dashboard and keep building momentum.
+                  Your dashboard is running. Keep the momentum going — your next deal is already in the pipeline.
                 </p>
                 <div className="flex items-center justify-center gap-2 text-white font-semibold text-base">
                   <span>Log In to KenjiAI</span>
