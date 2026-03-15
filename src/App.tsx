@@ -14,6 +14,7 @@ import { ErrorLogger } from './components/ErrorLogger';
 import { BrowserCompatibility } from './components/BrowserCompatibility';
 import { OfflineIndicator } from './components/OfflineIndicator';
 import QuickContact from './components/QuickContact';
+import { BackgroundLines } from './components/ui/animated-svg-background';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const ToolsPage = lazy(() => import('./pages/ToolsPage'));
@@ -96,39 +97,41 @@ function App() {
             <BrowserCompatibility />
             <OfflineIndicator />
             <ErrorLogger />
-            <div className="min-h-screen bg-gray-900" id="app-container">
-              <PerformanceOptimizer />
-              <ConditionalNavbar />
-              <Suspense fallback={<LoadingSpinner />}>
-                <main id="main-content" role="main">
-                  <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/tools" element={<Navigate to="/free-tools" replace />} />
-                    <Route path="/free-tools" element={<FreeToolsPage />} />
-                    <Route path="/ai-automation" element={<AIAutomationPage />} />
-                    <Route path="/voice-agents" element={<VoiceAgentsPage />} />
-                    <Route path="/voice-ai" element={<VoiceAILandingPage />} />
-                    <Route path="/marketing-automation" element={<MarketingAutomationPage />} />
-                    <Route path="/crm" element={<CRMPage />} />
-                    <Route path="/knowledge" element={<KnowledgeBasePage />} />
-                    <Route path="/ai-education" element={<AIEducationPage />} />
-                    <Route path="/blog/:slug" element={<BlogPost />} />
-                    <Route path="/investors" element={<InvestorPage />} />
-                    <Route path="/pricing" element={<ProductSelectionPage />} />
-                    <Route path="/success" element={<SuccessPage />} />
-                    <Route path="/privacy" element={<PrivacyPolicyPage />} />
-                    <Route path="/disclaimer" element={<DisclaimerPage />} />
-                    <Route path="/terms" element={<TermsOfServicePage />} />
-                    <Route path="/blog" element={<Navigate to="/knowledge" replace />} />
-                    <Route path="*" element={<NotFoundPage />} />
-                  </Routes>
-                </main>
-              </Suspense>
-              <footer role="contentinfo">
-                <Footer />
-              </footer>
-              <QuickContact />
-            </div>
+            <BackgroundLines className="min-h-screen bg-gray-900" svgOptions={{ duration: 12 }}>
+              <div id="app-container" className="min-h-screen">
+                <PerformanceOptimizer />
+                <ConditionalNavbar />
+                <Suspense fallback={<LoadingSpinner />}>
+                  <main id="main-content" role="main">
+                    <Routes>
+                      <Route path="/" element={<HomePage />} />
+                      <Route path="/tools" element={<Navigate to="/free-tools" replace />} />
+                      <Route path="/free-tools" element={<FreeToolsPage />} />
+                      <Route path="/ai-automation" element={<AIAutomationPage />} />
+                      <Route path="/voice-agents" element={<VoiceAgentsPage />} />
+                      <Route path="/voice-ai" element={<VoiceAILandingPage />} />
+                      <Route path="/marketing-automation" element={<MarketingAutomationPage />} />
+                      <Route path="/crm" element={<CRMPage />} />
+                      <Route path="/knowledge" element={<KnowledgeBasePage />} />
+                      <Route path="/ai-education" element={<AIEducationPage />} />
+                      <Route path="/blog/:slug" element={<BlogPost />} />
+                      <Route path="/investors" element={<InvestorPage />} />
+                      <Route path="/pricing" element={<ProductSelectionPage />} />
+                      <Route path="/success" element={<SuccessPage />} />
+                      <Route path="/privacy" element={<PrivacyPolicyPage />} />
+                      <Route path="/disclaimer" element={<DisclaimerPage />} />
+                      <Route path="/terms" element={<TermsOfServicePage />} />
+                      <Route path="/blog" element={<Navigate to="/knowledge" replace />} />
+                      <Route path="*" element={<NotFoundPage />} />
+                    </Routes>
+                  </main>
+                </Suspense>
+                <footer role="contentinfo">
+                  <Footer />
+                </footer>
+                <QuickContact />
+              </div>
+            </BackgroundLines>
           </Router>
         </AutoFormattingProvider>
       </HolidayThemeProvider>
