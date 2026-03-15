@@ -42,5 +42,4 @@ const AppWithTracking = () => {
   );
 };
 
-const root = document.getElementById('root')!;
-createRoot(root).render(<AppWithTracking />);
+createRoot(document.getElementById('root')!).render(<AppWithTracking />);
