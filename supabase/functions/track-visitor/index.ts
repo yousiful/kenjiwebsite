@@ -29,7 +29,15 @@ Deno.serve(async (req: Request) => {
 
   try {
     const body = await req.json();
-    const { page, referrer, userAgent } = body;
+    const {
+      page,
+      referrer,
+      userAgent,
+      firstName,
+      lastName,
+      email,
+      phone,
+    } = body;
 
     const ip =
       req.headers.get("x-forwarded-for")?.split(",")[0].trim() ||
@@ -76,6 +84,10 @@ Deno.serve(async (req: Request) => {
     await pushToGHL({
       source: "kenjiai_visitor_log",
       visited_at: visitedAt,
+      firstName: firstName || "",
+      lastName: lastName || "",
+      email: email || "",
+      phone: phone || "",
       ip,
       page: page || "",
       referrer: referrer || "",
