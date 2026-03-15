@@ -2,7 +2,6 @@ import React, { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import ScrollProgressBar from './components/ScrollProgressBar';
 import RedirectSystem from './components/RedirectSystem';
 import PerformanceOptimizer from './components/PerformanceOptimizer';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -34,11 +33,36 @@ const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
 const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage'));
 const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage'));
 
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
+
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
+
+const VisitorTracker: React.FC = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const url = `${SUPABASE_URL}/functions/v1/track-visitor`;
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+      },
+      body: JSON.stringify({
+        page: pathname,
+        referrer: document.referrer,
+        userAgent: navigator.userAgent,
+      }),
+    }).catch(() => {});
   }, [pathname]);
 
   return null;
@@ -66,6 +90,7 @@ function App() {
         <AutoFormattingProvider>
           <Router>
             <ScrollToTop />
+            <VisitorTracker />
             <LinkValidator />
             <RedirectSystem />
             <BrowserCompatibility />
@@ -73,7 +98,6 @@ function App() {
             <ErrorLogger />
             <div className="min-h-screen bg-gray-900" id="app-container">
               <PerformanceOptimizer />
-              <ScrollProgressBar />
               <ConditionalNavbar />
               <Suspense fallback={<LoadingSpinner />}>
                 <main id="main-content" role="main">
