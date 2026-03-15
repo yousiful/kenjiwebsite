@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, MessageCircle, Clock, Users, Shield, CheckCircle } from 'lucide-react';
+import { MessageCircle, Clock, Users, Shield, CheckCircle } from 'lucide-react';
 
 interface Objection {
   id: string;
@@ -56,27 +56,6 @@ const OBJECTIONS: Objection[] = [
 
 export function ObjectionsHandler() {
   const [selectedObjection, setSelectedObjection] = useState<string | null>(null);
-  const [showPopup, setShowPopup] = useState(false);
-
-  // Show popup after 20 seconds or on scroll to bottom of page
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowPopup(true);
-    }, 20000);
-
-    const handleScroll = () => {
-      const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
-      if (scrollPercentage > 70) {
-        setShowPopup(true);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      clearTimeout(timer);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   return (
     <>
@@ -203,96 +182,6 @@ export function ObjectionsHandler() {
         </div>
       </div>
 
-      {/* Popup Modal */}
-      <AnimatePresence>
-        {showPopup && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-            onClick={() => setShowPopup(false)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, y: 20 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, y: 20 }}
-              onClick={(e) => e.stopPropagation()}
-              className="bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-700 rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl"
-            >
-              {/* Close Button */}
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setShowPopup(false)}
-                className="absolute top-6 right-6 text-gray-400 hover:text-white z-10 transition-colors"
-              >
-                <X className="w-6 h-6" />
-              </motion.button>
-
-              {/* Content */}
-              <div className="p-8 sm:p-12">
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.2, type: 'spring' }}
-                  className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center mb-6 mx-auto"
-                >
-                  <MessageCircle className="w-8 h-8 text-white" />
-                </motion.div>
-
-                <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-4">
-                  Still on the fence?
-                </h3>
-
-                <p className="text-gray-300 text-center mb-8 leading-relaxed">
-                  We get it. Before committing to any new platform, you want to know it'll actually work for your business. That's exactly why we offer a risk-free trial with a 30-day money-back guarantee.
-                </p>
-
-                <div className="space-y-4 mb-8">
-                  <div className="flex items-start gap-3 bg-gray-800/30 border border-gray-700/50 rounded-lg p-4">
-                    <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-200">
-                      <strong>25 spots this week</strong> for personalized implementations
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-3 bg-gray-800/30 border border-gray-700/50 rounded-lg p-4">
-                    <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-200">
-                      Book a call and our team shows you exactly how <strong>your</strong> business will benefit
-                    </span>
-                  </div>
-                  <div className="flex items-start gap-3 bg-gray-800/30 border border-gray-700/50 rounded-lg p-4">
-                    <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-200">
-                      <strong>Lock in current pricing</strong> before rates increase next month
-                    </span>
-                  </div>
-                </div>
-
-                <motion.a
-                  href="https://go.mediatraffics.com/leads"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/40 transition-all duration-300 mb-4"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  Book Your Free Call Now
-                </motion.a>
-
-                <button
-                  onClick={() => setShowPopup(false)}
-                  className="w-full text-gray-400 hover:text-gray-300 font-semibold py-2 transition-colors"
-                >
-                  Maybe later
-                </button>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 }
