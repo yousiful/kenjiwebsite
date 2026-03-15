@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Brain, Zap, TrendingUp, Users, ArrowRight, CheckCircle, Star, Target, Rocket } from 'lucide-react';
+import SEOHead from '../components/SEOHead';
 
 const AIAutomationPage: React.FC = () => {
   const automationFeatures = [
@@ -58,12 +59,74 @@ const AIAutomationPage: React.FC = () => {
     { metric: "99.9%", label: "Accuracy", description: "Eliminate human errors" }
   ];
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "KenjiAI Business Automation",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "Transform your business with AI automation. Automate workflows, customer service, sales processes, and operations with 85% time savings and 300% ROI increase.",
+    "url": "https://kenjiai.com/ai-automation",
+    "provider": {
+      "@type": "Organization",
+      "name": "KenjiAI",
+      "url": "https://kenjiai.com"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://kenjiai.com/pricing"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "10000"
+    },
+    "featureList": [
+      "Intelligent Workflows",
+      "Smart Decision Making",
+      "Performance Optimization",
+      "Customer Intelligence"
+    ],
+    "mainEntityOfPage": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much time can AI automation save my business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "KenjiAI customers report an average of 85% time savings on repetitive tasks by automating workflows, customer service, and operations."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the ROI of AI business automation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Businesses using KenjiAI see an average 300% ROI increase, with the automation paying for itself within the first 90 days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What business processes can KenjiAI automate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "KenjiAI automates workflows, customer service, sales processes, lead qualification, email campaigns, social media, data entry, and more across industries like e-commerce, SaaS, and professional services."
+          }
+        }
+      ]
+    }
+  };
+
   return (
     <>
-      {/* SEO Head */}
-      <title>AI Business Automation Platform | KenjiAI - Automate Operations & Scale Growth</title>
-      <meta name="description" content="Transform your business with AI automation. Automate workflows, customer service, sales processes, and operations. 85% time savings, 300% ROI increase. Get started today." />
-      <meta name="keywords" content="AI automation, business automation, workflow automation, AI business processes, intelligent automation, business AI platform" />
+      <SEOHead
+        title="AI Business Automation Platform | KenjiAI - Automate Operations & Scale Growth"
+        description="Transform your business with AI automation. Automate workflows, customer service, sales processes, and operations. 85% time savings, 300% ROI increase. Get started today."
+        keywords="AI automation, business automation, workflow automation, AI business processes, intelligent automation, business AI platform, automate business operations, AI workflow software"
+        canonical="https://kenjiai.com/ai-automation"
+        structuredData={structuredData}
+      />
       
       <div className="pt-24 pb-16 bg-gray-900 min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

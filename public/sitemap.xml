@@ -130,14 +130,14 @@
 
   <!-- Legal Pages -->
   <url>
-    <loc>https://kenjiai.com/privacy-policy</loc>
+    <loc>https://kenjiai.com/privacy</loc>
     <lastmod>2026-02-08T10:00:00+00:00</lastmod>
     <changefreq>quarterly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://kenjiai.com/terms-of-service</loc>
+    <loc>https://kenjiai.com/terms</loc>
     <lastmod>2026-02-08T10:00:00+00:00</lastmod>
     <changefreq>quarterly</changefreq>
     <priority>0.5</priority>

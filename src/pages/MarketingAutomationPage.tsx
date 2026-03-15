@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Users, TrendingUp, Target, ArrowRight, CheckCircle, Star, Calendar, BarChart3 } from 'lucide-react';
+import SEOHead from '../components/SEOHead';
 
 const MarketingAutomationPage: React.FC = () => {
   const automationFeatures = [
@@ -58,12 +59,77 @@ const MarketingAutomationPage: React.FC = () => {
     { metric: "85%", label: "Time Savings", description: "Fully automated campaign management" }
   ];
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "KenjiAI Marketing Automation",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "AI-powered marketing automation platform with smart email campaigns, social media scheduling, lead nurturing, and analytics. 400% higher open rates, 300% more qualified leads.",
+    "url": "https://kenjiai.com/marketing-automation",
+    "provider": {
+      "@type": "Organization",
+      "name": "KenjiAI",
+      "url": "https://kenjiai.com"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://kenjiai.com/pricing"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "9100"
+    },
+    "featureList": [
+      "Smart Email Campaigns",
+      "Lead Nurturing Automation",
+      "Social Media Scheduling",
+      "Analytics & Optimization",
+      "A/B Testing",
+      "Behavioral Triggers",
+      "Advanced Segmentation"
+    ],
+    "mainEntityOfPage": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does AI improve email marketing open rates?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "KenjiAI optimizes subject lines, send times, and content personalization using AI, resulting in 400% higher open rates compared to traditional email marketing tools."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can KenjiAI automate my entire marketing funnel?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, KenjiAI Marketing Automation handles your complete funnel from lead capture and nurturing through email, SMS, and social media, to conversion and re-engagement — all automated with AI."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What ROI can I expect from AI marketing automation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "KenjiAI customers see an average 250% ROI increase from marketing automation, with 300% more qualified leads entering the pipeline and 85% time savings on campaign management."
+          }
+        }
+      ]
+    }
+  };
+
   return (
     <>
-      {/* SEO Head */}
-      <title>AI Marketing Automation Platform | KenjiAI - Email, Social Media & Lead Nurturing</title>
-      <meta name="description" content="Automate your marketing with AI. Smart email campaigns, social media automation, lead nurturing, and analytics. 400% higher open rates, 300% more qualified leads." />
-      <meta name="keywords" content="marketing automation, email automation, social media automation, lead nurturing, AI marketing, email marketing platform" />
+      <SEOHead
+        title="AI Marketing Automation Platform | KenjiAI - Email, Social Media & Lead Nurturing"
+        description="Automate your marketing with AI. Smart email campaigns, social media automation, lead nurturing, and analytics. 400% higher open rates, 300% more qualified leads."
+        keywords="marketing automation, email automation, social media automation, lead nurturing, AI marketing, email marketing platform, automated email campaigns, marketing ROI"
+        canonical="https://kenjiai.com/marketing-automation"
+        structuredData={structuredData}
+      />
       
       <div className="pt-24 pb-16 bg-gray-900 min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

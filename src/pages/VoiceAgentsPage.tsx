@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mic, Phone, MessageCircle, TrendingUp, ArrowRight, CheckCircle, Star, Clock, DollarSign } from 'lucide-react';
+import SEOHead from '../components/SEOHead';
 
 const VoiceAgentsPage: React.FC = () => {
   const voiceFeatures = [
@@ -58,12 +59,77 @@ const VoiceAgentsPage: React.FC = () => {
     { metric: "24/7", label: "Availability", description: "Never miss an opportunity" }
   ];
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "KenjiAI Voice Agents",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "AI voice agents that handle sales calls, customer service, and appointment booking 24/7. 85% qualification rate, 300% more calls handled.",
+    "url": "https://kenjiai.com/voice-agents",
+    "provider": {
+      "@type": "Organization",
+      "name": "KenjiAI",
+      "url": "https://kenjiai.com"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": "https://kenjiai.com/pricing"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "8500"
+    },
+    "featureList": [
+      "Natural Conversations",
+      "24/7 Availability",
+      "Smart Call Handling",
+      "Performance Analytics",
+      "Sales Call Automation",
+      "Appointment Booking",
+      "Customer Support Automation"
+    ],
+    "mainEntityOfPage": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How human-like are KenjiAI voice agents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "KenjiAI voice agents use advanced natural language processing to sound human-like, understand context and emotion, and hold natural conversations that close deals and resolve customer issues."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What types of calls can AI voice agents handle?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "KenjiAI voice agents handle outbound sales calls, inbound customer support, appointment booking, lead qualification, and follow-up calls 24/7 across all time zones."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the lead qualification rate for AI voice agents?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "KenjiAI voice agents achieve an 85% lead qualification accuracy rate, handling 300% more calls than a human team while maintaining consistent performance."
+          }
+        }
+      ]
+    }
+  };
+
   return (
     <>
-      {/* SEO Head */}
-      <title>AI Voice Agents for Sales & Customer Service | KenjiAI - 24/7 Automated Calling</title>
-      <meta name="description" content="AI voice agents that handle sales calls, customer service, and appointment booking 24/7. 85% qualification rate, 300% more calls handled. Human-like conversations that close deals." />
-      <meta name="keywords" content="AI voice agents, automated calling, AI phone calls, voice AI, sales automation, customer service automation, AI receptionist" />
+      <SEOHead
+        title="AI Voice Agents for Sales & Customer Service | KenjiAI - 24/7 Automated Calling"
+        description="AI voice agents that handle sales calls, customer service, and appointment booking 24/7. 85% qualification rate, 300% more calls handled. Human-like conversations that close deals."
+        keywords="AI voice agents, automated calling, AI phone calls, voice AI, sales automation, customer service automation, AI receptionist, 24/7 phone answering, automated sales calls"
+        canonical="https://kenjiai.com/voice-agents"
+        structuredData={structuredData}
+      />
       
       <div className="pt-24 pb-16 bg-gray-900 min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

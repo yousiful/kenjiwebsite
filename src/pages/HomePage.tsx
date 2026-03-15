@@ -64,8 +64,7 @@ const HomePage: React.FC = () => {
         </script>
       </Helmet>
       
-      <div className="pt-0" aria-labelledby="home-heading">
-        <h1 id="home-heading" className="sr-only">KenjiAI - AI That Closes Deals While You Sleep</h1>
+      <div className="pt-0">
         <Hero />
         <TrustBadges />
         <BusinessTransformation />
