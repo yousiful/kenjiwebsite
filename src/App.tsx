@@ -15,6 +15,7 @@ import { BrowserCompatibility } from './components/BrowserCompatibility';
 import { OfflineIndicator } from './components/OfflineIndicator';
 import QuickContact from './components/QuickContact';
 import { BackgroundLines } from './components/ui/animated-svg-background';
+import { SocialProofToast } from './components/SocialProofToast';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const ToolsPage = lazy(() => import('./pages/ToolsPage'));
@@ -130,6 +131,7 @@ function App() {
                   <Footer />
                 </footer>
                 <QuickContact />
+                <SocialProofToast />
               </div>
             </BackgroundLines>
           </Router>
