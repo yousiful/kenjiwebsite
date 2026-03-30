@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Megaphone, Bot, Video } from 'lucide-react';
 import { PricingNew } from '../components/PricingNew';
-import { LimitedTimeBonusBanner } from '../components/LimitedTimeBonusBanner';
+
 import { ObjectionsHandler } from '../components/ObjectionsHandler';
 
 const BENEFITS = [
@@ -42,7 +42,7 @@ const ProductSelectionPage: React.FC = () => {
       <div className="min-h-screen" style={{ backgroundColor: '#0B0E14' }}>
         <div className="pt-16">
 
-          <LimitedTimeBonusBanner />
+
 
           {/* Core Benefits */}
           <section className="py-16 px-4 sm:px-6">
