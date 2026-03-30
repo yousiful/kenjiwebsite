@@ -34,7 +34,7 @@ const HomePage: React.FC = () => {
         },
         {
           "@type": "Offer",
-          "price": "297",
+          "price": "375",
           "priceCurrency": "USD",
           "description": "Complete AI business automation platform"
         }

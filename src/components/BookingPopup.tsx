@@ -348,9 +348,9 @@ export function BookingPopup({ isOpen, onClose }: BookingPopupProps) {
                 <div className="min-w-0">
                   <p className="text-blue-300 font-bold mb-1.5 sm:mb-2 text-sm sm:text-base">Pre-Call Checklist:</p>
                   <ul className="text-gray-300 text-xs sm:text-sm space-y-1">
-                    <li>1. Join via laptop/tablet (no mobile)</li>
-                    <li>2. Have all decision-makers present</li>
-                    <li>3. Be ready with investment funds for ad-spend scaling</li>
+                    <li>1. Join via laptop/tablet for best experience</li>
+                    <li>2. Have key decision-makers available</li>
+                    <li>3. Bring your questions — we'll answer everything</li>
                   </ul>
                 </div>
               </div>

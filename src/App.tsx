@@ -70,7 +70,7 @@ const VisitorTracker: React.FC = () => {
   return null;
 };
 
-const NAVBAR_HIDDEN_ROUTES = ['/pricing'];
+const NAVBAR_HIDDEN_ROUTES: string[] = [];
 
 function ConditionalNavbar() {
   const { pathname } = useLocation();
