@@ -62,7 +62,7 @@ export function SocialProofToast() {
 
     const initial = setTimeout(() => {
       push();
-      timerRef.current = setInterval(push, 6000);
+      timerRef.current = setInterval(push, 20000);
     }, 2500);
 
     return () => {
@@ -76,7 +76,7 @@ export function SocialProofToast() {
     const last = queue[queue.length - 1];
     const timeout = setTimeout(() => {
       setQueue((prev) => prev.filter((e) => e.id !== last.id));
-    }, 5200);
+    }, 8500);
     return () => clearTimeout(timeout);
   }, [queue]);
 
@@ -161,7 +161,7 @@ export function SocialProofToast() {
                   className="absolute bottom-0 left-0 h-[2px] rounded-full"
                   initial={{ scaleX: 1 }}
                   animate={{ scaleX: 0 }}
-                  transition={{ duration: 5.2, ease: 'linear' }}
+                  transition={{ duration: 8.5, ease: 'linear' }}
                   style={{
                     width: '100%',
                     background: `linear-gradient(90deg, ${color}, ${color}50)`,

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Check, Star, ArrowRight, Calendar, Zap, Shield,
-  CreditCard, Video, Phone
+  CreditCard, Video
 } from 'lucide-react';
 import { ToolReplacementBar } from './ToolReplacementBar';
 import { MoneyBackGuarantee } from './MoneyBackGuarantee';
