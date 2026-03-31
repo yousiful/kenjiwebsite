@@ -11,42 +11,33 @@ import FAQ from './FAQ';
 import { getSeasonCopy } from '../utils/seasonCopy';
 
 const MONTHLY_FEATURES = [
-  "Done-For-You Setup & Team Training",
-  "Done-For-You Ads to Fill Your CRM",
-  "Done-For-You Support & Management",
-  "Unlimited Voice Agents",
-  "Smart Workflows & Automation",
-  "Advanced Email & SMS Campaigns",
+  "A Real Team of Experts Managing Setup",
+  "Dedicated Account Manager & Support",
+  "Unlimited Custom AI Agents",
+  "Done-For-You Automated Workflows",
+  "Done-For-You Ads to Fill Your Pipeline",
   "Complete CRM with Custom Pipelines",
+  "Advanced Email & SMS Campaigns",
   "Community Builder & Management",
-  "Course & Certification Platform",
-  "Membership Management System",
   "Blog Writer & SEO Suite",
   "Social Media Planner & Scheduler",
-  "Survey & Quiz Builder",
-  "QR Code Generator & Tracking",
-  "$25 Monthly Credit",
   "Daily Sales Training",
   "Standard Referral Program",
 ];
 
 const YEARLY_FEATURES = [
-  "Done-For-You Setup & Team Training",
-  "Done-For-You Ads to Fill Your CRM",
-  "Done-For-You Support & Management",
-  "Unlimited Voice Agents",
-  "Smart Workflows & Automation",
-  "Advanced Email & SMS Campaigns",
+  "A Real Team of Experts Managing Setup",
+  "Dedicated Account Manager & Support",
+  "Unlimited Custom AI Agents",
+  "Done-For-You Automated Workflows",
+  "Done-For-You Ads to Fill Your Pipeline",
   "Complete CRM with Custom Pipelines",
+  "Advanced Email & SMS Campaigns",
   "Community Builder & Management",
-  "Course & Certification Platform",
-  "Membership Management System",
   "Blog Writer & SEO Suite",
   "Social Media Planner & Scheduler",
-  "Survey & Quiz Builder",
-  "QR Code Generator & Tracking",
-  "$25 Monthly Credit ($300/Year Value)",
   "Daily Sales Training",
+  "$300 Yearly Credit included",
   "Premium Referral Program Access",
 ];
 
@@ -170,7 +161,7 @@ export function PricingNew() {
 
             <div className="text-center mb-5">
               <div className="text-5xl sm:text-6xl font-bold text-white">
-                $375
+                $475
                 <span className="text-xl sm:text-2xl text-gray-400">/mo</span>
               </div>
               <div className="text-blue-300 font-semibold text-sm mt-2">
@@ -202,33 +193,19 @@ export function PricingNew() {
               </div>
             </div>
 
-            <motion.a
-              href="https://go.mediatraffics.com/leads"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full text-white py-4 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center gap-2.5 shadow-xl transition-all duration-300 mb-3"
-              style={{ background: 'linear-gradient(90deg, #2563EB 0%, #0891B2 100%)' }}
-            >
-              <Phone className="w-4 h-4" />
-              Book a Free Strategy Call
-              <ArrowRight className="w-4 h-4" />
-            </motion.a>
-
             <motion.button
               onClick={() => handlePlanClick('https://freedom.kenjiai.com/checkout-4912-2457-3370', 'monthly')}
               disabled={isLoading === 'monthly'}
               whileHover={{ scale: isLoading === 'monthly' ? 1 : 1.02 }}
               whileTap={{ scale: isLoading === 'monthly' ? 1 : 0.98 }}
-              className={`w-full text-gray-300 py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 border border-gray-600 hover:border-gray-400 transition-all duration-300 ${isLoading === 'monthly' ? 'opacity-90 cursor-wait' : ''}`}
+              className={`w-full py-4 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center gap-2.5 shadow-xl transition-all duration-300 mb-3 ${isLoading === 'monthly' ? 'opacity-90 cursor-wait bg-blue-600 text-white' : 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:shadow-cyan-500/25'}`}
             >
               {isLoading === 'monthly' ? (
                 <motion.div className="flex items-center gap-3">
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }}
-                    className="w-4 h-4 border-2 border-gray-300 border-t-transparent rounded-full"
+                    className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
                   />
                   <motion.span animate={{ opacity: [1, 0.5, 1] }} transition={{ duration: 1, repeat: Infinity }}>
                     Redirecting...
@@ -236,7 +213,8 @@ export function PricingNew() {
                 </motion.div>
               ) : (
                 <>
-                  Or get started now →
+                  Get Started Now
+                  <ArrowRight className="w-4 h-4" />
                 </>
               )}
             </motion.button>
@@ -281,7 +259,7 @@ export function PricingNew() {
 
             <div className="text-center mb-5">
               <div className="text-5xl sm:text-6xl font-bold text-white mb-1">
-                $275
+                $329
                 <span className="text-xl sm:text-2xl text-gray-400">/mo</span>
               </div>
               <div className="text-emerald-300 font-semibold text-sm mt-2">
@@ -291,9 +269,9 @@ export function PricingNew() {
                 Only applies to revenue from KenjiAI campaigns. No revenue = no fee.
               </div>
               <div className="text-emerald-400 font-bold text-base mt-3">
-                Save $1,200 per year
+                Save $1,750 per year
               </div>
-              <div className="text-gray-400 text-sm mt-1">Billed at $3,300 annually. 2 months free.</div>
+              <div className="text-gray-400 text-sm mt-1">Billed at $3,950 annually. Connect today.</div>
             </div>
 
             <div className="bg-emerald-500/10 border border-emerald-400/30 rounded-2xl p-4 mb-6">
@@ -317,33 +295,19 @@ export function PricingNew() {
               </div>
             </div>
 
-            <motion.a
-              href="https://go.mediatraffics.com/leads"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full text-white py-4 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center gap-2.5 shadow-xl transition-all duration-300 mb-3"
-              style={{ background: 'linear-gradient(90deg, #10B981 0%, #059669 100%)' }}
-            >
-              <Phone className="w-4 h-4" />
-              Book a Free Strategy Call
-              <ArrowRight className="w-4 h-4" />
-            </motion.a>
-
             <motion.button
               onClick={() => handlePlanClick('https://freedom.kenjiai.com/checkout-4912-2457-3370', 'yearly')}
               disabled={isLoading === 'yearly'}
               whileHover={{ scale: isLoading === 'yearly' ? 1 : 1.02 }}
               whileTap={{ scale: isLoading === 'yearly' ? 1 : 0.98 }}
-              className={`w-full text-gray-300 py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 border border-gray-600 hover:border-gray-400 transition-all duration-300 ${isLoading === 'yearly' ? 'opacity-90 cursor-wait' : ''}`}
+              className={`w-full py-4 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center gap-2.5 shadow-xl transition-all duration-300 mb-3 ${isLoading === 'yearly' ? 'opacity-90 cursor-wait bg-emerald-600 text-white' : 'bg-gradient-to-r from-emerald-500 to-green-500 text-white hover:shadow-emerald-500/25'}`}
             >
               {isLoading === 'yearly' ? (
                 <motion.div className="flex items-center gap-3">
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }}
-                    className="w-4 h-4 border-2 border-gray-300 border-t-transparent rounded-full"
+                    className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
                   />
                   <motion.span animate={{ opacity: [1, 0.5, 1] }} transition={{ duration: 1, repeat: Infinity }}>
                     Redirecting...
@@ -351,7 +315,8 @@ export function PricingNew() {
                 </motion.div>
               ) : (
                 <>
-                  Or get started now →
+                  Get Started Now
+                  <ArrowRight className="w-4 h-4" />
                 </>
               )}
             </motion.button>
