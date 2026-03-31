@@ -259,7 +259,7 @@ export function PricingNew() {
 
             <div className="text-center mb-5">
               <div className="text-5xl sm:text-6xl font-bold text-white mb-1">
-                $329
+                $320
                 <span className="text-xl sm:text-2xl text-gray-400">/mo</span>
               </div>
               <div className="text-emerald-300 font-semibold text-sm mt-2">
@@ -269,9 +269,9 @@ export function PricingNew() {
                 Only applies to revenue from KenjiAI campaigns. No revenue = no fee.
               </div>
               <div className="text-emerald-400 font-bold text-base mt-3">
-                Save $1,750 per year
+                Save $1,850 per year
               </div>
-              <div className="text-gray-400 text-sm mt-1">Billed at $3,950 annually. Connect today.</div>
+              <div className="text-gray-400 text-sm mt-1">Billed at $3,850 annually. Connect today.</div>
             </div>
 
             <div className="bg-emerald-500/10 border border-emerald-400/30 rounded-2xl p-4 mb-6">
