@@ -1,11 +1,10 @@
-import React, { Suspense, lazy, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import RedirectSystem from './components/RedirectSystem';
 import PerformanceOptimizer from './components/PerformanceOptimizer';
 import ErrorBoundary from './components/ErrorBoundary';
-import LoadingSpinner from './components/LoadingSpinner';
 import NotFoundPage from './components/NotFoundPage';
 import AutoFormattingProvider from './components/AutoFormattingProvider';
 import LinkValidator from './components/LinkValidator';
@@ -17,23 +16,23 @@ import QuickContact from './components/QuickContact';
 import { BackgroundLines } from './components/ui/animated-svg-background';
 import { SocialProofToast } from './components/SocialProofToast';
 
-const HomePage = lazy(() => import('./pages/HomePage'));
-const ToolsPage = lazy(() => import('./pages/ToolsPage'));
-const KnowledgeBasePage = lazy(() => import('./pages/KnowledgeBasePage'));
-const AIEducationPage = lazy(() => import('./pages/AIEducationPage'));
-const BlogPost = lazy(() => import('./pages/BlogPost'));
-const InvestorPage = lazy(() => import('./pages/InvestorPage'));
-const ProductSelectionPage = lazy(() => import('./pages/ProductSelectionPage'));
-const SuccessPage = lazy(() => import('./pages/SuccessPage'));
-const FreeToolsPage = lazy(() => import('./pages/FreeToolsPage'));
-const AIAutomationPage = lazy(() => import('./pages/AIAutomationPage'));
-const VoiceAgentsPage = lazy(() => import('./pages/VoiceAgentsPage'));
-const VoiceAILandingPage = lazy(() => import('./pages/VoiceAILandingPage'));
-const MarketingAutomationPage = lazy(() => import('./pages/MarketingAutomationPage'));
-const CRMPage = lazy(() => import('./pages/CRMPage'));
-const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
-const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage'));
-const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage'));
+import HomePage from './pages/HomePage';
+import ToolsPage from './pages/ToolsPage';
+import KnowledgeBasePage from './pages/KnowledgeBasePage';
+import AIEducationPage from './pages/AIEducationPage';
+import BlogPost from './pages/BlogPost';
+import InvestorPage from './pages/InvestorPage';
+import ProductSelectionPage from './pages/ProductSelectionPage';
+import SuccessPage from './pages/SuccessPage';
+import FreeToolsPage from './pages/FreeToolsPage';
+import AIAutomationPage from './pages/AIAutomationPage';
+import VoiceAgentsPage from './pages/VoiceAgentsPage';
+import VoiceAILandingPage from './pages/VoiceAILandingPage';
+import MarketingAutomationPage from './pages/MarketingAutomationPage';
+import CRMPage from './pages/CRMPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import DisclaimerPage from './pages/DisclaimerPage';
+import TermsOfServicePage from './pages/TermsOfServicePage';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
@@ -102,7 +101,6 @@ function App() {
               <div id="app-container" className="min-h-screen">
                 <PerformanceOptimizer />
                 <ConditionalNavbar />
-                <Suspense fallback={<LoadingSpinner />}>
                   <main id="main-content" role="main">
                     <Routes>
                       <Route path="/" element={<HomePage />} />
@@ -126,7 +124,6 @@ function App() {
                       <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                   </main>
-                </Suspense>
                 <footer role="contentinfo">
                   <Footer />
                 </footer>
