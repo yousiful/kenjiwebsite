@@ -64,7 +64,7 @@ const Navbar: React.FC = () => {
           <div className="flex items-center gap-4">
             <Link to="/" className="flex items-center gap-2 group mobile-hover focus-ring drop-shadow-[0_0_8px_rgba(0,255,255,0.3)]">
               <img 
-                src="/kenji-logo.png" 
+                src="/kenji-logo.webp" 
                 alt="KenjiAI Logo" 
                 className="h-10 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
