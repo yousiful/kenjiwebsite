@@ -78,7 +78,7 @@ export function FeatureComparisonTable() {
             Detailed Feature <span className="text-emerald-400">Comparison</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-            Compare all features across our three plans. Everything is included—no hidden fees or surprise limitations.
+            Compare all features across our three plans. Everything is included. No hidden fees or surprise limitations.
           </p>
         </motion.div>
 

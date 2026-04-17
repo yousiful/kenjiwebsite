@@ -9,23 +9,23 @@ const SocialProof: React.FC = () => {
       role: "CEO",
       company: "Growth Labs",
       avatar: "SC",
-      content: "KenjiAI's intelligent automation platform enabled us to scale from 20 to 100+ clients without expanding our team. The operational efficiency gains translated to a 300% revenue increase within six months.",
+      content: "We were drowning trying to keep up with 20 clients. Now we handle over 100 and I haven't hired a single new person. KenjiAI runs the follow-ups, the scheduling, all of it. Our revenue tripled in 6 months.",
       metric: "3x Revenue Growth"
     },
     {
       name: "Marcus Johnson",
-      role: "Chief Revenue Officer",
+      role: "Head of Sales",
       company: "TechGear Pro",
       avatar: "MJ",
-      content: "The AI-powered systems have generated over $500K in qualified pipeline while maintaining consistent conversion rates. This represents a fundamental shift in how we approach revenue generation.",
+      content: "I was skeptical about AI making sales calls. Then it booked 47 qualified meetings in the first month and added over $500K to our pipeline. I don't know why I waited so long.",
       metric: "$500K+ Pipeline"
     },
     {
       name: "Elena Rodriguez",
-      role: "Founder & CEO",
+      role: "Founder",
       company: "DataSync Solutions",
       avatar: "ER",
-      content: "We achieved a 70% reduction in customer acquisition costs and 250% improvement in conversion efficiency. The ROI was immediate and continues to compound monthly.",
+      content: "We cut our cost per lead by 70% and our close rate went up 250%. The AI handles the first touch, qualifies the lead, and by the time my team gets on a call, the prospect is already warm.",
       metric: "70% Lower CAC"
     },
     {
@@ -33,32 +33,32 @@ const SocialProof: React.FC = () => {
       role: "Managing Partner",
       company: "Park Properties",
       avatar: "DP",
-      content: "End-to-end automation from lead qualification to transaction close increased our monthly deal volume by 650%. The systems deliver predictable, scalable results.",
+      content: "I'm a Realtor, not a tech guy. KenjiAI's team set everything up for me. Now my leads get followed up within seconds, appointments book themselves, and I closed 6x more deals last quarter.",
       metric: "650% Deal Volume"
     },
     {
       name: "Lisa Thompson",
-      role: "Principal",
+      role: "Consultant",
       company: "Thompson Consulting",
       avatar: "LT",
-      content: "Strategic content automation established market authority and grew our professional network from 500 to 50,000 qualified connections. The brand visibility translated directly to client acquisition.",
+      content: "I went from 500 LinkedIn connections to 50,000 in a year. The content system posts for me, engages for me, and drives inbound leads. I get 3-5 new inquiries a week now without lifting a finger.",
       metric: "100x Network Growth"
     },
     {
       name: "Alex Rivera",
-      role: "Managing Director",
+      role: "Agency Owner",
       company: "Digital Dominance",
       avatar: "AR",
-      content: "Client retention improved from 60% to 95% through consistent, AI-driven delivery. Our position as the preferred partner in our vertical is now unassailable.",
+      content: "Client retention was my biggest problem. 40% of my clients would churn every year. After setting up automated check-ins and reporting through KenjiAI, retention went to 95%. That alone changed everything.",
       metric: "95% Retention Rate"
     }
   ];
 
   const stats = [
-    { icon: Users, value: "10,000+", label: "Enterprise Clients" },
-    { icon: DollarSign, value: "$50M+", label: "Value Created" },
+    { icon: Users, value: "10,000+", label: "Businesses Using KenjiAI" },
+    { icon: DollarSign, value: "$50M+", label: "Revenue Generated for Clients" },
     { icon: TrendingUp, value: "425%", label: "Average ROI" },
-    { icon: Star, value: "4.9/5", label: "Client Satisfaction" }
+    { icon: Star, value: "4.9/5", label: "Client Rating" }
   ];
 
   return (

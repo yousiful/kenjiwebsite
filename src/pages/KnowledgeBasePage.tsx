@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom';
 import { Calendar, Clock, ArrowRight, Search, TrendingUp, Users, Zap, Brain, Filter, BookOpen, Star, Eye, GraduationCap, Award, PlayCircle, CheckCircle, Target, DollarSign, Calculator, PieChart } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { useAutoFormatting } from '../components/AutoFormattingProvider';
+import { getAllArticles } from '../data/articles';
 
 const KnowledgeBasePage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [isMobile, setIsMobile] = useState(false);
   const { fixFormatting } = useAutoFormatting();
+  const blogArticles = getAllArticles();
 
   // Detect mobile screen size
   useEffect(() => {
@@ -656,6 +658,70 @@ const KnowledgeBasePage: React.FC = () => {
                 ))}
               </div>
             )}
+          </motion.div>
+
+          {/* Blog Articles Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="mt-16 sm:mt-20"
+            role="region"
+            aria-labelledby="blog-articles-heading"
+          >
+            <div className="flex items-center gap-3 sm:gap-4 mb-6 sm:mb-8">
+              <BookOpen className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400" />
+              <h2 id="blog-articles-heading" className="text-2xl sm:text-3xl font-bold text-white">Blog Articles</h2>
+            </div>
+            <p className="text-gray-400 mb-8 text-sm sm:text-base">
+              Practical guides on automation, CRM, marketing, and growing your business with AI.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6" role="list">
+              {blogArticles.map((article, index) => (
+                <Link key={article.slug} to={`/blog/${article.slug}`}>
+                  <motion.article
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 1.0 + index * 0.1 }}
+                    whileHover={{ scale: 1.02, y: -5 }}
+                    role="listitem"
+                    className="group bg-gray-800/50 border border-gray-700 hover:border-blue-400/50 rounded-xl sm:rounded-2xl overflow-hidden transition-all duration-300 h-full flex flex-col"
+                  >
+                    <div className="relative">
+                      <img
+                        src={article.image}
+                        alt={article.title}
+                        className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      <div className="absolute top-3 left-3">
+                        <span className="bg-blue-500/90 text-white px-2 py-1 rounded-lg text-xs font-semibold">
+                          {article.category}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="p-4 sm:p-6 flex-1 flex flex-col">
+                      <h3 className="text-base sm:text-lg font-bold text-white mb-2 sm:mb-3 group-hover:text-blue-300 transition-colors line-clamp-2">
+                        {article.title}
+                      </h3>
+                      <p className="text-gray-400 text-xs sm:text-sm mb-3 sm:mb-4 leading-relaxed line-clamp-3">
+                        {article.excerpt}
+                      </p>
+                      <div className="flex items-center justify-between mt-auto">
+                        <div className="flex items-center gap-2 text-xs text-gray-400">
+                          <Clock className="w-3 h-3" />
+                          <span>{article.readTime}</span>
+                        </div>
+                        <div className="flex items-center text-blue-400 text-xs sm:text-sm font-semibold group-hover:text-blue-300 transition-colors">
+                          Read Article
+                          <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                        </div>
+                      </div>
+                    </div>
+                  </motion.article>
+                </Link>
+              ))}
+            </div>
           </motion.div>
 
           {/* Newsletter Signup */}

@@ -8,18 +8,18 @@ import { AmbientBackground } from './AmbientBackground';
 const FinalCTA: React.FC = () => {
   const { currentHoliday } = useHolidayTheme();
   const benefits = [
-    "Immediate deployment capability",
-    "Enterprise-grade infrastructure",
-    "Comprehensive feature access",
-    "24/7 dedicated support",
-    "Proven implementation methodology",
-    "White-glove onboarding"
+    "Set up and running in days",
+    "Real team handles your setup",
+    "Everything included, nothing extra",
+    "Support whenever you need it",
+    "Built around your business",
+    "We walk you through everything"
   ];
 
   const urgencyIndicators = [
-    { label: "Enterprise Clients", value: "10,000+", color: "text-blue-400" },
+    { label: "Active Clients", value: "10,000+", color: "text-blue-400" },
     { label: "Average ROI", value: "425%", color: "text-green-400" },
-    { label: "Client Satisfaction", value: "4.9/5", color: "text-purple-400" }
+    { label: "Client Rating", value: "4.9/5", color: "text-purple-400" }
   ];
 
   return (
@@ -50,7 +50,7 @@ const FinalCTA: React.FC = () => {
         >
           Transform Your{' '}
           <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-green-400 bg-clip-text text-transparent">
-            Operating Model
+            Business
           </span>
         </motion.h2>
 
@@ -62,8 +62,8 @@ const FinalCTA: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-2xl sm:text-3xl text-gray-300 mb-12 leading-relaxed max-w-5xl mx-auto"
         >
-          Enterprise-grade AI infrastructure delivering measurable results and sustained competitive advantage.
-          One integrated platform, unlimited scalability.
+          One platform that handles your marketing, sales, and operations.
+          No more juggling 10 different tools.
         </motion.p>
 
         {/* Success Indicators */}
@@ -137,7 +137,7 @@ const FinalCTA: React.FC = () => {
                 </motion.span>
               )}
               <Rocket className="w-8 h-8" />
-              <span>Start Building Your Empire</span>
+              <span>Get Started Today</span>
               <ArrowRight className="w-8 h-8" />
             </LuxuryButton>
             {currentHoliday && (
@@ -169,7 +169,7 @@ const FinalCTA: React.FC = () => {
                 </div>
               ))}
             </div>
-            <span className="text-gray-300 ml-2">50,000+ entrepreneurs building empires</span>
+            <span className="text-gray-300 ml-2">10,000+ businesses using KenjiAI</span>
           </div>
           
           <div className="flex items-center gap-2" data-caption="Average customer ROI of 425%">
@@ -190,7 +190,7 @@ const FinalCTA: React.FC = () => {
           transition={{ duration: 0.8, delay: 1.6 }}
           className="text-gray-400 text-xl mb-8"
         >
-          The future belongs to those who embrace AI today. Your business empire starts now.
+          The businesses growing fastest right now are the ones using AI to handle the work they used to do manually.
         </motion.p>
 
         {/* Trust Indicators */}

@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed px-2"
         >
-          One platform that handles your leads, sales calls, and follow-ups automatically. Most clients see results in the first 30 days.
+          We handle your leads, sales calls, and follow-ups so you don't have to. Most clients see results in the first 30 days.
         </motion.p>
 
         {/* Benefit Tags - 8 pills */}
@@ -68,14 +68,14 @@ const Hero: React.FC = () => {
           className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3 mb-10 sm:mb-12 max-w-5xl mx-auto"
         >
           {[
-            "24/7 Operations",
-            "Scalable Infrastructure",
-            "85% Cost Efficiency",
-            "Zero Downtime",
-            "Rapid Deployment",
-            "Enterprise Security",
-            "Unlimited Capacity",
-            "Predictable ROI"
+            "Works 24/7",
+            "Grows With You",
+            "Saves 85% on Costs",
+            "Always Online",
+            "Set Up in Days",
+            "Your Data Stays Safe",
+            "No Limits",
+            "Real ROI"
           ].map((feature, index) => (
             <motion.div
               key={feature}
@@ -134,7 +134,7 @@ const Hero: React.FC = () => {
                   {currentHoliday.emoji}
                 </motion.span>
               )}
-              <span className="text-base sm:text-lg">Explore Solutions</span>
+              <span className="text-base sm:text-lg">See How It Works</span>
               <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6" />
             </LuxuryButton>
             {currentHoliday && (

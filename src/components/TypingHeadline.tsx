@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const headlines = [
-  "Enterprise AI That Drives Measurable Growth",
-  "Intelligent Automation for Market Leaders",
-  "Scale Operations Without Adding Headcount",
-  "Turn Strategic Vision Into Execution",
-  "AI-Powered Systems That Deliver Results",
-  "Operational Excellence Through Automation",
-  "Transform Complexity Into Competitive Advantage"
+  "Your Business Runs While You Sleep",
+  "Never Miss Another Lead Again",
+  "Close More Deals Without Hiring More People",
+  "Stop Doing Everything Yourself",
+  "One Platform. Everything Handled.",
+  "Let AI Do the Busy Work",
+  "More Clients, Less Chaos"
 ];
 
 export function TypingHeadline() {

@@ -6,31 +6,31 @@ const BusinessTransformation: React.FC = () => {
   const transformationSteps = [
     {
       icon: Users,
-      title: "Strategic Leadership",
-      description: "Executive vision, domain expertise, and critical decision-making",
+      title: "You Lead",
+      description: "Your vision, your decisions, your expertise",
       color: "from-blue-500 to-cyan-400",
       position: { x: 0, y: 0 }
     },
     {
       icon: Brain,
-      title: "AI Systems",
-      description: "Advanced automation, predictive analytics, and operational execution",
+      title: "AI Handles the Rest",
+      description: "Automated follow-ups, scheduling, lead management, and day-to-day tasks",
       color: "from-green-500 to-emerald-400",
       position: { x: 1, y: 0 }
     },
     {
       icon: Zap,
-      title: "Integrated Excellence",
-      description: "Unified platform delivering exponential performance improvements",
+      title: "You Get Results",
+      description: "More clients, less busywork, and a business that runs without you",
       color: "from-purple-500 to-pink-400",
       position: { x: 0.5, y: 1 }
     }
   ];
 
   const businessOutcomes = [
-    { icon: TrendingUp, label: "425% ROI", value: "Average Return on Investment" },
-    { icon: Target, label: "85% Efficiency", value: "Operational Optimization" },
-    { icon: Heart, label: "95% Satisfaction", value: "Client Success Rate" }
+    { icon: TrendingUp, label: "425% ROI", value: "Average Return" },
+    { icon: Target, label: "85% Less Busywork", value: "Time Saved on Tasks" },
+    { icon: Heart, label: "95% Stay With Us", value: "Client Retention" }
   ];
 
   return (
@@ -51,16 +51,16 @@ const BusinessTransformation: React.FC = () => {
         >
           <h2 className="text-5xl sm:text-6xl font-bold text-white mb-6">
             <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
-              Strategic Intelligence
+              You Focus on What Matters
             </span>
             <br />
             <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-              Meets Operational Scale
+              AI Handles Everything Else
             </span>
           </h2>
           <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-            Intelligent systems augment executive decision-making with real-time insights and automated execution.
-            The result is unprecedented operational leverage and sustainable competitive positioning.
+            You make the calls. AI does the grunt work. The result?
+            More clients, more revenue, and a lot more free time.
           </p>
         </motion.div>
 
@@ -119,8 +119,8 @@ const BusinessTransformation: React.FC = () => {
               <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-400 rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
                 <Zap className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">Fusion Power</h3>
-              <p className="text-gray-300 leading-relaxed">The magical combination that amplifies both capabilities</p>
+              <h3 className="text-2xl font-bold text-white mb-4">The Result</h3>
+              <p className="text-gray-300 leading-relaxed">A business that grows while you focus on what you do best</p>
             </div>
           </motion.div>
         </div>

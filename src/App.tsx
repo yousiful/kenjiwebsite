@@ -15,6 +15,7 @@ import { OfflineIndicator } from './components/OfflineIndicator';
 import QuickContact from './components/QuickContact';
 import { BackgroundLines } from './components/ui/animated-svg-background';
 import { SocialProofToast } from './components/SocialProofToast';
+import { ExitTracker } from './components/ExitTracker';
 
 import HomePage from './pages/HomePage';
 import ToolsPage from './pages/ToolsPage';
@@ -94,6 +95,7 @@ function App() {
             <VisitorTracker />
             <LinkValidator />
             <RedirectSystem />
+            <ExitTracker />
             <BrowserCompatibility />
             <OfflineIndicator />
             <ErrorLogger />

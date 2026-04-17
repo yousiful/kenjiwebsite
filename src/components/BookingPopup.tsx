@@ -350,7 +350,7 @@ export function BookingPopup({ isOpen, onClose }: BookingPopupProps) {
                   <ul className="text-gray-300 text-xs sm:text-sm space-y-1">
                     <li>1. Join via laptop/tablet for best experience</li>
                     <li>2. Have key decision-makers available</li>
-                    <li>3. Bring your questions — we'll answer everything</li>
+                    <li>3. Bring your questions, we'll answer everything</li>
                   </ul>
                 </div>
               </div>
