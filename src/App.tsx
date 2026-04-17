@@ -36,6 +36,7 @@ import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import DisclaimerPage from './pages/DisclaimerPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
 import DashboardPage from './pages/DashboardPage';
+import WebinarVSLPage from './pages/WebinarVSLPage';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
@@ -72,7 +73,7 @@ const VisitorTracker: React.FC = () => {
   return null;
 };
 
-const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard'];
+const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview'];
 
 function ConditionalNavbar() {
   const { pathname } = useLocation();
@@ -84,6 +85,33 @@ function ConditionalNavbar() {
     <header role="banner">
       <Navbar />
     </header>
+  );
+}
+
+function ConditionalFooter() {
+  const { pathname } = useLocation();
+  const hideFooter = NAVBAR_HIDDEN_ROUTES.includes(pathname);
+
+  if (hideFooter) return null;
+
+  return (
+    <footer role="contentinfo">
+      <Footer />
+    </footer>
+  );
+}
+
+function ConditionalWidgets() {
+  const { pathname } = useLocation();
+  const hideWidgets = NAVBAR_HIDDEN_ROUTES.includes(pathname);
+
+  if (hideWidgets) return null;
+
+  return (
+    <>
+      <QuickContact />
+      <SocialProofToast />
+    </>
   );
 }
 
@@ -127,14 +155,12 @@ function App() {
                       <Route path="/terms" element={<TermsOfServicePage />} />
                       <Route path="/blog" element={<Navigate to="/knowledge" replace />} />
                       <Route path="/dashboard" element={<DashboardPage />} />
+                      <Route path="/overview" element={<WebinarVSLPage />} />
                       <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                   </main>
-                <footer role="contentinfo">
-                  <Footer />
-                </footer>
-                <QuickContact />
-                <SocialProofToast />
+                <ConditionalFooter />
+                <ConditionalWidgets />
               </div>
             </BackgroundLines>
           </Router>
