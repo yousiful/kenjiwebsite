@@ -475,7 +475,7 @@
           try {
             if ('caches' in window) {
               const cacheNames = await caches.keys();
-              const CURRENT_CACHE = 'kenjiai-v4-2025';
+              const CURRENT_CACHE = 'kenjiai-v5-2025';
               const hasOldCaches = cacheNames.some(name =>
                 name.includes('kenjiai') && name !== CURRENT_CACHE
               );
