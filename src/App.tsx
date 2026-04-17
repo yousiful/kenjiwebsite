@@ -15,7 +15,8 @@ import { OfflineIndicator } from './components/OfflineIndicator';
 import QuickContact from './components/QuickContact';
 import { BackgroundLines } from './components/ui/animated-svg-background';
 import { SocialProofToast } from './components/SocialProofToast';
-import { ExitTracker } from './components/ExitTracker';
+import { SiteTracker } from './components/SiteTracker';
+import { ConsentBanner } from './components/ConsentBanner';
 
 import HomePage from './pages/HomePage';
 import ToolsPage from './pages/ToolsPage';
@@ -34,6 +35,7 @@ import CRMPage from './pages/CRMPage';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import DisclaimerPage from './pages/DisclaimerPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
+import DashboardPage from './pages/DashboardPage';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
@@ -70,7 +72,7 @@ const VisitorTracker: React.FC = () => {
   return null;
 };
 
-const NAVBAR_HIDDEN_ROUTES: string[] = [];
+const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard'];
 
 function ConditionalNavbar() {
   const { pathname } = useLocation();
@@ -95,7 +97,8 @@ function App() {
             <VisitorTracker />
             <LinkValidator />
             <RedirectSystem />
-            <ExitTracker />
+            <SiteTracker />
+            <ConsentBanner />
             <BrowserCompatibility />
             <OfflineIndicator />
             <ErrorLogger />
@@ -123,6 +126,7 @@ function App() {
                       <Route path="/disclaimer" element={<DisclaimerPage />} />
                       <Route path="/terms" element={<TermsOfServicePage />} />
                       <Route path="/blog" element={<Navigate to="/knowledge" replace />} />
+                      <Route path="/dashboard" element={<DashboardPage />} />
                       <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                   </main>
