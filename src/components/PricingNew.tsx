@@ -139,7 +139,7 @@ export function PricingNew() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="relative bg-gray-900/60 backdrop-blur-sm border border-blue-500/30 rounded-3xl p-5 sm:p-8 flex flex-col order-2 lg:order-1"
+            className="relative bg-gray-900/60 backdrop-blur-sm border border-blue-500/30 rounded-3xl p-5 sm:p-8 flex flex-col order-2 lg:order-2"
           >
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
               <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2 whitespace-nowrap">
@@ -160,9 +160,12 @@ export function PricingNew() {
             </p>
 
             <div className="text-center mb-5">
-              <div className="text-5xl sm:text-6xl font-bold text-white">
-                $475
-                <span className="text-xl sm:text-2xl text-gray-400">/mo</span>
+              <div className="flex flex-col items-center justify-center mb-1">
+                <span className="text-2xl sm:text-3xl text-gray-400 line-through decoration-red-500/70 font-bold">$475</span>
+                <div className="text-5xl sm:text-6xl font-bold text-white mt-1">
+                  $375
+                  <span className="text-xl sm:text-2xl text-gray-400">/mo</span>
+                </div>
               </div>
               <div className="text-blue-300 font-semibold text-sm mt-2">
                 + 10% of new revenue we help generate
@@ -230,7 +233,7 @@ export function PricingNew() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.05 }}
-            className="relative bg-gray-900/60 backdrop-blur-sm border border-emerald-500/40 rounded-3xl p-5 sm:p-8 flex flex-col order-3 lg:order-2"
+            className="relative bg-gray-900/60 backdrop-blur-sm border border-emerald-500/40 rounded-3xl p-5 sm:p-8 flex flex-col order-1 lg:order-1"
             style={{ boxShadow: '0 0 40px rgba(16, 185, 129, 0.18)' }}
           >
             <div className="absolute -top-3 -right-3 z-20">
@@ -258,9 +261,12 @@ export function PricingNew() {
             </p>
 
             <div className="text-center mb-5">
-              <div className="text-5xl sm:text-6xl font-bold text-white mb-1">
-                $320
-                <span className="text-xl sm:text-2xl text-gray-400">/mo</span>
+              <div className="flex flex-col items-center justify-center mb-1">
+                <span className="text-2xl sm:text-3xl text-gray-400 line-through decoration-red-500/70 font-bold">$3,850</span>
+                <div className="text-5xl sm:text-6xl font-bold text-white mt-1 flex items-baseline justify-center">
+                  $3,250
+                  <span className="text-xl sm:text-2xl text-gray-400 ml-1">/yr</span>
+                </div>
               </div>
               <div className="text-emerald-300 font-semibold text-sm mt-2">
                 + 5% of new revenue we help generate
@@ -269,9 +275,9 @@ export function PricingNew() {
                 Only applies to revenue from KenjiAI campaigns. No revenue = no fee.
               </div>
               <div className="text-emerald-400 font-bold text-base mt-3">
-                Save $1,850 per year
+                Best Value Plan
               </div>
-              <div className="text-gray-400 text-sm mt-1">Billed at $3,850 annually. Connect today.</div>
+              <div className="text-gray-400 text-sm mt-1">Equivalent to ~$270/mo. Connect today.</div>
             </div>
 
             <div className="bg-emerald-500/10 border border-emerald-400/30 rounded-2xl p-4 mb-6">
@@ -332,7 +338,7 @@ export function PricingNew() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.1 }}
-            className="relative bg-gradient-to-br from-amber-900/35 to-orange-900/35 backdrop-blur-sm border border-amber-500/40 rounded-3xl p-5 sm:p-8 flex flex-col order-1 lg:order-3"
+            className="relative bg-gradient-to-br from-amber-900/35 to-orange-900/35 backdrop-blur-sm border border-amber-500/40 rounded-3xl p-5 sm:p-8 flex flex-col order-3 lg:order-3"
           >
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
               <div className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2 whitespace-nowrap">
