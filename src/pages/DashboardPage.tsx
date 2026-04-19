@@ -19,7 +19,7 @@ function DashboardLock({ onUnlock }: { onUnlock: () => void }) {
     e.preventDefault();
     // Simple frontend protection to prevent casual snooping.
     // Replace with a secure backend solution for high security.
-    if (password === 'kenjiai2025' || password === 'admin') {
+    if (password === '1234') {
       onUnlock();
     } else {
       setError(true);
