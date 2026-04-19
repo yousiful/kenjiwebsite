@@ -1,7 +1,116 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { TrendingUp, Users, DollarSign, Globe, Zap, Brain, Target, Award, ExternalLink, Download, Mail, Calendar, Rocket, Shield, Crown } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+
+const formatCurrency = (val: number) => 
+  new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(val);
+
+const YieldCalculator: React.FC = () => {
+  const [amount, setAmount] = useState<number>(50000);
+  
+  const annualYield = amount * 0.045;
+  const projected5Year = amount + (annualYield * 5); // Simple APY to total return for simple illustration.
+  
+  return (
+    <div className="relative z-10">
+      <div className="mb-10">
+        <div className="flex justify-between items-end mb-4">
+          <label className="text-gray-300 font-semibold text-lg">Initial Investment Amount</label>
+          <div className="text-4xl font-bold text-white bg-gray-950 px-5 py-2 rounded-xl border border-gray-700">
+            {formatCurrency(amount)}
+          </div>
+        </div>
+        
+        {/* Customized Neon Range Slider */}
+        <div className="relative py-4">
+          <input 
+            type="range" 
+            min="10000" 
+            max="1000000" 
+            step="5000" 
+            value={amount} 
+            onChange={(e) => setAmount(Number(e.target.value))}
+            className="w-full h-3 bg-gray-800 rounded-lg appearance-none cursor-pointer relative z-20 outline-none"
+            style={{
+              background: `linear-gradient(to right, #34D399 0%, #34D399 ${(amount - 10000) / (1000000 - 10000) * 100}%, #1F2937 ${(amount - 10000) / (1000000 - 10000) * 100}%, #1F2937 100%)`
+            }}
+          />
+          <style>{`
+            input[type=range]::-webkit-slider-thumb {
+              appearance: none;
+              width: 28px;
+              height: 28px;
+              border-radius: 50%;
+              background: #10B981;
+              cursor: pointer;
+              box-shadow: 0 0 20px rgba(16, 185, 129, 0.8), 0 0 0 4px rgba(16, 185, 129, 0.2);
+              transition: transform 0.1s;
+            }
+            input[type=range]::-webkit-slider-thumb:hover {
+              transform: scale(1.15);
+            }
+          `}</style>
+        </div>
+        
+        <div className="flex justify-between text-sm text-gray-500 font-medium px-1">
+          <span>$10k</span>
+          <span>$250k</span>
+          <span>$500k</span>
+          <span>$1M+</span>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        <div className="bg-gray-800/40 border border-gray-700/50 rounded-2xl p-6">
+          <div className="text-gray-400 mb-2 font-medium flex items-center gap-2">
+            <DollarSign className="w-4 h-4 text-green-400" /> Guaranteed Annual Payout
+          </div>
+          <div className="text-3xl font-bold text-green-400">
+            +{formatCurrency(annualYield)}<span className="text-lg text-green-500/70">/yr</span>
+          </div>
+          <div className="text-sm font-semibold text-gray-500 mt-2 bg-gray-900 inline-block px-3 py-1 rounded-md">
+            Fixed 4.5% APY
+          </div>
+        </div>
+        
+        <div className="bg-gradient-to-br from-green-500/10 to-blue-500/10 border border-green-500/20 rounded-2xl p-6 relative overflow-hidden">
+          <div className="absolute -right-4 -bottom-4 text-green-500/20">
+            <TrendingUp className="w-24 h-24" />
+          </div>
+          <div className="relative z-10">
+            <div className="text-gray-300 mb-2 font-medium">Projected 5-Year Value</div>
+            <div className="text-4xl font-bold text-white mb-2 shadow-sm drop-shadow-md">
+              {formatCurrency(projected5Year)}
+            </div>
+            <div className="text-green-400 text-sm font-bold flex items-center gap-1">
+              <TrendingUp className="w-4 h-4" /> Total net gain: {formatCurrency(annualYield * 5)}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="text-center border-t border-gray-800 pt-8 mt-4">
+        <p className="text-gray-400 mb-6 text-sm">Funds begin accruing 4.5% interest immediately upon clearance. Withdraw easily with standard lock-up disclosures.</p>
+        <motion.a
+          href="https://buy.stripe.com/00w14m6XP6FW9XV751aMU1H"
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-10 py-5 rounded-2xl text-xl font-bold text-gray-900 bg-gradient-to-r from-green-400 to-emerald-500 hover:from-green-300 hover:to-emerald-400 shadow-[0_0_30px_rgba(16,185,129,0.3)] transition-all"
+        >
+          <Zap className="w-6 h-6" />
+          Invest {formatCurrency(amount)} Now
+        </motion.a>
+        <div className="mt-4 flex items-center justify-center gap-2 text-xs text-gray-500 font-semibold uppercase tracking-wider">
+          <Shield className="w-4 h-4 text-gray-400" />
+          Secured by Stripe Bank-Grade Routing
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const InvestorPage: React.FC = () => {
   const heroMetrics = [
@@ -301,6 +410,35 @@ const InvestorPage: React.FC = () => {
                   </div>
                 </motion.div>
               ))}
+            </div>
+          </motion.div>
+
+          {/* Investor Yield Calculator */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            className="mb-24"
+          >
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/20 rounded-full px-4 py-2 mb-4">
+                <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+                <span className="text-green-400 font-bold text-sm tracking-wide uppercase">Guaranteed Fixed Yield</span>
+              </div>
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+                Calculate Your Returns
+              </h2>
+              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                Secure a fixed <span className="text-green-400 font-bold">4.5% Annual Percentage Yield</span>, paid out directly to your account.
+              </p>
+            </div>
+
+            <div className="max-w-4xl mx-auto bg-gray-900 border border-gray-700/50 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden group">
+              {/* Neon Glow Background Effect */}
+              <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-green-500/10 blur-[80px] pointer-events-none group-hover:bg-green-500/20 transition-colors duration-1000"></div>
+              
+              <YieldCalculator />
+              
             </div>
           </motion.div>
 
