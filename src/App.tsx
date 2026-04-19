@@ -23,7 +23,6 @@ import ToolsPage from './pages/ToolsPage';
 import KnowledgeBasePage from './pages/KnowledgeBasePage';
 import AIEducationPage from './pages/AIEducationPage';
 import BlogPost from './pages/BlogPost';
-import InvestorPage from './pages/InvestorPage';
 import ProductSelectionPage from './pages/ProductSelectionPage';
 import SuccessPage from './pages/SuccessPage';
 import FreeToolsPage from './pages/FreeToolsPage';
@@ -147,7 +146,6 @@ function App() {
                       <Route path="/knowledge" element={<KnowledgeBasePage />} />
                       <Route path="/ai-education" element={<AIEducationPage />} />
                       <Route path="/blog/:slug" element={<BlogPost />} />
-                      <Route path="/investors" element={<InvestorPage />} />
                       <Route path="/pricing" element={<ProductSelectionPage />} />
                       <Route path="/success" element={<SuccessPage />} />
                       <Route path="/privacy" element={<PrivacyPolicyPage />} />

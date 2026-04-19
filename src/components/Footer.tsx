@@ -20,7 +20,6 @@ const Footer: React.FC = () => {
       { name: 'Pricing', href: '/pricing' },
       { name: 'Free Tools', href: '/free-tools' },
       { name: 'Knowledge Base', href: '/knowledge' },
-      { name: 'Investors', href: '/investors' },
       { name: 'Become a Partner', href: 'https://closers.kenjiai.com/', external: true },
     ],
     legal: [

@@ -42,15 +42,14 @@ const Navbar: React.FC = () => {
     { name: "Solutions", href: "/ai-automation", hasDropdown: true, dropdownType: "solutions" },
     { name: "Free Tools", href: "/free-tools", hasDropdown: true, dropdownType: "tools" },
     { name: "AI Education", href: "https://startlearning.kenjiai.com/", external: true },
-    { name: "Pricing", href: "/pricing" },
-    { name: "Investors", href: "/investors" }
+    { name: "Pricing", href: "/pricing" }
   ];
 
   return (
     <motion.nav role="navigation" aria-label="Main Navigation"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`${location.pathname === '/pricing' ? 'absolute' : 'fixed'} top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? 'bg-gray-950/95 backdrop-blur-lg'
           : 'bg-transparent'
