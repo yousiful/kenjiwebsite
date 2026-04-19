@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import {
-  Check, Star, ArrowRight, Calendar, Zap, Shield,
-  CreditCard, Video
-} from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 import { ToolReplacementBar } from './ToolReplacementBar';
 import { MoneyBackGuarantee } from './MoneyBackGuarantee';
 import { ExitIntentPopup } from './ExitIntentPopup';
@@ -153,94 +150,54 @@ export function PricingNew() {
         </div>
 
         {/* 3-Column Pricing Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 px-4 lg:px-8 max-w-6xl mx-auto">
 
           {/* Monthly Plan */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="relative bg-gray-900/60 backdrop-blur-sm border border-blue-500/30 rounded-3xl p-5 sm:p-8 flex flex-col order-2 lg:order-2"
+            className="relative bg-gray-900/60 backdrop-blur-sm border border-gray-800 hover:border-blue-500/50 transition-colors rounded-2xl p-5 sm:p-6 flex flex-col order-2 lg:order-2"
           >
-            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-              <div className="bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2 whitespace-nowrap">
-                <Calendar className="w-4 h-4" />
-                {season.planBadge}
-              </div>
+            <div className="mb-4">
+              <h3 className="text-xl font-bold text-white mb-1 flex items-center gap-2">Monthly</h3>
+              <p className="text-gray-400 text-sm">Start now. No long-term commitment.</p>
             </div>
 
-            <div className="flex justify-center mb-6 mt-4">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-600 flex items-center justify-center">
-                <Calendar className="w-8 h-8 text-white" />
-              </div>
-            </div>
-
-            <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Monthly</h3>
-            <p className="text-gray-300 text-center mb-6 text-base leading-relaxed">
-              Start now. No long-term commitment.
-            </p>
-
-            <div className="text-center mb-5">
-              <div className="text-blue-300 font-semibold text-sm mt-2">
-                + 10% of new revenue we help generate
-              </div>
-              <div className="text-gray-500 text-xs mt-1">
-                Only applies to revenue from KenjiAI campaigns. No revenue = no fee.
-              </div>
-            </div>
-
-            <div className="bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-400/30 rounded-2xl p-4 mb-6">
-              <div className="flex items-center justify-center gap-2">
-                <Zap className="w-5 h-5 text-blue-400" />
-                <span className="text-white font-bold text-base">Everything Included</span>
-              </div>
-            </div>
-
-            <div className="flex-1 mb-6 relative">
-              <div className="space-y-1.5 pr-2">
-                {MONTHLY_FEATURES.map((feature, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-start gap-2.5 p-2.5 rounded-lg hover:bg-gray-800/30 transition-colors"
-                  >
-                    <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-200 text-sm leading-relaxed">{feature}</span>
-                  </div>
-                ))}
-              </div>
+            <div className="mb-5 bg-blue-500/5 border border-blue-500/10 rounded-lg p-3">
+              <div className="text-blue-400 text-sm font-semibold">+ 10% of new revenue generated</div>
+              <div className="text-gray-500 text-xs mt-0.5">Only from KenjiAI campaigns. No revenue = no fee.</div>
             </div>
 
             <motion.button
               onClick={() => handlePlanClick('https://freedom.kenjiai.com/checkout-4912-2457-3370', 'monthly')}
               disabled={isLoading === 'monthly'}
-              whileHover={{ scale: isLoading === 'monthly' ? 1 : 1.02 }}
-              whileTap={{ scale: isLoading === 'monthly' ? 1 : 0.98 }}
-              className={`w-full py-5 rounded-2xl font-black text-lg sm:text-xl flex flex-col items-center justify-center shadow-[0_0_30px_rgba(245,158,11,0.2)] transition-all duration-300 mb-3 border border-amber-400/50 relative overflow-hidden group ${isLoading === 'monthly' ? 'opacity-90 cursor-wait bg-amber-600 text-white' : 'bg-gradient-to-br from-amber-500 to-orange-600 text-white hover:shadow-[0_0_40px_rgba(245,158,11,0.4)]'}`}
+              className={`w-full py-3.5 rounded-xl font-bold text-base flex flex-col items-center justify-center transition-all duration-300 mb-2 relative overflow-hidden group ${isLoading === 'monthly' ? 'opacity-90 cursor-wait bg-amber-600 text-white' : 'bg-[#10A37F] text-white hover:bg-[#0E906F]'}`}
             >
-              <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               {isLoading === 'monthly' ? (
-                <motion.div className="flex items-center gap-3">
+                <motion.div className="flex items-center gap-2">
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }}
-                    className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
+                    className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
                   />
-                  <motion.span animate={{ opacity: [1, 0.5, 1] }} transition={{ duration: 1, repeat: Infinity }}>
-                    Redirecting...
-                  </motion.span>
+                  <span>Redirecting...</span>
                 </motion.div>
               ) : (
-                <>
-                  <span className="flex items-center gap-2">Claim Your Spot <ArrowRight className="w-5 h-5" /></span>
-                  <span className="text-sm font-bold text-amber-100 uppercase tracking-wide opacity-90 mt-1">Start for $375/mo</span>
-                </>
+                <span className="flex items-center gap-2">Claim Spot for $375/mo</span>
               )}
             </motion.button>
+            <div className="text-center text-gray-500 text-xs mb-6">Secured by Stripe · 30-Day Guarantee</div>
 
-            <div className="flex flex-col items-center justify-center gap-2 mt-4 text-gray-400 text-xs font-semibold">
-              <div className="flex items-center gap-2 bg-gray-800/50 px-3 py-1.5 rounded-full">
-                <Shield className="w-3.5 h-3.5 text-blue-400" />
-                <span>Secured by Stripe · 30-Day Guarantee</span>
+            <div className="flex-1">
+              <div className="text-white text-sm font-semibold mb-3">Everything included:</div>
+              <div className="space-y-2">
+                {MONTHLY_FEATURES.map((feature, idx) => (
+                  <div key={idx} className="flex items-start gap-2.5">
+                    <Check className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-300 text-sm leading-snug">{feature}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </motion.div>
@@ -250,97 +207,56 @@ export function PricingNew() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.05 }}
-            className="relative bg-gray-900/60 backdrop-blur-sm border border-emerald-500/40 rounded-3xl p-5 sm:p-8 flex flex-col order-1 lg:order-1"
-            style={{ boxShadow: '0 0 40px rgba(16, 185, 129, 0.18)' }}
+            className="relative bg-gray-900/60 backdrop-blur-sm border-2 border-[#10A37F] rounded-2xl p-5 sm:p-6 flex flex-col order-1 lg:order-1"
           >
-            <div className="absolute -top-3 -right-3 z-20">
-              <div className="bg-gradient-to-r from-amber-400 to-orange-500 text-gray-900 px-4 py-2 rounded-lg text-xs font-black shadow-xl transform rotate-6">
-                MOST POPULAR
+            <div className="mb-4 flex items-start justify-between">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-1">Annual</h3>
+                <p className="text-gray-400 text-sm">For businesses serious about next year.</p>
               </div>
+              <span className="bg-[#10A37F]/10 text-[#10A37F] text-xs font-bold px-2 py-1 rounded">MOST POPULAR</span>
             </div>
 
-            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-              <div className="bg-gradient-to-r from-emerald-500 to-green-500 text-white px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2 whitespace-nowrap">
-                <Star className="w-4 h-4" />
-                {season.annualBadge}
-              </div>
-            </div>
-
-            <div className="flex justify-center mb-6 mt-4">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-green-600 flex items-center justify-center">
-                <CreditCard className="w-8 h-8 text-white" />
-              </div>
-            </div>
-
-            <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Annual</h3>
-            <p className="text-gray-300 text-center mb-6 text-base leading-relaxed">
-              The plan for businesses serious about next year.
-            </p>
-
-            <div className="text-center mb-5">
-              <div className="text-emerald-300 font-semibold text-sm mt-2">
-                + 5% of new revenue we help generate
-              </div>
-              <div className="text-gray-500 text-xs mt-1 mb-3">
-                Only applies to revenue from KenjiAI campaigns. No revenue = no fee.
-              </div>
-              <div className="text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3 py-1.5 rounded-lg inline-block font-bold text-sm">
-                🔥 You save $1,250/yr vs monthly
-              </div>
-            </div>
-
-            <div className="bg-emerald-500/10 border border-emerald-400/30 rounded-2xl p-4 mb-6">
-              <div className="flex items-center justify-center gap-2">
-                <Zap className="w-5 h-5 text-emerald-400" />
-                <span className="text-white font-bold text-base">Everything Included</span>
-              </div>
-            </div>
-
-            <div className="flex-1 mb-6 relative">
-              <div className="space-y-1.5 pr-2">
-                {YEARLY_FEATURES.map((feature, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-start gap-2.5 p-2.5 rounded-lg hover:bg-gray-800/30 transition-colors"
-                  >
-                    <Check className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-200 text-sm leading-relaxed">{feature}</span>
-                  </div>
-                ))}
-              </div>
+            <div className="mb-5 bg-[#10A37F]/5 border border-[#10A37F]/10 rounded-lg p-3">
+              <div className="text-[#10A37F] text-sm font-semibold">+ 5% of new revenue generated</div>
+              <div className="text-gray-500 text-xs mt-0.5">Only from KenjiAI campaigns. No fee if no revenue.</div>
             </div>
 
             <motion.button
               onClick={() => handlePlanClick('https://freedom.kenjiai.com/checkout-4912-2457-3370', 'yearly')}
               disabled={isLoading === 'yearly'}
-              whileHover={{ scale: isLoading === 'yearly' ? 1 : 1.02 }}
-              whileTap={{ scale: isLoading === 'yearly' ? 1 : 0.98 }}
-              className={`w-full py-5 rounded-2xl font-black text-lg sm:text-xl flex flex-col items-center justify-center shadow-[0_0_40px_rgba(245,158,11,0.3)] transition-all duration-300 mb-3 border border-amber-400/60 relative overflow-hidden group ${isLoading === 'yearly' ? 'opacity-90 cursor-wait bg-amber-600 text-white' : 'bg-gradient-to-br from-amber-400 to-orange-500 text-gray-900 hover:shadow-[0_0_50px_rgba(245,158,11,0.5)]'}`}
+              className={`w-full py-3.5 rounded-xl font-bold text-base flex flex-col items-center justify-center transition-all duration-300 mb-2 relative overflow-hidden group ${isLoading === 'yearly' ? 'opacity-90 cursor-wait bg-[#10A37F] text-white' : 'bg-[#10A37F] text-white hover:bg-[#0E906F]'}`}
             >
-              <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               {isLoading === 'yearly' ? (
-                <motion.div className="flex items-center gap-3">
+                <motion.div className="flex items-center gap-2">
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }}
-                    className="w-5 h-5 border-2 border-gray-900 border-t-transparent rounded-full"
+                    className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
                   />
-                  <motion.span animate={{ opacity: [1, 0.5, 1] }} transition={{ duration: 1, repeat: Infinity }}>
-                    Redirecting...
-                  </motion.span>
+                  <span>Redirecting...</span>
                 </motion.div>
               ) : (
-                <>
-                  <span className="flex items-center gap-2">Claim Your Spot <ArrowRight className="w-5 h-5" /></span>
-                  <span className="text-sm font-bold text-amber-900 uppercase tracking-wide opacity-90 mt-1">Start for $270/mo ($3,250/yr)</span>
-                </>
+                <span className="flex items-center gap-2">Claim Spot for $270/mo ($3,250/yr)</span>
               )}
             </motion.button>
+            <div className="text-center text-[#10A37F] font-semibold text-xs mb-6">🔥 You save $1,250/yr vs monthly</div>
 
-            <div className="flex flex-col items-center justify-center gap-2 mt-4 text-gray-400 text-xs font-semibold">
-              <div className="flex items-center gap-2 bg-gray-800/50 px-3 py-1.5 rounded-full">
-                <Shield className="w-3.5 h-3.5 text-blue-400" />
-                <span>Stripe Secured · 30-Day Guarantee</span>
+            <div className="flex-1">
+              <div className="text-white text-sm font-semibold mb-3">Everything in Monthly, plus:</div>
+              <div className="space-y-2">
+                {YEARLY_FEATURES.filter(f => !MONTHLY_FEATURES.includes(f)).map((feature, idx) => (
+                  <div key={idx} className="flex items-start gap-2.5">
+                    <Check className="w-4 h-4 text-[#10A37F] flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-300 text-sm font-medium leading-snug">{feature}</span>
+                  </div>
+                ))}
+                {MONTHLY_FEATURES.slice(0, 5).map((feature, idx) => (
+                  <div key={`m-${idx}`} className="flex items-start gap-2.5">
+                    <Check className="w-4 h-4 text-gray-500 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-400 text-sm leading-snug">{feature}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </motion.div>
@@ -350,97 +266,42 @@ export function PricingNew() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.1 }}
-            className="relative bg-gradient-to-br from-amber-900/35 to-orange-900/35 backdrop-blur-sm border border-amber-500/40 rounded-3xl p-5 sm:p-8 flex flex-col order-3 lg:order-3"
+            className="relative bg-gray-900/60 backdrop-blur-sm border border-gray-800 hover:border-blue-500/50 transition-colors rounded-2xl p-5 sm:p-6 flex flex-col order-3 lg:order-3"
           >
-            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-              <div className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-2 rounded-full text-sm font-bold flex items-center gap-2 whitespace-nowrap">
-                <Star className="w-4 h-4" />
-                By Application Only
+            <div className="mb-4 flex items-start justify-between">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-1">Lifetime</h3>
+                <p className="text-gray-400 text-sm">One-time payment. Fully custom.</p>
               </div>
+              <span className="bg-gray-800 text-gray-300 text-xs font-bold px-2 py-1 rounded">CUSTOM</span>
             </div>
 
-            <div className="flex justify-center mb-6 mt-4">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center">
-                <Star className="w-8 h-8 text-white" />
-              </div>
+            <div className="mb-5 bg-gray-800/50 border border-gray-700/50 rounded-lg p-3">
+              <div className="text-gray-300 text-sm font-semibold">Custom success fee</div>
+              <div className="text-gray-500 text-xs mt-0.5">Determined during discovery call.</div>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl font-bold text-white text-center mb-2">Lifetime</h3>
-            <p className="text-gray-300 text-center mb-6 text-sm leading-relaxed">
-              One-time investment. Fully custom. No recurring fees.
-            </p>
-
-            <div className="text-center mb-6">
-              <div className="text-3xl sm:text-4xl font-bold mb-1" style={{ color: '#FBBF24' }}>
-                Book a Call
-              </div>
-              <div className="text-gray-300 text-sm">Pricing revealed to qualified applicants</div>
-            </div>
-
-            <motion.a
+            <a
               href="https://go.mediatraffics.com/leads"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="group relative bg-gradient-to-br from-blue-600/25 to-amber-600/25 border border-amber-400/40 rounded-2xl p-5 mb-5 overflow-hidden transition-all duration-300 hover:border-amber-400 block cursor-pointer"
+              className="w-full py-3.5 rounded-xl font-bold text-base flex flex-col items-center justify-center transition-all duration-300 mb-2 bg-[#1b1f24] hover:bg-[#2c333a] border border-gray-700 text-white"
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/30 to-amber-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
-              <div className="relative z-10">
-                <div className="flex items-center justify-center gap-2.5 mb-2">
-                  <Video className="w-6 h-6 text-blue-400 group-hover:text-blue-300 transition-colors" />
-                  <span className="text-white font-bold text-lg">Book a Demo</span>
-                </div>
-                <p className="text-gray-300 text-xs text-center mb-3 group-hover:text-white transition-colors">
-                  15 minutes. We'll show you how it works for your business.
-                </p>
-                <div className="flex items-center justify-center gap-2 text-amber-400 font-semibold text-sm group-hover:text-amber-300 transition-colors">
-                  <span>Schedule Now</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </div>
-            </motion.a>
+              <span className="flex items-center gap-2">Book Discovery Call</span>
+            </a>
+            <div className="text-center text-gray-500 text-xs mb-6">Pricing revealed to qualified applicants</div>
 
-            <div className="bg-amber-900/20 border border-amber-500/25 rounded-xl p-3 mb-5">
-              <p className="text-amber-200 text-xs text-center leading-relaxed">
-                We work with a select group of businesses each quarter.
-                8 of our last 10 clients now generate $100K+/mo.
-              </p>
-            </div>
-
-            <div className="flex-1 mb-6">
-              <p className="text-amber-300 font-semibold text-center mb-4 text-sm">
-                What's included with Lifetime Access:
-              </p>
+            <div className="flex-1">
+              <div className="text-white text-sm font-semibold mb-3">Enterprise benefits:</div>
               <div className="space-y-2">
                 {VIP_FEATURES.map((feature, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-start gap-2.5 p-2.5 rounded-lg transition-all duration-300 hover:bg-amber-500/10 group cursor-default"
-                  >
-                    <Check className="w-4 h-4 text-amber-400 flex-shrink-0 mt-0.5 group-hover:text-amber-300 transition-colors" />
-                    <span className="text-gray-200 text-sm leading-relaxed group-hover:text-white transition-colors">{feature}</span>
+                  <div key={idx} className="flex items-start gap-2.5">
+                    <Check className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-300 text-sm leading-snug">{feature}</span>
                   </div>
                 ))}
               </div>
             </div>
-
-            <motion.a
-              href="https://go.mediatraffics.com/leads"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="w-full text-white py-4 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center gap-2.5 shadow-xl cursor-pointer"
-              style={{ background: 'linear-gradient(90deg, #F59E0B 0%, #EF4444 100%)' }}
-            >
-              Apply for Lifetime Access
-              <ArrowRight className="w-4 h-4" />
-            </motion.a>
-
-            <p className="text-gray-400 text-xs text-center mt-4 leading-relaxed">
-              No commitment required for the discovery call
-            </p>
           </motion.div>
         </div>
 
