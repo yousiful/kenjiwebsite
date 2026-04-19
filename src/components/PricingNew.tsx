@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Check, Star, ArrowRight, Calendar, Zap, Shield,
@@ -64,28 +64,27 @@ export function PricingNew() {
   return (
     <div className="py-16 sm:py-24 px-4" style={{ backgroundColor: '#0B0E14' }}>
 
-      {/* Holiday Urgency Strip */}
+      {/* High-Octane Spots Remaining Meter */}
       <motion.div
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.25 }}
-        className="w-full -mt-16 sm:-mt-24 mb-6"
+        className="w-full -mt-16 sm:-mt-24 mb-6 relative overflow-hidden"
         style={{
-          background: 'linear-gradient(90deg, #0a0a0a 0%, #111827 50%, #0a0a0a 100%)',
-          borderBottom: '1px solid rgba(0,255,255,0.15)'
+          background: 'linear-gradient(90deg, #111827 0%, #1f2937 50%, #111827 100%)',
+          borderBottom: '1px solid rgba(245, 158, 11, 0.3)'
         }}
       >
-        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 px-4 py-2 text-xs sm:text-sm text-center">
+        <div className="absolute inset-0 bg-amber-500/5 animate-pulse"></div>
+        <div className="flex flex-wrap items-center justify-center gap-4 px-4 py-3 text-sm sm:text-base text-center relative z-10">
+          <div className="flex items-center gap-2 bg-red-500/20 px-3 py-1 rounded-full border border-red-500/30">
+            <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
+            <span className="text-red-400 font-bold uppercase tracking-wider text-xs">Closing Soon</span>
+          </div>
           <motion.span
-            animate={{ opacity: [0.7, 1, 0.7] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="flex items-center gap-1.5"
+            className="flex items-center gap-1.5 font-bold text-white tracking-wide"
           >
-            <span style={{ color: '#F59E0B' }} className="font-bold">{season.stripLabel}</span>
-            <span className="text-gray-500">·</span>
-            <span style={{ color: '#34D399' }} className="font-semibold">{season.stripBonus}</span>
-            <span className="text-gray-500">·</span>
-            <span style={{ color: '#FF4444' }} className="font-semibold">{season.stripUrgency}</span>
+            ONLY 8 SPOTS REMAINING IN THE CURRENT COHORT
           </motion.span>
         </div>
       </motion.div>
@@ -131,7 +130,27 @@ export function PricingNew() {
         <ToolReplacementBar />
       </div>
 
-      <div className="max-w-7xl mx-auto mt-12 sm:mt-20">
+      <div className="max-w-7xl mx-auto mt-12 sm:mt-16">
+        {/* Live Social Proof Ticker */}
+        <div className="w-full overflow-hidden mb-12 py-3 bg-gray-900/50 border-y border-gray-800">
+          <div className="flex gap-12 whitespace-nowrap animate-scroll items-center h-8">
+            {[...Array(2)].map((_, i) => (
+              <React.Fragment key={i}>
+                <span className="text-gray-400 font-medium flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Mark T. just locked in the Yearly Plan</span>
+                <span className="text-gray-400 font-medium flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Sarah K. closed 3 deals in her first 48 hours</span>
+                <span className="text-gray-400 font-medium flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span> 8 spots remaining for this month's cohort</span>
+                <span className="text-gray-400 font-medium flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> David R. added $22K ARR using KenjiAI</span>
+              </React.Fragment>
+            ))}
+          </div>
+          <style>{`
+            @keyframes scroll {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+            .animate-scroll { animation: scroll 20s linear infinite; }
+          `}</style>
+        </div>
 
         {/* 3-Column Pricing Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 px-4">
@@ -162,13 +181,6 @@ export function PricingNew() {
             </p>
 
             <div className="text-center mb-5">
-              <div className="flex flex-col items-center justify-center mb-1">
-                <span className="text-2xl sm:text-3xl text-gray-400 line-through decoration-red-500/70 font-bold">$475</span>
-                <div className="text-5xl sm:text-6xl font-bold text-white mt-1">
-                  $375
-                  <span className="text-xl sm:text-2xl text-gray-400">/mo</span>
-                </div>
-              </div>
               <div className="text-blue-300 font-semibold text-sm mt-2">
                 + 10% of new revenue we help generate
               </div>
@@ -203,14 +215,15 @@ export function PricingNew() {
               disabled={isLoading === 'monthly'}
               whileHover={{ scale: isLoading === 'monthly' ? 1 : 1.02 }}
               whileTap={{ scale: isLoading === 'monthly' ? 1 : 0.98 }}
-              className={`w-full py-4 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center gap-2.5 shadow-xl transition-all duration-300 mb-3 ${isLoading === 'monthly' ? 'opacity-90 cursor-wait bg-blue-600 text-white' : 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:shadow-cyan-500/25'}`}
+              className={`w-full py-5 rounded-2xl font-black text-lg sm:text-xl flex flex-col items-center justify-center shadow-[0_0_30px_rgba(245,158,11,0.2)] transition-all duration-300 mb-3 border border-amber-400/50 relative overflow-hidden group ${isLoading === 'monthly' ? 'opacity-90 cursor-wait bg-amber-600 text-white' : 'bg-gradient-to-br from-amber-500 to-orange-600 text-white hover:shadow-[0_0_40px_rgba(245,158,11,0.4)]'}`}
             >
+              <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               {isLoading === 'monthly' ? (
                 <motion.div className="flex items-center gap-3">
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }}
-                    className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
+                    className="w-5 h-5 border-2 border-white border-t-transparent rounded-full"
                   />
                   <motion.span animate={{ opacity: [1, 0.5, 1] }} transition={{ duration: 1, repeat: Infinity }}>
                     Redirecting...
@@ -218,15 +231,17 @@ export function PricingNew() {
                 </motion.div>
               ) : (
                 <>
-                  Get Started Now
-                  <ArrowRight className="w-4 h-4" />
+                  <span className="flex items-center gap-2">Claim Your Spot <ArrowRight className="w-5 h-5" /></span>
+                  <span className="text-sm font-bold text-amber-100 uppercase tracking-wide opacity-90 mt-1">Start for $375/mo</span>
                 </>
               )}
             </motion.button>
 
-            <div className="flex items-center justify-center gap-1.5 mt-4 text-gray-400 text-sm font-semibold">
-              <Shield className="w-4 h-4" />
-              <span>Secured by Stripe · SSL Encrypted · Cancel anytime</span>
+            <div className="flex flex-col items-center justify-center gap-2 mt-4 text-gray-400 text-xs font-semibold">
+              <div className="flex items-center gap-2 bg-gray-800/50 px-3 py-1.5 rounded-full">
+                <Shield className="w-3.5 h-3.5 text-blue-400" />
+                <span>Secured by Stripe · 30-Day Guarantee</span>
+              </div>
             </div>
           </motion.div>
 
@@ -263,25 +278,13 @@ export function PricingNew() {
             </p>
 
             <div className="text-center mb-5">
-              <div className="flex flex-col items-center justify-center mb-1">
-                <span className="text-2xl sm:text-3xl text-gray-400 line-through decoration-red-500/70 font-bold">$475</span>
-                <div className="text-5xl sm:text-6xl font-bold text-white mt-1 flex items-baseline justify-center">
-                  $270
-                  <span className="text-xl sm:text-2xl text-gray-400 ml-1">/mo</span>
-                </div>
-              </div>
               <div className="text-emerald-300 font-semibold text-sm mt-2">
                 + 5% of new revenue we help generate
               </div>
               <div className="text-gray-500 text-xs mt-1 mb-3">
                 Only applies to revenue from KenjiAI campaigns. No revenue = no fee.
               </div>
-              <div className="inline-block bg-emerald-500/20 border border-emerald-500/30 rounded-lg px-3 py-1.5 mb-2 mt-2">
-                <div className="text-emerald-400 font-bold text-xs uppercase tracking-wider">
-                  Billed annually at $3,250
-                </div>
-              </div>
-              <div className="text-amber-400 font-bold text-sm">
+              <div className="text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3 py-1.5 rounded-lg inline-block font-bold text-sm">
                 🔥 You save $1,250/yr vs monthly
               </div>
             </div>
@@ -312,14 +315,15 @@ export function PricingNew() {
               disabled={isLoading === 'yearly'}
               whileHover={{ scale: isLoading === 'yearly' ? 1 : 1.02 }}
               whileTap={{ scale: isLoading === 'yearly' ? 1 : 0.98 }}
-              className={`w-full py-4 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center gap-2.5 shadow-xl transition-all duration-300 mb-3 ${isLoading === 'yearly' ? 'opacity-90 cursor-wait bg-emerald-600 text-white' : 'bg-gradient-to-r from-emerald-500 to-green-500 text-white hover:shadow-emerald-500/25'}`}
+              className={`w-full py-5 rounded-2xl font-black text-lg sm:text-xl flex flex-col items-center justify-center shadow-[0_0_40px_rgba(245,158,11,0.3)] transition-all duration-300 mb-3 border border-amber-400/60 relative overflow-hidden group ${isLoading === 'yearly' ? 'opacity-90 cursor-wait bg-amber-600 text-white' : 'bg-gradient-to-br from-amber-400 to-orange-500 text-gray-900 hover:shadow-[0_0_50px_rgba(245,158,11,0.5)]'}`}
             >
+              <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               {isLoading === 'yearly' ? (
                 <motion.div className="flex items-center gap-3">
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }}
-                    className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
+                    className="w-5 h-5 border-2 border-gray-900 border-t-transparent rounded-full"
                   />
                   <motion.span animate={{ opacity: [1, 0.5, 1] }} transition={{ duration: 1, repeat: Infinity }}>
                     Redirecting...
@@ -327,15 +331,17 @@ export function PricingNew() {
                 </motion.div>
               ) : (
                 <>
-                  Get Started Now
-                  <ArrowRight className="w-4 h-4" />
+                  <span className="flex items-center gap-2">Claim Your Spot <ArrowRight className="w-5 h-5" /></span>
+                  <span className="text-sm font-bold text-amber-900 uppercase tracking-wide opacity-90 mt-1">Start for $270/mo ($3,250/yr)</span>
                 </>
               )}
             </motion.button>
 
-            <div className="flex items-center justify-center gap-1.5 mt-4 text-gray-400 text-sm font-semibold">
-              <Shield className="w-4 h-4" />
-              <span>Stripe Secured · 30-Day Guarantee · PCI Compliant</span>
+            <div className="flex flex-col items-center justify-center gap-2 mt-4 text-gray-400 text-xs font-semibold">
+              <div className="flex items-center gap-2 bg-gray-800/50 px-3 py-1.5 rounded-full">
+                <Shield className="w-3.5 h-3.5 text-blue-400" />
+                <span>Stripe Secured · 30-Day Guarantee</span>
+              </div>
             </div>
           </motion.div>
 
