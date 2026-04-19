@@ -157,7 +157,7 @@ export function PricingNew() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="relative bg-gray-900/60 backdrop-blur-sm border border-gray-800 hover:border-blue-500/50 transition-colors rounded-2xl p-5 sm:p-6 flex flex-col order-2 lg:order-2"
+            className="relative bg-gray-900/60 backdrop-blur-sm border border-gray-800 hover:border-blue-500/60 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)] transition-all duration-500 rounded-2xl p-5 sm:p-6 flex flex-col order-2 lg:order-2"
           >
             <div className="mb-4">
               <h3 className="text-xl font-bold text-white mb-1 flex items-center gap-2">Monthly</h3>
@@ -191,11 +191,11 @@ export function PricingNew() {
 
             <div className="flex-1">
               <div className="text-white text-sm font-semibold mb-3">Everything included:</div>
-              <div className="space-y-2">
+              <div className="space-y-1">
                 {MONTHLY_FEATURES.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300 text-sm leading-tight tracking-tight">{feature}</span>
+                  <div key={idx} className="flex items-start gap-2 p-1.5 -mx-1.5 rounded-md hover:bg-white/5 transition-colors group cursor-default">
+                    <Check className="w-4 h-4 text-gray-400 group-hover:text-amber-500 transition-colors flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-300 group-hover:text-white transition-colors text-sm leading-tight tracking-tight">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -207,7 +207,7 @@ export function PricingNew() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.05 }}
-            className="relative bg-gray-900/60 backdrop-blur-sm border-2 border-[#10A37F] rounded-2xl p-5 sm:p-6 flex flex-col order-1 lg:order-1"
+            className="relative bg-gray-900/60 backdrop-blur-sm border-2 border-[#10A37F] hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(16,163,127,0.2)] transition-all duration-500 rounded-2xl p-5 sm:p-6 flex flex-col order-1 lg:order-1"
           >
             <div className="mb-4 flex items-start justify-between">
               <div>
@@ -244,17 +244,17 @@ export function PricingNew() {
 
             <div className="flex-1">
               <div className="text-white text-sm font-semibold mb-3">Everything in Monthly, plus:</div>
-              <div className="space-y-2">
+              <div className="space-y-1">
                 {YEARLY_FEATURES.filter(f => !MONTHLY_FEATURES.includes(f)).map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-[#10A37F] flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300 text-[13px] font-medium leading-tight tracking-tight">{feature}</span>
+                  <div key={idx} className="flex items-start gap-2 p-1.5 -mx-1.5 rounded-md hover:bg-white/5 transition-colors group cursor-default">
+                    <Check className="w-4 h-4 text-[#10A37F] group-hover:text-emerald-400 transition-colors flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-200 group-hover:text-white transition-colors text-[13px] font-medium leading-tight tracking-tight">{feature}</span>
                   </div>
                 ))}
                 {MONTHLY_FEATURES.slice(0, 5).map((feature, idx) => (
-                  <div key={`m-${idx}`} className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-gray-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-400 text-[13px] leading-tight tracking-tight">{feature}</span>
+                  <div key={`m-${idx}`} className="flex items-start gap-2 p-1.5 -mx-1.5 rounded-md hover:bg-white/5 transition-colors group cursor-default">
+                    <Check className="w-4 h-4 text-gray-500 group-hover:text-gray-400 transition-colors flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-400 group-hover:text-gray-300 transition-colors text-[13px] leading-tight tracking-tight">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -266,7 +266,7 @@ export function PricingNew() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.1 }}
-            className="relative bg-gray-900/60 backdrop-blur-sm border border-gray-800 hover:border-blue-500/50 transition-colors rounded-2xl p-5 sm:p-6 flex flex-col order-3 lg:order-3"
+            className="relative bg-gray-900/60 backdrop-blur-sm border border-gray-800 hover:border-blue-500/50 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(255,255,255,0.05)] transition-all duration-500 rounded-2xl p-5 sm:p-6 flex flex-col order-3 lg:order-3"
           >
             <div className="mb-4 flex items-start justify-between">
               <div>
@@ -293,11 +293,11 @@ export function PricingNew() {
 
             <div className="flex-1">
               <div className="text-white text-sm font-semibold mb-3">Enterprise benefits:</div>
-              <div className="space-y-2">
+              <div className="space-y-1">
                 {VIP_FEATURES.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-2">
-                    <Check className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300 text-[13px] leading-tight tracking-tight">{feature}</span>
+                  <div key={idx} className="flex items-start gap-2 p-1.5 -mx-1.5 rounded-md hover:bg-white/5 transition-colors group cursor-default">
+                    <Check className="w-4 h-4 text-purple-400 group-hover:text-purple-300 transition-colors flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-300 group-hover:text-white transition-colors text-[13px] leading-tight tracking-tight">{feature}</span>
                   </div>
                 ))}
               </div>
