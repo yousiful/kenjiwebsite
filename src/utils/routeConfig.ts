@@ -13,7 +13,9 @@ export const internalRoutes = [
   '/privacy',
   '/disclaimer',
   '/terms',
-  '/not-found'
+  '/not-found',
+  '/overview',
+  '/dashboard'
 ] as const;
 
 export const externalRoutes = {

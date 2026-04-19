@@ -18,6 +18,7 @@ const MONTHLY_FEATURES = [
   "Done-For-You Ads to Fill Your Pipeline",
   "Complete CRM with Custom Pipelines",
   "Advanced Email & SMS Campaigns",
+  "$20/mo in Email/Text AI token credits",
   "Community Builder & Management",
   "Blog Writer & SEO Suite",
   "Social Media Planner & Scheduler",
@@ -33,11 +34,12 @@ const YEARLY_FEATURES = [
   "Done-For-You Ads to Fill Your Pipeline",
   "Complete CRM with Custom Pipelines",
   "Advanced Email & SMS Campaigns",
+  "$30/mo in Email/Text AI token credits",
   "Community Builder & Management",
   "Blog Writer & SEO Suite",
   "Social Media Planner & Scheduler",
   "Daily Sales Training",
-  "$300 Yearly Credit included",
+  "Sales Team Placement included",
   "Premium Referral Program Access",
 ];
 
@@ -262,22 +264,26 @@ export function PricingNew() {
 
             <div className="text-center mb-5">
               <div className="flex flex-col items-center justify-center mb-1">
-                <span className="text-2xl sm:text-3xl text-gray-400 line-through decoration-red-500/70 font-bold">$3,850</span>
+                <span className="text-2xl sm:text-3xl text-gray-400 line-through decoration-red-500/70 font-bold">$475</span>
                 <div className="text-5xl sm:text-6xl font-bold text-white mt-1 flex items-baseline justify-center">
-                  $3,250
-                  <span className="text-xl sm:text-2xl text-gray-400 ml-1">/yr</span>
+                  $270
+                  <span className="text-xl sm:text-2xl text-gray-400 ml-1">/mo</span>
                 </div>
               </div>
               <div className="text-emerald-300 font-semibold text-sm mt-2">
                 + 5% of new revenue we help generate
               </div>
-              <div className="text-gray-500 text-xs mt-1">
+              <div className="text-gray-500 text-xs mt-1 mb-3">
                 Only applies to revenue from KenjiAI campaigns. No revenue = no fee.
               </div>
-              <div className="text-emerald-400 font-bold text-base mt-3">
-                Best Value Plan
+              <div className="inline-block bg-emerald-500/20 border border-emerald-500/30 rounded-lg px-3 py-1.5 mb-2 mt-2">
+                <div className="text-emerald-400 font-bold text-xs uppercase tracking-wider">
+                  Billed annually at $3,250
+                </div>
               </div>
-              <div className="text-gray-400 text-sm mt-1">Equivalent to ~$270/mo. Connect today.</div>
+              <div className="text-amber-400 font-bold text-sm">
+                🔥 You save $1,250/yr vs monthly
+              </div>
             </div>
 
             <div className="bg-emerald-500/10 border border-emerald-400/30 rounded-2xl p-4 mb-6">
@@ -431,6 +437,28 @@ export function PricingNew() {
             </p>
           </motion.div>
         </div>
+
+        {/* Secondary Conversion / Unsure Leads */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="mt-12 max-w-3xl mx-auto text-center bg-gray-900/40 border border-gray-700/50 rounded-2xl p-8 backdrop-blur-sm"
+        >
+          <h4 className="text-2xl font-bold text-white mb-3">Not Sure Which Plan Is Right For You?</h4>
+          <p className="text-gray-400 mb-6">
+            Hop on a quick 15-minute discovery call with our team. We'll show you exactly how KenjiAI works and help you decide the best path forward.
+          </p>
+          <a
+            href="https://go.mediatraffics.com/leads"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white px-8 py-3 rounded-xl font-bold transition-all duration-300"
+          >
+            <span>Book a Free Strategy Call</span>
+            <ArrowRight className="w-5 h-5" />
+          </a>
+        </motion.div>
 
         <div className="mt-16 sm:mt-20 px-4">
           <motion.div

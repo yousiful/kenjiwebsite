@@ -556,14 +556,40 @@ body {
    ============================================================ */
 
 /* Neon text colors */
-.neon-cyan  { color: #00FFFF; text-shadow: 0 0 8px rgba(0,255,255,0.8), 0 0 20px rgba(0,255,255,0.4); }
-.neon-green { color: #39FF14; text-shadow: 0 0 8px rgba(57,255,20,0.8), 0 0 20px rgba(57,255,20,0.4); }
-.neon-pink  { color: #FF1493; text-shadow: 0 0 8px rgba(255,20,147,0.8), 0 0 20px rgba(255,20,147,0.4); }
+.neon-cyan  { color: #00FFFF; animation: neon-text-breathe-cyan 3s ease-in-out infinite; }
+.neon-green { color: #39FF14; animation: neon-text-breathe-green 3s ease-in-out infinite; }
+.neon-pink  { color: #FF1493; animation: neon-text-breathe-pink 3s ease-in-out infinite; }
+
+@keyframes neon-text-breathe-cyan {
+  0%, 100% { text-shadow: 0 0 4px rgba(0,255,255,0.4), 0 0 10px rgba(0,255,255,0.2); }
+  50% { text-shadow: 0 0 12px rgba(0,255,255,1), 0 0 25px rgba(0,255,255,0.8), 0 0 40px rgba(0,255,255,0.6); }
+}
+@keyframes neon-text-breathe-green {
+  0%, 100% { text-shadow: 0 0 4px rgba(57,255,20,0.4), 0 0 10px rgba(57,255,20,0.2); }
+  50% { text-shadow: 0 0 12px rgba(57,255,20,1), 0 0 25px rgba(57,255,20,0.8), 0 0 40px rgba(57,255,20,0.6); }
+}
+@keyframes neon-text-breathe-pink {
+  0%, 100% { text-shadow: 0 0 4px rgba(255,20,147,0.4), 0 0 10px rgba(255,20,147,0.2); }
+  50% { text-shadow: 0 0 12px rgba(255,20,147,1), 0 0 25px rgba(255,20,147,0.8), 0 0 40px rgba(255,20,147,0.6); }
+}
 
 /* Neon glow borders */
-.neon-border-cyan  { border-color: rgba(0,255,255,0.5) !important; box-shadow: 0 0 12px rgba(0,255,255,0.3), inset 0 0 4px rgba(0,255,255,0.05); }
-.neon-border-green { border-color: rgba(57,255,20,0.5) !important; box-shadow: 0 0 12px rgba(57,255,20,0.3), inset 0 0 4px rgba(57,255,20,0.05); }
-.neon-border-pink  { border-color: rgba(255,20,147,0.5) !important; box-shadow: 0 0 12px rgba(255,20,147,0.3), inset 0 0 4px rgba(255,20,147,0.05); }
+.neon-border-cyan  { border-color: rgba(0,255,255,0.5) !important; animation: border-breathe-cyan 3s ease-in-out infinite; }
+.neon-border-green { border-color: rgba(57,255,20,0.5) !important; animation: border-breathe-green 3s ease-in-out infinite; }
+.neon-border-pink  { border-color: rgba(255,20,147,0.5) !important; animation: border-breathe-pink 3s ease-in-out infinite; }
+
+@keyframes border-breathe-cyan {
+  0%, 100% { box-shadow: 0 0 6px rgba(0,255,255,0.15), inset 0 0 2px rgba(0,255,255,0.02); }
+  50% { box-shadow: 0 0 20px rgba(0,255,255,0.6), 0 0 35px rgba(0,255,255,0.4), inset 0 0 8px rgba(0,255,255,0.1); }
+}
+@keyframes border-breathe-green {
+  0%, 100% { box-shadow: 0 0 6px rgba(57,255,20,0.15), inset 0 0 2px rgba(57,255,20,0.02); }
+  50% { box-shadow: 0 0 20px rgba(57,255,20,0.6), 0 0 35px rgba(57,255,20,0.4), inset 0 0 8px rgba(57,255,20,0.1); }
+}
+@keyframes border-breathe-pink {
+  0%, 100% { box-shadow: 0 0 6px rgba(255,20,147,0.15), inset 0 0 2px rgba(255,20,147,0.02); }
+  50% { box-shadow: 0 0 20px rgba(255,20,147,0.6), 0 0 35px rgba(255,20,147,0.4), inset 0 0 8px rgba(255,20,147,0.1); }
+}
 
 /* Neon button base */
 .neon-btn-cyan {
@@ -603,12 +629,12 @@ body {
 
 /* Neon glow pulse animation */
 @keyframes neon-pulse-cyan {
-  0%, 100% { box-shadow: 0 0 12px rgba(0,255,255,0.3); }
-  50%       { box-shadow: 0 0 28px rgba(0,255,255,0.65), 0 0 8px rgba(57,255,20,0.2); }
+  0%, 100% { box-shadow: 0 0 6px rgba(0,255,255,0.15); }
+  50%       { box-shadow: 0 0 35px rgba(0,255,255,0.8), 0 0 12px rgba(57,255,20,0.4); }
 }
 @keyframes neon-pulse-green {
-  0%, 100% { box-shadow: 0 0 12px rgba(57,255,20,0.3); }
-  50%       { box-shadow: 0 0 28px rgba(57,255,20,0.65), 0 0 8px rgba(0,255,255,0.2); }
+  0%, 100% { box-shadow: 0 0 6px rgba(57,255,20,0.15); }
+  50%       { box-shadow: 0 0 35px rgba(57,255,20,0.8), 0 0 12px rgba(0,255,255,0.4); }
 }
 .neon-pulse-cyan  { animation: neon-pulse-cyan  2s ease-in-out infinite; }
 .neon-pulse-green { animation: neon-pulse-green 2s ease-in-out infinite; }

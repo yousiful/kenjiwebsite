@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { TrendingUp, Users, DollarSign, Globe, Zap, Brain, Target, Award, ExternalLink, Download, Mail, Calendar, Rocket, Shield, Crown } from 'lucide-react';
+import SEOHead from '../components/SEOHead';
 
 const InvestorPage: React.FC = () => {
   const heroMetrics = [
@@ -101,9 +102,11 @@ const InvestorPage: React.FC = () => {
   return (
     <>
       {/* SEO Head */}
-      <title>Investor Relations - KenjiAI | AI Business Automation Investment Opportunity</title>
-      <meta name="description" content="Invest in KenjiAI, the leading AI business automation platform. $890B market opportunity, 425% average ROI, 50,000+ users. Series B funding round open." />
-      <meta name="keywords" content="KenjiAI investment, AI startup investment, business automation investment, Series B funding, AI platform investment" />
+      <SEOHead 
+        title="Investor Relations" 
+        description="Invest in KenjiAI, the leading AI business automation platform. $890B market opportunity, 425% average ROI, 50,000+ users. Series B funding round open."
+        keywords="KenjiAI investment, AI startup investment, business automation investment, Series B funding, AI platform investment"
+      />
       
       <div className="pt-24 pb-16 bg-gray-900 min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -181,7 +184,7 @@ const InvestorPage: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-20"
           >
-            {heroMetrics.map((metric, index) => (
+            {heroMetrics.map((metric) => (
               <motion.div
                 key={metric.label}
                 whileHover={{ scale: 1.05, y: -10 }}

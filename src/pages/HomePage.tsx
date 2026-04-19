@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import SEOHead from '../components/SEOHead';
 import Hero from '../components/Hero';
 import BusinessTransformation from '../components/BusinessTransformation';
 import Features from '../components/Features';
@@ -55,14 +55,12 @@ const HomePage: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>KenjiAI - AI That Closes Deals While You Sleep | Free AI Tools & Revenue-Generating Automation</title>
-        <meta name="description" content="AI voice agents that close deals 24/7, smart workflows that run your business, and automation that generates revenue while you sleep. 425% average ROI in 90 days. Free AI tools available: prompt generator, PR tools, sales coach. Start making money with AI today." />
-        <meta name="keywords" content="AI that makes money, AI voice agents, revenue generating AI, business automation that pays, AI that closes deals, free AI tools, AI prompt generator, AI sales automation, AI marketing automation, AI that works while you sleep, profitable AI, ROI AI automation, money making AI tools, AI business platform, automated revenue generation" />
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-      </Helmet>
+      <SEOHead 
+        title="AI That Closes Deals While You Sleep | Free AI Tools & Revenue-Generating Automation"
+        description="AI voice agents that close deals 24/7, smart workflows that run your business, and automation that generates revenue while you sleep. 425% average ROI in 90 days. Free AI tools available: prompt generator, PR tools, sales coach. Start making money with AI today."
+        keywords="AI that makes money, AI voice agents, revenue generating AI, business automation that pays, AI that closes deals, free AI tools, AI prompt generator, AI sales automation, AI marketing automation, AI that works while you sleep, profitable AI, ROI AI automation, money making AI tools, AI business platform, automated revenue generation"
+        structuredData={structuredData}
+      />
       
       <div className="pt-0">
         <Hero />

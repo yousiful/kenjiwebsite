@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Play, Users, Zap, Sparkles, Phone } from 'lucide-react';
+import { ArrowRight, Phone } from 'lucide-react';
 import { useHolidayTheme } from '../contexts/HolidayThemeContext';
 import { TypingHeadline } from './TypingHeadline';
 import { LuxuryButton } from './LuxuryButton';
@@ -8,7 +8,7 @@ import { AmbientBackground } from './AmbientBackground';
 import { DynamicDateTime } from './DynamicDateTime';
 
 const Hero: React.FC = () => {
-  const { textGradientClass, currentHoliday } = useHolidayTheme();
+  const { currentHoliday } = useHolidayTheme();
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-8" style={{backgroundColor: '#0B0E14'}} aria-labelledby="hero-heading">
@@ -124,7 +124,7 @@ const Hero: React.FC = () => {
           className="flex justify-center mb-10 sm:mb-16 px-4"
         >
           <div className="relative w-full sm:w-auto">
-            <LuxuryButton href="/pricing" variant="primary" size="xl">
+            <LuxuryButton href="/overview" variant="primary" size="xl">
               {currentHoliday && (
                 <motion.span
                   animate={{ rotate: [0, 15, -15, 0] }}
