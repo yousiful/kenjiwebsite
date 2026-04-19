@@ -8,6 +8,8 @@ const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [showToolsDropdown, setShowToolsDropdown] = useState(false);
   const [showSolutionsDropdown, setShowSolutionsDropdown] = useState(false);
+  const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
+  const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -321,6 +323,68 @@ const Navbar: React.FC = () => {
                     >
                       {item.name}
                     </motion.a>
+                  ) : item.hasDropdown ? (
+                    <motion.div
+                      key={item.name}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                    >
+                      <button
+                        onClick={() => {
+                          if (item.dropdownType === 'tools') setMobileToolsOpen(!mobileToolsOpen);
+                          if (item.dropdownType === 'solutions') setMobileSolutionsOpen(!mobileSolutionsOpen);
+                        }}
+                        className="w-full flex items-center justify-between text-gray-300 hover:text-cyan-400 transition-colors font-medium mobile-hover touch-target py-3 min-h-[44px] text-base"
+                        role="menuitem"
+                      >
+                        {item.name}
+                        <ChevronDown 
+                          className={`w-4 h-4 transition-transform duration-300 ${
+                            (item.dropdownType === 'tools' && mobileToolsOpen) ||
+                            (item.dropdownType === 'solutions' && mobileSolutionsOpen)
+                              ? 'rotate-180 text-cyan-400'
+                              : ''
+                          }`} 
+                        />
+                      </button>
+                      
+                      <AnimatePresence>
+                        {((item.dropdownType === 'tools' && mobileToolsOpen) || (item.dropdownType === 'solutions' && mobileSolutionsOpen)) && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="bg-gray-800/30 rounded-xl overflow-hidden mt-1 mb-2 border border-gray-700/50"
+                          >
+                            {(item.dropdownType === 'tools' ? tools : solutions).map((subItem: any) => (
+                              subItem.external ? (
+                                <a
+                                  key={subItem.name}
+                                  href={subItem.href}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  onClick={() => setIsOpen(false)}
+                                  className="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-cyan-950/40 border-b border-gray-700/30 last:border-0"
+                                >
+                                  {subItem.name}
+                                </a>
+                              ) : (
+                                <Link
+                                  key={subItem.name}
+                                  to={subItem.href}
+                                  onClick={() => setIsOpen(false)}
+                                  className="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-cyan-950/40 border-b border-gray-700/30 last:border-0"
+                                >
+                                  {subItem.name}
+                                </Link>
+                              )
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </motion.div>
                   ) : (
                     <motion.div
                       key={item.name}
