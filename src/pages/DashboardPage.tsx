@@ -131,7 +131,7 @@ function BarVisual({ value, max, color }: { value: number; max: number; color: s
 
 // ─── Main Dashboard ───────────────────────────────────────────────
 export default function DashboardPage() {
-  const [unlocked, setUnlocked] = useState(false);
+  const [unlocked, setUnlocked] = useState(true);
   const [views, setViews] = useState<PageView[]>([]);
   const [sessions, setSessions] = useState<VisitorSession[]>([]);
   const [dateRange, setDateRange] = useState(30); 
