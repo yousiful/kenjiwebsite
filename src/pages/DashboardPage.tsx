@@ -147,8 +147,8 @@ export default function DashboardPage() {
       setIsLoading(true);
       try {
         const [viewsRes, sessionsRes] = await Promise.all([
-          supabase.from('analytics_pageviews').select('*').order('timestamp', { ascending: false }).limit(2000),
-          supabase.from('analytics_sessions').select('*').order('start_time', { ascending: false }).limit(2000)
+          supabase.from('analytics_pageviews').select('*', { order: 'timestamp.desc', limit: '2000' }),
+          supabase.from('analytics_sessions').select('*', { order: 'start_time.desc', limit: '2000' })
         ]);
 
         if (isMounted) {
