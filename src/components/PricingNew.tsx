@@ -193,9 +193,9 @@ export function PricingNew() {
               <div className="text-white text-sm font-semibold mb-3">Everything included:</div>
               <div className="space-y-2">
                 {MONTHLY_FEATURES.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-2.5">
+                  <div key={idx} className="flex items-start gap-2">
                     <Check className="w-4 h-4 text-gray-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300 text-sm leading-snug">{feature}</span>
+                    <span className="text-gray-300 text-sm leading-tight tracking-tight">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -246,15 +246,15 @@ export function PricingNew() {
               <div className="text-white text-sm font-semibold mb-3">Everything in Monthly, plus:</div>
               <div className="space-y-2">
                 {YEARLY_FEATURES.filter(f => !MONTHLY_FEATURES.includes(f)).map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-2.5">
+                  <div key={idx} className="flex items-start gap-2">
                     <Check className="w-4 h-4 text-[#10A37F] flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300 text-sm font-medium leading-snug">{feature}</span>
+                    <span className="text-gray-300 text-[13px] font-medium leading-tight tracking-tight">{feature}</span>
                   </div>
                 ))}
                 {MONTHLY_FEATURES.slice(0, 5).map((feature, idx) => (
-                  <div key={`m-${idx}`} className="flex items-start gap-2.5">
+                  <div key={`m-${idx}`} className="flex items-start gap-2">
                     <Check className="w-4 h-4 text-gray-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-400 text-sm leading-snug">{feature}</span>
+                    <span className="text-gray-400 text-[13px] leading-tight tracking-tight">{feature}</span>
                   </div>
                 ))}
               </div>
@@ -295,9 +295,9 @@ export function PricingNew() {
               <div className="text-white text-sm font-semibold mb-3">Enterprise benefits:</div>
               <div className="space-y-2">
                 {VIP_FEATURES.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-2.5">
+                  <div key={idx} className="flex items-start gap-2">
                     <Check className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300 text-sm leading-snug">{feature}</span>
+                    <span className="text-gray-300 text-[13px] leading-tight tracking-tight">{feature}</span>
                   </div>
                 ))}
               </div>
