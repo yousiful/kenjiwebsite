@@ -95,7 +95,12 @@ const Navbar: React.FC = () => {
                       }
                     }}
                   >
-                    <button
+                    <Link
+                      to={item.href}
+                      onClick={() => {
+                        if (item.dropdownType === 'tools') setShowToolsDropdown(false);
+                        if (item.dropdownType === 'solutions') setShowSolutionsDropdown(false);
+                      }}
                       className="flex items-center gap-1 text-gray-300 hover:text-cyan-400 transition-colors font-medium mobile-hover focus-ring touch-target"
                       aria-expanded={
                         (item.dropdownType === 'tools' && showToolsDropdown) || 
@@ -106,7 +111,7 @@ const Navbar: React.FC = () => {
                     >
                       {item.name}
                       <ChevronDown className="w-4 h-4" aria-hidden="true" />
-                    </button>
+                    </Link>
                     
                     {/* Tools Dropdown */}
                     {showToolsDropdown && item.dropdownType === 'tools' && (
