@@ -119,20 +119,20 @@ export function ToolReplacementBar() {
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text'
                 }}>
-                  One KenjiAI Platform
+                  The Autonomous Revenue Engine
                 </h3>
-                <p className="text-lg text-gray-300 mb-4">
-                  All-in-one growth engine that does everything better
+                <p className="text-lg text-gray-300 mb-4 font-medium">
+                  A self-driving AI ecosystem that floods your calendar and closes deals 24/7.
                 </p>
                 <div className="flex flex-wrap justify-center gap-3">
-                  <span className="px-4 py-2 bg-green-500/20 border border-green-400/40 rounded-full text-green-400 text-sm font-semibold">
-                    Save $2,000+/month
+                  <span className="px-4 py-2 bg-green-500/20 border border-green-400/40 rounded-full text-green-400 text-sm font-bold tracking-wide">
+                    Slash Operating Costs
                   </span>
-                  <span className="px-4 py-2 bg-blue-500/20 border border-blue-400/40 rounded-full text-blue-400 text-sm font-semibold">
-                    10X More Powerful
+                  <span className="px-4 py-2 bg-blue-500/20 border border-blue-400/40 rounded-full text-blue-400 text-sm font-bold tracking-wide">
+                    Scale Without Payroll
                   </span>
-                  <span className="px-4 py-2 bg-purple-500/20 border border-purple-400/40 rounded-full text-purple-400 text-sm font-semibold">
-                    Done-For-You Setup
+                  <span className="px-4 py-2 bg-purple-500/20 border border-purple-400/40 rounded-full text-purple-400 text-sm font-bold tracking-wide">
+                    100% Done-For-You Build
                   </span>
                 </div>
               </div>
