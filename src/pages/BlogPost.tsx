@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Calendar, Clock, ArrowLeft, ArrowRight, Share2, Tag } from 'lucide-react';
+import { Calendar, Clock, ArrowLeft, ArrowRight, Share2, Tag, BookOpen, GraduationCap, Star, User } from 'lucide-react';
 import { useAutoFormatting } from '../components/AutoFormattingProvider';
 import { Helmet } from 'react-helmet-async';
 import { getArticleBySlug, getAllArticles } from '../data/articles';
@@ -90,7 +90,7 @@ const BlogPost: React.FC = () => {
             className="mb-8"
           >
             <Link
-              to="/knowledge"
+              to="/blog"
               className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -106,9 +106,15 @@ const BlogPost: React.FC = () => {
             className="mb-10"
           >
             <div className="flex flex-wrap items-center gap-3 mb-6">
-              <span className="bg-blue-500/20 text-blue-400 px-3 py-1 rounded-lg text-sm font-semibold">
+              <span className={`px-3 py-1 rounded-lg text-sm font-semibold ${article.isCourse ? 'bg-purple-500/20 text-purple-400' : 'bg-blue-500/20 text-blue-400'}`}>
                 {article.category}
               </span>
+              {article.isCourse && (
+                <span className="bg-green-500/20 text-green-400 px-3 py-1 rounded-lg text-sm font-semibold flex items-center gap-1.5">
+                  <GraduationCap className="w-3.5 h-3.5" />
+                  Premium Course
+                </span>
+              )}
               <span className="text-gray-400 text-sm flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5" />
                 {article.readTime}
@@ -122,6 +128,39 @@ const BlogPost: React.FC = () => {
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
               {article.title}
             </h1>
+
+            {article.isCourse && (
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8 bg-gray-800/40 border border-white/5 rounded-2xl p-6">
+                <div>
+                  <div className="text-gray-500 text-[10px] uppercase font-bold mb-1 tracking-wider">Instructor</div>
+                  <div className="text-white font-semibold text-sm flex items-center gap-2">
+                    <User className="w-3.5 h-3.5 text-purple-400" />
+                    {article.instructor}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-gray-500 text-[10px] uppercase font-bold mb-1 tracking-wider">Lessons</div>
+                  <div className="text-white font-semibold text-sm flex items-center gap-2">
+                    <BookOpen className="w-3.5 h-3.5 text-blue-400" />
+                    {article.lessons} Chapters
+                  </div>
+                </div>
+                <div>
+                  <div className="text-gray-500 text-[10px] uppercase font-bold mb-1 tracking-wider">Duration</div>
+                  <div className="text-white font-semibold text-sm flex items-center gap-2">
+                    <Clock className="w-3.5 h-3.5 text-green-400" />
+                    {article.duration}
+                  </div>
+                </div>
+                <div>
+                  <div className="text-gray-500 text-[10px] uppercase font-bold mb-1 tracking-wider">Rating</div>
+                  <div className="text-white font-semibold text-sm flex items-center gap-2 text-yellow-400">
+                    <Star className="w-3.5 h-3.5 fill-current" />
+                    {article.rating}
+                  </div>
+                </div>
+              </div>
+            )}
 
             <p className="text-lg sm:text-xl text-gray-400 leading-relaxed mb-6">
               {article.excerpt}

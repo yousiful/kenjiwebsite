@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Zap, ChevronDown, ExternalLink, LogIn, ChevronRight, Calendar, DollarSign } from 'lucide-react';
+import { Menu, X, ChevronDown, ExternalLink, LogIn, Calendar, DollarSign } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,11 +38,11 @@ const Navbar: React.FC = () => {
   ];
 
   const navItems = [
-    { name: "Home", href: "/" },
-    { name: "Solutions", href: "/ai-automation", hasDropdown: true, dropdownType: "solutions" },
-    { name: "Free Tools", href: "/free-tools", hasDropdown: true, dropdownType: "tools" },
-    { name: "AI Education", href: "https://startlearning.kenjiai.com/", external: true },
-    { name: "Pricing", href: "/pricing" }
+    { name: "Home", href: "/", external: false },
+    { name: "Solutions", href: "/ai-automation", hasDropdown: true, dropdownType: "solutions", external: false },
+    { name: "Free Tools", href: "/free-tools", hasDropdown: true, dropdownType: "tools", external: false },
+    { name: "Blog", href: "/blog", external: false },
+    { name: "Pricing", href: "/pricing", external: false }
   ];
 
   return (
@@ -79,7 +79,7 @@ const Navbar: React.FC = () => {
                 {item.hasDropdown ? (
                   <div
                     className="relative"
-                    onMouseEnter={(e) => {
+                    onMouseEnter={() => {
                       if (item.dropdownType === 'tools') setShowToolsDropdown(true);
                       if (item.dropdownType === 'solutions') setShowSolutionsDropdown(true);
                     }}

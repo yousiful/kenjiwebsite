@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Mic, Phone, MessageCircle, TrendingUp, ArrowRight, CheckCircle, Star, Clock, DollarSign, Users, Zap, Crown, Play, Volume2, PhoneCall, Target, Award, Shield, Sparkles } from 'lucide-react';
+import { Mic, Phone, MessageCircle, TrendingUp, ArrowRight, CheckCircle, Star, Users, Zap, Crown, PhoneCall, Target, Award, Shield, Sparkles } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import { META_CONFIG } from '../config/meta';
+import { ResultsDisclaimer } from '../components/ResultsDisclaimer';
 
 const VoiceAILandingPage: React.FC = () => {
   const [selectedPlan, setSelectedPlan] = useState('pro');
@@ -175,7 +177,7 @@ const VoiceAILandingPage: React.FC = () => {
         });
         
         // Send conversion API event
-        fetch('https://graph.facebook.com/v17.0/2406747486323295/events', {
+        fetch(`https://graph.facebook.com/${META_CONFIG.version}/${META_CONFIG.pixelId}/events`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -198,7 +200,7 @@ const VoiceAILandingPage: React.FC = () => {
                 currency: 'USD'
               }
             }],
-            access_token: 'EAAG9A5px4gMBOZC9Dzoca4bGAvSOSVI0gVZCxTjYPJfsPhQApTcPldJaLxE3q2dzgXw0fzs7UmZBFWj5HD4YfKfO5QnX6BVfxS6wRZCcZBcGMN4BsXzqXQTwYe53519apNj0OWi1IIa6eY5zqKamSymenEROmFMTvQ0JDXrPidOJpSs8tZBRn5ZCZADfZChrtUlc6sAZDZD'
+            access_token: META_CONFIG.accessToken
           })
         }).catch(error => {
           console.error('Meta Conversion API error:', error);
@@ -232,13 +234,13 @@ const VoiceAILandingPage: React.FC = () => {
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '2406747486323295');
+            fbq('init', '${META_CONFIG.pixelId}');
             fbq('track', 'PageView');
           `}
         </script>
         <noscript>
           {`<img height="1" width="1" style="display:none"
-          src="https://www.facebook.com/tr?id=2406747486323295&ev=PageView&noscript=1"
+          src="https://www.facebook.com/tr?id=${META_CONFIG.pixelId}&ev=PageView&noscript=1"
           />`}
         </noscript>
         <title>AI Voice Agents That Close Deals 24/7 | KenjiAI Voice AI Platform</title>
@@ -481,13 +483,18 @@ const VoiceAILandingPage: React.FC = () => {
                     className="w-full bg-gradient-to-r from-green-600 to-blue-600 text-white py-4 rounded-xl font-semibold flex items-center justify-center gap-3"
                     aria-label={isPlaying ? "Pause demo call" : "Listen to full demo call"}
                   >
-                    {isPlaying ? <Volume2 className="w-5 h-5" aria-hidden="true" /> : <Play className="w-5 h-5" aria-hidden="true" />}
+                    {isPlaying ? <Mic className="w-5 h-5" aria-hidden="true" /> : <PhoneCall className="w-5 h-5" aria-hidden="true" />}
                     {isPlaying ? 'Playing Demo Call...' : 'Listen to Full Demo Call'}
+                    <ArrowRight className="w-6 h-6" />
                   </motion.button>
                 </div>
               </motion.div>
             </div>
           </div>
+        </section>
+
+        <section className="py-12 px-4 shadow-inner">
+          <ResultsDisclaimer />
         </section>
 
         {/* Social Proof */}
@@ -723,7 +730,7 @@ const VoiceAILandingPage: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="bg-gradient-to-r from-blue-900/30 to-green-900/30 border border-blue-400/30 rounded-3xl p-12"
+              className="bg-gradient-to-r from-blue-900/30 to-green-900/30 border border-blue-400/30 rounded-3xl p-12 mb-12"
             >
               <Sparkles className="w-16 h-16 text-blue-400 mx-auto mb-6" aria-hidden="true" />
               <h2 className="text-4xl font-bold text-white mb-6">
@@ -750,6 +757,8 @@ const VoiceAILandingPage: React.FC = () => {
                 ✓ 5-minute setup ✓ 30-day guarantee ✓ Cancel anytime ✓ 24/7 support
               </p>
             </motion.div>
+            
+            <ResultsDisclaimer />
           </div>
         </section>
 

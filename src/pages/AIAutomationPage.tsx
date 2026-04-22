@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Brain, Zap, TrendingUp, Users, ArrowRight, CheckCircle, Star, Target, Rocket } from 'lucide-react';
+import { Brain, Zap, TrendingUp, Users, ArrowRight, CheckCircle, Star, Rocket } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import { ResultsDisclaimer } from '../components/ResultsDisclaimer';
 
 const AIAutomationPage: React.FC = () => {
   const automationFeatures = [
@@ -86,36 +87,7 @@ const AIAutomationPage: React.FC = () => {
       "Smart Decision Making",
       "Performance Optimization",
       "Customer Intelligence"
-    ],
-    "mainEntityOfPage": {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How much time can AI automation save my business?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "KenjiAI customers report an average of 85% time savings on repetitive tasks by automating workflows, customer service, and operations."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the ROI of AI business automation?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Businesses using KenjiAI see an average 300% ROI increase, with the automation paying for itself within the first 90 days."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What business processes can KenjiAI automate?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "KenjiAI automates workflows, customer service, sales processes, lead qualification, email campaigns, social media, data entry, and more across industries like e-commerce, SaaS, and professional services."
-          }
-        }
-      ]
-    }
+    ]
   };
 
   return (
@@ -160,7 +132,6 @@ const AIAutomationPage: React.FC = () => {
               Automate complex workflows, eliminate manual tasks, and scale without limits.
             </p>
 
-            {/* Benefits Grid */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
               {benefits.map((benefit, index) => (
                 <motion.div
@@ -228,12 +199,7 @@ const AIAutomationPage: React.FC = () => {
           </motion.div>
 
           {/* Use Cases */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="mb-20"
-          >
+          <div className="mb-20">
             <h2 className="text-4xl font-bold text-white mb-12 text-center">
               Real-World Success Stories
             </h2>
@@ -243,8 +209,9 @@ const AIAutomationPage: React.FC = () => {
                 <motion.div
                   key={useCase.industry}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: 0.8 + index * 0.2 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8 }}
                   className="bg-gray-800/50 border border-gray-700 rounded-2xl p-8"
                 >
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -276,14 +243,15 @@ const AIAutomationPage: React.FC = () => {
                 </motion.div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* CTA Section */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="text-center bg-gradient-to-r from-blue-900/30 to-purple-900/30 border border-blue-400/30 rounded-3xl p-12"
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center bg-gradient-to-r from-blue-900/30 to-purple-900/30 border border-blue-400/30 rounded-3xl p-12 mb-12"
           >
             <h3 className="text-4xl font-bold text-white mb-6">
               Ready to Automate Your Business?
@@ -318,6 +286,11 @@ const AIAutomationPage: React.FC = () => {
               Quick setup • Start automating immediately • Scale without limits
             </p>
           </motion.div>
+
+          {/* Results Disclaimer */}
+          <section className="py-12 border-t border-gray-800">
+            <ResultsDisclaimer />
+          </section>
         </div>
       </div>
     </>

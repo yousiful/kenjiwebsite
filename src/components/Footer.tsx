@@ -1,19 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Zap, Mail, Phone, MapPin, Twitter, Linkedin, Youtube, ArrowRight, Shield, Star, Users, Clock, CheckCircle, Gift, Headphones as HeadphonesIcon, Lock, Award } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowRight, Shield, Award, Star, Headphones as HeadphonesIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleLeadSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setSubmitted(true);
-      setEmail('');
-    }
-  };
 
   const navLinks = {
     company: [
@@ -28,26 +18,6 @@ const Footer: React.FC = () => {
       { name: 'Disclaimer', href: '/disclaimer' },
     ],
   };
-
-  const socialLinks = [
-    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Youtube, href: 'https://youtube.com', label: 'YouTube' },
-  ];
-
-  const trustBadges = [
-    { icon: Shield, label: '256-bit SSL' },
-    { icon: Lock, label: 'GDPR Compliant' },
-    { icon: Award, label: '30-Day Guarantee' },
-    { icon: CheckCircle, label: 'SOC 2 Ready' },
-  ];
-
-  const socialProof = [
-    { icon: Star, value: '4.9/5', label: 'Avg. Rating', color: '#FBBF24' },
-    { icon: Users, value: '2,400+', label: 'Active Clients', color: '#34D399' },
-    { icon: Clock, value: '99.9%', label: 'Uptime SLA', color: '#60A5FA' },
-    { icon: Zap, value: '$2.1M+', label: 'Revenue Generated', color: '#F97316' },
-  ];
 
   return (
     <footer className="bg-gray-950 border-t border-gray-800 relative overflow-hidden" aria-labelledby="footer-heading">
@@ -162,17 +132,30 @@ const Footer: React.FC = () => {
               </ul>
             </div>
 
-            {/* Trust Badges */}
+            {/* Compliance & Contact */}
             <div>
-              <h4 className="text-white font-semibold text-sm mb-4 tracking-wide">Security</h4>
-              <div className="space-y-2">
-                {trustBadges.map((badge) => (
-                  <div key={badge.label} className="flex items-center gap-2">
-                    <badge.icon className="w-3.5 h-3.5 text-green-400 shrink-0" />
-                    <span className="text-gray-500 text-xs">{badge.label}</span>
-                  </div>
-                ))}
-              </div>
+              <h4 className="text-white font-semibold text-sm mb-4 tracking-wide">Contact & Address</h4>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <MapPin className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
+                  <span className="text-gray-500 text-xs leading-relaxed">
+                    32 N Gould St<br />
+                    Sheridan, WY 82801
+                  </span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Mail className="w-4 h-4 text-blue-400 shrink-0" />
+                  <a href="mailto:support@kenjiai.com" className="text-gray-500 hover:text-blue-400 text-xs transition-colors">
+                    support@kenjiai.com
+                  </a>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Phone className="w-4 h-4 text-blue-400 shrink-0" />
+                  <a href="tel:+18286772148" className="text-gray-500 hover:text-blue-400 text-xs transition-colors">
+                    (828) 677-2148
+                  </a>
+                </li>
+              </ul>
             </div>
           </motion.nav>
         </div>

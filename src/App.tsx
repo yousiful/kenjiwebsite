@@ -19,7 +19,6 @@ import { SiteTracker } from './components/SiteTracker';
 import { ConsentBanner } from './components/ConsentBanner';
 
 import HomePage from './pages/HomePage';
-import ToolsPage from './pages/ToolsPage';
 import KnowledgeBasePage from './pages/KnowledgeBasePage';
 import AIEducationPage from './pages/AIEducationPage';
 import BlogPost from './pages/BlogPost';
@@ -36,6 +35,7 @@ import DisclaimerPage from './pages/DisclaimerPage';
 import TermsOfServicePage from './pages/TermsOfServicePage';
 import DashboardPage from './pages/DashboardPage';
 import WebinarVSLPage from './pages/WebinarVSLPage';
+import BlogPage from './pages/BlogPage';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
@@ -145,13 +145,13 @@ function App() {
                       <Route path="/crm" element={<CRMPage />} />
                       <Route path="/knowledge" element={<KnowledgeBasePage />} />
                       <Route path="/ai-education" element={<AIEducationPage />} />
+                      <Route path="/blog" element={<BlogPage />} />
                       <Route path="/blog/:slug" element={<BlogPost />} />
                       <Route path="/pricing" element={<ProductSelectionPage />} />
                       <Route path="/success" element={<SuccessPage />} />
                       <Route path="/privacy" element={<PrivacyPolicyPage />} />
                       <Route path="/disclaimer" element={<DisclaimerPage />} />
                       <Route path="/terms" element={<TermsOfServicePage />} />
-                      <Route path="/blog" element={<Navigate to="/knowledge" replace />} />
                       <Route path="/dashboard" element={<DashboardPage />} />
                       <Route path="/overview" element={<WebinarVSLPage />} />
                       <Route path="*" element={<NotFoundPage />} />
