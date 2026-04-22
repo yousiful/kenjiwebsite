@@ -82,6 +82,17 @@ const BlogPost: React.FC = () => {
       
       <div className="pt-24 pb-16 bg-gray-900 min-h-screen">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Breadcrumbs */}
+          <nav className="flex items-center gap-2 text-xs text-gray-500 mb-8 uppercase tracking-widest font-bold">
+            <Link to="/" className="hover:text-blue-400 transition-colors">Home</Link>
+            <span className="opacity-30">/</span>
+            <Link to={article.isCourse ? "/knowledge" : "/blog"} className="hover:text-blue-400 transition-colors">
+              {article.isCourse ? "Academy" : "Blog"}
+            </Link>
+            <span className="opacity-30">/</span>
+            <span className="text-gray-300 truncate max-w-[200px]">{article.title}</span>
+          </nav>
+
           {/* Back Button */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -90,11 +101,11 @@ const BlogPost: React.FC = () => {
             className="mb-8"
           >
             <Link
-              to="/blog"
+              to={article.isCourse ? "/knowledge" : "/blog"}
               className="inline-flex items-center text-blue-400 hover:text-blue-300 transition-colors"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Articles
+              Back to {article.isCourse ? "Academy" : "Articles"}
             </Link>
           </motion.div>
 
@@ -207,7 +218,7 @@ const BlogPost: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="prose prose-lg prose-invert max-w-none mb-16"
+            className="prose prose-lg prose-invert max-w-none mb-16 blog-content-styles"
             dangerouslySetInnerHTML={{ __html: article.content }}
           />
 

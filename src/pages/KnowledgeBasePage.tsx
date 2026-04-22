@@ -1,212 +1,198 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { BookOpen, Search, Brain, TrendingUp, Target, Calculator, GraduationCap, Star, Clock, ArrowRight } from 'lucide-react';
+import { BookOpen, Brain, TrendingUp, Target, GraduationCap, Star, Clock, ArrowRight, Trophy } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 import { getAllArticles } from '../data/articles';
+import EnrollmentNotification from '../components/EnrollmentNotification';
 
 const KnowledgeBasePage: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const allArticles = getAllArticles();
   
   // Courses are articles with isCourse: true
   const courses = allArticles.filter(a => a.isCourse);
-  const nonCourseArticles = allArticles.filter(a => !a.isCourse);
+  
+  const categories = ['All', ...Array.from(new Set(courses.map(c => c.category)))];
 
-  const categories = [
-    { name: "All", count: courses.length, icon: BookOpen, color: "text-blue-400" },
-    { name: "AI Mastery", count: courses.filter(c => c.category === 'AI Mastery').length, icon: Brain, color: "text-purple-400" },
-    { name: "AI Sales", count: courses.filter(c => c.category === 'AI Sales').length, icon: Target, color: "text-green-400" },
-    { name: "Tax Strategy", count: courses.filter(c => c.category === 'Tax Strategy').length, icon: Calculator, color: "text-yellow-400" },
+  const stats = [
+    { label: "Active Students", value: "15,247+", color: "text-blue-400" },
+    { label: "Course Graduates", value: "8,934", color: "text-cyan-400" },
+    { label: "Expert Instructors", value: "12", color: "text-purple-400" },
+    { label: "Community Rating", value: "4.9/5", color: "text-yellow-400" }
+  ];
+
+  const categoryIcons = [
+    { name: "Automation", count: courses.filter(c => c.category === 'Automation').length, icon: Brain, color: "text-blue-400" },
+    { name: "Marketing", count: courses.filter(c => c.category === 'Marketing').length, icon: Target, color: "text-purple-400" },
     { name: "Investment AI", count: courses.filter(c => c.category === 'Investment AI').length, icon: TrendingUp, color: "text-cyan-400" }
   ];
 
-  const filteredCourses = selectedCategory === 'All' 
-    ? courses 
-    : courses.filter(c => c.category === selectedCategory);
-
-  const finalCourses = searchQuery 
-    ? filteredCourses.filter(c => 
-        c.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        c.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
-      )
-    : filteredCourses;
+  const filteredCourses = courses.filter(course => {
+    const matchesCategory = selectedCategory === 'All' || course.category === selectedCategory;
+    return matchesCategory;
+  });
 
   return (
     <>
       <Helmet>
-        <title>KenjiAI Academy | Free Expert Courses & Knowledge Base</title>
-        <meta name="description" content="Master AI automation, tax strategies, and business growth with our free, expert-led courses." />
+        <title>KenjiAI Academy - Elite AI & Business Mastery</title>
+        <meta name="description" content="Access premium AI automation courses, sales mastery tracks, and technical guides designed for 8-figure growth." />
       </Helmet>
 
-      <div className="pt-24 pb-20 bg-gray-950 min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Academy Hero */}
-          <section className="relative py-20 mb-16 rounded-[2rem] overflow-hidden border border-white/5 bg-gradient-to-br from-blue-900/20 via-gray-900 to-purple-900/20">
-            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
-            <div className="relative z-10 text-center px-4">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-400 font-medium mb-8"
-              >
-                <GraduationCap className="w-4 h-4" />
-                <span>KenjiAI Premium Academy</span>
-              </motion.div>
-              
-              <motion.h1
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight"
-              >
-                Knowledge is <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">Lethal.</span>
-              </motion.h1>
-              
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="text-xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed"
-              >
-                Access the proprietary frameworks we use to build 7-figure AI automated businesses. 
-                100% Free. No gatekeeping. Just pure execution.
-              </motion.p>
+      <EnrollmentNotification />
 
-              <div className="max-w-2xl mx-auto relative group">
-                <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-blue-400 transition-colors" />
-                <input 
-                  type="text" 
-                  placeholder="What do you want to master today?"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full h-16 pl-16 pr-6 bg-gray-900/50 border border-white/10 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-blue-400/50 transition-all shadow-2xl"
-                />
+      <div className="pt-24 pb-20 bg-gray-950 min-h-screen relative overflow-hidden">
+        {/* Ambient Glow */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 blur-[120px] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Header Section */}
+          <section className="mb-20">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-center"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest mb-6">
+                <GraduationCap className="w-4 h-4" /> University Portal
               </div>
-            </div>
+              <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight">
+                KenjiAI <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">Academy</span>
+              </h1>
+              <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                The definitive curriculum for AI-Driven business growth. Master neural workflows, agentic frameworks, and high-performance sales automation.
+              </p>
+            </motion.div>
           </section>
 
-          {/* Categories Grid */}
-          <section className="mb-16">
-            <div className="flex flex-wrap gap-4 justify-center">
-              {categories.map((cat, idx) => (
-                <motion.button
-                  key={cat.name}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: idx * 0.05 }}
-                  onClick={() => setSelectedCategory(cat.name)}
-                  className={`flex items-center gap-3 px-6 py-4 rounded-2xl border transition-all ${
-                    selectedCategory === cat.name 
-                    ? 'bg-blue-600 border-blue-400 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]' 
-                    : 'bg-gray-900 border-white/5 text-gray-400 hover:border-white/20'
+          {/* Academy Stats */}
+          <section className="mb-20 grid grid-cols-2 md:grid-cols-4 gap-4">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="bg-blue-600/10 border border-blue-500/30 rounded-2xl p-6 text-center backdrop-blur-md relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 p-2">
+                <span className="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+              </div>
+              <div className="text-2xl font-black text-blue-400 mb-1">1,248</div>
+              <div className="text-[10px] text-gray-400 uppercase tracking-widest font-black">STUDENTS LIVE NOW</div>
+            </motion.div>
+            {stats.slice(1).map((stat, idx) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * idx }}
+                className="bg-gray-900/30 border border-white/5 rounded-2xl p-6 text-center backdrop-blur-sm"
+              >
+                <div className={`text-2xl font-bold ${stat.color} mb-1`}>{stat.value}</div>
+                <div className="text-[10px] text-gray-500 uppercase tracking-widest font-black">{stat.label}</div>
+              </motion.div>
+            ))}
+          </section>
+
+          {/* Interactive Lab Link */}
+          <section className="mb-20">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="p-1 rounded-[2.5rem] bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-600 shadow-[0_0_40px_rgba(37,99,235,0.2)]"
+            >
+              <div className="bg-gray-950 rounded-[2.4rem] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+                <div className="flex-1 text-center md:text-left">
+                  <h2 className="text-3xl font-bold text-white mb-4">Interactive AI Skills Lab</h2>
+                  <p className="text-gray-400">Test your knowledge, earn badges, and track your certification progress in real-time.</p>
+                </div>
+                <Link to="/ai-education" className="px-8 py-4 bg-white text-gray-900 rounded-2xl font-black hover:scale-105 transition-all flex items-center gap-2 shadow-xl shrink-0">
+                  <Trophy className="w-5 h-5 text-blue-600" /> Start Lab Test
+                </Link>
+              </div>
+            </motion.div>
+          </section>
+
+          {/* Categories Filter */}
+          <section className="mb-12">
+            <div className="flex flex-wrap gap-3 justify-center">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-6 py-3 rounded-xl border text-sm font-bold transition-all ${
+                    selectedCategory === cat 
+                      ? 'bg-blue-600 border-blue-400 text-white shadow-[0_0_20px_rgba(37,99,235,0.3)]' 
+                      : 'bg-gray-900 border-white/5 text-gray-400 hover:border-white/20'
                   }`}
                 >
-                  <cat.icon className={`w-5 h-5 ${selectedCategory === cat.name ? 'text-white' : cat.color}`} />
-                  <span className="font-semibold">{cat.name}</span>
-                  <span className={`text-xs ml-2 opacity-50 ${selectedCategory === cat.name ? 'text-white' : 'text-gray-500'}`}>
-                    {cat.count}
-                  </span>
-                </motion.button>
+                  {cat}
+                </button>
               ))}
             </div>
           </section>
 
-          {/* Courses Feed */}
-          <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Course Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatePresence mode="popLayout">
-              {finalCourses.map((course, idx) => (
+              {filteredCourses.map((course, idx) => (
                 <motion.div
                   key={course.slug}
                   layout
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ delay: idx * 0.05 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3, delay: idx * 0.05 }}
+                  className="group relative h-full"
                 >
-                  <Link to={`/blog/${course.slug}`} className="group block h-full">
-                    <div className="relative h-full bg-gray-900/50 border border-white/5 rounded-[2rem] overflow-hidden hover:border-blue-400/30 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
-                      {/* Image Area */}
-                      <div className="relative aspect-[16/10] overflow-hidden">
-                        <img 
-                          src={course.image} 
-                          alt={course.title}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent opacity-60"></div>
-                        <div className="absolute top-6 left-6 px-4 py-1 rounded-full bg-blue-600/90 text-white text-xs font-bold backdrop-blur-sm shadow-lg">
-                          {course.category}
-                        </div>
-                        <div className="absolute bottom-6 right-6 flex items-center gap-2 text-yellow-400 font-bold bg-gray-950/80 px-3 py-1 rounded-full backdrop-blur-sm text-sm">
-                          <Star className="w-4 h-4 fill-current" />
-                          {course.rating}
-                        </div>
+                  <div className="absolute inset-0 bg-blue-500/5 blur-2xl group-hover:bg-blue-500/10 transition-all rounded-[2rem]" />
+                  <Link 
+                    to={`/blog/${course.slug}`}
+                    className="relative block h-full bg-gray-900/40 backdrop-blur-md border border-white/5 rounded-[2rem] overflow-hidden group-hover:border-blue-500/30 transition-all"
+                  >
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <img 
+                        src={course.image} 
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+                        alt={course.title}
+                      />
+                      <div className="absolute top-4 left-4 flex gap-2">
+                        <span className="px-3 py-1 bg-blue-600 text-white text-[10px] font-black uppercase rounded-lg shadow-lg">Premium</span>
+                        <span className="px-3 py-1 bg-gray-950/80 backdrop-blur-md text-blue-400 border border-blue-500/30 text-[10px] font-bold uppercase rounded-lg">
+                          {course.level || 'Mastery'}
+                        </span>
                       </div>
-
-                      {/* Content Area */}
-                      <div className="p-8">
-                        <div className="flex items-center gap-4 text-xs text-gray-500 mb-4 uppercase tracking-widest font-bold">
-                          <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" /> {course.duration}</span>
-                          <span className="flex items-center gap-1.5"><BookOpen className="w-3.5 h-3.5" /> {course.lessons} Lessons</span>
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/20 to-transparent" />
+                    </div>
+                    
+                    <div className="p-8">
+                      <div className="flex items-center gap-4 text-xs text-gray-500 mb-4 font-bold uppercase tracking-wider">
+                        <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-blue-500" /> {course.readTime || '4 hours'}</span>
+                        <span className="flex items-center gap-1.5"><BookOpen className="w-4 h-4 text-blue-500" /> {course.lessons || '12'} Lessons</span>
+                      </div>
+                      <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors leading-tight">
+                        {course.title}
+                      </h3>
+                      <p className="text-gray-400 text-sm line-clamp-3 mb-8">
+                        {course.excerpt}
+                      </p>
+                      
+                      <div className="pt-6 border-t border-white/5 flex items-center justify-between">
+                        <div className="flex items-center gap-1">
+                          <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                          <span className="text-white font-bold">{course.rating || '5.0'}</span>
+                          <span className="text-gray-500 text-xs">({course.students || '1.2k'})</span>
                         </div>
-                        
-                        <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors leading-tight">
-                          {course.title}
-                        </h3>
-                        
-                        <p className="text-gray-400 text-sm mb-8 line-clamp-2 leading-relaxed">
-                          {course.excerpt}
-                        </p>
-
-                        <div className="flex items-center justify-between pt-6 border-t border-white/5">
-                          <div className="flex items-center gap-3">
-                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-[10px] font-bold text-white">
-                              {course.instructor?.split(' ').map(n => n[0]).join('')}
-                            </div>
-                            <span className="text-xs text-gray-500 font-medium">{course.instructor}</span>
-                          </div>
-                          <div className="flex items-center gap-2 text-blue-400 font-bold text-sm group-hover:gap-4 transition-all">
-                            Join Free <ArrowRight className="w-4 h-4" />
-                          </div>
-                        </div>
+                        <span className="flex items-center gap-2 text-blue-400 font-bold text-sm group/btn">
+                          Enroll Now <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-all" />
+                        </span>
                       </div>
                     </div>
                   </Link>
                 </motion.div>
               ))}
             </AnimatePresence>
-          </section>
-
-          {/* Articles Bottom Section */}
-          <section className="mt-32 pt-32 border-t border-white/5">
-            <div className="flex items-center justify-between mb-12">
-              <div>
-                <h2 className="text-3xl font-bold text-white mb-2">Technical Insights</h2>
-                <p className="text-gray-400">Deep dives into the mechanics of AI and business.</p>
-              </div>
-              <Link to="/blog" className="text-blue-400 hover:text-blue-300 font-bold flex items-center gap-2">
-                View Viral News <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {nonCourseArticles.slice(0, 4).map((article) => (
-                <Link key={article.slug} to={`/blog/${article.slug}`} className="flex gap-6 p-4 rounded-3xl bg-gray-900/30 border border-white/5 hover:border-white/10 transition-all group">
-                  <div className="w-24 h-24 rounded-2xl overflow-hidden shrink-0">
-                    <img src={article.image} alt="" className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500" />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-bold mb-2 group-hover:text-blue-400 transition-colors">{article.title}</h4>
-                    <p className="text-gray-500 text-xs line-clamp-1 mb-3">{article.excerpt}</p>
-                    <span className="text-[10px] uppercase tracking-tighter text-gray-400 font-bold bg-white/5 px-2 py-1 rounded-md">
-                      {article.category} • {article.readTime}
-                    </span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </section>
+          </div>
         </div>
       </div>
     </>

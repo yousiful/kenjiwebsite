@@ -10,17 +10,17 @@ const BlogPage: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const categories = ['All', ...Array.from(new Set(allArticles.map(a => a.category)))];
+  const categories = ['All', ...Array.from(new Set(allArticles.filter(a => !a.isCourse).map(a => a.category)))];
 
-  const filteredArticles = allArticles.filter(article => {
+  const viralNews = allArticles.filter(a => !a.isCourse && a.category === 'Viral News').slice(0, 3);
+  const regularArticles = allArticles.filter(a => !a.isCourse && !viralNews.find(v => v.slug === a.slug));
+
+  const filteredArticles = regularArticles.filter(article => {
     const matchesCategory = selectedCategory === 'All' || article.category === selectedCategory;
     const matchesSearch = article.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           article.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
-
-  const viralNews = allArticles.filter(a => a.category === 'Viral News').slice(0, 3);
-  const regularArticles = filteredArticles.filter(a => !viralNews.find(v => v.slug === a.slug));
 
   return (
     <>
@@ -29,9 +29,67 @@ const BlogPage: React.FC = () => {
         <meta name="description" content="Stay ahead of the curve with the latest AI viral news, automation guides, and lead generation strategies from the KenjiAI team." />
       </Helmet>
 
-      <div className="pt-24 pb-20 bg-gray-950 min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <style>{`
+        .cyber-scanline {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 150px;
+          background: linear-gradient(180deg, transparent, rgba(6, 182, 212, 0.1), rgba(6, 182, 212, 0.2), rgba(6, 182, 212, 0.1), transparent);
+          animation: scanline 4s linear infinite;
+          pointer-events: none;
+          z-index: 50;
+        }
+        @keyframes scanline {
+          0% { transform: translateY(-150px); }
+          100% { transform: translateY(100vh); }
+        }
+      `}</style>
+
+      <div className="pt-24 pb-20 bg-gray-950 min-h-screen relative overflow-hidden">
+        {/* Cyber News Scanline */}
+        <div className="cyber-scanline z-50 opacity-[0.03]" />
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
+          {/* Breaking News Ticker */}
+          <div className="mb-12 bg-gray-900/50 border-y border-cyan-500/10 py-3 overflow-hidden whitespace-nowrap flex items-center gap-8">
+            <span className="flex items-center gap-2 text-red-500 font-bold text-xs uppercase px-4 border-r border-gray-800 shrink-0">
+              <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+              BREAKING
+            </span>
+            <div className="flex animate-marquee items-center gap-12 text-gray-400 text-sm font-medium">
+              {viralNews.map(v => (
+                <span key={v.slug} className="flex items-center gap-2">
+                  <span className="w-1 h-1 bg-cyan-500 rounded-full"></span>
+                  {v.title}
+                </span>
+              ))}
+              {viralNews.map(v => (
+                <span key={v.slug + '-dup'} className="flex items-center gap-2">
+                  <span className="w-1 h-1 bg-cyan-500 rounded-full"></span>
+                  {v.title}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Market Sentiment Bar */}
+          <div className="flex flex-wrap items-center gap-6 mb-8 text-[10px] sm:text-xs font-black uppercase tracking-widest text-gray-600 border-b border-white/5 pb-4">
+            <span className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span> 
+              AI ADOPTION INDEX: 84.2 (GREED)
+            </span>
+            <span className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]"></span> 
+              GPU LIQUIDITY: HIGH
+            </span>
+            <span className="flex items-center gap-2 text-cyan-500/50">
+              <TrendingUp className="w-3 h-3" /> AGENTIC SWARMS: TRENDING
+            </span>
+          </div>
+
           {/* Hero / Viral Section */}
           <section className="mb-20">
             <motion.div 
@@ -40,7 +98,7 @@ const BlogPage: React.FC = () => {
               className="flex items-center gap-2 text-cyan-400 font-bold mb-6"
             >
               <TrendingUp className="w-5 h-5" />
-              <span className="uppercase tracking-widest text-sm">Viral AI News</span>
+              <span className="uppercase tracking-widest text-sm text-cyan-400/80">Viral AI Insights</span>
             </motion.div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -49,7 +107,7 @@ const BlogPage: React.FC = () => {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="relative group cursor-pointer overflow-hidden rounded-3xl border border-cyan-500/20"
+                  className="relative group cursor-pointer overflow-hidden rounded-[2.5rem] border border-cyan-500/20"
                 >
                   <Link to={`/blog/${viralNews[0].slug}`}>
                     <div className="aspect-[16/9] relative">
@@ -79,24 +137,26 @@ const BlogPage: React.FC = () => {
               )}
 
               <div className="flex flex-col gap-6">
-                {viralNews.slice(1, 3).map((article, idx) => (
+                {viralNews.slice(1, 3).map((news, idx) => (
                   <motion.div
-                    key={article.slug}
+                    key={news.slug}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3 + (idx * 0.1) }}
-                    className="bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden group hover:border-cyan-500/50 transition-all"
+                    className="bg-gray-900/50 border border-white/10 rounded-3xl overflow-hidden group hover:border-cyan-500/50 transition-all flex h-full"
                   >
-                    <Link to={`/blog/${article.slug}`} className="flex gap-4 p-4">
-                      <div className="w-1/3 aspect-square rounded-xl overflow-hidden">
-                        <img src={article.image} alt={article.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                    <Link to={`/blog/${news.slug}`} className="flex p-4 w-full gap-6">
+                      <div className="w-1/3 aspect-square rounded-2xl overflow-hidden shrink-0">
+                        <img src={news.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt={news.title} />
                       </div>
-                      <div className="w-2/3 flex flex-col justify-center">
-                        <span className="text-cyan-400 text-[10px] font-bold uppercase mb-1">{article.category}</span>
-                        <h3 className="text-white font-bold leading-tight group-hover:text-cyan-400 transition-colors line-clamp-2">
-                          {article.title}
+                      <div className="flex flex-col justify-center">
+                        <div className="flex items-center gap-3 mb-2">
+                          <span className="px-2 py-0.5 rounded-lg bg-cyan-600/20 text-[10px] font-bold text-cyan-400 uppercase">{news.category}</span>
+                        </div>
+                        <h3 className="text-white font-bold leading-tight group-hover:text-cyan-400 transition-colors line-clamp-2 text-lg">
+                          {news.title}
                         </h3>
-                        <p className="text-gray-400 text-xs mt-2 line-clamp-2">{article.excerpt}</p>
+                        <p className="text-gray-400 text-xs mt-3 line-clamp-2">{news.excerpt}</p>
                       </div>
                     </Link>
                   </motion.div>
@@ -105,39 +165,58 @@ const BlogPage: React.FC = () => {
             </div>
           </section>
 
-          {/* Controls */}
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6 mb-12">
-            <div className="flex flex-wrap justify-center gap-2">
-              {categories.map(cat => (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${
-                    selectedCategory === cat 
-                      ? 'bg-cyan-500 text-gray-900' 
-                      : 'bg-gray-900 text-gray-400 hover:bg-gray-800'
-                  }`}
-                >
-                  {cat}
-                </button>
+          {/* Search and Category Filter */}
+          <section className="mb-16">
+            <div className="flex flex-col lg:flex-row gap-8 items-center justify-between">
+              <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
+                {categories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`px-6 py-3 rounded-xl border text-sm font-bold transition-all ${
+                      selectedCategory === cat 
+                        ? 'bg-cyan-600 border-cyan-400 text-white shadow-[0_0_20px_rgba(6,182,212,0.3)]' 
+                        : 'bg-gray-900 border-white/5 text-gray-400 hover:border-white/20'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+              <div className="relative w-full lg:w-96">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5" />
+                <input
+                  type="text"
+                  placeholder="Search viral reports..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-12 pr-4 py-3 bg-gray-900 border border-white/5 rounded-xl text-white focus:outline-none focus:border-cyan-500/50 transition-all font-medium shadow-2xl"
+                />
+              </div>
+            </div>
+          </section>
+
+          {/* Trending Topics Cloud */}
+          <section className="mb-20 p-8 rounded-[2rem] bg-gray-900/50 border border-white/5 relative overflow-hidden shadow-2xl">
+            <div className="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
+              <Zap className="w-32 h-32 text-cyan-400" />
+            </div>
+            <h4 className="text-white font-bold mb-6 flex items-center gap-2 uppercase tracking-widest text-xs">
+              <TrendingUp className="w-4 h-4 text-cyan-400" /> Hot Topics This Week
+            </h4>
+            <div className="flex flex-wrap gap-4">
+              {['Project Strawberry', 'AGI Timeline', 'Nvidia Blackwell', 'Autonomous Sales', 'Agent Swarms', 'OpenSource AI', 'Neural Logic'].map((topic) => (
+                <span key={topic} className="px-4 py-2 rounded-lg bg-gray-800 border border-white/5 text-gray-400 text-sm font-medium hover:border-cyan-500/30 hover:text-cyan-400 transition-all cursor-pointer">
+                  #{topic.replace(' ', '')}
+                </span>
               ))}
             </div>
-            <div className="relative w-full md:w-80">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
-              <input 
-                type="text"
-                placeholder="Search viral news..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-gray-900 border border-gray-800 rounded-full py-2 pl-12 pr-4 text-white focus:outline-none focus:border-cyan-500 transition-colors"
-              />
-            </div>
-          </div>
+          </section>
 
           {/* Grid Section */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <AnimatePresence mode="popLayout">
-              {regularArticles.map((article, idx) => (
+              {filteredArticles.map((article, idx) => (
                 <motion.div
                   key={article.slug}
                   layout
