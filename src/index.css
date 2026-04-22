@@ -1100,3 +1100,118 @@ img[loading="lazy"] {
   animation: scanline 8s linear infinite;
   pointer-events: none;
 }
+
+/* Premium Blog Content Styling */
+.blog-content-styles h2 {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #06b6d4;
+  padding-left: 1rem;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+}
+
+.blog-content-styles h3 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.blog-content-styles p {
+  color: #d1d5db;
+  line-height: 2;
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
+}
+
+.blog-content-styles ul {
+  margin-bottom: 2rem;
+  list-style: none;
+  padding-left: 0;
+}
+
+.blog-content-styles li {
+  display: flex;
+  gap: 1rem;
+  color: #d1d5db;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  padding-left: 1.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  transition: all 0.3s;
+}
+
+.blog-content-styles li:hover {
+  border-left-color: #06b6d4;
+  background: rgba(6, 182, 212, 0.05);
+}
+
+.blog-content-styles table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.blog-content-styles th {
+  padding: 1rem;
+  background: #111827;
+  color: #06b6d4;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.blog-content-styles td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+.blog-content-styles strong {
+  color: #06b6d4;
+  font-weight: 700;
+}
+
+.blog-content-styles blockquote {
+  border-left: 4px solid #06b6d4;
+  padding: 2rem;
+  margin: 3rem 0;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 0 1.5rem 1.5rem 0;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: #9ca3af;
+}
+
+.cyber-scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: linear-gradient(180deg, transparent, rgba(6, 182, 212, 0.15), transparent);
+  animation: scanline 4s linear infinite;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.4;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100px); }
+  100% { transform: translateY(100vh); }
+}
+

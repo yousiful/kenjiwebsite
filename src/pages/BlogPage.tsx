@@ -53,13 +53,12 @@ const BlogPage: React.FC = () => {
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
-          {/* Breaking News Ticker */}
-          <div className="mb-12 bg-gray-900/50 border-y border-cyan-500/10 py-3 overflow-hidden whitespace-nowrap flex items-center gap-8">
-            <span className="flex items-center gap-2 text-red-500 font-bold text-xs uppercase px-4 border-r border-gray-800 shrink-0">
-              <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
-              BREAKING
+          <div className="mb-12 bg-gray-900 border-y-2 border-red-500/20 py-4 overflow-hidden whitespace-nowrap flex items-center gap-8 shadow-[0_0_30px_rgba(239,68,68,0.1)]">
+            <span className="flex items-center gap-3 text-red-500 font-black text-sm uppercase px-6 border-r-2 border-gray-800 shrink-0 italic tracking-tighter">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-600 animate-ping"></span>
+              BREAKING NEWS
             </span>
-            <div className="flex animate-marquee items-center gap-12 text-gray-400 text-sm font-medium">
+            <div className="flex animate-marquee items-center gap-16 text-white text-sm font-bold tracking-tight">
               {viralNews.map(v => (
                 <span key={v.slug} className="flex items-center gap-2">
                   <span className="w-1 h-1 bg-cyan-500 rounded-full"></span>
@@ -75,18 +74,17 @@ const BlogPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Market Sentiment Bar */}
-          <div className="flex flex-wrap items-center gap-6 mb-8 text-[10px] sm:text-xs font-black uppercase tracking-widest text-gray-600 border-b border-white/5 pb-4">
-            <span className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span> 
-              AI ADOPTION INDEX: 84.2 (GREED)
+          <div className="flex flex-wrap items-center gap-8 mb-12 text-[10px] sm:text-xs font-black uppercase tracking-[0.2em] text-gray-500 border-b border-white/10 pb-6">
+            <span className="flex items-center gap-3">
+              <span className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_12px_rgba(34,197,94,0.8)]"></span> 
+              AI ADOPTION INDEX: 84.2 (EXTREME GREED)
             </span>
-            <span className="flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]"></span> 
-              GPU LIQUIDITY: HIGH
+            <span className="flex items-center gap-3">
+              <span className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.8)]"></span> 
+              GPU LIQUIDITY: CRITICAL HIGH
             </span>
-            <span className="flex items-center gap-2 text-cyan-500/50">
-              <TrendingUp className="w-3 h-3" /> AGENTIC SWARMS: TRENDING
+            <span className="flex items-center gap-3 text-cyan-400">
+              <TrendingUp className="w-4 h-4 animate-bounce" /> AGENTIC SWARMS: TRENDING #1
             </span>
           </div>
 

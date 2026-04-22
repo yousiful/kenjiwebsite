@@ -67,18 +67,20 @@ const KnowledgeBasePage: React.FC = () => {
             </motion.div>
           </section>
 
-          {/* Academy Stats */}
           <section className="mb-20 grid grid-cols-2 md:grid-cols-4 gap-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-blue-600/10 border border-blue-500/30 rounded-2xl p-6 text-center backdrop-blur-md relative overflow-hidden"
+              className="bg-blue-600/20 border-2 border-blue-500/40 rounded-3xl p-8 text-center backdrop-blur-xl relative overflow-hidden shadow-[0_0_50px_rgba(59,130,246,0.15)] group"
             >
-              <div className="absolute top-0 right-0 p-2">
-                <span className="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+              <div className="absolute top-0 right-0 p-4">
+                <span className="flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                </span>
               </div>
-              <div className="text-2xl font-black text-blue-400 mb-1">1,248</div>
-              <div className="text-[10px] text-gray-400 uppercase tracking-widest font-black">STUDENTS LIVE NOW</div>
+              <div className="text-4xl font-black text-white mb-2 group-hover:scale-110 transition-transform">1,248</div>
+              <div className="text-[10px] text-blue-400 uppercase tracking-[0.3em] font-black">STUDENTS LIVE NOW</div>
             </motion.div>
             {stats.slice(1).map((stat, idx) => (
               <motion.div
@@ -86,10 +88,10 @@ const KnowledgeBasePage: React.FC = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 * idx }}
-                className="bg-gray-900/30 border border-white/5 rounded-2xl p-6 text-center backdrop-blur-sm"
+                className="bg-gray-900/50 border border-white/5 rounded-3xl p-8 text-center backdrop-blur-sm hover:border-blue-500/30 transition-colors"
               >
-                <div className={`text-2xl font-bold ${stat.color} mb-1`}>{stat.value}</div>
-                <div className="text-[10px] text-gray-500 uppercase tracking-widest font-black">{stat.label}</div>
+                <div className={`text-3xl font-bold ${stat.color} mb-2`}>{stat.value}</div>
+                <div className="text-[10px] text-gray-500 uppercase tracking-[0.2em] font-black">{stat.label}</div>
               </motion.div>
             ))}
           </section>
