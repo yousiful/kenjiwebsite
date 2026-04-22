@@ -289,12 +289,12 @@ const BlogPost: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="https://go.mediatraffics.com/leads"
+                href={article.isCourse ? "https://startlearning.kenjiai.com/" : "https://go.mediatraffics.com/leads"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-green-500 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300"
               >
-                Book a Free Call
+                {article.isCourse ? "Enroll in Full Course" : "Book a Free Call"}
                 <ArrowRight className="w-4 h-4" />
               </a>
               <Link

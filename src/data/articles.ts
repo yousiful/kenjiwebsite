@@ -64,7 +64,7 @@ export const articles: Record<string, Article> = {
   <section class="text-center p-8 bg-gradient-to-br from-blue-900/20 to-purple-900/20 rounded-3xl border border-blue-500/20">
     <h2 class="text-2xl font-bold text-white mb-4">Unlock Full Access</h2>
     <p class="text-gray-400 mb-6">Enroll today to access all 24 chapters and implementation templates.</p>
-    <a href="https://go.mediatraffics.com/leads" class="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:scale-105 transition-all">
+    <a href="https://startlearning.kenjiai.com/" class="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:scale-105 transition-all">
       Apply for Full Access
     </a>
   </section>
@@ -110,7 +110,7 @@ export const articles: Record<string, Article> = {
   <section class="text-center p-8 bg-gradient-to-br from-blue-900/20 to-purple-900/20 rounded-3xl border border-blue-500/20">
     <h2 class="text-2xl font-bold text-white mb-4">Start Your Voice Agent Revolution</h2>
     <p class="text-gray-400 mb-6">Stop missing calls and start closing. Access the full curriculum now.</p>
-    <a href="https://go.mediatraffics.com/leads" class="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:scale-105 transition-all">
+    <a href="https://startlearning.kenjiai.com/" class="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:scale-105 transition-all">
       Claim Your Virtual SDR
     </a>
   </section>
@@ -153,7 +153,7 @@ export const articles: Record<string, Article> = {
   </section>
   <section class="text-center p-8 bg-gradient-to-br from-yellow-900/20 to-orange-900/20 rounded-3xl border border-yellow-500/20">
     <h2 class="text-2xl font-bold text-white mb-4">Stop Overpaying the IRS</h2>
-    <a href="https://go.mediatraffics.com/leads" class="inline-flex items-center gap-2 bg-yellow-600 text-white px-8 py-3 rounded-xl font-bold hover:scale-105 transition-all">
+    <a href="https://startlearning.kenjiai.com/" class="inline-flex items-center gap-2 bg-yellow-600 text-white px-8 py-3 rounded-xl font-bold hover:scale-105 transition-all">
       Minimize Your Liability
     </a>
   </section>
@@ -186,7 +186,7 @@ export const articles: Record<string, Article> = {
   </section>
   <section class="text-center p-8 bg-gradient-to-br from-cyan-900/20 to-blue-900/20 rounded-3xl border border-cyan-500/20">
     <h2 class="text-2xl font-bold text-white mb-4">Level Up Your Portfolio</h2>
-    <a href="https://go.mediatraffics.com/leads" class="inline-flex items-center gap-2 bg-cyan-600 text-white px-8 py-3 rounded-xl font-bold hover:scale-105 transition-all">
+    <a href="https://startlearning.kenjiai.com/" class="inline-flex items-center gap-2 bg-cyan-600 text-white px-8 py-3 rounded-xl font-bold hover:scale-105 transition-all">
       Access Quant Strategies
     </a>
   </section>
@@ -219,7 +219,7 @@ export const articles: Record<string, Article> = {
   </section>
   <section class="text-center p-8 bg-gradient-to-br from-green-900/20 to-emerald-900/20 rounded-3xl border border-green-500/20">
     <h2 class="text-2xl font-bold text-white mb-4">Automate Your Support</h2>
-    <a href="https://go.mediatraffics.com/leads" class="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-3 rounded-xl font-bold hover:scale-105 transition-all">
+    <a href="https://startlearning.kenjiai.com/" class="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-3 rounded-xl font-bold hover:scale-105 transition-all">
       Deploy Your Service Agent
     </a>
   </section>
@@ -272,7 +272,7 @@ export const articles: Record<string, Article> = {
   </section>
   <section class="text-center p-8 bg-gradient-to-br from-green-900/20 to-blue-900/20 rounded-3xl border border-green-500/20">
     <h2 class="text-2xl font-bold text-white mb-4">Master Your Sales Engine</h2>
-    <a href="https://go.mediatraffics.com/leads" class="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-3 rounded-xl font-bold hover:scale-105 transition-all">
+    <a href="https://startlearning.kenjiai.com/" class="inline-flex items-center gap-2 bg-green-600 text-white px-8 py-3 rounded-xl font-bold hover:scale-105 transition-all">
       Optimize Your Pipeline
     </a>
   </section>
@@ -325,7 +325,7 @@ export const articles: Record<string, Article> = {
   </section>
   <section class="text-center p-8 bg-gradient-to-br from-purple-900/20 to-blue-900/20 rounded-3xl border border-purple-500/20">
     <h2 class="text-2xl font-bold text-white mb-4">Know Your Worth</h2>
-    <a href="https://go.mediatraffics.com/leads" class="inline-flex items-center gap-2 bg-purple-600 text-white px-8 py-3 rounded-xl font-bold hover:scale-105 transition-all">
+    <a href="https://startlearning.kenjiai.com/" class="inline-flex items-center gap-2 bg-purple-600 text-white px-8 py-3 rounded-xl font-bold hover:scale-105 transition-all">
       Valuate Your Business
     </a>
   </section>
