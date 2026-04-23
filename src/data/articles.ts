@@ -985,12 +985,66 @@ export const articles: Record<string, Article> = {
   }
 };
 
+/**
+ * Evergreen Blog System
+ * Dynamically shifts article dates so content always appears recent.
+ * The newest article shows as "today", the second as "2 days ago", etc.
+ * Courses keep their original dates.
+ */
+function getEvergreenDate(index: number, isCourse: boolean, originalDate: string): string {
+  if (isCourse) return originalDate;
+  
+  const today = new Date();
+  // Spread articles across the last 30 days
+  // First article = today, second = 2 days ago, third = 4 days ago, etc.
+  const daysAgo = index * 2;
+  const evergreenDate = new Date(today);
+  evergreenDate.setDate(today.getDate() - daysAgo);
+  
+  return evergreenDate.toISOString().split('T')[0];
+}
+
 export function getArticleBySlug(slug: string): Article | undefined {
-  return articles[slug];
+  const article = articles[slug];
+  if (!article) return undefined;
+  
+  // Apply evergreen date
+  const sorted = Object.values(articles)
+    .filter(a => !a.isCourse)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  
+  const blogIndex = sorted.findIndex(a => a.slug === slug);
+  
+  return {
+    ...article,
+    date: getEvergreenDate(
+      blogIndex >= 0 ? blogIndex : 0, 
+      !!article.isCourse, 
+      article.date
+    )
+  };
 }
 
 export function getAllArticles(): Article[] {
-  return Object.values(articles).sort((a, b) =>
+  // Sort by original static dates first to maintain relative ordering
+  const sorted = Object.values(articles).sort((a, b) =>
     new Date(b.date).getTime() - new Date(a.date).getTime()
   );
+  
+  // Track blog article index separately (courses keep original dates)
+  let blogIndex = 0;
+  
+  return sorted.map(article => {
+    const evergreenDate = getEvergreenDate(
+      blogIndex, 
+      !!article.isCourse, 
+      article.date
+    );
+    
+    if (!article.isCourse) {
+      blogIndex++;
+    }
+    
+    return { ...article, date: evergreenDate };
+  });
 }

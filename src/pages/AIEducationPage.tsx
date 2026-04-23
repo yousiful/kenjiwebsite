@@ -522,39 +522,88 @@ export default function AIEducationPage() {
                   key="completion"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="max-w-2xl mx-auto text-center"
+                  className="max-w-2xl mx-auto"
                 >
-                  <div className="bg-gray-800 border-2 border-green-500 rounded-2xl p-12">
-                    <Trophy className="w-20 h-20 text-yellow-400 mx-auto mb-6" />
-                    <h2 className="text-4xl font-bold text-white mb-4">Lesson Complete!</h2>
-                    <p className="text-xl text-gray-400 mb-8">
-                      You scored {score} out of {lesson?.questions.length}
-                    </p>
+                  {/* Results Summary */}
+                  <div className="bg-gray-800 border-2 border-green-500 rounded-2xl p-10 mb-8">
+                    <Trophy className="w-16 h-16 text-yellow-400 mx-auto mb-5" />
+                    <h2 className="text-4xl font-bold text-white mb-2 text-center">Lesson Complete!</h2>
+                    <p className="text-gray-400 text-center mb-8">Here are your results</p>
 
-                    <div className="bg-gray-700/50 rounded-xl p-6 mb-8">
-                      <div className="text-3xl font-bold text-green-400 mb-2">+{lesson?.xpReward} XP</div>
-                      <p className="text-gray-400">Experience Points Earned</p>
+                    {/* Score Breakdown */}
+                    <div className="grid grid-cols-3 gap-4 mb-8">
+                      <div className="bg-gray-700/50 rounded-xl p-5 text-center">
+                        <div className="text-3xl font-bold text-white mb-1">{score}/{lesson?.questions.length}</div>
+                        <p className="text-gray-400 text-xs uppercase tracking-wider font-semibold">Correct</p>
+                      </div>
+                      <div className="bg-gray-700/50 rounded-xl p-5 text-center">
+                        <div className="text-3xl font-bold text-green-400 mb-1">+{lesson?.xpReward}</div>
+                        <p className="text-gray-400 text-xs uppercase tracking-wider font-semibold">XP Earned</p>
+                      </div>
+                      <div className="bg-gray-700/50 rounded-xl p-5 text-center">
+                        <div className="text-3xl font-bold text-purple-400 mb-1">Lv.{progress.level}</div>
+                        <p className="text-gray-400 text-xs uppercase tracking-wider font-semibold">Your Level</p>
+                      </div>
                     </div>
 
+                    {/* Score bar */}
+                    <div className="mb-8">
+                      <div className="flex justify-between text-sm mb-2">
+                        <span className="text-gray-400">Accuracy</span>
+                        <span className="text-white font-bold">{lesson ? Math.round((score / lesson.questions.length) * 100) : 0}%</span>
+                      </div>
+                      <div className="w-full bg-gray-700 rounded-full h-3">
+                        <div
+                          className="bg-gradient-to-r from-green-500 to-emerald-400 h-3 rounded-full transition-all duration-1000"
+                          style={{ width: `${lesson ? (score / lesson.questions.length) * 100 : 0}%` }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Badge */}
                     {newBadge && (
                       <motion.div
                         initial={{ scale: 0 }}
                         animate={{ scale: 1 }}
-                        className="bg-yellow-500/10 border-2 border-yellow-500 rounded-xl p-6 mb-8"
+                        className="bg-yellow-500/10 border-2 border-yellow-500 rounded-xl p-6 mb-6"
                       >
-                        <Award className="w-16 h-16 text-yellow-400 mx-auto mb-4" />
-                        <h3 className="text-2xl font-bold text-white mb-2">New Badge Unlocked!</h3>
-                        <p className="text-gray-300">{badges.find(b => b.id === newBadge)?.name}</p>
+                        <Award className="w-12 h-12 text-yellow-400 mx-auto mb-3" />
+                        <h3 className="text-xl font-bold text-white mb-1 text-center">New Badge Unlocked!</h3>
+                        <p className="text-gray-300 text-center">{badges.find(b => b.id === newBadge)?.name}</p>
                       </motion.div>
                     )}
+                  </div>
 
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      onClick={exitLesson}
-                      className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-xl font-bold text-lg"
+                  {/* CTA — Unlock Full Curriculum */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                    className="bg-gradient-to-r from-blue-900/40 to-purple-900/40 border border-blue-500/30 rounded-2xl p-8 mb-6 text-center"
+                  >
+                    <h3 className="text-2xl font-bold text-white mb-3">Ready to Go Deeper?</h3>
+                    <p className="text-gray-400 mb-6 max-w-md mx-auto text-sm">
+                      Unlock the full KenjiAI curriculum with advanced modules, live mentorship, and certification tracks.
+                    </p>
+                    <a
+                      href="https://startlearning.kenjiai.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-500 text-white px-8 py-4 rounded-xl font-bold text-lg hover:shadow-lg hover:shadow-blue-500/30 transition-all"
                     >
-                      Continue Learning
+                      Unlock Full Course <ArrowRight className="w-5 h-5" />
+                    </a>
+                  </motion.div>
+
+                  {/* Secondary — Continue Learning */}
+                  <div className="text-center">
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={exitLesson}
+                      className="text-gray-400 hover:text-white transition-colors font-semibold text-sm underline underline-offset-4"
+                    >
+                      ← Back to Free Lessons
                     </motion.button>
                   </div>
                 </motion.div>
