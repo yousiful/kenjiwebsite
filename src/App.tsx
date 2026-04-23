@@ -36,6 +36,7 @@ import TermsOfServicePage from './pages/TermsOfServicePage';
 import DashboardPage from './pages/DashboardPage';
 import WebinarVSLPage from './pages/WebinarVSLPage';
 import BlogPage from './pages/BlogPage';
+import NicheAdPage from './pages/NicheAdPage';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
@@ -147,6 +148,7 @@ function App() {
                       <Route path="/ai-education" element={<AIEducationPage />} />
                       <Route path="/blog" element={<BlogPage />} />
                       <Route path="/blog/:slug" element={<BlogPost />} />
+                      <Route path="/paid-ads-for/:niche" element={<NicheAdPage />} />
                       <Route path="/pricing" element={<ProductSelectionPage />} />
                       <Route path="/success" element={<SuccessPage />} />
                       <Route path="/privacy" element={<PrivacyPolicyPage />} />
