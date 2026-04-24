@@ -8,7 +8,6 @@ const RedirectSystem: React.FC = () => {
 
   const redirectMap: Record<string, string> = {
     '/tools': '/free-tools',
-    '/blog': '/knowledge',
     '/ai': '/ai-automation',
     '/voice': '/voice-agents',
     '/marketing': '/marketing-automation',
