@@ -1,2 +1,2 @@
 import React from 'react';
-export default function ResultsDisclaimer() { return null; }
+export function ResultsDisclaimer() { return null; }
