@@ -52,8 +52,7 @@ export default function WebinarVSLPage() {
                 Live: <span className="font-mono">{viewers}</span>
               </div>
             </div>
-          </div>
-
+          <
           {/* Video Container */}
           <div className="relative w-full aspect-video bg-black rounded-b-2xl overflow-hidden shadow-[0_20px_40px_-10px_rgba(59,130,246,0.5)] border border-white/10 border-t-0 z-10">
             {/* Overlay to block youtube title clicks */}
