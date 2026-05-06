@@ -93,11 +93,11 @@ export default function WebinarVSLPage() {
               </a>
 
               <div className="flex flex-col sm:flex-row gap-4 mt-4">
-                <a href="https://go.mediatraffics.com/pricing" target="_blank" rel="noopener noreferrer" className="group relative flex flex-col items-center justify-center w-full max-w-[500px] px-8 py-5 rounded-2xl bg-gradient-to-br from-green-600 to-green-500 text-white shadow-[0_10px_25px_-5px_rgba(16,185,129,0.4)] hover:shadow-[0_15px_35px_-5px_rgba(16,185,129,0.6)] hover:-translate-y-1 transition-all duration-300 border border-white/20">></a>
+                <a href="https://go.mediatraffics.com/pricing" target="_blank" rel="noopener noreferrer" className="group relative flex flex-col items-center justify-center w-full max-w-[500px] px-8 py-5 rounded-2xl bg-gradient-to-br from-green-600 to-green-500 text-white shadow-[0_10px_25px_-5px_rgba(16,185,129,0.4)] hover:shadow-[0_15px_35px_-5px_rgba(16,185,129,0.6)] hover:-translate-y-1 transition-all duration-300 border border-white/20">></a>>
                   <span className="font-bold text-lg tracking-wide relative z-10">ONE-TIME SETUP</span>
                   <span className="text-xs font-medium opacity-80 mt-1 relative z-10">Get a done-for-you implementation.</span>
                 </a>
-                <a href="https://kenjiai.com/pricing" target="_blank" rel="noopener noreferrer" className="group relative flex flex-col items-center justify-center w-full max-w-[500px] px-8 py-5 rounded-2xl bg-gradient-to-br from-purple-600 to-purple-500 text-white shadow-[0_10px_25px_-5px_rgba(139,92,246,0.4)] hover:shadow-[0_15px_35px_-5px_rgba(139,92,246,0.6)] hover:-translate-y-1 transition-all duration-300 border border-white/20">></a>
+                <a href="https://kenjiai.com/pricing" target="_blank" rel="noopener noreferrer" className="group relative flex flex-col items-center justify-center w-full max-w-[500px] px-8 py-5 rounded-2xl bg-gradient-to-br from-purple-600 to-purple-500 text-white shadow-[0_10px_25px_-5px_rgba(139,92,246,0.4)] hover:shadow-[0_15px_35px_-5px_rgba(139,92,246,0.6)] hover:-translate-y-1 transition-all duration-300 border border-white/20">></a>>
                   <span className="font-bold text-lg tracking-wide relative z-10">PERFORMANCE PLANS</span>
                   <span className="text-xs font-medium opacity-80 mt-1 relative z-10">Pay only when you earn.</span>
                 </a>
