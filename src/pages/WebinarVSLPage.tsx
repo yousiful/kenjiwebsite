@@ -30,7 +30,6 @@ export default function WebinarVSLPage() {
         <title>Exclusive Overview | KenjiAI</title>
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
-
       {/* Standalone Background forcing dark mode specifically for this page */}
       <div className="min-h-screen bg-[#0B0E14] text-white flex justify-center py-12 px-4 font-sans">
         
@@ -88,21 +87,22 @@ export default function WebinarVSLPage() {
                 rel="noopener noreferrer"
                 className="group relative flex flex-col items-center justify-center w-full max-w-[500px] px-8 py-5 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-500 text-white shadow-[0_10px_25px_-5px_rgba(59,130,246,0.4)] hover:shadow-[0_15px_35px_-5px_rgba(59,130,246,0.6)] hover:-translate-y-1 transition-all duration-300 border border-white/20"
               >
-                {/* Breathing shadow effect inside react using framer-motion approach or tailwind */}
                 <div className="absolute inset-0 rounded-2xl bg-blue-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity" />
-                
                 <span className="font-bold text-lg tracking-wide relative z-10">APPLY FOR PERFORMANCE PARTNERSHIP</span>
                 <span className="text-xs font-medium opacity-80 mt-1 relative z-10">Secure your spot. Must show up to qualify.</span>
               </a>
 
-              <a 
-                href="https://go.mediatraffics.com/price" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-full max-w-[500px] px-8 py-4 rounded-xl text-gray-400 border border-white/10 hover:bg-white/5 hover:text-white hover:border-white/20 transition-all font-medium text-sm sm:text-base"
-              >
-                Prefer to just buy direct? View Pricing
-              </a>
+              <div className="flex flex-col sm:flex-row gap-4 mt-4">
+                <a href="https://go.mediatraffics.com/pricing" target="_blank" rel="noopener noreferrer" className="group relative flex flex-col items-center justify-center w-full max-w-[500px] px-8 py-5 rounded-2xl bg-gradient-to-br from-green-600 to-green-500 text-white shadow-[0_10px_25px_-5px_rgba(16,185,129,0.4)] hover:shadow-[0_15px_35px_-5px_rgba(16,185,129,0.6)] hover:-translate-y-1 transition-all duration-300 border border-white/20">
+                  <span className="font-bold text-lg tracking-wide relative z-10">ONE-TIME SETUP</span>
+                  <span className="text-xs font-medium opacity-80 mt-1 relative z-10">Get a done-for-you implementation.</span>
+                </a>
+                <a href="https://kenjiai.com/pricing" target="_blank" rel="noopener noreferrer" className="group relative flex flex-col items-center justify-center w-full max-w-[500px] px-8 py-5 rounded-2xl bg-gradient-to-br from-purple-600 to-purple-500 text-white shadow-[0_10px_25px_-5px_rgba(139,92,246,0.4)] hover:shadow-[0_15px_35px_-5px_rgba(139,92,246,0.6)] hover:-translate-y-1 transition-all duration-300 border border-white/20">
+                  <span className="font-bold text-lg tracking-wide relative z-10">PERFORMANCE PLANS</span>
+                  <span className="text-xs font-medium opacity-80 mt-1 relative z-10">Pay only when you earn.</span>
+                </a>
+              </div>
+            </div>
             </div>
           </motion.div>
 
