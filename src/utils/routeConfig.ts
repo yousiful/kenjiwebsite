@@ -15,7 +15,8 @@ export const internalRoutes = [
   '/terms',
   '/not-found',
   '/overview',
-  '/dashboard'
+  '/dashboard',
+  '/setup'
 ] as const;
 
 export const externalRoutes = {
