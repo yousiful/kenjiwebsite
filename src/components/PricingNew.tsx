@@ -282,7 +282,7 @@ export function PricingNew() {
             </div>
 
             <a
-              href="https://go.mediatraffics.com/leads"
+              href="https://go.mediatraffics.com/price"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full py-3.5 rounded-xl font-bold text-base flex flex-col items-center justify-center transition-all duration-300 mb-2 bg-[#1b1f24] hover:bg-[#2c333a] border border-gray-700 text-white"
