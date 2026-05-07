@@ -37,6 +37,7 @@ import DashboardPage from './pages/DashboardPage';
 import WebinarVSLPage from './pages/WebinarVSLPage';
 import BlogPage from './pages/BlogPage';
 import NicheAdPage from './pages/NicheAdPage';
+import AgentSetupPage from './pages/AgentSetupPage';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
@@ -73,7 +74,7 @@ const VisitorTracker: React.FC = () => {
   return null;
 };
 
-const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview'];
+const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/setup'];
 
 function ConditionalNavbar() {
   const { pathname } = useLocation();
@@ -156,6 +157,7 @@ function App() {
                       <Route path="/terms" element={<TermsOfServicePage />} />
                       <Route path="/dashboard" element={<DashboardPage />} />
                       <Route path="/overview" element={<WebinarVSLPage />} />
+                      <Route path="/setup" element={<AgentSetupPage />} />
                       <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                   </main>
