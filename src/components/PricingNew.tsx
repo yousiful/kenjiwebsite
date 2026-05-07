@@ -282,12 +282,12 @@ export function PricingNew() {
             </div>
 
             <a
-              href="https://go.mediatraffics.com/price"
+              href="https://go.mediatraffics.com/leads"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3.5 rounded-xl font-bold text-base flex flex-col items-center justify-center transition-all duration-300 mb-2 bg-[#10A37F] hover:bg-[#0E906F] text-white"
+              className="w-full py-3.5 rounded-xl font-bold text-base flex flex-col items-center justify-center transition-all duration-300 mb-2 bg-[#1b1f24] hover:bg-[#2c333a] border border-gray-700 text-white"
             >
-              <span className="flex items-center gap-2">Need to see more proof? Book A Walkthrough Now!</span>
+              <span className="flex items-center gap-2">Book Discovery Call</span>
             </a>
             <div className="text-center text-gray-500 text-xs mb-6">Pricing revealed to qualified applicants</div>
 
