@@ -2,21 +2,21 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 import {
-  Terminal, Bot, TrendingUp, Zap, CheckCircle, ArrowRight,
-  Monitor, DollarSign, Clock, Shield, Star, ChevronDown, ChevronUp,
-  Brain, Cpu, BarChart3, Workflow
+  Code, Bot, TrendingUp, Zap, CheckCircle, ArrowRight,
+  Monitor, DollarSign, Shield, Star, ChevronDown, ChevronUp,
+  Brain, Settings, BarChart3, GitBranch
 } from 'lucide-react';
 
 const CTA_URL = 'https://go.mediatraffics.com/price';
 
 const WHAT_YOU_GET = [
   {
-    icon: Terminal,
+    icon: Code,
     title: 'Claude Code + OpenClaw Installed',
     desc: 'We install and configure Claude Code and OpenClaw on your actual machine — not a demo, not a SaaS dashboard. Real AI agents living on your computer.',
   },
   {
-    icon: Workflow,
+    icon: GitBranch,
     title: 'Wired To Your Business',
     desc: 'Your agents get connected to your CRM, email, calendar, GHL, or any tool you already use. They run your workflows, follow up with leads, and handle ops.',
   },
@@ -31,7 +31,7 @@ const WHAT_YOU_GET = [
     desc: 'Whether it\'s content creation, lead gen, customer support, or market analysis — we build agents that match exactly how your business makes money.',
   },
   {
-    icon: Cpu,
+    icon: Settings,
     title: 'Full Local Stack, You Own It',
     desc: 'No subscriptions to us. No platform lock-in. Everything runs on your machine. You own the code, the credentials, and the output.',
   },
