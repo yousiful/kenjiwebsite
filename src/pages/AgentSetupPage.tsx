@@ -394,37 +394,149 @@ export default function AgentSetupPage() {
           </div>
         </section>
 
-        {/* PRICING CTA */}
-        <section className="py-20 px-4">
-          <div className="max-w-2xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-br from-gray-900 to-gray-900/60 border border-blue-500/20 rounded-3xl p-8 sm:p-12 text-center"
-            >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-xs font-bold uppercase tracking-wider mb-6">
-                <Monitor className="w-3 h-3" />
-                One-Time Setup
-              </div>
+        {/* PRICING */}
+        <section className="py-20 px-4" id="pricing">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-14">
               <h2 className="text-3xl sm:text-4xl font-black mb-4">
-                Ready To Have Agents<br />
-                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Working For You By Tomorrow?</span>
+                Simple, <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">One-Time Pricing</span>
               </h2>
-              <p className="text-gray-400 mb-8 leading-relaxed">
-                One payment. 48 hours. Your own AI agent stack running on your machine, connected to your business, making you money.
-              </p>
-              <a
-                href={CTA_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 px-10 py-4 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white font-bold rounded-xl transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_10px_30px_-5px_rgba(59,130,246,0.5)] text-lg mb-4"
+              <p className="text-gray-400 max-w-xl mx-auto">No monthly fees to us. No subscriptions. You pay once, you own everything forever.</p>
+            </div>
+
+            <div className="grid sm:grid-cols-3 gap-6 items-stretch">
+
+              {/* STARTER */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0 }}
+                className="relative bg-gray-900/60 border border-white/5 rounded-2xl p-7 flex flex-col"
               >
-                Get My Setup Done Now
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </a>
-              <div className="text-gray-500 text-sm">Pricing revealed after discovery call · Limited spots per week</div>
-            </motion.div>
+                <div className="mb-6">
+                  <div className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">Starter</div>
+                  <div className="flex items-end gap-1 mb-1">
+                    <span className="text-4xl font-black text-white">$497</span>
+                    <span className="text-gray-500 mb-1.5">one-time</span>
+                  </div>
+                  <p className="text-gray-400 text-sm">For solopreneurs and new businesses getting their first AI agents running.</p>
+                </div>
+                <ul className="space-y-3 flex-1 mb-8">
+                  {[
+                    'Claude Code installed & configured',
+                    'OpenClaw agent framework setup',
+                    '1 custom agent (your choice)',
+                    '1 business integration (GHL, Gmail, or Calendar)',
+                    '1-hour live walkthrough',
+                    'You own all the code',
+                  ].map(f => (
+                    <li key={f} className="flex items-start gap-2 text-sm text-gray-300">
+                      <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={CTA_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3.5 rounded-xl font-bold text-center bg-white/5 hover:bg-white/10 border border-white/10 text-white transition-all duration-300 text-sm"
+                >
+                  Get Started →
+                </a>
+              </motion.div>
+
+              {/* PRO — MOST POPULAR */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="relative bg-gradient-to-b from-blue-900/40 to-gray-900/60 border border-blue-500/40 rounded-2xl p-7 flex flex-col shadow-[0_0_40px_rgba(59,130,246,0.12)]"
+              >
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                  <span className="bg-blue-500 text-white text-xs font-black px-4 py-1 rounded-full uppercase tracking-wider">Most Popular</span>
+                </div>
+                <div className="mb-6">
+                  <div className="text-xs font-bold uppercase tracking-widest text-blue-400 mb-2">Pro</div>
+                  <div className="flex items-end gap-1 mb-1">
+                    <span className="text-4xl font-black text-white">$1,497</span>
+                    <span className="text-gray-500 mb-1.5">one-time</span>
+                  </div>
+                  <p className="text-gray-400 text-sm">For growing agencies and businesses ready to run a full AI stack.</p>
+                </div>
+                <ul className="space-y-3 flex-1 mb-8">
+                  {[
+                    'Everything in Starter',
+                    '3 custom agents built for your workflow',
+                    'Full business stack (GHL + Gmail + CRM)',
+                    'Kalshi trading/compounding bot',
+                    '2-hour live setup session',
+                    '30 days async support via chat',
+                    'Agent expansion guide included',
+                  ].map(f => (
+                    <li key={f} className="flex items-start gap-2 text-sm text-gray-300">
+                      <CheckCircle className="w-4 h-4 text-blue-400 flex-shrink-0 mt-0.5" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={CTA_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3.5 rounded-xl font-bold text-center bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white transition-all duration-300 hover:shadow-[0_8px_20px_-4px_rgba(59,130,246,0.5)] text-sm"
+                >
+                  Get Pro Setup →
+                </a>
+              </motion.div>
+
+              {/* ELITE */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="relative bg-gradient-to-b from-purple-900/30 to-gray-900/60 border border-purple-500/30 rounded-2xl p-7 flex flex-col"
+              >
+                <div className="mb-6">
+                  <div className="text-xs font-bold uppercase tracking-widest text-purple-400 mb-2">Elite</div>
+                  <div className="flex items-end gap-1 mb-1">
+                    <span className="text-4xl font-black text-white">Custom</span>
+                  </div>
+                  <p className="text-gray-400 text-sm">For established companies building a full internal AI infrastructure and team.</p>
+                </div>
+                <ul className="space-y-3 flex-1 mb-8">
+                  {[
+                    'Everything in Pro',
+                    'Unlimited custom agents',
+                    'Setup on up to 3 machines / team members',
+                    'Custom integrations & API connections',
+                    'Dedicated build sprint (1 week)',
+                    'Monthly strategy calls',
+                    'Priority support channel',
+                    'White-label agent option',
+                  ].map(f => (
+                    <li key={f} className="flex items-start gap-2 text-sm text-gray-300">
+                      <CheckCircle className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={CTA_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3.5 rounded-xl font-bold text-center bg-white/5 hover:bg-white/10 border border-purple-500/30 text-purple-300 hover:text-white transition-all duration-300 text-sm"
+                >
+                  Let's Talk →
+                </a>
+              </motion.div>
+
+            </div>
+
+            <p className="text-center text-gray-600 text-xs mt-8">All plans include a discovery call before payment · Spots limited to 5 per week</p>
           </div>
         </section>
 
