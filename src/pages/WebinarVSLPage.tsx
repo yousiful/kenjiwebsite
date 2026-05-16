@@ -85,7 +85,7 @@ export default function WebinarVSLPage() {
   return (
           <div className="min-h-screen bg-black text-white font-sans selection:bg-blue-500/30">
                 <Helmet>
-                        <title>Exclusive Webinar: The Future of AI Agents | Kenji</title>title>
+            itle>Exclusive Webinar: The Future of AI Agents | Kenji</titletile>
                         <meta name="description" content="Watch this exclusive VSL to learn how Kenji's AI agents are revolutionizing business automation." />
                 </Helmet>Helmet>
           
