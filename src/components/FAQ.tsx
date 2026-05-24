@@ -7,16 +7,20 @@ const FAQ: React.FC = () => {
 
   const faqs = [
     {
-      question: "How quickly can I start using KenjiAI?",
-      answer: "You can start immediately after signing up. Most clients are fully operational within 24-48 hours. Our team handles all the technical setup for you."
+      question: "Why is KenjiAI $375/mo when other tools cost $97?",
+      answer: "Because we're not a tool. The $97 tools force you to figure out funnels, email sequences, ad creative, follow-up logic, and integrations yourself, then keep billing you while you do it. KenjiAI replaces the tools AND the agency AND the VA. The average customer cancels over $3,400/mo in other software within their first 30 days. You're not paying more, you're paying once instead of nine times."
     },
     {
-      question: "Do I need technical skills to use KenjiAI?",
-      answer: "Not at all. KenjiAI is built for business owners, not developers. Our team sets everything up for you, and the platform is designed to be simple to use. Plus, we provide full training and support."
+      question: "Do I have to get on a sales call to buy?",
+      answer: "No. Pick a plan, enter your card, and you're inside the platform in under 90 seconds. Your onboarding call is scheduled automatically but it's optional. We built the self-serve flow because we got tired of watching real business owners get gatekept by demo theater."
     },
     {
-      question: "What makes KenjiAI different from other AI tools?",
-      answer: "We don't just give you software and wish you luck. We handle the setup, run your ads, manage your automations, and provide ongoing support. You get a complete done-for-you service, not just a tool to figure out yourself."
+      question: "How fast can I actually be up and running? I don't have time to learn another platform.",
+      answer: "Most owners have their first funnel live within 2 hours of signup and their first ad campaign running within 24 hours. We migrate your contacts for you. We build your first three workflows for you. We write your first round of ad copy for you. If you can use Gmail you can run KenjiAI."
+    },
+    {
+      question: "What makes KenjiAI different from other tools?",
+      answer: "We don't hand you software and wish you luck. We handle setup, run your ads, build your automations, and back it with a real team. You get a complete done-for-you service, not another login to figure out."
     },
     {
       question: "Can I cancel anytime?",

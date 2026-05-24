@@ -8,44 +8,31 @@ import FAQ from './FAQ';
 import { getSeasonCopy } from '../utils/seasonCopy';
 
 const MONTHLY_FEATURES = [
-  "A Real Team of Experts Managing Setup",
-  "Dedicated Account Manager & Support",
-  "Unlimited Custom AI Agents",
-  "Done-For-You Automated Workflows",
-  "Done-For-You Ads to Fill Your Pipeline",
-  "Complete CRM with Custom Pipelines",
-  "Advanced Email & SMS Campaigns",
-  "$20/mo in Email/Text AI token credits",
-  "Community Builder & Management",
-  "Blog Writer & SEO Suite",
-  "Social Media Planner & Scheduler",
-  "Daily Sales Training",
-  "Standard Referral Program",
+  "Replace 17+ tools (CRM, funnels, email, SMS, calendar, ads, more)",
+  "We build and launch your first ad campaign in week one",
+  "Pre-built follow-up workflows that book appointments while you sleep",
+  "Unlimited contacts, unlimited funnels, unlimited users",
+  "Live onboarding call within 48 hours of signup",
+  "Real human support, not chatbots, usually back to you in under 2 hours",
+  "$20/mo in email and text credits included",
 ];
 
 const YEARLY_FEATURES = [
-  "A Real Team of Experts Managing Setup",
-  "Dedicated Account Manager & Support",
-  "Unlimited Custom AI Agents",
-  "Done-For-You Automated Workflows",
-  "Done-For-You Ads to Fill Your Pipeline",
-  "Complete CRM with Custom Pipelines",
-  "Advanced Email & SMS Campaigns",
-  "$30/mo in Email/Text AI token credits",
-  "Community Builder & Management",
-  "Blog Writer & SEO Suite",
-  "Social Media Planner & Scheduler",
-  "Daily Sales Training",
-  "Sales Team Placement included",
-  "Premium Referral Program Access",
+  "Everything in Monthly, with the performance fee cut in half (5% vs 10%)",
+  "Quarterly strategy call with our growth team to plan your next 90 days",
+  "Custom workflow built for your business in week one",
+  "Fresh ad creative every 90 days so your campaigns never go stale",
+  "Sales team placement included if you need help closing",
+  "Priority access to new features 30 days before everyone else",
+  "Save $1,260 vs paying monthly",
 ];
 
 const VIP_FEATURES = [
-  "Personal strategy session with our senior team",
-  "Custom platform setup for your business",
-  "Dedicated account manager and priority support",
-  "Custom workflows built specifically for you",
-  "Pay once, use forever. No recurring fees.",
+  "Everything in Annual, paid one time, never billed again",
+  "Zero performance fee, forever",
+  "We migrate your current tools for you (white-glove)",
+  "Founding member status with grandfathered access to every future release",
+  "Direct line to the founding team",
 ];
 
 export function PricingNew() {
@@ -81,7 +68,7 @@ export function PricingNew() {
           <motion.span
             className="flex items-center gap-1.5 font-bold text-white tracking-wide"
           >
-            ONLY 8 SPOTS REMAINING IN THE CURRENT COHORT
+            Only 8 spots left in this month's cohort
           </motion.span>
         </div>
       </motion.div>
@@ -161,12 +148,12 @@ export function PricingNew() {
           >
             <div className="mb-4">
               <h3 className="text-xl font-bold text-white mb-1 flex items-center gap-2">Monthly</h3>
-              <p className="text-gray-400 text-sm">Start now. No long-term commitment.</p>
+              <p className="text-gray-400 text-sm">Test KenjiAI without committing to a year. Cancel anytime.</p>
             </div>
 
             <div className="mb-5 bg-blue-500/5 border border-blue-500/10 rounded-lg p-3">
-              <div className="text-blue-400 text-sm font-semibold">+ 10% of new revenue generated</div>
-              <div className="text-gray-500 text-xs mt-0.5">Only from KenjiAI campaigns. No revenue = no fee.</div>
+              <div className="text-blue-400 text-sm font-semibold">10% performance fee on new revenue we generate</div>
+              <div className="text-gray-500 text-xs mt-0.5">You only pay it after we make you money. No revenue, no fee.</div>
             </div>
 
             <motion.button
@@ -212,14 +199,14 @@ export function PricingNew() {
             <div className="mb-4 flex items-start justify-between">
               <div>
                 <h3 className="text-xl font-bold text-white mb-1">Annual</h3>
-                <p className="text-gray-400 text-sm">For businesses serious about next year.</p>
+                <p className="text-gray-400 text-sm">Lowest monthly cost. For owners ready to scale.</p>
               </div>
-              <span className="bg-[#10A37F]/10 text-[#10A37F] text-xs font-bold px-2 py-1 rounded">MOST POPULAR</span>
+              <span className="bg-[#10A37F]/10 text-[#10A37F] text-xs font-bold px-2 py-1 rounded">Most Popular</span>
             </div>
 
             <div className="mb-5 bg-[#10A37F]/5 border border-[#10A37F]/10 rounded-lg p-3">
-              <div className="text-[#10A37F] text-sm font-semibold">+ 5% of new revenue generated</div>
-              <div className="text-gray-500 text-xs mt-0.5">Only from KenjiAI campaigns. No fee if no revenue.</div>
+              <div className="text-[#10A37F] text-sm font-semibold">5% performance fee on new revenue we generate</div>
+              <div className="text-gray-500 text-xs mt-0.5">Half the rate of monthly. Still $0 if we don't make you money.</div>
             </div>
 
             <motion.button
@@ -237,10 +224,10 @@ export function PricingNew() {
                   <span>Redirecting...</span>
                 </motion.div>
               ) : (
-                <span className="flex items-center gap-2">Claim Spot for $270/mo ($3,250/yr)</span>
+                <span className="flex items-center gap-2">Claim Spot for $270/mo ($3,240/yr)</span>
               )}
             </motion.button>
-            <div className="text-center text-[#10A37F] font-semibold text-xs mb-6">🔥 You save $1,250/yr vs monthly</div>
+            <div className="text-center text-[#10A37F] font-semibold text-xs mb-6">You save $1,260/yr vs monthly</div>
 
             <div className="flex-1">
               <div className="text-white text-sm font-semibold mb-3">Everything in Monthly, plus:</div>
@@ -271,9 +258,9 @@ export function PricingNew() {
             <div className="mb-4 flex items-start justify-between">
               <div>
                 <h3 className="text-xl font-bold text-white mb-1">Lifetime</h3>
-                <p className="text-gray-400 text-sm">One-time payment. Fully custom.</p>
+                <p className="text-gray-400 text-sm">Pay once. Own KenjiAI forever. No subscription, no fees.</p>
               </div>
-              <span className="bg-gray-800 text-gray-300 text-xs font-bold px-2 py-1 rounded">CUSTOM</span>
+              <span className="bg-gray-800 text-gray-300 text-xs font-bold px-2 py-1 rounded">Custom</span>
             </div>
 
             <div className="mb-5 bg-gray-800/50 border border-gray-700/50 rounded-lg p-3">

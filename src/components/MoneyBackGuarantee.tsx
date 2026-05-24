@@ -35,24 +35,25 @@ export function MoneyBackGuarantee() {
 
         <div className="flex-1 text-center md:text-left">
           <h3 className="text-4xl md:text-5xl font-black text-white mb-4">
-            100% Money-Back Guarantee
+            Our 30-Day "Make You Money" Guarantee
           </h3>
           <p className="text-gray-200 text-xl mb-6 leading-relaxed">
-            Not happy with your results in the first 30 days? We'll refund every penny.
-            No questions asked. That's how confident we are in our platform.
+            Use KenjiAI for 30 days. Launch the funnels. Run the ads. Use the workflows.
+            If you don't have more leads, more booked appointments, or more revenue than the day you signed up, email us and we refund every dollar. No forms. No exit survey. No hoops.
+            You keep everything we built for you.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-green-300">
             <div className="flex items-center justify-center md:justify-start gap-3 bg-green-500/10 backdrop-blur-sm rounded-xl p-3">
               <CheckCircle className="w-6 h-6 flex-shrink-0" />
-              <span className="font-bold text-base">30-Day Risk-Free</span>
+              <span className="font-bold text-base">30 days risk-free</span>
             </div>
             <div className="flex items-center justify-center md:justify-start gap-3 bg-green-500/10 backdrop-blur-sm rounded-xl p-3">
               <CheckCircle className="w-6 h-6 flex-shrink-0" />
-              <span className="font-bold text-base">Full Refund</span>
+              <span className="font-bold text-base">Full refund, no questions</span>
             </div>
             <div className="flex items-center justify-center md:justify-start gap-3 bg-green-500/10 backdrop-blur-sm rounded-xl p-3">
               <CheckCircle className="w-6 h-6 flex-shrink-0" />
-              <span className="font-bold text-base">Keep All Bonuses</span>
+              <span className="font-bold text-base">Keep everything we built</span>
             </div>
           </div>
         </div>
