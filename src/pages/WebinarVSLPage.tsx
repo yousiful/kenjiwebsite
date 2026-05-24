@@ -85,14 +85,14 @@ export default function WebinarVSLPage() {
   return (
           <div className="min-h-screen bg-black text-white font-sans selection:bg-blue-500/30">
                 <Helmet>
-            itle>Exclusive Webinar: The Future of AI Agents | Kenji</titletile>
+                        <title>Exclusive Webinar: The Future of AI Agents | Kenji</title>
                         <meta name="description" content="Watch this exclusive VSL to learn how Kenji's AI agents are revolutionizing business automation." />
-                </Helmet>Helmet>
+                </Helmet>
           
               {/* Top Banner - Urgency */}
                 <div className="bg-gradient-to-r from-blue-600 to-indigo-700 py-2 px-4 text-center text-sm font-medium animate-pulse">
-                        <p>LIMITED TIME: Special Performance Partnership Opportunity Ends in {formatTime(countdown)}</p>p>
-                </div>div>
+                        <p>LIMITED TIME: Special Performance Partnership Opportunity Ends in {formatTime(countdown)}</p>
+                </div>
           
               {/* Main Content */}
                 <main className="max-w-6xl mx-auto px-4 py-8 md:py-16">
@@ -106,16 +106,16 @@ export default function WebinarVSLPage() {
                                                 >
                                               <span className="inline-block px-4 py-1 rounded-full bg-blue-500/10 text-blue-400 text-sm font-semibold mb-4 border border-blue-500/20">
                                                             Free Training Workshop
-                                              </span>span>
+                                              </span>
                                               <h1 className="text-4xl md:text-7xl font-bold mb-6 bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent leading-tight">
                                                             The AI Agent Revolution: <br />
-                                                            <span className="text-blue-500">Scale Your Business to $100k/mo</span>span>
-                                              </h1>h1>
+                                                            <span className="text-blue-500">Scale Your Business to $100k/mo</span>
+                                              </h1>
                                               <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto">
                                                             Discover how our "Performance Partnership" model allows you to deploy elite AI agents with zero upfront cost and 100% ROI guarantee.
-                                              </p>p>
-                                  </motion.div>motion.div>
-                        </div>div>
+                                              </p>
+                                  </motion.div>
+                        </div>
                 
                     {/* Video Placeholder (VSL) */}
                         <div className="relative aspect-video mb-12 rounded-2xl overflow-hidden border border-white/10 bg-zinc-900 group shadow-2xl">
@@ -123,30 +123,30 @@ export default function WebinarVSLPage() {
                                               <div className="text-center">
                                                             <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform cursor-pointer">
                                                                             <div className="w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-white border-b-[12px] border-b-transparent ml-2" />
-                                                            </div>div>
-                                                            <p className="text-xl font-medium">Click to Play Training</p>p>
-                                              </div>div>
-                                  </div>div>
+                                                            </div>
+                                                            <p className="text-xl font-medium">Click to Play Training</p>
+                                              </div>
+                                  </div>
                                   <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10">
                                               <div className="h-full bg-blue-600 w-1/3" />
-                                  </div>div>
-                        </div>div>
+                                  </div>
+                        </div>
                 
                     {/* Real-time Status */}
                         <div className="flex flex-wrap justify-center gap-8 mb-16 text-center">
                                   <div>
-                                              <p className="text-blue-400 font-bold text-2xl">{viewers}</p>p>
-                                              <p className="text-gray-500 text-sm">Watching Now</p>p>
-                                  </div>div>
+                                              <p className="text-blue-400 font-bold text-2xl">{viewers}</p>
+                                              <p className="text-gray-500 text-sm">Watching Now</p>
+                                  </div>
                                   <div>
-                                              <p className="text-white font-bold text-2xl">Phase 1</p>p>
-                                              <p className="text-gray-500 text-sm">Onboarding Live</p>p>
-                                  </div>div>
+                                              <p className="text-white font-bold text-2xl">Phase 1</p>
+                                              <p className="text-gray-500 text-sm">Onboarding Live</p>
+                                  </div>
                                   <div>
-                                              <p className="text-red-500 font-bold text-2xl">Limited</p>p>
-                                              <p className="text-gray-500 text-sm">Partner Slots Left</p>p>
-                                  </div>div>
-                        </div>div>
+                                              <p className="text-red-500 font-bold text-2xl">Limited</p>
+                                              <p className="text-gray-500 text-sm">Partner Slots Left</p>
+                                  </div>
+                        </div>
                 
                     {/* Call to Action */}
                         <div className="text-center">
@@ -157,10 +157,10 @@ export default function WebinarVSLPage() {
                                                   className="px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-xl shadow-lg shadow-blue-500/20 transition-all mb-4"
                                                 >
                                               Apply for Performance Partnership
-                                  </motion.button>motion.button>
-                                  <p className="text-gray-500 text-sm">No credit card required to apply. Only 3 slots available this week.</p>p>
-                        </div>div>
-                </main>main>
+                                  </motion.button>
+                                  <p className="text-gray-500 text-sm">No credit card required to apply. Only 3 slots available this week.</p>
+                        </div>
+                </main>
           
               {/* Exit Popup Overlay */}
                 <AnimatePresence>
@@ -178,41 +178,40 @@ export default function WebinarVSLPage() {
                                                       className="bg-zinc-900 border border-white/10 rounded-2xl p-8 max-w-md w-full text-center relative overflow-hidden"
                                                     >
                                                   <div className="absolute top-0 left-0 w-full h-1 bg-blue-600" />
-                                                  <h2 className="text-3xl font-bold mb-4">WAIT! Don't Miss Out...</h2>h2>
+                                                  <h2 className="text-3xl font-bold mb-4">WAIT! Don't Miss Out...</h2>
                                                   <p className="text-gray-400 mb-8 text-lg">
                                                                   You're about to leave without seeing how we guarantee $10k profit in 30 days or we pay you $1,000.
-                                                  </p>p>
+                                                  </p>
                                                   <div className="space-y-4">
                                                                   <button
                                                                                         onClick={() => setShowExitPopup(false)}
                                                                                         className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-colors"
                                                                                       >
                                                                                     Stay & Watch (Ends in {formatTime(countdown)})
-                                                                  </button>button>
+                                                                  </button>
                                                                   <button
                                                                                         onClick={() => setShowExitPopup(false)}
                                                                                         className="w-full py-2 text-gray-500 hover:text-white transition-colors"
                                                                                       >
                                                                                     I'm not interested in scaling with AI
-                                                                  </button>button>
-                                                  </div>div>
-                                    </motion.div>motion.div>
-                        </motion.div>motion.div>
+                                                                  </button>
+                                                  </div>
+                                    </motion.div>
+                        </motion.div>
                       )}
-                </AnimatePresence>AnimatePresence>
+                </AnimatePresence>
           
               {/* Footer */}
                 <footer className="border-t border-white/5 py-12 mt-20">
                         <div className="max-w-6xl mx-auto px-4 text-center">
-                                  <p className="text-gray-500 text-sm mb-4"> (c) 2024 Kenji AI. All rights reserved.</p>p>
+                                  <p className="text-gray-500 text-sm mb-4"> (c) 2024 Kenji AI. All rights reserved.</p>
                                   <div className="flex justify-center space-x-6 text-gray-600 text-xs">
-                                              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>a>
-                                              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>a>
-                                              <a href="#" className="hover:text-white transition-colors">Earnings Disclaimer</a>a>
-                                  </div>div>
-                        </div>div>
-                </footer>footer>
-          </div>div>
+                                              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+                                              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+                                              <a href="#" className="hover:text-white transition-colors">Earnings Disclaimer</a>
+                                  </div>
+                        </div>
+                </footer>
+          </div>
         );
 }
-</div>
