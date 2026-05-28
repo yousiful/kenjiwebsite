@@ -1,217 +1,167 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { Maximize2 } from 'lucide-react';
 
 export default function WebinarVSLPage() {
-      const [viewers, setViewers] = useState(214);
-      const [showExitPopup, setShowExitPopup] = useState(false);
-      const [countdown, setCountdown] = useState(300); // 5 minutes
-  const exitShownRef = useRef(false);
-      const pageLoadedRef = useRef(false);
+  const [viewers, setViewers] = useState(214);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const videoRef = useRef<HTMLDivElement>(null);
 
-  // -- Viewer count realism --------------------------------------
   useEffect(() => {
-          setViewers(Math.floor(Math.random() * (240 - 180 + 1) + 180));
-
-                let timer: any;
-          const updateViewers = () => {
-                    setViewers(prev => {
-                                let next = prev + (Math.floor(Math.random() * 5) - 2);
-                                if (next > 290) next -= 5;
-                                if (next < 160) next += 8;
-                                return next;
-                    });
-                    timer = setTimeout(updateViewers, Math.floor(Math.random() * 5000) + 3000);
-          };
-
-                timer = setTimeout(updateViewers, 4000);
-          return () => clearTimeout(timer);
-  }, []);
-
-  // -- Exit-intent trigger ---------------------------------------
-  const triggerExitPopup = useCallback(() => {
-          if (exitShownRef.current) return;
-          if (sessionStorage.getItem('vsl_exit_shown')) return;
-          if (!pageLoadedRef.current) return;
-
-                                           exitShownRef.current = true;
-          sessionStorage.setItem('vsl_exit_shown', 'true');
-          setShowExitPopup(true);
+    setViewers(Math.floor(Math.random() * (240 - 180 + 1) + 180));
+    let timer: ReturnType<typeof setTimeout>;
+    const updateViewers = () => {
+      setViewers(prev => {
+        let next = prev + (Math.floor(Math.random() * 5) - 2);
+        if (next > 290) next -= 5;
+        if (next < 160) next += 8;
+        return next;
+      });
+      timer = setTimeout(updateViewers, Math.floor(Math.random() * 5000) + 3000);
+    };
+    timer = setTimeout(updateViewers, 4000);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
-          // Don't arm exit-intent for 5 seconds
-                const armTimer = setTimeout(() => {
-                          pageLoadedRef.current = true;
-                }, 5000);
+    const handler = () => setIsFullscreen(!!document.fullscreenElement);
+    document.addEventListener('fullscreenchange', handler);
+    return () => document.removeEventListener('fullscreenchange', handler);
+  }, []);
 
-                const handleMouseLeave = (e: MouseEvent) => {
-                          if (e.clientY <= 0) triggerExitPopup();
-                };
-
-                const handleVisibilityChange = () => {
-                          if (document.visibilityState === 'hidden') triggerExitPopup();
-                };
-
-                window.addEventListener('mouseleave', handleMouseLeave);
-          document.addEventListener('visibilitychange', handleVisibilityChange);
-
-                return () => {
-                          clearTimeout(armTimer);
-                          window.removeEventListener('mouseleave', handleMouseLeave);
-                          document.removeEventListener('visibilitychange', handleVisibilityChange);
-                };
-  }, [triggerExitPopup]);
-
-  // -- Countdown logic -------------------------------------------
-  useEffect(() => {
-          if (countdown <= 0) return;
-          const timer = setInterval(() => {
-                    setCountdown(prev => Math.max(0, prev - 1));
-          }, 1000);
-          return () => clearInterval(timer);
-  }, [countdown]);
-
-  const formatTime = (seconds: number) => {
-          const m = Math.floor(seconds / 60);
-          const s = seconds % 60;
-          return `${m}:${s < 10 ? '0' : ''}${s}`;
-  };
-
-  const handlePartnerRedirect = () => {
-          window.location.href = 'https://pay.kenji.com/checkout';
+  const handleExpand = () => {
+    const el = videoRef.current;
+    if (!el) return;
+    if (!document.fullscreenElement) {
+      el.requestFullscreen().catch(() => {});
+    } else {
+      document.exitFullscreen();
+    }
   };
 
   return (
-          <div className="min-h-screen bg-black text-white font-sans selection:bg-blue-500/30">
-                <Helmet>
-                        <title>Exclusive Webinar: The Future of AI Agents | Kenji</title>
-                        <meta name="description" content="Watch this exclusive VSL to learn how Kenji's AI agents are revolutionizing business automation." />
-                </Helmet>
-          
-              {/* Top Banner - Urgency */}
-                <div className="bg-gradient-to-r from-blue-600 to-indigo-700 py-2 px-4 text-center text-sm font-medium animate-pulse">
-                        <p>LIMITED TIME: Special Performance Partnership Opportunity Ends in {formatTime(countdown)}</p>
-                </div>
-          
-              {/* Main Content */}
-                <main className="max-w-6xl mx-auto px-4 py-8 md:py-16">
-                
-                    {/* Headline Section */}
-                        <div className="text-center mb-12 md:mb-20">
-                                  <motion.div
-                                                  initial={{ opacity: 0, y: 20 }}
-                                                  animate={{ opacity: 1, y: 0 }}
-                                                  transition={{ duration: 0.6 }}
-                                                >
-                                              <span className="inline-block px-4 py-1 rounded-full bg-blue-500/10 text-blue-400 text-sm font-semibold mb-4 border border-blue-500/20">
-                                                            Free Training Workshop
-                                              </span>
-                                              <h1 className="text-4xl md:text-7xl font-bold mb-6 bg-gradient-to-b from-white to-gray-400 bg-clip-text text-transparent leading-tight">
-                                                            The AI Agent Revolution: <br />
-                                                            <span className="text-blue-500">Scale Your Business to $100k/mo</span>
-                                              </h1>
-                                              <p className="text-gray-400 text-lg md:text-xl max-w-3xl mx-auto">
-                                                            Discover how our "Performance Partnership" model allows you to deploy elite AI agents with zero upfront cost and 100% ROI guarantee.
-                                              </p>
-                                  </motion.div>
-                        </div>
-                
-                    {/* Video Placeholder (VSL) */}
-                        <div className="relative aspect-video mb-12 rounded-2xl overflow-hidden border border-white/10 bg-zinc-900 group shadow-2xl">
-                                  <div className="absolute inset-0 flex items-center justify-center">
-                                              <div className="text-center">
-                                                            <div className="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform cursor-pointer">
-                                                                            <div className="w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-white border-b-[12px] border-b-transparent ml-2" />
-                                                            </div>
-                                                            <p className="text-xl font-medium">Click to Play Training</p>
-                                              </div>
-                                  </div>
-                                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/10">
-                                              <div className="h-full bg-blue-600 w-1/3" />
-                                  </div>
-                        </div>
-                
-                    {/* Real-time Status */}
-                        <div className="flex flex-wrap justify-center gap-8 mb-16 text-center">
-                                  <div>
-                                              <p className="text-blue-400 font-bold text-2xl">{viewers}</p>
-                                              <p className="text-gray-500 text-sm">Watching Now</p>
-                                  </div>
-                                  <div>
-                                              <p className="text-white font-bold text-2xl">Phase 1</p>
-                                              <p className="text-gray-500 text-sm">Onboarding Live</p>
-                                  </div>
-                                  <div>
-                                              <p className="text-red-500 font-bold text-2xl">Limited</p>
-                                              <p className="text-gray-500 text-sm">Partner Slots Left</p>
-                                  </div>
-                        </div>
-                
-                    {/* Call to Action */}
-                        <div className="text-center">
-                                  <motion.button
-                                                  whileHover={{ scale: 1.05 }}
-                                                  whileTap={{ scale: 0.95 }}
-                                                  onClick={handlePartnerRedirect}
-                                                  className="px-10 py-5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-xl shadow-lg shadow-blue-500/20 transition-all mb-4"
-                                                >
-                                              Apply for Performance Partnership
-                                  </motion.button>
-                                  <p className="text-gray-500 text-sm">No credit card required to apply. Only 3 slots available this week.</p>
-                        </div>
-                </main>
-          
-              {/* Exit Popup Overlay */}
-                <AnimatePresence>
-                    {showExitPopup && (
-                        <motion.div
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        exit={{ opacity: 0 }}
-                                        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-                                      >
-                        
-                                    <motion.div
-                                                      initial={{ scale: 0.9, y: 20 }}
-                                                      animate={{ scale: 1, y: 0 }}
-                                                      className="bg-zinc-900 border border-white/10 rounded-2xl p-8 max-w-md w-full text-center relative overflow-hidden"
-                                                    >
-                                                  <div className="absolute top-0 left-0 w-full h-1 bg-blue-600" />
-                                                  <h2 className="text-3xl font-bold mb-4">WAIT! Don't Miss Out...</h2>
-                                                  <p className="text-gray-400 mb-8 text-lg">
-                                                                  You're about to leave without seeing how we guarantee $10k profit in 30 days or we pay you $1,000.
-                                                  </p>
-                                                  <div className="space-y-4">
-                                                                  <button
-                                                                                        onClick={() => setShowExitPopup(false)}
-                                                                                        className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-colors"
-                                                                                      >
-                                                                                    Stay & Watch (Ends in {formatTime(countdown)})
-                                                                  </button>
-                                                                  <button
-                                                                                        onClick={() => setShowExitPopup(false)}
-                                                                                        className="w-full py-2 text-gray-500 hover:text-white transition-colors"
-                                                                                      >
-                                                                                    I'm not interested in scaling with AI
-                                                                  </button>
-                                                  </div>
-                                    </motion.div>
-                        </motion.div>
-                      )}
-                </AnimatePresence>
-          
-              {/* Footer */}
-                <footer className="border-t border-white/5 py-12 mt-20">
-                        <div className="max-w-6xl mx-auto px-4 text-center">
-                                  <p className="text-gray-500 text-sm mb-4"> (c) 2024 Kenji AI. All rights reserved.</p>
-                                  <div className="flex justify-center space-x-6 text-gray-600 text-xs">
-                                              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-                                              <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-                                              <a href="#" className="hover:text-white transition-colors">Earnings Disclaimer</a>
-                                  </div>
-                        </div>
-                </footer>
+    <>
+      <Helmet>
+        <title>Exclusive Overview | KenjiAI</title>
+        <meta name="robots" content="noindex, nofollow" />
+      </Helmet>
+
+      <div className="min-h-screen bg-[#0B0E14] text-white flex flex-col">
+
+        {/* ── LIVE BADGE (compact, above video) ── */}
+        <div className="flex items-center justify-between px-3 py-2 bg-[#111822]/90 border-b border-white/10 sm:hidden">
+          <span className="text-[11px] font-bold text-blue-400 uppercase tracking-widest">
+            Exclusive Briefing
+          </span>
+          <div className="flex items-center gap-2 bg-red-500/10 border border-red-500/30 px-3 py-1 rounded-full">
+            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(239,68,68,0.8)]" />
+            <span className="font-semibold text-xs font-mono">Live: {viewers}</span>
           </div>
-        );
+        </div>
+
+        {/* ── VIDEO — full width, tall on mobile ── */}
+        <div
+          ref={videoRef}
+          className="relative w-full bg-black"
+          style={{ height: 'clamp(220px, 58vw, 540px)' }}
+        >
+          {/* Gradient edge shadow */}
+          <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-black/60 to-transparent z-10 pointer-events-none sm:hidden" />
+
+          {/* Block YouTube top-bar UI on mobile */}
+          <div className="absolute top-0 left-0 w-full h-[56px] z-20 bg-transparent pointer-events-auto" />
+
+          <iframe
+            src="https://www.youtube.com/embed/J-AURUyzSks?si=tQ2wmu_OYYE0IMnP&controls=1&autoplay=1&rel=0&modestbranding=1"
+            title="KenjiAI Overview"
+            className="absolute inset-0 w-full h-full border-0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
+
+          {/* Expand / fullscreen button */}
+          <button
+            onClick={handleExpand}
+            aria-label="Expand video"
+            className="absolute bottom-3 right-3 z-30 flex items-center gap-1.5 bg-black/70 hover:bg-black/90 backdrop-blur-sm border border-white/20 text-white rounded-lg px-3 py-2 text-xs font-semibold transition-all active:scale-95 shadow-lg"
+          >
+            <Maximize2 size={14} />
+            <span className="hidden xs:inline">{isFullscreen ? 'Exit' : 'Expand'}</span>
+          </button>
+        </div>
+
+        {/* ── DESKTOP HEADER BAR (hidden on mobile) ── */}
+        <div className="hidden sm:flex items-center justify-between bg-[#111822]/80 border-b border-white/10 backdrop-blur-md px-6 py-4 max-w-4xl w-full mx-auto">
+          <div>
+            <span className="text-blue-500 text-xs font-extrabold uppercase tracking-widest block mb-1">
+              Exclusive Briefing
+            </span>
+            <h1 className="text-lg sm:text-xl font-bold tracking-tight">
+              How To Automate Leads &amp; Scale Without More Work
+            </h1>
+          </div>
+          <div className="flex items-center gap-3 bg-red-500/10 border border-red-500/30 px-4 py-2 rounded-full shrink-0">
+            <div className="w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.8)]" />
+            <span className="font-semibold text-sm tracking-wide">
+              Live: <span className="font-mono">{viewers}</span>
+            </span>
+          </div>
+        </div>
+
+        {/* ── TITLE (mobile only, below video) ── */}
+        <div className="sm:hidden px-4 pt-3 pb-1">
+          <h1 className="text-base font-bold leading-snug text-white">
+            How To Automate Leads &amp; Scale Without More Work
+          </h1>
+        </div>
+
+        {/* ── CTA SECTION ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.7 }}
+          className="w-full max-w-4xl mx-auto px-4 pt-6 pb-10 text-center"
+        >
+          <p className="text-gray-400 text-sm sm:text-base font-medium max-w-2xl mx-auto mb-6">
+            To work with us on a strictly performance basis, you must book your onboarding call and actually show up. If you miss your call again, this offer will be voided.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <a
+              href="https://go.mediatraffics.com/price"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative flex flex-col items-center justify-center w-full sm:max-w-[300px] px-6 py-4 rounded-2xl bg-gradient-to-br from-green-600 to-green-500 text-white shadow-[0_8px_20px_-4px_rgba(16,185,129,0.4)] hover:shadow-[0_12px_28px_-4px_rgba(16,185,129,0.6)] hover:-translate-y-0.5 transition-all duration-300 border border-white/20"
+            >
+              <span className="font-bold text-base tracking-wide">ONE-TIME SETUP</span>
+              <span className="text-xs font-medium opacity-80 mt-0.5">Done-for-you implementation.</span>
+            </a>
+
+            <a
+              href="https://go.mediatraffics.com/leads"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative flex flex-col items-center justify-center w-full sm:max-w-[300px] px-6 py-4 rounded-2xl bg-gradient-to-br from-blue-600 to-blue-500 text-white shadow-[0_8px_20px_-4px_rgba(59,130,246,0.4)] hover:shadow-[0_12px_28px_-4px_rgba(59,130,246,0.6)] hover:-translate-y-0.5 transition-all duration-300 border border-white/20"
+            >
+              <span className="font-bold text-base tracking-wide">Need More Proof?</span>
+              <span className="text-xs font-medium opacity-80 mt-0.5">Book a Walkthrough</span>
+            </a>
+
+            <a
+              href="https://kenjiai.com/pricing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative flex flex-col items-center justify-center w-full sm:max-w-[300px] px-6 py-4 rounded-2xl bg-gradient-to-br from-purple-600 to-purple-500 text-white shadow-[0_8px_20px_-4px_rgba(139,92,246,0.4)] hover:shadow-[0_12px_28px_-4px_rgba(139,92,246,0.6)] hover:-translate-y-0.5 transition-all duration-300 border border-white/20"
+            >
+              <span className="font-bold text-base tracking-wide">PERFORMANCE PLANS</span>
+              <span className="text-xs font-medium opacity-80 mt-0.5">Pay only when you earn.</span>
+            </a>
+          </div>
+        </motion.div>
+
+      </div>
+    </>
+  );
 }
