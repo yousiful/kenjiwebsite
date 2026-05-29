@@ -12,7 +12,15 @@ export default function NicheAdPage() {
   const { niche: slug } = useParams<{ niche: string }>();
   const niche = niches.find(n => n.slug === slug);
 
-  if (!niche) return <Navigate to="/404" replace />;
+  if (!niche) {
+    // During prerender (headless Chrome) avoid navigation-driven redirect — it
+    // destroys puppeteer's execution context and the route fails to capture.
+    // Render an inert 404 placeholder so the page snapshot completes.
+    if (typeof navigator !== 'undefined' && /HeadlessChrome|Prerender/i.test(navigator.userAgent)) {
+      return <div data-prerender-skip="true" />;
+    }
+    return <Navigate to="/404" replace />;
+  }
 
   const structuredData = {
     '@context': 'https://schema.org',

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { ExternalLink, Zap, Users, Megaphone, MessageSquare, Brain, Code, BarChart3, Globe, Palette, ArrowRight } from 'lucide-react';
 
@@ -121,10 +122,11 @@ const ToolsPage: React.FC = () => {
 
   return (
     <>
-      {/* SEO Head */}
-      <title>AI-Powered Business Tools | KenjiAI Platform</title>
-      <meta name="description" content="Comprehensive suite of AI tools for business automation: voice agents, chatbots, content creation, analytics, CRM, and more. Many tools integrated into the KenjiAI platform." />
-      <meta name="keywords" content="AI tools, business automation tools, AI chatbots, voice agents, content creation, analytics, CRM tools, marketing automation" />
+      <Helmet>
+        <title>AI Tools for Business: Voice Agents, CRM, Automation | KenjiAI</title>
+        <meta name="description" content="KenjiAI tools catalog: AI voice agents, smart CRM, marketing workflows, content creation, analytics. Built for business owners replacing legacy tool stacks." />
+        <link rel="canonical" href="https://kenjiai.com/tools" />
+      </Helmet>
       
       <div className="pt-24 pb-16 bg-gray-900 min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -72,10 +72,11 @@ export default defineConfig({
         routes: PRERENDER_ROUTES,
         renderer: '@prerenderer/renderer-puppeteer',
         rendererOptions: {
-          renderAfterTime: 3000,
-          maxConcurrentRoutes: 4,
+          renderAfterTime: 4000,
+          maxConcurrentRoutes: 3,
           headless: true,
-          timeout: 60000,
+          timeout: 90000,
+          args: ['--no-sandbox', '--disable-setuid-sandbox'],
         },
         postProcess(renderedRoute: { html: string; route: string }) {
           const canonical = `https://kenjiai.com${renderedRoute.route === '/' ? '' : renderedRoute.route}`;

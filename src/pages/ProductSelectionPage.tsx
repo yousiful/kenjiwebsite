@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Megaphone, Bot, Video } from 'lucide-react';
 import { PricingNew } from '../components/PricingNew';
@@ -35,9 +36,11 @@ const BENEFITS = [
 const ProductSelectionPage: React.FC = () => {
   return (
     <>
-      <title>Pricing Plans - KenjiAI Complete Business Automation Platform</title>
-      <meta name="description" content="Choose your KenjiAI plan: Complete AI business automation with voice agents, CRM, marketing automation, and more. Performance-based pricing." />
-      <meta name="keywords" content="KenjiAI pricing, AI automation pricing, business automation plans, voice agents pricing, CRM pricing" />
+      <Helmet>
+        <title>KenjiAI Pricing | Voice Agents, CRM, and AI Automation Plans</title>
+        <meta name="description" content="KenjiAI pricing for business owners replacing 17+ tools. Monthly $375, annual $270/mo, lifetime custom. Performance-based fees, 30-day money-back guarantee." />
+        <link rel="canonical" href="https://kenjiai.com/pricing" />
+      </Helmet>
 
       <div className="min-h-screen" style={{ backgroundColor: '#0B0E14' }}>
         <div className="pt-16">
