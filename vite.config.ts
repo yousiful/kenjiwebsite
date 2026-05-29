@@ -1,10 +1,14 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import viteCompression from 'vite-plugin-compression';
-// @ts-expect-error - rollup plugin types are CJS-style
-import prerender from '@prerenderer/rollup-plugin';
 
-// Routes to prerender — give bots and humans real per-page HTML.
+// Prerender disabled 2026-05-29 — the DataTagManager pixel script (pixel_popup.js)
+// injected a $7 tripwire overlay during the puppeteer snapshot, which then
+// became the prerendered homepage HTML for every visitor. SPA-only mode is
+// the safe baseline until we can run prerender with third-party scripts
+// blocked. Phase 1 meta/schema/sitemap/llms.txt cleanup remains active.
+
+// Routes (kept for reference if prerender is re-enabled):
 // Skip /dashboard (private), /success (transient), /* (404 catchall).
 const STATIC_ROUTES = [
   '/',
@@ -67,49 +71,6 @@ export default defineConfig({
     react(),
     viteCompression({ algorithm: 'brotliCompress', ext: '.br' }),
     viteCompression({ algorithm: 'gzip', ext: '.gz' }),
-    {
-      ...prerender({
-        routes: PRERENDER_ROUTES,
-        renderer: '@prerenderer/renderer-puppeteer',
-        rendererOptions: {
-          renderAfterTime: 4000,
-          maxConcurrentRoutes: 3,
-          headless: true,
-          timeout: 90000,
-          args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        },
-        postProcess(renderedRoute: { html: string; route: string }) {
-          const canonical = `https://kenjiai.com${renderedRoute.route === '/' ? '' : renderedRoute.route}`;
-          renderedRoute.html = renderedRoute.html
-            // Strip the loading screen — prerendered content is already in #root
-            .replace(/<div class="loading-screen" id="app-loading">[\s\S]*?<\/div>/g, '')
-            // Force per-route canonical (override or insert into <head>)
-            .replace(
-              /<link rel="canonical" href="[^"]*"\s*\/?>/,
-              `<link rel="canonical" href="${canonical}" />`
-            )
-            // Insert canonical if none was present
-            .replace(
-              /<\/head>/,
-              (match) =>
-                renderedRoute.html.includes('rel="canonical"')
-                  ? match
-                  : `<link rel="canonical" href="${canonical}" />${match}`
-            )
-            // Force per-route og:url and twitter:url
-            .replace(
-              /<meta property="og:url" content="[^"]*"\s*\/?>/,
-              `<meta property="og:url" content="${canonical}" />`
-            )
-            .replace(
-              /<meta property="twitter:url" content="[^"]*"\s*\/?>/,
-              `<meta property="twitter:url" content="${canonical}" />`
-            );
-        },
-      }),
-      enforce: 'post' as const,
-      apply: 'build' as const,
-    },
   ],
   optimizeDeps: {
     exclude: ['lucide-react'],
