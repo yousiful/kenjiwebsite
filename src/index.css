@@ -5,6 +5,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes kj-loadbar {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 /* Performance Optimizations */
 * {
   box-sizing: border-box;

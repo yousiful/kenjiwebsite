@@ -86,18 +86,38 @@
       data-tracking-id="tk_76d68546c8534d479179b49a1784584c">
     </script>
 
-    <!-- DataTagManager Pixel -->
+    <!-- DataTagManager Pixel — deferred to load after first paint so it doesn't
+         block LCP. Same tracking, lower TBT. -->
     <script type="text/javascript">
-    (function(s, p, i, c, e) {
-        s[e] = s[e] || function() { (s[e].a = s[e].a || []).push(arguments); };
-        s[e].l = 1 * new Date();
-        var k = c.createElement("script"), a = c.getElementsByTagName("script")[0];
-        k.async = 1, k.src = p, a.parentNode.insertBefore(k, a);
-        s.pixelClientId = i;
-    })(window, "https://datatagmanager.s3.us-east-2.amazonaws.com/pixel_popup.js", "0219d3e9-3cad-42f3-9bd1-111525982334", document, "script");
+      window.addEventListener('load', function () {
+        // Wait an extra idle tick after load for safety, then drop the pixels in.
+        var go = function () {
+          (function (s, p, i, c, e) {
+            s[e] = s[e] || function () { (s[e].a = s[e].a || []).push(arguments); };
+            s[e].l = 1 * new Date();
+            var k = c.createElement('script'), a = c.getElementsByTagName('script')[0];
+            k.async = 1; k.src = p; a.parentNode.insertBefore(k, a);
+            s.pixelClientId = i;
+          })(window, 'https://datatagmanager.s3.us-east-2.amazonaws.com/pixel_popup.js', '0219d3e9-3cad-42f3-9bd1-111525982334', document, 'script');
+
+          var s1 = document.createElement('script');
+          s1.src = 'https://pixel.datatagmanager.com/pixel.js?pid=0219d3e9-3cad-42f3-9bd1-111525982334';
+          s1.async = true;
+          document.head.appendChild(s1);
+
+          var s2 = document.createElement('script');
+          s2.id = 'datatagmanager-id';
+          s2.src = 'https://cdn.pixel.datatagmanager.com/pixels/0219d3e9-3cad-42f3-9bd1-111525982334/p.js';
+          s2.async = true;
+          document.head.appendChild(s2);
+        };
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(go, { timeout: 2000 });
+        } else {
+          setTimeout(go, 1500);
+        }
+      });
     </script>
-    <script src="https://pixel.datatagmanager.com/pixel.js?pid=0219d3e9-3cad-42f3-9bd1-111525982334"></script>
-    <script id="datatagmanager-id" src="https://cdn.pixel.datatagmanager.com/pixels/0219d3e9-3cad-42f3-9bd1-111525982334/p.js" async></script>
 
     <!-- Structured Data for Free Tools -->
     <script type="application/ld+json">

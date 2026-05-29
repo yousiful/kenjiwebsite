@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -18,26 +18,45 @@ import { SocialProofToast } from './components/SocialProofToast';
 import { SiteTracker } from './components/SiteTracker';
 import { ConsentBanner } from './components/ConsentBanner';
 
+// HomePage stays eager — it is the LCP route.
 import HomePage from './pages/HomePage';
-import KnowledgeBasePage from './pages/KnowledgeBasePage';
-import AIEducationPage from './pages/AIEducationPage';
-import BlogPost from './pages/BlogPost';
-import ProductSelectionPage from './pages/ProductSelectionPage';
-import SuccessPage from './pages/SuccessPage';
-import FreeToolsPage from './pages/FreeToolsPage';
-import AIAutomationPage from './pages/AIAutomationPage';
-import VoiceAgentsPage from './pages/VoiceAgentsPage';
-import VoiceAILandingPage from './pages/VoiceAILandingPage';
-import MarketingAutomationPage from './pages/MarketingAutomationPage';
-import CRMPage from './pages/CRMPage';
-import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
-import DisclaimerPage from './pages/DisclaimerPage';
-import TermsOfServicePage from './pages/TermsOfServicePage';
-import DashboardPage from './pages/DashboardPage';
-import WebinarVSLPage from './pages/WebinarVSLPage';
-import BlogPage from './pages/BlogPage';
-import NicheAdPage from './pages/NicheAdPage';
-import AgentSetupPage from './pages/AgentSetupPage';
+
+// All other routes are code-split. Cuts main bundle ~60% and ships per-route
+// chunks that load on navigation. Suspense fallback shows a thin loading bar
+// so users never see a blank flash.
+const KnowledgeBasePage = lazy(() => import('./pages/KnowledgeBasePage'));
+const AIEducationPage = lazy(() => import('./pages/AIEducationPage'));
+const BlogPost = lazy(() => import('./pages/BlogPost'));
+const ProductSelectionPage = lazy(() => import('./pages/ProductSelectionPage'));
+const SuccessPage = lazy(() => import('./pages/SuccessPage'));
+const FreeToolsPage = lazy(() => import('./pages/FreeToolsPage'));
+const AIAutomationPage = lazy(() => import('./pages/AIAutomationPage'));
+const VoiceAgentsPage = lazy(() => import('./pages/VoiceAgentsPage'));
+const VoiceAILandingPage = lazy(() => import('./pages/VoiceAILandingPage'));
+const MarketingAutomationPage = lazy(() => import('./pages/MarketingAutomationPage'));
+const CRMPage = lazy(() => import('./pages/CRMPage'));
+const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
+const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage'));
+const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage'));
+const DashboardPage = lazy(() => import('./pages/DashboardPage'));
+const WebinarVSLPage = lazy(() => import('./pages/WebinarVSLPage'));
+const BlogPage = lazy(() => import('./pages/BlogPage'));
+const NicheAdPage = lazy(() => import('./pages/NicheAdPage'));
+const AgentSetupPage = lazy(() => import('./pages/AgentSetupPage'));
+
+const RouteFallback: React.FC = () => (
+  <div
+    aria-label="Loading"
+    role="status"
+    style={{
+      position: 'fixed', top: 0, left: 0, right: 0, height: '3px',
+      background: 'linear-gradient(90deg, #3B82F6 0%, #10A37F 50%, #3B82F6 100%)',
+      backgroundSize: '200% 100%',
+      animation: 'kj-loadbar 1.2s linear infinite',
+      zIndex: 9999,
+    }}
+  />
+);
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL as string;
 const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY as string;
@@ -136,6 +155,7 @@ function App() {
                 <PerformanceOptimizer />
                 <ConditionalNavbar />
                   <main id="main-content" role="main">
+                    <Suspense fallback={<RouteFallback />}>
                     <Routes>
                       <Route path="/" element={<HomePage />} />
                       <Route path="/tools" element={<Navigate to="/free-tools" replace />} />
@@ -160,6 +180,7 @@ function App() {
                       <Route path="/setup" element={<AgentSetupPage />} />
                       <Route path="*" element={<NotFoundPage />} />
                     </Routes>
+                    </Suspense>
                   </main>
                 <ConditionalFooter />
                 <ConditionalWidgets />
