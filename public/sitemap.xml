@@ -9,7 +9,7 @@
   <!-- Main Pages -->
   <url>
     <loc>https://kenjiai.com/</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <mobile:mobile/>
@@ -18,7 +18,7 @@
   <!-- Free Tools - High Priority for SEO -->
   <url>
     <loc>https://kenjiai.com/free-tools</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <mobile:mobile/>
@@ -27,7 +27,7 @@
   <!-- Voice AI Landing Page -->
   <url>
     <loc>https://kenjiai.com/voice-ai</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <mobile:mobile/>
@@ -36,7 +36,7 @@
   <!-- Knowledge Base - High Priority for Content SEO -->
   <url>
     <loc>https://kenjiai.com/knowledge</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <mobile:mobile/>
@@ -45,7 +45,7 @@
   <!-- Tools Page -->
   <url>
     <loc>https://kenjiai.com/tools</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -54,7 +54,7 @@
   <!-- Solution Pages -->
   <url>
     <loc>https://kenjiai.com/ai-automation</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -62,7 +62,7 @@
 
   <url>
     <loc>https://kenjiai.com/ai-education</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -70,7 +70,7 @@
 
   <url>
     <loc>https://kenjiai.com/voice-agents</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -78,7 +78,7 @@
 
   <url>
     <loc>https://kenjiai.com/marketing-automation</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -86,7 +86,7 @@
 
   <url>
     <loc>https://kenjiai.com/crm</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -95,7 +95,7 @@
   <!-- Product Selection -->
   <url>
     <loc>https://kenjiai.com/products</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -104,7 +104,7 @@
   <!-- Pricing -->
   <url>
     <loc>https://kenjiai.com/pricing</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <mobile:mobile/>
@@ -113,7 +113,7 @@
   <!-- Success Page -->
   <url>
     <loc>https://kenjiai.com/success</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
     <mobile:mobile/>
@@ -122,7 +122,7 @@
   <!-- Investors -->
   <url>
     <loc>https://kenjiai.com/investors</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <mobile:mobile/>
@@ -131,21 +131,21 @@
   <!-- Legal Pages -->
   <url>
     <loc>https://kenjiai.com/privacy</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>quarterly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://kenjiai.com/terms</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>quarterly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <url>
     <loc>https://kenjiai.com/disclaimer</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>quarterly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -153,7 +153,7 @@
   <!-- Blog Posts - Knowledge Base Articles -->
   <url>
     <loc>https://kenjiai.com/blog/ai-automation-business-growth-2025</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <mobile:mobile/>
@@ -161,7 +161,7 @@
 
   <url>
     <loc>https://kenjiai.com/blog/voice-ai-sales-conversion-optimization</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <mobile:mobile/>
@@ -169,7 +169,7 @@
 
   <url>
     <loc>https://kenjiai.com/blog/ai-marketing-automation-roi-case-studies</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <mobile:mobile/>
@@ -177,7 +177,7 @@
 
   <url>
     <loc>https://kenjiai.com/blog/chatbot-customer-service-automation</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <mobile:mobile/>
@@ -185,7 +185,7 @@
 
   <url>
     <loc>https://kenjiai.com/blog/ai-content-generation-seo-strategy</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <mobile:mobile/>
@@ -193,7 +193,7 @@
 
   <url>
     <loc>https://kenjiai.com/blog/crm-automation-pipeline-optimization</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <mobile:mobile/>
@@ -201,7 +201,7 @@
 
   <url>
     <loc>https://kenjiai.com/blog/ai-email-marketing-personalization</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <mobile:mobile/>
@@ -209,7 +209,7 @@
 
   <url>
     <loc>https://kenjiai.com/blog/machine-learning-business-intelligence</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <mobile:mobile/>
@@ -217,7 +217,7 @@
 
   <url>
     <loc>https://kenjiai.com/blog/ai-workflow-automation-enterprise</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <mobile:mobile/>
@@ -226,7 +226,7 @@
   <!-- External Free Tools -->
   <url>
     <loc>https://prompt.kenjiai.com</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -234,7 +234,7 @@
 
   <url>
     <loc>https://prpro.kenjiai.com/</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -242,7 +242,7 @@
 
   <url>
     <loc>https://salescoach.kenjiai.com/</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <mobile:mobile/>
@@ -250,7 +250,7 @@
 
   <url>
     <loc>https://investors.kenjiai.com/</loc>
-    <lastmod>2026-02-08T10:00:00+00:00</lastmod>
+    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <mobile:mobile/>

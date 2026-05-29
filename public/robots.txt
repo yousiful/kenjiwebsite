@@ -1,80 +1,86 @@
-# Robots.txt for KenjiAI - AI Business Automation Platform
-# Updated: 2026-02-08
+# Robots.txt for KenjiAI — AI tools + automation platform for business
+# Updated: 2026-05-28
 
 # Allow all crawlers by default
 User-agent: *
 Allow: /
-
-# High priority pages for crawling
-Allow: /free-tools
-Allow: /knowledge
-Allow: /tools
-Allow: /ai-automation
-Allow: /ai-education
-Allow: /voice-agents
-Allow: /voice-ai
-Allow: /marketing-automation
-Allow: /crm
-Allow: /pricing
-Allow: /products
-Allow: /blog/*
-Allow: /investors
-
-# Sitemap locations
-Sitemap: https://kenjiai.com/sitemap.xml
-
-# Crawl delay (optional - prevents overloading server)
-Crawl-delay: 1
-
-# Block admin areas and private content
 Disallow: /admin/
 Disallow: /api/
 Disallow: /private/
 Disallow: /_next/
-Disallow: /node_modules/
 
-# Allow all images for Google Image Search
+# Sitemap
+Sitemap: https://kenjiai.com/sitemap.xml
+
+# ─── AI search and answer engines (explicitly welcomed) ───
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# ─── Traditional search engines ───
+User-agent: Googlebot
+Allow: /
+
 User-agent: Googlebot-Image
 Allow: /
 Disallow: /private/
 
-# Allow all videos for Google Video Search
 User-agent: Googlebot-Video
 Allow: /
 Disallow: /private/
 
-# Specific rules for major search engines
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 1
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 1
-
 User-agent: Slurp
 Allow: /
-Crawl-delay: 2
 
 User-agent: DuckDuckBot
 Allow: /
-Crawl-delay: 1
 
 User-agent: Baiduspider
 Allow: /
-Crawl-delay: 2
 
 User-agent: YandexBot
 Allow: /
-Crawl-delay: 2
 
-# Block bad bots and scrapers
+# ─── SEO tool crawlers (throttled, not blocked) ───
 User-agent: SemrushBot
 Crawl-delay: 10
 
 User-agent: AhrefsBot
 Crawl-delay: 10
 
+# ─── Known bad bots ───
 User-agent: MJ12bot
 Disallow: /
 

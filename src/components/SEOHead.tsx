@@ -19,9 +19,9 @@ export interface SEOHeadProps {
 }
 
 const SEOHead: React.FC<SEOHeadProps> = ({
-  title = "KenjiAI - Transform Your Business with AI Automation | Free Tools + Voice Agents That Close Deals 24/7",
-  description = "🚀 Scale your business with AI that works while you sleep. Free AI tools + Voice agents closing deals 24/7, smart CRM, marketing automation. Join 50,000+ businesses earning $500K+/month. Book your VIP demo today!",
-  keywords = "free AI tools, AI automation, business automation, AI voice agents, AI marketing, AI sales, smart workflows, CRM automation, AI chatbots, business intelligence, AI platform, AI knowledge base, AI blog, AI tutorials, prompt generator, make money with AI, AI business growth, passive income AI, AI sales automation, AI lead generation",
+  title = "Free AI Tools + Automation Platform for Business | KenjiAI",
+  description = "KenjiAI gives business owners the AI tools and automation to replace 17+ apps. Voice agents, CRM, marketing workflows, and free AI tools. Performance-based pricing.",
+  keywords = "",
   canonical,
   ogImage = "https://kenjiai.com/og-image.svg",
   ogType = "website",
@@ -43,7 +43,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <title>{fullTitle}</title>
       <meta name="title" content={fullTitle} />
       <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
+      {keywords && <meta name="keywords" content={keywords} />}
       <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
       <meta name="language" content="English" />
       <meta name="author" content="KenjiAI" />
