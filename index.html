@@ -477,7 +477,7 @@
     
     <!-- Service Worker registration with smart cache clearing -->
     <script>
-      if ('serviceWorker' in navigator && location.protocol === 'https:') {
+      if ('serviceWorker' in navigator && location.protocol === 'https:' && !/HeadlessChrome|Prerender/i.test(navigator.userAgent)) {
         (async function() {
           try {
             if ('caches' in window) {

@@ -1,5 +1,5 @@
 import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
+import { createRoot, hydrateRoot } from 'react-dom/client';
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import App from './App.tsx';
 import './index.css';
@@ -42,4 +42,19 @@ const AppWithTracking = () => {
   );
 };
 
-createRoot(document.getElementById('root')!).render(<AppWithTracking />);
+const rootEl = document.getElementById('root')!;
+const isPrerendered = rootEl.hasChildNodes() && rootEl.children.length > 0;
+
+if (isPrerendered) {
+  hydrateRoot(rootEl, <AppWithTracking />);
+} else {
+  createRoot(rootEl).render(<AppWithTracking />);
+}
+
+// Signal the prerenderer when the app has mounted and content is in the DOM.
+// Puppeteer waits for this event before snapshotting the HTML.
+requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
+    document.dispatchEvent(new Event('prerender-ready'));
+  });
+});
