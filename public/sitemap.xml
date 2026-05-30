@@ -503,4 +503,31 @@
     <mobile:mobile/>
   </url>
 
+
+  <!-- Reputation defense pages added 2026-05-29 -->
+  <url>
+    <loc>https://kenjiai.com/is-kenjiai-legit</loc>
+    <lastmod>2026-05-29T10:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://kenjiai.com/kenjiai-vs-kenji-ai</loc>
+    <lastmod>2026-05-29T10:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://kenjiai.com/kenjiai-reviews</loc>
+    <lastmod>2026-05-29T10:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://kenjiai.com/about-yousif-alias</loc>
+    <lastmod>2026-05-29T10:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
 </urlset>

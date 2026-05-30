@@ -1,1 +1,12 @@
+# Reputation defense pages — static HTML, bypass SPA fallback
+/is-kenjiai-legit          /is-kenjiai-legit/index.html        200
+/is-kenjiai-legit/         /is-kenjiai-legit/index.html        200
+/kenjiai-vs-kenji-ai       /kenjiai-vs-kenji-ai/index.html     200
+/kenjiai-vs-kenji-ai/      /kenjiai-vs-kenji-ai/index.html     200
+/kenjiai-reviews           /kenjiai-reviews/index.html         200
+/kenjiai-reviews/          /kenjiai-reviews/index.html         200
+/about-yousif-alias        /about-yousif-alias/index.html      200
+/about-yousif-alias/       /about-yousif-alias/index.html      200
+
+# Catchall (SPA) stays last
 /* /index.html 200
