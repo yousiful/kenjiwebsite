@@ -183,6 +183,11 @@ const VoiceAILandingPage: React.FC = () => {
 
         (window as any).fbq('track', 'InitiateCheckout', customData, { eventID: eventId });
 
+        const readCookie = (name: string): string | undefined => {
+          const match = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+          return match ? decodeURIComponent(match[1]) : undefined;
+        };
+
         fetch(META_CONFIG.capiEndpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -190,6 +195,10 @@ const VoiceAILandingPage: React.FC = () => {
             event_name: 'InitiateCheckout',
             event_id: eventId,
             event_source_url: window.location.href,
+            user_data: {
+              fbp: readCookie('_fbp'),
+              fbc: readCookie('_fbc')
+            },
             custom_data: customData
           })
         }).catch(error => {
