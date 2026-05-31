@@ -165,45 +165,35 @@ const VoiceAILandingPage: React.FC = () => {
         });
       }
       
-      // Track conversion with Meta Pixel
+      // Track conversion with Meta Pixel + server-side CAPI (deduplicated by event_id)
       if (typeof window !== 'undefined' && (window as any).fbq) {
-        (window as any).fbq('track', 'InitiateCheckout', {
+        const eventId =
+          typeof crypto !== 'undefined' && 'randomUUID' in crypto
+            ? crypto.randomUUID()
+            : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+
+        const customData = {
           content_name: plan.name,
           content_category: 'Voice AI',
           content_ids: [plan.id],
           content_type: 'product',
           value: plan.price,
           currency: 'USD'
-        });
-        
-        // Send conversion API event
-        fetch(`https://graph.facebook.com/${META_CONFIG.version}/${META_CONFIG.pixelId}/events`, {
+        };
+
+        (window as any).fbq('track', 'InitiateCheckout', customData, { eventID: eventId });
+
+        fetch(META_CONFIG.capiEndpoint, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            data: [{
-              event_name: 'InitiateCheckout',
-              event_time: Math.floor(Date.now() / 1000),
-              action_source: 'website',
-              user_data: {
-                client_ip_address: '{{client_ip_address}}',
-                client_user_agent: '{{client_user_agent}}'
-              },
-              custom_data: {
-                content_name: plan.name,
-                content_category: 'Voice AI',
-                content_ids: [plan.id],
-                content_type: 'product',
-                value: plan.price,
-                currency: 'USD'
-              }
-            }],
-            access_token: META_CONFIG.accessToken
+            event_name: 'InitiateCheckout',
+            event_id: eventId,
+            event_source_url: window.location.href,
+            custom_data: customData
           })
         }).catch(error => {
-          console.error('Meta Conversion API error:', error);
+          console.error('CAPI relay error:', error);
         });
       }
       

@@ -1,16 +1,16 @@
 /**
  * Meta (Facebook) Tracking Configuration
- * 
- * IMPORTANT: For production, these should be set via environment variables.
- * VITE_META_PIXEL_ID
- * VITE_META_ACCESS_TOKEN
+ *
+ * Server-side CAPI calls live in netlify/functions/meta-capi.ts and read the
+ * access token from process.env.META_CAPI_TOKEN. The token MUST NOT appear
+ * in any client-bundled config — anything imported here is shipped to browsers.
+ *
+ * To send a CAPI event from the client, POST to /.netlify/functions/meta-capi.
  */
 
 export const META_CONFIG = {
   pixelId: import.meta.env.VITE_META_PIXEL_ID || '2406747486323295',
-  accessToken: import.meta.env.VITE_META_ACCESS_TOKEN || 'EAAG9A5px4gMBOZC9Dzoca4bGAvSOSVI0gVZCxTjYPJfsPhQApTcPldJaLxE3q2dzgXw0fzs7UmZBFWj5HD4YfKfO5QnX6BVfxS6wRZCcZBcGMN4BsXzqXQTwYe53519apNj0OWi1IIa6eY5zqKamSymenEROmFMTvQ0JDXrPidOJpSs8tZBRn5ZCZADfZChrtUlc6sAZDZD',
-  testEventCode: import.meta.env.VITE_META_TEST_EVENT_CODE || '',
-  version: 'v17.0'
+  capiEndpoint: '/.netlify/functions/meta-capi',
 };
 
 export const isTrackingEnabled = () => {
