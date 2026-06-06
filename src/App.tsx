@@ -43,6 +43,7 @@ const WebinarVSLPage = lazy(() => import('./pages/WebinarVSLPage'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const NicheAdPage = lazy(() => import('./pages/NicheAdPage'));
 const AgentSetupPage = lazy(() => import('./pages/AgentSetupPage'));
+const FundingPage = lazy(() => import('./pages/FundingPage'));
 
 const RouteFallback: React.FC = () => (
   <div
@@ -178,6 +179,7 @@ function App() {
                       <Route path="/dashboard" element={<DashboardPage />} />
                       <Route path="/overview" element={<WebinarVSLPage />} />
                       <Route path="/setup" element={<AgentSetupPage />} />
+                      <Route path="/funding" element={<FundingPage />} />
                       <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                     </Suspense>
