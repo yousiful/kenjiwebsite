@@ -60,36 +60,37 @@ export default function WebinarVSLPage() {
           </div>
         </div>
 
-        {/* ── VIDEO — full width, tall on mobile ── */}
-        <div
-          ref={videoRef}
-          className="relative w-full bg-black"
-          style={{ height: 'clamp(220px, 58vw, 540px)' }}
-        >
-          {/* Gradient edge shadow */}
-          <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-black/60 to-transparent z-10 pointer-events-none sm:hidden" />
-
-          {/* Block YouTube top-bar UI on mobile */}
-          <div className="absolute top-0 left-0 w-full h-[56px] z-20 bg-transparent pointer-events-auto" />
-
-          <iframe
-            src="https://www.youtube.com/embed/J-AURUyzSks?si=tQ2wmu_OYYE0IMnP&controls=1&autoplay=1&rel=0&modestbranding=1"
-            title="KenjiAI Overview"
-            className="absolute inset-0 w-full h-full border-0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-          />
-
-          {/* Expand / fullscreen button */}
-          <button
-            onClick={handleExpand}
-            aria-label="Expand video"
-            className="absolute bottom-3 right-3 z-30 flex items-center gap-1.5 bg-black/70 hover:bg-black/90 backdrop-blur-sm border border-white/20 text-white rounded-lg px-3 py-2 text-xs font-semibold transition-all active:scale-95 shadow-lg"
+        {/* ── VIDEO — full 16:9, edge-to-edge on mobile, large & centered on desktop ── */}
+        <div className="w-full sm:px-4 sm:pt-4">
+          <div
+            ref={videoRef}
+            className="relative w-full max-w-6xl mx-auto aspect-video bg-black overflow-hidden sm:rounded-2xl sm:shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] sm:border sm:border-white/10"
           >
-            <Maximize2 size={14} />
-            <span className="hidden xs:inline">{isFullscreen ? 'Exit' : 'Expand'}</span>
-          </button>
+            {/* Gradient edge shadow */}
+            <div className="absolute inset-x-0 bottom-0 h-8 bg-gradient-to-t from-black/60 to-transparent z-10 pointer-events-none sm:hidden" />
+
+            {/* Block YouTube top-bar UI on mobile */}
+            <div className="absolute top-0 left-0 w-full h-[56px] z-20 bg-transparent pointer-events-auto" />
+
+            <iframe
+              src="https://www.youtube.com/embed/J-AURUyzSks?si=tQ2wmu_OYYE0IMnP&controls=1&autoplay=1&rel=0&modestbranding=1"
+              title="KenjiAI Overview"
+              className="absolute inset-0 w-full h-full border-0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+
+            {/* Expand / fullscreen button */}
+            <button
+              onClick={handleExpand}
+              aria-label="Expand video"
+              className="absolute bottom-3 right-3 z-30 flex items-center gap-1.5 bg-black/70 hover:bg-black/90 backdrop-blur-sm border border-white/20 text-white rounded-lg px-3 py-2 text-xs font-semibold transition-all active:scale-95 shadow-lg"
+            >
+              <Maximize2 size={14} />
+              <span className="hidden xs:inline">{isFullscreen ? 'Exit' : 'Expand'}</span>
+            </button>
+          </div>
         </div>
 
         {/* ── DESKTOP HEADER BAR (hidden on mobile) ── */}
