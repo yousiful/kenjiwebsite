@@ -15,6 +15,7 @@ export const internalRoutes = [
   '/terms',
   '/not-found',
   '/overview',
+  '/overview-b',
   '/dashboard',
   '/setup'
 ] as const;

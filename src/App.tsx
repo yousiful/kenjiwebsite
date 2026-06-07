@@ -40,6 +40,7 @@ const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage'));
 const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage'));
 const DashboardPage = lazy(() => import('./pages/DashboardPage'));
 const WebinarVSLPage = lazy(() => import('./pages/WebinarVSLPage'));
+const WebinarVSLPageB = lazy(() => import('./pages/WebinarVSLPageB'));
 const BlogPage = lazy(() => import('./pages/BlogPage'));
 const NicheAdPage = lazy(() => import('./pages/NicheAdPage'));
 const AgentSetupPage = lazy(() => import('./pages/AgentSetupPage'));
@@ -94,7 +95,7 @@ const VisitorTracker: React.FC = () => {
   return null;
 };
 
-const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/setup'];
+const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/overview-b', '/setup'];
 
 function ConditionalNavbar() {
   const { pathname } = useLocation();
@@ -178,6 +179,7 @@ function App() {
                       <Route path="/terms" element={<TermsOfServicePage />} />
                       <Route path="/dashboard" element={<DashboardPage />} />
                       <Route path="/overview" element={<WebinarVSLPage />} />
+                      <Route path="/overview-b" element={<WebinarVSLPageB />} />
                       <Route path="/setup" element={<AgentSetupPage />} />
                       <Route path="/funding" element={<FundingPage />} />
                       <Route path="*" element={<NotFoundPage />} />
