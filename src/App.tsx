@@ -1,6 +1,7 @@
 import React, { useEffect, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import KickoffBar from './components/KickoffBar';
 import Footer from './components/Footer';
 import RedirectSystem from './components/RedirectSystem';
 import PerformanceOptimizer from './components/PerformanceOptimizer';
@@ -97,6 +98,13 @@ const VisitorTracker: React.FC = () => {
 
 const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/overview-b', '/setup'];
 
+function ConditionalKickoffBar() {
+  const { pathname } = useLocation();
+  if (NAVBAR_HIDDEN_ROUTES.includes(pathname)) return null;
+
+  return <KickoffBar />;
+}
+
 function ConditionalNavbar() {
   const { pathname } = useLocation();
   const hideNavbar = NAVBAR_HIDDEN_ROUTES.includes(pathname);
@@ -155,6 +163,7 @@ function App() {
             <BackgroundLines className="min-h-screen bg-gray-900" svgOptions={{ duration: 12 }}>
               <div id="app-container" className="min-h-screen">
                 <PerformanceOptimizer />
+                <ConditionalKickoffBar />
                 <ConditionalNavbar />
                   <main id="main-content" role="main">
                     <Suspense fallback={<RouteFallback />}>
