@@ -102,7 +102,14 @@ function ConditionalKickoffBar() {
   const { pathname } = useLocation();
   if (NAVBAR_HIDDEN_ROUTES.includes(pathname)) return null;
 
-  return <KickoffBar />;
+  return (
+    <>
+      <KickoffBar />
+      {/* Spacer: reserves the fixed bar's height so the navbar (offset to
+          top-10) and page content sit cleanly beneath it. */}
+      <div className="h-10" aria-hidden="true" />
+    </>
+  );
 }
 
 function ConditionalNavbar() {

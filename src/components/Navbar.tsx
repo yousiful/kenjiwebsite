@@ -48,7 +48,7 @@ const Navbar: React.FC = () => {
     <motion.nav role="navigation" aria-label="Main Navigation"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`${location.pathname === '/pricing' ? 'absolute' : 'fixed'} top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`${location.pathname === '/pricing' ? 'absolute' : 'fixed'} top-10 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? 'bg-gray-950/95 backdrop-blur-lg'
           : 'bg-transparent'
