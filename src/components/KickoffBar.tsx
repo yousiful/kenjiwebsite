@@ -56,13 +56,14 @@ export default function KickoffBar() {
         <p className="truncate text-[11px] font-semibold sm:text-sm">
           <span aria-hidden="true">⚽</span>{' '}
           <span className="hidden sm:inline">
-            The whole world's watching the beautiful game this summer —{' '}
+            The whole world is glued to the beautiful game this summer. Don&apos;t get left on the bench.{' '}
           </span>
-          <span className="font-extrabold">Summer offer ends in</span>
+          <span aria-hidden="true">🔥</span>{' '}
+          <span className="font-extrabold">Your shot ends in</span>
         </p>
 
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-          <div className="flex items-center gap-1 rounded-md bg-black/25 px-2 py-0.5 font-mono text-xs font-bold tabular-nums sm:text-sm">
+          <div className="flex items-center gap-1 rounded-md bg-black/30 px-2 py-0.5 font-mono text-xs font-bold tabular-nums shadow-[0_0_12px_rgba(0,0,0,0.25)] ring-1 ring-white/40 sm:text-sm">
             <span>{h}</span>
             <span className="opacity-60">:</span>
             <span>{m}</span>
@@ -72,9 +73,9 @@ export default function KickoffBar() {
 
           <Link
             to="/pricing"
-            className="whitespace-nowrap rounded-full bg-white px-3 py-1 text-[11px] font-extrabold uppercase tracking-wide text-emerald-700 shadow-sm transition-transform hover:-translate-y-0.5 active:scale-95 sm:text-xs"
+            className="whitespace-nowrap rounded-full bg-white px-3 py-1 text-[11px] font-extrabold uppercase tracking-wide text-emerald-700 shadow-sm transition-transform hover:-translate-y-0.5 hover:shadow-[0_0_16px_rgba(255,255,255,0.5)] active:scale-95 sm:text-xs"
           >
-            Claim spot →
+            Claim your spot →
           </Link>
         </div>
       </div>
