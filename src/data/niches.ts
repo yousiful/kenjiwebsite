@@ -575,6 +575,34 @@ const niches: Niche[] = [
     ],
     cta: 'Get a Free Contractor Business Growth Audit',
   },
+  {
+    slug: 'tax-relief',
+    name: 'Tax Relief',
+    namePlural: 'Tax Relief Firms',
+    metaTitle: 'Paid Ads Agency for Tax Relief Firms + AI Automation | KenjiAI',
+    metaDescription: 'KenjiAI runs paid ads for tax relief and tax debt firms and automates every lead with AI, so you sign more qualified cases from the same spend. We already run acquisition for leaders in the space.',
+    badge: 'Tax Relief Paid Ads + AI Automation',
+    headlineTop: 'Tax Relief Ads That',
+    headlineBottom: 'Sign More Cases',
+    subheadline: 'Tax debt clients are expensive and the market is brutally competitive. KenjiAI runs your paid ads and deploys AI that contacts every lead within 60 seconds, so you sign more qualified cases without raising your cost per acquisition. We already run acquisition for leaders in this space.',
+    stats: [
+      { value: '60s', label: 'AI Lead Response Time' },
+      { value: '35x', label: 'Funnel Conversion Lift (Case Study)' },
+      { value: '$250K+', label: 'Monthly Ad Spend Managed' },
+      { value: '24/7', label: 'AI Intake Automation' },
+    ],
+    painPoints: [
+      { title: 'Sky-High Cost Per Qualified Case', description: 'Tax relief is one of the most competitive ad markets in the country. Clicks are expensive, and most firms pay for traffic that never becomes a signed case because the funnel and follow-up are weak.' },
+      { title: 'Leads Go Cold Before the Intake Call', description: 'A taxpayer with $30K in IRS debt is anxious and shopping fast. If your intake team does not reach them in minutes, they sign with the firm that did. Manual follow-up cannot keep up.' },
+      { title: 'No Attribution From Ad to Signed Case', description: 'You run Google, Facebook, and lead vendors at once with no clear view of which source produces signed cases, so you keep funding channels that only deliver tire-kickers.' },
+    ],
+    features: [
+      { title: 'Senior Operators Who Know This Market', description: 'We already run acquisition for top tax relief firms, so your account is handled by operators who understand IRS-debt buyer psychology and ad compliance, not a junior rep.', bullets: ['Google search for high-intent IRS debt keywords', 'Compliant ad copy that clears platform review', 'Weekly reporting tied to signed cases'] },
+      { title: 'AI Intake That Responds in 60 Seconds', description: 'Every lead gets an AI text and call within a minute that qualifies debt amount, urgency, and fit, then books the consultation directly on your calendar.', bullets: ['Instant SMS and call response', 'Debt-amount and fit qualification', 'Consultation booking automation'] },
+      { title: 'Funnels Built to Convert, Not Just Collect Clicks', description: 'In one of our own tests, a rebuilt funnel converted 35 times better at the same price with the same traffic. We apply that same funnel and message discipline to your pipeline.', bullets: ['Message-matched landing pages', 'Speed-to-lead nurture sequences', 'Full ad-to-signed-case attribution'] },
+    ],
+    cta: 'Get a Free Tax Relief Growth Audit',
+  },
 ];
 
 export default niches;
