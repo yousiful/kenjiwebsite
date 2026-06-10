@@ -42,15 +42,6 @@
     <mobile:mobile/>
   </url>
 
-  <!-- Tools Page -->
-  <url>
-    <loc>https://kenjiai.com/tools</loc>
-    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <mobile:mobile/>
-  </url>
-
   <!-- Solution Pages -->
   <url>
     <loc>https://kenjiai.com/ai-automation</loc>
@@ -92,12 +83,12 @@
     <mobile:mobile/>
   </url>
 
-  <!-- Product Selection -->
+  <!-- Funding & Credit Partners -->
   <url>
-    <loc>https://kenjiai.com/products</loc>
-    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
+    <loc>https://kenjiai.com/funding</loc>
+    <lastmod>2026-06-10T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
     <mobile:mobile/>
   </url>
 
@@ -220,39 +211,6 @@
     <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
-    <mobile:mobile/>
-  </url>
-
-  <!-- External Free Tools -->
-  <url>
-    <loc>https://prompt.kenjiai.com</loc>
-    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <mobile:mobile/>
-  </url>
-
-  <url>
-    <loc>https://prpro.kenjiai.com/</loc>
-    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <mobile:mobile/>
-  </url>
-
-  <url>
-    <loc>https://salescoach.kenjiai.com/</loc>
-    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <mobile:mobile/>
-  </url>
-
-  <url>
-    <loc>https://investors.kenjiai.com/</loc>
-    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
     <mobile:mobile/>
   </url>
 
