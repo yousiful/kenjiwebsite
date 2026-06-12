@@ -245,6 +245,7 @@ const VoiceAILandingPage: React.FC = () => {
         <title>AI Voice Agents That Close Deals 24/7 | KenjiAI Voice AI Platform</title>
         <meta name="description" content="Deploy AI voice agents that handle sales calls, qualify leads, and close deals 24/7. 85% qualification rate, 300% more calls handled. Starting at $10/month." />
         <meta name="keywords" content="AI voice agents, automated sales calls, voice AI, AI phone calls, sales automation, lead qualification, 24/7 sales" />
+        <link rel="canonical" href="https://kenjiai.com/voice-ai" />
       </Helmet>
       
       <div className="pt-16 bg-gray-900 min-h-screen">

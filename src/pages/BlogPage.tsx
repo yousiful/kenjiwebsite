@@ -27,8 +27,9 @@ const BlogPage: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Blog — AI Insights, Guides & Industry News | KenjiAI</title>
+        <title>Blog: AI Insights, Guides & Industry News | KenjiAI</title>
         <meta name="description" content="Read the latest AI automation guides, lead generation strategies, voice agent breakdowns, and industry analysis from the KenjiAI team." />
+        <link rel="canonical" href="https://kenjiai.com/blog" />
       </Helmet>
 
       <div className="pt-24 pb-20 min-h-screen" style={{ background: 'linear-gradient(180deg, #030712 0%, #0a0f1a 50%, #030712 100%)' }}>

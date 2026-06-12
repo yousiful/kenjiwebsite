@@ -130,8 +130,9 @@ const KnowledgeBasePage: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>KenjiAI Academy — Elite AI & Business Mastery</title>
+        <title>KenjiAI Academy: Elite AI & Business Mastery</title>
         <meta name="description" content="Access premium AI automation courses, sales mastery tracks, and the interactive AI knowledge assessment." />
+        <link rel="canonical" href="https://kenjiai.com/knowledge" />
       </Helmet>
 
       <EnrollmentNotification />

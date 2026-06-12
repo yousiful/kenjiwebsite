@@ -250,6 +250,7 @@ export default function AIEducationPage() {
       <Helmet>
         <title>AI Education - Learn AI Through Interactive Games | KenjiAI</title>
         <meta name="description" content="Master AI concepts through fun, interactive lessons. Earn badges, level up, and become an AI expert at your own pace." />
+        <link rel="canonical" href="https://kenjiai.com/ai-education" />
       </Helmet>
 
       <div className="min-h-screen bg-gray-900 pt-24 pb-16">

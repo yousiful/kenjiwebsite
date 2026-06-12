@@ -29,7 +29,11 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   structuredData
 }) => {
   const fullTitle = title.includes('KenjiAI') ? title : `${title} | KenjiAI`;
-  const currentUrl = typeof window !== 'undefined' ? window.location.href : 'https://kenjiai.com';
+  // Fallback canonical strips query strings and hash (e.g. ?utm_source=...) so
+  // tracked/shared links don't create duplicate canonical URLs.
+  const currentUrl = typeof window !== 'undefined'
+    ? `${window.location.origin}${window.location.pathname}`
+    : 'https://kenjiai.com';
   const canonicalUrl = canonical || currentUrl;
   
   // Ensure structuredData is a string

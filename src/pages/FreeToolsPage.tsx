@@ -184,8 +184,8 @@ const FreeToolsPage: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Free AI Tools That Make Money | KenjiAI - Revenue-Generating AI Tools, Prompt Generator, PR Tools, Sales Coach</title>
-        <meta name="description" content="Free AI tools that help you make money: AI Prompt Generator for ChatGPT/GPT-4, PR Pro for media outreach, Sales Coach for closing deals, and Investor Connect for startups. No signup required, 100% free forever. Used by 125K+ entrepreneurs to generate revenue with AI." />
+        <title>Free AI Tools That Make Money for Business | KenjiAI</title>
+        <meta name="description" content="Free AI tools to help you make money: prompt generator, PR outreach, sales coach, and investor connect. No signup, free forever, used by 125K+ founders." />
         <meta name="keywords" content="free AI tools that make money, revenue generating AI tools, AI prompt generator, free PR tools, AI sales coach, free startup tools, ChatGPT prompts, GPT-4 prompts, AI business tools, free marketing tools, AI automation tools, prompt engineering, free AI software, business automation, AI productivity tools, free AI apps, money making AI tools" />
         <link rel="canonical" href="https://kenjiai.com/free-tools" />
         <script type="application/ld+json">

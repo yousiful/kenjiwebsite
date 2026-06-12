@@ -119,26 +119,12 @@
     <mobile:mobile/>
   </url>
 
-  <!-- Legal Pages -->
+  <!-- Blog Index -->
   <url>
-    <loc>https://kenjiai.com/privacy</loc>
-    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
-    <changefreq>quarterly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://kenjiai.com/terms</loc>
-    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
-    <changefreq>quarterly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://kenjiai.com/disclaimer</loc>
-    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
-    <changefreq>quarterly</changefreq>
-    <priority>0.5</priority>
+    <loc>https://kenjiai.com/blog</loc>
+    <lastmod>2026-06-10T10:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <!-- Blog Posts - Knowledge Base Articles -->
