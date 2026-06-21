@@ -27,18 +27,33 @@ export default function WebinarVSLPageB() {
   }, []);
 
   useEffect(() => {
-    const handler = () => setIsFullscreen(!!document.fullscreenElement);
+    const handler = () => {
+      const doc = document as Document & { webkitFullscreenElement?: Element };
+      setIsFullscreen(!!(doc.fullscreenElement || doc.webkitFullscreenElement));
+    };
     document.addEventListener('fullscreenchange', handler);
-    return () => document.removeEventListener('fullscreenchange', handler);
+    document.addEventListener('webkitfullscreenchange', handler);
+    return () => {
+      document.removeEventListener('fullscreenchange', handler);
+      document.removeEventListener('webkitfullscreenchange', handler);
+    };
   }, []);
 
   const handleExpand = () => {
-    const el = videoRef.current;
+    const el = videoRef.current as
+      | (HTMLDivElement & { webkitRequestFullscreen?: () => Promise<void> | void })
+      | null;
     if (!el) return;
-    if (!document.fullscreenElement) {
-      el.requestFullscreen().catch(() => {});
+    const doc = document as Document & {
+      webkitFullscreenElement?: Element;
+      webkitExitFullscreen?: () => Promise<void> | void;
+    };
+    if (doc.fullscreenElement || doc.webkitFullscreenElement) {
+      const exit = doc.exitFullscreen || doc.webkitExitFullscreen;
+      if (exit) Promise.resolve(exit.call(doc)).catch(() => {});
     } else {
-      document.exitFullscreen();
+      const req = el.requestFullscreen || el.webkitRequestFullscreen;
+      if (req) Promise.resolve(req.call(el)).catch(() => {});
     }
   };
 
@@ -62,8 +77,9 @@ export default function WebinarVSLPageB() {
           </div>
         </div>
 
-        {/* ── VIDEO — full 16:9, edge-to-edge on mobile, large & centered on desktop ── */}
-        <div className="w-full sm:px-4 sm:pt-4">
+        {/* ── VIDEO — full 16:9, edge-to-edge & vertically centered on mobile,
+              large & centered on desktop. Always shows the whole frame (no crop) ── */}
+        <div className="w-full flex-1 flex items-center sm:block sm:flex-none sm:px-4 sm:pt-4">
           <div
             ref={videoRef}
             className="relative w-full max-w-6xl mx-auto aspect-video bg-black overflow-hidden sm:rounded-2xl sm:shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] sm:border sm:border-white/10"
@@ -83,14 +99,16 @@ export default function WebinarVSLPageB() {
               allowFullScreen
             />
 
-            {/* Expand / fullscreen button */}
+            {/* Expand / fullscreen button — top-right so it never covers
+                YouTube's own bottom-right fullscreen control (the reliable
+                path on iOS, where iframes can't be fullscreened by script) */}
             <button
               onClick={handleExpand}
-              aria-label="Expand video"
-              className="absolute bottom-3 right-3 z-30 flex items-center gap-1.5 bg-black/70 hover:bg-black/90 backdrop-blur-sm border border-white/20 text-white rounded-lg px-3 py-2 text-xs font-semibold transition-all active:scale-95 shadow-lg"
+              aria-label={isFullscreen ? 'Exit fullscreen' : 'Enlarge video'}
+              className="absolute top-3 right-3 z-30 flex items-center gap-1.5 bg-black/75 hover:bg-black/90 backdrop-blur-sm border border-white/25 text-white rounded-lg px-3.5 py-2 text-[13px] font-semibold transition-all active:scale-95 shadow-lg"
             >
-              <Maximize2 size={14} />
-              <span className="hidden xs:inline">{isFullscreen ? 'Exit' : 'Expand'}</span>
+              <Maximize2 size={15} />
+              <span>{isFullscreen ? 'Exit' : 'Enlarge'}</span>
             </button>
           </div>
         </div>
