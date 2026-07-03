@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>You're In — The ADmaxing Masterclass</title>
+<meta name="robots" content="noindex,nofollow" />
+
+<!-- ============================================================= -->
+<!-- TRACKING - SWAP PLACEHOLDERS BEFORE GOING LIVE                 -->
+<!-- ============================================================= -->
+
+<!-- Facebook Pixel (REPLACE 000000000000000) -->
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '000000000000000');   /* <-- REPLACE: your Facebook Pixel ID */
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=000000000000000&ev=PageView&noscript=1"/></noscript>
+
+<!-- Google Analytics 4 (REPLACE G-XXXXXXXXXX) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');   /* <-- REPLACE: your GA4 ID */
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0a0a0a; --card:#141414; --card2:#181818;
+    --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.14);
+    --txt:#f4f4f5; --muted:#a1a1aa; --muted2:#71717a;
+    --amber:#f59e0b; --orange:#f97316; --emerald:#10b981; --red:#ef4444;
+    --grad:linear-gradient(135deg,#f59e0b,#f97316);
+    --redgrad:linear-gradient(135deg,#ef4444,#dc2626);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#0a0a0a;color:var(--txt);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;line-height:1.5;
+    -webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 16px}
+  .narrow{max-width:820px;margin:0 auto;padding:0 16px}
+  h1,h2,h3{line-height:1.14;letter-spacing:-.02em;font-weight:900}
+  .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .muted{color:var(--muted)}
+
+  /* Top status bar */
+  .statusbar{position:sticky;top:0;z-index:30;background:rgba(10,10,10,.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .statusbar .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 0}
+  .live-pill{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;
+    letter-spacing:.06em;text-transform:uppercase;color:#fff;
+    background:rgba(239,68,68,.14);border:1px solid rgba(239,68,68,.4);padding:6px 12px;border-radius:999px}
+  .live-dot{width:8px;height:8px;border-radius:50%;background:var(--red);animation:blink 1.4s infinite}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+  .viewers{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:#e4e4e7;font-weight:700}
+  .viewers .eye{color:var(--emerald)}
+  .viewers b{color:#fff;font-variant-numeric:tabular-nums}
+  .viewers small{color:var(--muted2);font-weight:500;font-size:11px}
+
+  /* Stage layout */
+  .stage{display:grid;grid-template-columns:1fr 360px;gap:16px;padding:16px 0}
+  .video-wrap{background:#000;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .video-el{width:100%;aspect-ratio:16/9;background:#000;display:block}
+  .video-embed-note{padding:10px 14px;font-size:11.5px;color:var(--muted2);border-top:1px solid var(--line);background:#0d0d0d}
+
+  /* Sim controls (only shown in simulated-playback/demo mode) */
+  .sim{display:flex;align-items:center;gap:12px;padding:10px 14px;border-top:1px solid var(--line);background:#0d0d0d}
+  .sim button{all:unset;cursor:pointer;font-weight:800;font-size:13px;color:#111;background:var(--grad);
+    padding:8px 14px;border-radius:10px}
+  .sim .t{font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--muted)}
+  .sim .ghost{background:#222;color:#fff;border:1px solid var(--line2)}
+
+  .videotitle{margin-top:14px}
+  .videotitle h1{font-size:clamp(20px,3vw,30px)}
+  .videotitle p{color:var(--muted);margin-top:8px;font-size:15px}
+
+  /* Chat */
+  .chat-col{background:var(--card);border:1px solid var(--line);border-radius:16px;display:flex;flex-direction:column;
+    height:100%;min-height:420px;max-height:640px;overflow:hidden}
+  .chat-head{padding:14px 16px;border-bottom:1px solid var(--line)}
+  .chat-head .t{font-weight:800;font-size:14px;display:flex;align-items:center;gap:8px}
+  .chat-head .disclose{font-size:10.5px;color:var(--muted2);margin-top:4px;line-height:1.35}
+  .chat-body{flex:1;overflow-y:auto;padding:12px 12px 6px;display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth}
+  .msg{display:flex;gap:10px;animation:fade .35s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .msg .av{flex:0 0 auto;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:13px;color:#fff}
+  .msg .bub .nm{font-size:12.5px;font-weight:800;color:#e4e4e7;margin-bottom:2px}
+  .msg .bub .tx{font-size:13.5px;color:#c8c8ce;line-height:1.4}
+  .chat-foot{padding:10px 14px;border-top:1px solid var(--line);font-size:11px;color:var(--muted2);
+    display:flex;align-items:center;gap:8px}
+  .chat-foot input{flex:1;background:#0f0f0f;border:1px solid var(--line);border-radius:8px;color:#666;
+    font-size:12px;padding:9px 10px;font-family:inherit}
+  .chat-foot input::placeholder{color:#555}
+
+  /* Mobile chat drawer */
+  .chat-fab{display:none}
+  @media(max-width:900px){
+    .stage{grid-template-columns:1fr}
+    .chat-col{position:fixed;left:0;right:0;bottom:0;z-index:50;border-radius:18px 18px 0 0;
+      max-height:70vh;height:70vh;transform:translateY(100%);transition:transform .3s ease;
+      box-shadow:0 -20px 50px rgba(0,0,0,.6)}
+    .chat-col.open{transform:translateY(0)}
+    .chat-fab{display:flex;position:fixed;right:14px;bottom:14px;z-index:60;align-items:center;gap:8px;
+      background:var(--grad);color:#111;font-weight:900;font-size:14px;border:none;border-radius:999px;
+      padding:13px 18px;box-shadow:0 8px 26px rgba(245,158,11,.4);cursor:pointer}
+    .chat-close{display:block !important}
+  }
+  .chat-close{display:none;position:absolute;right:12px;top:10px;background:#222;border:1px solid var(--line2);
+    color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:16px}
+
+  /* ===== OFFER (hidden until reveal) ===== */
+  .offer{display:none;margin:26px 0 8px}
+  .offer.show{display:block;animation:fade .5s ease}
+  .offer-card{background:linear-gradient(180deg,#161616,#0e0e0e);border:1px solid rgba(239,68,68,.35);
+    border-radius:22px;padding:28px 22px;box-shadow:0 20px 70px rgba(0,0,0,.55)}
+  .offer-tag{display:inline-block;font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;
+    color:#fff;background:var(--redgrad);padding:7px 14px;border-radius:999px;margin-bottom:14px}
+  .offer h2{font-size:clamp(24px,4.5vw,38px);text-align:center;margin-bottom:8px}
+  .offer .lead{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 22px;font-size:15px}
+  .cart-cd{display:flex;align-items:center;justify-content:center;gap:10px;background:#0b0b0b;
+    border:1px solid rgba(239,68,68,.4);border-radius:14px;padding:12px 16px;margin:0 auto 22px;max-width:420px}
+  .cart-cd .lbl{font-size:12px;font-weight:800;color:#fca5a5;text-transform:uppercase;letter-spacing:.06em}
+  .cart-cd .val{font-variant-numeric:tabular-nums;font-weight:900;font-size:22px;color:#fff}
+  .stack{max-width:560px;margin:0 auto 18px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .stack .it{display:flex;justify-content:space-between;gap:14px;padding:13px 16px;border-bottom:1px solid var(--line);
+    font-size:14.5px;color:#d4d4d8}
+  .stack .it:last-child{border-bottom:none}
+  .stack .it .v{color:var(--muted2);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .stack .it.core{background:rgba(245,158,11,.06)}
+  .stack .tot{display:flex;justify-content:space-between;padding:14px 16px;background:#0c0c0c;font-weight:800}
+  .stack .tot .v{color:#fff}
+  .price{text-align:center;margin:8px 0 20px}
+  .price .was{color:var(--muted2);text-decoration:line-through;font-size:22px;font-weight:700;margin-right:12px}
+  .price .now{font-size:52px;font-weight:900;color:#fff}
+  .price .cap{display:block;color:var(--emerald);font-weight:800;font-size:14px;margin-top:6px}
+  .btn-buy{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--redgrad);color:#fff;
+    font-weight:900;font-size:20px;padding:20px;border:none;border-radius:16px;cursor:pointer;width:100%;max-width:560px;
+    margin:0 auto;box-shadow:0 0 40px rgba(239,68,68,.4);transition:transform .2s,box-shadow .2s}
+  .btn-buy:hover{transform:translateY(-2px);box-shadow:0 0 60px rgba(239,68,68,.6)}
+  .guar{display:flex;align-items:center;justify-content:center;gap:12px;max-width:560px;margin:16px auto 0;
+    background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.25);border-radius:14px;padding:14px 16px}
+  .guar .badge{flex:0 0 auto;width:46px;height:46px;border-radius:50%;background:rgba(16,185,129,.15);
+    display:flex;align-items:center;justify-content:center;font-size:22px}
+  .guar div{font-size:13px;color:#d4d4d8}
+  .guar b{color:#fff}
+  .checkout-fine{text-align:center;color:var(--muted2);font-size:12px;margin-top:14px}
+
+  /* Below the fold */
+  section{padding:48px 0;border-top:1px solid var(--line)}
+  .sec-head{text-align:center;margin-bottom:26px}
+  .eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--amber);background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);
+    padding:7px 14px;border-radius:999px;margin-bottom:14px}
+  .proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+  .tstm{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+  .slot-tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;color:#000;
+    background:var(--amber);padding:3px 8px;border-radius:6px;margin-bottom:10px}
+  .stars{color:var(--amber);font-size:13px;margin-bottom:6px}
+  .tstm p{font-size:14px;color:#d4d4d8}
+  .tstm .who{display:flex;align-items:center;gap:12px;margin-top:14px}
+  .avatar-ph{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#27272a,#3f3f46);
+    border:1px dashed var(--line2);display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--muted2)}
+  .who .name{font-weight:800;font-size:14px}.who .role{font-size:12px;color:var(--muted2)}
+  .faq{display:grid;gap:12px;max-width:820px;margin:0 auto}
+  .qa{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .qa button{all:unset;display:flex;justify-content:space-between;align-items:center;gap:14px;width:100%;
+    padding:17px 20px;cursor:pointer;font-weight:700;font-size:15px;color:#fff}
+  .qa .ans{padding:0 20px;max-height:0;overflow:hidden;color:var(--muted);font-size:14px;transition:max-height .3s,padding .3s}
+  .qa.open .ans{padding:0 20px 18px;max-height:320px}
+  .qa .ic{color:var(--amber);font-size:20px}
+  .presenter{display:grid;grid-template-columns:180px 1fr;gap:26px;align-items:center;max-width:820px;margin:0 auto}
+  .p-photo{aspect-ratio:1;border-radius:18px;background:linear-gradient(135deg,#1c1c1c,#262626);
+    border:1px dashed var(--line2);display:flex;align-items:center;justify-content:center;color:var(--muted2);font-size:12px}
+  .presenter h3{font-size:22px;margin-bottom:4px}
+  .presenter .p-role{color:var(--amber);font-weight:700;font-size:13.5px;margin-bottom:12px}
+  .presenter p{color:var(--muted);font-size:14.5px;margin-bottom:10px}
+  .foot{padding:36px 0 90px;text-align:center;color:var(--muted2);font-size:12px}
+
+  @media(max-width:900px){
+    .presenter{grid-template-columns:1fr;text-align:center}
+    .p-photo{max-width:170px;margin:0 auto}
+  }
+</style>
+</head>
+<body>
+<!-- Hard dark-theme lock (kept per spec, right after <body>) -->
+<style>html, body { background: #0a0a0a !important; background-color: #0a0a0a !important; }</style>
+
+<!-- ===================== TOP STATUS BAR ===================== -->
+<div class="statusbar">
+  <div class="wrap row">
+    <span class="live-pill"><span class="live-dot"></span> Live Masterclass</span>
+    <!-- VIEWER COUNT:
+         Per spec this should be a REAL number. Set CONFIG.USE_REAL_VIEWER_API = true
+         and implement getRealViewerCount() to pull from your webinar platform
+         (WebinarKit / EverWebinar / Demio) API. The fluctuating placeholder below
+         only runs in demo mode so the UI isn't empty during build. -->
+    <span class="viewers"><span class="eye">●</span> <b id="viewerCount">—</b>&nbsp;<small>watching now</small></span>
+  </div>
+</div>
+
+<!-- ===================== STAGE (video + chat) ===================== -->
+<div class="wrap">
+  <div class="stage">
+
+    <!-- ---- VIDEO COLUMN ---- -->
+    <div>
+      <div class="video-wrap">
+        <!-- =========================================================
+             VIDEO PLAYER
+             Default = HTML5 <video> so the chat-sync engine works out of
+             the box. Drop in your real file, OR replace this whole block
+             with a Vimeo / Wistia / Bunny embed and wire its time to the
+             getPlaybackState() function down in the script (see comments).
+             ========================================================= -->
+        <video id="webinarVideo" class="video-el" playsinline poster=""
+               controls preload="metadata">
+          <!-- Local file for now. For production, host on a CDN (Bunny Stream / Cloudflare / S3)
+               and swap this src — a 577MB file won't upload into GHL directly. -->
+          <source src="/webinar1/never-chase-leads-again.mp4" type="video/mp4">
+        </video>
+
+        <!-- DEMO PLAYBACK CONTROLS — auto-hidden once you set
+             CONFIG.USE_SIMULATED_PLAYBACK = false (i.e. when a real video drives time). -->
+        <div class="sim" id="simBar">
+          <button id="simPlay">▶ Play demo</button>
+          <button id="simOffer" class="ghost">⏩ Preview offer</button>
+          <span class="t" id="simTime">00:00</span>
+        </div>
+
+        <div class="video-embed-note">
+          🎥 Swap the &lt;video&gt; above for your webinar recording. You said you'll rotate
+          multiple videos — just change the <code>src</code> (and match <code>OFFER_REVEAL_SECONDS</code>
+          + the chat timestamps to each video).
+        </div>
+      </div>
+
+      <div class="videotitle">
+        <h1>The <span class="grad-text">ADmaxing</span> Masterclass</h1>
+        <p>How high-ticket coaches &amp; service providers turn cold ad clicks into pre-sold, ready-to-buy clients. Stay to the end — the implementation offer only appears once.</p>
+      </div>
+    </div>
+
+    <!-- ---- CHAT COLUMN ---- -->
+    <div class="chat-col" id="chatCol">
+      <button class="chat-close" id="chatClose">×</button>
+      <div class="chat-head">
+        <div class="t">💬 Session Chat <span id="chatLiveDot" class="live-dot" style="display:inline-block"></span></div>
+        <!-- FTC-compliant disclosure — small but visible -->
+        <div class="disclose">Chat replay from a previous session. Comments are shown in the order they originally happened.</div>
+      </div>
+      <div class="chat-body" id="chatBody"></div>
+      <div class="chat-foot">
+        <input type="text" placeholder="Chat is replay-only" disabled />
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== OFFER (revealed by JS) ===================== -->
+  <div class="offer" id="offer">
+    <div class="offer-card">
+      <div style="text-align:center"><span class="offer-tag">🔥 Masterclass-Only Offer</span></div>
+      <h2>Get the Entire <span class="grad-text">ADmaxing Accelerator</span></h2>
+      <p class="lead">Everything I just walked you through — the system, the scripts, the templates, and 30 days of launch support — so you can install ADmaxing in your business this week.</p>
+
+      <!-- Cart / session-close countdown (starts when the offer is revealed) -->
+      <div class="cart-cd">
+        <span class="lbl">This offer closes in</span>
+        <span class="val" id="cartCd">30:00</span>
+      </div>
+
+      <!-- Bonus / value stack -->
+      <div class="stack">
+        <div class="it core"><span>🎯 The ADmaxing Accelerator (core system)</span><span class="v">$1,997</span></div>
+        <div class="it"><span>📜 Bonus 1 — Pre-Sold Ad Script Vault</span><span class="v">$497</span></div>
+        <div class="it"><span>🧩 Bonus 2 — Sales-First Funnel Templates</span><span class="v">$397</span></div>
+        <div class="it"><span>🤝 Bonus 3 — 30-Day Launch Support (private community)</span><span class="v">$997</span></div>
+        <div class="it"><span>🔍 Bonus 4 — 1:1 Campaign Audit</span><span class="v">$300</span></div>
+        <div class="tot"><span>Total value</span><span class="v">$4,188</span></div>
+      </div>
+
+      <div class="price">
+        <span class="was">$997</span><span class="now">$497</span>
+        <span class="cap">One payment · Lifetime access · Save $500 today</span>
+      </div>
+
+      <button class="btn-buy" id="buyBtn">Enroll Now — $497 &rarr;</button>
+
+      <div class="guar">
+        <div class="badge">🛡️</div>
+        <div><b>30-Day Money-Back Guarantee.</b> Go through the Accelerator, use the scripts and templates. If it's not for you, email us within 30 days for a full refund. Zero risk.</div>
+      </div>
+
+      <p class="checkout-fine">🔒 Secure checkout · Instant access · This masterclass price is not available anywhere else.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== TESTIMONIAL WALL ===================== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Real Results</span>
+      <h2 style="font-size:clamp(22px,4vw,30px)">What Happens When You ADmax</h2>
+      <p class="muted" style="font-size:13px;margin-top:8px">⚠️ Replace each card with a real, verifiable testimonial (name, photo, specific number).</p>
+    </div>
+    <div class="proof-grid">
+      <div class="tstm"><span class="slot-tag">REAL TESTIMONIAL SLOT #1</span><div class="stars">★★★★★</div><p>"[Specific result with a number.]"</p><div class="who"><div class="avatar-ph">PHOTO</div><div><div class="name">[Name]</div><div class="role">[Niche]</div></div></div></div>
+      <div class="tstm"><span class="slot-tag">REAL TESTIMONIAL SLOT #2</span><div class="stars">★★★★★</div><p>"[Specific result with a number.]"</p><div class="who"><div class="avatar-ph">PHOTO</div><div><div class="name">[Name]</div><div class="role">[Niche]</div></div></div></div>
+      <div class="tstm"><span class="slot-tag">REAL TESTIMONIAL SLOT #3</span><div class="stars">★★★★★</div><p>"[Specific result with a number.]"</p><div class="who"><div class="avatar-ph">PHOTO</div><div><div class="name">[Name]</div><div class="role">[Niche]</div></div></div></div>
+      <div class="tstm"><span class="slot-tag">REAL TESTIMONIAL SLOT #4</span><div class="stars">★★★★★</div><p>"[Specific result with a number.]"</p><div class="who"><div class="avatar-ph">PHOTO</div><div><div class="name">[Name]</div><div class="role">[Niche]</div></div></div></div>
+      <div class="tstm"><span class="slot-tag">REAL TESTIMONIAL SLOT #5</span><div class="stars">★★★★★</div><p>"[Specific result with a number.]"</p><div class="who"><div class="avatar-ph">PHOTO</div><div><div class="name">[Name]</div><div class="role">[Niche]</div></div></div></div>
+      <div class="tstm"><span class="slot-tag">REAL TESTIMONIAL SLOT #6</span><div class="stars">★★★★★</div><p>"[Specific result with a number.]"</p><div class="who"><div class="avatar-ph">PHOTO</div><div><div class="name">[Name]</div><div class="role">[Niche]</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Questions</span><h2 style="font-size:clamp(22px,4vw,30px)">About the Accelerator</h2></div>
+    <div class="faq" id="faq">
+      <div class="qa"><button>What exactly do I get for $497?<span class="ic">+</span></button><div class="ans">The full ADmaxing Accelerator (the complete system), plus the four bonuses: the Pre-Sold Ad Script Vault, Sales-First Funnel Templates, 30-Day Launch Support in the private community, and a 1:1 campaign audit. One payment, lifetime access.</div></div>
+      <div class="qa"><button>Do I need to be running ads already?<span class="ic">+</span></button><div class="ans">No. The Accelerator walks you from setup to your first pre-sold campaign, even at a small budget. If you're already running ads, you'll rebuild them the ADmaxing way for sales instead of cheap leads.</div></div>
+      <div class="qa"><button>How fast will I see results?<span class="ic">+</span></button><div class="ans">Many members launch their first sales-first campaign within a week. How fast it converts depends on your offer, your market, and how quickly you implement. This is a system, not a magic button.</div></div>
+      <div class="qa"><button>What if it's not for me?<span class="ic">+</span></button><div class="ans">You're covered by a 30-day money-back guarantee. Go through it, use the material, and if it's not a fit, email us for a full refund. No hoops.</div></div>
+      <div class="qa"><button>Is the $497 price going to last?<span class="ic">+</span></button><div class="ans">This is a masterclass-only price shown once, here, while your session is open. The standard price is higher, so if you want in, enroll before the timer above runs out.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PRESENTER ===================== -->
+<section>
+  <div class="wrap">
+    <div class="presenter">
+      <div class="p-photo">[PRESENTER PHOTO]</div>
+      <div>
+        <span class="eyebrow" style="margin-bottom:10px">Your Host</span>
+        <h3>Yousif Alias</h3>
+        <div class="p-role">Founder, KenjiAI · 12 years running paid ads · 1,000+ students trained</div>
+        <p>I spent years optimizing for the cheapest possible leads and ended up with an inbox full of people who'd never buy. When I flipped to optimizing for <strong>sales</strong> — pre-selling before the click became a conversation — everything changed.</p>
+        <p>ADmaxing is that system, distilled into something you can install this week. Enroll above and I'll see you inside.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>© <span id="yr"></span> KenjiAI / Media Traffics. All rights reserved.</p>
+    <p style="margin-top:8px">Not affiliated with or endorsed by Facebook/Meta or Google. Results vary and are not guaranteed.</p>
+  </div>
+</footer>
+
+<!-- Mobile chat launcher -->
+<button class="chat-fab" id="chatFab">💬 Live Chat <span id="fabCount" style="opacity:.8">·</span></button>
+
+<script>
+/* =================================================================
+   CONFIG — swap these before launch
+   ================================================================= */
+const CONFIG = {
+  CHECKOUT_URL: 'https://REPLACE-WITH-YOUR-CHECKOUT-URL',   // GHL order form / Stripe / etc.
+  OFFER_REVEAL_SECONDS: 360,    // offer appears at 6:00 of the 8:09 video. ADJUST to the exact second your CTA/pitch starts.
+  CART_MINUTES: 30,             // countdown length once the offer is revealed
+  VIEWER_MIN: 180,              // placeholder viewer floor  (see USE_REAL_VIEWER_API)
+  VIEWER_MAX: 340,              // placeholder viewer ceiling
+  USE_REAL_VIEWER_API: false,   // true -> implement getRealViewerCount() below
+  USE_SIMULATED_PLAYBACK: false // real <video> now drives chat + offer timing (was true for demo)
+};
+
+/* =================================================================
+   ⚠️  SAMPLE CHAT DATA — REPLACE BEFORE RUNNING PAID TRAFFIC  ⚠️
+   The chat is labeled "replay from a previous session," which is a factual
+   claim. To stay FTC-compliant, replace EVERY object below with a REAL
+   comment captured from an actual recorded session (export your live chat).
+   These are realistic placeholders ONLY so you can preview pacing today.
+   Fields: timestamp_seconds (when it appears), name, message, avatar_initial
+   ================================================================= */
+const COMMENTS = [
+  { timestamp_seconds: 5,   name: "Marcus T.",   message: "Locked in and ready 🔥", avatar_initial: "M" },
+  { timestamp_seconds: 14,  name: "Priya N.",    message: "Tuning in from Toronto 👋", avatar_initial: "P" },
+  { timestamp_seconds: 24,  name: "Dwayne H.",   message: "Been waiting for this one all week", avatar_initial: "D" },
+  { timestamp_seconds: 34,  name: "Sofia R.",    message: "Audio + video coming through great", avatar_initial: "S" },
+  { timestamp_seconds: 45,  name: "James O.",    message: "not gonna lie, lead gen has been killing me", avatar_initial: "J" },
+  { timestamp_seconds: 55,  name: "Aisha B.",    message: "so true… cheap leads that never close 😩", avatar_initial: "A" },
+  { timestamp_seconds: 65,  name: "Ben C.",      message: "wait what's the actual difference vs normal ads?", avatar_initial: "B" },
+  { timestamp_seconds: 76,  name: "Carlos M.",   message: "ok this reframe already makes sense", avatar_initial: "C" },
+  { timestamp_seconds: 87,  name: "Grace L.",    message: "taking so many notes 📝", avatar_initial: "G" },
+  { timestamp_seconds: 98,  name: "Tyler W.",    message: "the pre-sold idea is 🤯", avatar_initial: "T" },
+  { timestamp_seconds: 110, name: "Nina K.",     message: "how much budget do you need to start?", avatar_initial: "N" },
+  { timestamp_seconds: 122, name: "Omar F.",     message: "my CPL is like $40 and none of them buy lol", avatar_initial: "O" },
+  { timestamp_seconds: 134, name: "Rachel P.",   message: "omg this is EXACTLY my problem", avatar_initial: "R" },
+  { timestamp_seconds: 146, name: "Kwame A.",    message: "so we optimize for sales not leads, got it", avatar_initial: "K" },
+  { timestamp_seconds: 158, name: "Elena V.",    message: "does this work for coaches specifically?", avatar_initial: "E" },
+  { timestamp_seconds: 170, name: "Marcus T.",   message: "the offer-to-ad match part is gold", avatar_initial: "M" },
+  { timestamp_seconds: 182, name: "Hana Y.",     message: "screenshotting this slide 📸", avatar_initial: "H" },
+  { timestamp_seconds: 194, name: "Derek S.",    message: "how long before you typically see results?", avatar_initial: "D" },
+  { timestamp_seconds: 206, name: "Bianca G.",   message: "I've wasted SO much on agencies 😮‍💨", avatar_initial: "B" },
+  { timestamp_seconds: 218, name: "Sam I.",      message: "this honestly makes agencies look silly", avatar_initial: "S" },
+  { timestamp_seconds: 230, name: "Leah D.",     message: "what platforms? just Meta or Google too?", avatar_initial: "L" },
+  { timestamp_seconds: 242, name: "Andre J.",    message: "following along, this is 🔥🔥", avatar_initial: "A" },
+  { timestamp_seconds: 253, name: "Yuki T.",     message: "the messaging framework alone is worth it", avatar_initial: "Y" },
+  { timestamp_seconds: 264, name: "Tom R.",      message: "my closer is gonna LOVE pre-sold leads", avatar_initial: "T" },
+  { timestamp_seconds: 275, name: "Fatima Z.",   message: "can you show a real example?", avatar_initial: "F" },
+  { timestamp_seconds: 286, name: "Chris B.",    message: "that case study 👏👏", avatar_initial: "C" },
+  { timestamp_seconds: 296, name: "Monica E.",   message: "wait he did that on $20/day?? 😳", avatar_initial: "M" },
+  { timestamp_seconds: 306, name: "Victor S.",   message: "ok I'm fully sold on the concept", avatar_initial: "V" },
+  { timestamp_seconds: 316, name: "Isabella C.", message: "is there a way to work with your team on this?", avatar_initial: "I" },
+  { timestamp_seconds: 325, name: "Nathan W.",   message: "how do we implement without a big team?", avatar_initial: "N" },
+  { timestamp_seconds: 333, name: "Zara M.",     message: "this is the missing piece for me fr", avatar_initial: "Z" },
+  { timestamp_seconds: 340, name: "Paolo R.",    message: "the funnel structure makes so much sense now", avatar_initial: "P" },
+  { timestamp_seconds: 346, name: "Deja W.",     message: "worth every minute of this 🙌", avatar_initial: "D" },
+  { timestamp_seconds: 351, name: "Ryan H.",     message: "can't wait to see the offer 👀", avatar_initial: "R" },
+  { timestamp_seconds: 355, name: "Grace L.",    message: "take my money already lol", avatar_initial: "G" },
+  { timestamp_seconds: 358, name: "Sofia R.",    message: "ok so what's the actual investment?", avatar_initial: "S" },
+  /* --- around the offer reveal (OFFER_REVEAL_SECONDS = 360 / 6:00) --- */
+  { timestamp_seconds: 366, name: "Marcus T.",   message: "wait… $497?? that's it?", avatar_initial: "M" },
+  { timestamp_seconds: 378, name: "Priya N.",    message: "just enrolled ✅", avatar_initial: "P" },
+  { timestamp_seconds: 390, name: "Omar F.",     message: "how do I sign up??", avatar_initial: "O" },
+  { timestamp_seconds: 402, name: "Rachel P.",   message: "is the 30-day guarantee legit?", avatar_initial: "R" },
+  { timestamp_seconds: 414, name: "Tyler W.",    message: "grabbing my spot right now", avatar_initial: "T" },
+  { timestamp_seconds: 426, name: "Bianca G.",   message: "done. I'm in. let's gooo 🚀", avatar_initial: "B" },
+  { timestamp_seconds: 438, name: "Nina K.",     message: "does the community have support built in?", avatar_initial: "N" },
+  { timestamp_seconds: 450, name: "Derek S.",    message: "just bought, so pumped 🙌", avatar_initial: "D" },
+  { timestamp_seconds: 462, name: "Elena V.",    message: "best $497 I've spent this year honestly", avatar_initial: "E" },
+  { timestamp_seconds: 474, name: "Sam I.",      message: "can someone drop the enroll link again?", avatar_initial: "S" },
+  { timestamp_seconds: 485, name: "Hana Y.",     message: "enrolled! see everyone inside 🎉", avatar_initial: "H" }
+];
+
+/* =================================================================
+   PLAYBACK TIME SOURCE
+   Everything (chat + offer reveal) is driven by getPlaybackState().
+   - Real video mode: reads the <video> element's currentTime + paused.
+       (For Vimeo/Wistia/Bunny, replace the body of getPlaybackState()
+        with that player's getCurrentTime()/paused equivalents.)
+   - Simulated mode: a demo clock you control with the Play button, so
+       the page fully works before you add a video.
+   Because chat is driven by currentTime, pausing the video pauses the chat.
+   ================================================================= */
+const video   = document.getElementById('webinarVideo');
+const params  = new URLSearchParams(location.search);
+const FAST     = parseFloat(params.get('fast') || '1');   // ?fast=10 -> 10x demo speed for testing
+
+let sim = { seconds: 0, playing: false, last: performance.now() };
+
+function getPlaybackState(){
+  if (!CONFIG.USE_SIMULATED_PLAYBACK && video){
+    return { seconds: video.currentTime || 0, paused: video.paused };
+  }
+  return { seconds: sim.seconds, paused: !sim.playing };
+}
+
+/* Simulated clock tick */
+function simTick(now){
+  if (sim.playing){
+    sim.seconds += ((now - sim.last)/1000) * FAST;
+  }
+  sim.last = now;
+  requestAnimationFrame(simTick);
+}
+requestAnimationFrame(simTick);
+
+/* Demo controls */
+const simBar = document.getElementById('simBar');
+if (!CONFIG.USE_SIMULATED_PLAYBACK) simBar.style.display = 'none';
+document.getElementById('simPlay').addEventListener('click', (e)=>{
+  sim.playing = !sim.playing;
+  e.target.textContent = sim.playing ? '⏸ Pause demo' : '▶ Play demo';
+});
+document.getElementById('simOffer').addEventListener('click', ()=>{
+  sim.seconds = Math.max(sim.seconds, CONFIG.OFFER_REVEAL_SECONDS);
+});
+/* URL helper: watch.html?reveal=1 forces the offer open immediately (for previewing) */
+const FORCE_REVEAL = params.get('reveal') === '1';
+
+/* =================================================================
+   CHAT REPLAY ENGINE (synced to playback time)
+   ================================================================= */
+const chatBody = document.getElementById('chatBody');
+const WARM = ['#f59e0b','#f97316','#ef4444','#e11d48','#d97706','#ea580c','#dc2626','#c2410c','#b45309','#fb7185'];
+function colorFor(str){ let h=0; for(let i=0;i<str.length;i++) h=(h*31+str.charCodeAt(i))>>>0; return WARM[h % WARM.length]; }
+const SORTED = COMMENTS.slice().sort((a,b)=>a.timestamp_seconds-b.timestamp_seconds);
+let shownIdx = 0, lastSec = 0;
+
+function appendComment(c){
+  const wrap = document.createElement('div'); wrap.className = 'msg';
+  const av = document.createElement('div'); av.className = 'av';
+  av.style.background = colorFor(c.name); av.textContent = c.avatar_initial || (c.name||'?')[0];
+  const bub = document.createElement('div'); bub.className = 'bub';
+  const nm = document.createElement('div'); nm.className = 'nm'; nm.textContent = c.name;
+  const tx = document.createElement('div'); tx.className = 'tx'; tx.textContent = c.message;
+  bub.appendChild(nm); bub.appendChild(tx); wrap.appendChild(av); wrap.appendChild(bub);
+  chatBody.appendChild(wrap);
+  chatBody.scrollTop = chatBody.scrollHeight;
+  updateFabCount();
+}
+function syncChat(sec){
+  // Handle a backward seek (real video only): rebuild from scratch
+  if (sec + 1.5 < lastSec){ chatBody.innerHTML=''; shownIdx = 0; }
+  while (shownIdx < SORTED.length && SORTED[shownIdx].timestamp_seconds <= sec){
+    appendComment(SORTED[shownIdx]); shownIdx++;
+  }
+  lastSec = sec;
+}
+function updateFabCount(){
+  const el = document.getElementById('fabCount'); if (el) el.textContent = '· ' + shownIdx;
+}
+
+/* =================================================================
+   VIEWER COUNT
+   ================================================================= */
+async function getRealViewerCount(){
+  // TODO: return a real concurrent-viewer number from your webinar platform API.
+  // e.g. const r = await fetch('/api/live-viewers'); return (await r.json()).count;
+  return null;
+}
+let viewer = Math.round((CONFIG.VIEWER_MIN + CONFIG.VIEWER_MAX)/2);
+async function tickViewers(){
+  if (CONFIG.USE_REAL_VIEWER_API){
+    const real = await getRealViewerCount();
+    if (real != null) viewer = real;
+  } else {
+    // Placeholder gentle random-walk (demo only — replace with real data).
+    viewer += Math.round((Math.random()-0.5) * 14);
+    viewer = Math.max(CONFIG.VIEWER_MIN, Math.min(CONFIG.VIEWER_MAX, viewer));
+  }
+  document.getElementById('viewerCount').textContent = viewer.toLocaleString();
+}
+tickViewers();
+setInterval(tickViewers, 5000);
+
+/* =================================================================
+   OFFER REVEAL + CART COUNTDOWN
+   ================================================================= */
+const offerEl = document.getElementById('offer');
+let revealed = false, cartEnd = 0;
+
+function revealOffer(){
+  if (revealed) return;
+  revealed = true;
+  offerEl.classList.add('show');
+  cartEnd = Date.now() + CONFIG.CART_MINUTES * 60 * 1000;
+  if (window.fbq)  fbq('trackCustom', 'OfferRevealed', { offer: 'ADmaxing Accelerator' });
+  if (window.gtag) gtag('event', 'offer_revealed', { event_category: 'webinar' });
+  offerEl.scrollIntoView({ behavior:'smooth', block:'start' });
+  tickCart();
+}
+function tickCart(){
+  if (!revealed) return;
+  let diff = Math.max(0, cartEnd - Date.now());
+  const m = String(Math.floor(diff/60000)).padStart(2,'0');
+  const s = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+  document.getElementById('cartCd').textContent = m + ':' + s;
+}
+setInterval(tickCart, 1000);
+if (FORCE_REVEAL) revealOffer();
+
+/* Buy button */
+document.getElementById('buyBtn').addEventListener('click', ()=>{
+  if (window.fbq)  fbq('track', 'InitiateCheckout', { content_name:'ADmaxing Accelerator', value:497, currency:'USD' });
+  if (window.gtag) gtag('event', 'begin_checkout', { value:497, currency:'USD', items:[{item_name:'ADmaxing Accelerator'}] });
+  window.location.href = CONFIG.CHECKOUT_URL;
+});
+
+/* =================================================================
+   MASTER LOOP — drive chat + offer from playback time (4x / sec)
+   ================================================================= */
+setInterval(()=>{
+  const st = getPlaybackState();
+  syncChat(st.seconds);
+  if (!revealed && st.seconds >= CONFIG.OFFER_REVEAL_SECONDS) revealOffer();
+  // demo time display
+  const t = document.getElementById('simTime');
+  if (t){ const m=String(Math.floor(st.seconds/60)).padStart(2,'0'), s=String(Math.floor(st.seconds%60)).padStart(2,'0'); t.textContent=m+':'+s; }
+}, 250);
+
+/* =================================================================
+   MOBILE CHAT DRAWER
+   ================================================================= */
+const chatCol = document.getElementById('chatCol');
+document.getElementById('chatFab').addEventListener('click', ()=> chatCol.classList.add('open'));
+document.getElementById('chatClose').addEventListener('click', ()=> chatCol.classList.remove('open'));
+
+/* FAQ accordion */
+document.querySelectorAll('#faq .qa button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const qa = btn.parentElement, open = qa.classList.contains('open');
+    document.querySelectorAll('#faq .qa').forEach(x=>{x.classList.remove('open');x.querySelector('.ic').textContent='+';});
+    if(!open){ qa.classList.add('open'); qa.querySelector('.ic').textContent='–'; }
+  });
+});
+
+/* If you switch to a real video (USE_SIMULATED_PLAYBACK=false), the loop above
+   already reads video.currentTime & video.paused — nothing else to wire.
+   For Vimeo/Wistia/Bunny, edit getPlaybackState() to return their time/paused. */
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Free Masterclass: The ADmaxing Method | Pre-Sold Clients From Paid Ads</title>
+<meta name="description" content="Free online masterclass for high-ticket coaches & service providers: turn cold ad clicks into pre-sold, ready-to-buy clients with the ADmaxing method." />
+
+<!-- ============================================================= -->
+<!-- TRACKING - SWAP PLACEHOLDERS BEFORE GOING LIVE                 -->
+<!-- ============================================================= -->
+
+<!-- Facebook Pixel (REPLACE 000000000000000 with your Pixel ID) -->
+<script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '000000000000000');   /* <-- REPLACE: your Facebook Pixel ID */
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=000000000000000&ev=PageView&noscript=1"/></noscript>
+
+<!-- Google Analytics 4 (REPLACE G-XXXXXXXXXX with your GA4 Measurement ID) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');   /* <-- REPLACE: your GA4 ID */
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0a0a0a; --card:#141414; --card2:#181818;
+    --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.14);
+    --txt:#f4f4f5; --muted:#a1a1aa; --muted2:#71717a;
+    --amber:#f59e0b; --orange:#f97316; --emerald:#10b981; --red:#ef4444;
+    --grad:linear-gradient(135deg,#f59e0b,#f97316);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#0a0a0a;color:var(--txt);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    line-height:1.55;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  .narrow{max-width:760px;margin:0 auto;padding:0 20px}
+  section{padding:56px 0}
+  h1,h2,h3{line-height:1.12;letter-spacing:-.02em;font-weight:900}
+  .eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--amber);
+    background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);
+    padding:7px 14px;border-radius:999px;margin-bottom:20px}
+  .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .muted{color:var(--muted)}
+  .center{text-align:center}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    background:var(--grad);color:#111;font-weight:900;font-size:18px;
+    padding:18px 34px;border:none;border-radius:14px;cursor:pointer;width:100%;
+    box-shadow:0 0 34px rgba(245,158,11,.35);transition:transform .2s, box-shadow .2s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 0 52px rgba(245,158,11,.55)}
+  .btn:active{transform:translateY(0)}
+
+  /* Hero */
+  .hero{padding-top:44px}
+  .hero h1{font-size:clamp(28px,6vw,50px);margin:14px 0 16px}
+  .hero .sub{font-size:clamp(16px,2.4vw,20px);color:var(--muted);max-width:720px;margin:0 auto 26px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px}
+  .form-card{max-width:480px;margin:0 auto;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+
+  /* Countdown */
+  .cd-box{display:flex;align-items:center;justify-content:center;gap:10px;
+    background:#0f0f0f;border:1px solid rgba(239,68,68,.35);border-radius:14px;
+    padding:14px 16px;margin-bottom:18px}
+  .cd-box .pulse{width:9px;height:9px;border-radius:50%;background:var(--red);
+    box-shadow:0 0 0 0 rgba(239,68,68,.6);animation:pulse 1.6s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(239,68,68,.5)}70%{box-shadow:0 0 0 12px rgba(239,68,68,0)}100%{box-shadow:0 0 0 0 rgba(239,68,68,0)}}
+  .cd-label{font-size:12.5px;font-weight:700;color:#e4e4e7}
+  .cd-time{font-variant-numeric:tabular-nums;font-weight:900;color:#fff;font-size:19px;letter-spacing:.02em}
+  .cd-note{font-size:11.5px;color:var(--muted2);text-align:center;margin-top:-8px;margin-bottom:16px}
+
+  /* Inputs */
+  .field{margin-bottom:12px}
+  .field input{width:100%;background:#0f0f0f;border:1px solid var(--line2);border-radius:12px;
+    color:#fff;font-size:16px;padding:15px 16px;font-family:inherit}
+  .field input:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(245,158,11,.15)}
+  .form-fine{font-size:11.5px;color:var(--muted2);text-align:center;margin-top:12px}
+
+  /* Discover bullets */
+  .bullets{display:grid;gap:16px;margin-top:8px}
+  .bullet{display:flex;gap:16px;background:var(--card);border:1px solid var(--line);
+    border-radius:16px;padding:22px}
+  .bullet .num{flex:0 0 auto;width:40px;height:40px;border-radius:12px;background:var(--grad);
+    color:#111;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:18px}
+  .bullet h3{font-size:17px;margin-bottom:6px}
+  .bullet p{color:var(--muted);font-size:14.5px}
+
+  /* Social proof */
+  .proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:6px}
+  .tstm{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+  .tstm .top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .avatar-ph{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#27272a,#3f3f46);
+    border:1px dashed var(--line2);display:flex;align-items:center;justify-content:center;
+    font-size:10px;color:var(--muted2);text-align:center;flex:0 0 auto}
+  .tstm .name{font-weight:800;font-size:14px}
+  .tstm .role{font-size:12px;color:var(--muted2)}
+  .stars{color:var(--amber);font-size:13px;margin-bottom:6px}
+  .tstm p{font-size:14px;color:#d4d4d8}
+  .slot-tag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;
+    color:#000;background:var(--amber);padding:3px 8px;border-radius:6px;margin-bottom:10px}
+
+  /* For / not for */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .col{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
+  .col.good{border-color:rgba(16,185,129,.3)}
+  .col.bad{border-color:rgba(239,68,68,.25)}
+  .col h3{font-size:18px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .col ul{list-style:none;display:grid;gap:11px}
+  .col li{display:flex;gap:10px;font-size:14.5px;color:#d4d4d8}
+  .tick{color:var(--emerald);font-weight:900}
+  .cross{color:var(--red);font-weight:900}
+
+  /* Presenter */
+  .presenter{display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:center}
+  .p-photo{aspect-ratio:1;border-radius:20px;background:linear-gradient(135deg,#1c1c1c,#262626);
+    border:1px dashed var(--line2);display:flex;align-items:center;justify-content:center;
+    color:var(--muted2);font-size:12px;text-align:center;padding:10px}
+  .presenter h3{font-size:24px;margin-bottom:6px}
+  .presenter .p-role{color:var(--amber);font-weight:700;font-size:14px;margin-bottom:14px}
+  .presenter p{color:var(--muted);font-size:15px;margin-bottom:12px}
+
+  /* FAQ */
+  .faq{display:grid;gap:12px}
+  .qa{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .qa button{all:unset;display:flex;justify-content:space-between;align-items:center;gap:14px;
+    width:100%;padding:18px 20px;cursor:pointer;font-weight:700;font-size:15.5px;color:#fff}
+  .qa .ans{padding:0 20px;max-height:0;overflow:hidden;color:var(--muted);font-size:14.5px;
+    transition:max-height .3s ease,padding .3s ease}
+  .qa.open .ans{padding:0 20px 18px;max-height:320px}
+  .qa .ic{color:var(--amber);font-size:20px;flex:0 0 auto}
+
+  .foot{padding:40px 0 60px;text-align:center;color:var(--muted2);font-size:12.5px;border-top:1px solid var(--line)}
+  .foot a{color:var(--muted)}
+
+  @media(max-width:720px){
+    section{padding:44px 0}
+    .two-col{grid-template-columns:1fr}
+    .presenter{grid-template-columns:1fr;text-align:center}
+    .p-photo{max-width:180px;margin:0 auto}
+  }
+</style>
+</head>
+<body>
+<!-- Hard dark-theme lock (kept per spec, right after <body>) -->
+<style>html, body { background: #0a0a0a !important; background-color: #0a0a0a !important; }</style>
+
+<!-- ============================== HERO ============================== -->
+<section class="hero">
+  <div class="wrap center">
+    <span class="eyebrow">Free Online Masterclass · Coaches &amp; High-Ticket Service Providers</span>
+    <h1>
+      Turn Cold Ad Clicks Into
+      <span class="grad-text">Pre-Sold, Ready-to-Buy Clients</span>
+      in 21 Days
+    </h1>
+    <p class="sub">
+      The "ADmaxing" method that ditches dead-end lead gen and optimizes your ads for actual
+      <strong>sales</strong> &mdash; so the people who book are already sold before they ever talk to you.
+      No cold calling. No price-dropping. No calendar full of tire-kickers.
+    </p>
+
+    <!-- Registration card -->
+    <div class="card form-card">
+      <!-- COUNTDOWN #1 (evergreen just-in-time: next session on the :00/:15/:30/:45) -->
+      <div class="cd-box">
+        <span class="pulse"></span>
+        <span class="cd-label">Next live session starts in</span>
+        <span class="cd-time session-countdown">--:--</span>
+      </div>
+      <p class="cd-note">New just-in-time sessions begin every 15 minutes. Register to grab the next one.</p>
+
+      <!-- FORM: posts to your GHL webhook, then redirects to the watch page -->
+      <form id="regForm" novalidate>
+        <div class="field">
+          <input type="text" id="firstName" name="first_name" placeholder="First name" autocomplete="given-name" required />
+        </div>
+        <div class="field">
+          <input type="email" id="email" name="email" placeholder="Best email address" autocomplete="email" required />
+        </div>
+        <button type="submit" class="btn">Reserve My Spot &rarr;</button>
+        <p class="form-fine">🔒 Your info is safe. We'll email your access link + reminders. Unsubscribe anytime.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= WHAT YOU'LL DISCOVER ======================= -->
+<section>
+  <div class="narrow">
+    <div class="center" style="margin-bottom:28px">
+      <span class="eyebrow">On This Free Training</span>
+      <h2 style="font-size:clamp(24px,4.5vw,34px)">Here's What You'll Walk Away With</h2>
+    </div>
+    <div class="bullets">
+      <div class="bullet">
+        <div class="num">1</div>
+        <div>
+          <h3>Why "more leads" is the trap keeping your calendar full of tire-kickers</h3>
+          <p>The counterintuitive metric ADmaxers optimize for instead of cost-per-lead &mdash; and why chasing cheap leads is quietly capping your revenue.</p>
+        </div>
+      </div>
+      <div class="bullet">
+        <div class="num">2</div>
+        <div>
+          <h3>The "Pre-Sell Sequence" that does your selling <em>before</em> the call</h3>
+          <p>How to engineer your ad-to-offer path so prospects show up already knowing your price, wanting the outcome, and ready to pay premium &mdash; no convincing required.</p>
+        </div>
+      </div>
+      <div class="bullet">
+        <div class="num">3</div>
+        <div>
+          <h3>The single sales-first campaign that replaces agencies and "boosting posts"</h3>
+          <p>The exact structure that turns $20&ndash;$50/day into booked, pre-sold clients &mdash; even if you've burned money on ads before and swore them off.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= SOCIAL PROOF ========================= -->
+<section style="background:#0d0d0d;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="center" style="margin-bottom:26px">
+      <span class="eyebrow">Real Results</span>
+      <h2 style="font-size:clamp(22px,4vw,30px)">What ADmaxers Are Saying</h2>
+      <p class="muted" style="font-size:13px;margin-top:8px">
+        ⚠️ Swap each card below for a real, verifiable testimonial (name, photo, specific result).
+      </p>
+    </div>
+    <div class="proof-grid">
+      <!-- Repeat this card 5-6x with REAL testimonials. Photo -> replace .avatar-ph with <img>. -->
+      <div class="tstm">
+        <span class="slot-tag">REAL TESTIMONIAL SLOT #1</span>
+        <div class="stars">★★★★★</div>
+        <p>"[One sentence, specific result with a number — e.g. 'Went from $6k to $22k/mo in 60 days.']"</p>
+        <div class="top" style="margin-top:14px;margin-bottom:0">
+          <div class="avatar-ph">PHOTO</div>
+          <div><div class="name">[Name]</div><div class="role">[Business / niche]</div></div>
+        </div>
+      </div>
+      <div class="tstm">
+        <span class="slot-tag">REAL TESTIMONIAL SLOT #2</span>
+        <div class="stars">★★★★★</div>
+        <p>"[Specific outcome — e.g. 'Booked 14 pre-sold calls in my first 2 weeks.']"</p>
+        <div class="top" style="margin-top:14px;margin-bottom:0">
+          <div class="avatar-ph">PHOTO</div>
+          <div><div class="name">[Name]</div><div class="role">[Business / niche]</div></div>
+        </div>
+      </div>
+      <div class="tstm">
+        <span class="slot-tag">REAL TESTIMONIAL SLOT #3</span>
+        <div class="stars">★★★★★</div>
+        <p>"[Specific outcome with a number.]"</p>
+        <div class="top" style="margin-top:14px;margin-bottom:0">
+          <div class="avatar-ph">PHOTO</div>
+          <div><div class="name">[Name]</div><div class="role">[Business / niche]</div></div>
+        </div>
+      </div>
+      <div class="tstm">
+        <span class="slot-tag">REAL TESTIMONIAL SLOT #4</span>
+        <div class="stars">★★★★★</div>
+        <p>"[Specific outcome with a number.]"</p>
+        <div class="top" style="margin-top:14px;margin-bottom:0">
+          <div class="avatar-ph">PHOTO</div>
+          <div><div class="name">[Name]</div><div class="role">[Business / niche]</div></div>
+        </div>
+      </div>
+      <div class="tstm">
+        <span class="slot-tag">REAL TESTIMONIAL SLOT #5</span>
+        <div class="stars">★★★★★</div>
+        <p>"[Specific outcome with a number.]"</p>
+        <div class="top" style="margin-top:14px;margin-bottom:0">
+          <div class="avatar-ph">PHOTO</div>
+          <div><div class="name">[Name]</div><div class="role">[Business / niche]</div></div>
+        </div>
+      </div>
+      <div class="tstm">
+        <span class="slot-tag">REAL TESTIMONIAL SLOT #6</span>
+        <div class="stars">★★★★★</div>
+        <p>"[Specific outcome with a number.]"</p>
+        <div class="top" style="margin-top:14px;margin-bottom:0">
+          <div class="avatar-ph">PHOTO</div>
+          <div><div class="name">[Name]</div><div class="role">[Business / niche]</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHO IT'S FOR / NOT FOR ===================== -->
+<section>
+  <div class="narrow">
+    <div class="center" style="margin-bottom:26px">
+      <span class="eyebrow">Read This First</span>
+      <h2 style="font-size:clamp(22px,4vw,30px)">Is This Masterclass Right For You?</h2>
+    </div>
+    <div class="two-col">
+      <div class="col good">
+        <h3>✅ This is for you if…</h3>
+        <ul>
+          <li><span class="tick">→</span> You sell a high-ticket offer ($3k+) as a coach, consultant, or service provider.</li>
+          <li><span class="tick">→</span> You get some leads, but too many ghost, haggle, or never close.</li>
+          <li><span class="tick">→</span> You're running ads (or ready to) and want sales, not vanity metrics.</li>
+          <li><span class="tick">→</span> You'd rather have 10 pre-sold buyers than 100 cold "leads."</li>
+          <li><span class="tick">→</span> You'll actually implement what you learn.</li>
+        </ul>
+      </div>
+      <div class="col bad">
+        <h3>🚫 This isn't for you if…</h3>
+        <ul>
+          <li><span class="cross">✕</span> You don't have an offer yet or have never sold anything.</li>
+          <li><span class="cross">✕</span> You sell low-ticket products and just want raw volume.</li>
+          <li><span class="cross">✕</span> You want a magic button and won't do the work.</li>
+          <li><span class="cross">✕</span> You're happy drowning in cheap, unqualified leads.</li>
+          <li><span class="cross">✕</span> You think "more leads" is always the answer.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================= PRESENTER ========================= -->
+<section style="background:#0d0d0d;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="narrow">
+    <div class="presenter">
+      <!-- Replace .p-photo with <img src="/yousif.jpg" alt="Yousif Alias"> -->
+      <div class="p-photo">[PRESENTER PHOTO]</div>
+      <div>
+        <span class="eyebrow" style="margin-bottom:12px">Your Host</span>
+        <h3>Yousif Alias</h3>
+        <div class="p-role">Founder, KenjiAI · 12 years running paid ads · 1,000+ students trained</div>
+        <p>For years I did what every "expert" preached: chase the cheapest leads possible. I spent tens of thousands driving down cost-per-lead &mdash; and ended up with an inbox full of people who'd never buy.</p>
+        <p>Everything changed when I stopped optimizing for leads and started optimizing for <strong>sales</strong>. I rebuilt my campaigns to pre-sell before the click ever turned into a conversation. Same budget, radically different people showing up: pre-sold, premium-ready buyers.</p>
+        <p>That system is what I now call <strong>ADmaxing</strong>, and in the next session I'll show you exactly how it works.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================== FAQ =========================== -->
+<section>
+  <div class="narrow">
+    <div class="center" style="margin-bottom:26px">
+      <span class="eyebrow">Before You Register</span>
+      <h2 style="font-size:clamp(22px,4vw,30px)">Quick Questions</h2>
+    </div>
+    <div class="faq" id="faq">
+      <div class="qa">
+        <button>Is this live or pre-recorded?<span class="ic">+</span></button>
+        <div class="ans">It's a just-in-time session that begins every few minutes, so you can start right away instead of waiting days for a "live" date. It runs start to finish like a real class &mdash; block about 60 minutes and watch it in one sitting.</div>
+      </div>
+      <div class="qa">
+        <button>Will I get a replay if I miss it?<span class="ic">+</span></button>
+        <div class="ans">This masterclass is built to be watched while your spot is open. We don't promise a replay, so pick a time when you can give it your full attention and register for that session.</div>
+      </div>
+      <div class="qa">
+        <button>Is there a pitch at the end?<span class="ic">+</span></button>
+        <div class="ans">Straight answer: yes. At the end I'll make an optional offer to keep working together. But the training stands on its own &mdash; you'll walk away able to implement ADmaxing whether or not you ever buy a thing.</div>
+      </div>
+      <div class="qa">
+        <button>How much does it cost to attend?<span class="ic">+</span></button>
+        <div class="ans">The masterclass is 100% free. Your only investment is the ~60 minutes and the notes you take.</div>
+      </div>
+      <div class="qa">
+        <button>How long is it and what do I need?<span class="ic">+</span></button>
+        <div class="ans">About 60 minutes. Bring a notepad and an open mind. No software, ad account, or prep required &mdash; just show up ready to learn.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= SECOND CTA ======================= -->
+<section style="background:linear-gradient(180deg,#111,#0a0a0a);border-top:1px solid var(--line)">
+  <div class="narrow center">
+    <h2 style="font-size:clamp(24px,4.5vw,36px);margin-bottom:14px">
+      Ready to Stop Buying Leads and Start
+      <span class="grad-text">Booking Pre-Sold Clients?</span>
+    </h2>
+    <p class="muted" style="max-width:560px;margin:0 auto 24px">
+      Grab your seat for the next just-in-time session. It's free, it's ~60 minutes, and it might be the last time you ever think about ads the old way.
+    </p>
+    <div class="card form-card">
+      <!-- COUNTDOWN #2 (same evergreen clock) -->
+      <div class="cd-box">
+        <span class="pulse"></span>
+        <span class="cd-label">Next live session starts in</span>
+        <span class="cd-time session-countdown">--:--</span>
+      </div>
+      <p class="cd-note">New sessions begin every 15 minutes.</p>
+      <form id="regForm2" novalidate>
+        <div class="field">
+          <input type="text" name="first_name" placeholder="First name" autocomplete="given-name" required />
+        </div>
+        <div class="field">
+          <input type="email" name="email" placeholder="Best email address" autocomplete="email" required />
+        </div>
+        <button type="submit" class="btn">Reserve My Spot &rarr;</button>
+        <p class="form-fine">🔒 100% free. Your access link is sent instantly.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>© <span id="yr"></span> KenjiAI / Media Traffics. All rights reserved.</p>
+    <p style="margin-top:8px">This site is not part of, or endorsed by, Facebook/Meta or Google. Results are not typical or guaranteed and depend on your effort, offer, and market.</p>
+  </div>
+</footer>
+
+<script>
+/* =================================================================
+   CONFIG — swap these before launch
+   ================================================================= */
+const WEBHOOK_URL   = 'https://REPLACE-WITH-YOUR-GHL-INBOUND-WEBHOOK'; // GHL "Inbound Webhook" trigger URL
+const WATCH_PAGE_URL = '/webinar1/watch'; // <-- your GHL watch/thank-you page URL (e.g. https://yourdomain.com/watch)
+
+/* =================================================================
+   EVERGREEN "JUST-IN-TIME" COUNTDOWN
+   Reads the current time, rounds UP to the next :00 / :15 / :30 / :45
+   boundary, and counts down to it. When it hits zero it automatically
+   rolls to the next 15-minute session. This is honest: sessions really
+   do begin on every quarter hour.
+   ================================================================= */
+function nextSessionTime(){
+  const now = Date.now();
+  const q = 15 * 60 * 1000;           // 15 minutes in ms
+  return Math.ceil(now / q) * q;      // next quarter-hour boundary
+}
+let sessionTarget = nextSessionTime();
+
+function renderCountdown(){
+  let diff = sessionTarget - Date.now();
+  if (diff <= 0){ sessionTarget = nextSessionTime(); diff = sessionTarget - Date.now(); }
+  const totalSec = Math.floor(diff / 1000);
+  const m = String(Math.floor(totalSec / 60)).padStart(2,'0');
+  const s = String(totalSec % 60).padStart(2,'0');
+  const label = totalSec <= 60 ? 'Starting now — ' + m + ':' + s : m + ':' + s;
+  document.querySelectorAll('.session-countdown').forEach(el => el.textContent = label);
+}
+renderCountdown();
+setInterval(renderCountdown, 1000);
+
+/* =================================================================
+   FORM HANDLING — posts to GHL webhook, fires Lead events, redirects
+   ================================================================= */
+function handleRegister(form){
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form).entries());
+    data.session_time = new Date(sessionTarget).toISOString();
+    data.source = 'admaxing-registration';
+
+    // Fire conversion events (Meta + GA4)
+    if (window.fbq) fbq('track', 'Lead', { content_name: 'ADmaxing Masterclass Registration' });
+    if (window.gtag) gtag('event', 'generate_lead', { event_category: 'webinar', event_label: 'admaxing_registration' });
+
+    // Send to GHL (no-cors = fire-and-forget; GHL webhook doesn't return CORS headers)
+    fetch(WEBHOOK_URL, {
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(data)
+    }).catch(()=>{}).finally(()=>{
+      // Redirect to the watch page regardless (webhook is fire-and-forget)
+      window.location.href = WATCH_PAGE_URL;
+    });
+
+    // Safety redirect in case fetch stalls
+    setTimeout(()=>{ window.location.href = WATCH_PAGE_URL; }, 1200);
+  });
+}
+document.querySelectorAll('#regForm, #regForm2').forEach(handleRegister);
+
+/* FAQ accordion */
+document.querySelectorAll('#faq .qa button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const qa = btn.parentElement;
+    const open = qa.classList.contains('open');
+    document.querySelectorAll('#faq .qa').forEach(x=>{x.classList.remove('open');x.querySelector('.ic').textContent='+';});
+    if(!open){ qa.classList.add('open'); qa.querySelector('.ic').textContent='–'; }
+  });
+});
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

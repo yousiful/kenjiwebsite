@@ -8,5 +8,11 @@
 /about-yousif-alias        /about-yousif-alias/index.html      200
 /about-yousif-alias/       /about-yousif-alias/index.html      200
 
+# Evergreen webinar funnel — static HTML, bypass SPA fallback
+/webinar1                  /webinar1/index.html                200
+/webinar1/                 /webinar1/index.html                200
+/webinar1/watch            /webinar1/watch/index.html          200
+/webinar1/watch/           /webinar1/watch/index.html          200
+
 # Catchall (SPA) stays last
 /* /index.html 200
