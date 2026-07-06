@@ -6,31 +6,44 @@
 <title>Free Masterclass: The ADmaxing Method | Pre-Sold Clients From Paid Ads</title>
 <meta name="description" content="Free online masterclass for high-ticket coaches & service providers: turn cold ad clicks into pre-sold, ready-to-buy clients with the ADmaxing method." />
 
-<!-- ============================================================= -->
-<!-- TRACKING - SWAP PLACEHOLDERS BEFORE GOING LIVE                 -->
-<!-- ============================================================= -->
+<!-- ============ TRACKING (KenjiAI standard stack) ============ -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NQSQ7Q4W');</script>
+<!-- End Google Tag Manager -->
 
-<!-- Facebook Pixel (REPLACE 000000000000000 with your Pixel ID) -->
+<!-- gtag shim: inline gtag('event',...) calls flow into the GTM dataLayer -->
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}</script>
+
+<!-- Meta Pixel -->
 <script>
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
   n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
   t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
   document,'script','https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '000000000000000');   /* <-- REPLACE: your Facebook Pixel ID */
+  fbq('init', '2406747486323295');
   fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=000000000000000&ev=PageView&noscript=1"/></noscript>
+  src="https://www.facebook.com/tr?id=2406747486323295&ev=PageView&noscript=1"/></noscript>
 
-<!-- Google Analytics 4 (REPLACE G-XXXXXXXXXX with your GA4 Measurement ID) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');   /* <-- REPLACE: your GA4 ID */
+<!-- DataTagManager visitor-identification pixel (de-anonymizes traffic on visit) -->
+<script type="text/javascript">
+(function(s, p, i, c, e) {
+    s[e] = s[e] || function() { (s[e].a = s[e].a || []).push(arguments); };
+    s[e].l = 1 * new Date();
+    var k = c.createElement("script"), a = c.getElementsByTagName("script")[0];
+    k.async = 1, k.src = p, a.parentNode.insertBefore(k, a);
+    s.pixelClientId = i;
+})(window, "https://datatagmanager.s3.us-east-2.amazonaws.com/pixel_popup.js", "0219d3e9-3cad-42f3-9bd1-111525982334", document, "script");
 </script>
+<script src="https://pixel.datatagmanager.com/pixel.js?pid=0219d3e9-3cad-42f3-9bd1-111525982334"></script>
+<script id="datatagmanager-id" src="https://cdn.pixel.datatagmanager.com/pixels/0219d3e9-3cad-42f3-9bd1-111525982334/p.js" async></script>
+<!-- ============ END TRACKING ============ -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -160,6 +173,8 @@
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQSQ7Q4W" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Hard dark-theme lock (kept per spec, right after <body>) -->
 <style>html, body { background: #0a0a0a !important; background-color: #0a0a0a !important; }</style>
 
@@ -275,8 +290,11 @@
 <section style="background:#0d0d0d;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
   <div class="narrow">
     <div class="presenter">
-      <!-- Replace .p-photo with <img src="/yousif.jpg" alt="Yousif Alias"> -->
-      <div class="p-photo">[PRESENTER PHOTO]</div>
+      <div class="p-photo">
+        <img src="/webinar1/presenter-yousif.jpg" alt="Yousif Alias" loading="lazy"
+             style="width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block"
+             onerror="this.style.display='none';this.parentElement.textContent='YA'">
+      </div>
       <div>
         <span class="eyebrow" style="margin-bottom:12px">Your Host</span>
         <h3>Yousif Alias</h3>
@@ -414,13 +432,14 @@ function handleRegister(form){
     fetch(GHL_ENDPOINT, {
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
+      keepalive: true
     }).catch(()=>{}).finally(()=>{
       window.location.href = WATCH_PAGE_URL;
     });
 
-    // Safety redirect in case the request stalls
-    setTimeout(()=>{ window.location.href = WATCH_PAGE_URL; }, 2000);
+    // Safety redirect (keepalive lets the POST finish even after we navigate away)
+    setTimeout(()=>{ window.location.href = WATCH_PAGE_URL; }, 2500);
   });
 }
 document.querySelectorAll('#regForm, #regForm2').forEach(handleRegister);

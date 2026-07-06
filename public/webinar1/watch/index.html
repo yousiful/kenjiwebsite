@@ -6,31 +6,44 @@
 <title>You're In — The ADmaxing Masterclass</title>
 <meta name="robots" content="noindex,nofollow" />
 
-<!-- ============================================================= -->
-<!-- TRACKING - SWAP PLACEHOLDERS BEFORE GOING LIVE                 -->
-<!-- ============================================================= -->
+<!-- ============ TRACKING (KenjiAI standard stack) ============ -->
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NQSQ7Q4W');</script>
+<!-- End Google Tag Manager -->
 
-<!-- Facebook Pixel (REPLACE 000000000000000) -->
+<!-- gtag shim: inline gtag('event',...) calls flow into the GTM dataLayer -->
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}</script>
+
+<!-- Meta Pixel -->
 <script>
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
   n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
   t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
   document,'script','https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '000000000000000');   /* <-- REPLACE: your Facebook Pixel ID */
+  fbq('init', '2406747486323295');
   fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=000000000000000&ev=PageView&noscript=1"/></noscript>
+  src="https://www.facebook.com/tr?id=2406747486323295&ev=PageView&noscript=1"/></noscript>
 
-<!-- Google Analytics 4 (REPLACE G-XXXXXXXXXX) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXXXXX');   /* <-- REPLACE: your GA4 ID */
+<!-- DataTagManager visitor-identification pixel (de-anonymizes traffic on visit) -->
+<script type="text/javascript">
+(function(s, p, i, c, e) {
+    s[e] = s[e] || function() { (s[e].a = s[e].a || []).push(arguments); };
+    s[e].l = 1 * new Date();
+    var k = c.createElement("script"), a = c.getElementsByTagName("script")[0];
+    k.async = 1, k.src = p, a.parentNode.insertBefore(k, a);
+    s.pixelClientId = i;
+})(window, "https://datatagmanager.s3.us-east-2.amazonaws.com/pixel_popup.js", "0219d3e9-3cad-42f3-9bd1-111525982334", document, "script");
 </script>
+<script src="https://pixel.datatagmanager.com/pixel.js?pid=0219d3e9-3cad-42f3-9bd1-111525982334"></script>
+<script id="datatagmanager-id" src="https://cdn.pixel.datatagmanager.com/pixels/0219d3e9-3cad-42f3-9bd1-111525982334/p.js" async></script>
+<!-- ============ END TRACKING ============ -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,7 +85,15 @@
 
   /* Stage layout */
   .stage{display:grid;grid-template-columns:1fr 360px;gap:16px;padding:16px 0}
-  .video-wrap{background:#000;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .video-wrap{position:relative;background:#000;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .video-gate{position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+    cursor:pointer;text-align:center;padding:20px;background:radial-gradient(circle at center,rgba(10,10,10,.5),rgba(0,0,0,.82))}
+  .video-gate.hide{display:none}
+  .gate-play{width:78px;height:78px;border-radius:50%;background:var(--grad);color:#111;font-size:30px;
+    display:flex;align-items:center;justify-content:center;padding-left:6px;box-shadow:0 0 44px rgba(245,158,11,.55);animation:gatepulse 1.8s infinite}
+  @keyframes gatepulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+  .gate-t{color:#fff;font-weight:900;font-size:clamp(16px,2.6vw,22px)}
+  .gate-s{color:#cbd5e1;font-size:13px}
   .video-el{width:100%;aspect-ratio:16/9;background:#000;display:block}
   .video-embed-note{padding:10px 14px;font-size:11.5px;color:var(--muted2);border-top:1px solid var(--line);background:#0d0d0d}
 
@@ -197,6 +218,8 @@
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NQSQ7Q4W" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Hard dark-theme lock (kept per spec, right after <body>) -->
 <style>html, body { background: #0a0a0a !important; background-color: #0a0a0a !important; }</style>
 
@@ -227,12 +250,16 @@
              with a Vimeo / Wistia / Bunny embed and wire its time to the
              getPlaybackState() function down in the script (see comments).
              ========================================================= -->
-        <video id="webinarVideo" class="video-el" playsinline poster=""
-               controls preload="metadata">
-          <!-- Local file for now. For production, host on a CDN (Bunny Stream / Cloudflare / S3)
-               and swap this src — a 577MB file won't upload into GHL directly. -->
+        <video id="webinarVideo" class="video-el" playsinline webkit-playsinline
+               preload="auto" disablepictureinpicture oncontextmenu="return false">
           <source src="/webinar1/never-chase-leads-again.mp4" type="video/mp4">
         </video>
+        <!-- Live-style join gate: no scrub bar; tap starts playback with sound -->
+        <div class="video-gate" id="videoGate">
+          <div class="gate-play">▶</div>
+          <div class="gate-t">Your live session is ready</div>
+          <div class="gate-s">Tap to join · sound is on</div>
+        </div>
 
         <!-- DEMO PLAYBACK CONTROLS — auto-hidden once you set
              CONFIG.USE_SIMULATED_PLAYBACK = false (i.e. when a real video drives time). -->
@@ -242,11 +269,6 @@
           <span class="t" id="simTime">00:00</span>
         </div>
 
-        <div class="video-embed-note">
-          🎥 Swap the &lt;video&gt; above for your webinar recording. You said you'll rotate
-          multiple videos — just change the <code>src</code> (and match <code>OFFER_REVEAL_SECONDS</code>
-          + the chat timestamps to each video).
-        </div>
       </div>
 
       <div class="videotitle">
@@ -328,7 +350,11 @@
 <section>
   <div class="wrap">
     <div class="presenter">
-      <div class="p-photo">[PRESENTER PHOTO]</div>
+      <div class="p-photo">
+        <img src="/webinar1/presenter-yousif.jpg" alt="Yousif Alias" loading="lazy"
+             style="width:100%;height:100%;object-fit:cover;border-radius:inherit;display:block"
+             onerror="this.style.display='none';this.parentElement.textContent='YA'">
+      </div>
       <div>
         <span class="eyebrow" style="margin-bottom:10px">Your Host</span>
         <h3>Yousif Alias</h3>
@@ -589,6 +615,18 @@ document.querySelectorAll('#faq .qa button').forEach(btn=>{
 /* If you switch to a real video (USE_SIMULATED_PLAYBACK=false), the loop above
    already reads video.currentTime & video.paused — nothing else to wire.
    For Vimeo/Wistia/Bunny, edit getPlaybackState() to return their time/paused. */
+
+/* Live-style video gate: first tap starts playback with sound, no scrub bar */
+const videoGate = document.getElementById('videoGate');
+if (videoGate && video){
+  videoGate.addEventListener('click', function(){
+    video.muted = false;
+    var pr = video.play();
+    if (pr && pr.catch) pr.catch(function(){ video.muted = true; video.play().catch(function(){}); });
+    videoGate.classList.add('hide');
+  });
+  video.addEventListener('play', function(){ videoGate.classList.add('hide'); });
+}
 
 document.getElementById('yr').textContent = new Date().getFullYear();
 </script>
