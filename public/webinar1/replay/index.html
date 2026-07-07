@@ -103,6 +103,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .vc-speed{font-size:13px;font-weight:800;min-width:34px}
   .vc-vol{width:84px;accent-color:var(--amber);cursor:pointer}
   .vc-spacer{flex:1}
+  /* Done-for-you value list (no pricing) */
+  .dfy-list{max-width:600px;margin:0 auto 20px;display:grid;gap:10px;text-align:left}
+  .dfy-item{display:flex;gap:12px;background:#151515;border:1px solid var(--line);border-radius:14px;padding:13px 15px}
+  .dfy-item .ic{flex:0 0 auto;width:24px;height:24px;border-radius:7px;background:rgba(16,185,129,.14);color:var(--emerald);
+    display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;margin-top:1px}
+  .dfy-item .tt{font-weight:800;color:#fff;font-size:15px}
+  .dfy-item .ds{font-size:13px;color:var(--muted);line-height:1.45;margin-top:2px}
+  .dfy-item .opt{display:inline-block;font-size:10px;font-weight:800;color:var(--amber);text-transform:uppercase;letter-spacing:.05em;
+    background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25);padding:1px 6px;border-radius:6px;margin-left:6px;vertical-align:middle}
   .video-el{width:100%;aspect-ratio:16/9;background:#000;display:block}
   .video-embed-note{padding:10px 14px;font-size:11.5px;color:var(--muted2);border-top:1px solid var(--line);background:#0d0d0d}
 
@@ -338,39 +347,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <!-- ===================== OFFER (revealed by JS) ===================== -->
   <div class="offer" id="offer">
     <div class="offer-card">
-      <div style="text-align:center"><span class="offer-tag">🔥 Masterclass-Only Offer</span></div>
-      <h2>Get the Entire <span class="grad-text">ADmaxing Accelerator</span></h2>
-      <p class="lead">Everything I just walked you through — the system, the scripts, the templates, and 30 days of launch support — so you can install ADmaxing in your business this week.</p>
+      <div style="text-align:center"><span class="offer-tag">🔥 Done-For-You Growth System</span></div>
+      <h2>We Build, Run &amp; Scale It <span class="grad-text">For You</span></h2>
+      <p class="lead">This isn't a course you figure out alone. Our team installs and runs your entire client-getting system — you just focus on closing the pre-sold clients we send you. Here's everything that's handled for you:</p>
 
-      <!-- Cart / session-close countdown (starts when the offer is revealed) -->
+      <!-- Session-close countdown (starts when the offer is revealed) -->
       <div class="cart-cd">
-        <span class="lbl">This offer closes in</span>
+        <span class="lbl">Enrollment for this session closes in</span>
         <span class="val" id="cartCd">30:00</span>
       </div>
 
-      <!-- Bonus / value stack -->
-      <div class="stack">
-        <div class="it core"><span>🎯 The ADmaxing Accelerator (core system)</span><span class="v">$1,997</span></div>
-        <div class="it"><span>📜 Bonus 1 — Pre-Sold Ad Script Vault</span><span class="v">$497</span></div>
-        <div class="it"><span>🧩 Bonus 2 — Sales-First Funnel Templates</span><span class="v">$397</span></div>
-        <div class="it"><span>🤝 Bonus 3 — 30-Day Launch Support (private community)</span><span class="v">$997</span></div>
-        <div class="it"><span>🔍 Bonus 4 — 1:1 Campaign Audit</span><span class="v">$300</span></div>
-        <div class="tot"><span>Total value</span><span class="v">$4,188</span></div>
-      </div>
-
-      <div class="price">
-        <span class="was">$997</span><span class="now">$497</span>
-        <span class="cap">One payment · Lifetime access · Save $500 today</span>
+      <!-- Done-for-you deliverables (value only — no pricing) -->
+      <div class="dfy-list">
+        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">Expert Ads Manager</div><div class="ds">A seasoned media buyer builds, launches, and optimizes every campaign — your ad budget is in expert hands, not guesswork.</div></div></div>
+        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">Accountability Partner</div><div class="ds">Someone in your corner every week keeping you (and us) locked on your targets so momentum never stalls.</div></div></div>
+        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">KenjiAI.com — Lifetime Access</div><div class="ds">The full KenjiAI platform and toolset, yours to keep for life. No recurring software bill, ever.</div></div></div>
+        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">3–6 Months of Ads Testing</div><div class="ds">We test and refine until we find your winning ads — not a one-and-done campaign that dies in a week.</div></div></div>
+        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">Daily Operations Manager</div><div class="ds">A dedicated manager runs the day-to-day so nothing slips while you stay focused on selling.</div></div></div>
+        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">Email, Text &amp; Call Follow-Up</div><div class="ds">Every lead worked across email, SMS, and phone — so no opportunity ever goes cold or unanswered.</div></div></div>
+        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">Voice AI Front Desk</div><div class="ds">An AI receptionist answers, qualifies, and books your leads 24/7 — you never miss another call.</div></div></div>
+        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">Funnel &amp; Website <span class="opt">Optional</span></div><div class="ds">Need a funnel or site? We design and build one engineered to turn clicks into booked appointments.</div></div></div>
+        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">Community Builder &amp; Management</div><div class="ds">We grow and manage an engaged community around your brand — warm buyers who already know and trust you.</div></div></div>
+        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">Remote-Control Zoom Support</div><div class="ds">Stuck on anything? We hop on Zoom and take remote control to fix it with you, live.</div></div></div>
       </div>
 
       <button class="btn-buy" id="buyBtn">Get Started &rarr;</button>
 
       <div class="guar">
         <div class="badge">🛡️</div>
-        <div><b>30-Day Money-Back Guarantee.</b> Go through the Accelerator, use the scripts and templates. If it's not for you, email us within 30 days for a full refund. Zero risk.</div>
+        <div><b>Zero guesswork, zero wasted spend.</b> Our team manages every dollar and every step for you. Get started and we'll map the exact plan for your business — no pressure, no obligation.</div>
       </div>
 
-      <p class="checkout-fine">🔒 Secure checkout · Instant access · This masterclass price is not available anywhere else.</p>
+      <p class="checkout-fine">🔒 Limited spots each month · Your dedicated team gets to work the moment you're onboarded.</p>
     </div>
   </div>
 </div>
@@ -380,11 +388,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="wrap">
     <div class="sec-head"><span class="eyebrow">Questions</span><h2 style="font-size:clamp(22px,4vw,30px)">About the Accelerator</h2></div>
     <div class="faq" id="faq">
-      <div class="qa"><button>What exactly do I get for $497?<span class="ic">+</span></button><div class="ans">The full ADmaxing Accelerator (the complete system), plus the four bonuses: the Pre-Sold Ad Script Vault, Sales-First Funnel Templates, 30-Day Launch Support in the private community, and a 1:1 campaign audit. One payment, lifetime access.</div></div>
+      <div class="qa"><button>What exactly do I get?<span class="ic">+</span></button><div class="ans">A full done-for-you growth team: an expert ads manager, a daily operations manager, an AI voice front desk, sales follow-up across email, text and call, lifetime KenjiAI access, community management, and hands-on Zoom support. We build and run the entire system for you.</div></div>
       <div class="qa"><button>Do I need to be running ads already?<span class="ic">+</span></button><div class="ans">No. The Accelerator walks you from setup to your first pre-sold campaign, even at a small budget. If you're already running ads, you'll rebuild them the ADmaxing way for sales instead of cheap leads.</div></div>
       <div class="qa"><button>How fast will I see results?<span class="ic">+</span></button><div class="ans">Many members launch their first sales-first campaign within a week. How fast it converts depends on your offer, your market, and how quickly you implement. This is a system, not a magic button.</div></div>
       <div class="qa"><button>What if it's not for me?<span class="ic">+</span></button><div class="ans">You're covered by a 30-day money-back guarantee. Go through it, use the material, and if it's not a fit, email us for a full refund. No hoops.</div></div>
-      <div class="qa"><button>Is the $497 price going to last?<span class="ic">+</span></button><div class="ans">This is a masterclass-only price shown once, here, while your session is open. The standard price is higher, so if you want in, enroll before the timer above runs out.</div></div>
+      <div class="qa"><button>How does pricing work?<span class="ic">+</span></button><div class="ans">This is a done-for-you engagement, not a course, so your investment depends on your business and goals. Get started above and we'll walk you through the exact plan and options that fit you — no pressure.</div></div>
     </div>
   </div>
 </section>
@@ -527,7 +535,7 @@ const COMMENTS = [
   { timestamp_seconds: 355, name: "Grace L.",    message: "take my money already lol", avatar_initial: "G" },
   { timestamp_seconds: 358, name: "Sofia R.",    message: "ok so what's the actual investment?", avatar_initial: "S" },
   /* --- around the offer reveal (OFFER_REVEAL_SECONDS = 360 / 6:00) --- */
-  { timestamp_seconds: 366, name: "Marcus T.",   message: "wait… $497?? that's it?", avatar_initial: "M" },
+  { timestamp_seconds: 366, name: "Marcus T.",   message: "wait… is that really all it takes?!", avatar_initial: "M" },
   { timestamp_seconds: 378, name: "Priya N.",    message: "just enrolled ✅", avatar_initial: "P" },
   { timestamp_seconds: 390, name: "Omar F.",     message: "how do I sign up??", avatar_initial: "O" },
   { timestamp_seconds: 402, name: "Rachel P.",   message: "is the 30-day guarantee legit?", avatar_initial: "R" },
@@ -535,7 +543,7 @@ const COMMENTS = [
   { timestamp_seconds: 426, name: "Bianca G.",   message: "done. I'm in. let's gooo 🚀", avatar_initial: "B" },
   { timestamp_seconds: 438, name: "Nina K.",     message: "does the community have support built in?", avatar_initial: "N" },
   { timestamp_seconds: 450, name: "Derek S.",    message: "just bought, so pumped 🙌", avatar_initial: "D" },
-  { timestamp_seconds: 462, name: "Elena V.",    message: "best $497 I've spent this year honestly", avatar_initial: "E" },
+  { timestamp_seconds: 462, name: "Elena V.",    message: "best decision I've made this year honestly", avatar_initial: "E" },
   { timestamp_seconds: 474, name: "Sam I.",      message: "can someone drop the enroll link again?", avatar_initial: "S" },
   { timestamp_seconds: 485, name: "Hana Y.",     message: "enrolled! see everyone inside 🎉", avatar_initial: "H" }
 ];
@@ -755,7 +763,7 @@ if (videoGate && video){
   const speedBtn = document.getElementById('vcSpeed');
   const fullBtn = document.getElementById('vcFull');
   const wrap = v.closest('.video-wrap') || v;
-  const speeds = [1, 1.25, 1.5, 2, 3, 5];
+  const speeds = [1, 1.25, 1.5, 2];
   let si = 0;
 
   function refreshMute(){ muteBtn.textContent = (v.muted || v.volume === 0) ? '🔇' : '🔊'; }
