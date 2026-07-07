@@ -3,19 +3,22 @@ import type { Handler, HandlerEvent } from '@netlify/functions';
 /**
  * Webinar registration -> GoHighLevel.
  * The registration page (/webinar1) POSTs { first_name, email, phone, source,
- * session_time } here. We upsert a contact in GHL server-side so the Private
- * Integration Token is NEVER exposed to the browser.
+ * session_time } here. Server-side we do two things:
+ *   1. Fire the GHL Inbound Webhook trigger -> runs your Workflow (creates the
+ *      contact + sends the access link / reminders).
+ *   2. Upsert the contact via the API as a safety net so the contact + tags
+ *      always exist even if the workflow isn't wired to create contacts yet.
+ * The Private Integration Token is never exposed to the browser.
  *
- * Required Netlify env var:
- *   GHL_PIT           - GoHighLevel Private Integration Token (secret)
- * Optional:
- *   GHL_LOCATION_ID   - defaults to the KenjiAI location (not secret; already
- *                       used client-side elsewhere on the site)
+ * Netlify env var: GHL_PIT (Private Integration Token). Optional: GHL_LOCATION_ID.
  */
 
 const GHL_BASE = 'https://services.leadconnectorhq.com';
 const GHL_VERSION = '2021-07-28';
 const DEFAULT_LOCATION_ID = 'q5L4ttbBMHNxieXIcTVJ';
+// Inbound Webhook trigger URL (not a secret — it only ingests leads).
+const INBOUND_WEBHOOK =
+  'https://services.leadconnectorhq.com/hooks/q5L4ttbBMHNxieXIcTVJ/webhook-trigger/84c1af07-2fe8-4ba4-8a0c-11b35bddce74';
 
 interface LeadPayload {
   first_name?: string;
@@ -36,13 +39,6 @@ export const handler: Handler = async (event: HandlerEvent) => {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  const token = process.env.GHL_PIT;
-  const locationId = process.env.GHL_LOCATION_ID || DEFAULT_LOCATION_ID;
-
-  if (!token) {
-    return json(500, { error: 'GHL not configured (set GHL_PIT env var in Netlify)' });
-  }
-
   let payload: LeadPayload;
   try {
     payload = JSON.parse(event.body || '{}');
@@ -50,41 +46,60 @@ export const handler: Handler = async (event: HandlerEvent) => {
     return json(400, { error: 'Invalid JSON' });
   }
 
+  const firstName = (payload.first_name || '').trim();
   const email = (payload.email || '').trim();
   const phone = (payload.phone || '').trim();
+  const source = payload.source || 'ADmaxing Webinar Registration';
+  const tags = ['admaxing-webinar', 'webinar-registrant'];
+
   if (!email && !phone) {
     return json(400, { error: 'email or phone required' });
   }
 
-  const contact = {
-    locationId,
-    firstName: (payload.first_name || '').trim(),
-    email,
-    phone,
-    source: payload.source || 'ADmaxing Webinar Registration',
-    tags: ['admaxing-webinar', 'webinar-registrant'],
-  };
+  // 1) Fire the GHL Inbound Webhook -> runs the Workflow (contact + access-link automation)
+  const fireWebhook = fetch(INBOUND_WEBHOOK, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      firstName,
+      first_name: firstName,
+      email,
+      phone,
+      source,
+      session_time: payload.session_time || '',
+      tags: tags.join(','),
+    }),
+  })
+    .then((r) => r.ok)
+    .catch(() => false);
 
-  try {
-    // upsert = create-or-update by email/phone, avoids duplicate-contact errors
-    const resp = await fetch(`${GHL_BASE}/contacts/upsert`, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        Version: GHL_VERSION,
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-      },
-      body: JSON.stringify(contact),
-    });
-
-    const result = await resp.json().catch(() => ({}));
-
-    if (!resp.ok) {
-      return json(502, { error: 'GHL upsert failed', status: resp.status, detail: result });
+  // 2) Upsert via API as a safety net (guarantees the contact + tags exist)
+  const upsert = (async () => {
+    const token = process.env.GHL_PIT;
+    if (!token) return { ok: false, id: null as string | null };
+    const locationId = process.env.GHL_LOCATION_ID || DEFAULT_LOCATION_ID;
+    try {
+      const r = await fetch(`${GHL_BASE}/contacts/upsert`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Version: GHL_VERSION,
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({ locationId, firstName, email, phone, source, tags }),
+      });
+      const data: any = await r.json().catch(() => ({}));
+      return { ok: r.ok, id: (data && data.contact && data.contact.id) || null };
+    } catch {
+      return { ok: false, id: null as string | null };
     }
-    return json(200, { ok: true, id: result?.contact?.id ?? null });
-  } catch {
-    return json(502, { error: 'Upstream GHL request failed' });
+  })();
+
+  const [webhookOk, upsertRes] = await Promise.all([fireWebhook, upsert]);
+
+  if (!webhookOk && !upsertRes.ok) {
+    return json(502, { error: 'Both GHL webhook and upsert failed' });
   }
+  return json(200, { ok: true, webhook: webhookOk, upsert: upsertRes.ok, id: upsertRes.id });
 };
