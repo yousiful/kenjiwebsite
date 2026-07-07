@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>You're In — The ADmaxing Masterclass</title>
+<title>You're In: The ADmaxing Masterclass</title>
 <meta name="robots" content="noindex,nofollow" />
 
 <!-- ============ TRACKING (KenjiAI standard stack) ============ -->
@@ -94,7 +94,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @keyframes gatepulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
   .gate-t{color:#fff;font-weight:900;font-size:clamp(16px,2.6vw,22px)}
   .gate-s{color:#cbd5e1;font-size:13px}
-  /* Custom video controls: volume, speed (to 5x), fullscreen — intentionally NO seek bar */
+  /* Custom video controls: volume, speed (to 5x), fullscreen, intentionally NO seek bar */
   .v-controls{position:absolute;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;gap:10px;padding:10px 12px;
     background:linear-gradient(to top,rgba(0,0,0,.78),rgba(0,0,0,0));opacity:0;transition:opacity .25s;pointer-events:none}
   .video-wrap:hover .v-controls,.v-controls.show{opacity:1;pointer-events:auto}
@@ -276,7 +276,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
          and implement getRealViewerCount() to pull from your webinar platform
          (WebinarKit / EverWebinar / Demio) API. The fluctuating placeholder below
          only runs in demo mode so the UI isn't empty during build. -->
-    <span class="viewers"><span class="eye">●</span> <b id="viewerCount">—</b>&nbsp;<small>watching now</small></span>
+    <span class="viewers"><span class="eye">●</span> <b id="viewerCount">260</b>&nbsp;<small>watching now</small></span>
   </div>
 </div>
 
@@ -304,7 +304,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <div class="gate-t">Your live session is ready</div>
           <div class="gate-s">Tap to join · sound is on</div>
         </div>
-        <!-- Custom controls: volume, speed (to 5x), fullscreen — no seek bar (can't skip ahead) -->
+        <!-- Custom controls: volume, speed (to 5x), fullscreen, no seek bar (can't skip ahead) -->
         <div class="v-controls" id="vControls">
           <button class="vc-btn" id="vcMute" type="button" aria-label="Mute / unmute">🔊</button>
           <input class="vc-vol" id="vcVol" type="range" min="0" max="1" step="0.05" value="1" aria-label="Volume" />
@@ -313,7 +313,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <button class="vc-btn" id="vcFull" type="button" aria-label="Fullscreen">⛶</button>
         </div>
 
-        <!-- DEMO PLAYBACK CONTROLS — auto-hidden once you set
+        <!-- DEMO PLAYBACK CONTROLS, auto-hidden once you set
              CONFIG.USE_SIMULATED_PLAYBACK = false (i.e. when a real video drives time). -->
         <div class="sim" id="simBar">
           <button id="simPlay">▶ Play demo</button>
@@ -325,7 +325,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
       <div class="videotitle">
         <h1>The <span class="grad-text">ADmaxing</span> Masterclass</h1>
-        <p>How high-ticket coaches &amp; service providers turn cold ad clicks into pre-sold, ready-to-buy clients. Stay to the end — the implementation offer only appears once.</p>
+        <p>How high-ticket coaches &amp; service providers turn cold ad clicks into pre-sold, ready-to-buy clients. Stay to the end, the implementation offer only appears once.</p>
       </div>
     </div>
 
@@ -334,7 +334,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <button class="chat-close" id="chatClose">×</button>
       <div class="chat-head">
         <div class="t">💬 Session Chat <span id="chatLiveDot" class="live-dot" style="display:inline-block"></span></div>
-        <!-- FTC-compliant disclosure — small but visible -->
+        <!-- FTC-compliant disclosure, small but visible -->
         <div class="disclose">Chat replay from a previous session. Comments are shown in the order they originally happened.</div>
       </div>
       <div class="chat-body" id="chatBody"></div>
@@ -349,7 +349,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="offer-card">
       <div style="text-align:center"><span class="offer-tag">🔥 Done-For-You Growth System</span></div>
       <h2>We Build, Run &amp; Scale It <span class="grad-text">For You</span></h2>
-      <p class="lead">This isn't a course you figure out alone. Our team installs and runs your entire client-getting system — you just focus on closing the pre-sold clients we send you. Here's everything that's handled for you:</p>
+      <p class="lead">This isn't a course you figure out alone. Our team installs and runs your entire client-getting system, you just focus on closing the pre-sold clients we send you. Here's everything that's handled for you:</p>
 
       <!-- Session-close countdown (starts when the offer is revealed) -->
       <div class="cart-cd">
@@ -357,17 +357,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <span class="val" id="cartCd">30:00</span>
       </div>
 
-      <!-- Done-for-you deliverables (value only — no pricing) -->
+      <!-- Done-for-you deliverables (value only, no pricing) -->
       <div class="dfy-list">
-        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">Expert Ads Manager</div><div class="ds">A seasoned media buyer builds, launches, and optimizes every campaign — your ad budget is in expert hands, not guesswork.</div></div></div>
+        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">Expert Ads Manager</div><div class="ds">A seasoned media buyer builds, launches, and optimizes every campaign, your ad budget is in expert hands, not guesswork.</div></div></div>
         <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">Accountability Partner</div><div class="ds">Someone in your corner every week keeping you (and us) locked on your targets so momentum never stalls.</div></div></div>
-        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">KenjiAI.com — Lifetime Access</div><div class="ds">The full KenjiAI platform and toolset, yours to keep for life. No recurring software bill, ever.</div></div></div>
-        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">3–6 Months of Ads Testing</div><div class="ds">We test and refine until we find your winning ads — not a one-and-done campaign that dies in a week.</div></div></div>
+        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">KenjiAI.com, Lifetime Access</div><div class="ds">The full KenjiAI platform and toolset, yours to keep for life. No recurring software bill, ever.</div></div></div>
+        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">3-6 Months of Ads Testing</div><div class="ds">We test and refine until we find your winning ads, not a one-and-done campaign that dies in a week.</div></div></div>
         <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">Daily Operations Manager</div><div class="ds">A dedicated manager runs the day-to-day so nothing slips while you stay focused on selling.</div></div></div>
-        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">Email, Text &amp; Call Follow-Up</div><div class="ds">Every lead worked across email, SMS, and phone — so no opportunity ever goes cold or unanswered.</div></div></div>
-        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">Voice AI Front Desk</div><div class="ds">An AI receptionist answers, qualifies, and books your leads 24/7 — you never miss another call.</div></div></div>
+        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">Email, Text &amp; Call Follow-Up</div><div class="ds">Every lead worked across email, SMS, and phone, so no opportunity ever goes cold or unanswered.</div></div></div>
+        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">Voice AI Front Desk</div><div class="ds">An AI receptionist answers, qualifies, and books your leads 24/7, you never miss another call.</div></div></div>
         <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">Funnel &amp; Website <span class="opt">Optional</span></div><div class="ds">Need a funnel or site? We design and build one engineered to turn clicks into booked appointments.</div></div></div>
-        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">Community Builder &amp; Management</div><div class="ds">We grow and manage an engaged community around your brand — warm buyers who already know and trust you.</div></div></div>
+        <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">Community Builder &amp; Management</div><div class="ds">We grow and manage an engaged community around your brand, warm buyers who already know and trust you.</div></div></div>
         <div class="dfy-item"><span class="ic">✓</span><div><div class="tt">Remote-Control Zoom Support</div><div class="ds">Stuck on anything? We hop on Zoom and take remote control to fix it with you, live.</div></div></div>
       </div>
 
@@ -375,7 +375,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
       <div class="guar">
         <div class="badge">🛡️</div>
-        <div><b>Zero guesswork, zero wasted spend.</b> Our team manages every dollar and every step for you. Get started and we'll map the exact plan for your business — no pressure, no obligation.</div>
+        <div><b>Zero guesswork, zero wasted spend.</b> Our team manages every dollar and every step for you. Get started and we'll map the exact plan for your business, no pressure, no obligation.</div>
       </div>
 
       <p class="checkout-fine">🔒 Limited spots each month · Your dedicated team gets to work the moment you're onboarded.</p>
@@ -392,7 +392,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="qa"><button>Do I need to be running ads already?<span class="ic">+</span></button><div class="ans">No. The Accelerator walks you from setup to your first pre-sold campaign, even at a small budget. If you're already running ads, you'll rebuild them the ADmaxing way for sales instead of cheap leads.</div></div>
       <div class="qa"><button>How fast will I see results?<span class="ic">+</span></button><div class="ans">Many members launch their first sales-first campaign within a week. How fast it converts depends on your offer, your market, and how quickly you implement. This is a system, not a magic button.</div></div>
       <div class="qa"><button>What if it's not for me?<span class="ic">+</span></button><div class="ans">You're covered by a 30-day money-back guarantee. Go through it, use the material, and if it's not a fit, email us for a full refund. No hoops.</div></div>
-      <div class="qa"><button>How does pricing work?<span class="ic">+</span></button><div class="ans">This is a done-for-you engagement, not a course, so your investment depends on your business and goals. Get started above and we'll walk you through the exact plan and options that fit you — no pressure.</div></div>
+      <div class="qa"><button>How does pricing work?<span class="ic">+</span></button><div class="ans">This is a done-for-you engagement, not a course, so your investment depends on your business and goals. Get started above and we'll walk you through the exact plan and options that fit you, no pressure.</div></div>
     </div>
   </div>
 </section>
@@ -410,7 +410,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <span class="eyebrow" style="margin-bottom:10px">Your Host</span>
         <h3>Yousif Alias</h3>
         <div class="p-role">Founder, KenjiAI · 12 years running paid ads · 1,000+ students trained</div>
-        <p>I spent years optimizing for the cheapest possible leads and ended up with an inbox full of people who'd never buy. When I flipped to optimizing for <strong>sales</strong> — pre-selling before the click became a conversation — everything changed.</p>
+        <p>I spent years optimizing for the cheapest possible leads and ended up with an inbox full of people who'd never buy. When I flipped to optimizing for <strong>sales</strong>, pre-selling before the click became a conversation, everything changed.</p>
         <p>ADmaxing is that system, distilled into something you can install this week. Enroll above and I'll see you inside.</p>
       </div>
     </div>
@@ -434,9 +434,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="qz-eyebrow">Quick fit check · 15 seconds</div>
       <h3 class="qz-h">What best describes your business right now?</h3>
       <div class="qz-opts">
-        <button class="qz-opt" data-rev="under10"><span class="qz-t">Just getting going</span><span class="qz-s">Under $10k/mo — building momentum</span></button>
-        <button class="qz-opt" data-rev="10to50"><span class="qz-t">Growing</span><span class="qz-s">$10k–$50k/mo — ready to scale</span></button>
-        <button class="qz-opt" data-rev="50plus"><span class="qz-t">Established</span><span class="qz-s">$50k+/mo — want it handled for me</span></button>
+        <button class="qz-opt" data-rev="under10"><span class="qz-t">Just getting going</span><span class="qz-s">Under $10k/mo, building momentum</span></button>
+        <button class="qz-opt" data-rev="10to50"><span class="qz-t">Growing</span><span class="qz-s">$10k-$50k/mo, ready to scale</span></button>
+        <button class="qz-opt" data-rev="50plus"><span class="qz-t">Established</span><span class="qz-s">$50k+/mo, want it handled for me</span></button>
       </div>
     </div>
 
@@ -445,7 +445,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="qz-eyebrow">Last question</div>
       <h3 class="qz-h">How would you rather invest to grow?</h3>
       <div class="qz-opts">
-        <button class="qz-opt" data-choose="setup"><span class="qz-t">Pay once, upfront</span><span class="qz-s">Done-for-you setup — get it built and live fast</span></button>
+        <button class="qz-opt" data-choose="setup"><span class="qz-t">Pay once, upfront</span><span class="qz-s">Done-for-you setup, get it built and live fast</span></button>
         <button class="qz-opt" data-choose="performance"><span class="qz-t">Pay as it performs</span><span class="qz-s">Partner with us and pay based on results</span></button>
       </div>
       <button class="qz-back" data-back="1">← Back</button>
@@ -476,7 +476,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <script>
 /* =================================================================
-   CONFIG — swap these before launch
+   CONFIG, swap these before launch
    ================================================================= */
 const CONFIG = {
   SETUP_URL: 'https://go.mediatraffics.com/price',         // Option 1: one-time setup (done-for-you)
@@ -490,7 +490,7 @@ const CONFIG = {
 };
 
 /* =================================================================
-   ⚠️  SAMPLE CHAT DATA — REPLACE BEFORE RUNNING PAID TRAFFIC  ⚠️
+   ⚠️  SAMPLE CHAT DATA, REPLACE BEFORE RUNNING PAID TRAFFIC  ⚠️
    The chat is labeled "replay from a previous session," which is a factual
    claim. To stay FTC-compliant, replace EVERY object below with a REAL
    comment captured from an actual recorded session (export your live chat).
@@ -641,7 +641,7 @@ async function tickViewers(){
     const real = await getRealViewerCount();
     if (real != null) viewer = real;
   } else {
-    // Placeholder gentle random-walk (demo only — replace with real data).
+    // Placeholder gentle random-walk (demo only, replace with real data).
     viewer += Math.round((Math.random()-0.5) * 14);
     viewer = Math.max(CONFIG.VIEWER_MIN, Math.min(CONFIG.VIEWER_MAX, viewer));
   }
@@ -710,7 +710,7 @@ if (FORCE_REVEAL) revealOffer();
 })();
 
 /* =================================================================
-   MASTER LOOP — drive chat + offer from playback time (4x / sec)
+   MASTER LOOP, drive chat + offer from playback time (4x / sec)
    ================================================================= */
 setInterval(()=>{
   const st = getPlaybackState();
@@ -733,12 +733,12 @@ document.querySelectorAll('#faq .qa button').forEach(btn=>{
   btn.addEventListener('click', ()=>{
     const qa = btn.parentElement, open = qa.classList.contains('open');
     document.querySelectorAll('#faq .qa').forEach(x=>{x.classList.remove('open');x.querySelector('.ic').textContent='+';});
-    if(!open){ qa.classList.add('open'); qa.querySelector('.ic').textContent='–'; }
+    if(!open){ qa.classList.add('open'); qa.querySelector('.ic').textContent='-'; }
   });
 });
 
 /* If you switch to a real video (USE_SIMULATED_PLAYBACK=false), the loop above
-   already reads video.currentTime & video.paused — nothing else to wire.
+   already reads video.currentTime & video.paused, nothing else to wire.
    For Vimeo/Wistia/Bunny, edit getPlaybackState() to return their time/paused. */
 
 /* Live-style video gate: first tap starts playback with sound, no scrub bar */
