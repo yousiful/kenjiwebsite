@@ -26,6 +26,10 @@ type Plan = {
   setup: string;
   monthly: string;
   monthlyNote?: string;
+  /** What Stripe actually charges every 3 months. */
+  quarterly: string;
+  /** Setup + first quarter, i.e. what leaves their account on day one. */
+  firstPayment: string;
   adSpend: string;
   features: string[];
   featured?: boolean;
@@ -43,6 +47,8 @@ const PLANS: Plan[] = [
     icon: Rocket,
     setup: '$1,000',
     monthly: '$375',
+    quarterly: '$1,125',
+    firstPayment: '$2,125',
     adSpend: '$1,000/mo minimum',
     accent: 'from-blue-500 to-cyan-500',
     border: 'border-blue-500/30',
@@ -64,6 +70,8 @@ const PLANS: Plan[] = [
     icon: TrendingUp,
     setup: '$1,500',
     monthly: '$1,197',
+    quarterly: '$3,591',
+    firstPayment: '$5,091',
     adSpend: '$3,000/mo minimum',
     featured: true,
     accent: 'from-emerald-500 to-green-500',
@@ -88,6 +96,8 @@ const PLANS: Plan[] = [
     setup: '$2,500',
     monthly: '$2,497',
     monthlyNote: 'or 10% of ad spend, whichever is greater',
+    quarterly: '$7,491',
+    firstPayment: '$9,991',
     adSpend: '$10,000/mo minimum',
     accent: 'from-amber-500 to-orange-500',
     border: 'border-amber-500/30',
@@ -129,7 +139,7 @@ const PricingV2Page: React.FC = () => {
               >
                 <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full px-4 py-1.5 mb-6">
                   <Clock className="w-4 h-4 text-emerald-400" />
-                  <span className="text-emerald-300 font-bold text-sm">Every plan runs on a 90 day initial term</span>
+                  <span className="text-emerald-300 font-bold text-sm">Every plan is billed 90 days at a time</span>
                 </div>
 
                 <h1 className="text-4xl sm:text-6xl font-black text-white mb-6 leading-tight">
@@ -190,9 +200,17 @@ const PricingV2Page: React.FC = () => {
                       {plan.monthlyNote && (
                         <p className="text-gray-500 font-semibold text-xs mb-2">{plan.monthlyNote}</p>
                       )}
-                      <p className="text-gray-300 font-bold text-sm">
-                        plus a {plan.setup} one time setup
+                      <p className="text-gray-300 font-bold text-sm mb-3">
+                        Billed quarterly at {plan.quarterly}, plus a {plan.setup} one time setup.
                       </p>
+                      <div className="bg-white/5 border border-white/10 rounded-lg px-3 py-2">
+                        <p className="text-white font-black text-sm">
+                          Day one: {plan.firstPayment}
+                        </p>
+                        <p className="text-gray-500 font-semibold text-xs">
+                          Setup plus your first 90 days. Nothing else until the quarter renews.
+                        </p>
+                      </div>
                     </div>
 
                     {/* Ad spend requirement */}
@@ -275,9 +293,10 @@ const PricingV2Page: React.FC = () => {
                     and it was not good for us.
                   </p>
                   <p>
-                    So now we ask for 90 days up front, and after that you are month to month and free
-                    to leave whenever you want. If we cannot commit to the window that makes ads work,
-                    we should not be taking your money.
+                    So now we bill 90 days at a time. You pay for a quarter, we run your ads for a
+                    quarter, and you can cancel any time before the next one renews. If we are not
+                    willing to commit to the window that makes ads work, we should not be taking your
+                    money.
                   </p>
                 </div>
               </motion.div>
