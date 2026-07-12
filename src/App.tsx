@@ -46,6 +46,7 @@ const BlogPage = lazy(() => import('./pages/BlogPage'));
 const NicheAdPage = lazy(() => import('./pages/NicheAdPage'));
 const AgentSetupPage = lazy(() => import('./pages/AgentSetupPage'));
 const FundingPage = lazy(() => import('./pages/FundingPage'));
+const PricingV2Page = lazy(() => import('./pages/PricingV2Page'));
 
 const RouteFallback: React.FC = () => (
   <div
@@ -189,6 +190,7 @@ function App() {
                       <Route path="/blog/:slug" element={<BlogPost />} />
                       <Route path="/paid-ads-for/:niche" element={<NicheAdPage />} />
                       <Route path="/pricing" element={<ProductSelectionPage />} />
+                      <Route path="/pricing2" element={<PricingV2Page />} />
                       <Route path="/success" element={<SuccessPage />} />
                       <Route path="/privacy" element={<PrivacyPolicyPage />} />
                       <Route path="/disclaimer" element={<DisclaimerPage />} />
