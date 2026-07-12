@@ -22,31 +22,48 @@ import { ConsentBanner } from './components/ConsentBanner';
 // HomePage stays eager — it is the LCP route.
 import HomePage from './pages/HomePage';
 
+/**
+ * A dynamic import only fails when the browser is holding an index.html from a
+ * previous deploy and asks for a chunk hash that no longer exists on the origin.
+ * Reload once to pick up the current manifest; the sessionStorage guard stops a
+ * genuinely missing chunk from looping.
+ */
+const lazyRoute = (factory: () => Promise<{ default: React.ComponentType<never> }>) =>
+  lazy(() =>
+    factory().catch((err) => {
+      if (!sessionStorage.getItem('kj-chunk-reloaded')) {
+        sessionStorage.setItem('kj-chunk-reloaded', '1');
+        window.location.reload();
+      }
+      throw err;
+    })
+  );
+
 // All other routes are code-split. Cuts main bundle ~60% and ships per-route
 // chunks that load on navigation. Suspense fallback shows a thin loading bar
 // so users never see a blank flash.
-const KnowledgeBasePage = lazy(() => import('./pages/KnowledgeBasePage'));
-const AIEducationPage = lazy(() => import('./pages/AIEducationPage'));
-const BlogPost = lazy(() => import('./pages/BlogPost'));
-const ProductSelectionPage = lazy(() => import('./pages/ProductSelectionPage'));
-const SuccessPage = lazy(() => import('./pages/SuccessPage'));
-const FreeToolsPage = lazy(() => import('./pages/FreeToolsPage'));
-const AIAutomationPage = lazy(() => import('./pages/AIAutomationPage'));
-const VoiceAgentsPage = lazy(() => import('./pages/VoiceAgentsPage'));
-const VoiceAILandingPage = lazy(() => import('./pages/VoiceAILandingPage'));
-const MarketingAutomationPage = lazy(() => import('./pages/MarketingAutomationPage'));
-const CRMPage = lazy(() => import('./pages/CRMPage'));
-const PrivacyPolicyPage = lazy(() => import('./pages/PrivacyPolicyPage'));
-const DisclaimerPage = lazy(() => import('./pages/DisclaimerPage'));
-const TermsOfServicePage = lazy(() => import('./pages/TermsOfServicePage'));
-const DashboardPage = lazy(() => import('./pages/DashboardPage'));
-const WebinarVSLPage = lazy(() => import('./pages/WebinarVSLPage'));
-const WebinarVSLPageB = lazy(() => import('./pages/WebinarVSLPageB'));
-const BlogPage = lazy(() => import('./pages/BlogPage'));
-const NicheAdPage = lazy(() => import('./pages/NicheAdPage'));
-const AgentSetupPage = lazy(() => import('./pages/AgentSetupPage'));
-const FundingPage = lazy(() => import('./pages/FundingPage'));
-const PricingV2Page = lazy(() => import('./pages/PricingV2Page'));
+const KnowledgeBasePage = lazyRoute(() => import('./pages/KnowledgeBasePage'));
+const AIEducationPage = lazyRoute(() => import('./pages/AIEducationPage'));
+const BlogPost = lazyRoute(() => import('./pages/BlogPost'));
+const ProductSelectionPage = lazyRoute(() => import('./pages/ProductSelectionPage'));
+const SuccessPage = lazyRoute(() => import('./pages/SuccessPage'));
+const FreeToolsPage = lazyRoute(() => import('./pages/FreeToolsPage'));
+const AIAutomationPage = lazyRoute(() => import('./pages/AIAutomationPage'));
+const VoiceAgentsPage = lazyRoute(() => import('./pages/VoiceAgentsPage'));
+const VoiceAILandingPage = lazyRoute(() => import('./pages/VoiceAILandingPage'));
+const MarketingAutomationPage = lazyRoute(() => import('./pages/MarketingAutomationPage'));
+const CRMPage = lazyRoute(() => import('./pages/CRMPage'));
+const PrivacyPolicyPage = lazyRoute(() => import('./pages/PrivacyPolicyPage'));
+const DisclaimerPage = lazyRoute(() => import('./pages/DisclaimerPage'));
+const TermsOfServicePage = lazyRoute(() => import('./pages/TermsOfServicePage'));
+const DashboardPage = lazyRoute(() => import('./pages/DashboardPage'));
+const WebinarVSLPage = lazyRoute(() => import('./pages/WebinarVSLPage'));
+const WebinarVSLPageB = lazyRoute(() => import('./pages/WebinarVSLPageB'));
+const BlogPage = lazyRoute(() => import('./pages/BlogPage'));
+const NicheAdPage = lazyRoute(() => import('./pages/NicheAdPage'));
+const AgentSetupPage = lazyRoute(() => import('./pages/AgentSetupPage'));
+const FundingPage = lazyRoute(() => import('./pages/FundingPage'));
+const PricingV2Page = lazyRoute(() => import('./pages/PricingV2Page'));
 
 const RouteFallback: React.FC = () => (
   <div
