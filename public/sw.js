@@ -1,4 +1,4 @@
-const CACHE_NAME = 'kenjiai-v4-2025';
+const CACHE_NAME = 'kenjiai-v5-2026';
 const OFFLINE_URL = '/offline.html';
 
 const PRECACHE_URLS = [

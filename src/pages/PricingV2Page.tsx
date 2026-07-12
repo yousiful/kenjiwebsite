@@ -5,6 +5,19 @@ import { Check, ArrowRight, Rocket, TrendingUp, Crown, Clock, Wallet, ShieldChec
 
 const BOOKING_URL = 'https://go.mediatraffics.com/leads';
 
+/**
+ * Stripe Payment Link per tier. Each link should charge the one-time setup fee
+ * and the recurring monthly price together on the first invoice.
+ *
+ * Until a link is filled in, that tier's button falls back to BOOKING_URL so the
+ * page never sends anyone to a dead checkout.
+ */
+const CHECKOUT_URLS: Record<string, string | null> = {
+  launch: null,
+  growth: null,
+  scale: null,
+};
+
 type Plan = {
   id: string;
   name: string;
@@ -205,10 +218,10 @@ const PricingV2Page: React.FC = () => {
                     </ul>
 
                     <a
-                      href={BOOKING_URL}
+                      href={CHECKOUT_URLS[plan.id] ?? BOOKING_URL}
                       className={`w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r ${plan.accent} text-white font-black py-3.5 rounded-xl hover:opacity-90 transition-opacity`}
                     >
-                      {plan.cta}
+                      {CHECKOUT_URLS[plan.id] ? `Get started with ${plan.name}` : plan.cta}
                       <ArrowRight className="w-4 h-4" />
                     </a>
                   </motion.div>
