@@ -1,5 +1,9 @@
+// Every route in App.tsx must also be listed here. RedirectSystem sends any path
+// that fails isValidInternalRoute() straight to /not-found, so an unregistered
+// route 404s in the browser even though the server serves it correctly.
 export const internalRoutes = [
   '/',
+  '/tools',
   '/free-tools',
   '/ai-automation',
   '/voice-agents',
@@ -12,6 +16,7 @@ export const internalRoutes = [
   '/paid-ads-for',
   '/investors',
   '/pricing',
+  '/pricing2',
   '/success',
   '/privacy',
   '/disclaimer',
