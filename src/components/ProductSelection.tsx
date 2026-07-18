@@ -140,13 +140,75 @@ const ProductSelection: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl sm:text-6xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-blue-400 via-green-400 to-blue-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(59,130,246,0.5)]">
-              Performance-Based Growth Plans
+          {/* Scarcity pill (closers-style: spots, not events) */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-orange-400/50 bg-orange-500/10 px-5 py-2 mb-8">
+            <span aria-hidden="true">🔥</span>
+            <span className="text-orange-300 text-sm font-bold tracking-wide">
+              Only 12 onboarding spots left this month. Enrollment closes soon.
+            </span>
+          </div>
+
+          <h2 className="text-5xl sm:text-6xl font-bold mb-4 leading-tight">
+            <span className="text-white">Spots Are Filling Fast.</span>
+            <br />
+            <span className="bg-gradient-to-r from-green-400 via-blue-400 to-green-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(59,130,246,0.5)]">
+              Get Clients On Pure Performance
             </span>
           </h2>
+          <p className="text-2xl text-gray-200 font-semibold mb-4">Before This Month's Onboarding Closes</p>
           <p className="text-xl text-gray-300 max-w-4xl mx-auto mb-8">
-            Pay based on results. Full done-for-you service, ads management, and dedicated Zoom support included.
+            The only growth plan where we build your ads, run them, and support you on Zoom,
+            and you pay from <span className="text-green-400 font-bold">results</span>, not retainers.
+          </p>
+
+          {/* Checkmark pills */}
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
+            {[
+              'We build and launch in week one',
+              'You pay from results, not promises',
+              '1,000+ clients onboarded',
+              '100% done for you',
+            ].map((pill) => (
+              <span
+                key={pill}
+                className="inline-flex items-center gap-2 rounded-full border border-green-400/30 bg-green-500/10 px-4 py-1.5 text-sm text-gray-200"
+              >
+                <Check className="w-4 h-4 text-green-400" />
+                {pill}
+              </span>
+            ))}
+          </div>
+
+          {/* Stat cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-10">
+            {[
+              { icon: DollarSign, stat: '$50M+', label: 'Client revenue generated' },
+              { icon: Users, stat: '1,000+', label: 'Businesses onboarded' },
+              { icon: Zap, stat: '17+', label: 'Tools replaced by Kenji' },
+            ].map(({ icon: Icon, stat, label }) => (
+              <div
+                key={label}
+                className="rounded-2xl border border-white/10 bg-gray-800/60 backdrop-blur-sm p-5 text-center"
+              >
+                <Icon className="w-6 h-6 text-green-400 mx-auto mb-2" />
+                <div className="text-3xl font-extrabold text-white">{stat}</div>
+                <div className="text-gray-400 text-xs mt-1">{label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Primary CTA (closers-style gradient) */}
+          <motion.a
+            href="#plans"
+            whileHover={{ scale: 1.04, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            className="inline-flex items-center justify-center gap-3 bg-gradient-to-r from-amber-500 to-orange-500 text-gray-950 px-10 py-5 rounded-2xl font-extrabold text-lg shadow-lg shadow-orange-500/30 transition-all duration-300"
+          >
+            Claim My Spot Before It's Gone
+            <ArrowRight className="w-6 h-6" />
+          </motion.a>
+          <p className="text-gray-400 text-sm mt-4">
+            <span className="text-orange-400 font-semibold">38 of 50 spots claimed.</span> Next onboarding wave starts soon.
           </p>
         </motion.div>
 
@@ -204,7 +266,7 @@ const ProductSelection: React.FC = () => {
         </motion.div>
 
         {/* Plan Selection */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16">
+        <div id="plans" className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-16 scroll-mt-24">
           {Object.values(plans).map((plan, index) => (
             <motion.div
               key={plan.id}

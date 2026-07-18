@@ -116,9 +116,13 @@ const VisitorTracker: React.FC = () => {
 
 const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/overview-b', '/setup'];
 
+// Pricing runs its own spots-based scarcity (closers-style); the soccer
+// countdown bar competes with it, so it stays off that page.
+const KICKOFF_HIDDEN_ROUTES: string[] = [...NAVBAR_HIDDEN_ROUTES, '/pricing', '/pricing2'];
+
 function ConditionalKickoffBar() {
   const { pathname } = useLocation();
-  if (NAVBAR_HIDDEN_ROUTES.includes(pathname)) return null;
+  if (KICKOFF_HIDDEN_ROUTES.includes(pathname)) return null;
 
   return (
     <>
