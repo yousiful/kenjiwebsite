@@ -7,8 +7,12 @@ const FAQ: React.FC = () => {
 
   const faqs = [
     {
-      question: "Why is KenjiAI $375/mo when other tools cost $97?",
-      answer: "Because we're not a tool. The $97 tools force you to figure out funnels, email sequences, ad creative, follow-up logic, and integrations yourself, then keep billing you while you do it. KenjiAI replaces the tools AND the agency AND the VA. The average customer cancels over $3,400/mo in other software within their first 30 days. You're not paying more, you're paying once instead of nine times."
+      question: "What would all of this cost me if I hired it out?",
+      answer: "Run the numbers: a marketing agency retainer is $3,000-$5,000/mo, an appointment setter is another $3,000/mo, a copywriter $2,000/mo, and the software stack underneath them $1,000+/mo. That's $9,000+ every month before your first sale. KenjiAI gives you the built website, the follow-up agents, the ads, and the team for $375/mo — about $12 a day, less than you'd tip a waiter — and our performance fee only exists when we actually make you money. Either it produces and pays for itself, or you use the guarantee and pay nothing. There's no version of this where you lose."
+    },
+    {
+      question: "How fast does this pay for itself?",
+      answer: "Your ads are live in week one, and your AI agents start calling and booking leads the moment they come in. One or two closed clients typically covers months of KenjiAI. And you're protected while you find out: if you use the system for 30 days and don't have more leads, more booked appointments, or more revenue than the day you signed up, we refund every dollar and you keep everything we built."
     },
     {
       question: "Do I have to get on a sales call to buy?",
@@ -19,8 +23,8 @@ const FAQ: React.FC = () => {
       answer: "Most owners have their first funnel live within 2 hours of signup and their first ad campaign running within 24 hours. We migrate your contacts for you. We build your first three workflows for you. We write your first round of ad copy for you. If you can use Gmail you can run KenjiAI."
     },
     {
-      question: "What makes KenjiAI different from other tools?",
-      answer: "We don't hand you software and wish you luck. We handle setup, run your ads, build your automations, and back it with a real team. You get a complete done-for-you service, not another login to figure out."
+      question: "How is this different from cheap DIY software?",
+      answer: "Cheap software hands you an empty login and wishes you luck — you still have to build the funnels, write the copy, set up the follow-up, and run the ads yourself, which is why most of those subscriptions get cancelled unused. Platforms in our class charge $300-$500/mo for software alone with zero services attached. KenjiAI includes the proven website build, the follow-up agents, the ad management, and a real team. The average customer cancels over $3,400/mo in other software within their first 30 days of joining."
     },
     {
       question: "Can I cancel anytime?",
@@ -32,7 +36,7 @@ const FAQ: React.FC = () => {
     },
     {
       question: "How do I know this will work for my business?",
-      answer: "Book a free strategy call and we'll show you exactly how KenjiAI would work for your specific business. We'll walk through real examples and show you what results to expect. No pressure, no obligation."
+      answer: "Over 1,000 businesses run on this system — agencies, CPAs, tax relief firms, coaches, contractors, and local services. The playbooks we install for you are the ones already producing sales in niches like yours, not experiments. If you want to see it mapped to your exact business first, book a free strategy call and we'll walk you through it. Either way, the 30-day guarantee means the risk sits with us, not you."
     },
     {
       question: "What's included in the setup?",
@@ -40,7 +44,7 @@ const FAQ: React.FC = () => {
     },
     {
       question: "Do you offer a guarantee?",
-      answer: "Yes. 30-day money-back guarantee on all plans. If KenjiAI isn't right for you within the first 30 days, we'll refund your money. No questions, no hassle."
+      answer: "The strongest one we could write: use KenjiAI for 30 days, and if you don't have more leads, more booked appointments, or more revenue than the day you signed up, email us and we refund every dollar. No exit survey, no hoops — and you keep everything we built for you. The worst possible outcome of trying KenjiAI is a free website, free workflows, and free ad copy. That's why we call it a no-brainer."
     },
     {
       question: "How much time will this save me?",
