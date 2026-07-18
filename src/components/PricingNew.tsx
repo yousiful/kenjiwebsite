@@ -31,9 +31,10 @@ const YEARLY_FEATURES = [
 
 const VIP_FEATURES = [
   "Everything in Annual, paid one time, never billed again",
-  "Zero performance fee, forever",
+  "Zero performance fee, forever, keep 100% of every sale",
+  "Trained sales people placed into your company, free (Golden Members only)",
   "We migrate your current tools for you (white-glove)",
-  "Founding member status with grandfathered access to every future release",
+  "Golden Member status with grandfathered access to every future release",
   "Direct line to the founding team",
 ];
 
@@ -303,42 +304,57 @@ export function PricingNew() {
             </div>
           </motion.div>
 
-          {/* Lifetime */}
+          {/* Lifetime — Golden Member */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: 0.1 }}
-            className="relative bg-gray-900/60 backdrop-blur-sm border border-gray-800 hover:border-blue-500/50 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(255,255,255,0.05)] transition-all duration-500 rounded-2xl p-5 sm:p-6 flex flex-col order-3 lg:order-3"
+            className="relative bg-gradient-to-b from-amber-950/40 via-gray-900/70 to-gray-900/60 backdrop-blur-sm border-2 border-amber-500/60 hover:border-amber-400 hover:-translate-y-2 transition-all duration-500 rounded-2xl p-5 sm:p-6 flex flex-col order-3 lg:order-3"
+            style={{ boxShadow: '0 0 45px rgba(245,158,11,0.18)' }}
           >
-            <div className="mb-4 flex items-start justify-between">
-              <div>
-                <h3 className="text-xl font-bold text-white mb-1">Lifetime</h3>
-                <p className="text-gray-400 text-sm">Pay once. Own KenjiAI forever. No subscription, no fees.</p>
+            {/* Golden ribbon */}
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+              <div className="bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 text-gray-950 px-5 py-1.5 rounded-full text-xs font-black uppercase tracking-widest shadow-lg shadow-amber-500/40 whitespace-nowrap">
+                👑 Golden Member
               </div>
-              <span className="bg-gray-800 text-gray-300 text-xs font-bold px-2 py-1 rounded">Custom</span>
+            </div>
+
+            <div className="mb-4 mt-2 flex items-start justify-between">
+              <div>
+                <h3 className="text-xl font-black bg-gradient-to-r from-amber-300 to-yellow-200 bg-clip-text text-transparent mb-1">Lifetime</h3>
+                <p className="text-gray-300 text-sm">Pay once. Own KenjiAI forever. Then keep 100% of everything you make.</p>
+              </div>
+            </div>
+
+            <div className="mb-3 bg-amber-500/10 border border-amber-500/40 rounded-lg p-3">
+              <div className="text-amber-300 text-sm font-bold">Zero fees forever = the plan pays for itself</div>
+              <div className="text-gray-300 text-xs mt-1 leading-relaxed">
+                Annual members pay $3,240/yr plus a 5% success fee. Golden Members never pay
+                either again, at $1M in tracked sales that's <span className="text-amber-300 font-bold">$50,000+ kept</span>, not counting the subscription you stopped paying.
+              </div>
             </div>
 
             <div className="mb-5 bg-gray-800/50 border border-gray-700/50 rounded-lg p-3">
-              <div className="text-gray-300 text-sm font-semibold">Custom success fee</div>
-              <div className="text-gray-500 text-xs mt-0.5">Determined during discovery call.</div>
+              <div className="text-gray-200 text-sm font-semibold">Custom one-time investment</div>
+              <div className="text-gray-400 text-xs mt-0.5">Revealed on your discovery call. Limited to a handful of Golden Members per quarter.</div>
             </div>
 
             <a
               href="https://go.mediatraffics.com/leads"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-3.5 rounded-xl font-bold text-base flex flex-col items-center justify-center transition-all duration-300 mb-2 bg-[#1b1f24] hover:bg-[#2c333a] border border-gray-700 text-white"
+              className="w-full py-3.5 rounded-xl font-black text-base flex flex-col items-center justify-center transition-all duration-300 mb-2 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-gray-950 shadow-lg shadow-amber-500/30"
             >
-              <span className="flex items-center gap-2">Book Discovery Call</span>
+              <span className="flex items-center gap-2">Apply for Golden Membership</span>
             </a>
-            <div className="text-center text-gray-500 text-xs mb-6">Pricing revealed to qualified applicants</div>
+            <div className="text-center text-amber-300/70 text-xs mb-6">By application only</div>
 
             <div className="flex-1">
-              <div className="text-white text-sm font-semibold mb-3">Enterprise benefits:</div>
+              <div className="text-white text-sm font-semibold mb-3">Golden Member benefits:</div>
               <div className="space-y-1">
                 {VIP_FEATURES.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-2 p-1.5 -mx-1.5 rounded-md hover:bg-white/5 transition-colors group cursor-default">
-                    <Check className="w-4 h-4 text-purple-400 group-hover:text-purple-300 transition-colors flex-shrink-0 mt-0.5" />
+                  <div key={idx} className="flex items-start gap-2 p-1.5 -mx-1.5 rounded-md hover:bg-amber-500/5 transition-colors group cursor-default">
+                    <Check className="w-4 h-4 text-amber-400 group-hover:text-amber-300 transition-colors flex-shrink-0 mt-0.5" />
                     <span className="text-gray-300 group-hover:text-white transition-colors text-[13px] leading-tight tracking-tight">{feature}</span>
                   </div>
                 ))}
