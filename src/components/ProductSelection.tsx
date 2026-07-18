@@ -19,7 +19,7 @@ const ProductSelection: React.FC = () => {
       performanceFee: '10% of ads generated revenue',
       period: 'month',
       popular: false,
-      description: 'Pay based on results - perfect for growth-focused businesses',
+      description: 'Website build, follow-up agents, ads and copy all included. Pay from results.',
       ctaUrl: 'https://freedom.kenjiai.com/checkout-4912-2457-3370'
     },
     yearly: {
@@ -29,26 +29,35 @@ const ProductSelection: React.FC = () => {
       period: 'year',
       popular: true,
       savings: 'Save 4% on performance fees',
-      description: 'Best value - lower fees and maximum support for serious growth',
+      description: 'Everything in the stack, lower fees, and priority support for serious growth',
       ctaUrl: 'https://freedom.kenjiai.com/checkout-4912-2457-3370'
     }
   };
 
   const doneForYouServices = [
     {
-      icon: Megaphone,
-      title: "Done-For-You Ads",
-      description: "Expert ad creation, management, and optimization across all platforms"
+      icon: Globe,
+      title: "Proven Website, Built For You",
+      worth: "Agencies charge $3,000+",
+      description: "You don't start from a blank page. We install the same funnel and website layouts our winning clients already convert with, branded to your business, live in week one."
     },
     {
       icon: Headphones,
-      title: "Done-For-You Service",
-      description: "Full-service setup, implementation, and ongoing management"
+      title: "Proven Follow-Up Agents",
+      worth: "A setter costs $3,000/mo",
+      description: "AI agents that call, text, and email every lead within minutes, handle objections, and book appointments around the clock. Most leads die from slow follow-up. Yours won't."
+    },
+    {
+      icon: Megaphone,
+      title: "Ads + Copy That Already Work",
+      worth: "A copywriter costs $2,000/mo",
+      description: "We write your ads and pages from campaigns that have already produced sales in your niche, then manage and optimize them for you. No guessing, no testing on your dime."
     },
     {
       icon: Video,
-      title: "Done-For-You Zoom Support",
-      description: "Dedicated Zoom sessions for training, strategy, and technical support"
+      title: "Live Zoom Support",
+      worth: "Included",
+      description: "Real strategy and technical sessions with our team, not a ticket queue. We stay on it with you until the system produces."
     }
   ];
 
@@ -219,27 +228,47 @@ const ProductSelection: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="mb-16"
         >
-          <h3 className="text-3xl font-bold text-center mb-8">
+          <h3 className="text-3xl font-bold text-center mb-3">
             <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
-              Done-For-You Services Included
+              What Your Plan Actually Buys You
             </span>
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <p className="text-center text-gray-300 mb-8 max-w-2xl mx-auto">
+            Hiring this out piece by piece runs <span className="text-white font-bold">$8,000+ every month</span>.
+            Your plan includes all of it.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {doneForYouServices.map((service, index) => (
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-                className="bg-gradient-to-br from-blue-900/30 to-green-900/30 border border-blue-400/30 rounded-2xl p-6 text-center"
+                className="bg-gradient-to-br from-blue-900/30 to-green-900/30 border border-blue-400/30 rounded-2xl p-6"
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-green-500 mb-4">
-                  <service.icon className="w-8 h-8 text-white" />
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <div className="inline-flex items-center justify-center w-12 h-12 shrink-0 rounded-xl bg-gradient-to-br from-blue-500 to-green-500">
+                    <service.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <span className="rounded-full bg-amber-500/15 border border-amber-400/40 text-amber-300 text-xs font-bold px-3 py-1 whitespace-nowrap">
+                    {service.worth}
+                  </span>
                 </div>
                 <h4 className="text-xl font-bold text-white mb-2">{service.title}</h4>
                 <p className="text-gray-300 text-sm">{service.description}</p>
               </motion.div>
             ))}
+          </div>
+
+          {/* Price anchor strip */}
+          <div className="max-w-3xl mx-auto mt-8 rounded-2xl border border-green-400/40 bg-green-500/10 p-6 text-center">
+            <p className="text-gray-200 text-lg">
+              A web designer, an appointment setter, a copywriter, and an ads manager would cost you
+              <span className="text-white font-bold"> $8,000+/month</span> before you sell a thing.
+            </p>
+            <p className="text-2xl font-extrabold text-green-400 mt-2">
+              With Kenji it's $375/month, and we only win when you do.
+            </p>
           </div>
         </motion.div>
 

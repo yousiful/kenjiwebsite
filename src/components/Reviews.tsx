@@ -41,8 +41,10 @@ export function Reviews() {
         </motion.div>
 
         <div className="rounded-2xl overflow-hidden">
+          {/* min-height fallback: without it the iframe renders 0-tall on mobile
+              whenever the widget's resize script loads late or is blocked. */}
           <iframe
-            className="lc_reviews_widget"
+            className="lc_reviews_widget min-h-[560px] sm:min-h-[420px]"
             src="https://reputationhub.site/reputation/widgets/review_widget/q5L4ttbBMHNxieXIcTVJ"
             frameBorder="0"
             scrolling="no"

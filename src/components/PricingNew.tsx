@@ -8,9 +8,11 @@ import FAQ from './FAQ';
 import { getSeasonCopy } from '../utils/seasonCopy';
 
 const MONTHLY_FEATURES = [
+  "Proven website and funnel built for you, the same layouts our winning clients convert with",
+  "Proven follow-up AI agents that call, text, and book appointments around the clock",
+  "Ad copy and creative pulled from campaigns already producing sales in your niche",
   "Replace 17+ tools (CRM, funnels, email, SMS, calendar, ads, more)",
   "We build and launch your first ad campaign in week one",
-  "Pre-built follow-up workflows that book appointments while you sleep",
   "Unlimited contacts, unlimited funnels, unlimited users",
   "Live onboarding call within 48 hours of signup",
   "Real human support, not chatbots, usually back to you in under 2 hours",
@@ -107,6 +109,59 @@ export function PricingNew() {
             {season.subheadline}
           </p>
         </motion.div>
+      </div>
+
+      {/* Value stack: what $375 actually buys (price anchored against hiring) */}
+      <div className="max-w-5xl mx-auto mb-12 sm:mb-16 px-4 sm:px-6">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl sm:text-4xl font-black text-white mb-3">
+            What Your Plan Actually Buys You
+          </h2>
+          <p className="text-lg font-semibold text-gray-300 max-w-2xl mx-auto">
+            Hiring this out piece by piece runs <span className="text-white font-bold">$8,000+ every month</span>.
+            Your plan includes all of it.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {[
+            {
+              worth: 'Agencies charge $3,000+',
+              title: 'Proven Website, Built For You',
+              body: "No blank page. We install the funnel and website layouts our winning clients already convert with, branded to you, live in week one.",
+            },
+            {
+              worth: 'A setter costs $3,000/mo',
+              title: 'Proven Follow-Up Agents',
+              body: 'AI agents call, text, and email every lead within minutes, handle objections, and book appointments 24/7. Most leads die from slow follow-up. Yours won’t.',
+            },
+            {
+              worth: 'A copywriter costs $2,000/mo',
+              title: 'Copy That Already Works',
+              body: 'Your ads and pages are written from campaigns that have already produced sales in your niche, then managed and optimized for you.',
+            },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="bg-gray-900/60 border border-emerald-500/25 rounded-2xl p-6"
+              style={{ boxShadow: '0 0 24px rgba(16,185,129,0.10)' }}
+            >
+              <span className="inline-block rounded-full bg-amber-500/15 border border-amber-500/40 text-amber-300 text-xs font-bold px-3 py-1 mb-4">
+                {item.worth}
+              </span>
+              <h3 className="text-lg font-black text-white mb-2 leading-tight">{item.title}</h3>
+              <p className="text-gray-300 text-sm font-medium leading-relaxed">{item.body}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-6 rounded-2xl border border-emerald-500/40 bg-emerald-500/10 p-5 text-center">
+          <p className="text-gray-200 font-semibold">
+            A web designer, an appointment setter, and a copywriter would cost
+            <span className="text-white font-bold"> $8,000+/month</span> before you sell a thing.
+          </p>
+          <p className="text-xl sm:text-2xl font-black text-emerald-400 mt-1">
+            With Kenji it's $375/month, and we only win when you do.
+          </p>
+        </div>
       </div>
 
       {/* Tool Replacement Bar */}
