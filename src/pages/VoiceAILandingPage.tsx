@@ -976,7 +976,7 @@ const VoiceAILandingPage: React.FC = () => {
                 Care Center
               </a>
               <a
-                href="https://app.kenjicrm.com"
+                href="https://app.kenjiai.com"
                 className="hover:text-gray-400 transition-colors"
               >
                 Login

@@ -192,7 +192,7 @@ const PricingSection: React.FC = () => {
               </div>
             </div>
             <motion.a
-              href="https://app.kenjicrm.com"
+              href="https://app.kenjiai.com"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}

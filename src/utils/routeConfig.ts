@@ -37,14 +37,14 @@ export const externalRoutes = {
   'partner': 'https://closers.kenjiai.com/',
   'partners': 'https://closers.kenjiai.com/',
   'become-partner': 'https://closers.kenjiai.com/',
-  'login': 'https://app.kenjicrm.com',
-  'dashboard': 'https://app.kenjicrm.com',
+  'login': 'https://app.kenjiai.com',
+  'dashboard': 'https://app.kenjiai.com',
   'support': 'https://support.kenjiai.com/',
   'help': 'https://support.kenjiai.com/',
   'prompt-generator': 'https://prompt.kenjiai.com',
   'pr-pro': 'https://prpro.kenjiai.com/',
   'sales-coach': 'https://salescoach.kenjiai.com/',
-  'calendly': 'https://calendly.com/care-kenjiai/30min'
+  'calendly': 'https://go.mediatraffics.com/leads'
 } as const;
 
 export function isValidInternalRoute(path: string): boolean {

@@ -47,7 +47,7 @@ const ToolsPage: React.FC = () => {
     {
       name: "AI Content Creator",
       description: "Generate high-converting content for blogs, social media, and marketing campaigns",
-      url: "https://app.kenjicrm.com",
+      url: "https://app.kenjiai.com",
       icon: Palette,
       gradient: "from-orange-500 to-red-600",
       features: ["Blog Posts", "Social Content", "Ad Copy"],
@@ -57,7 +57,7 @@ const ToolsPage: React.FC = () => {
     {
       name: "Smart Analytics Dashboard",
       description: "Comprehensive business intelligence and performance tracking across all platforms",
-      url: "https://app.kenjicrm.com",
+      url: "https://app.kenjiai.com",
       icon: BarChart3,
       gradient: "from-indigo-500 to-blue-600",
       features: ["Real-time Data", "Custom Reports", "Predictive Analytics"],
@@ -67,7 +67,7 @@ const ToolsPage: React.FC = () => {
     {
       name: "AI Website Builder",
       description: "Create stunning, high-converting websites with AI-powered design and optimization",
-      url: "https://app.kenjicrm.com",
+      url: "https://app.kenjiai.com",
       icon: Globe,
       gradient: "from-teal-500 to-green-600",
       features: ["Drag & Drop", "AI Design", "SEO Optimization"],
@@ -77,7 +77,7 @@ const ToolsPage: React.FC = () => {
     {
       name: "Smart Chatbots",
       description: "Intelligent conversational AI that handles customer service and lead qualification",
-      url: "https://app.kenjicrm.com",
+      url: "https://app.kenjiai.com",
       icon: MessageSquare,
       gradient: "from-cyan-500 to-blue-600",
       features: ["24/7 Support", "Lead Qualification", "Multi-language"],
@@ -87,7 +87,7 @@ const ToolsPage: React.FC = () => {
     {
       name: "Social Media Planner",
       description: "AI-powered social media content creation and scheduling across all platforms",
-      url: "https://app.kenjicrm.com",
+      url: "https://app.kenjiai.com",
       icon: Users,
       gradient: "from-pink-500 to-rose-600",
       features: ["Content Generation", "Auto-scheduling", "Analytics"],

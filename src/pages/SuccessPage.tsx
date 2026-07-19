@@ -78,7 +78,7 @@ const SuccessPage: React.FC = () => {
       title: "Access Dashboard",
       description: "Start building your AI empire immediately",
       action: "Launch Dashboard",
-      link: "https://app.kenjicrm.com",
+      link: "https://app.kenjiai.com",
       color: "from-blue-600 to-cyan-500",
       priority: "HIGH"
     },
@@ -87,7 +87,7 @@ const SuccessPage: React.FC = () => {
       title: "Book Onboarding",
       description: "Free 15-min setup call with AI experts",
       action: "Schedule Now",
-      link: "https://calendly.com/kenjiai-onboarding",
+      link: "https://go.mediatraffics.com/leads",
       color: "from-green-600 to-emerald-500",
       priority: "RECOMMENDED"
     },
@@ -417,7 +417,7 @@ const SuccessPage: React.FC = () => {
             className="text-center mb-12"
           >
             <motion.a
-              href="https://app.kenjicrm.com"
+              href="https://app.kenjiai.com"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ 

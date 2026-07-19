@@ -8,7 +8,7 @@ const PerformanceOptimizer: React.FC = () => {
       heroImage.src = 'https://assets.cdn.filesafe.space/q5L4ttbBMHNxieXIcTVJ/media/5adccaae-527e-49d4-befc-6410b918c624.gif';
 
       const domains = [
-        'https://app.kenjicrm.com',
+        'https://app.kenjiai.com',
         'https://support.kenjiai.com',
         'https://images.pexels.com',
         'https://js.stripe.com',
