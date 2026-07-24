@@ -426,9 +426,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 const CONFIG = {
   SETUP_URL: 'https://go.mediatraffics.com/price',         // Option 1: one-time setup (done-for-you)
   PERFORMANCE_URL: 'https://kenjiai.com/pricing',          // Option 2: performance / pay-on-results
-  OFFER_REVEAL_SECONDS: 360,    // ⚠️ THIS IS A CARRIED-OVER DEFAULT (6:00). This video (VSL #2) runs ~8:45,
-                                 // different pacing than VSL #1 — check the recording and set this to the exact
-                                 // second your CTA/pitch actually starts, or the offer will reveal early/late.
+  OFFER_REVEAL_BEFORE_END: 60,  // offer reveals when this many seconds are LEFT in the video, whatever its length.
+  OFFER_REVEAL_SECONDS: 360,    // fallback only, used in simulated/demo mode or before the real duration loads.
   CART_MINUTES: 30,             // countdown length once the offer is revealed
   VIEWER_MIN: 180,              // placeholder viewer floor  (see USE_REAL_VIEWER_API)
   VIEWER_MAX: 340,              // placeholder viewer ceiling
@@ -458,6 +457,16 @@ function getPlaybackState(){
   return { seconds: sim.seconds, paused: !sim.playing };
 }
 
+/* Offer reveals OFFER_REVEAL_BEFORE_END seconds before the video ends, so any
+   VSL of any length works without re-timing it by hand. Falls back to the
+   fixed OFFER_REVEAL_SECONDS if the real duration isn't known yet (or in demo mode). */
+function getOfferRevealSeconds(){
+  if (!CONFIG.USE_SIMULATED_PLAYBACK && video && isFinite(video.duration) && video.duration > 0){
+    return Math.max(0, video.duration - CONFIG.OFFER_REVEAL_BEFORE_END);
+  }
+  return CONFIG.OFFER_REVEAL_SECONDS;
+}
+
 /* Simulated clock tick */
 function simTick(now){
   if (sim.playing){
@@ -476,7 +485,7 @@ document.getElementById('simPlay').addEventListener('click', (e)=>{
   e.target.textContent = sim.playing ? '⏸ Pause demo' : '▶ Play demo';
 });
 document.getElementById('simOffer').addEventListener('click', ()=>{
-  sim.seconds = Math.max(sim.seconds, CONFIG.OFFER_REVEAL_SECONDS);
+  sim.seconds = Math.max(sim.seconds, getOfferRevealSeconds());
 });
 /* URL helper: watch.html?reveal=1 forces the offer open immediately (for previewing) */
 const FORCE_REVEAL = params.get('reveal') === '1';
@@ -568,7 +577,7 @@ if (FORCE_REVEAL) revealOffer();
    ================================================================= */
 setInterval(()=>{
   const st = getPlaybackState();
-  if (!revealed && st.seconds >= CONFIG.OFFER_REVEAL_SECONDS) revealOffer();
+  if (!revealed && st.seconds >= getOfferRevealSeconds()) revealOffer();
   // demo time display
   const t = document.getElementById('simTime');
   if (t){ const m=String(Math.floor(st.seconds/60)).padStart(2,'0'), s=String(Math.floor(st.seconds%60)).padStart(2,'0'); t.textContent=m+':'+s; }
