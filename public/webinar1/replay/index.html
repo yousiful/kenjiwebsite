@@ -526,6 +526,11 @@ function revealOffer(){
   cartEnd = Date.now() + CONFIG.CART_MINUTES * 60 * 1000;
   if (window.fbq)  fbq('trackCustom', 'OfferRevealed', { offer: 'ADmaxing Accelerator' });
   if (window.gtag) gtag('event', 'offer_revealed', { event_category: 'webinar' });
+  try {
+    var body = JSON.stringify({ page: 'replay', event: 'offer_revealed' });
+    if (navigator.sendBeacon) navigator.sendBeacon('/.netlify/functions/webinar-track', body);
+    else fetch('/.netlify/functions/webinar-track', { method: 'POST', body: body, keepalive: true });
+  } catch (e) {}
   offerEl.scrollIntoView({ behavior:'smooth', block:'start' });
   tickCart();
 }
@@ -591,6 +596,14 @@ setInterval(()=>{
    ================================================================= */
 (function(){
   if (!video) return;
+  const PAGE_ID = 'replay';
+  function sendBeaconJSON(body){
+    try {
+      var json = JSON.stringify(Object.assign({ page: PAGE_ID }, body));
+      if (navigator.sendBeacon) navigator.sendBeacon('/.netlify/functions/webinar-track', json);
+      else fetch('/.netlify/functions/webinar-track', { method: 'POST', body: json, keepalive: true });
+    } catch (e) {}
+  }
   const milestones = [25, 50, 75, 95, 100];
   const hit = {};
   function markMilestone(p){
@@ -598,6 +611,7 @@ setInterval(()=>{
     hit[p] = true;
     if (window.gtag) gtag('event', 'video_progress', { event_category: 'webinar', video_percent: p, page_path: location.pathname });
     if (window.fbq)  fbq('trackCustom', 'VideoProgress', { percent: p, page_path: location.pathname });
+    sendBeaconJSON({ event: 'video_progress', percent: p });
   }
   video.addEventListener('timeupdate', function(){
     if (!video.duration) return;
@@ -609,6 +623,7 @@ setInterval(()=>{
     if (secs <= 0) return;
     if (window.gtag) gtag('event', 'video_watch_seconds', { event_category: 'webinar', value: secs, page_path: location.pathname });
     if (window.fbq)  fbq('trackCustom', 'VideoWatchSeconds', { seconds: secs, page_path: location.pathname });
+    sendBeaconJSON({ event: 'video_watch_seconds', seconds: secs });
   }
   document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'hidden') sendWatchTime(); });
   window.addEventListener('pagehide', sendWatchTime);
