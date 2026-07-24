@@ -72,19 +72,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   /* Top status bar */
   .statusbar{position:sticky;top:0;z-index:30;background:rgba(10,10,10,.92);
     backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-  .statusbar .row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 0}
-  .live-pill{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;
-    letter-spacing:.06em;text-transform:uppercase;color:#fff;
-    background:rgba(239,68,68,.14);border:1px solid rgba(239,68,68,.4);padding:6px 12px;border-radius:999px}
-  .live-dot{width:8px;height:8px;border-radius:50%;background:var(--red);animation:blink 1.4s infinite}
-  @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+  .statusbar .row{display:flex;align-items:center;justify-content:center;gap:12px;padding:9px 0}
   .viewers{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:#e4e4e7;font-weight:700}
   .viewers .eye{color:var(--emerald)}
   .viewers b{color:#fff;font-variant-numeric:tabular-nums}
   .viewers small{color:var(--muted2);font-weight:500;font-size:11px}
 
   /* Stage layout */
-  .stage{display:grid;grid-template-columns:1fr 360px;gap:16px;padding:16px 0}
+  .stage{padding:16px 0}
   .video-wrap{position:relative;background:#000;border:1px solid var(--line);border-radius:16px;overflow:hidden}
   .video-gate{position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
     cursor:pointer;text-align:center;padding:20px;background:radial-gradient(circle at center,rgba(10,10,10,.5),rgba(0,0,0,.82))}
@@ -126,40 +121,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .videotitle h1{font-size:clamp(20px,3vw,30px)}
   .videotitle p{color:var(--muted);margin-top:8px;font-size:15px}
 
-  /* Chat */
-  .chat-col{background:var(--card);border:1px solid var(--line);border-radius:16px;display:flex;flex-direction:column;
-    height:100%;min-height:420px;max-height:640px;overflow:hidden}
-  .chat-head{padding:14px 16px;border-bottom:1px solid var(--line)}
-  .chat-head .t{font-weight:800;font-size:14px;display:flex;align-items:center;gap:8px}
-  .chat-head .disclose{font-size:10.5px;color:var(--muted2);margin-top:4px;line-height:1.35}
-  .chat-body{flex:1;overflow-y:auto;padding:12px 12px 6px;display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth}
-  .msg{display:flex;gap:10px;animation:fade .35s ease}
   @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-  .msg .av{flex:0 0 auto;width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-    font-weight:800;font-size:13px;color:#fff}
-  .msg .bub .nm{font-size:12.5px;font-weight:800;color:#e4e4e7;margin-bottom:2px}
-  .msg .bub .tx{font-size:13.5px;color:#c8c8ce;line-height:1.4}
-  .chat-foot{padding:10px 14px;border-top:1px solid var(--line);font-size:11px;color:var(--muted2);
-    display:flex;align-items:center;gap:8px}
-  .chat-foot input{flex:1;background:#0f0f0f;border:1px solid var(--line);border-radius:8px;color:#666;
-    font-size:12px;padding:9px 10px;font-family:inherit}
-  .chat-foot input::placeholder{color:#555}
-
-  /* Mobile chat drawer */
-  .chat-fab{display:none}
-  @media(max-width:900px){
-    .stage{grid-template-columns:1fr}
-    .chat-col{position:fixed;left:0;right:0;bottom:0;z-index:50;border-radius:18px 18px 0 0;
-      max-height:70vh;height:70vh;transform:translateY(100%);transition:transform .3s ease;
-      box-shadow:0 -20px 50px rgba(0,0,0,.6)}
-    .chat-col.open{transform:translateY(0)}
-    .chat-fab{display:flex;position:fixed;right:14px;bottom:14px;z-index:60;align-items:center;gap:8px;
-      background:var(--grad);color:#111;font-weight:900;font-size:14px;border:none;border-radius:999px;
-      padding:13px 18px;box-shadow:0 8px 26px rgba(245,158,11,.4);cursor:pointer}
-    .chat-close{display:block !important}
-  }
-  .chat-close{display:none;position:absolute;right:12px;top:10px;background:#222;border:1px solid var(--line2);
-    color:#fff;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:16px}
 
   /* ===== OFFER (hidden until reveal) ===== */
   .offer{display:none;margin:26px 0 8px}
@@ -270,7 +232,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- ===================== TOP STATUS BAR ===================== -->
 <div class="statusbar">
   <div class="wrap row">
-    <span class="live-pill"><span class="live-dot"></span> Live Masterclass</span>
     <!-- VIEWER COUNT:
          Per spec this should be a REAL number. Set CONFIG.USE_REAL_VIEWER_API = true
          and implement getRealViewerCount() to pull from your webinar platform
@@ -280,7 +241,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </div>
 
-<!-- ===================== STAGE (video + chat) ===================== -->
+<!-- ===================== STAGE (video) ===================== -->
 <div class="wrap">
   <div class="stage">
 
@@ -289,7 +250,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <div class="video-wrap">
         <!-- =========================================================
              VIDEO PLAYER
-             Default = HTML5 <video> so the chat-sync engine works out of
+             Default = HTML5 <video> so the offer-reveal timer works out of
              the box. Drop in your real file, OR replace this whole block
              with a Vimeo / Wistia / Bunny embed and wire its time to the
              getPlaybackState() function down in the script (see comments).
@@ -301,8 +262,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <!-- Live-style join gate: no scrub bar; tap starts playback with sound -->
         <div class="video-gate" id="videoGate">
           <div class="gate-play">▶</div>
-          <div class="gate-t">Your live session is ready</div>
-          <div class="gate-s">Tap to join · sound is on</div>
+          <div class="gate-t">Your session is ready</div>
+          <div class="gate-s">Tap to play · sound is on</div>
         </div>
         <!-- Custom controls: volume, speed (to 5x), fullscreen, no seek bar (can't skip ahead) -->
         <div class="v-controls" id="vControls">
@@ -329,19 +290,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
     </div>
 
-    <!-- ---- CHAT COLUMN ---- -->
-    <div class="chat-col" id="chatCol">
-      <button class="chat-close" id="chatClose">×</button>
-      <div class="chat-head">
-        <div class="t">💬 Session Chat <span id="chatLiveDot" class="live-dot" style="display:inline-block"></span></div>
-        <!-- FTC-compliant disclosure, small but visible -->
-        <div class="disclose">Chat replay from a previous session. Comments are shown in the order they originally happened.</div>
-      </div>
-      <div class="chat-body" id="chatBody"></div>
-      <div class="chat-foot">
-        <input type="text" placeholder="Chat is replay-only" disabled />
-      </div>
-    </div>
   </div>
 
   <!-- ===================== OFFER (revealed by JS) ===================== -->
@@ -471,9 +419,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </div>
 
-<!-- Mobile chat launcher -->
-<button class="chat-fab" id="chatFab">💬 Live Chat <span id="fabCount" style="opacity:.8">·</span></button>
-
 <script>
 /* =================================================================
    CONFIG, swap these before launch
@@ -486,77 +431,17 @@ const CONFIG = {
   VIEWER_MIN: 180,              // placeholder viewer floor  (see USE_REAL_VIEWER_API)
   VIEWER_MAX: 340,              // placeholder viewer ceiling
   USE_REAL_VIEWER_API: false,   // true -> implement getRealViewerCount() below
-  USE_SIMULATED_PLAYBACK: false // real <video> now drives chat + offer timing (was true for demo)
+  USE_SIMULATED_PLAYBACK: false // real <video> now drives offer timing (was true for demo)
 };
 
 /* =================================================================
-   ⚠️  SAMPLE CHAT DATA, REPLACE BEFORE RUNNING PAID TRAFFIC  ⚠️
-   The chat is labeled "replay from a previous session," which is a factual
-   claim. To stay FTC-compliant, replace EVERY object below with a REAL
-   comment captured from an actual recorded session (export your live chat).
-   These are realistic placeholders ONLY so you can preview pacing today.
-   Fields: timestamp_seconds (when it appears), name, message, avatar_initial
-   ================================================================= */
-const COMMENTS = [
-  { timestamp_seconds: 5,   name: "Marcus T.",   message: "Locked in and ready 🔥", avatar_initial: "M" },
-  { timestamp_seconds: 14,  name: "Priya N.",    message: "Tuning in from Toronto 👋", avatar_initial: "P" },
-  { timestamp_seconds: 24,  name: "Dwayne H.",   message: "Been waiting for this one all week", avatar_initial: "D" },
-  { timestamp_seconds: 34,  name: "Sofia R.",    message: "Audio + video coming through great", avatar_initial: "S" },
-  { timestamp_seconds: 45,  name: "James O.",    message: "not gonna lie, lead gen has been killing me", avatar_initial: "J" },
-  { timestamp_seconds: 55,  name: "Aisha B.",    message: "so true… cheap leads that never close 😩", avatar_initial: "A" },
-  { timestamp_seconds: 65,  name: "Ben C.",      message: "wait what's the actual difference vs normal ads?", avatar_initial: "B" },
-  { timestamp_seconds: 76,  name: "Carlos M.",   message: "ok this reframe already makes sense", avatar_initial: "C" },
-  { timestamp_seconds: 87,  name: "Grace L.",    message: "taking so many notes 📝", avatar_initial: "G" },
-  { timestamp_seconds: 98,  name: "Tyler W.",    message: "the pre-sold idea is 🤯", avatar_initial: "T" },
-  { timestamp_seconds: 110, name: "Nina K.",     message: "how much budget do you need to start?", avatar_initial: "N" },
-  { timestamp_seconds: 122, name: "Omar F.",     message: "my CPL is like $40 and none of them buy lol", avatar_initial: "O" },
-  { timestamp_seconds: 134, name: "Rachel P.",   message: "omg this is EXACTLY my problem", avatar_initial: "R" },
-  { timestamp_seconds: 146, name: "Kwame A.",    message: "so we optimize for sales not leads, got it", avatar_initial: "K" },
-  { timestamp_seconds: 158, name: "Elena V.",    message: "does this work for coaches specifically?", avatar_initial: "E" },
-  { timestamp_seconds: 170, name: "Marcus T.",   message: "the offer-to-ad match part is gold", avatar_initial: "M" },
-  { timestamp_seconds: 182, name: "Hana Y.",     message: "screenshotting this slide 📸", avatar_initial: "H" },
-  { timestamp_seconds: 194, name: "Derek S.",    message: "how long before you typically see results?", avatar_initial: "D" },
-  { timestamp_seconds: 206, name: "Bianca G.",   message: "I've wasted SO much on agencies 😮‍💨", avatar_initial: "B" },
-  { timestamp_seconds: 218, name: "Sam I.",      message: "this honestly makes agencies look silly", avatar_initial: "S" },
-  { timestamp_seconds: 230, name: "Leah D.",     message: "what platforms? just Meta or Google too?", avatar_initial: "L" },
-  { timestamp_seconds: 242, name: "Andre J.",    message: "following along, this is 🔥🔥", avatar_initial: "A" },
-  { timestamp_seconds: 253, name: "Yuki T.",     message: "the messaging framework alone is worth it", avatar_initial: "Y" },
-  { timestamp_seconds: 264, name: "Tom R.",      message: "my closer is gonna LOVE pre-sold leads", avatar_initial: "T" },
-  { timestamp_seconds: 275, name: "Fatima Z.",   message: "can you show a real example?", avatar_initial: "F" },
-  { timestamp_seconds: 286, name: "Chris B.",    message: "that case study 👏👏", avatar_initial: "C" },
-  { timestamp_seconds: 296, name: "Monica E.",   message: "wait he did that on $20/day?? 😳", avatar_initial: "M" },
-  { timestamp_seconds: 306, name: "Victor S.",   message: "ok I'm fully sold on the concept", avatar_initial: "V" },
-  { timestamp_seconds: 316, name: "Isabella C.", message: "is there a way to work with your team on this?", avatar_initial: "I" },
-  { timestamp_seconds: 325, name: "Nathan W.",   message: "how do we implement without a big team?", avatar_initial: "N" },
-  { timestamp_seconds: 333, name: "Zara M.",     message: "this is the missing piece for me fr", avatar_initial: "Z" },
-  { timestamp_seconds: 340, name: "Paolo R.",    message: "the funnel structure makes so much sense now", avatar_initial: "P" },
-  { timestamp_seconds: 346, name: "Deja W.",     message: "worth every minute of this 🙌", avatar_initial: "D" },
-  { timestamp_seconds: 351, name: "Ryan H.",     message: "can't wait to see the offer 👀", avatar_initial: "R" },
-  { timestamp_seconds: 355, name: "Grace L.",    message: "take my money already lol", avatar_initial: "G" },
-  { timestamp_seconds: 358, name: "Sofia R.",    message: "ok so what's the actual investment?", avatar_initial: "S" },
-  /* --- around the offer reveal (OFFER_REVEAL_SECONDS = 360 / 6:00) --- */
-  { timestamp_seconds: 366, name: "Marcus T.",   message: "wait… is that really all it takes?!", avatar_initial: "M" },
-  { timestamp_seconds: 378, name: "Priya N.",    message: "just enrolled ✅", avatar_initial: "P" },
-  { timestamp_seconds: 390, name: "Omar F.",     message: "how do I sign up??", avatar_initial: "O" },
-  { timestamp_seconds: 402, name: "Rachel P.",   message: "is the 30-day guarantee legit?", avatar_initial: "R" },
-  { timestamp_seconds: 414, name: "Tyler W.",    message: "grabbing my spot right now", avatar_initial: "T" },
-  { timestamp_seconds: 426, name: "Bianca G.",   message: "done. I'm in. let's gooo 🚀", avatar_initial: "B" },
-  { timestamp_seconds: 438, name: "Nina K.",     message: "does the community have support built in?", avatar_initial: "N" },
-  { timestamp_seconds: 450, name: "Derek S.",    message: "just bought, so pumped 🙌", avatar_initial: "D" },
-  { timestamp_seconds: 462, name: "Elena V.",    message: "best decision I've made this year honestly", avatar_initial: "E" },
-  { timestamp_seconds: 474, name: "Sam I.",      message: "can someone drop the enroll link again?", avatar_initial: "S" },
-  { timestamp_seconds: 485, name: "Hana Y.",     message: "enrolled! see everyone inside 🎉", avatar_initial: "H" }
-];
-
-/* =================================================================
    PLAYBACK TIME SOURCE
-   Everything (chat + offer reveal) is driven by getPlaybackState().
+   The offer reveal is driven by getPlaybackState().
    - Real video mode: reads the <video> element's currentTime + paused.
        (For Vimeo/Wistia/Bunny, replace the body of getPlaybackState()
         with that player's getCurrentTime()/paused equivalents.)
    - Simulated mode: a demo clock you control with the Play button, so
        the page fully works before you add a video.
-   Because chat is driven by currentTime, pausing the video pauses the chat.
    ================================================================= */
 const video   = document.getElementById('webinarVideo');
 const params  = new URLSearchParams(location.search);
@@ -593,39 +478,6 @@ document.getElementById('simOffer').addEventListener('click', ()=>{
 });
 /* URL helper: watch.html?reveal=1 forces the offer open immediately (for previewing) */
 const FORCE_REVEAL = params.get('reveal') === '1';
-
-/* =================================================================
-   CHAT REPLAY ENGINE (synced to playback time)
-   ================================================================= */
-const chatBody = document.getElementById('chatBody');
-const WARM = ['#f59e0b','#f97316','#ef4444','#e11d48','#d97706','#ea580c','#dc2626','#c2410c','#b45309','#fb7185'];
-function colorFor(str){ let h=0; for(let i=0;i<str.length;i++) h=(h*31+str.charCodeAt(i))>>>0; return WARM[h % WARM.length]; }
-const SORTED = COMMENTS.slice().sort((a,b)=>a.timestamp_seconds-b.timestamp_seconds);
-let shownIdx = 0, lastSec = 0;
-
-function appendComment(c){
-  const wrap = document.createElement('div'); wrap.className = 'msg';
-  const av = document.createElement('div'); av.className = 'av';
-  av.style.background = colorFor(c.name); av.textContent = c.avatar_initial || (c.name||'?')[0];
-  const bub = document.createElement('div'); bub.className = 'bub';
-  const nm = document.createElement('div'); nm.className = 'nm'; nm.textContent = c.name;
-  const tx = document.createElement('div'); tx.className = 'tx'; tx.textContent = c.message;
-  bub.appendChild(nm); bub.appendChild(tx); wrap.appendChild(av); wrap.appendChild(bub);
-  chatBody.appendChild(wrap);
-  chatBody.scrollTop = chatBody.scrollHeight;
-  updateFabCount();
-}
-function syncChat(sec){
-  // Handle a backward seek (real video only): rebuild from scratch
-  if (sec + 1.5 < lastSec){ chatBody.innerHTML=''; shownIdx = 0; }
-  while (shownIdx < SORTED.length && SORTED[shownIdx].timestamp_seconds <= sec){
-    appendComment(SORTED[shownIdx]); shownIdx++;
-  }
-  lastSec = sec;
-}
-function updateFabCount(){
-  const el = document.getElementById('fabCount'); if (el) el.textContent = '· ' + shownIdx;
-}
 
 /* =================================================================
    VIEWER COUNT
@@ -710,11 +562,10 @@ if (FORCE_REVEAL) revealOffer();
 })();
 
 /* =================================================================
-   MASTER LOOP, drive chat + offer from playback time (4x / sec)
+   MASTER LOOP, drive offer reveal from playback time (4x / sec)
    ================================================================= */
 setInterval(()=>{
   const st = getPlaybackState();
-  syncChat(st.seconds);
   if (!revealed && st.seconds >= CONFIG.OFFER_REVEAL_SECONDS) revealOffer();
   // demo time display
   const t = document.getElementById('simTime');
@@ -722,11 +573,35 @@ setInterval(()=>{
 }, 250);
 
 /* =================================================================
-   MOBILE CHAT DRAWER
+   WATCH-TIME TRACKING (for split-testing VSLs by engagement)
+   Fires milestone + heartbeat events into the GTM dataLayer and Meta Pixel.
+   Compare pages in GA4 (event: video_progress / video_watch_seconds,
+   dimension: page_path) to see which VSL holds attention longest.
    ================================================================= */
-const chatCol = document.getElementById('chatCol');
-document.getElementById('chatFab').addEventListener('click', ()=> chatCol.classList.add('open'));
-document.getElementById('chatClose').addEventListener('click', ()=> chatCol.classList.remove('open'));
+(function(){
+  if (!video) return;
+  const milestones = [25, 50, 75, 95, 100];
+  const hit = {};
+  function markMilestone(p){
+    if (hit[p]) return;
+    hit[p] = true;
+    if (window.gtag) gtag('event', 'video_progress', { event_category: 'webinar', video_percent: p, page_path: location.pathname });
+    if (window.fbq)  fbq('trackCustom', 'VideoProgress', { percent: p, page_path: location.pathname });
+  }
+  video.addEventListener('timeupdate', function(){
+    if (!video.duration) return;
+    const pct = (video.currentTime / video.duration) * 100;
+    milestones.forEach(function(m){ if (pct >= m) markMilestone(m); });
+  });
+  function sendWatchTime(){
+    const secs = Math.round(video.currentTime || 0);
+    if (secs <= 0) return;
+    if (window.gtag) gtag('event', 'video_watch_seconds', { event_category: 'webinar', value: secs, page_path: location.pathname });
+    if (window.fbq)  fbq('trackCustom', 'VideoWatchSeconds', { seconds: secs, page_path: location.pathname });
+  }
+  document.addEventListener('visibilitychange', function(){ if (document.visibilityState === 'hidden') sendWatchTime(); });
+  window.addEventListener('pagehide', sendWatchTime);
+})();
 
 /* FAQ accordion */
 document.querySelectorAll('#faq .qa button').forEach(btn=>{
