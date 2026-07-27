@@ -1,14 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { Maximize2 } from 'lucide-react';
+import { Maximize2, Volume2, VolumeX } from 'lucide-react';
 
 // A/B variant B of /overview. Identical to WebinarVSLPage except the video,
 // so the test isolates the video as the only variable.
 export default function WebinarVSLPageB() {
   const [viewers, setViewers] = useState(214);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLDivElement>(null);
+  const videoElRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setViewers(Math.floor(Math.random() * (240 - 180 + 1) + 180));
@@ -57,6 +59,13 @@ export default function WebinarVSLPageB() {
     }
   };
 
+  const handleToggleMute = () => {
+    const el = videoElRef.current;
+    if (!el) return;
+    el.muted = !el.muted;
+    setIsMuted(el.muted);
+  };
+
   return (
     <>
       <Helmet>
@@ -90,27 +99,41 @@ export default function WebinarVSLPageB() {
             {/* Block YouTube top-bar UI on mobile */}
             <div className="absolute top-0 left-0 w-full h-[56px] z-20 bg-transparent pointer-events-auto" />
 
+            {/* Intentionally no `controls` attribute — native controls always
+                include a seek bar. Custom controls below (mute + fullscreen
+                only) keep this unskippable, matching the webinar watch page. */}
             <video
+              ref={videoElRef}
               className="absolute inset-0 w-full h-full object-contain bg-black"
               src="/webinar1/webinar-1.mp4"
-              controls
               autoPlay
               muted
               playsInline
+              disablePictureInPicture
+              tabIndex={-1}
+              onContextMenu={(e) => e.preventDefault()}
               title="KenjiAI Overview"
             />
 
-            {/* Expand / fullscreen button — top-right so it never covers
-                YouTube's own bottom-right fullscreen control (the reliable
-                path on iOS, where iframes can't be fullscreened by script) */}
-            <button
-              onClick={handleExpand}
-              aria-label={isFullscreen ? 'Exit fullscreen' : 'Enlarge video'}
-              className="absolute top-3 right-3 z-30 flex items-center gap-1.5 bg-black/75 hover:bg-black/90 backdrop-blur-sm border border-white/25 text-white rounded-lg px-3.5 py-2 text-[13px] font-semibold transition-all active:scale-95 shadow-lg"
-            >
-              <Maximize2 size={15} />
-              <span>{isFullscreen ? 'Exit' : 'Enlarge'}</span>
-            </button>
+            {/* Custom controls: mute + fullscreen only, no seek/scrub bar.
+                Top-right, kept clear of the mobile top-bar block above. */}
+            <div className="absolute top-3 right-3 z-30 flex items-center gap-2">
+              <button
+                onClick={handleToggleMute}
+                aria-label={isMuted ? 'Unmute' : 'Mute'}
+                className="flex items-center justify-center bg-black/75 hover:bg-black/90 backdrop-blur-sm border border-white/25 text-white rounded-lg p-2 transition-all active:scale-95 shadow-lg"
+              >
+                {isMuted ? <VolumeX size={15} /> : <Volume2 size={15} />}
+              </button>
+              <button
+                onClick={handleExpand}
+                aria-label={isFullscreen ? 'Exit fullscreen' : 'Enlarge video'}
+                className="flex items-center gap-1.5 bg-black/75 hover:bg-black/90 backdrop-blur-sm border border-white/25 text-white rounded-lg px-3.5 py-2 text-[13px] font-semibold transition-all active:scale-95 shadow-lg"
+              >
+                <Maximize2 size={15} />
+                <span>{isFullscreen ? 'Exit' : 'Enlarge'}</span>
+              </button>
+            </div>
           </div>
         </div>
 
