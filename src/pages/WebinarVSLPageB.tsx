@@ -90,13 +90,14 @@ export default function WebinarVSLPageB() {
             {/* Block YouTube top-bar UI on mobile */}
             <div className="absolute top-0 left-0 w-full h-[56px] z-20 bg-transparent pointer-events-auto" />
 
-            <iframe
-              src="https://www.youtube.com/embed/ydIOQA11s7Y?si=10MlUNyxcaRiakhq&controls=1&autoplay=1&rel=0&modestbranding=1"
+            <video
+              className="absolute inset-0 w-full h-full object-contain bg-black"
+              src="/webinar1/webinar-1.mp4"
+              controls
+              autoPlay
+              muted
+              playsInline
               title="KenjiAI Overview"
-              className="absolute inset-0 w-full h-full border-0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
             />
 
             {/* Expand / fullscreen button — top-right so it never covers
