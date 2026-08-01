@@ -72,7 +72,7 @@ const QuickContact: React.FC = () => {
 
               {/* Call Us */}
               <a
-                href="tel:+18286772148"
+                href="tel:+18312634402"
                 className="flex items-center gap-3 p-3 rounded-xl bg-green-500/10 border border-green-500/30 hover:bg-green-500/20 transition-all group"
               >
                 <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -80,7 +80,7 @@ const QuickContact: React.FC = () => {
                 </div>
                 <div className="flex-1">
                   <div className="text-white font-semibold text-sm">Call Now</div>
-                  <div className="text-gray-400 text-xs">(828) 677-2148</div>
+                  <div className="text-gray-400 text-xs">(831) 263-4402</div>
                 </div>
               </a>
             </div>

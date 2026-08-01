@@ -141,11 +141,11 @@ const Hero: React.FC = () => {
         >
           <p className="text-gray-400 text-sm mb-2">Prefer to speak with our team?</p>
           <a
-            href="tel:+18286772148"
+            href="tel:+18312634402"
             className="inline-flex items-center gap-2 text-gray-300 hover:text-green-400 transition-colors font-medium group touch-manipulation min-h-[44px]"
           >
             <Phone className="w-5 h-5 sm:w-4 sm:h-4 group-hover:animate-pulse" />
-            <span className="text-base sm:text-base">(828) 677-2148</span>
+            <span className="text-base sm:text-base">(831) 263-4402</span>
           </a>
         </motion.div>
 
