@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, ArrowRight } from 'lucide-react';
 import { ToolReplacementBar } from './ToolReplacementBar';
@@ -10,22 +10,17 @@ import { getSeasonCopy } from '../utils/seasonCopy';
 const MONTHLY_FEATURES = [
   "Proven website and funnel built for you, the same layouts our winning clients convert with",
   "Proven follow-up AI agents that call, text, and book appointments around the clock",
-  "Ad copy and creative pulled from campaigns already producing sales in your niche",
   "Replace 17+ tools (CRM, funnels, email, SMS, calendar, ads, more)",
   "We build and launch your first ad campaign in week one",
-  "Unlimited contacts, unlimited funnels, unlimited users",
   "Live onboarding call within 48 hours of signup",
   "Real human support, not chatbots, usually back to you in under 2 hours",
-  "$20/mo in email and text credits included",
 ];
 
 const YEARLY_FEATURES = [
   "Everything in Monthly, with the performance fee cut in half (5% vs 10%)",
   "Quarterly strategy call with our growth team to plan your next 90 days",
   "Custom workflow built for your business in week one",
-  "Fresh ad creative every 90 days so your campaigns never go stale",
   "Sales team placement included if you need help closing",
-  "Priority access to new features 30 days before everyone else",
   "Save $1,260 vs paying monthly",
 ];
 
@@ -34,7 +29,6 @@ const VIP_FEATURES = [
   "Zero performance fee, forever, keep 100% of every sale",
   "Trained sales people placed into your company, free (Golden Members only)",
   "We migrate your current tools for you (white-glove)",
-  "Golden Member status with grandfathered access to every future release",
   "Direct line to the founding team",
 ];
 
@@ -112,6 +106,23 @@ export function PricingNew() {
         </motion.div>
       </div>
 
+      {/* Low-pressure call CTA up top, catches visitors who want to talk before they buy */}
+      <div className="max-w-3xl mx-auto mb-12 sm:mb-16 px-4 sm:px-6">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-gray-900/60 border border-gray-700/50 rounded-2xl p-5 sm:p-6 text-center sm:text-left">
+          <p className="text-gray-200 font-semibold">
+            Not ready to pick a plan? Book a free 15-minute call and we'll walk you through it, no pressure, no pitch.
+          </p>
+          <a
+            href="https://go.mediatraffics.com/leads"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 inline-flex items-center justify-center gap-2 bg-white text-gray-900 hover:bg-gray-200 px-6 py-3 rounded-xl font-bold transition-all duration-300 whitespace-nowrap"
+          >
+            Book a Free Call
+          </a>
+        </div>
+      </div>
+
       {/* Value stack: what $375 actually buys (price anchored against hiring) */}
       <div className="max-w-5xl mx-auto mb-12 sm:mb-16 px-4 sm:px-6">
         <div className="text-center mb-8">
@@ -171,27 +182,6 @@ export function PricingNew() {
       </div>
 
       <div className="max-w-7xl mx-auto mt-12 sm:mt-16">
-        {/* Live Social Proof Ticker */}
-        <div className="w-full overflow-hidden mb-12 py-3 bg-gray-900/50 border-y border-gray-800">
-          <div className="flex gap-12 whitespace-nowrap animate-scroll items-center h-8">
-            {[...Array(2)].map((_, i) => (
-              <React.Fragment key={i}>
-                <span className="text-gray-400 font-medium flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Mark T. just locked in the Yearly Plan</span>
-                <span className="text-gray-400 font-medium flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Sarah K. closed 3 deals in her first 48 hours</span>
-                <span className="text-gray-400 font-medium flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span> 8 spots remaining for this month's cohort</span>
-                <span className="text-gray-400 font-medium flex items-center gap-2"><span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> David R. added $22K ARR using KenjiAI</span>
-              </React.Fragment>
-            ))}
-          </div>
-          <style>{`
-            @keyframes scroll {
-              0% { transform: translateX(0); }
-              100% { transform: translateX(-50%); }
-            }
-            .animate-scroll { animation: scroll 20s linear infinite; }
-          `}</style>
-        </div>
-
         {/* 3-Column Pricing Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 px-4 lg:px-8 max-w-6xl mx-auto">
 
@@ -230,7 +220,15 @@ export function PricingNew() {
                 <span className="flex items-center gap-2">Claim Spot for $375/mo</span>
               )}
             </motion.button>
-            <div className="text-center text-gray-500 text-xs mb-6">Secured by Stripe · 30-Day Guarantee</div>
+            <div className="text-center text-gray-500 text-xs mb-1">Secured by Stripe · 30-Day Guarantee</div>
+            <a
+              href="https://go.mediatraffics.com/leads"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-center text-gray-400 hover:text-white text-xs underline underline-offset-2 mb-6"
+            >
+              Not sure yet? Book a free call instead
+            </a>
 
             <div className="flex-1">
               <div className="text-white text-sm font-semibold mb-3">Everything included:</div>
@@ -283,7 +281,15 @@ export function PricingNew() {
                 <span className="flex items-center gap-2">Claim Spot for $270/mo ($3,240/yr)</span>
               )}
             </motion.button>
-            <div className="text-center text-[#10A37F] font-semibold text-xs mb-6">You save $1,260/yr vs monthly</div>
+            <div className="text-center text-[#10A37F] font-semibold text-xs mb-1">You save $1,260/yr vs monthly</div>
+            <a
+              href="https://go.mediatraffics.com/leads"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-center text-gray-400 hover:text-white text-xs underline underline-offset-2 mb-6"
+            >
+              Not sure yet? Book a free call instead
+            </a>
 
             <div className="flex-1">
               <div className="text-white text-sm font-semibold mb-3">Everything in Monthly, plus:</div>
