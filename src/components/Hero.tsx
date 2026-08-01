@@ -5,7 +5,6 @@ import { useHolidayTheme } from '../contexts/HolidayThemeContext';
 import { TypingHeadline } from './TypingHeadline';
 import { LuxuryButton } from './LuxuryButton';
 import { AmbientBackground } from './AmbientBackground';
-import { DynamicDateTime } from './DynamicDateTime';
 
 const Hero: React.FC = () => {
   const { currentHoliday } = useHolidayTheme();
@@ -23,29 +22,13 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pb-12 sm:pb-16">
-        {/* Server Active Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="pt-6 sm:pt-8 mb-3 sm:mb-2 flex justify-center"
-        >
-          <div className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gray-800/50 backdrop-blur-sm border border-gray-700/40 rounded-full">
-            <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></div>
-            <span className="text-gray-400 text-[10px] font-medium tracking-wide uppercase">Server Active</span>
-            <span className="text-gray-600 text-[10px]">|</span>
-            <DynamicDateTime format="short" timezone="America/Chicago" className="text-gray-500 text-[10px] font-medium" />
-            <span className="text-gray-600 text-[10px]">CST</span>
-          </div>
-        </motion.div>
-
         {/* Headline with Typing Animation */}
         <motion.h1
           id="hero-heading"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="pt-4 sm:pt-8"
+          className="pt-10 sm:pt-16"
         >
           <TypingHeadline />
         </motion.h1>
