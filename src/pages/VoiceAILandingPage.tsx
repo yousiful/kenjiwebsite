@@ -7,7 +7,7 @@ import {
   Megaphone, Bot, Calendar, Globe, Lock, Headphones, RefreshCw, Star, Play
 } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { META_CONFIG } from '../config/meta';
 import { ResultsDisclaimer } from '../components/ResultsDisclaimer';
 
@@ -246,6 +246,7 @@ const faqs = [
 
 // ─── Main component ───────────────────────────────────────────────────────
 const VoiceAILandingPage: React.FC = () => {
+  const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activePlan, setActivePlan] = useState('growth');
   const [isVisible, setIsVisible] = useState(false);
@@ -258,6 +259,12 @@ const VoiceAILandingPage: React.FC = () => {
     const plan = plans.find((p) => p.id === planId);
     if (!plan) return;
     trackCheckout(plan.id, plan.price, plan.name);
+    // Scale + Ads is a done-for-you offer sold on /pricing, not a
+    // standalone Stripe checkout — send clicks there instead.
+    if (planId === 'scale') {
+      navigate('/pricing');
+      return;
+    }
     window.open(plan.link, '_blank');
   };
 
