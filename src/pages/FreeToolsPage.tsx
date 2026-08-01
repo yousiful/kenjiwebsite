@@ -55,7 +55,7 @@ const FreeToolsPage: React.FC = () => {
       rating: 4.7,
       users: "15K+",
       keywords: ["free investor tools", "startup tools", "pitch deck generator", "investor matching", "funding tools", "startup AI"],
-      revenue: "Helps raise $50M+ in funding"
+      revenue: "Helps founders raise funding faster"
     },
     {
       name: "AI Dispute Resolution",
@@ -138,7 +138,7 @@ const FreeToolsPage: React.FC = () => {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Free AI Tools That Make Money - Revenue-Generating AI Tools by KenjiAI",
-    "description": "Collection of free AI tools that help businesses generate revenue. No signup required, 100% free forever. Used by 125K+ entrepreneurs to make money with AI.",
+    "description": "Collection of free AI tools that help businesses generate revenue. No signup required, 100% free forever. Part of the KenjiAI platform used by 500+ businesses.",
     "url": "https://kenjiai.com/free-tools",
     "mainEntity": {
       "@type": "ItemList",
@@ -185,7 +185,7 @@ const FreeToolsPage: React.FC = () => {
     <>
       <Helmet>
         <title>Free AI Tools That Make Money for Business | KenjiAI</title>
-        <meta name="description" content="Free AI tools to help you make money: prompt generator, PR outreach, sales coach, and investor connect. No signup, free forever, used by 125K+ founders." />
+        <meta name="description" content="Free AI tools to help you make money: prompt generator, PR outreach, sales coach, and investor connect. No signup, free forever, from the platform 500+ businesses trust." />
         <meta name="keywords" content="free AI tools that make money, revenue generating AI tools, AI prompt generator, free PR tools, AI sales coach, free startup tools, ChatGPT prompts, GPT-4 prompts, AI business tools, free marketing tools, AI automation tools, prompt engineering, free AI software, business automation, AI productivity tools, free AI apps, money making AI tools" />
         <link rel="canonical" href="https://kenjiai.com/free-tools" />
         <script type="application/ld+json">
@@ -246,11 +246,11 @@ const FreeToolsPage: React.FC = () => {
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mb-12">
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-400">125K+</div>
-                <div className="text-gray-400 text-sm">Revenue Generators</div>
+                <div className="text-3xl font-bold text-green-400">500+</div>
+                <div className="text-gray-400 text-sm">Businesses Served</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-400">$50M+</div>
+                <div className="text-3xl font-bold text-blue-400">$3.35M+</div>
                 <div className="text-gray-400 text-sm">Revenue Generated</div>
               </div>
               <div className="text-center">
@@ -427,8 +427,7 @@ const FreeToolsPage: React.FC = () => {
                 <div>
                   <h3 className="text-xl font-bold text-purple-400 mb-3">🎯 Proven Revenue Results</h3>
                   <p className="text-gray-400 text-sm leading-relaxed">
-                    Used by 125,000+ entrepreneurs worldwide. Our tools have helped generate over $50M 
-                    in revenue and saved millions in costs.
+                    Part of the same platform that's helped 500+ businesses generate $3.35M+ in revenue.
                   </p>
                 </div>
                 

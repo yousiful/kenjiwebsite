@@ -175,7 +175,7 @@ const ProductSelection: React.FC = () => {
             {[
               'We build and launch in week one',
               'You pay from results, not promises',
-              '1,000+ clients onboarded',
+              '500+ businesses onboarded',
               '100% done for you',
             ].map((pill) => (
               <span
@@ -191,8 +191,8 @@ const ProductSelection: React.FC = () => {
           {/* Stat cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto mb-10">
             {[
-              { icon: DollarSign, stat: '$50M+', label: 'Client revenue generated' },
-              { icon: Users, stat: '1,000+', label: 'Businesses onboarded' },
+              { icon: DollarSign, stat: '$3.35M+', label: 'Client revenue generated' },
+              { icon: Users, stat: '500+', label: 'Businesses onboarded' },
               { icon: Zap, stat: '17+', label: 'Tools replaced by Kenji' },
             ].map(({ icon: Icon, stat, label }) => (
               <div
