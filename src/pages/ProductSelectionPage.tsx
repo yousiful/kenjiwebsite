@@ -34,6 +34,39 @@ const BENEFITS = [
   },
 ];
 
+const PRICING_STRUCTURED_DATA = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "KenjiAI",
+  "description": "AI business automation platform replacing 17+ marketing and sales tools: voice agents, CRM, funnels, email and SMS automation, ads management.",
+  "brand": {
+    "@type": "Brand",
+    "name": "KenjiAI",
+  },
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Monthly",
+      "price": "375",
+      "priceCurrency": "USD",
+      "url": "https://kenjiai.com/pricing",
+      "priceValidUntil": "2027-08-01",
+      "availability": "https://schema.org/InStock",
+      "description": "10% performance fee on new revenue generated. Cancel anytime.",
+    },
+    {
+      "@type": "Offer",
+      "name": "Annual",
+      "price": "270",
+      "priceCurrency": "USD",
+      "url": "https://kenjiai.com/pricing",
+      "priceValidUntil": "2027-08-01",
+      "availability": "https://schema.org/InStock",
+      "description": "5% performance fee on new revenue generated, billed annually at $3,240/yr.",
+    },
+  ],
+};
+
 const ProductSelectionPage: React.FC = () => {
   return (
     <>
@@ -41,6 +74,7 @@ const ProductSelectionPage: React.FC = () => {
         <title>KenjiAI Pricing | Voice Agents, CRM, and AI Automation Plans</title>
         <meta name="description" content="KenjiAI pricing for business owners replacing 17+ tools. Monthly $375, annual $270/mo, lifetime custom. Performance-based fees, 30-day money-back guarantee." />
         <link rel="canonical" href="https://kenjiai.com/pricing" />
+        <script type="application/ld+json">{JSON.stringify(PRICING_STRUCTURED_DATA)}</script>
       </Helmet>
 
       <div className="min-h-screen" style={{ backgroundColor: '#0B0E14' }}>
