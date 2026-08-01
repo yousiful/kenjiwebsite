@@ -1,38 +1,38 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Lock, Award, CheckCircle, Zap, Clock } from 'lucide-react';
+import { Lock, ShieldCheck, Star, Award, Users, Headset } from 'lucide-react';
 
 export function TrustBadges() {
   const badges = [
     {
-      icon: <Shield className="w-5 h-5" />,
-      text: "Bank-Level Security",
-      subtext: "256-bit encryption"
+      icon: <Lock className="w-5 h-5" />,
+      text: "Secure Checkout",
+      subtext: "Payments processed by Stripe"
     },
     {
-      icon: <Lock className="w-5 h-5" />,
-      text: "GDPR Compliant",
-      subtext: "Your data protected"
+      icon: <ShieldCheck className="w-5 h-5" />,
+      text: "30-Day Guarantee",
+      subtext: "Full refund, no hoops"
+    },
+    {
+      icon: <Star className="w-5 h-5" />,
+      text: "Verified Client Reviews",
+      subtext: "Real reviews, not stock quotes"
     },
     {
       icon: <Award className="w-5 h-5" />,
-      text: "SOC 2 Certified",
-      subtext: "Enterprise standard"
+      text: "Founder-Led",
+      subtext: "13+ years in paid acquisition"
     },
     {
-      icon: <CheckCircle className="w-5 h-5" />,
-      text: "99.97% Uptime",
-      subtext: "Always available"
+      icon: <Users className="w-5 h-5" />,
+      text: "500+ Businesses Served",
+      subtext: "$3.35M+ client revenue generated"
     },
     {
-      icon: <Zap className="w-5 h-5" />,
-      text: "Instant Setup",
-      subtext: "Live in 5 minutes"
-    },
-    {
-      icon: <Clock className="w-5 h-5" />,
-      text: "24/7 Support",
-      subtext: "Expert assistance"
+      icon: <Headset className="w-5 h-5" />,
+      text: "Real Human Support",
+      subtext: "Not chatbots"
     }
   ];
 
@@ -47,10 +47,10 @@ export function TrustBadges() {
           className="text-center mb-8"
         >
           <h3 className="text-2xl font-bold text-white mb-2">
-            Trusted by Industry Leaders
+            Why Business Owners Trust KenjiAI
           </h3>
           <p className="text-gray-400">
-            Enterprise-grade security and reliability you can count on
+            No fine print, no fake certifications, just what's actually true
           </p>
         </motion.div>
 
@@ -75,31 +75,6 @@ export function TrustBadges() {
             </motion.div>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-8 flex flex-wrap justify-center gap-6 text-gray-400 text-sm"
-        >
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-            <span>PCI DSS Compliant</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-            <span>ISO 27001 Certified</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-purple-400 rounded-full animate-pulse"></div>
-            <span>HIPAA Ready</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-pink-400 rounded-full animate-pulse"></div>
-            <span>Privacy Shield Certified</span>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

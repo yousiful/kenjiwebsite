@@ -10,7 +10,6 @@ import { ScrollControls } from '../components/ScrollControls';
 import { ResultsDisclaimer } from '../components/ResultsDisclaimer';
 import { TrustBadges } from '../components/TrustBadges';
 import { MoneyBackGuarantee } from '../components/MoneyBackGuarantee';
-import { RealTimeStats } from '../components/RealTimeStats';
 import FAQ from '../components/FAQ';
 import QuickContact from '../components/QuickContact';
 
@@ -66,7 +65,6 @@ const HomePage: React.FC = () => {
         <Hero />
         <TrustBadges />
         <BusinessTransformation />
-        <RealTimeStats />
         <Features />
         <Tools />
         <SocialProof />
