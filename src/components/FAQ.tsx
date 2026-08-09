@@ -37,7 +37,7 @@ const FAQ: React.FC = () => {
     },
     {
       question: "How do I know this will work for my business?",
-      answer: "Over 1,000 businesses run on this system — agencies, CPAs, tax relief firms, coaches, contractors, and local services. The playbooks we install for you are the ones already producing sales in niches like yours, not experiments. If you want to see it mapped to your exact business first, book a free strategy call and we'll walk you through it. Either way, the 30-day guarantee means the risk sits with us, not you."
+      answer: "Over 500 businesses run on this system — agencies, CPAs, tax relief firms, coaches, contractors, and local services. The playbooks we install for you are the ones already producing sales in niches like yours, not experiments. If you want to see it mapped to your exact business first, book a free strategy call and we'll walk you through it. Either way, the 30-day guarantee means the risk sits with us, not you."
     },
     {
       question: "What's included in the setup?",
