@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Megaphone, Bot, Video } from 'lucide-react';
 import { PricingNew } from '../components/PricingNew';
 import { Reviews } from '../components/Reviews';
+import { ExplainerVideo } from '../components/ExplainerVideo';
 
 import { ObjectionsHandler } from '../components/ObjectionsHandler';
 
@@ -121,6 +122,8 @@ const ProductSelectionPage: React.FC = () => {
               </div>
             </div>
           </section>
+
+          <ExplainerVideo />
 
           {/* Real Client Reviews */}
           <Reviews />
