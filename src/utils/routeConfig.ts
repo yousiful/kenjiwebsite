@@ -26,7 +26,8 @@ export const internalRoutes = [
   '/overview-b',
   '/funding',
   '/dashboard',
-  '/setup'
+  '/setup',
+  '/helpful-links'
 ] as const;
 
 export const externalRoutes = {

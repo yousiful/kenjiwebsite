@@ -63,6 +63,7 @@ const NicheAdPage = lazyRoute(() => import('./pages/NicheAdPage'));
 const AgentSetupPage = lazyRoute(() => import('./pages/AgentSetupPage'));
 const FundingPage = lazyRoute(() => import('./pages/FundingPage'));
 const PricingV2Page = lazyRoute(() => import('./pages/PricingV2Page'));
+const HelpfulLinksPage = lazyRoute(() => import('./pages/HelpfulLinksPage'));
 
 const RouteFallback: React.FC = () => (
   <div
@@ -113,7 +114,7 @@ const VisitorTracker: React.FC = () => {
   return null;
 };
 
-const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/overview-b', '/setup'];
+const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/overview-b', '/setup', '/helpful-links'];
 
 function ConditionalNavbar() {
   const { pathname } = useLocation();
@@ -199,6 +200,7 @@ function App() {
                       <Route path="/dashboard" element={<DashboardPage />} />
                       <Route path="/overview" element={<WebinarVSLPage />} />
                       <Route path="/overview-b" element={<WebinarVSLPageB />} />
+                      <Route path="/helpful-links" element={<HelpfulLinksPage />} />
                       <Route path="/setup" element={<AgentSetupPage />} />
                       <Route path="/funding" element={<FundingPage />} />
                       <Route path="*" element={<NotFoundPage />} />
