@@ -115,7 +115,7 @@ const VisitorTracker: React.FC = () => {
   return null;
 };
 
-const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/overview-b', '/setup', '/helpful-links'];
+const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/overview-b', '/setup', '/helpful-links', '/partnerup'];
 
 function ConditionalNavbar() {
   const { pathname } = useLocation();
