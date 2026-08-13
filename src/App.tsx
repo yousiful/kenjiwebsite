@@ -64,6 +64,7 @@ const AgentSetupPage = lazyRoute(() => import('./pages/AgentSetupPage'));
 const FundingPage = lazyRoute(() => import('./pages/FundingPage'));
 const PricingV2Page = lazyRoute(() => import('./pages/PricingV2Page'));
 const HelpfulLinksPage = lazyRoute(() => import('./pages/HelpfulLinksPage'));
+const PartnerUpPage = lazyRoute(() => import('./pages/PartnerUpPage'));
 
 const RouteFallback: React.FC = () => (
   <div
@@ -201,6 +202,7 @@ function App() {
                       <Route path="/overview" element={<WebinarVSLPage />} />
                       <Route path="/overview-b" element={<WebinarVSLPageB />} />
                       <Route path="/helpful-links" element={<HelpfulLinksPage />} />
+                      <Route path="/partnerup" element={<PartnerUpPage />} />
                       <Route path="/setup" element={<AgentSetupPage />} />
                       <Route path="/funding" element={<FundingPage />} />
                       <Route path="*" element={<NotFoundPage />} />
