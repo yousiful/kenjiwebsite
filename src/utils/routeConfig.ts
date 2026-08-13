@@ -28,7 +28,8 @@ export const internalRoutes = [
   '/dashboard',
   '/setup',
   '/helpful-links',
-  '/partnerup'
+  '/partnerup',
+  '/workshop'
 ] as const;
 
 export const externalRoutes = {
