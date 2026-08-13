@@ -27,7 +27,8 @@ export const internalRoutes = [
   '/funding',
   '/dashboard',
   '/setup',
-  '/helpful-links'
+  '/helpful-links',
+  '/partnerup'
 ] as const;
 
 export const externalRoutes = {
