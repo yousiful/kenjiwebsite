@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Maximize2, Volume2, VolumeX } from 'lucide-react';
+import WebinarObjectionSection from '../components/WebinarObjectionSection';
+import { useResumableVideo } from '../hooks/useResumableVideo';
 
 // A/B variant B of /overview. Identical to WebinarVSLPage except the video,
 // so the test isolates the video as the only variable.
@@ -11,6 +13,8 @@ export default function WebinarVSLPageB() {
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLDivElement>(null);
   const videoElRef = useRef<HTMLVideoElement>(null);
+
+  useResumableVideo(videoElRef, 'kenjiai-video-progress:/overview-b');
 
   useEffect(() => {
     setViewers(Math.floor(Math.random() * (240 - 180 + 1) + 180));
@@ -206,6 +210,7 @@ export default function WebinarVSLPageB() {
           </div>
         </motion.div>
 
+        <WebinarObjectionSection />
       </div>
     </>
   );
