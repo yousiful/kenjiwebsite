@@ -116,20 +116,41 @@ const PartnerUpPage: React.FC = () => {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.6 }}
-          className="relative z-10 w-full max-w-2xl bg-gray-900/60 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 mb-8 text-center"
+          className="relative z-10 w-full max-w-2xl bg-gray-900/60 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 mb-8"
           style={{ boxShadow: '0 0 40px rgba(0,255,255,0.08)' }}
         >
-          <h2 className="text-white font-bold text-2xl mb-2">The Partner Program</h2>
-          <p className="text-gray-400 text-sm mb-6">A rebuild of your entire paid acquisition engine, run by me directly.</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-6">
-            <div>
-              <div className="text-white text-3xl font-bold">$25,000</div>
-              <div className="text-gray-500 text-xs uppercase tracking-wide mt-1">Implementation</div>
+          <h2 className="text-white font-bold text-2xl mb-2 text-center">The Partner Program</h2>
+          <p className="text-gray-400 text-sm mb-8 text-center">
+            A rebuild of your entire paid acquisition engine, run by me directly. Two numbers, paid at two
+            different times, for two different things.
+          </p>
+
+          <div className="flex flex-col gap-4 mb-6">
+            <div className="flex items-start gap-4 bg-black/30 border border-gray-800 rounded-xl p-5">
+              <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-cyan-400 text-[#0B0E14] font-bold flex items-center justify-center text-sm">
+                1
+              </div>
+              <div>
+                <div className="text-white text-2xl font-bold">$25,000 <span className="text-gray-500 text-sm font-normal">one time, when we start</span></div>
+                <p className="text-gray-400 text-sm leading-relaxed mt-1.5">
+                  Covers the full rebuild: your ad accounts, tracking, and creative system, before we run a
+                  single dollar of spend. This is the setup fee, not a monthly charge.
+                </p>
+              </div>
             </div>
-            <div className="text-gray-700 text-2xl hidden sm:block">+</div>
-            <div>
-              <div className="text-white text-3xl font-bold">15%</div>
-              <div className="text-gray-500 text-xs uppercase tracking-wide mt-1">Of monthly ad spend</div>
+
+            <div className="flex items-start gap-4 bg-black/30 border border-gray-800 rounded-xl p-5">
+              <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-cyan-400 text-[#0B0E14] font-bold flex items-center justify-center text-sm">
+                2
+              </div>
+              <div>
+                <div className="text-white text-2xl font-bold">15% <span className="text-gray-500 text-sm font-normal">of ad spend, every month after</span></div>
+                <p className="text-gray-400 text-sm leading-relaxed mt-1.5">
+                  This is on top of what you already pay Meta or Google directly, not instead of it, it&apos;s
+                  how we get paid to run your account. No flat retainer: if your spend grows because it&apos;s
+                  working, ours grows with it. If it&apos;s not working, the guarantee below kicks in.
+                </p>
+              </div>
             </div>
           </div>
 
