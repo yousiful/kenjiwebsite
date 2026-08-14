@@ -16,5 +16,11 @@
 /webinar1/replay           /webinar1/replay/index.html         200
 /webinar1/replay/          /webinar1/replay/index.html         200
 
+# /overview-b: distinct "Client Maxing" VSL (webinar-2.mp4, DFY deliverables
+# list, buyer-qualifier checkout router) instead of the React SPA route, so
+# it and /overview are genuinely different, not just a video swap.
+/overview-b                /webinar1/vsl2/watch/index.html     200
+/overview-b/                /webinar1/vsl2/watch/index.html     200
+
 # Catchall (SPA) stays last
 /* /index.html 200
