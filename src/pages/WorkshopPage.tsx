@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Check, X, Lock, ArrowRight } from 'lucide-react';
 
-const CHECKOUT_URL = 'https://freedom.kenjiai.com/workshop-checkout';
+const CHECKOUT_URL = 'https://freedom.kenjiai.com/28';
 
 const SEE_POINTS = [
   'Why we stopped taking retainers, and what happened to close rate once the money was on us instead of the client.',
@@ -14,7 +14,7 @@ const SEE_POINTS = [
 const FOR_POINTS = [
   "You're spending real money on ads, or getting ready to.",
   'You want to see the mechanics before you ever talk to us.',
-  "You'd rather pay $37 to know for sure than waste an hour on a call that isn't a fit.",
+  "You'd rather pay $27 to know for sure than waste an hour on a call that isn't a fit.",
 ];
 
 const NOT_FOR_POINTS = [
@@ -30,7 +30,7 @@ const WorkshopPage: React.FC = () => {
         <title>The Partner System Workshop | KenjiAI</title>
         <meta
           name="description"
-          content="A paid, 90-minute workshop breaking down the exact performance-based ad structure behind the KenjiAI Partner Program. $37, capped seats."
+          content="A paid, 90-minute workshop breaking down the exact performance-based ad structure behind the KenjiAI Partner Program. $27, capped seats."
         />
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
@@ -148,7 +148,7 @@ const WorkshopPage: React.FC = () => {
           className="relative z-10 w-full max-w-lg bg-gray-900/60 backdrop-blur-sm border border-gray-800 rounded-2xl p-8 mb-8 text-center"
           style={{ boxShadow: '0 0 40px rgba(0,255,255,0.08)' }}
         >
-          <div className="text-white text-4xl font-bold mb-2">$37</div>
+          <div className="text-white text-4xl font-bold mb-2">$27</div>
           <p className="text-gray-500 text-xs uppercase tracking-wide">One time. Seats capped.</p>
         </motion.div>
 
@@ -162,7 +162,7 @@ const WorkshopPage: React.FC = () => {
           className="relative z-10 group inline-flex items-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-[#0B0E14] font-bold text-base sm:text-lg px-8 py-4 rounded-full transition-colors duration-300"
           style={{ boxShadow: '0 0 40px rgba(0,255,255,0.25)' }}
         >
-          Get My Seat, $37
+          Get My Seat, $27
           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
         </motion.a>
 
