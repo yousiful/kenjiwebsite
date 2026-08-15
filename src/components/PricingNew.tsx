@@ -4,6 +4,7 @@ import { Check, ArrowRight } from 'lucide-react';
 import { ToolReplacementBar } from './ToolReplacementBar';
 import { MoneyBackGuarantee } from './MoneyBackGuarantee';
 import { ExitIntentPopup } from './ExitIntentPopup';
+import { SlashPrice } from './SlashPrice';
 import FAQ from './FAQ';
 import { getSeasonCopy } from '../utils/seasonCopy';
 
@@ -45,31 +46,6 @@ export function PricingNew() {
   return (
     <div className="py-16 sm:py-24 px-4" style={{ backgroundColor: '#0B0E14' }}>
 
-      {/* High-Octane Spots Remaining Meter */}
-      <motion.div
-        initial={{ opacity: 0, y: -8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.25 }}
-        className="w-full -mt-16 sm:-mt-24 mb-6 relative overflow-hidden"
-        style={{
-          background: 'linear-gradient(90deg, #111827 0%, #1f2937 50%, #111827 100%)',
-          borderBottom: '1px solid rgba(245, 158, 11, 0.3)'
-        }}
-      >
-        <div className="absolute inset-0 bg-amber-500/5 animate-pulse"></div>
-        <div className="flex flex-wrap items-center justify-center gap-4 px-4 py-3 text-sm sm:text-base text-center relative z-10">
-          <div className="flex items-center gap-2 bg-red-500/20 px-3 py-1 rounded-full border border-red-500/30">
-            <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
-            <span className="text-red-400 font-bold uppercase tracking-wider text-xs">Closing Soon</span>
-          </div>
-          <motion.span
-            className="flex items-center gap-1.5 font-bold text-white tracking-wide"
-          >
-            Only 8 spots left in this month's cohort
-          </motion.span>
-        </div>
-      </motion.div>
-
       {/* Hero Section */}
       <div className="max-w-6xl mx-auto mb-12 sm:mb-16 text-center px-4 sm:px-6">
         <motion.div
@@ -110,7 +86,7 @@ export function PricingNew() {
       <div className="max-w-3xl mx-auto mb-12 sm:mb-16 px-4 sm:px-6">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-gray-900/60 border border-gray-700/50 rounded-2xl p-5 sm:p-6 text-center sm:text-left">
           <p className="text-gray-200 font-semibold">
-            Not ready to pick a plan? Book a free 15-minute call and we'll walk you through it, no pressure, no pitch.
+            Not ready to pick a plan? Book a free demo and we'll walk you through it before we take this page down, no pressure, no pitch.
           </p>
           <a
             href="https://go.mediatraffics.com/leads"
@@ -118,36 +94,32 @@ export function PricingNew() {
             rel="noopener noreferrer"
             className="shrink-0 inline-flex items-center justify-center gap-2 bg-white text-gray-900 hover:bg-gray-200 px-6 py-3 rounded-xl font-bold transition-all duration-300 whitespace-nowrap"
           >
-            Book a Free Call
+            Book a Free Demo
           </a>
         </div>
       </div>
 
-      {/* Value stack: what $375 actually buys (price anchored against hiring) */}
+      {/* What's included — benefits only, no dollar anchoring */}
       <div className="max-w-5xl mx-auto mb-12 sm:mb-16 px-4 sm:px-6">
         <div className="text-center mb-8">
           <h2 className="text-3xl sm:text-4xl font-black text-white mb-3">
             What Your Plan Actually Buys You
           </h2>
           <p className="text-lg font-semibold text-gray-300 max-w-2xl mx-auto">
-            Hiring this out piece by piece runs <span className="text-white font-bold">$8,000+ every month</span>.
-            Your plan includes all of it.
+            Everything below is included, done for you, from week one.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {[
             {
-              worth: 'Agencies charge $3,000+',
               title: 'Proven Website, Built For You',
               body: "No blank page. We install the funnel and website layouts our winning clients already convert with, branded to you, live in week one.",
             },
             {
-              worth: 'A setter costs $3,000/mo',
               title: 'Proven Follow-Up Agents',
               body: 'AI agents call, text, and email every lead within minutes, handle objections, and book appointments 24/7. Most leads die from slow follow-up. Yours won’t.',
             },
             {
-              worth: 'A copywriter costs $2,000/mo',
               title: 'Copy That Already Works',
               body: 'Your ads and pages are written from campaigns that have already produced sales in your niche, then managed and optimized for you.',
             },
@@ -157,22 +129,10 @@ export function PricingNew() {
               className="bg-gray-900/60 border border-emerald-500/25 rounded-2xl p-6"
               style={{ boxShadow: '0 0 24px rgba(16,185,129,0.10)' }}
             >
-              <span className="inline-block rounded-full bg-amber-500/15 border border-amber-500/40 text-amber-300 text-xs font-bold px-3 py-1 mb-4">
-                {item.worth}
-              </span>
               <h3 className="text-lg font-black text-white mb-2 leading-tight">{item.title}</h3>
               <p className="text-gray-300 text-sm font-medium leading-relaxed">{item.body}</p>
             </div>
           ))}
-        </div>
-        <div className="mt-6 rounded-2xl border border-emerald-500/40 bg-emerald-500/10 p-5 text-center">
-          <p className="text-gray-200 font-semibold">
-            A web designer, an appointment setter, and a copywriter would cost
-            <span className="text-white font-bold"> $8,000+/month</span> before you sell a thing.
-          </p>
-          <p className="text-xl sm:text-2xl font-black text-emerald-400 mt-1">
-            With Kenji it's $375/month, and we only win when you do.
-          </p>
         </div>
       </div>
 
@@ -195,6 +155,10 @@ export function PricingNew() {
             <div className="mb-4">
               <h3 className="text-xl font-bold text-white mb-1 flex items-center gap-2">Monthly</h3>
               <p className="text-gray-400 text-sm">Test KenjiAI without committing to a year. Cancel anytime.</p>
+            </div>
+
+            <div className="mb-4">
+              <SlashPrice from={475} to={375} accentClass="text-white" />
             </div>
 
             <div className="mb-5 bg-blue-500/5 border border-blue-500/10 rounded-lg p-3">
@@ -256,6 +220,10 @@ export function PricingNew() {
                 <p className="text-gray-400 text-sm">Lowest monthly cost. For owners ready to scale.</p>
               </div>
               <span className="bg-[#10A37F]/10 text-[#10A37F] text-xs font-bold px-2 py-1 rounded">Most Popular</span>
+            </div>
+
+            <div className="mb-4">
+              <SlashPrice from={375} to={270} accentClass="text-[#10A37F]" />
             </div>
 
             <div className="mb-5 bg-[#10A37F]/5 border border-[#10A37F]/10 rounded-lg p-3">
