@@ -73,7 +73,7 @@ const ProductSelectionPage: React.FC = () => {
     <>
       <Helmet>
         <title>KenjiAI Pricing | Voice Agents, CRM, and AI Automation Plans</title>
-        <meta name="description" content="KenjiAI pricing for business owners replacing 17+ tools. Monthly $375, annual $270/mo, lifetime custom. Performance-based fees, 30-day money-back guarantee." />
+        <meta name="description" content="KenjiAI pricing for business owners replacing 17+ tools. Monthly $375, annual $270/mo, lifetime custom. Performance-based fees, cancel anytime." />
         <link rel="canonical" href="https://kenjiai.com/pricing" />
         <script type="application/ld+json">{JSON.stringify(PRICING_STRUCTURED_DATA)}</script>
       </Helmet>

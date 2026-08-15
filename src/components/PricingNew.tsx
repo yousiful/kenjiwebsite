@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, ArrowRight } from 'lucide-react';
 import { ToolReplacementBar } from './ToolReplacementBar';
-import { MoneyBackGuarantee } from './MoneyBackGuarantee';
 import { ExitIntentPopup } from './ExitIntentPopup';
 import { SlashPrice } from './SlashPrice';
 import FAQ from './FAQ';
@@ -184,7 +183,7 @@ export function PricingNew() {
                 <span className="flex items-center gap-2">Claim Spot for $375/mo</span>
               )}
             </motion.button>
-            <div className="text-center text-gray-500 text-xs mb-1">Secured by Stripe · 30-Day Guarantee</div>
+            <div className="text-center text-gray-500 text-xs mb-1">Secured by Stripe</div>
             <a
               href="https://go.mediatraffics.com/leads"
               target="_blank"
@@ -359,15 +358,6 @@ export function PricingNew() {
           </a>
         </motion.div>
 
-        <div className="mt-16 sm:mt-20 px-4">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4, delay: 0.3 }}
-          >
-            <MoneyBackGuarantee />
-          </motion.div>
-        </div>
       </div>
 
       <FAQ />
