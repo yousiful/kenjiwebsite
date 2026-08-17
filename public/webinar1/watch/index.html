@@ -25,7 +25,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
   t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
   document,'script','https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '2406747486323295');
+
+  // Manual Advanced Matching: the registration page passes the visitor's
+  // email/name forward as URL params (they already gave it up there). Meta
+  // hashes it client-side (SHA-256) before sending, we never send it raw.
+  var __amParams = new URLSearchParams(window.location.search);
+  var __amEmail = __amParams.get('em');
+  var __amName = __amParams.get('fn');
+  if (__amEmail) {
+    fbq('init', '2406747486323295', { em: __amEmail, fn: __amName || undefined });
+  } else {
+    fbq('init', '2406747486323295');
+  }
   fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"

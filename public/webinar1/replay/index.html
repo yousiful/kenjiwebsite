@@ -25,7 +25,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
   t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
   document,'script','https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '2406747486323295');
+
+  // Manual Advanced Matching: if this replay link was sent with the
+  // visitor's known email/name (e.g. from a follow-up email), pass it to
+  // the pixel. Meta hashes it client-side (SHA-256) before sending.
+  var __amParams = new URLSearchParams(window.location.search);
+  var __amEmail = __amParams.get('em');
+  var __amName = __amParams.get('fn');
+  if (__amEmail) {
+    fbq('init', '2406747486323295', { em: __amEmail, fn: __amName || undefined });
+  } else {
+    fbq('init', '2406747486323295');
+  }
   fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"

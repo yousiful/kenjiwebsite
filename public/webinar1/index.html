@@ -424,9 +424,24 @@ function handleRegister(form){
     data.session_time = new Date(sessionTarget).toISOString();
     data.source = 'ADmaxing Webinar Registration';
 
+    // Manual Advanced Matching: now that we know the visitor's email/name,
+    // re-init the pixel with it (Meta hashes client-side, SHA-256, before
+    // sending). Improves match rate on this Lead event and everything that
+    // fires downstream on the watch page, since we pass the same data along.
+    if (window.fbq && data.email) {
+      fbq('init', '2406747486323295', { em: data.email, fn: data.first_name || undefined });
+    }
+
     // Fire conversion events (Meta + GA4)
     if (window.fbq) fbq('track', 'Lead', { content_name: 'ADmaxing Masterclass Registration' });
     if (window.gtag) gtag('event', 'generate_lead', { event_category: 'webinar', event_label: 'admaxing_registration' });
+
+    // Carry the known identity to the watch page so it can also apply
+    // Advanced Matching to its own pixel events (video engagement, offer
+    // reveal / InitiateCheckout).
+    const watchUrl = new URL(WATCH_PAGE_URL, window.location.origin);
+    if (data.email) watchUrl.searchParams.set('em', data.email);
+    if (data.first_name) watchUrl.searchParams.set('fn', data.first_name);
 
     // Send the lead to GHL via our serverless function (same-origin), then continue to the watch page.
     fetch(GHL_ENDPOINT, {
@@ -435,11 +450,11 @@ function handleRegister(form){
       body: JSON.stringify(data),
       keepalive: true
     }).catch(()=>{}).finally(()=>{
-      window.location.href = WATCH_PAGE_URL;
+      window.location.href = watchUrl.toString();
     });
 
     // Safety redirect (keepalive lets the POST finish even after we navigate away)
-    setTimeout(()=>{ window.location.href = WATCH_PAGE_URL; }, 2500);
+    setTimeout(()=>{ window.location.href = watchUrl.toString(); }, 2500);
   });
 }
 document.querySelectorAll('#regForm, #regForm2').forEach(handleRegister);
