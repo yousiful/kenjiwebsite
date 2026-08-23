@@ -982,6 +982,291 @@ export const articles: Record<string, Article> = {
         </section>
       </div>
     `
+  },
+
+  'ai-agents-per-company-triple': {
+    slug: 'ai-agents-per-company-triple',
+    title: 'The Average Company Now Runs 13 AI Agents, Not 5',
+    excerpt: 'Salesforce\'s Agentic Enterprise Index shows AI agents per company nearly tripled in a year, with 7 in 10 support conversations now fully autonomous. Here is what it means for marketers.',
+    category: 'AI Marketing',
+    date: '2026-08-23',
+    author: 'KenjiAI Team',
+    readTime: '4 min read',
+    tags: ['Agentic AI', 'AI Marketing', 'Automation'],
+    keywords: ['agentic AI', 'AI agents business', 'AI customer service automation', 'Salesforce agentic enterprise index'],
+    image: 'https://images.pexels.com/photos/8566470/pexels-photo-8566470.jpeg?auto=compress&cs=tinysrgb&w=800',
+    content: `
+      <div class="blog-article-content space-y-8">
+        <section>
+          <h2 class="text-3xl font-bold text-white mb-4">The number that matters: 5 to 13</h2>
+          <p class="text-gray-300 leading-relaxed">
+            Salesforce's newest Agentic Enterprise Index found that the average organization deployed 13 AI agents by April 2026, up from just 5 in early 2025. The same data shows seven out of ten customer service conversations at surveyed companies now get handled without a human touching them. For marketers and business owners still treating AI as an experiment, this is a signal that the shift already happened at scale.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">What Salesforce actually found</h2>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Salesforce built the index by tracking how many autonomous AI agents its business customers actually put into production, not how many they talked about piloting. The number nearly tripled in about a year, growing from an average of 5 agents per organization in early 2025 to 13 by April 2026.
+          </p>
+          <p class="text-gray-300 leading-relaxed">
+            The most mature use case by far is customer service. These are not chatbots answering FAQs. They are agents that look up order details, process refunds, update account information, and close the loop on a request the same way a trained employee would, wired into real backend systems rather than sitting on top of a website.
+          </p>
+        </section>
+
+        <div class="p-6 bg-gray-900 border-2 border-cyan-500/10 rounded-2xl my-8">
+          <h5 class="text-cyan-400 font-black mb-2 uppercase tracking-widest text-xs">What this means for marketers</h5>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            Customer service became the first mainstream use case because the inputs and outputs are well defined. The same logic applies to lead qualification and ad optimization, which is why those are the next categories seeing real adoption. This is exactly what we build at <a href="/overview" class="text-cyan-400 hover:underline">KenjiAI</a>, running the repeatable parts of lead generation and ad management as agents instead of a dashboard someone has to check every morning.
+          </p>
+        </div>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">What to watch next</h2>
+          <p class="text-gray-300 leading-relaxed">
+            List every repeatable task in your business that currently requires a human to read something and take an action. That list is your actual agentic AI roadmap. If the pace of the last year continues, agentic AI stops being a competitive advantage and becomes table stakes, the same way having a website did twenty years ago.
+          </p>
+        </section>
+      </div>
+    `
+  },
+
+  'what-is-agentic-ai-marketing': {
+    slug: 'what-is-agentic-ai-marketing',
+    title: 'What Is Agentic AI Marketing and How Does It Work?',
+    excerpt: 'Agentic AI marketing means software agents that take real action, qualifying leads, adjusting ad spend, and following up, not just generating copy or answering questions.',
+    category: 'AI Marketing',
+    date: '2026-08-21',
+    author: 'KenjiAI Team',
+    readTime: '5 min read',
+    tags: ['Agentic AI', 'AI Marketing', 'Automation'],
+    keywords: ['agentic AI marketing', 'AI marketing agents', 'autonomous marketing AI', 'what is agentic AI'],
+    image: 'https://images.pexels.com/photos/577195/pexels-photo-577195.jpeg?auto=compress&cs=tinysrgb&w=800',
+    content: `
+      <div class="blog-article-content space-y-8">
+        <section>
+          <h2 class="text-3xl font-bold text-white mb-4">The short answer</h2>
+          <p class="text-gray-300 leading-relaxed">
+            Agentic AI marketing is software that takes action on its own, inside defined limits, instead of waiting for a person to tell it what to do next. A regular AI tool writes an ad headline when you ask it to. An agentic system notices an ad set's cost per lead climbing, decides that crosses a threshold, and shifts budget to a better performer without anyone opening the ads dashboard that day.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Where it actually shows up in marketing</h2>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Four places this is already working in real accounts, not theory:
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-300">
+            <div class="p-4 bg-gray-900 border border-white/10 rounded-xl">
+              <h5 class="text-cyan-400 font-bold mb-1 text-sm">Lead qualification</h5>
+              <p class="text-sm">Scoring and routing a new lead the moment it comes in, before a rep ever sees it.</p>
+            </div>
+            <div class="p-4 bg-gray-900 border border-white/10 rounded-xl">
+              <h5 class="text-cyan-400 font-bold mb-1 text-sm">Ad budget shifts</h5>
+              <p class="text-sm">Moving spend away from a fatigued ad set toward one still converting, on a daily cadence a person cannot match.</p>
+            </div>
+            <div class="p-4 bg-gray-900 border border-white/10 rounded-xl">
+              <h5 class="text-cyan-400 font-bold mb-1 text-sm">Follow-up sequencing</h5>
+              <p class="text-sm">Re-engaging a lead that went cold, at the right interval, without a human remembering to do it.</p>
+            </div>
+            <div class="p-4 bg-gray-900 border border-white/10 rounded-xl">
+              <h5 class="text-cyan-400 font-bold mb-1 text-sm">Support and booking</h5>
+              <p class="text-sm">Answering a question or booking a call directly, closing the loop instead of just generating a canned reply.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">What it is not</h2>
+          <p class="text-gray-300 leading-relaxed">
+            It is not a chatbot that only answers questions. It is not a content generator that still needs someone to publish and monitor its output. The defining feature is that the system takes a real action and closes a loop, not just produces a suggestion for a human to approve. Platforms like <a href="/overview" class="text-cyan-400 hover:underline">KenjiAI</a> are built around exactly that distinction, running the repeatable parts of lead generation and ad management as agents rather than dashboards.
+          </p>
+        </section>
+      </div>
+    `
+  },
+
+  'ai-ad-automation-cost': {
+    slug: 'ai-ad-automation-cost',
+    title: 'How Much Does AI Ad Automation Actually Cost?',
+    excerpt: 'A real breakdown of what AI-driven ad management costs in 2026, from self-serve tools to done-for-you performance-based pricing, and how to tell which model fits your budget.',
+    category: 'AI Marketing',
+    date: '2026-08-19',
+    author: 'KenjiAI Team',
+    readTime: '5 min read',
+    tags: ['AI Marketing', 'Paid Ads', 'Pricing'],
+    keywords: ['AI ad automation cost', 'AI ads pricing', 'automated ad management cost', 'how much does AI marketing cost'],
+    image: 'https://images.pexels.com/photos/97080/pexels-photo-97080.jpeg?auto=compress&cs=tinysrgb&w=800',
+    content: `
+      <div class="blog-article-content space-y-8">
+        <section>
+          <h2 class="text-3xl font-bold text-white mb-4">There are three real pricing models, not one</h2>
+          <p class="text-gray-300 leading-relaxed">
+            Most people asking this question get quoted a single number and assume that is the market. It is not. AI ad automation is sold three genuinely different ways, and the right one depends on how much ad spend you actually run, not how big your business is.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">The three models</h2>
+          <p class="text-gray-300 leading-relaxed mb-4">1. Self-serve software, usually 50 to 500 dollars a month. You run the account, the tool automates specific tasks like bid adjustments or reporting. Cheapest option, but you still need to know what you are doing.</p>
+          <p class="text-gray-300 leading-relaxed mb-4">2. Flat monthly retainer with a human plus AI tooling behind it, commonly 1,500 to 5,000 dollars a month depending on ad spend managed. You are paying for both the software and someone accountable for results.</p>
+          <p class="text-gray-300 leading-relaxed">3. Performance basis, a percentage of ad spend or a flat fee tied to results, often 10 to 15 percent of spend on top of what you already pay the ad platform. This is the model where the vendor only wins if your account performs, which changes the incentive completely compared to a flat retainer that gets paid whether your ads work or not.</p>
+        </section>
+
+        <div class="p-6 bg-gray-900 border-2 border-cyan-500/10 rounded-2xl my-8">
+          <h5 class="text-cyan-400 font-black mb-2 uppercase tracking-widest text-xs">The question that actually matters</h5>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            Before comparing prices, ask what happens to the vendor if your account underperforms. A flat retainer gets paid either way. A performance basis model does not. That single difference matters more than the sticker price. This is the structure behind our own <a href="/overview" class="text-cyan-400 hover:underline">performance-basis offer</a> at KenjiAI.
+          </p>
+        </div>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">A rough rule of thumb</h2>
+          <p class="text-gray-300 leading-relaxed">
+            If you are spending under 3,000 dollars a month on ads, self-serve tooling usually makes more sense than paying a percentage. Above that, the time saved and the accountability of a performance-based partner usually outweighs the cost, as long as the guarantee is specific and in writing, not just implied.
+          </p>
+        </section>
+      </div>
+    `
+  },
+
+  'can-ai-replace-media-buyer': {
+    slug: 'can-ai-replace-media-buyer',
+    title: 'Can AI Really Replace a Media Buyer?',
+    excerpt: 'AI can run the repetitive parts of media buying today. It cannot yet do the parts that require judgment. Here is exactly where the line sits in 2026.',
+    category: 'AI Marketing',
+    date: '2026-08-17',
+    author: 'KenjiAI Team',
+    readTime: '4 min read',
+    tags: ['AI Marketing', 'Paid Ads', 'Media Buying'],
+    keywords: ['AI vs media buyer', 'can AI run ads', 'AI ad management', 'AI replace marketing job'],
+    image: 'https://images.pexels.com/photos/4872048/pexels-photo-4872048.jpeg?auto=compress&cs=tinysrgb&w=800',
+    content: `
+      <div class="blog-article-content space-y-8">
+        <section>
+          <h2 class="text-3xl font-bold text-white mb-4">The honest answer: partly, and it depends what the job actually is</h2>
+          <p class="text-gray-300 leading-relaxed">
+            A media buyer's job is really two separate jobs stacked on top of each other. One is repetitive execution: bid adjustments, budget pacing, pulling reports, pausing dead ad sets. The other is judgment: deciding what creative angle to test next, reading why a campaign actually failed, and knowing when a metric that looks bad is actually fine.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">What AI already does better than a human</h2>
+          <p class="text-gray-300 leading-relaxed">
+            Checking account performance every few hours instead of once a week. Catching a budget drift or a targeting mistake within hours instead of days. Cross-referencing what the ad platform reports against what actually closed in your CRM, something most human media buyers never do consistently because it is tedious. This is grunt work at speed, and AI is simply faster and more consistent at it than a person checking a dashboard between other tasks.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">What still needs a human</h2>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Deciding on a genuinely new creative angle. Reading a client's business model well enough to know which metric actually matters to them. Handling the conversation when something goes wrong. AI can flag that a campaign has been running the same angle for three months and is fatiguing. It cannot yet write the replacement angle from scratch and know it will land with a specific audience.
+          </p>
+        </section>
+
+        <div class="p-6 bg-gray-900 border-2 border-cyan-500/10 rounded-2xl my-8">
+          <h5 class="text-cyan-400 font-black mb-2 uppercase tracking-widest text-xs">Where this is heading</h5>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            The realistic setup right now is AI handling execution and monitoring around the clock, with a human making the judgment calls it surfaces. That is the model we run at <a href="/overview" class="text-cyan-400 hover:underline">KenjiAI</a>, agents doing the repeatable work, a person deciding what to do about what they find.
+          </p>
+        </div>
+      </div>
+    `
+  },
+
+  'good-customer-acquisition-cost-2026': {
+    slug: 'good-customer-acquisition-cost-2026',
+    title: 'What Counts as a Good Customer Acquisition Cost in 2026?',
+    excerpt: 'There is no universal good CAC number. Here is how to actually calculate whether your customer acquisition cost is healthy for your specific business.',
+    category: 'AI Marketing',
+    date: '2026-08-15',
+    author: 'KenjiAI Team',
+    readTime: '5 min read',
+    tags: ['Paid Ads', 'Metrics', 'AI Marketing'],
+    keywords: ['good CAC 2026', 'customer acquisition cost benchmark', 'CAC vs CPL', 'what is a good CAC'],
+    image: 'https://images.pexels.com/photos/97080/pexels-photo-97080.jpeg?auto=compress&cs=tinysrgb&w=800',
+    content: `
+      <div class="blog-article-content space-y-8">
+        <section>
+          <h2 class="text-3xl font-bold text-white mb-4">Why "what is a good CAC" is the wrong question by itself</h2>
+          <p class="text-gray-300 leading-relaxed">
+            A 200 dollar customer acquisition cost is a disaster for a 7 dollar low-ticket offer and a bargain for a 5,000 dollar service with a 3,000 dollar margin. Any number you find online without context attached is close to useless. The number that actually matters is your CAC relative to your lifetime value, not CAC on its own.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">The ratio that actually tells you something</h2>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            A commonly used healthy benchmark is a lifetime value to CAC ratio of at least 3 to 1. Spend 100 dollars to acquire a customer worth 300 dollars or more over their time with you, and the math generally works once you account for overhead. Below 2 to 1, most businesses are losing money on growth even if the front-end numbers look fine.
+          </p>
+          <p class="text-gray-300 leading-relaxed">
+            The mistake we see most often is judging a front-end offer's CAC in isolation. A 7 dollar product that costs 60 dollars to acquire looks terrible until you know 1 in 20 of those buyers converts into a 375 dollar a month backend offer. Judge the CAC against the full customer journey, not the first sale.
+          </p>
+        </section>
+
+        <div class="p-6 bg-gray-900 border-2 border-cyan-500/10 rounded-2xl my-8">
+          <h5 class="text-cyan-400 font-black mb-2 uppercase tracking-widest text-xs">A quick way to check your own number</h5>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            Take your total ad spend for the last 30 days and divide by actual closed customers from your CRM, not platform-reported conversions, which routinely overcount. Compare that to what a customer is actually worth to you over 6 to 12 months. If you do not have that LTV number yet, that is the real gap to close before optimizing CAC any further. This is exactly the kind of cross-check we build into <a href="/overview" class="text-cyan-400 hover:underline">KenjiAI</a> reporting.
+          </p>
+        </div>
+      </div>
+    `
+  },
+
+  'how-ai-lead-qualification-works': {
+    slug: 'how-ai-lead-qualification-works',
+    title: 'How Does AI Lead Qualification Actually Work?',
+    excerpt: 'AI lead qualification scores and routes a lead the moment it arrives, using the same signals a trained sales rep would check, just faster and applied to every single lead.',
+    category: 'AI Marketing',
+    date: '2026-08-13',
+    author: 'KenjiAI Team',
+    readTime: '4 min read',
+    tags: ['Lead Generation', 'AI Marketing', 'Sales'],
+    keywords: ['AI lead qualification', 'automated lead scoring', 'AI qualify leads', 'lead scoring automation'],
+    image: 'https://images.pexels.com/photos/8867198/pexels-photo-8867198.jpeg?auto=compress&cs=tinysrgb&w=800',
+    content: `
+      <div class="blog-article-content space-y-8">
+        <section>
+          <h2 class="text-3xl font-bold text-white mb-4">The core idea</h2>
+          <p class="text-gray-300 leading-relaxed">
+            AI lead qualification looks at the same signals a good sales rep already checks before calling a lead back, budget fit, urgency, how the lead answered a few key questions, and produces a score in seconds instead of minutes. The difference is it does this for every single lead, at 2am on a Sunday, without ever getting tired or skipping a step because the queue is long.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">What it checks in practice</h2>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            Four signals do most of the work in a typical setup:
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-300">
+            <div class="p-4 bg-gray-900 border border-white/10 rounded-xl">
+              <h5 class="text-cyan-400 font-bold mb-1 text-sm">Form or call answers</h5>
+              <p class="text-sm">Budget range, timeline, and stated problem, pulled straight from intake.</p>
+            </div>
+            <div class="p-4 bg-gray-900 border border-white/10 rounded-xl">
+              <h5 class="text-cyan-400 font-bold mb-1 text-sm">Engagement behavior</h5>
+              <p class="text-sm">Opened three emails and clicked pricing versus never opened a single follow-up.</p>
+            </div>
+            <div class="p-4 bg-gray-900 border border-white/10 rounded-xl">
+              <h5 class="text-cyan-400 font-bold mb-1 text-sm">Source quality</h5>
+              <p class="text-sm">A lead from a high-intent search ad scores differently than one from a broad awareness campaign.</p>
+            </div>
+            <div class="p-4 bg-gray-900 border border-white/10 rounded-xl">
+              <h5 class="text-cyan-400 font-bold mb-1 text-sm">Response speed</h5>
+              <p class="text-sm">How fast someone replied to a first outreach message, a strong buying-intent signal.</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Why the speed matters as much as the accuracy</h2>
+          <p class="text-gray-300 leading-relaxed">
+            Studies on lead response time consistently show contact odds drop sharply after the first few minutes. A qualification system that scores and routes a lead instantly, then triggers immediate outreach to the highest scoring ones, closes a gap most sales teams lose money on every single day without realizing it. This is the exact mechanic behind lead routing inside <a href="/overview" class="text-cyan-400 hover:underline">KenjiAI</a>.
+          </p>
+        </section>
+      </div>
+    `
   }
 };
 
