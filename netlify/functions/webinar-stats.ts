@@ -1,7 +1,7 @@
 import type { Handler, HandlerEvent } from '@netlify/functions';
 import { getStore } from '@netlify/blobs';
 
-const PAGES = ['watch', 'vsl2-watch', 'replay'] as const;
+const PAGES = ['watch', 'vsl2-watch', 'replay', 'overview'] as const;
 
 // See webinar-track.ts for why this manual fallback exists.
 const SITE_ID = '22d32da4-ca6e-4ea2-aea7-156e152407f5';

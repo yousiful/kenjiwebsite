@@ -14,6 +14,56 @@ export default function WebinarVSLPage() {
 
   useResumableVideo(videoElRef, 'kenjiai-video-progress:/overview');
 
+  // Watch-time tracking, matches the pattern already running on /overview-b
+  // and the webinar1 pages: fires milestone events into GTM, Meta Pixel, and
+  // the webinar-track backend so all VSL variants are comparable in one place
+  // (GET /.netlify/functions/webinar-stats). See netlify/functions/webinar-track.ts.
+  useEffect(() => {
+    const el = videoElRef.current;
+    if (!el) return;
+
+    const sendBeaconJSON = (body: Record<string, unknown>) => {
+      try {
+        const json = JSON.stringify({ page: 'overview', ...body });
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon('/.netlify/functions/webinar-track', json);
+        } else {
+          fetch('/.netlify/functions/webinar-track', { method: 'POST', body: json, keepalive: true });
+        }
+      } catch {
+        // tracking is best-effort, never block playback on a failed beacon
+      }
+    };
+
+    const milestones = [25, 50, 75, 95, 100];
+    const hit: Record<number, boolean> = {};
+    const markMilestone = (p: number) => {
+      if (hit[p]) return;
+      hit[p] = true;
+      const w = window as any;
+      if (w.gtag) w.gtag('event', 'video_progress', { event_category: 'webinar', video_percent: p, page_path: location.pathname });
+      if (w.fbq) w.fbq('trackCustom', 'VideoProgress', { percent: p, page_path: location.pathname });
+      sendBeaconJSON({ event: 'video_progress', percent: p });
+    };
+
+    const onTimeUpdate = () => {
+      if (!el.duration) return;
+      const pct = (el.currentTime / el.duration) * 100;
+      milestones.forEach((m) => { if (pct >= m) markMilestone(m); });
+    };
+    el.addEventListener('timeupdate', onTimeUpdate);
+
+    const onUnload = () => {
+      if (el.currentTime > 0) sendBeaconJSON({ event: 'video_watch_seconds', seconds: el.currentTime });
+    };
+    window.addEventListener('pagehide', onUnload);
+
+    return () => {
+      el.removeEventListener('timeupdate', onTimeUpdate);
+      window.removeEventListener('pagehide', onUnload);
+    };
+  }, []);
+
   useEffect(() => {
     setViewers(Math.floor(Math.random() * (240 - 180 + 1) + 180));
     let timer: ReturnType<typeof setTimeout>;
