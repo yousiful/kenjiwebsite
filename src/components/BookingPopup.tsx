@@ -324,7 +324,7 @@ export function BookingPopup({ isOpen, onClose }: BookingPopupProps) {
                   'Live platform walkthrough',
                   'Exclusive lifetime access opportunity',
                   'Done-for-you strategy session',
-                  'Priority onboarding guaranteed',
+                  'Priority onboarding',
                   'Zero-obligation consultation'
                 ].map((benefit, idx) => (
                   <motion.div

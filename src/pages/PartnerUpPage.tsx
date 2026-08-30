@@ -26,7 +26,7 @@ const PartnerUpPage: React.FC = () => {
         <title>Partner Program | KenjiAI</title>
         <meta
           name="description"
-          content="A done-for-you ad partnership for businesses spending $20K+/month, built around one guarantee: we cut your cost-per-acquisition or we work for free until we do."
+          content="A done-for-you ad partnership for businesses spending $20K+/month. Revenue-share, not a flat retainer: I only get paid a percentage of what I actually grow."
         />
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
@@ -148,7 +148,8 @@ const PartnerUpPage: React.FC = () => {
                 <p className="text-gray-400 text-sm leading-relaxed mt-1.5">
                   This is on top of what you already pay Meta or Google directly, not instead of it, it&apos;s
                   how we get paid to run your account. No flat retainer: if your spend grows because it&apos;s
-                  working, ours grows with it. If it&apos;s not working, the guarantee below kicks in.
+                  working, ours grows with it. If it&apos;s not, you&apos;re not paying a percentage on nothing,
+                  that&apos;s the point of this structure.
                 </p>
               </div>
             </div>
@@ -157,8 +158,9 @@ const PartnerUpPage: React.FC = () => {
           <div className="flex items-start gap-3 bg-cyan-950/30 border border-cyan-900/40 rounded-xl p-4 text-left">
             <ShieldCheck className="w-6 h-6 text-cyan-400 flex-shrink-0 mt-0.5" />
             <p className="text-gray-300 text-sm leading-relaxed">
-              <span className="text-white font-semibold">The guarantee:</span> we cut your cost-per-acquisition by 20% in 90 days,
-              or we run your account free until we do.
+              <span className="text-white font-semibold">How I get paid:</span> revenue-share, not retainer. I
+              take a percentage of what I actually add to your ad performance, on top of your existing spend, not
+              a flat fee regardless of what happens.
             </p>
           </div>
         </motion.div>
