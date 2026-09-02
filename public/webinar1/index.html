@@ -195,13 +195,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <!-- Registration card -->
     <div class="card form-card">
-      <!-- COUNTDOWN #1 (evergreen just-in-time: next session on the :00/:15/:30/:45) -->
+      <!-- COUNTDOWN #1 (fixed weekly session: every Saturday, 11AM Central) -->
       <div class="cd-box">
         <span class="pulse"></span>
         <span class="cd-label">Next live session starts in</span>
         <span class="cd-time session-countdown">--:--</span>
       </div>
-      <p class="cd-note">New just-in-time sessions begin every 15 minutes. Register to grab the next one.</p>
+      <p class="cd-note">📅 Live this Saturday at 11AM Central, and every Saturday after. Register to save your seat.</p>
 
       <!-- FORM: posts to your GHL webhook, then redirects to the watch page -->
       <form id="regForm" novalidate>
@@ -317,11 +317,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="faq" id="faq">
       <div class="qa">
         <button>Is this live or pre-recorded?<span class="ic">+</span></button>
-        <div class="ans">It's a just-in-time session that begins every few minutes, so you can start right away instead of waiting days for a "live" date. It runs start to finish like a real class, block about 60 minutes and watch it in one sitting.</div>
+        <div class="ans">It's live. This masterclass runs every Saturday at 11AM Central, same time each week. Register and you'll be reminded before it starts, block about 60 minutes and watch it in one sitting.</div>
       </div>
       <div class="qa">
         <button>Will I get a replay if I miss it?<span class="ic">+</span></button>
-        <div class="ans">This masterclass is built to be watched while your spot is open. We don't promise a replay, so pick a time when you can give it your full attention and register for that session.</div>
+        <div class="ans">This masterclass is built to be watched live. We don't promise a replay, so pick a Saturday you can actually make and register for that session, there's another one the following Saturday if you miss it.</div>
       </div>
       <div class="qa">
         <button>Is there a pitch at the end?<span class="ic">+</span></button>
@@ -347,16 +347,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <span class="grad-text">Booking Pre-Sold Clients?</span>
     </h2>
     <p class="muted" style="max-width:560px;margin:0 auto 24px">
-      Grab your seat for the next just-in-time session. It's free, it's ~60 minutes, and it might be the last time you ever think about ads the old way.
+      Grab your seat for this Saturday's live session. It's free, it's ~60 minutes, and it might be the last time you ever think about ads the old way.
     </p>
     <div class="card form-card">
-      <!-- COUNTDOWN #2 (same evergreen clock) -->
+      <!-- COUNTDOWN #2 (same fixed weekly clock) -->
       <div class="cd-box">
         <span class="pulse"></span>
         <span class="cd-label">Next live session starts in</span>
         <span class="cd-time session-countdown">--:--</span>
       </div>
-      <p class="cd-note">New sessions begin every 15 minutes.</p>
+      <p class="cd-note">📅 Every Saturday, 11AM Central.</p>
       <form id="regForm2" novalidate>
         <div class="field">
           <input type="text" name="first_name" placeholder="First name" autocomplete="given-name" required />
@@ -389,16 +389,53 @@ const GHL_ENDPOINT   = '/.netlify/functions/ghl-lead'; // serverless proxy -> GH
 const WATCH_PAGE_URL = '/webinar1/watch';
 
 /* =================================================================
-   EVERGREEN "JUST-IN-TIME" COUNTDOWN
-   Reads the current time, rounds UP to the next :00 / :15 / :30 / :45
-   boundary, and counts down to it. When it hits zero it automatically
-   rolls to the next 15-minute session. This is honest: sessions really
-   do begin on every quarter hour.
+   FIXED WEEKLY COUNTDOWN, every Saturday at 11:00 AM Central
+   Computes the next real Saturday 11AM instant in America/Chicago
+   (correctly handles CST/CDT via Intl, no hardcoded UTC offset) and
+   counts down to it. When it hits zero it rolls to the following
+   Saturday automatically.
    ================================================================= */
+const SESSION_WEEKDAY = 6; // Saturday (0=Sun ... 6=Sat)
+const SESSION_HOUR = 11;   // 11 AM
+const SESSION_TZ = 'America/Chicago';
+const WEEKDAY_NUM = { Sun:0, Mon:1, Tue:2, Wed:3, Thu:4, Fri:5, Sat:6 };
+
+function chicagoParts(date){
+  const dtf = new Intl.DateTimeFormat('en-US', {
+    timeZone: SESSION_TZ, hourCycle: 'h23', weekday: 'short',
+    year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit'
+  });
+  const parts = {};
+  dtf.formatToParts(date).forEach(p => { if (p.type !== 'literal') parts[p.type] = p.value; });
+  return parts;
+}
+
+// Offset (ms) such that Chicago-local-time = UTC-time + offset, for the
+// zone's rules AT the given instant (so DST transitions resolve correctly).
+function chicagoOffsetMs(date){
+  const p = chicagoParts(date);
+  const asUTC = Date.UTC(+p.year, +p.month - 1, +p.day, +p.hour, +p.minute, +p.second);
+  return asUTC - date.getTime();
+}
+
 function nextSessionTime(){
-  const now = Date.now();
-  const q = 15 * 60 * 1000;           // 15 minutes in ms
-  return Math.ceil(now / q) * q;      // next quarter-hour boundary
+  const now = new Date();
+  const p = chicagoParts(now);
+  const todayDow = WEEKDAY_NUM[p.weekday];
+  let daysOut = (SESSION_WEEKDAY - todayDow + 7) % 7;
+  if (daysOut === 0){
+    const pastTarget = (+p.hour > SESSION_HOUR) || (+p.hour === SESSION_HOUR && (+p.minute > 0 || +p.second > 0));
+    if (pastTarget) daysOut = 7;
+  }
+  // Rough pass using today's offset, then refine using the target date's
+  // own offset so a DST changeover between now and the target still lands
+  // on exactly 11:00 AM Chicago time.
+  const roughOffset = chicagoOffsetMs(now);
+  let candidate = Date.UTC(+p.year, +p.month - 1, +p.day + daysOut, SESSION_HOUR, 0, 0) - roughOffset;
+  const refinedOffset = chicagoOffsetMs(new Date(candidate));
+  candidate = Date.UTC(+p.year, +p.month - 1, +p.day + daysOut, SESSION_HOUR, 0, 0) - refinedOffset;
+  return candidate;
 }
 let sessionTarget = nextSessionTime();
 
