@@ -6,8 +6,9 @@ import type { Handler, HandlerEvent } from '@netlify/functions';
  * session_time } here. Server-side we do two things:
  *   1. Fire the GHL Inbound Webhook trigger -> runs your Workflow (creates the
  *      contact + sends the access link / reminders).
- *   2. Upsert the contact via the API as a safety net so the contact + tags
- *      always exist even if the workflow isn't wired to create contacts yet.
+ *   2. Upsert the contact via the API as a safety net so the contact
+ *      always exists even if the workflow isn't wired to create contacts yet.
+ *      Tagging is intentionally left to the GHL workflow, not done here.
  * The Private Integration Token is never exposed to the browser.
  *
  * Netlify env var: GHL_PIT (Private Integration Token). Optional: GHL_LOCATION_ID.
@@ -50,7 +51,8 @@ export const handler: Handler = async (event: HandlerEvent) => {
   const email = (payload.email || '').trim();
   const phone = (payload.phone || '').trim();
   const source = payload.source || 'ADmaxing Webinar Registration';
-  const tags = ['admaxing-webinar', 'webinar-registrant'];
+  // No tags applied here on purpose — the GHL workflow (triggered by the
+  // inbound webhook below) already handles tagging on its own.
 
   if (!email && !phone) {
     return json(400, { error: 'email or phone required' });
@@ -67,13 +69,12 @@ export const handler: Handler = async (event: HandlerEvent) => {
       phone,
       source,
       session_time: payload.session_time || '',
-      tags: tags.join(','),
     }),
   })
     .then((r) => r.ok)
     .catch(() => false);
 
-  // 2) Upsert via API as a safety net (guarantees the contact + tags exist)
+  // 2) Upsert via API as a safety net (guarantees the contact exists)
   const upsert = (async () => {
     const token = process.env.GHL_PIT;
     if (!token) return { ok: false, id: null as string | null };
@@ -87,7 +88,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
           'Content-Type': 'application/json',
           Accept: 'application/json',
         },
-        body: JSON.stringify({ locationId, firstName, email, phone, source, tags }),
+        body: JSON.stringify({ locationId, firstName, email, phone, source }),
       });
       const data: any = await r.json().catch(() => ({}));
       return { ok: r.ok, id: (data && data.contact && data.contact.id) || null };
