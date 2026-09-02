@@ -164,6 +164,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .foot{padding:40px 0 60px;text-align:center;color:var(--muted2);font-size:12.5px;border-top:1px solid var(--line)}
   .foot a{color:var(--muted)}
 
+  /* Exit-intent modal */
+  .exit-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);
+    z-index:999;display:flex;align-items:center;justify-content:center;padding:20px;
+    animation:fadeIn .25s ease}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .exit-card{position:relative;max-width:440px;width:100%;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .exit-close{position:absolute;top:14px;right:14px;background:transparent;border:none;
+    color:var(--muted);font-size:26px;line-height:1;cursor:pointer;padding:4px 8px}
+  .exit-close:hover{color:#fff}
+
   @media(max-width:720px){
     section{padding:44px 0}
     .two-col{grid-template-columns:1fr}
@@ -388,6 +398,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </div>
 </section>
 
+<!-- ======================= EXIT-INTENT MODAL ======================= -->
+<div id="exitModal" class="exit-overlay" style="display:none">
+  <div class="exit-card card form-card">
+    <button type="button" id="exitClose" class="exit-close" aria-label="Close">&times;</button>
+    <span class="eyebrow">Wait, Before You Go</span>
+    <h2 style="font-size:clamp(20px,4vw,26px);margin:10px 0 10px">Grab Your Seat First?</h2>
+    <p class="muted" style="margin-bottom:18px">Saturday's session fills up. Leave your email and I'll hold your spot and send the access link, no need to fill out the rest right now.</p>
+    <form id="regForm3" novalidate>
+      <div class="field">
+        <input type="text" name="first_name" placeholder="First name" autocomplete="given-name" required />
+      </div>
+      <div class="field">
+        <input type="email" name="email" placeholder="Best email address" autocomplete="email" required />
+      </div>
+      <button type="submit" class="btn">Hold My Spot &rarr;</button>
+      <p class="form-fine">🔒 100% free. No spam, unsubscribe anytime.</p>
+    </form>
+  </div>
+</div>
+
 <footer class="foot">
   <div class="wrap">
     <p>© <span id="yr"></span> KenjiAI / Media Traffics. All rights reserved.</p>
@@ -518,7 +548,88 @@ function handleRegister(form){
     setTimeout(()=>{ window.location.href = watchUrl.toString(); }, 2500);
   });
 }
-document.querySelectorAll('#regForm, #regForm2').forEach(handleRegister);
+document.querySelectorAll('#regForm, #regForm2, #regForm3').forEach(handleRegister);
+
+/* =================================================================
+   EXIT-INTENT CAPTURE + DROP-OFF TRACKING
+   Shows once per session (never re-annoys a returning tab), never fires
+   after a real registration, and pushes events GTM/GA4 can pick up for
+   funnel/drop-off analysis without needing a separate analytics tool.
+   ================================================================= */
+const exitModal = document.getElementById('exitModal');
+let exitShown = sessionStorage.getItem('exitIntentShown') === '1';
+let hasRegistered = false;
+
+function showExitModal(trigger){
+  if (exitShown || hasRegistered) return;
+  exitShown = true;
+  sessionStorage.setItem('exitIntentShown', '1');
+  exitModal.style.display = 'flex';
+  if (window.gtag) gtag('event', 'exit_intent_shown', { trigger: trigger });
+}
+document.getElementById('exitClose').addEventListener('click', () => {
+  exitModal.style.display = 'none';
+  if (window.gtag) gtag('event', 'exit_intent_dismissed');
+});
+
+// Desktop: mouse leaving the viewport through the top edge (heading for the
+// tab bar / close button). relatedTarget is null only when the cursor
+// actually leaves the document, so this doesn't fire on normal internal
+// mouseouts between elements.
+document.addEventListener('mouseout', (e) => {
+  if (!e.relatedTarget && e.clientY <= 0) showExitModal('mouse_leave_top');
+});
+
+// Mobile: intercept the back gesture once and show the modal instead of
+// letting the visitor leave immediately.
+history.pushState({ exitGuard: true }, '');
+window.addEventListener('popstate', () => {
+  if (!exitShown && !hasRegistered) {
+    showExitModal('back_button');
+    history.pushState({ exitGuard: true }, '');
+  }
+});
+
+// Mark registered so the exit modal (and the left-without-registering
+// event below) never fire after a real conversion.
+document.querySelectorAll('#regForm, #regForm2, #regForm3').forEach(f => {
+  f.addEventListener('submit', () => { hasRegistered = true; });
+});
+
+// Catch-all drop signal: fires once if the tab is closed/backgrounded/
+// switched away from without ever registering. More reliable than
+// beforeunload, which browsers frequently kill before it completes.
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden' && !hasRegistered && window.gtag) {
+    gtag('event', 'left_without_registering');
+  }
+}, { once: true });
+
+// Scroll depth, fires once per threshold per session.
+const scrollMarks = [25, 50, 75, 90];
+const scrollFired = new Set();
+window.addEventListener('scroll', () => {
+  const scrollable = document.body.scrollHeight - window.innerHeight;
+  const scrolled = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 100;
+  scrollMarks.forEach(mark => {
+    if (scrolled >= mark && !scrollFired.has(mark)) {
+      scrollFired.add(mark);
+      if (window.gtag) gtag('event', 'scroll_depth', { percent: mark });
+    }
+  });
+}, { passive: true });
+
+// Form-start tracking, fires once per form on first field interaction.
+// Compare form_start counts against generate_lead counts downstream to
+// measure real form-abandonment, not just overall page bounce.
+document.querySelectorAll('#regForm, #regForm2, #regForm3').forEach(form => {
+  let started = false;
+  form.addEventListener('focusin', () => {
+    if (started) return;
+    started = true;
+    if (window.gtag) gtag('event', 'form_start', { form_id: form.id });
+  });
+});
 
 /* FAQ accordion */
 document.querySelectorAll('#faq .qa button').forEach(btn=>{
