@@ -50,7 +50,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
   const firstName = (payload.first_name || '').trim();
   const email = (payload.email || '').trim();
   const phone = (payload.phone || '').trim();
-  const source = payload.source || 'ADmaxing Webinar Registration';
+  const source = payload.source || '1 Ad Away Challenge Registration';
   // No tags applied here on purpose — the GHL workflow (triggered by the
   // inbound webhook below) already handles tagging on its own.
 
