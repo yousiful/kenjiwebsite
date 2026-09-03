@@ -108,6 +108,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .field input:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(245,158,11,.15)}
   .form-fine{font-size:11.5px;color:var(--muted2);text-align:center;margin-top:12px}
 
+  /* Survey step (readiness qualifier) */
+  .survey-options{display:grid;gap:10px}
+  .survey-opt{display:flex;align-items:center;gap:10px;background:#0f0f0f;border:1px solid var(--line2);
+    border-radius:12px;padding:14px 15px;font-size:14.5px;color:#e4e4e7;cursor:pointer;transition:border-color .15s}
+  .survey-opt:has(input:checked){border-color:var(--amber);background:rgba(245,158,11,.06)}
+  .survey-opt input{accent-color:var(--amber);width:17px;height:17px;flex:0 0 auto}
+
   /* Discover bullets */
   .bullets{display:grid;gap:16px;margin-top:8px}
   .bullet{display:flex;gap:16px;background:var(--card);border:1px solid var(--line);
@@ -215,7 +222,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
       <p class="cd-note">📅 Live this Saturday at 11AM Central, and every Saturday after. Save your seat.</p>
 
-      <!-- FORM: posts to your GHL webhook, then redirects to the watch page -->
+      <!-- FORM: posts to your GHL webhook, then advances to the qualifying survey -->
       <form id="regForm" novalidate>
         <div class="field">
           <input type="text" id="firstName" name="first_name" placeholder="First name" autocomplete="given-name" required />
@@ -228,6 +235,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
         <button type="submit" class="btn">Join The Challenge &rarr;</button>
         <p class="form-fine">🔒 Your info is safe. We'll email + text your access link and reminders. Unsubscribe anytime.</p>
+      </form>
+
+      <!-- SURVEY STEP: one quick qualifying question, shown after the form above -->
+      <form id="surveyForm" class="survey-step" novalidate style="display:none">
+        <span class="eyebrow">One Quick Question</span>
+        <h3 style="font-size:19px;margin:10px 0 16px">Are you ready to learn how to turn $1 into $10 using paid ads?</h3>
+        <div class="field survey-options">
+          <label class="survey-opt"><input type="radio" name="readiness" value="ready_now" checked /> Yes, I'm ready to implement this now</label>
+          <label class="survey-opt"><input type="radio" name="readiness" value="need_guidance" /> Yes, but I'll need some guidance</label>
+          <label class="survey-opt"><input type="radio" name="readiness" value="curious" /> I'm curious and want to learn more first</label>
+        </div>
+        <div class="field">
+          <input type="tel" name="phone" placeholder="Phone number" autocomplete="tel" required />
+        </div>
+        <button type="submit" class="btn">Confirm My Spot &rarr;</button>
+        <p class="form-fine">🔒 Last step. We'll text your access link and a reminder before we go live.</p>
       </form>
     </div>
   </div>
@@ -396,6 +419,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <button type="submit" class="btn">Join The Challenge &rarr;</button>
         <p class="form-fine">🔒 100% free. Your access link is sent instantly.</p>
       </form>
+
+      <!-- SURVEY STEP: same qualifying question as the hero form above -->
+      <form id="surveyForm2" class="survey-step" novalidate style="display:none">
+        <span class="eyebrow">One Quick Question</span>
+        <h3 style="font-size:19px;margin:10px 0 16px">Are you ready to learn how to turn $1 into $10 using paid ads?</h3>
+        <div class="field survey-options">
+          <label class="survey-opt"><input type="radio" name="readiness" value="ready_now" checked /> Yes, I'm ready to implement this now</label>
+          <label class="survey-opt"><input type="radio" name="readiness" value="need_guidance" /> Yes, but I'll need some guidance</label>
+          <label class="survey-opt"><input type="radio" name="readiness" value="curious" /> I'm curious and want to learn more first</label>
+        </div>
+        <div class="field">
+          <input type="tel" name="phone" placeholder="Phone number" autocomplete="tel" required />
+        </div>
+        <button type="submit" class="btn">Confirm My Spot &rarr;</button>
+        <p class="form-fine">🔒 Last step. We'll text your access link and a reminder before we go live.</p>
+      </form>
     </div>
   </div>
 </section>
@@ -433,6 +472,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
    ================================================================= */
 const GHL_ENDPOINT   = '/.netlify/functions/ghl-lead'; // serverless proxy -> GHL contacts upsert (token stays server-side)
 const WATCH_PAGE_URL = '/webinar1/watch';
+const TICKER_URL     = 'https://freedom.kenjiai.com/webinar-ticker'; // final destination once the qualifying survey is done
 
 /* =================================================================
    FIXED WEEKLY COUNTDOWN, every Saturday at 11:00 AM Central
@@ -508,9 +548,24 @@ renderCountdown();
 setInterval(renderCountdown, 30000);
 
 /* =================================================================
-   FORM HANDLING, posts to GHL webhook, fires Lead events, redirects
+   FORM HANDLING
+   regForm / regForm2 are 2-step: name+email+phone(optional) -> posts to
+   GHL immediately (so the lead is never lost if they abandon the survey),
+   then reveals a one-question qualifying survey (readiness + required
+   phone) in the same card. Finishing the survey posts the update to GHL
+   and sends them to TICKER_URL. regForm3 (exit-intent) stays single-step
+   on purpose, it's the low-friction "just hold my spot" ask.
    ================================================================= */
-function handleRegister(form){
+function postLead(data){
+  return fetch(GHL_ENDPOINT, {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify(data),
+    keepalive: true
+  }).catch(()=>{});
+}
+
+function handleStep1(form, surveyForm){
   form.addEventListener('submit', function(e){
     e.preventDefault();
     const data = Object.fromEntries(new FormData(form).entries());
@@ -520,37 +575,75 @@ function handleRegister(form){
     // Manual Advanced Matching: now that we know the visitor's email/name,
     // re-init the pixel with it (Meta hashes client-side, SHA-256, before
     // sending). Improves match rate on this Lead event and everything that
-    // fires downstream on the watch page, since we pass the same data along.
+    // fires downstream, since we pass the same data along.
     if (window.fbq && data.email) {
       fbq('init', '2406747486323295', { em: data.email, fn: data.first_name || undefined });
     }
 
-    // Fire conversion events (Meta + GA4)
     if (window.fbq) fbq('track', 'Lead', { content_name: '1 Ad Away Challenge Registration' });
     if (window.gtag) gtag('event', 'generate_lead', { event_category: 'webinar', event_label: '1_ad_away_challenge_registration' });
 
-    // Carry the known identity to the watch page so it can also apply
-    // Advanced Matching to its own pixel events (video engagement, offer
-    // reveal / InitiateCheckout).
+    // Send the lead now, don't wait on the survey, so nothing is lost if they drop off here.
+    postLead(data);
+
+    if (surveyForm) {
+      surveyForm._step1Data = data;
+      // Prefill the survey's phone field if they already gave one, still required to submit.
+      const phoneField = surveyForm.querySelector('input[name="phone"]');
+      if (phoneField && data.phone) phoneField.value = data.phone;
+      form.style.display = 'none';
+      surveyForm.style.display = 'block';
+      surveyForm.querySelector('input, [type="radio"]')?.focus?.();
+    }
+  });
+}
+
+function handleSurveyStep(surveyForm){
+  surveyForm.addEventListener('submit', function(e){
+    e.preventDefault();
+    const surveyData = Object.fromEntries(new FormData(surveyForm).entries());
+    const merged = Object.assign({}, surveyForm._step1Data || {}, surveyData);
+    merged.source = '1 Ad Away Challenge Registration - Qualified';
+
+    if (window.fbq) fbq('track', 'CompleteRegistration', { content_name: '1 Ad Away Challenge Survey' });
+    if (window.gtag) gtag('event', 'survey_complete', { event_category: 'webinar', readiness: surveyData.readiness });
+
+    const finish = () => { window.location.href = TICKER_URL; };
+    postLead(merged).finally(finish);
+    setTimeout(finish, 2500); // safety redirect if the POST hangs
+  });
+}
+
+const step1Pairs = [
+  ['#regForm', '#surveyForm'],
+  ['#regForm2', '#surveyForm2'],
+];
+step1Pairs.forEach(([formSel, surveySel]) => {
+  const form = document.querySelector(formSel);
+  const survey = document.querySelector(surveySel);
+  if (form) handleStep1(form, survey);
+  if (survey) handleSurveyStep(survey);
+});
+
+// regForm3 (exit-intent modal): single-step, unchanged, still lands on the watch page.
+const regForm3 = document.getElementById('regForm3');
+if (regForm3) {
+  regForm3.addEventListener('submit', function(e){
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(regForm3).entries());
+    data.session_time = new Date(sessionTarget).toISOString();
+    data.source = '1 Ad Away Challenge Registration';
+    if (window.fbq && data.email) fbq('init', '2406747486323295', { em: data.email, fn: data.first_name || undefined });
+    if (window.fbq) fbq('track', 'Lead', { content_name: '1 Ad Away Challenge Registration' });
+    if (window.gtag) gtag('event', 'generate_lead', { event_category: 'webinar', event_label: '1_ad_away_challenge_registration' });
     const watchUrl = new URL(WATCH_PAGE_URL, window.location.origin);
     if (data.email) watchUrl.searchParams.set('em', data.email);
     if (data.first_name) watchUrl.searchParams.set('fn', data.first_name);
-
-    // Send the lead to GHL via our serverless function (same-origin), then continue to the watch page.
-    fetch(GHL_ENDPOINT, {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify(data),
-      keepalive: true
-    }).catch(()=>{}).finally(()=>{
-      window.location.href = watchUrl.toString();
-    });
-
-    // Safety redirect (keepalive lets the POST finish even after we navigate away)
-    setTimeout(()=>{ window.location.href = watchUrl.toString(); }, 2500);
+    const finish = () => { window.location.href = watchUrl.toString(); };
+    postLead(data).finally(finish);
+    setTimeout(finish, 2500);
   });
 }
-document.querySelectorAll('#regForm, #regForm2, #regForm3').forEach(handleRegister);
 
 /* =================================================================
    EXIT-INTENT CAPTURE + DROP-OFF TRACKING
@@ -593,8 +686,11 @@ window.addEventListener('popstate', () => {
 });
 
 // Mark registered so the exit modal (and the left-without-registering
-// event below) never fire after a real conversion.
-document.querySelectorAll('#regForm, #regForm2, #regForm3').forEach(f => {
+// event below) never fire after a real conversion. Step-1 submit already
+// posts the lead to GHL, so treat that as "registered" for this purpose,
+// not just full survey completion, so we don't re-annoy someone who
+// already gave their email.
+document.querySelectorAll('#regForm, #regForm2, #regForm3, #surveyForm, #surveyForm2').forEach(f => {
   f.addEventListener('submit', () => { hasRegistered = true; });
 });
 
@@ -624,7 +720,7 @@ window.addEventListener('scroll', () => {
 // Form-start tracking, fires once per form on first field interaction.
 // Compare form_start counts against generate_lead counts downstream to
 // measure real form-abandonment, not just overall page bounce.
-document.querySelectorAll('#regForm, #regForm2, #regForm3').forEach(form => {
+document.querySelectorAll('#regForm, #regForm2, #regForm3, #surveyForm, #surveyForm2').forEach(form => {
   let started = false;
   form.addEventListener('focusin', () => {
     if (started) return;

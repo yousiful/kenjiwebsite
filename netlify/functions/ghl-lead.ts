@@ -27,6 +27,7 @@ interface LeadPayload {
   phone?: string;
   source?: string;
   session_time?: string;
+  readiness?: string; // qualifying-survey answer, passed through to the webhook only
 }
 
 const json = (statusCode: number, body: unknown) => ({
@@ -69,6 +70,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
       phone,
       source,
       session_time: payload.session_time || '',
+      readiness: payload.readiness || '',
     }),
   })
     .then((r) => r.ok)
