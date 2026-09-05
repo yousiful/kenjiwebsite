@@ -85,7 +85,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .bullet div h3{font-family:'Inter',sans-serif;text-transform:none;font-size:15.5px;font-weight:800;margin-bottom:2px;letter-spacing:0}
   .bullet div p{color:var(--muted);font-size:13.5px}
 
-  .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:8px}
+  .pricing{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:8px}
+  @media(max-width:1000px){.pricing{grid-template-columns:repeat(2,1fr)}}
   .plan{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:30px 24px;
     display:flex;flex-direction:column;text-align:center;position:relative}
   .plan.featured{border-color:rgba(225,29,46,.5);box-shadow:0 0 60px rgba(225,29,46,.15)}
@@ -165,7 +166,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="wrap">
     <div class="center" style="margin-bottom:34px">
       <span class="eyebrow">Choose Your Option</span>
-      <h2 style="font-size:clamp(26px,4.5vw,38px)">One System. <span class="grad-text">Three Ways To Start.</span></h2>
+      <h2 style="font-size:clamp(26px,4.5vw,38px)">One System. <span class="grad-text">Four Ways To Start.</span></h2>
       <p class="muted" style="margin-top:10px">Total investment: $4,700. Pick whichever option fits your business right now.</p>
     </div>
 
@@ -183,6 +184,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="amt">$2,350<small>&times; 2</small></div>
         <p class="desc">Half today to lock your spot, half in 30 days.</p>
         <a class="btn" href="https://commas.com/checkout/NOl4NtNyQ25RIn" target="_blank" rel="noopener" onclick="trackOffer('split_pay', 2350)">Split In Half &rarr;</a>
+      </div>
+
+      <div class="plan">
+        <h3>Split Pay 3x</h3>
+        <div class="amt">$1,567<small>&times; 3</small></div>
+        <p class="desc">Three payments, spread over 60 days.</p>
+        <a class="btn" href="https://commas.com/checkout/BpzQoieU24XHs" target="_blank" rel="noopener" onclick="trackOffer('split_pay_3', 1567)">Split In 3 &rarr;</a>
       </div>
 
       <div class="plan">
@@ -226,7 +234,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
       <div class="qa">
         <button>How do the payment plans work?<span class="ic">+</span></button>
-        <div class="ans">Pay in full for $4,700 one time. Split it: $2,350 today to lock your spot, $2,350 in 30 days. Or go monthly at $255/mo by selecting Klarna as your payment method at checkout.</div>
+        <div class="ans">Pay in full for $4,700 one time. Split it in 2: $2,350 today, $2,350 in 30 days. Split it in 3: $1,567 spread over 60 days. Or go monthly at $255/mo by selecting Klarna as your payment method at checkout.</div>
       </div>
       <div class="qa">
         <button>How fast do we start?<span class="ic">+</span></button>
