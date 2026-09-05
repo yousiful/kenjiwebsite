@@ -87,9 +87,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   .reveal-wrap{max-width:420px;margin:0 auto}
   .reveal-dots{display:flex;justify-content:center;gap:8px;margin-bottom:22px}
-  .reveal-dots span{width:8px;height:8px;border-radius:50%;background:var(--line2);transition:background .25s,transform .25s}
+  .reveal-dots span{width:10px;height:10px;border-radius:50%;background:var(--line2);transition:background .25s,transform .25s;
+    cursor:pointer;border:none;padding:0}
+  .reveal-dots span:hover{background:var(--muted)}
   .reveal-dots span.done{background:var(--red)}
   .reveal-dots span.active{background:var(--ember);transform:scale(1.3)}
+  .reveal-nav{display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-family:'Space Mono',monospace;font-size:12px}
+  .reveal-back{background:none;border:none;color:var(--muted);cursor:pointer;letter-spacing:.06em;text-transform:uppercase;padding:6px 0}
+  .reveal-back:hover{color:var(--white,#fff)}
+  .reveal-back:disabled{visibility:hidden}
 
   .reveal-stage{position:relative;min-height:340px}
   .plan{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:34px 28px;
@@ -271,20 +277,28 @@ const PLANS = [
 
 const stage = document.getElementById('revealStage');
 const dotsWrap = document.getElementById('revealDots');
-let shown = 0;
+let current_i = 0;
+let furthest = 0; // tracks how far they've explored, for the dot "done" trail
 
-PLANS.forEach(() => { const d = document.createElement('span'); dotsWrap.appendChild(d); });
+PLANS.forEach((p, i) => {
+  const d = document.createElement('button');
+  d.type = 'button';
+  d.setAttribute('aria-label', 'View ' + p.name);
+  dotsWrap.appendChild(d);
+  d.addEventListener('click', () => goTo(i));
+});
 
 function renderDots(){
   [...dotsWrap.children].forEach((d, i) => {
-    d.classList.toggle('done', i < shown);
-    d.classList.toggle('active', i === shown);
+    d.classList.toggle('done', i < furthest);
+    d.classList.toggle('active', i === current_i);
   });
 }
 
 function renderCard(i){
   const p = PLANS[i];
   const isLast = i === PLANS.length - 1;
+  const isFirst = i === 0;
   const card = document.createElement('div');
   card.className = 'plan' + (p.featured ? ' featured' : '');
   card.innerHTML = `
@@ -295,25 +309,34 @@ function renderCard(i){
     <a class="btn" href="${p.href}" target="_blank" rel="noopener">${p.cta} &rarr;</a>
     ${p.note ? `<p class="note">${p.note}</p>` : ''}
     ${!isLast ? `<button type="button" class="reveal-btn">Show Me A Better Price &darr;</button>` : `<p class="reveal-final">This is our best possible offer</p>`}
+    <div class="reveal-nav">
+      <button type="button" class="reveal-back" ${isFirst ? 'disabled' : ''}>&larr; See Other Options</button>
+      <span class="muted" style="font-size:11px">${i + 1} / ${PLANS.length}</span>
+    </div>
   `;
   card.querySelector('.btn').addEventListener('click', () => trackOffer(p.plan, p.value));
   if (!isLast) {
     card.querySelector('.reveal-btn').addEventListener('click', () => {
       if (window.gtag) gtag('event', 'reveal_better_price', { from_plan: p.plan, step: i + 1 });
-      advance();
+      goTo(i + 1);
     });
+  }
+  if (!isFirst) {
+    card.querySelector('.reveal-back').addEventListener('click', () => goTo(i - 1));
   }
   return card;
 }
 
-function advance(){
-  const current = stage.querySelector('.plan.showing');
-  if (current) {
-    current.classList.remove('showing');
-    setTimeout(() => current.remove(), 400);
+function goTo(i){
+  if (i === current_i) return;
+  const prevCard = stage.querySelector('.plan.showing');
+  if (prevCard) {
+    prevCard.classList.remove('showing');
+    setTimeout(() => prevCard.remove(), 400);
   }
-  shown = Math.min(shown + 1, PLANS.length - 1);
-  const next = renderCard(shown);
+  current_i = i;
+  furthest = Math.max(furthest, i);
+  const next = renderCard(i);
   stage.appendChild(next);
   requestAnimationFrame(() => requestAnimationFrame(() => next.classList.add('showing')));
   renderDots();
