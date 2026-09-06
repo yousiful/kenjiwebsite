@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, ArrowRight, Shield, Award, Star, Headphones as HeadphonesIcon } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowRight, Shield, Star, Headphones as HeadphonesIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
@@ -166,11 +166,6 @@ const Footer: React.FC = () => {
       <div className="relative z-10 border-t border-gray-800 bg-gray-900/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-center">
-            <div className="flex items-center gap-2 text-sm text-gray-400">
-              <Award className="w-4 h-4 text-yellow-400 shrink-0" />
-              <span><span className="text-white font-semibold">30-Day Money-Back Guarantee</span> • No questions asked</span>
-            </div>
-            <div className="hidden sm:block w-px h-4 bg-gray-700" />
             <div className="flex items-center gap-2 text-sm text-gray-400">
               <Shield className="w-4 h-4 text-blue-400 shrink-0" />
               <span><span className="text-white font-semibold">Your data is always secure</span> • 256-bit encryption</span>

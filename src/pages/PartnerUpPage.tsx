@@ -188,6 +188,10 @@ const PartnerUpPage: React.FC = () => {
         >
           A short application, not a checkout. We only take on a handful of new partners each quarter.
         </motion.p>
+
+        <p className="relative z-10 text-gray-700 text-[11px] mt-4 text-center max-w-sm">
+          Results vary and are not guaranteed. This page is not part of, or endorsed by, Facebook/Meta or Google.
+        </p>
       </div>
     </>
   );

@@ -317,6 +317,10 @@ const WorkshopPage: React.FC = () => {
           Either your current numbers stay the same next quarter, or you spend 90 minutes and $27 finding out
           what changes them. Show up and decide for yourself.
         </motion.p>
+
+        <p className="relative z-10 text-gray-700 text-[11px] mt-4 text-center max-w-sm">
+          Results vary and are not guaranteed. This page is not part of, or endorsed by, Facebook/Meta or Google.
+        </p>
       </div>
     </>
   );
