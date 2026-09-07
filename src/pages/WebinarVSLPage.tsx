@@ -159,8 +159,9 @@ export default function WebinarVSLPage() {
               title="KenjiAI Overview"
             />
 
-            {/* Custom controls: mute + fullscreen only, no seek/scrub bar */}
-            <div className="absolute bottom-3 right-3 z-30 flex items-center gap-2">
+            {/* Custom controls: mute + fullscreen only, no seek/scrub bar.
+                Top-right, matching /overview-b and the explainer video. */}
+            <div className="absolute top-3 right-3 z-30 flex items-center gap-2">
               <button
                 onClick={handleToggleMute}
                 aria-label={isMuted ? 'Unmute' : 'Mute'}
