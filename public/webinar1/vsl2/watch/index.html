@@ -126,6 +126,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   /* ===== OFFER (hidden until reveal) ===== */
   .offer{display:none;margin:26px 0 8px}
   .offer.show{display:block;animation:fade .5s ease}
+
+  /* ===== LOCKED NOTICE (visible until the offer reveals, then hidden) ===== */
+  .offer-locked{margin:26px 0 8px;text-align:center;background:linear-gradient(180deg,#161616,#0e0e0e);
+    border:1px solid rgba(245,158,11,.35);border-radius:22px;padding:26px 22px}
+  .offer-locked.hide{display:none}
+  .offer-locked .lock-ic{font-size:30px;margin-bottom:10px}
+  .offer-locked h3{font-size:clamp(18px,3vw,24px);color:#fff;margin-bottom:8px}
+  .offer-locked p{color:var(--muted);font-size:14.5px;max-width:480px;margin:0 auto}
   .offer-card{background:linear-gradient(180deg,#161616,#0e0e0e);border:1px solid rgba(239,68,68,.35);
     border-radius:22px;padding:28px 22px;box-shadow:0 20px 70px rgba(0,0,0,.55)}
   .offer-tag{display:inline-block;font-size:12px;font-weight:900;letter-spacing:.1em;text-transform:uppercase;
@@ -292,6 +300,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       </div>
     </div>
 
+  </div>
+
+  <!-- ===================== LOCKED NOTICE (hidden once the offer reveals) ===================== -->
+  <div class="offer-locked" id="offerLocked">
+    <div class="lock-ic">🔒</div>
+    <h3>Pricing Unlocks At The End Of This Training</h3>
+    <p>Keep watching &mdash; the full pricing breakdown reveals automatically when the video finishes.</p>
   </div>
 
   <!-- ===================== OFFER (revealed by JS) ===================== -->
@@ -519,11 +534,13 @@ setInterval(tickViewers, 5000);
    OFFER REVEAL + CART COUNTDOWN
    ================================================================= */
 const offerEl = document.getElementById('offer');
+const offerLockedEl = document.getElementById('offerLocked');
 let revealed = false, cartEnd = 0;
 
 function revealOffer(){
   if (revealed) return;
   revealed = true;
+  if (offerLockedEl) offerLockedEl.classList.add('hide');
   offerEl.classList.add('show');
   cartEnd = Date.now() + CONFIG.CART_MINUTES * 60 * 1000;
   if (window.fbq)  fbq('trackCustom', 'OfferRevealed', { offer: 'ADmaxing Accelerator' });

@@ -11,10 +11,29 @@ export default function WebinarVSLPageB() {
   const [viewers, setViewers] = useState(214);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  const [pricingUnlocked, setPricingUnlocked] = useState(false);
   const videoRef = useRef<HTMLDivElement>(null);
   const videoElRef = useRef<HTMLVideoElement>(null);
 
   useResumableVideo(videoElRef, 'kenjiai-video-progress:/overview-b');
+
+  // Pricing stays locked until the training is basically finished.
+  useEffect(() => {
+    const el = videoElRef.current;
+    if (!el) return;
+    const onTimeUpdate = () => {
+      if (!el.duration) return;
+      const pct = (el.currentTime / el.duration) * 100;
+      if (pct >= 95) setPricingUnlocked(true);
+    };
+    const onEnded = () => setPricingUnlocked(true);
+    el.addEventListener('timeupdate', onTimeUpdate);
+    el.addEventListener('ended', onEnded);
+    return () => {
+      el.removeEventListener('timeupdate', onTimeUpdate);
+      el.removeEventListener('ended', onEnded);
+    };
+  }, []);
 
   useEffect(() => {
     setViewers(Math.floor(Math.random() * (240 - 180 + 1) + 180));
@@ -166,51 +185,70 @@ export default function WebinarVSLPageB() {
           </h1>
         </div>
 
-        {/* ── CTA SECTION ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.7 }}
-          className="w-full max-w-4xl mx-auto px-4 pt-6 pb-10 text-center"
-        >
-          <p className="text-gray-400 text-sm sm:text-base font-medium max-w-2xl mx-auto mb-6">
-            You just watched exactly how this works. No call needed to get started, pick your plan below and you're in.
-          </p>
+        {/* ── CTA SECTION (locked until the training finishes) ── */}
+        {pricingUnlocked ? (
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            className="w-full max-w-4xl mx-auto px-4 pt-6 pb-10 text-center"
+          >
+            <p className="text-gray-400 text-sm sm:text-base font-medium max-w-2xl mx-auto mb-6">
+              You just watched exactly how this works. No call needed to get started, pick your plan below and you're in.
+            </p>
 
-          <div className="flex flex-col items-center gap-4">
-            <a
-              href="https://kenjiai.com/pricing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative flex flex-col items-center justify-center w-full sm:max-w-[420px] px-8 py-5 rounded-2xl bg-gradient-to-br from-purple-600 to-purple-500 text-white shadow-[0_8px_28px_-4px_rgba(139,92,246,0.5)] hover:shadow-[0_14px_36px_-4px_rgba(139,92,246,0.7)] hover:-translate-y-0.5 transition-all duration-300 border border-white/20"
-            >
-              <span className="font-bold text-lg tracking-wide">See Plans &amp; Get Started</span>
-              <span className="text-xs font-medium opacity-80 mt-0.5">Pay only when you earn. No call required.</span>
-            </a>
-
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <div className="flex flex-col items-center gap-4">
               <a
-                href="https://go.mediatraffics.com/price"
+                href="https://kenjiai.com/pricing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative flex flex-col items-center justify-center w-full sm:max-w-[280px] px-5 py-3 rounded-xl bg-gray-900/60 border border-gray-700 text-gray-300 hover:border-green-500/50 hover:text-white transition-all duration-300"
+                className="group relative flex flex-col items-center justify-center w-full sm:max-w-[420px] px-8 py-5 rounded-2xl bg-gradient-to-br from-purple-600 to-purple-500 text-white shadow-[0_8px_28px_-4px_rgba(139,92,246,0.5)] hover:shadow-[0_14px_36px_-4px_rgba(139,92,246,0.7)] hover:-translate-y-0.5 transition-all duration-300 border border-white/20"
               >
-                <span className="font-semibold text-sm tracking-wide">Want the DFY Setup Instead?</span>
-                <span className="text-xs opacity-70 mt-0.5">Book a call to talk it through.</span>
+                <span className="font-bold text-lg tracking-wide">See Plans &amp; Get Started</span>
+                <span className="text-xs font-medium opacity-80 mt-0.5">Pay only when you earn. No call required.</span>
               </a>
 
-              <a
-                href="https://go.mediatraffics.com/leads"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative flex flex-col items-center justify-center w-full sm:max-w-[280px] px-5 py-3 rounded-xl bg-gray-900/60 border border-gray-700 text-gray-300 hover:border-blue-500/50 hover:text-white transition-all duration-300"
-              >
-                <span className="font-semibold text-sm tracking-wide">Still Have Questions?</span>
-                <span className="text-xs opacity-70 mt-0.5">Book a walkthrough call.</span>
-              </a>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <a
+                  href="https://go.mediatraffics.com/price"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative flex flex-col items-center justify-center w-full sm:max-w-[280px] px-5 py-3 rounded-xl bg-gray-900/60 border border-gray-700 text-gray-300 hover:border-green-500/50 hover:text-white transition-all duration-300"
+                >
+                  <span className="font-semibold text-sm tracking-wide">Want the DFY Setup Instead?</span>
+                  <span className="text-xs opacity-70 mt-0.5">Book a call to talk it through.</span>
+                </a>
+
+                <a
+                  href="https://go.mediatraffics.com/leads"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative flex flex-col items-center justify-center w-full sm:max-w-[280px] px-5 py-3 rounded-xl bg-gray-900/60 border border-gray-700 text-gray-300 hover:border-blue-500/50 hover:text-white transition-all duration-300"
+                >
+                  <span className="font-semibold text-sm tracking-wide">Still Have Questions?</span>
+                  <span className="text-xs opacity-70 mt-0.5">Book a walkthrough call.</span>
+                </a>
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        ) : (
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.7 }}
+            className="w-full max-w-xl mx-auto px-4 pt-6 pb-10 text-center"
+          >
+            <div className="rounded-2xl border border-amber-500/30 bg-gray-900/60 px-6 py-8">
+              <div className="text-3xl mb-3">🔒</div>
+              <h2 className="text-lg sm:text-xl font-bold text-white mb-2">
+                Pricing Unlocks At The End Of This Training
+              </h2>
+              <p className="text-gray-400 text-sm sm:text-base">
+                Keep watching &mdash; the full pricing breakdown reveals automatically when the video finishes.
+              </p>
+            </div>
+          </motion.div>
+        )}
 
         <WebinarObjectionSection />
       </div>
