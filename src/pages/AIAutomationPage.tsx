@@ -10,19 +10,19 @@ const AIAutomationPage: React.FC = () => {
       icon: Brain,
       title: "Intelligent Workflows",
       description: "AI-powered workflows that adapt and optimize based on performance data",
-      benefits: ["85% time savings", "99.9% accuracy", "24/7 operation"]
+      benefits: ["Fewer manual tasks", "Consistent execution", "24/7 operation"]
     },
     {
       icon: Zap,
       title: "Smart Decision Making",
       description: "AI makes complex business decisions using real-time data analysis",
-      benefits: ["300% faster decisions", "Data-driven insights", "Predictive analytics"]
+      benefits: ["Real-time decisions", "Data-driven insights", "Predictive analytics"]
     },
     {
       icon: TrendingUp,
       title: "Performance Optimization",
       description: "Continuous learning and improvement of all automated processes",
-      benefits: ["Self-improving systems", "ROI optimization", "Efficiency gains"]
+      benefits: ["Self-improving systems", "Continuous optimization", "Efficiency gains"]
     },
     {
       icon: Users,
@@ -37,27 +37,27 @@ const AIAutomationPage: React.FC = () => {
       industry: "E-commerce",
       challenge: "Managing inventory and customer service at scale",
       solution: "AI automates inventory management, customer support, and personalized recommendations",
-      results: ["40% reduction in stockouts", "90% of support tickets automated", "25% increase in sales"]
+      results: ["Automated inventory alerts", "AI-handled support tickets", "Personalized recommendations"]
     },
     {
       industry: "SaaS",
       challenge: "Lead qualification and customer onboarding",
       solution: "AI qualifies leads, automates onboarding, and predicts churn risk",
-      results: ["60% faster lead qualification", "80% onboarding automation", "35% churn reduction"]
+      results: ["Automated lead qualification", "Automated onboarding flows", "Churn-risk prediction"]
     },
     {
       industry: "Professional Services",
       challenge: "Client communication and project management",
       solution: "AI handles client communications, schedules meetings, and tracks project progress",
-      results: ["50% time savings", "95% client satisfaction", "200% capacity increase"]
+      results: ["Automated scheduling", "Automated status updates", "Streamlined project tracking"]
     }
   ];
 
   const benefits = [
-    { metric: "85%", label: "Time Savings", description: "Automate repetitive tasks" },
-    { metric: "300%", label: "ROI Increase", description: "Maximize business efficiency" },
+    { metric: "Automated", label: "Repetitive Tasks", description: "Automate repetitive tasks" },
+    { metric: "Continuous", label: "Efficiency Gains", description: "Maximize business efficiency" },
     { metric: "24/7", label: "Operation", description: "Never-stopping automation" },
-    { metric: "99.9%", label: "Accuracy", description: "Eliminate human errors" }
+    { metric: "Consistent", label: "Execution", description: "Reduce manual errors" }
   ];
 
   const structuredData = {
@@ -66,7 +66,7 @@ const AIAutomationPage: React.FC = () => {
     "name": "KenjiAI Business Automation",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
-    "description": "Transform your business with AI automation. Automate workflows, customer service, sales processes, and operations with 85% time savings and 300% ROI increase.",
+    "description": "Transform your business with AI automation. Automate workflows, customer service, sales processes, and operations.",
     "url": "https://kenjiai.com/ai-automation",
     "provider": {
       "@type": "Organization",
@@ -76,11 +76,6 @@ const AIAutomationPage: React.FC = () => {
     "offers": {
       "@type": "Offer",
       "url": "https://kenjiai.com/pricing"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "ratingCount": "10000"
     },
     "featureList": [
       "Intelligent Workflows",
@@ -94,7 +89,7 @@ const AIAutomationPage: React.FC = () => {
     <>
       <SEOHead
         title="AI Business Automation Platform | KenjiAI - Automate Operations & Scale Growth"
-        description="Transform your business with AI automation. Automate workflows, customer service, sales processes, and operations. 85% time savings, 300% ROI increase. Get started today."
+        description="Transform your business with AI automation. Automate workflows, customer service, sales processes, and operations. Get started today."
         keywords="AI automation, business automation, workflow automation, AI business processes, intelligent automation, business AI platform, automate business operations, AI workflow software"
         canonical="https://kenjiai.com/ai-automation"
         structuredData={structuredData}

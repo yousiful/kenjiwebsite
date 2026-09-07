@@ -9,13 +9,13 @@ const MarketingAutomationPage: React.FC = () => {
       icon: Mail,
       title: "Smart Email Campaigns",
       description: "AI-powered email sequences that adapt based on subscriber behavior and engagement",
-      benefits: ["400% higher open rates", "Personalized content", "Optimal send times"]
+      benefits: ["AI-optimized subject lines", "Personalized content", "Optimal send times"]
     },
     {
       icon: Users,
       title: "Lead Nurturing",
       description: "Automatically nurture leads through personalized journeys based on their interests",
-      benefits: ["300% more qualified leads", "Automated scoring", "Behavioral triggers"]
+      benefits: ["AI-driven lead scoring", "Automated scoring", "Behavioral triggers"]
     },
     {
       icon: Calendar,
@@ -27,7 +27,7 @@ const MarketingAutomationPage: React.FC = () => {
       icon: BarChart3,
       title: "Analytics & Optimization",
       description: "Real-time performance tracking with AI-powered insights and recommendations",
-      benefits: ["ROI tracking", "A/B testing", "Predictive analytics"]
+      benefits: ["Performance tracking", "A/B testing", "Predictive analytics"]
     }
   ];
 
@@ -35,28 +35,28 @@ const MarketingAutomationPage: React.FC = () => {
     {
       type: "Welcome Series",
       description: "Onboard new subscribers with personalized welcome sequences that convert",
-      metrics: ["85% open rate", "45% click rate", "25% conversion rate"],
+      metrics: ["Personalized sequences", "Automated timing", "Behavioral triggers"],
       icon: Users
     },
     {
       type: "Abandoned Cart",
       description: "Recover lost sales with intelligent cart abandonment campaigns",
-      metrics: ["30% recovery rate", "15% revenue increase", "Automated follow-ups"],
+      metrics: ["Automated follow-ups", "Smart timing", "Multi-channel recovery"],
       icon: Target
     },
     {
       type: "Re-engagement",
       description: "Win back inactive subscribers with targeted re-engagement campaigns",
-      metrics: ["40% reactivation", "20% unsubscribe reduction", "Behavioral triggers"],
+      metrics: ["Behavioral triggers", "Automated re-engagement", "Smart segmentation"],
       icon: TrendingUp
     }
   ];
 
   const results = [
-    { metric: "400%", label: "Higher Open Rates", description: "AI-optimized subject lines and timing" },
-    { metric: "300%", label: "More Qualified Leads", description: "Intelligent lead scoring and nurturing" },
-    { metric: "250%", label: "ROI Increase", description: "Automated optimization and testing" },
-    { metric: "85%", label: "Time Savings", description: "Fully automated campaign management" }
+    { metric: "AI-Optimized", label: "Subject Lines & Timing", description: "AI-optimized subject lines and send times" },
+    { metric: "Automated", label: "Lead Scoring", description: "Intelligent lead scoring and nurturing" },
+    { metric: "Continuous", label: "Optimization & Testing", description: "Automated optimization and testing" },
+    { metric: "Fully Automated", label: "Campaign Management", description: "Fully automated campaign management" }
   ];
 
   const structuredData = {
@@ -65,7 +65,7 @@ const MarketingAutomationPage: React.FC = () => {
     "name": "KenjiAI Marketing Automation",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
-    "description": "AI-powered marketing automation platform with smart email campaigns, social media scheduling, lead nurturing, and analytics. 400% higher open rates, 300% more qualified leads.",
+    "description": "AI-powered marketing automation platform with smart email campaigns, social media scheduling, lead nurturing, and analytics.",
     "url": "https://kenjiai.com/marketing-automation",
     "provider": {
       "@type": "Organization",
@@ -75,11 +75,6 @@ const MarketingAutomationPage: React.FC = () => {
     "offers": {
       "@type": "Offer",
       "url": "https://kenjiai.com/pricing"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "ratingCount": "9100"
     },
     "featureList": [
       "Smart Email Campaigns",
@@ -98,7 +93,7 @@ const MarketingAutomationPage: React.FC = () => {
           "name": "How does AI improve email marketing open rates?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "KenjiAI optimizes subject lines, send times, and content personalization using AI, resulting in 400% higher open rates compared to traditional email marketing tools."
+            "text": "KenjiAI optimizes subject lines, send times, and content personalization using AI to improve email open rates over generic, unoptimized campaigns."
           }
         },
         {
@@ -114,7 +109,7 @@ const MarketingAutomationPage: React.FC = () => {
           "name": "What ROI can I expect from AI marketing automation?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "KenjiAI customers see an average 250% ROI increase from marketing automation, with 300% more qualified leads entering the pipeline and 85% time savings on campaign management."
+            "text": "Results vary by business and are not guaranteed. KenjiAI automates lead scoring, nurturing, and campaign management to reduce manual work and help you focus on qualified leads."
           }
         }
       ]
@@ -125,8 +120,8 @@ const MarketingAutomationPage: React.FC = () => {
     <>
       <SEOHead
         title="AI Marketing Automation Platform | KenjiAI - Email, Social Media & Lead Nurturing"
-        description="Automate your marketing with AI. Smart email campaigns, social media automation, lead nurturing, and analytics. 400% higher open rates, 300% more qualified leads."
-        keywords="marketing automation, email automation, social media automation, lead nurturing, AI marketing, email marketing platform, automated email campaigns, marketing ROI"
+        description="Automate your marketing with AI. Smart email campaigns, social media automation, lead nurturing, and analytics."
+        keywords="marketing automation, email automation, social media automation, lead nurturing, AI marketing, email marketing platform, automated email campaigns"
         canonical="https://kenjiai.com/marketing-automation"
         structuredData={structuredData}
       />
