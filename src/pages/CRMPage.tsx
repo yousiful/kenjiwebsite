@@ -65,7 +65,7 @@ const CRMPage: React.FC = () => {
     "name": "KenjiAI CRM",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
-    "description": "Complete AI-powered CRM solution with automated contact management, sales pipeline tracking, and analytics. 35% faster sales cycle, 250% more qualified leads.",
+    "description": "Complete AI-powered CRM solution with automated contact management, sales pipeline tracking, and analytics.",
     "url": "https://kenjiai.com/crm",
     "provider": {
       "@type": "Organization",
@@ -75,11 +75,6 @@ const CRMPage: React.FC = () => {
     "offers": {
       "@type": "Offer",
       "url": "https://kenjiai.com/pricing"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "ratingCount": "7200"
     },
     "featureList": [
       "Contact Management",

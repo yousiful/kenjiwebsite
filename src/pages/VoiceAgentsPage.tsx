@@ -65,7 +65,7 @@ const VoiceAgentsPage: React.FC = () => {
     "name": "KenjiAI Voice Agents",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
-    "description": "AI voice agents that handle sales calls, customer service, and appointment booking 24/7. 85% qualification rate, 300% more calls handled.",
+    "description": "AI voice agents that handle sales calls, customer service, and appointment booking 24/7.",
     "url": "https://kenjiai.com/voice-agents",
     "provider": {
       "@type": "Organization",
@@ -75,11 +75,6 @@ const VoiceAgentsPage: React.FC = () => {
     "offers": {
       "@type": "Offer",
       "url": "https://kenjiai.com/pricing"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "ratingCount": "8500"
     },
     "featureList": [
       "Natural Conversations",

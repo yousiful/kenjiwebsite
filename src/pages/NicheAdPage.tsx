@@ -34,11 +34,6 @@ export default function NicheAdPage() {
     },
     areaServed: 'US',
     serviceType: [`${niche.name} Paid Advertising`, 'AI Marketing Automation'],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      ratingCount: '500',
-    },
   };
 
   return (

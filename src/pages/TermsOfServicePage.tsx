@@ -18,7 +18,7 @@ export default function TermsOfServicePage() {
             <h1 className="text-4xl md:text-5xl font-bold text-white">Terms of Service</h1>
           </div>
 
-          <p className="text-center text-gray-400 mb-8">Last Updated: December 19, 2024</p>
+          <p className="text-center text-gray-400 mb-8">Last Updated: September 7, 2026</p>
 
           <div className="bg-gray-800 border border-gray-700 rounded-2xl p-8 space-y-8">
             <section>
@@ -77,21 +77,20 @@ export default function TermsOfServicePage() {
 
               <h3 className="text-xl font-semibold text-white mb-3">Pricing and Payment</h3>
               <ul className="list-disc list-inside text-gray-300 space-y-2 ml-4 mb-4">
-                <li>All prices are subject to change without notice</li>
+                <li>Prices are subject to change for ongoing services with at least 30 days notice</li>
                 <li>Payment is required in advance for subscription services</li>
-                <li>All fees are non-refundable unless otherwise stated</li>
                 <li>You are responsible for all taxes associated with your purchase</li>
                 <li>Failure to pay may result in service suspension or termination</li>
               </ul>
 
               <h3 className="text-xl font-semibold text-white mb-3">Subscriptions</h3>
               <p className="text-gray-300 leading-relaxed mb-4">
-                Subscription services automatically renew unless you cancel before the renewal date. You may cancel your subscription at any time through your account settings. Cancellation takes effect at the end of the current billing period.
+                Subscription services automatically renew unless you cancel before the renewal date. You may cancel your subscription at any time through your account settings or by emailing legal@kenjiai.com. Cancellation takes effect at the end of the current billing period.
               </p>
 
               <h3 className="text-xl font-semibold text-white mb-3">Refund Policy</h3>
               <p className="text-gray-300 leading-relaxed">
-                Refunds are provided at our sole discretion. Please contact our support team within 30 days of purchase to request a refund. Refunds are not guaranteed and will be evaluated on a case-by-case basis.
+                We offer a 30-day money-back guarantee on the initial purchase of a KenjiAI subscription: if you're not satisfied within 30 days, contact legal@kenjiai.com and we'll refund it. Requests made after the 30-day window are handled case-by-case and are not guaranteed. If you believe a charge was unauthorized, contact us immediately and we will investigate regardless of the 30-day window.
               </p>
             </section>
 
