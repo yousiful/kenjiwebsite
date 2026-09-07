@@ -26,8 +26,8 @@ export function TrustBadges() {
     },
     {
       icon: <Users className="w-5 h-5" />,
-      text: "500+ Businesses Served",
-      subtext: "$3.35M+ client revenue generated"
+      text: "Meta, Google & LinkedIn Ads",
+      subtext: "Built and managed for you"
     },
     {
       icon: <Headset className="w-5 h-5" />,

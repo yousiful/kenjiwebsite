@@ -28,9 +28,9 @@ const BusinessTransformation: React.FC = () => {
   ];
 
   const businessOutcomes = [
-    { icon: TrendingUp, label: "425% ROI", value: "Average Return" },
-    { icon: Target, label: "85% Less Busywork", value: "Time Saved on Tasks" },
-    { icon: Heart, label: "95% Stay With Us", value: "Client Retention" }
+    { icon: TrendingUp, label: "Meta, Google, LinkedIn", value: "Platforms We Manage" },
+    { icon: Target, label: "Ads + CRM + Automation", value: "Built and Managed for You" },
+    { icon: Heart, label: "Since 2013", value: "Running Ad Campaigns" }
   ];
 
   return (

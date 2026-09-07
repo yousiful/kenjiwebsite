@@ -138,7 +138,7 @@ const ModernPage: React.FC = () => {
               transition={{ duration: 0.4, delay: 0.3 }}
               className="relative z-10 text-cyan-400 text-sm font-semibold tracking-wide uppercase mb-16"
             >
-              13 years running ads &middot; $3.35M+ managed &middot; 500+ businesses
+              13 years running ads &middot; Meta, Google &amp; LinkedIn &middot; Revenue-share, not a flat fee
             </motion.p>
 
             <div className="relative z-10 w-full max-w-3xl grid sm:grid-cols-2 gap-5 mb-16">

@@ -35,35 +35,35 @@ const Features: React.FC = () => {
           title: "AI-Powered Ad Campaigns",
           description: "Done-for-you ads that fill your CRM with qualified leads on autopilot",
           color: "from-blue-500 to-blue-600",
-          roi: "3x more qualified leads"
+          roi: "AI-optimized targeting"
         },
         {
           icon: Globe,
           title: "High-Converting Landing Pages",
           description: "AI-built pages and funnels optimized for maximum conversion rates",
           color: "from-cyan-500 to-cyan-600",
-          roi: "85% higher conversions"
+          roi: "Built for conversions"
         },
         {
           icon: Search,
           title: "SEO That Drives Traffic",
           description: "Automated SEO optimization that ranks your content and brings organic leads",
           color: "from-lime-500 to-lime-600",
-          roi: "500% more organic traffic"
+          roi: "SEO-optimized content"
         },
         {
           icon: Edit,
           title: "Content Marketing Engine",
           description: "AI blog writer creating SEO content that attracts and converts prospects",
           color: "from-red-500 to-red-600",
-          roi: "300% more organic leads"
+          roi: "Automated content engine"
         },
         {
           icon: Calendar,
           title: "Social Media Automation",
           description: "AI-generated content that engages followers and converts them to customers",
           color: "from-sky-500 to-sky-600",
-          roi: "250% more social sales"
+          roi: "Automated social posting"
         },
         {
           icon: BarChart3,
@@ -83,7 +83,7 @@ const Features: React.FC = () => {
           title: "AI Voice Agents",
           description: "AI agents handling sales calls, qualifying leads, and closing deals 24/7",
           color: "from-blue-500 to-blue-600",
-          roi: "300% more deals closed"
+          roi: "24/7 AI voice agents"
         },
         {
           icon: MessageCircle,
@@ -104,14 +104,14 @@ const Features: React.FC = () => {
           title: "Email & SMS Campaigns",
           description: "AI-powered campaigns optimized for maximum revenue and conversions",
           color: "from-purple-500 to-purple-600",
-          roi: "400% higher conversions"
+          roi: "Automated follow-up sequences"
         },
         {
           icon: DollarSign,
           title: "Revenue Workflows",
           description: "Smart automation that nurtures leads and converts them to customers",
           color: "from-green-500 to-green-600",
-          roi: "425% average ROI"
+          roi: "Automated lead nurturing"
         },
         {
           icon: Star,
@@ -152,21 +152,21 @@ const Features: React.FC = () => {
           title: "Affiliate Program System",
           description: "Complete affiliate program with tracking, commissions, and recruitment",
           color: "from-violet-500 to-violet-600",
-          roi: "10x multiplication"
+          roi: "Automated referral tracking"
         },
         {
           icon: CreditCard,
           title: "Payment Processing",
           description: "Integrated payments with subscription optimization and upsells",
           color: "from-fuchsia-500 to-fuchsia-600",
-          roi: "Optimized revenue"
+          roi: "Integrated payment processing"
         },
         {
           icon: Workflow,
           title: "Business Automation",
           description: "Smart workflows automating repetitive tasks and operations",
           color: "from-cyan-500 to-cyan-600",
-          roi: "85% time savings"
+          roi: "Fewer manual tasks"
         }
       ]
     }
@@ -270,11 +270,11 @@ const Features: React.FC = () => {
         >
           <div className="bg-gradient-to-r from-blue-900/30 to-green-900/30 border border-blue-400/30 rounded-3xl p-8">
             <h3 id="features-cta" className="text-3xl font-bold text-white mb-4">
-              Ready to Start Making Money with AI?
+              Ready to Automate Your Business with AI?
             </h3>
             <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
-              Join 50,000+ businesses using KenjiAI to automate operations, close more deals, 
-              and generate revenue 24/7. Average ROI: 425% in first 90 days.
+              Use KenjiAI to automate operations, close more deals, and run your business 24/7
+              with AI voice agents, CRM, and workflow automation.
             </p>
             <motion.a
               href="/pricing"

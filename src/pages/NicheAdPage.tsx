@@ -233,10 +233,10 @@ export default function NicheAdPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { icon: Users, value: '500+', label: 'Clients Served' },
-              { icon: TrendingUp, value: '$3.35M+', label: 'Revenue Generated' },
-              { icon: Star, value: '36,490+', label: 'Leads Delivered' },
-              { icon: Zap, value: '45+', label: 'Accounts Automated' },
+              { icon: Users, value: 'Meta, Google', label: 'Platforms We Manage' },
+              { icon: TrendingUp, value: 'Ads + CRM', label: 'Built and Managed for You' },
+              { icon: Star, value: 'Since 2013', label: 'Running Ad Campaigns' },
+              { icon: Zap, value: '17+ Tools', label: 'Replaced by KenjiAI' },
             ].map(({ icon: Icon, value, label }, i) => (
               <motion.div
                 key={i}

@@ -16,7 +16,7 @@ const FreeToolsPage: React.FC = () => {
       rating: 4.9,
       users: "50K+",
       keywords: ["prompt generator", "AI prompts", "ChatGPT prompts", "GPT-4 prompts", "Claude prompts", "prompt engineering"],
-      revenue: "Saves $500/month on AI costs"
+      revenue: "Ready-to-use prompt templates"
     },
     {
       name: "PR Pro - Free AI PR Tool",
@@ -29,7 +29,7 @@ const FreeToolsPage: React.FC = () => {
       rating: 4.8,
       users: "25K+",
       keywords: ["free PR tool", "AI PR", "press release generator", "media outreach", "PR automation", "public relations AI"],
-      revenue: "Generates $10K+ in free publicity"
+      revenue: "Ready-to-send press releases"
     },
     {
       name: "Sales Coach AI - Free Sales Training",
@@ -42,7 +42,7 @@ const FreeToolsPage: React.FC = () => {
       rating: 4.9,
       users: "35K+",
       keywords: ["free sales coach", "AI sales training", "sales automation", "sales scripts", "objection handling", "sales AI"],
-      revenue: "Increases deal close rate by 40%"
+      revenue: "Objection-handling scripts included"
     },
     {
       name: "Investor Connect - Free Startup Tool",
@@ -55,7 +55,7 @@ const FreeToolsPage: React.FC = () => {
       rating: 4.7,
       users: "15K+",
       keywords: ["free investor tools", "startup tools", "pitch deck generator", "investor matching", "funding tools", "startup AI"],
-      revenue: "Helps founders raise funding faster"
+      revenue: "Pitch deck builder included"
     },
     {
       name: "AI Dispute Resolution",
@@ -68,7 +68,7 @@ const FreeToolsPage: React.FC = () => {
       rating: 4.8,
       users: "12K+",
       keywords: ["dispute resolution", "AI mediation", "conflict management", "business disputes", "resolution tool", "AI arbitration"],
-      revenue: "Saves $25K+ in legal fees"
+      revenue: "AI-drafted resolution strategies"
     },
     {
       name: "Live Webinar Platform",
@@ -81,7 +81,7 @@ const FreeToolsPage: React.FC = () => {
       rating: 4.9,
       users: "30K+",
       keywords: ["free webinar platform", "live webinars", "webinar hosting", "online events", "virtual events", "webinar automation"],
-      revenue: "Generates 3x more leads"
+      revenue: "Built-in audience analytics"
     },
     {
       name: "AI Business Planner",
@@ -94,7 +94,7 @@ const FreeToolsPage: React.FC = () => {
       rating: 4.8,
       users: "20K+",
       keywords: ["business plan generator", "AI business planning", "financial projections", "market analysis", "startup planning", "business strategy"],
-      revenue: "Helps secure $100K+ funding"
+      revenue: "Investor-ready financial projections"
     },
     {
       name: "The Closer - AI Agent Prompt Builder",
@@ -107,7 +107,7 @@ const FreeToolsPage: React.FC = () => {
       rating: 4.9,
       users: "18K+",
       keywords: ["AI agent prompts", "sales agent builder", "AI closer", "agent prompt engineering", "sales automation prompts", "AI sales scripts"],
-      revenue: "Closes deals 24/7 on autopilot"
+      revenue: "Multi-channel prompt templates"
     }
   ];
 
@@ -115,34 +115,34 @@ const FreeToolsPage: React.FC = () => {
     {
       icon: Gift,
       title: "100% Free Forever",
-      description: "No hidden costs, no credit card required, no time limits - start making money immediately"
+      description: "No hidden costs, no credit card required, no time limits - start using them immediately"
     },
     {
       icon: Zap,
-      title: "Instant Revenue Impact",
-      description: "Start generating results immediately - no lengthy setup or learning curve required"
+      title: "No Setup Required",
+      description: "Start using each tool immediately - no lengthy setup or learning curve required"
     },
     {
       icon: Star,
-      title: "Premium Quality",
-      description: "Same AI technology powering our paid platform that generates millions in revenue"
+      title: "Same Tech, No Cost",
+      description: "Built on the same AI technology that powers our paid KenjiAI platform"
     },
     {
       icon: Users,
-      title: "Success Community",
-      description: "Join thousands of users sharing money-making tips and revenue strategies"
+      title: "Part of KenjiAI",
+      description: "Free tools built by the same team behind the KenjiAI automation platform"
     }
   ];
 
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "Free AI Tools That Make Money - Revenue-Generating AI Tools by KenjiAI",
-    "description": "Collection of free AI tools that help businesses generate revenue. No signup required, 100% free forever. Part of the KenjiAI platform used by 500+ businesses.",
+    "name": "Free AI Tools by KenjiAI",
+    "description": "A collection of free AI tools built by the KenjiAI team. No signup required, 100% free forever.",
     "url": "https://kenjiai.com/free-tools",
     "mainEntity": {
       "@type": "ItemList",
-      "name": "Free Revenue-Generating AI Tools",
+      "name": "Free AI Tools",
       "itemListElement": freeTools.map((tool, index) => ({
         "@type": "SoftwareApplication",
         "position": index + 1,
@@ -154,11 +154,6 @@ const FreeToolsPage: React.FC = () => {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "USD"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": tool.rating,
-          "ratingCount": parseInt(tool.users.replace('K+', '000'))
         }
       }))
     },
@@ -174,7 +169,7 @@ const FreeToolsPage: React.FC = () => {
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "Free AI Tools That Make Money",
+          "name": "Free AI Tools",
           "item": "https://kenjiai.com/free-tools"
         }
       ]
@@ -184,9 +179,9 @@ const FreeToolsPage: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>Free AI Tools That Make Money for Business | KenjiAI</title>
-        <meta name="description" content="Free AI tools to help you make money: prompt generator, PR outreach, sales coach, and investor connect. No signup, free forever, from the platform 500+ businesses trust." />
-        <meta name="keywords" content="free AI tools that make money, revenue generating AI tools, AI prompt generator, free PR tools, AI sales coach, free startup tools, ChatGPT prompts, GPT-4 prompts, AI business tools, free marketing tools, AI automation tools, prompt engineering, free AI software, business automation, AI productivity tools, free AI apps, money making AI tools" />
+        <title>Free AI Tools for Business | KenjiAI</title>
+        <meta name="description" content="Free AI tools for business: prompt generator, PR outreach, sales coach, and investor connect. No signup, free forever, from the team behind KenjiAI." />
+        <meta name="keywords" content="free AI tools, AI prompt generator, free PR tools, AI sales coach, free startup tools, ChatGPT prompts, GPT-4 prompts, AI business tools, free marketing tools, AI automation tools, prompt engineering, free AI software, business automation, AI productivity tools, free AI apps" />
         <link rel="canonical" href="https://kenjiai.com/free-tools" />
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
@@ -209,32 +204,31 @@ const FreeToolsPage: React.FC = () => {
               className="inline-flex items-center gap-2 bg-gradient-to-r from-green-500/20 to-blue-500/20 border border-green-400/30 rounded-full px-6 py-3 mb-6"
             >
               <Gift className="w-5 h-5 text-green-400" />
-              <span className="text-green-400 font-semibold">Free AI Tools That Make Money</span>
+              <span className="text-green-400 font-semibold">Free AI Tools From KenjiAI</span>
             </motion.div>
 
             <h1 className="text-5xl sm:text-6xl font-bold text-white mb-6">
               <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
-                Free AI Tools That
+                Free AI Tools For
               </span>
               <br />
-              <span className="text-white">Generate Real Revenue</span>
+              <span className="text-white">Your Business</span>
             </h1>
-            
+
             <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed mb-8">
-              Stop paying for tools that don't make you money. Access powerful AI tools that help you generate revenue, 
-              close deals, and grow your business - completely free. No signup required, no credit card needed, 
-              no time limits. Start making money with AI today.
+              Access powerful AI tools built for prompt engineering, PR, sales, and business planning -
+              completely free. No signup required, no credit card needed, no time limits.
             </p>
 
-            {/* Enhanced Revenue Keywords Section */}
+            {/* Free Tools Section */}
             <div className="bg-gray-800/30 border border-gray-700 rounded-2xl p-6 mb-8 max-w-4xl mx-auto">
-              <h2 className="text-lg font-semibold text-white mb-4">💰 Revenue-Generating Free Tools</h2>
+              <h2 className="text-lg font-semibold text-white mb-4">🛠️ Free AI Tools</h2>
               <div className="flex flex-wrap gap-2 justify-center">
                 {[
-                  "AI Prompt Generator", "ChatGPT Prompts", "GPT-4 Prompts", "Free PR Tools", 
+                  "AI Prompt Generator", "ChatGPT Prompts", "GPT-4 Prompts", "Free PR Tools",
                   "AI Sales Coach", "Startup Tools", "AI Marketing", "Business Automation",
                   "Prompt Engineering", "AI Content Creation", "Free AI Software", "AI Productivity",
-                  "Revenue Generation", "Money Making AI", "Free Business Tools", "AI Profit Tools"
+                  "Business Automation Tools", "Free Business Tools", "AI Sales Tools", "AI Planning Tools"
                 ].map((keyword, index) => (
                   <span key={index} className="bg-green-500/20 text-green-400 px-3 py-1 rounded-lg text-sm">
                     {keyword}
@@ -246,12 +240,12 @@ const FreeToolsPage: React.FC = () => {
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mb-12">
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-400">500+</div>
-                <div className="text-gray-400 text-sm">Businesses Served</div>
+                <div className="text-3xl font-bold text-green-400">8</div>
+                <div className="text-gray-400 text-sm">Free Tools</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-400">$3.35M+</div>
-                <div className="text-gray-400 text-sm">Revenue Generated</div>
+                <div className="text-3xl font-bold text-blue-400">KenjiAI</div>
+                <div className="text-gray-400 text-sm">Built By</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-purple-400">100%</div>
@@ -295,7 +289,7 @@ const FreeToolsPage: React.FC = () => {
             className="mb-20"
           >
             <h2 className="text-3xl font-bold text-white mb-12 text-center">
-              Choose Your Revenue-Generating AI Tool
+              Choose Your Free AI Tool
             </h2>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -404,54 +398,53 @@ const FreeToolsPage: React.FC = () => {
           >
             <div className="bg-gray-800/30 border border-gray-700 rounded-3xl p-8">
               <h2 className="text-3xl font-bold text-white mb-6 text-center">
-                Why Choose KenjiAI's Revenue-Generating Free Tools?
+                Why Choose KenjiAI's Free Tools?
               </h2>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div>
-                  <h3 className="text-xl font-bold text-green-400 mb-3">💰 Revenue-Focused Design</h3>
+                  <h3 className="text-xl font-bold text-green-400 mb-3">🛠️ Built For Business</h3>
                   <p className="text-gray-400 text-sm leading-relaxed">
-                    Unlike generic AI tools, ours are specifically designed to help you make money. 
-                    Every feature is built to generate revenue, close deals, and grow your business.
+                    Unlike generic AI tools, ours are built for specific business tasks: prompts, PR,
+                    sales scripts, funding docs, and more.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-blue-400 mb-3">⚡ No Setup Required</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    No lengthy setup, no learning curve. Just click and start using the tool right away.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-purple-400 mb-3">🎯 Same Tech As KenjiAI</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    Built on the same AI technology that powers our paid KenjiAI automation platform.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-pink-400 mb-3">📈 Built To Scale With You</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    Each tool is designed to keep working as your business grows, without added
+                    complexity.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-bold text-yellow-400 mb-3">🔄 Continuously Improved</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    We continuously improve these tools based on user feedback and roll out new
+                    features automatically.
                   </p>
                 </div>
                 
                 <div>
-                  <h3 className="text-xl font-bold text-blue-400 mb-3">⚡ Instant Money-Making</h3>
+                  <h3 className="text-xl font-bold text-cyan-400 mb-3">🤝 Active Community</h3>
                   <p className="text-gray-400 text-sm leading-relaxed">
-                    Start generating results immediately. No lengthy setup, no learning curve. 
-                    Just click and start making money with AI automation.
-                  </p>
-                </div>
-                
-                <div>
-                  <h3 className="text-xl font-bold text-purple-400 mb-3">🎯 Proven Revenue Results</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    Part of the same platform that's helped 500+ businesses generate $3.35M+ in revenue.
-                  </p>
-                </div>
-                
-                <div>
-                  <h3 className="text-xl font-bold text-pink-400 mb-3">📈 Scalable Profit Systems</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    Build systems that scale your revenue without scaling your workload. 
-                    Automate the money-making process with AI.
-                  </p>
-                </div>
-                
-                <div>
-                  <h3 className="text-xl font-bold text-yellow-400 mb-3">🔄 Continuous Revenue Optimization</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    We continuously improve our tools based on revenue data and user feedback. 
-                    Get new money-making features automatically.
-                  </p>
-                </div>
-                
-                <div>
-                  <h3 className="text-xl font-bold text-cyan-400 mb-3">🤝 Success Community</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    Join our active community of entrepreneurs making money with AI. 
-                    Share strategies, get advice, and learn from others generating revenue.
+                    Join our community of entrepreneurs using AI in their business. Share tips,
+                    get advice, and learn from other users.
                   </p>
                 </div>
               </div>
@@ -466,24 +459,24 @@ const FreeToolsPage: React.FC = () => {
             className="text-center bg-gradient-to-r from-blue-900/30 to-green-900/30 border border-blue-400/30 rounded-3xl p-12"
           >
             <h3 className="text-4xl font-bold text-white mb-6">
-              Ready for the Complete Money-Making Platform?
+              Ready for the Complete KenjiAI Platform?
             </h3>
             <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
-              Love our free tools? Get access to the complete KenjiAI platform with voice agents that close deals 24/7, 
-              automated workflows that generate revenue, and 50+ money-making features.
+              Love our free tools? Get access to the complete KenjiAI platform: voice agents,
+              CRM, funnels, and automated workflows, all built and managed for you.
             </p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
               <div className="text-center">
-                <div className="text-3xl font-bold text-blue-400 mb-2">50+</div>
-                <div className="text-gray-400">Revenue-Generating Tools</div>
+                <div className="text-3xl font-bold text-blue-400 mb-2">Voice + CRM</div>
+                <div className="text-gray-400">Plus Automation</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-400 mb-2">425%</div>
-                <div className="text-gray-400">Average ROI</div>
+                <div className="text-3xl font-bold text-green-400 mb-2">17+</div>
+                <div className="text-gray-400">Tools Replaced</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-purple-400 mb-2">$297</div>
+                <div className="text-3xl font-bold text-purple-400 mb-2">$375</div>
                 <div className="text-gray-400">Per Month</div>
               </div>
             </div>
@@ -494,12 +487,12 @@ const FreeToolsPage: React.FC = () => {
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-3 bg-gradient-to-r from-blue-600 to-green-500 text-white px-10 py-5 rounded-2xl font-bold text-xl hover:shadow-lg transition-all duration-300"
             >
-              Start Making Serious Money
+              Explore KenjiAI
               <ArrowRight className="w-6 h-6" />
             </motion.a>
-            
+
             <p className="text-gray-500 text-sm mt-4">
-              Quick setup • Start automating today • 425% average ROI
+              Quick setup • Start automating today • Cancel anytime
             </p>
           </motion.div>
         </div>

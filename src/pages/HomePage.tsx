@@ -17,8 +17,8 @@ const HomePage: React.FC = () => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "KenjiAI - AI That Closes Deals While You Sleep | Free AI Tools & Business Automation",
-    "description": "AI voice agents that close deals 24/7, smart workflows that run your business, and automation that generates revenue while you sleep. 425% average ROI. Free AI tools available.",
+    "name": "KenjiAI - AI Voice Agents, CRM & Business Automation | Free AI Tools",
+    "description": "AI voice agents, CRM, funnels, and workflow automation that run your business around the clock. Free AI tools available.",
     "url": "https://kenjiai.com",
     "mainEntity": {
       "@type": "SoftwareApplication",
@@ -55,9 +55,9 @@ const HomePage: React.FC = () => {
   return (
     <>
       <SEOHead 
-        title="AI That Closes Deals While You Sleep | Free AI Tools & Revenue-Generating Automation"
-        description="AI voice agents that close deals 24/7, smart workflows that run your business, and automation that generates revenue while you sleep. 425% average ROI in 90 days. Free AI tools available: prompt generator, PR tools, sales coach. Start making money with AI today."
-        keywords="AI that makes money, AI voice agents, revenue generating AI, business automation that pays, AI that closes deals, free AI tools, AI prompt generator, AI sales automation, AI marketing automation, AI that works while you sleep, profitable AI, ROI AI automation, money making AI tools, AI business platform, automated revenue generation"
+        title="AI Voice Agents, CRM & Business Automation | KenjiAI"
+        description="AI voice agents, CRM, funnels, and workflow automation, built and managed for your business. Free AI tools available: prompt generator, PR tools, sales coach."
+        keywords="AI voice agents, business automation, AI automation platform, free AI tools, AI prompt generator, AI sales automation, AI marketing automation, AI business platform, CRM automation, funnel automation"
         structuredData={structuredData}
       />
       

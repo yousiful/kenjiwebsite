@@ -53,12 +53,12 @@ const Hero: React.FC = () => {
           {[
             "Works 24/7",
             "Grows With You",
-            "Saves 85% on Costs",
+            "Replaces 17+ Tools",
             "Always Online",
             "Set Up in Days",
             "Your Data Stays Safe",
             "No Limits",
-            "Real ROI"
+            "Built For You"
           ].map((feature, index) => (
             <motion.div
               key={feature}

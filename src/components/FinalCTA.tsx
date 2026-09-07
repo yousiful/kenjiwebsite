@@ -17,9 +17,9 @@ const FinalCTA: React.FC = () => {
   ];
 
   const urgencyIndicators = [
-    { label: "Active Clients", value: "10,000+", color: "text-blue-400" },
-    { label: "Average ROI", value: "425%", color: "text-green-400" },
-    { label: "Client Rating", value: "4.9/5", color: "text-purple-400" }
+    { label: "Platforms Managed", value: "Meta, Google, LinkedIn", color: "text-blue-400" },
+    { label: "Running Since", value: "2013", color: "text-green-400" },
+    { label: "Tools Replaced", value: "17+", color: "text-purple-400" }
   ];
 
   return (
@@ -169,16 +169,16 @@ const FinalCTA: React.FC = () => {
                 </div>
               ))}
             </div>
-            <span className="text-gray-300 ml-2">10,000+ businesses using KenjiAI</span>
+            <span className="text-gray-300 ml-2">Businesses use KenjiAI to automate their operations</span>
           </div>
-          
-          <div className="flex items-center gap-2" data-caption="Average customer ROI of 425%">
+
+          <div className="flex items-center gap-2" data-caption="Built for real business use">
             <div className="flex items-center">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
               ))}
             </div>
-            <span className="text-gray-300">425% Average ROI</span>
+            <span className="text-gray-300">Voice, CRM &amp; Automation</span>
           </div>
         </motion.div>
 

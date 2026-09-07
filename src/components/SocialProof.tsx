@@ -15,10 +15,10 @@ const SocialProof: React.FC = () => {
   }, []);
 
   const stats = [
-    { icon: Users, value: "500+", label: "Clients Served" },
-    { icon: DollarSign, value: "$3.35M+", label: "Client Revenue Generated" },
-    { icon: Target, value: "36,490+", label: "Leads Delivered" },
-    { icon: TrendingUp, value: "425%", label: "Average ROI" }
+    { icon: Users, value: "Meta, Google, LinkedIn", label: "Platforms We Manage" },
+    { icon: DollarSign, value: "Paid Ads + CRM", label: "Built and Managed for You" },
+    { icon: Target, value: "AI Voice, SMS, Email", label: "Automation Included" },
+    { icon: TrendingUp, value: "Since 2025", label: "KenjiAI Platform" }
   ];
 
   return (
