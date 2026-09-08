@@ -305,7 +305,7 @@ export default function WebinarVSLPageB() {
                 Pricing Unlocks At The End Of This Training
               </h2>
               <p className="text-gray-400 text-sm sm:text-base">
-                Keep watching &mdash; the full pricing breakdown reveals automatically when the video finishes.
+                Keep watching. The full pricing breakdown reveals automatically when the video finishes.
               </p>
             </div>
           </motion.div>
