@@ -12,6 +12,8 @@ export default function WebinarVSLPageB() {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [pricingUnlocked, setPricingUnlocked] = useState(false);
+  const [videoJoined, setVideoJoined] = useState(false);
+  const [videoEnded, setVideoEnded] = useState(false);
   const videoRef = useRef<HTMLDivElement>(null);
   const videoElRef = useRef<HTMLVideoElement>(null);
 
@@ -26,7 +28,7 @@ export default function WebinarVSLPageB() {
       const pct = (el.currentTime / el.duration) * 100;
       if (pct >= 95) setPricingUnlocked(true);
     };
-    const onEnded = () => setPricingUnlocked(true);
+    const onEnded = () => { setPricingUnlocked(true); setVideoEnded(true); };
     el.addEventListener('timeupdate', onTimeUpdate);
     el.addEventListener('ended', onEnded);
     return () => {
@@ -89,6 +91,29 @@ export default function WebinarVSLPageB() {
     setIsMuted(el.muted);
   };
 
+  // Zoom-style "Join Webinar" gate: a real click, so sound plays immediately
+  // instead of being stuck muted behind the browser's autoplay policy.
+  const handleJoin = () => {
+    const el = videoElRef.current;
+    if (!el) return;
+    el.muted = false;
+    setIsMuted(false);
+    const pr = el.play();
+    if (pr && pr.catch) {
+      pr.catch(() => { el.muted = true; setIsMuted(true); el.play().catch(() => {}); });
+    }
+    setVideoJoined(true);
+  };
+
+  const handleReplay = () => {
+    const el = videoElRef.current;
+    if (!el) return;
+    el.currentTime = 0;
+    setVideoEnded(false);
+    const pr = el.play();
+    if (pr && pr.catch) pr.catch(() => {});
+  };
+
   return (
     <>
       <Helmet>
@@ -129,7 +154,6 @@ export default function WebinarVSLPageB() {
               ref={videoElRef}
               className="absolute inset-0 w-full h-full object-contain bg-black"
               src="/webinar1/webinar-1.mp4"
-              autoPlay
               muted
               playsInline
               disablePictureInPicture
@@ -157,6 +181,43 @@ export default function WebinarVSLPageB() {
                 <span>{isFullscreen ? 'Exit' : 'Enlarge'}</span>
               </button>
             </div>
+
+            {/* Zoom-style waiting room. A real click lets sound play immediately. */}
+            {!videoJoined && (
+              <div className="absolute inset-0 z-40 flex flex-col items-center justify-center gap-3 text-center px-6 bg-gradient-to-b from-[#0b1220] via-[#111827] to-[#0b1220]">
+                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center text-2xl shadow-[0_0_0_4px_rgba(37,99,235,0.25)]">
+                  🎥
+                </div>
+                <div className="flex items-center gap-2 text-blue-300 text-[11px] font-extrabold uppercase tracking-widest">
+                  Waiting Room
+                  <span className="flex gap-0.5">
+                    <span className="w-1 h-1 rounded-full bg-blue-300 animate-pulse" />
+                    <span className="w-1 h-1 rounded-full bg-blue-300 animate-pulse [animation-delay:0.2s]" />
+                    <span className="w-1 h-1 rounded-full bg-blue-300 animate-pulse [animation-delay:0.4s]" />
+                  </span>
+                </div>
+                <h2 className="text-white font-black text-lg sm:text-xl max-w-xs">You're invited to join this training</h2>
+                <p className="text-gray-400 text-sm max-w-xs">Click below to enter. Sound turns on automatically.</p>
+                <button
+                  onClick={handleJoin}
+                  className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-black text-sm px-7 py-3.5 rounded-xl shadow-[0_10px_30px_rgba(16,185,129,0.35)] transition-transform active:scale-95"
+                >
+                  ▶ Join Webinar
+                </button>
+                <p className="text-gray-600 text-[11px]">This session is limited to registered attendees</p>
+              </div>
+            )}
+
+            {/* Watch Again once the video finishes. */}
+            {videoEnded && (
+              <button
+                onClick={handleReplay}
+                aria-label="Watch again"
+                className="absolute inset-0 m-auto z-40 flex items-center gap-2 bg-black/80 border border-white/25 text-white font-extrabold text-sm px-6 py-3.5 rounded-full backdrop-blur-sm shadow-lg w-fit h-fit"
+              >
+                🔁 Watch Again
+              </button>
+            )}
           </div>
         </div>
 

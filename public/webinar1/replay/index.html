@@ -92,12 +92,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   /* Stage layout */
   .stage{padding:16px 0}
   .video-wrap{position:relative;background:#000;border:1px solid var(--line);border-radius:16px;overflow:hidden}
-  .sound-nudge{position:absolute;left:14px;bottom:14px;z-index:6;display:flex;align-items:center;gap:8px;
-    background:rgba(0,0,0,.72);border:1px solid rgba(255,255,255,.28);color:#fff;font-weight:800;font-size:13px;
-    padding:10px 16px;border-radius:999px;cursor:pointer;backdrop-filter:blur(6px);
-    box-shadow:0 8px 24px rgba(0,0,0,.4);animation:snpulse 2.2s infinite}
-  .sound-nudge.hide{display:none}
-  @keyframes snpulse{0%,100%{box-shadow:0 8px 24px rgba(0,0,0,.4)}50%{box-shadow:0 8px 30px rgba(245,158,11,.4)}}
+  .video-gate{position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+    text-align:center;padding:24px;background:linear-gradient(160deg,#0b1220,#111827 60%,#0b1220)}
+  .video-gate.hide{display:none}
+  .vg-avatar{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 0 0 4px rgba(37,99,235,.25)}
+  .vg-wait{display:flex;align-items:center;gap:8px;color:#93c5fd;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+  .vg-dots span{display:inline-block;width:5px;height:5px;border-radius:50%;background:#93c5fd;margin:0 2px;animation:vgblink 1.4s infinite}
+  .vg-dots span:nth-child(2){animation-delay:.2s}
+  .vg-dots span:nth-child(3){animation-delay:.4s}
+  @keyframes vgblink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+  .vg-title{color:#fff;font-weight:900;font-size:clamp(17px,2.8vw,22px);max-width:400px}
+  .vg-sub{color:#9ca3af;font-size:13.5px;max-width:360px}
+  .vg-join{display:flex;align-items:center;gap:10px;background:#22c55e;color:#06210f;font-weight:900;font-size:15px;
+    padding:14px 30px;border:none;border-radius:12px;cursor:pointer;box-shadow:0 10px 30px rgba(34,197,94,.35);
+    transition:transform .15s,box-shadow .15s}
+  .vg-join:hover{transform:translateY(-2px);box-shadow:0 14px 38px rgba(34,197,94,.45)}
+  .vg-note{color:#6b7280;font-size:11px}
+  .replay-btn{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:7;display:flex;align-items:center;gap:8px;
+    background:rgba(0,0,0,.82);border:1px solid rgba(255,255,255,.3);color:#fff;font-weight:800;font-size:14px;
+    padding:14px 22px;border-radius:999px;cursor:pointer;backdrop-filter:blur(6px);box-shadow:0 10px 30px rgba(0,0,0,.5)}
+  .replay-btn.hide{display:none}
   /* Custom video controls: volume, speed (to 5x), fullscreen, intentionally NO seek bar */
   .v-controls{position:absolute;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;gap:10px;padding:10px 12px;
     background:linear-gradient(to top,rgba(0,0,0,.78),rgba(0,0,0,0));opacity:0;transition:opacity .25s;pointer-events:none}
@@ -275,12 +290,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
              getPlaybackState() function down in the script (see comments).
              ========================================================= -->
         <video id="webinarVideo" class="video-el" playsinline webkit-playsinline
-               autoplay muted preload="auto" disablepictureinpicture oncontextmenu="return false">
+               preload="auto" disablepictureinpicture oncontextmenu="return false">
           <source src="/webinar1/webinar-1.mp4" type="video/mp4">
         </video>
-        <!-- Plays automatically (muted, per browser policy); this pill lets the
-             viewer add sound in one tap instead of blocking playback on it -->
-        <button class="sound-nudge" id="soundNudge" type="button" aria-label="Unmute">🔇 Tap for sound</button>
+        <!-- Zoom-style waiting room. A real click lets sound play immediately. -->
+        <div class="video-gate" id="videoGate">
+          <div class="vg-avatar">🎥</div>
+          <div class="vg-wait">Waiting Room <span class="vg-dots"><span></span><span></span><span></span></span></div>
+          <div class="vg-title">You're invited to join this replay</div>
+          <div class="vg-sub">Click below to enter. Sound turns on automatically.</div>
+          <button class="vg-join" id="videoGateBtn" type="button">▶ Join Webinar</button>
+          <div class="vg-note">This session is limited to registered attendees</div>
+        </div>
+        <button class="replay-btn hide" id="replayBtn" type="button" aria-label="Watch again">🔁 Watch Again</button>
         <!-- Custom controls: volume, speed (to 5x), fullscreen, no seek bar (can't skip ahead) -->
         <div class="v-controls" id="vControls">
           <button class="vc-btn" id="vcMute" type="button" aria-label="Mute / unmute">🔊</button>
@@ -312,7 +334,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <div class="offer-locked" id="offerLocked">
     <div class="lock-ic">🔒</div>
     <h3>Pricing Unlocks At The End Of This Training</h3>
-    <p>Keep watching &mdash; the full pricing breakdown reveals automatically when the video finishes.</p>
+    <p>Keep watching. The full pricing breakdown reveals automatically when the video finishes.</p>
   </div>
 
   <!-- ===================== OFFER (revealed by JS) ===================== -->
@@ -667,22 +689,29 @@ document.querySelectorAll('#faq .qa button').forEach(btn=>{
    already reads video.currentTime & video.paused, nothing else to wire.
    For Vimeo/Wistia/Bunny, edit getPlaybackState() to return their time/paused. */
 
-/* Autoplay muted (browser policy allows silent autoplay without a tap); the
-   small pill below lets the viewer add sound in one tap, same pattern as /overview. */
-if (video){
-  var apPromise = video.play();
-  if (apPromise && apPromise.catch) apPromise.catch(function(){ /* autoplay blocked — controls/pill still let them start manually */ });
-}
-const soundNudge = document.getElementById('soundNudge');
-if (soundNudge && video){
-  soundNudge.addEventListener('click', function(){
+/* Join Webinar gate: a real click, so sound plays immediately, no autoplay-mute limit. */
+const videoGate = document.getElementById('videoGate');
+const videoGateBtn = document.getElementById('videoGateBtn');
+if (videoGate && videoGateBtn && video){
+  videoGateBtn.addEventListener('click', function(){
     video.muted = false;
-    if (video.volume === 0) video.volume = 1;
+    var pr = video.play();
+    if (pr && pr.catch) pr.catch(function(){ video.muted = true; video.play().catch(function(){}); });
+    videoGate.classList.add('hide');
+  });
+  video.addEventListener('play', function(){ videoGate.classList.add('hide'); });
+}
+
+/* Watch Again once the video finishes. */
+const replayBtn = document.getElementById('replayBtn');
+if (replayBtn && video){
+  video.addEventListener('ended', function(){ replayBtn.classList.remove('hide'); });
+  replayBtn.addEventListener('click', function(){
+    video.currentTime = 0;
+    replayBtn.classList.add('hide');
     var pr = video.play();
     if (pr && pr.catch) pr.catch(function(){});
-    soundNudge.classList.add('hide');
   });
-  video.addEventListener('volumechange', function(){ if (!video.muted && video.volume > 0) soundNudge.classList.add('hide'); });
 }
 
 /* Custom video controls: volume, speed up to 5x, fullscreen (no seek/scrub) */
