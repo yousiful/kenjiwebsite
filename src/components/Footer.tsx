@@ -146,14 +146,14 @@ const Footer: React.FC = () => {
                 </li>
                 <li className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-blue-400 shrink-0" />
-                  <a href="mailto:support@kenjiai.com" className="text-gray-500 hover:text-blue-400 text-xs transition-colors">
-                    support@kenjiai.com
+                  <a href="mailto:support@mediatraffics.com" className="text-gray-500 hover:text-blue-400 text-xs transition-colors">
+                    support@mediatraffics.com
                   </a>
                 </li>
                 <li className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-blue-400 shrink-0" />
-                  <a href="tel:+18312634402" className="text-gray-500 hover:text-blue-400 text-xs transition-colors">
-                    (831) 263-4402
+                  <a href="tel:+12133440705" className="text-gray-500 hover:text-blue-400 text-xs transition-colors">
+                    (213) 344-0705
                   </a>
                 </li>
               </ul>

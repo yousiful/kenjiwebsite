@@ -47,7 +47,7 @@ const PricingSection: React.FC = () => {
       
       if (error instanceof Error) {
         if (error.message.includes('not found') || error.message.includes('not available')) {
-          errorMessage = 'Payment option not available. Please contact support at care@kenjiai.com';
+          errorMessage = 'Payment option not available. Please contact support at support@mediatraffics.com';
         } else if (error.message.includes('network') || error.message.includes('connection')) {
           errorMessage = 'Network error. Please check your internet connection and try again.';
         } else if (error.message.includes('browser')) {
@@ -154,7 +154,7 @@ const PricingSection: React.FC = () => {
               <p className="text-red-300 text-sm font-semibold mb-1">Payment Error</p>
               <p className="text-red-200 text-sm">{checkoutError}</p>
               <p className="text-red-400 text-xs mt-2">
-                Need help? Contact us at <a href="mailto:care@kenjiai.com" className="underline hover:text-red-300">care@kenjiai.com</a> or <a href="tel:+18312634402" className="underline hover:text-red-300">(831) 263-4402</a>
+                Need help? Contact us at <a href="mailto:support@mediatraffics.com" className="underline hover:text-red-300">support@mediatraffics.com</a> or <a href="tel:+12133440705" className="underline hover:text-red-300">(213) 344-0705</a>
               </p>
             </div>
             <div className="flex gap-2">
@@ -543,7 +543,7 @@ const PricingSection: React.FC = () => {
           </p>
           
           <p className="text-gray-500 text-sm">
-            Need help? Contact us at <a href="mailto:care@kenjiai.com" className="text-blue-400 hover:text-blue-300 underline">care@kenjiai.com</a> or <a href="tel:+18312634402" className="text-blue-400 hover:text-blue-300 underline">(831) 263-4402</a>
+            Need help? Contact us at <a href="mailto:support@mediatraffics.com" className="text-blue-400 hover:text-blue-300 underline">support@mediatraffics.com</a> or <a href="tel:+12133440705" className="text-blue-400 hover:text-blue-300 underline">(213) 344-0705</a>
           </p>
         </motion.div>
       </div>

@@ -449,19 +449,19 @@ const SuccessPage: React.FC = () => {
             </h3>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-              <a href="mailto:care@kenjiai.com" className="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition-colors p-3 rounded-xl hover:bg-gray-700/30">
+              <a href="mailto:support@mediatraffics.com" className="flex items-center gap-3 text-blue-400 hover:text-blue-300 transition-colors p-3 rounded-xl hover:bg-gray-700/30">
                 <Mail className="w-5 h-5" />
                 <div>
                   <div className="font-semibold">Email Support</div>
-                  <div className="text-xs text-gray-400">care@kenjiai.com</div>
+                  <div className="text-xs text-gray-400">support@mediatraffics.com</div>
                 </div>
               </a>
-              
-              <a href="tel:+18312634402" className="flex items-center gap-3 text-green-400 hover:text-green-300 transition-colors p-3 rounded-xl hover:bg-gray-700/30">
+
+              <a href="tel:+12133440705" className="flex items-center gap-3 text-green-400 hover:text-green-300 transition-colors p-3 rounded-xl hover:bg-gray-700/30">
                 <Phone className="w-5 h-5" />
                 <div>
                   <div className="font-semibold">Call Support</div>
-                  <div className="text-xs text-gray-400">(831) 263-4402</div>
+                  <div className="text-xs text-gray-400">(213) 344-0705</div>
                 </div>
               </a>
               

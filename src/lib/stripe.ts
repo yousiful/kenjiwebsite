@@ -181,7 +181,7 @@ export const redirectToPaymentLink = async (planType: 'monthly' | 'yearly') => {
       } else if (error.message.includes('timeout')) {
         errorMessage = 'Request timed out. Please check your connection and try again.';
       } else if (error.message.includes('not found')) {
-        errorMessage = 'Payment option not available. Please contact support at care@kenjiai.com';
+        errorMessage = 'Payment option not available. Please contact support at support@mediatraffics.com';
       } else {
         errorMessage = error.message;
       }

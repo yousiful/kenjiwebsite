@@ -81,7 +81,7 @@ const ModernPage: React.FC = () => {
       if (!res.ok) throw new Error('submit failed');
       setStep(3);
     } catch {
-      setError("Something didn't go through. Try again, or email support@kenjiai.com directly.");
+      setError("Something didn't go through. Try again, or email support@mediatraffics.com directly.");
     } finally {
       setSubmitting(false);
     }
