@@ -231,8 +231,9 @@ export default function PrivacyPolicyPage() {
                 If you have any questions about this Privacy Policy or our data practices, please contact us:
               </p>
               <div className="bg-gray-700/50 rounded-xl p-6">
-                <p className="text-gray-300"><strong className="text-white">Email:</strong> privacy@kenjiai.com</p>
+                <p className="text-gray-300"><strong className="text-white">Email:</strong> support@mediatraffics.com</p>
                 <p className="text-gray-300 mt-2"><strong className="text-white">Website:</strong> https://kenjiai.com</p>
+                <p className="text-gray-300 mt-2"><strong className="text-white">Address:</strong> 32 N Gould St, Sheridan, WY 82801</p>
               </div>
             </section>
 

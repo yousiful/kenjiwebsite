@@ -214,7 +214,7 @@ export default function DisclaimerPage() {
                 If you have questions about this disclaimer, please contact us:
               </p>
               <div className="bg-gray-700/50 rounded-xl p-6">
-                <p className="text-gray-300"><strong className="text-white">Email:</strong> legal@kenjiai.com</p>
+                <p className="text-gray-300"><strong className="text-white">Email:</strong> support@mediatraffics.com</p>
                 <p className="text-gray-300 mt-2"><strong className="text-white">Website:</strong> https://kenjiai.com</p>
               </div>
             </section>

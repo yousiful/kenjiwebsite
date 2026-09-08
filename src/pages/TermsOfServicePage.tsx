@@ -85,12 +85,12 @@ export default function TermsOfServicePage() {
 
               <h3 className="text-xl font-semibold text-white mb-3">Subscriptions</h3>
               <p className="text-gray-300 leading-relaxed mb-4">
-                Subscription services automatically renew unless you cancel before the renewal date. You may cancel your subscription at any time through your account settings or by emailing legal@kenjiai.com. Cancellation takes effect at the end of the current billing period.
+                Subscription services automatically renew unless you cancel before the renewal date. You may cancel your subscription at any time through your account settings or by emailing support@mediatraffics.com. Cancellation takes effect at the end of the current billing period.
               </p>
 
               <h3 className="text-xl font-semibold text-white mb-3">Refund Policy</h3>
               <p className="text-gray-300 leading-relaxed">
-                We offer a 30-day money-back guarantee on the initial purchase of a KenjiAI subscription: if you're not satisfied within 30 days, contact legal@kenjiai.com and we'll refund it. Requests made after the 30-day window are handled case-by-case and are not guaranteed. If you believe a charge was unauthorized, contact us immediately and we will investigate regardless of the 30-day window.
+                We offer a 30-day money-back guarantee on the initial purchase of a KenjiAI subscription: if you're not satisfied within 30 days, contact support@mediatraffics.com and we'll refund it. Requests made after the 30-day window are handled case-by-case and are not guaranteed. If you believe a charge was unauthorized, contact us immediately and we will investigate regardless of the 30-day window.
               </p>
             </section>
 
@@ -280,8 +280,9 @@ export default function TermsOfServicePage() {
                 If you have any questions about these Terms, please contact us:
               </p>
               <div className="bg-gray-700/50 rounded-xl p-6">
-                <p className="text-gray-300"><strong className="text-white">Email:</strong> legal@kenjiai.com</p>
+                <p className="text-gray-300"><strong className="text-white">Email:</strong> support@mediatraffics.com</p>
                 <p className="text-gray-300 mt-2"><strong className="text-white">Website:</strong> https://kenjiai.com</p>
+                <p className="text-gray-300 mt-2"><strong className="text-white">Address:</strong> 32 N Gould St, Sheridan, WY 82801</p>
               </div>
             </section>
 
