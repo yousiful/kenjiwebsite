@@ -460,8 +460,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 const CONFIG = {
   SETUP_URL: 'https://go.mediatraffics.com/price',         // Option 1: one-time setup (done-for-you)
   PERFORMANCE_URL: 'https://kenjiai.com/pricing',          // Option 2: performance / pay-on-results
-  OFFER_REVEAL_BEFORE_END: 60,  // offer reveals when this many seconds are LEFT in the video, whatever its length.
-  OFFER_REVEAL_SECONDS: 360,    // fallback only, used in simulated/demo mode or before the real duration loads.
+  OFFER_REVEAL_SECONDS: 252,    // fixed real-content timestamp (webinar-1.mp4 / webinar-2.mp4, same file): this is
+                                 // where the video starts walking through the actual pricing options (golden
+                                 // membership one-time payment vs. the performance plan), right before testimonials
+                                 // start at ~312s. Was previously duration-relative (60s before the end) -- moved to
+                                 // match real video content 2026-09-10 per Yousif's request. If this VSL is ever
+                                 // replaced, re-time this against the new video's transcript.
   CART_MINUTES: 30,             // countdown length once the offer is revealed
   VIEWER_MIN: 180,              // placeholder viewer floor  (see USE_REAL_VIEWER_API)
   VIEWER_MAX: 340,              // placeholder viewer ceiling
@@ -495,9 +499,6 @@ function getPlaybackState(){
    VSL of any length works without re-timing it by hand. Falls back to the
    fixed OFFER_REVEAL_SECONDS if the real duration isn't known yet (or in demo mode). */
 function getOfferRevealSeconds(){
-  if (!CONFIG.USE_SIMULATED_PLAYBACK && video && isFinite(video.duration) && video.duration > 0){
-    return Math.max(0, video.duration - CONFIG.OFFER_REVEAL_BEFORE_END);
-  }
   return CONFIG.OFFER_REVEAL_SECONDS;
 }
 

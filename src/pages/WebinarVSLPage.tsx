@@ -5,6 +5,13 @@ import { Maximize2, Volume2, VolumeX } from 'lucide-react';
 import WebinarObjectionSection from '../components/WebinarObjectionSection';
 import { useResumableVideo } from '../hooks/useResumableVideo';
 
+// Fixed real-content timestamp (webinar-1.mp4): the point where the video starts
+// walking through the actual pricing options (golden membership one-time payment
+// vs. the performance plan), right before testimonials start at ~312s. Was
+// previously a 95%-of-duration threshold -- moved to match real video content
+// 2026-09-10 per Yousif's request. Re-time this if the VSL is ever replaced.
+const OPTIONS_REVEAL_SECONDS = 252;
+
 export default function WebinarVSLPage() {
   const [viewers, setViewers] = useState(214);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -53,7 +60,7 @@ export default function WebinarVSLPage() {
       if (!el.duration) return;
       const pct = (el.currentTime / el.duration) * 100;
       milestones.forEach((m) => { if (pct >= m) markMilestone(m); });
-      if (pct >= 95) setPricingUnlocked(true);
+      if (el.currentTime >= OPTIONS_REVEAL_SECONDS) setPricingUnlocked(true);
     };
     el.addEventListener('timeupdate', onTimeUpdate);
 

@@ -7,6 +7,13 @@ import { useResumableVideo } from '../hooks/useResumableVideo';
 
 // A/B variant B of /overview. Identical to WebinarVSLPage except the video,
 // so the test isolates the video as the only variable.
+// Fixed real-content timestamp (webinar-1.mp4): the point where the video starts
+// walking through the actual pricing options (golden membership one-time payment
+// vs. the performance plan), right before testimonials start at ~312s. Was
+// previously a 95%-of-duration threshold -- moved to match real video content
+// 2026-09-10 per Yousif's request. Re-time this if the VSL is ever replaced.
+const OPTIONS_REVEAL_SECONDS = 252;
+
 export default function WebinarVSLPageB() {
   const [viewers, setViewers] = useState(214);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -19,14 +26,14 @@ export default function WebinarVSLPageB() {
 
   useResumableVideo(videoElRef, 'kenjiai-video-progress:/overview-b');
 
-  // Pricing stays locked until the training is basically finished.
+  // Pricing unlocks once the video reaches the real point where it starts
+  // discussing the pricing options, before testimonials begin.
   useEffect(() => {
     const el = videoElRef.current;
     if (!el) return;
     const onTimeUpdate = () => {
       if (!el.duration) return;
-      const pct = (el.currentTime / el.duration) * 100;
-      if (pct >= 95) setPricingUnlocked(true);
+      if (el.currentTime >= OPTIONS_REVEAL_SECONDS) setPricingUnlocked(true);
     };
     const onEnded = () => { setPricingUnlocked(true); setVideoEnded(true); };
     el.addEventListener('timeupdate', onTimeUpdate);
