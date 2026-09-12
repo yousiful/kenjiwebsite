@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Call Center | Never Miss Another Inbound Lead</title>
+<meta name="description" content="A 24/7 AI receptionist that answers, qualifies, and books your calls, plus done-for-you ads to keep it busy and a trained human closer for the leads that need a real conversation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0e14; --card:#121821; --card2:#161d29; --line:#232b3a;
+    --ink:#f2f5fa; --muted:#9aa7bd; --muted2:#6b7688;
+    --blue:#3b82f6; --blue2:#60a5fa; --grad: linear-gradient(135deg,#3b82f6,#8b5cf6);
+    --green:#22c55e;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.5}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  a{color:inherit}
+  .eyebrow{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue2);background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.3);padding:6px 14px;border-radius:999px}
+
+  header.hero{padding:72px 0 56px;text-align:center;border-bottom:1px solid var(--line)}
+  h1{font-size:clamp(32px,5vw,54px);font-weight:800;line-height:1.08;margin:20px 0 18px;text-wrap:balance}
+  h1 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{font-size:19px;color:var(--muted);max-width:640px;margin:0 auto 34px}
+  .cta{display:inline-flex;align-items:center;gap:8px;background:var(--grad);color:#fff;font-weight:700;font-size:17px;padding:16px 32px;border-radius:12px;text-decoration:none;box-shadow:0 8px 28px -6px rgba(59,130,246,.45);transition:transform .15s}
+  .cta:hover{transform:translateY(-2px)}
+  .cta.secondary{background:var(--card2);border:1px solid var(--line);box-shadow:none}
+  .microcopy{margin-top:14px;font-size:13px;color:var(--muted2)}
+
+  section{padding:64px 0}
+  .section-head{text-align:center;max-width:620px;margin:0 auto 44px}
+  .section-head h2{font-size:clamp(24px,3.4vw,34px);font-weight:800;margin:14px 0 12px;text-wrap:balance}
+  .section-head p{color:var(--muted);font-size:16px}
+
+  .stack{display:flex;flex-direction:column;gap:20px;max-width:760px;margin:0 auto}
+  .tier{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px;position:relative}
+  .tier.core{border-color:rgba(59,130,246,.5);background:linear-gradient(180deg,rgba(59,130,246,.08),var(--card) 60%)}
+  .tier-badge{position:absolute;top:-13px;left:32px;background:var(--grad);color:#fff;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:5px 14px;border-radius:999px}
+  .tier-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;margin-bottom:6px}
+  .tier-name{font-size:21px;font-weight:800}
+  .tier-tag{font-size:14px;color:var(--muted);margin-top:4px}
+  .tier-price{font-size:30px;font-weight:800;white-space:nowrap}
+  .tier-price span{font-size:14px;font-weight:500;color:var(--muted)}
+  .tier-desc{color:var(--muted);font-size:15px;margin:14px 0 18px}
+  ul.features{list-style:none;margin:0 0 20px;padding:0;display:grid;gap:10px}
+  ul.features li{display:flex;gap:10px;font-size:14.5px;color:#dbe2ee}
+  ul.features li::before{content:"✓";color:var(--green);font-weight:800;flex-shrink:0}
+  .plus-connector{text-align:center;color:var(--muted2);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin:-4px 0}
+
+  .why{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:8px}
+  .why .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px}
+  .why .card h3{font-size:16px;margin:0 0 8px}
+  .why .card p{font-size:14px;color:var(--muted);margin:0}
+
+  .fit{background:var(--card2);border:1px solid var(--line);border-radius:16px;padding:28px 32px;max-width:760px;margin:0 auto}
+  .fit h3{margin:0 0 10px;font-size:17px}
+  .fit p{color:var(--muted);font-size:15px;margin:0}
+  .fit strong{color:var(--ink)}
+
+  .faq{max-width:720px;margin:0 auto}
+  .qa{border-bottom:1px solid var(--line);padding:20px 0}
+  .qa button{all:unset;display:flex;justify-content:space-between;align-items:center;width:100%;cursor:pointer;font-size:16px;font-weight:600}
+  .qa .ic{color:var(--blue2);font-size:20px}
+  .qa .ans{max-height:0;overflow:hidden;color:var(--muted);font-size:14.5px;transition:max-height .25s ease}
+  .qa.open .ans{max-height:240px;padding-top:12px}
+
+  form.leadform{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:32px;max-width:480px;margin:0 auto}
+  form.leadform input{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:13px 14px;font-size:15px;margin-bottom:12px;font-family:inherit}
+  form.leadform button{width:100%;background:var(--grad);color:#fff;border:none;border-radius:10px;padding:15px;font-size:16px;font-weight:700;cursor:pointer}
+  form.leadform .status{text-align:center;font-size:14px;margin-top:12px;min-height:18px}
+
+  footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--muted2);font-size:13px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">AI Call Center</span>
+    <h1>Never Miss Another Call.<br><span class="grad">Never Waste Another Lead.</span></h1>
+    <p class="sub">A 24/7 AI receptionist that answers, qualifies, and books every inbound call, done-for-you ads to keep it busy, and a trained human closer for the leads worth a real conversation.</p>
+    <a href="#pricing" class="cta">See the Full Stack →</a>
+    <div class="microcopy">No contract. Cancel anytime. Setup handled for you.</div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The Problem</span>
+      <h2>Every missed call is a job that goes to whoever answers first.</h2>
+      <p>If you run a home service, medical, legal, or auto business, the phone is where deals are won or lost, and most of them ring after hours, during a job, or while you're already on another line.</p>
+    </div>
+    <div class="why">
+      <div class="card">
+        <h3>🕑 It rings at the worst time</h3>
+        <p>Evenings, weekends, mid-job. The caller doesn't wait, they call the next number on the list.</p>
+      </div>
+      <div class="card">
+        <h3>📋 Front desk staff cost more, do less</h3>
+        <p>A full-time receptionist is $35K+/year and still can't work nights, weekends, or three lines at once.</p>
+      </div>
+      <div class="card">
+        <h3>📉 A quiet phone means a quiet business</h3>
+        <p>An AI receptionist with nothing to answer doesn't fix that. It needs real calls coming in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" style="background:var(--card2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">The Stack</span>
+      <h2>Start with the call center. Add what you need to grow it.</h2>
+      <p>Each piece works on its own, and each one makes the others work better.</p>
+    </div>
+
+    <div class="stack">
+      <div class="tier core">
+        <span class="tier-badge">Start Here</span>
+        <div class="tier-head">
+          <div>
+            <div class="tier-name">AI Call Center</div>
+            <div class="tier-tag">Your 24/7 front desk</div>
+          </div>
+          <div class="tier-price">$297<span>/mo</span></div>
+        </div>
+        <p class="tier-desc">A real AI voice agent, live on your business line, built and tuned for your business before it ever takes a call.</p>
+        <ul class="features">
+          <li>Answers every call, 24 hours a day, every day of the week</li>
+          <li>Qualifies the caller and books the appointment straight to your calendar</li>
+          <li>Full call transcript and recording sent to you automatically</li>
+          <li>Custom-trained on your business, your services, and your voice</li>
+          <li>Done-for-you setup, tested and tweaked until it's ready</li>
+        </ul>
+      </div>
+
+      <div class="plus-connector">+ add when you're ready</div>
+
+      <div class="tier">
+        <div class="tier-head">
+          <div>
+            <div class="tier-name">Inbound Ads</div>
+            <div class="tier-tag">Keep the phone ringing</div>
+          </div>
+          <div class="tier-price">$197<span>/mo</span></div>
+        </div>
+        <p class="tier-desc">A call center with nothing to answer doesn't grow your business. We run paid ads built specifically to drive real inbound calls to your new AI receptionist, not form-fills that go nowhere.</p>
+        <ul class="features">
+          <li>Campaigns built and managed for click-to-call intent, not just leads</li>
+          <li>Targets people actively looking for your service right now</li>
+          <li>You see every call it produces in your own transcripts</li>
+        </ul>
+      </div>
+
+      <div class="plus-connector">+ add when you're ready</div>
+
+      <div class="tier">
+        <div class="tier-head">
+          <div>
+            <div class="tier-name">Human Closer Onboarding</div>
+            <div class="tier-tag">For the calls that need a person</div>
+          </div>
+          <div class="tier-price">$599<span> one-time</span></div>
+        </div>
+        <p class="tier-desc">Some calls just need a real person to close. We onboard a trained closer to your business to take the AI's best-qualified leads and turn them into booked, paid jobs.</p>
+        <ul class="features">
+          <li>One-time placement and training fee, no ongoing salary or benefits</li>
+          <li>Closer is briefed on your services, pricing, and objections before their first call</li>
+          <li>Works directly off the leads your AI receptionist already qualified</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="fit">
+      <h3>Who this is actually built for</h3>
+      <p>This is built for businesses where a missed call is a lost job: <strong>HVAC, plumbing, electrical, dental, legal, auto repair, and other home or professional services.</strong> If your phone is where you win or lose customers, this is built around exactly that.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Questions</span>
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq">
+      <div class="qa">
+        <button>Do I need the ads or the closer to start?<span class="ic">+</span></button>
+        <div class="ans">No. The AI Call Center works on its own from day one, answering whatever calls you already get. The ads and closer are there for when you want more volume or a human touch on the biggest leads.</div>
+      </div>
+      <div class="qa">
+        <button>How long does setup take?<span class="ic">+</span></button>
+        <div class="ans">We build and tune the AI agent on your business before it ever takes a live call, and walk you through it before it goes live. Most businesses are live within days, not weeks.</div>
+      </div>
+      <div class="qa">
+        <button>Is there a contract?<span class="ic">+</span></button>
+        <div class="ans">No. Month to month on the Call Center and Ads, cancel anytime. The Closer Onboarding is a one-time fee since it's a one-time placement and training service.</div>
+      </div>
+      <div class="qa">
+        <button>What if the AI can't answer a question?<span class="ic">+</span></button>
+        <div class="ans">It's trained specifically on your business, services, and pricing before launch. For anything outside that, it takes a message and gets it to you directly, it never guesses on your customer's behalf.</div>
+      </div>
+      <div class="qa">
+        <button>Can I see a real call transcript before I commit?<span class="ic">+</span></button>
+        <div class="ans">Yes. Book a call below and we'll walk you through a real, live example on the exact setup you'd be getting.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Get Started</span>
+      <h2>Tell us where to send the details.</h2>
+      <p>We'll reach out to walk you through setup and answer anything else first.</p>
+    </div>
+    <form class="leadform" id="leadForm">
+      <input type="text" id="first_name" placeholder="First name" required>
+      <input type="email" id="email" placeholder="Email address" required>
+      <input type="tel" id="phone" placeholder="Phone number" required>
+      <button type="submit">Get My AI Call Center →</button>
+      <div class="status" id="formStatus"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Copyright 2026. Media Traffics | KenjiAI. All Rights Reserved.</div>
+</footer>
+
+<script>
+document.querySelectorAll('.faq .qa button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const qa = btn.parentElement, open = qa.classList.contains('open');
+    document.querySelectorAll('.faq .qa').forEach(x=>{x.classList.remove('open');x.querySelector('.ic').textContent='+';});
+    if(!open){ qa.classList.add('open'); qa.querySelector('.ic').textContent='-'; }
+  });
+});
+
+document.getElementById('leadForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const statusEl = document.getElementById('formStatus');
+  const btn = this.querySelector('button');
+  const payload = {
+    first_name: document.getElementById('first_name').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    interest: 'call-center'
+  };
+  btn.disabled = true; btn.textContent = 'Sending...';
+  try {
+    const res = await fetch('/.netlify/functions/ghl-lead-callcenter', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    });
+    if (res.ok) {
+      statusEl.textContent = "Got it, we'll be in touch shortly.";
+      statusEl.style.color = '#22c55e';
+      this.reset();
+      if (window.fbq) fbq('track', 'Lead', { content_name: 'AI Call Center Offer' });
+      if (window.gtag) gtag('event', 'generate_lead', { event_category: 'ai-callcenter' });
+    } else {
+      statusEl.textContent = 'Something went wrong, please try again.';
+      statusEl.style.color = '#e93d3d';
+    }
+  } catch (err) {
+    statusEl.textContent = 'Something went wrong, please try again.';
+    statusEl.style.color = '#e93d3d';
+  } finally {
+    btn.disabled = false; btn.textContent = 'Get My AI Call Center →';
+  }
+});
+</script>
+
+</body>
+</html>
