@@ -8,11 +8,15 @@ import { slugify } from './check-market-availability';
  * send the wrong automated messages to a lead from this offer. This one
  * only upserts the contact with an honest source + tags, no workflow fired.
  *
- * Reworked 2026-09-13 for the market-exclusivity funnel: every lead now
- * carries mkt-industry-<slug> and mkt-city-<slug> tags (set here, checked
- * by check-market-availability.ts), plus either `ai-callcenter-lead`
- * (market was open when they came through) or `ai-callcenter-waitlist`
- * (market was already claimed, they only left an email to be notified).
+ * Market-exclusivity check (industry+city, see check-market-availability.ts)
+ * stays in front of this on the page, but per Yousif's 2026-09-13 simplification
+ * the real "who gets the demo" submission (waitlist:false) now tags the
+ * contact with ONLY `voice AI` -- no more `ai-callcenter-lead` / mkt-industry
+ * / mkt-city tags on this path, those were adding noise he didn't want.
+ * Industry/city/website are still recorded in the contact's note, just not
+ * as tags. The waitlist path (market was already claimed at submit time)
+ * is untouched -- still tags `ai-callcenter-waitlist` + mkt-industry-<slug>
+ * + mkt-city-<slug>, since marking a market claimed later still needs those.
  * Marking a market actually claimed is a separate manual step -- see the
  * README note at the bottom of check-market-availability.ts.
  *
@@ -71,11 +75,9 @@ export const handler: Handler = async (event: HandlerEvent) => {
   if (!token) return json(502, { error: 'GHL not configured' });
   const locationId = process.env.GHL_LOCATION_ID || DEFAULT_LOCATION_ID;
 
-  const tags = [
-    waitlist ? 'ai-callcenter-waitlist' : 'ai-callcenter-lead',
-    `mkt-industry-${slugify(industry)}`,
-    `mkt-city-${slugify(city)}`,
-  ];
+  const tags = waitlist
+    ? ['ai-callcenter-waitlist', `mkt-industry-${slugify(industry)}`, `mkt-city-${slugify(city)}`]
+    : ['voice AI'];
 
   try {
     const r = await fetch(`${GHL_BASE}/contacts/upsert`, {
@@ -107,7 +109,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
         waitlist
           ? 'Market was ALREADY CLAIMED at submit time -- this is a waitlist signup, not an active lead. Only follow up if that market opens back up.'
           : 'Market was open at submit time -- active lead, follow up normally.',
-        website ? `Website they ran through the AI closer preview: ${website}` : '',
+        website ? `Website they gave for the demo build: ${website}` : '',
       ].filter(Boolean);
       await fetch(`${GHL_BASE}/contacts/${cid}/notes`, {
         method: 'POST',

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Call Center | One Per Industry, Per City</title>
-<meta name="description" content="We only build one AI Call Center per industry, per city. Check if yours is still open, then watch us build a real preview of it from your actual website.">
+<meta name="description" content="We only build one AI Call Center per industry, per city. Check if yours is still open, then tell us who to show the demo to.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -55,14 +55,6 @@
 
   [hidden]{display:none!important}
 
-  .preview .biz{font-size:13px;color:var(--blue2);font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;text-align:left}
-  .preview .summary{color:var(--muted);font-size:14px;margin-bottom:18px;text-align:left}
-  .bubble{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:12px;font-size:15px;text-align:left}
-  .bubble .label{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted2);margin-bottom:6px}
-  .bubble.greet{border-left:3px solid var(--green)}
-  .bubble.qual{border-left:3px solid var(--blue)}
-  .bubble.obj{border-left:3px solid var(--gold)}
-
   .final-cta{text-align:center;margin-top:26px}
   .cta{display:inline-flex;align-items:center;gap:8px;background:var(--grad);color:#fff;font-weight:700;font-size:17px;padding:16px 34px;border-radius:12px;text-decoration:none;box-shadow:0 8px 28px -6px rgba(59,130,246,.45)}
 
@@ -90,7 +82,7 @@
     <span class="eyebrow">One Per Industry, Per City. That's It.</span>
     <h1>We Only Build <span class="grad">One of These</span><br>Per City.</h1>
     <p class="sub">Once one plumber in your city has an AI Call Center from us, no other plumber in that city gets one. Check if yours is still open below.</p>
-    <p class="not-a-template">If it's open, we'll show you a real preview of it, built from your actual site.</p>
+    <p class="not-a-template">If it's open, tell us about your business and we'll get your demo built.</p>
   </div>
 
   <div class="tool">
@@ -159,31 +151,21 @@
       </div>
     </div>
 
-    <!-- STEP 2: website preview tool -->
+    <!-- STEP 2: website (info only, no live generation) -->
     <div id="step2" hidden>
-      <div class="step-label">Step 2 of 3 — Build Your Preview</div>
+      <div class="step-label">Step 2 of 3 — Your Website</div>
       <div class="field">
         <label for="siteUrl">Your website</label>
         <input type="text" id="siteUrl" placeholder="yourbusiness.com" autocomplete="off">
       </div>
-      <button class="btn" id="genBtn">Build My Preview →</button>
-      <div class="tool-hint">Takes about 10 seconds.</div>
+      <button class="btn" id="toStep3Btn">Continue →</button>
       <div class="tool-error" id="step2Error"></div>
-
-      <div class="preview" id="previewBlock" hidden style="margin-top:22px">
-        <div class="biz" id="bizName"></div>
-        <div class="summary" id="bizSummary"></div>
-        <div class="bubble greet"><div class="label">How it answers your phone</div><div id="greetLine"></div></div>
-        <div class="bubble qual"><div class="label">How it qualifies the caller</div><div id="qualLines"></div></div>
-        <div class="bubble obj"><div class="label">How it handles a real objection</div><div id="objLine"></div></div>
-        <button class="btn" id="toStep3Btn" style="margin-top:6px">This Sounds Like Us — Continue →</button>
-      </div>
     </div>
 
     <!-- STEP 3: contact capture -->
     <div id="step3" hidden>
-      <div class="step-label">Step 3 of 3 — Lock In Your Spot</div>
-      <p style="color:var(--muted);font-size:14.5px;margin-top:0">This holds your city while we get on a call and build the full version out.</p>
+      <div class="step-label">Step 3 of 3 — Who Gets The Demo?</div>
+      <p style="color:var(--muted);font-size:14.5px;margin-top:0">Tell us who to show the call center demo to and we'll get it built around your business.</p>
       <div class="field">
         <label for="leadName">Name</label>
         <input type="text" id="leadName" placeholder="Your name">
@@ -198,7 +180,7 @@
           <input type="tel" id="leadPhone" placeholder="(555) 555-5555">
         </div>
       </div>
-      <button class="btn" id="lockBtn">Lock In My Spot</button>
+      <button class="btn" id="lockBtn">Show Me My Demo</button>
       <div class="tool-error" id="step3Error"></div>
     </div>
 
@@ -229,7 +211,7 @@
       </div>
       <div class="card">
         <h3>🎯 Built from your real business</h3>
-        <p>Not a generic script with your name pasted in. The preview above just read your actual site to write that.</p>
+        <p>Not a generic script with your name pasted in. Tell us your site and we build the demo around what you actually do.</p>
       </div>
       <div class="card">
         <h3>⚡ Live in days, not a sales cycle</h3>
@@ -338,53 +320,17 @@ document.getElementById('waitlistBtn').addEventListener('click', async () => {
   }
 });
 
-// STEP 2 (preview tool)
-const genBtn = document.getElementById('genBtn');
+// STEP 2 (website, info only -- no live generation call, see the 2026-09-13
+// simplification: OpenRouter-backed preview generation was removed, this
+// step just captures the URL for whoever builds the demo, then moves on)
 const siteInput = document.getElementById('siteUrl');
 const step2Error = document.getElementById('step2Error');
-const previewBlock = document.getElementById('previewBlock');
 
-async function generate(){
+document.getElementById('toStep3Btn').addEventListener('click', () => {
   const url = siteInput.value.trim();
   step2Error.style.display = 'none';
   if (!url) { step2Error.textContent = 'Enter your website first.'; step2Error.style.display='block'; return; }
-
-  genBtn.disabled = true; genBtn.textContent = 'Building...';
-  previewBlock.hidden = true;
-
-  try {
-    const res = await fetch('/.netlify/functions/generate-closer-preview', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ url })
-    });
-    const data = await res.json();
-    if (!res.ok) {
-      step2Error.textContent = data.error || 'Something went wrong, try again.';
-      step2Error.style.display = 'block';
-      return;
-    }
-    state.website = url;
-    document.getElementById('bizName').textContent = data.business_name || '';
-    document.getElementById('bizSummary').textContent = data.business_summary || '';
-    document.getElementById('greetLine').textContent = '"' + (data.greeting_line || '') + '"';
-    document.getElementById('qualLines').innerHTML = (data.qualifying_questions || []).map(q => '"' + q + '"').join('<br>');
-    document.getElementById('objLine').textContent = '"' + (data.objection_example || '') + '"';
-    previewBlock.hidden = false;
-    previewBlock.scrollIntoView({behavior:'smooth', block:'center'});
-    if (window.fbq) fbq('trackCustom', 'ClosersPreviewGenerated', { site: url });
-    if (window.gtag) gtag('event', 'closer_preview_generated', { event_category: 'ai-callcenter' });
-  } catch (err) {
-    step2Error.textContent = 'Something went wrong, try again.';
-    step2Error.style.display = 'block';
-  } finally {
-    genBtn.disabled = false; genBtn.textContent = 'Build My Preview →';
-  }
-}
-genBtn.addEventListener('click', generate);
-siteInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') generate(); });
-
-document.getElementById('toStep3Btn').addEventListener('click', () => {
+  state.website = url;
   document.getElementById('step2').hidden = true;
   document.getElementById('step3').hidden = false;
   setDots(3);
@@ -403,7 +349,7 @@ document.getElementById('lockBtn').addEventListener('click', async () => {
     err.style.display = 'block';
     return;
   }
-  btn.disabled = true; btn.textContent = 'Locking In...';
+  btn.disabled = true; btn.textContent = 'Submitting...';
   try {
     const res = await fetch('/.netlify/functions/ghl-lead-callcenter', {
       method: 'POST', headers: {'Content-Type':'application/json'},
@@ -422,7 +368,7 @@ document.getElementById('lockBtn').addEventListener('click', async () => {
   } catch (e) {
     err.textContent = 'Something went wrong, try again.';
     err.style.display = 'block';
-    btn.disabled = false; btn.textContent = 'Lock In My Spot';
+    btn.disabled = false; btn.textContent = 'Show Me My Demo';
   }
 });
 </script>
