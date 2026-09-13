@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Call Center | See Your Own AI Closer, Built From Your Site</title>
-<meta name="description" content="Enter your website and watch us build a real preview of your AI phone closer in seconds, built from your actual business. Book a call to see the full build and get it live.">
+<title>AI Call Center | One Per Industry, Per City</title>
+<meta name="description" content="We only build one AI Call Center per industry, per city. Check if yours is still open, then watch us build a real preview of it from your actual website.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -12,7 +12,7 @@
     --bg:#0a0e14; --card:#121821; --card2:#161d29; --line:#232b3a;
     --ink:#f2f5fa; --muted:#9aa7bd; --muted2:#6b7688;
     --blue:#3b82f6; --blue2:#60a5fa; --grad: linear-gradient(135deg,#3b82f6,#8b5cf6);
-    --green:#22c55e; --gold:#f59e0b;
+    --green:#22c55e; --gold:#f59e0b; --red:#f87171;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.5}
@@ -27,26 +27,43 @@
   .not-a-template{font-size:14px;color:var(--gold);font-weight:600;margin-top:10px}
 
   .tool{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:32px;max-width:640px;margin:36px auto 0;box-shadow:0 20px 60px -20px rgba(59,130,246,.25)}
-  .tool-row{display:flex;gap:10px;flex-wrap:wrap}
-  .tool input{flex:1;min-width:220px;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:15px 16px;font-size:16px;font-family:inherit}
-  .tool button{background:var(--grad);color:#fff;border:none;border-radius:10px;padding:15px 26px;font-size:15px;font-weight:700;cursor:pointer;white-space:nowrap}
-  .tool button:disabled{opacity:.6;cursor:default}
-  .tool-hint{font-size:13px;color:var(--muted2);margin-top:10px}
-  .tool-error{color:#f87171;font-size:14px;margin-top:12px;display:none}
 
-  .preview{display:none;margin-top:26px;border-top:1px solid var(--line);padding-top:26px}
-  .preview.show{display:block}
-  .preview .biz{font-size:13px;color:var(--blue2);font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
-  .preview .summary{color:var(--muted);font-size:14px;margin-bottom:18px}
-  .bubble{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:12px;font-size:15px}
+  .step-track{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:24px}
+  .step-dot{width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .2s}
+  .step-dot.done{background:var(--blue)}
+  .step-dot.now{background:var(--blue2);box-shadow:0 0 0 4px rgba(96,165,250,.2)}
+  .step-label{font-size:12px;color:var(--muted2);text-align:center;margin-bottom:18px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+
+  .field{margin-bottom:14px;text-align:left}
+  .field label{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px}
+  .field select, .field input{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:14px 16px;font-size:16px;font-family:inherit}
+  .field select:focus, .field input:focus{outline:none;border-color:var(--blue)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (max-width:520px){.row2{grid-template-columns:1fr}}
+
+  .btn{display:block;width:100%;background:var(--grad);color:#fff;border:none;border-radius:10px;padding:15px 20px;font-size:15.5px;font-weight:700;cursor:pointer;font-family:inherit}
+  .btn:disabled{opacity:.6;cursor:default}
+  .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+  .tool-hint{font-size:13px;color:var(--muted2);margin-top:10px;text-align:center}
+  .tool-error{color:var(--red);font-size:14px;margin-top:12px;display:none;text-align:center}
+
+  .result-card{border-radius:14px;padding:20px;margin-top:18px;border:1px solid var(--line);text-align:left}
+  .result-card.available{border-color:rgba(34,197,94,.4);background:rgba(34,197,94,.08)}
+  .result-card.taken{border-color:rgba(245,158,11,.4);background:rgba(245,158,11,.08)}
+  .result-card .headline{font-weight:700;font-size:16px;margin-bottom:6px}
+  .result-card p{margin:0 0 14px;color:var(--muted);font-size:14.5px}
+
+  [hidden]{display:none!important}
+
+  .preview .biz{font-size:13px;color:var(--blue2);font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;text-align:left}
+  .preview .summary{color:var(--muted);font-size:14px;margin-bottom:18px;text-align:left}
+  .bubble{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:12px;font-size:15px;text-align:left}
   .bubble .label{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted2);margin-bottom:6px}
   .bubble.greet{border-left:3px solid var(--green)}
   .bubble.qual{border-left:3px solid var(--blue)}
   .bubble.obj{border-left:3px solid var(--gold)}
-  .skeleton{height:60px;background:linear-gradient(90deg,var(--card2) 25%,var(--line) 50%,var(--card2) 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-radius:14px;margin-bottom:12px}
-  @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 
-  .cta-block{text-align:center;margin-top:26px}
+  .final-cta{text-align:center;margin-top:26px}
   .cta{display:inline-flex;align-items:center;gap:8px;background:var(--grad);color:#fff;font-weight:700;font-size:17px;padding:16px 34px;border-radius:12px;text-decoration:none;box-shadow:0 8px 28px -6px rgba(59,130,246,.45)}
 
   section{padding:56px 0}
@@ -70,29 +87,129 @@
 
 <header class="hero">
   <div class="wrap">
-    <span class="eyebrow">Not Another Generic AI Bot</span>
-    <h1>See Your Own AI Closer<br><span class="grad">Before You Sign Up for Anything.</span></h1>
-    <p class="sub">Type in your website. In seconds, watch us build a real preview of what your AI phone closer would actually say, using your real business, not a canned script.</p>
-    <p class="not-a-template">This is built from YOUR site. Not a template. Not a demo of someone else's business.</p>
+    <span class="eyebrow">One Per Industry, Per City. That's It.</span>
+    <h1>We Only Build <span class="grad">One of These</span><br>Per City.</h1>
+    <p class="sub">Once one plumber in your city has an AI Call Center from us, no other plumber in that city gets one. Check if yours is still open below.</p>
+    <p class="not-a-template">If it's open, we'll show you a real preview of it, built from your actual site.</p>
   </div>
 
   <div class="tool">
-    <div class="tool-row">
-      <input type="text" id="siteUrl" placeholder="yourbusiness.com" autocomplete="off">
-      <button id="genBtn">Build My Preview →</button>
+    <div class="step-track">
+      <div class="step-dot now" id="dot1"></div>
+      <div class="step-dot" id="dot2"></div>
+      <div class="step-dot" id="dot3"></div>
     </div>
-    <div class="tool-hint">Takes about 10 seconds. No email required to see it.</div>
-    <div class="tool-error" id="toolError"></div>
 
-    <div class="preview" id="previewBlock">
-      <div class="biz" id="bizName"></div>
-      <div class="summary" id="bizSummary"></div>
-      <div class="bubble greet"><div class="label">How it answers your phone</div><div id="greetLine"></div></div>
-      <div class="bubble qual"><div class="label">How it qualifies the caller</div><div id="qualLines"></div></div>
-      <div class="bubble obj"><div class="label">How it handles a real objection</div><div id="objLine"></div></div>
+    <!-- STEP 1: market check -->
+    <div id="step1">
+      <div class="step-label">Step 1 of 3 — Check Your City</div>
+      <div class="field">
+        <label for="industry">Industry</label>
+        <select id="industry">
+          <option value="">Select your industry</option>
+          <option>Roofing</option>
+          <option>Plumbing</option>
+          <option>HVAC</option>
+          <option>Electrician</option>
+          <option>Real Estate</option>
+          <option>Dental Practice</option>
+          <option>Law Firm</option>
+          <option>Med Spa</option>
+          <option>Auto Repair</option>
+          <option>Landscaping</option>
+          <option>Pest Control</option>
+          <option>Home Cleaning</option>
+          <option>General Contractor</option>
+          <option>Insurance Agency</option>
+          <option>Financial Advisor</option>
+          <option>Chiropractor</option>
+          <option>Salon or Barbershop</option>
+          <option>Restaurant</option>
+          <option>Gym or Fitness Studio</option>
+          <option>Moving Company</option>
+          <option value="__other">Other</option>
+        </select>
+      </div>
+      <div class="field" id="otherIndustryField" hidden>
+        <label for="otherIndustry">Your industry</label>
+        <input type="text" id="otherIndustry" placeholder="e.g. Window Cleaning">
+      </div>
+      <div class="field">
+        <label for="city">City</label>
+        <input type="text" id="city" placeholder="e.g. Austin, TX">
+      </div>
+      <button class="btn" id="checkBtn">Check My City →</button>
+      <div class="tool-error" id="step1Error"></div>
 
-      <div class="cta-block">
-        <a href="https://go.mediatraffics.com/leads" class="cta" id="signupCta">Next Step: Book a Call to See the Full Build →</a>
+      <div class="result-card available" id="availableCard" hidden>
+        <div class="headline" id="availableHeadline"></div>
+        <p id="availableBody"></p>
+        <button class="btn" id="continueBtn">Continue →</button>
+      </div>
+
+      <div class="result-card taken" id="takenCard" hidden>
+        <div class="headline" id="takenHeadline"></div>
+        <p id="takenBody">We only work with one business per industry per city so you're never competing with our own client. Leave your email and we'll reach out the moment it opens up.</p>
+        <div class="field">
+          <label for="waitlistEmail">Email</label>
+          <input type="email" id="waitlistEmail" placeholder="you@business.com">
+        </div>
+        <button class="btn ghost" id="waitlistBtn">Notify Me If It Opens Up</button>
+        <div class="tool-hint" id="waitlistDone" hidden>You're on the list. We'll email you the second this opens up.</div>
+      </div>
+    </div>
+
+    <!-- STEP 2: website preview tool -->
+    <div id="step2" hidden>
+      <div class="step-label">Step 2 of 3 — Build Your Preview</div>
+      <div class="field">
+        <label for="siteUrl">Your website</label>
+        <input type="text" id="siteUrl" placeholder="yourbusiness.com" autocomplete="off">
+      </div>
+      <button class="btn" id="genBtn">Build My Preview →</button>
+      <div class="tool-hint">Takes about 10 seconds.</div>
+      <div class="tool-error" id="step2Error"></div>
+
+      <div class="preview" id="previewBlock" hidden style="margin-top:22px">
+        <div class="biz" id="bizName"></div>
+        <div class="summary" id="bizSummary"></div>
+        <div class="bubble greet"><div class="label">How it answers your phone</div><div id="greetLine"></div></div>
+        <div class="bubble qual"><div class="label">How it qualifies the caller</div><div id="qualLines"></div></div>
+        <div class="bubble obj"><div class="label">How it handles a real objection</div><div id="objLine"></div></div>
+        <button class="btn" id="toStep3Btn" style="margin-top:6px">This Sounds Like Us — Continue →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: contact capture -->
+    <div id="step3" hidden>
+      <div class="step-label">Step 3 of 3 — Lock In Your Spot</div>
+      <p style="color:var(--muted);font-size:14.5px;margin-top:0">This holds your city while we get on a call and build the full version out.</p>
+      <div class="field">
+        <label for="leadName">Name</label>
+        <input type="text" id="leadName" placeholder="Your name">
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label for="leadEmail">Email</label>
+          <input type="email" id="leadEmail" placeholder="you@business.com">
+        </div>
+        <div class="field">
+          <label for="leadPhone">Phone</label>
+          <input type="tel" id="leadPhone" placeholder="(555) 555-5555">
+        </div>
+      </div>
+      <button class="btn" id="lockBtn">Lock In My Spot</button>
+      <div class="tool-error" id="step3Error"></div>
+    </div>
+
+    <!-- FINAL: booking CTA -->
+    <div id="stepFinal" hidden style="text-align:left">
+      <div class="result-card available">
+        <div class="headline" id="finalHeadline"></div>
+        <p>Your spot is held. Book a call and we'll get the full build going.</p>
+      </div>
+      <div class="final-cta">
+        <a href="https://go.mediatraffics.com/leads" class="cta">Book a Call to Build It →</a>
       </div>
     </div>
   </div>
@@ -102,17 +219,17 @@
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Why This Is Different</span>
-      <h2>Most "AI call center" pitches show you someone else's demo.</h2>
-      <p>We show you yours, built from your actual website, before you've paid us a dollar or booked a single call.</p>
+      <h2>Most "AI call center" pitches sell the same bot to everyone in your market.</h2>
+      <p>We only sell one per city, per industry, and we show you yours before you've paid us a dollar or booked a single call.</p>
     </div>
     <div class="diff">
       <div class="card">
-        <h3>🎯 Built from your real business</h3>
-        <p>Not a generic script with your name pasted in. The preview above just read your actual site to write that.</p>
+        <h3>🔒 Real exclusivity</h3>
+        <p>Once a business in your industry and city has this, we stop selling it there. You're never sharing an edge with a competitor down the street.</p>
       </div>
       <div class="card">
-        <h3>🧠 You see it before you talk to anyone</h3>
-        <p>You already know it fits your business before the call even starts. That's not a guess, you saw it above.</p>
+        <h3>🎯 Built from your real business</h3>
+        <p>Not a generic script with your name pasted in. The preview above just read your actual site to write that.</p>
       </div>
       <div class="card">
         <h3>⚡ Live in days, not a sales cycle</h3>
@@ -137,18 +254,103 @@
 </footer>
 
 <script>
-const btn = document.getElementById('genBtn');
-const input = document.getElementById('siteUrl');
-const errorEl = document.getElementById('toolError');
+const industrySel = document.getElementById('industry');
+const otherField = document.getElementById('otherIndustryField');
+const otherInput = document.getElementById('otherIndustry');
+industrySel.addEventListener('change', () => {
+  otherField.hidden = industrySel.value !== '__other';
+});
+
+function currentIndustry(){
+  return industrySel.value === '__other' ? otherInput.value.trim() : industrySel.value;
+}
+
+function setDots(n){
+  document.getElementById('dot1').className = 'step-dot' + (n>1?' done':n===1?' now':'');
+  document.getElementById('dot2').className = 'step-dot' + (n>2?' done':n===2?' now':'');
+  document.getElementById('dot3').className = 'step-dot' + (n===3?' now':'');
+}
+
+let state = { industry: '', city: '', website: '' };
+
+// STEP 1
+const checkBtn = document.getElementById('checkBtn');
+const step1Error = document.getElementById('step1Error');
+const availableCard = document.getElementById('availableCard');
+const takenCard = document.getElementById('takenCard');
+
+checkBtn.addEventListener('click', async () => {
+  const industry = currentIndustry();
+  const city = document.getElementById('city').value.trim();
+  step1Error.style.display = 'none';
+  availableCard.hidden = true;
+  takenCard.hidden = true;
+  if (!industry || !city) {
+    step1Error.textContent = 'Enter your industry and city first.';
+    step1Error.style.display = 'block';
+    return;
+  }
+  checkBtn.disabled = true; checkBtn.textContent = 'Checking...';
+  try {
+    const res = await fetch('/.netlify/functions/check-market-availability', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ industry, city })
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Check failed');
+    state.industry = industry; state.city = city;
+    if (data.available) {
+      document.getElementById('availableHeadline').textContent = `✅ ${city} is open for ${industry}.`;
+      document.getElementById('availableBody').textContent = `You'd be the only ${industry.toLowerCase()} business in ${city} with this. Let's build your preview.`;
+      availableCard.hidden = false;
+    } else {
+      document.getElementById('takenHeadline').textContent = `🔒 ${industry} in ${city} is already claimed.`;
+      takenCard.hidden = false;
+    }
+  } catch (err) {
+    step1Error.textContent = 'Something went wrong, try again.';
+    step1Error.style.display = 'block';
+  } finally {
+    checkBtn.disabled = false; checkBtn.textContent = 'Check My City →';
+  }
+});
+
+document.getElementById('continueBtn').addEventListener('click', () => {
+  document.getElementById('step1').hidden = true;
+  document.getElementById('step2').hidden = false;
+  setDots(2);
+});
+
+document.getElementById('waitlistBtn').addEventListener('click', async () => {
+  const email = document.getElementById('waitlistEmail').value.trim();
+  const btn = document.getElementById('waitlistBtn');
+  if (!email) return;
+  btn.disabled = true; btn.textContent = 'Submitting...';
+  try {
+    await fetch('/.netlify/functions/ghl-lead-callcenter', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ email, industry: state.industry, city: state.city, waitlist: true })
+    });
+    document.getElementById('waitlistDone').hidden = false;
+    btn.hidden = true;
+  } catch (err) {
+    btn.disabled = false; btn.textContent = 'Notify Me If It Opens Up';
+  }
+});
+
+// STEP 2 (preview tool)
+const genBtn = document.getElementById('genBtn');
+const siteInput = document.getElementById('siteUrl');
+const step2Error = document.getElementById('step2Error');
 const previewBlock = document.getElementById('previewBlock');
 
 async function generate(){
-  const url = input.value.trim();
-  errorEl.style.display = 'none';
-  if (!url) { errorEl.textContent = 'Enter your website first.'; errorEl.style.display='block'; return; }
+  const url = siteInput.value.trim();
+  step2Error.style.display = 'none';
+  if (!url) { step2Error.textContent = 'Enter your website first.'; step2Error.style.display='block'; return; }
 
-  btn.disabled = true; btn.textContent = 'Building...';
-  previewBlock.classList.remove('show');
+  genBtn.disabled = true; genBtn.textContent = 'Building...';
+  previewBlock.hidden = true;
 
   try {
     const res = await fetch('/.netlify/functions/generate-closer-preview', {
@@ -158,29 +360,71 @@ async function generate(){
     });
     const data = await res.json();
     if (!res.ok) {
-      errorEl.textContent = data.error || 'Something went wrong, try again.';
-      errorEl.style.display = 'block';
+      step2Error.textContent = data.error || 'Something went wrong, try again.';
+      step2Error.style.display = 'block';
       return;
     }
+    state.website = url;
     document.getElementById('bizName').textContent = data.business_name || '';
     document.getElementById('bizSummary').textContent = data.business_summary || '';
     document.getElementById('greetLine').textContent = '"' + (data.greeting_line || '') + '"';
     document.getElementById('qualLines').innerHTML = (data.qualifying_questions || []).map(q => '"' + q + '"').join('<br>');
     document.getElementById('objLine').textContent = '"' + (data.objection_example || '') + '"';
-    previewBlock.classList.add('show');
+    previewBlock.hidden = false;
     previewBlock.scrollIntoView({behavior:'smooth', block:'center'});
     if (window.fbq) fbq('trackCustom', 'ClosersPreviewGenerated', { site: url });
     if (window.gtag) gtag('event', 'closer_preview_generated', { event_category: 'ai-callcenter' });
   } catch (err) {
-    errorEl.textContent = 'Something went wrong, try again.';
-    errorEl.style.display = 'block';
+    step2Error.textContent = 'Something went wrong, try again.';
+    step2Error.style.display = 'block';
   } finally {
-    btn.disabled = false; btn.textContent = 'Build My Preview →';
+    genBtn.disabled = false; genBtn.textContent = 'Build My Preview →';
   }
 }
+genBtn.addEventListener('click', generate);
+siteInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') generate(); });
 
-btn.addEventListener('click', generate);
-input.addEventListener('keydown', (e) => { if (e.key === 'Enter') generate(); });
+document.getElementById('toStep3Btn').addEventListener('click', () => {
+  document.getElementById('step2').hidden = true;
+  document.getElementById('step3').hidden = false;
+  setDots(3);
+});
+
+// STEP 3 (contact capture -> final)
+document.getElementById('lockBtn').addEventListener('click', async () => {
+  const name = document.getElementById('leadName').value.trim();
+  const email = document.getElementById('leadEmail').value.trim();
+  const phone = document.getElementById('leadPhone').value.trim();
+  const btn = document.getElementById('lockBtn');
+  const err = document.getElementById('step3Error');
+  err.style.display = 'none';
+  if (!email && !phone) {
+    err.textContent = 'Enter an email or phone number.';
+    err.style.display = 'block';
+    return;
+  }
+  btn.disabled = true; btn.textContent = 'Locking In...';
+  try {
+    const res = await fetch('/.netlify/functions/ghl-lead-callcenter', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        first_name: name, email, phone,
+        industry: state.industry, city: state.city,
+        business_website: state.website, waitlist: false
+      })
+    });
+    if (!res.ok) throw new Error('failed');
+    document.getElementById('step3').hidden = true;
+    document.getElementById('finalHeadline').textContent = `${state.city}'s ${state.industry} spot is yours.`;
+    document.getElementById('stepFinal').hidden = false;
+    if (window.fbq) fbq('track', 'Lead', { content_name: 'ai-callcenter' });
+    if (window.gtag) gtag('event', 'generate_lead', { event_category: 'ai-callcenter' });
+  } catch (e) {
+    err.textContent = 'Something went wrong, try again.';
+    err.style.display = 'block';
+    btn.disabled = false; btn.textContent = 'Lock In My Spot';
+  }
+});
 </script>
 
 </body>
