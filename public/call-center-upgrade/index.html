@@ -52,14 +52,14 @@
   .btn:disabled{opacity:.6;cursor:default}
   .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
 
-  .capture{display:none;max-width:480px;margin:28px auto 0;background:var(--card2);border:1px solid var(--line);border-radius:16px;padding:28px}
+  .capture{display:none;max-width:480px;margin:28px auto 0;background:var(--card2);border:1px solid var(--line);border-radius:16px;padding:28px;text-align:center}
   .capture.open{display:block}
-  .capture .picked{font-size:13.5px;color:var(--muted);margin-bottom:16px;text-align:center}
+  .capture .picked{font-size:13.5px;color:var(--muted);margin-bottom:6px}
   .capture .picked strong{color:var(--ink)}
-  .field{margin-bottom:14px;text-align:left}
-  .field label{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px}
-  .field input{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:13px 15px;font-size:15px;font-family:inherit}
-  .field input:focus{outline:none;border-color:var(--blue)}
+  .capture .ask{font-size:18px;font-weight:700;margin:0 0 20px;text-wrap:balance}
+  .qbtn{display:block;width:100%;text-align:left;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:12px;padding:16px 18px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;margin-bottom:12px;transition:border-color .15s,background .15s}
+  .qbtn:hover{border-color:var(--blue);background:rgba(59,130,246,.08)}
+  .qbtn .sub{display:block;font-size:12.5px;font-weight:500;color:var(--muted);margin-top:3px}
   .change-plan{display:block;text-align:center;font-size:13px;color:var(--muted2);margin-top:12px;text-decoration:underline;cursor:pointer;background:none;border:none;font-family:inherit}
 
   .result{display:none;border-radius:14px;padding:20px;margin-top:16px;border:1px solid rgba(34,197,94,.4);background:rgba(34,197,94,.08);text-align:center;font-size:14.5px;max-width:480px;margin-left:auto;margin-right:auto}
@@ -125,20 +125,10 @@
     </div>
 
     <div class="capture" id="capture">
-      <p class="picked">You picked <strong id="pickedLabel"></strong>.</p>
-      <div class="field">
-        <label for="cName">Name</label>
-        <input type="text" id="cName" placeholder="Your name" autocomplete="name">
-      </div>
-      <div class="field">
-        <label for="cEmail">Email</label>
-        <input type="email" id="cEmail" placeholder="you@business.com" autocomplete="email">
-      </div>
-      <div class="field">
-        <label for="cPhone">Phone</label>
-        <input type="tel" id="cPhone" placeholder="(555) 555-5555" autocomplete="tel">
-      </div>
-      <button class="btn" id="submitBtn">Complete Request</button>
+      <p class="picked">Nice, <strong id="pickedLabel"></strong> it is.</p>
+      <p class="ask">Quick one before we get you set up: are you already using KenjiAI?</p>
+      <button class="qbtn" id="isClientBtn">✅ Yes, I'm already a KenjiAI user<span class="sub">Awesome, let's get this added to your account</span></button>
+      <button class="qbtn" id="notClientBtn">🚀 No, this is my first time<span class="sub">No worries, we'll get you set up from scratch</span></button>
       <button class="change-plan" id="changePlanBtn">Choose a different plan</button>
     </div>
 
@@ -208,35 +198,22 @@ document.getElementById('changePlanBtn').addEventListener('click', () => {
   selectedTier = null;
 });
 
-document.getElementById('submitBtn').addEventListener('click', async () => {
-  const firstName = document.getElementById('cName').value.trim();
-  const email = document.getElementById('cEmail').value.trim();
-  const phone = document.getElementById('cPhone').value.trim();
-  const btn = document.getElementById('submitBtn');
+const DEST = {
+  client: 'https://freedom.kenjiai.com/aicallcenter',
+  nonclient: 'https://freedom.kenjiai.com/aicallcenter-non-client',
+};
 
+function goToCheckout(kind){
   if (!selectedTier) return;
-  if (!email && !phone) {
-    showResult('Enter an email or phone number.', true);
-    return;
-  }
-  btn.disabled = true; btn.textContent = 'Submitting...';
-  try {
-    const res = await fetch('/.netlify/functions/callcenter-upgrade-request', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ tier: selectedTier, firstName, email, phone })
-    });
-    const data = await res.json();
-    if (!res.ok) throw new Error(data.error || 'failed');
-    captureEl.classList.remove('open');
-    showResult("You're set. We'll follow up with a secure payment link within one business day to activate your AI Call Center.", false);
-    if (window.fbq) fbq('track', 'Lead', { content_name: 'call-center-upgrade-' + selectedTier });
-    if (window.gtag) gtag('event', 'generate_lead', { event_category: 'call-center-upgrade', event_label: selectedTier });
-  } catch (err) {
-    showResult('Something went wrong, please try again or text us directly.', true);
-    btn.disabled = false; btn.textContent = 'Complete Request';
-  }
-});
+  if (window.fbq) fbq('track', 'Lead', { content_name: 'call-center-upgrade-' + selectedTier + '-' + kind });
+  if (window.gtag) gtag('event', 'generate_lead', { event_category: 'call-center-upgrade', event_label: selectedTier + '-' + kind });
+  showResult("Perfect, sending you over now...", false);
+  const url = DEST[kind] + '?tier=' + encodeURIComponent(selectedTier);
+  setTimeout(() => { window.location.href = url; }, 400);
+}
+
+document.getElementById('isClientBtn').addEventListener('click', () => goToCheckout('client'));
+document.getElementById('notClientBtn').addEventListener('click', () => goToCheckout('nonclient'));
 </script>
 
 </body>
