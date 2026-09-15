@@ -33,21 +33,27 @@ const VoiceAgentsPage: React.FC = () => {
 
   const callTypes = [
     {
-      type: "Sales Calls",
-      description: "AI agents that qualify leads, present offers, handle objections, and close deals",
-      metrics: ["85% qualification accuracy", "60% faster sales cycle", "300% more calls handled"],
+      type: "24/7 Inbound Reception & Dispatch",
+      description: "Picks up on Ring 1 (<500ms). Quotes standard pricing, handles emergency triage, and books jobs directly into your CRM.",
+      metrics: ["<500ms latency", "100% answer rate", "Zero hold queues"],
+      icon: Phone
+    },
+    {
+      type: "Outbound Speed-to-Lead Dialing",
+      description: "Calls new web and Meta/Google ad leads within 60 seconds of submission while purchase intent is at its highest.",
+      metrics: ["<60s response time", "400% higher contact rate", "Instant calendar booking"],
       icon: DollarSign
     },
     {
-      type: "Customer Support",
-      description: "Handle customer inquiries, troubleshoot issues, and provide instant solutions",
-      metrics: ["90% issue resolution", "< 30 second response", "24/7 availability"],
-      icon: MessageCircle
+      type: "Outbound Database Reactivation",
+      description: "Dials cold pipelines and past clients with irresistible win-back offers to generate revenue without ad spend.",
+      metrics: ["Up to 18% reactivation rate", "Zero additional ad cost", "Automated objection handling"],
+      icon: TrendingUp
     },
     {
-      type: "Appointment Booking",
-      description: "Schedule meetings, confirm appointments, and manage calendars automatically",
-      metrics: ["95% booking accuracy", "Zero double bookings", "Instant confirmations"],
+      type: "Appointment Reminders & No-Show Recovery",
+      description: "Calls ahead to confirm scheduled bookings and automatically reschedules cancellations in real time.",
+      metrics: ["75% reduction in no-shows", "Real-time calendar update", "Instant confirmations"],
       icon: Clock
     }
   ];

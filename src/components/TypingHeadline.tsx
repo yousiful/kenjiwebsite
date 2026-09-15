@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const headlines = [
-  "Done-For-You AI Call Centers",
-  "Never Miss Another High-Ticket Lead",
-  "24/7 AI Voice Agents Booking Appointments",
-  "Inbound Paid Ads That Fill Your Calendar",
-  "Close More Deals Without Hiring More Reps"
+  "Done-For-You Inbound & Outbound AI Call Centers",
+  "Never Miss Another Inbound Customer Lead",
+  "Instant 60-Second Outbound Speed-To-Lead",
+  "24/7 AI Voice Agents Booking Real Appointments",
+  "Database Reactivation That Prints Immediate Cashflow"
 ];
 
 export function TypingHeadline() {

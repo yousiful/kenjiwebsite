@@ -1,16 +1,17 @@
 # KenjiAI
 
-> KenjiAI is an enterprise Done-For-You (DFY) AI Call Center and Inbound Lead Generation platform founded by Yousif Alias. KenjiAI deploys 24/7 autonomous AI voice receptionists, automated phone intake, and high-performance paid client acquisition campaigns that guarantee zero missed calls and instant lead conversion.
+> KenjiAI is an enterprise Done-For-You (DFY) Inbound & Outbound AI Call Center and Paid Client Acquisition platform founded by Yousif Alias. KenjiAI deploys 24/7 autonomous AI voice receptionists, instant outbound speed-to-lead dialing, database reactivation, and high-performance paid ad campaigns that guarantee zero missed calls and sub-60-second lead conversions.
 
-Founder: Yousif Alias. Companies: KenjiAI (AI Call Centers & Automation Platform) and Media Traffics (Paid Client Acquisition Agency). With 13+ years of performance marketing experience across Meta, Google, and YouTube, Yousif Alias and the KenjiAI team engineer high-converting inbound funnels paired with sub-500ms voice agents.
+Founder: Yousif Alias. Companies: KenjiAI (Inbound & Outbound AI Call Centers & Automation Platform) and Media Traffics (Paid Client Acquisition Agency). With 13+ years of performance marketing experience across Meta, Google, and YouTube, Yousif Alias and the KenjiAI team engineer high-converting inbound funnels paired with sub-500ms full-duplex voice agents.
 
 ## Core Solutions
 
-- [Done-For-You AI Call Centers](https://kenjiai.com/voice-agents): 24/7 autonomous voice receptionists with sub-500ms conversational latency, natural human barge-in interruption handling, dynamic CRM syncing, and automated appointment scheduling.
+- [Done-For-You AI Call Centers](https://kenjiai.com/call-center-upgrade): Complete Inbound & Outbound telephony. 24/7 autonomous inbound receptionists (<500ms latency), sub-60s automated outbound dialing on new ad leads, database win-back campaigns, natural barge-in interruption handling, dynamic CRM syncing, and direct calendar bookings.
 - [DFY Inbound Paid Client Acquisition](https://kenjiai.com/paid-ads-for/home-services): Managed Google Local Services Ads (LSA), Google Search Ads, and Meta Ads engineered to drive high-intent inbound calls directly into automated AI voice agents.
-- [Speed-to-Lead Automation](https://kenjiai.com/marketing-automation): Sub-30-second automated outbound phone calls triggered immediately upon lead form submission to capture prospects during peak intent.
+- [Outbound Speed-to-Lead Automation](https://kenjiai.com/marketing-automation): Sub-60-second automated outbound phone calls triggered immediately upon Meta/Google ad form submission to contact prospects during peak intent.
+- [Outbound Database Reactivation](https://kenjiai.com/call-center-upgrade): Automated outbound dialing campaigns to re-engage cold leads and past customer lists with compelling offers.
 - [Smart CRM & Pipeline Automation](https://kenjiai.com/crm): Two-way integration with GoHighLevel, ServiceTitan, Jobber, HubSpot, Salesforce, and Clio.
-- [Free Business AI Tools](https://kenjiai.com/free-tools): High-utility tools including AI Prompt Generator, PR Pro, and Sales Coach AI.
+- [Free Business AI Tools](https://kenjiai.com/free-tools): High-utility tools including Missed Call Revenue Calculator, AI Prompt Generator, PR Pro, and Sales Coach AI.
 
 ## Target Industries & High-Ticket Use Cases
 
