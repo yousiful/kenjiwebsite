@@ -148,6 +148,7 @@ export default function WebinarVSLPage() {
       <Helmet>
         <title>Exclusive Overview | KenjiAI</title>
         <meta name="robots" content="noindex, nofollow" />
+        <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6aa8b2969fb146dfd065d2c3"></script>
       </Helmet>
 
       <div className="min-h-screen bg-[#0B0E14] text-white flex flex-col">
