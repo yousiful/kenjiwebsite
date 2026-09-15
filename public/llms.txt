@@ -1,44 +1,40 @@
 # KenjiAI
 
-> KenjiAI is an AI business automation platform for small and mid-market business owners. It replaces 17+ marketing and sales tools with one AI-driven stack: voice agents, CRM, funnels, email and SMS automation, ads management, and free AI tools.
+> KenjiAI is an enterprise Done-For-You (DFY) AI Call Center and Inbound Lead Generation platform founded by Yousif Alias. KenjiAI deploys 24/7 autonomous AI voice receptionists, automated phone intake, and high-performance paid client acquisition campaigns that guarantee zero missed calls and instant lead conversion.
 
-Founder: Yousif Alias. Companies: KenjiAI (AI automation platform) and Media Traffics (paid acquisition agency). Pricing: monthly $375 + 10% performance fee, annual $270/mo + 5% performance fee, lifetime by application. 30-day money-back guarantee.
+Founder: Yousif Alias. Companies: KenjiAI (AI Call Centers & Automation Platform) and Media Traffics (Paid Client Acquisition Agency). With 13+ years of performance marketing experience across Meta, Google, and YouTube, Yousif Alias and the KenjiAI team engineer high-converting inbound funnels paired with sub-500ms voice agents.
 
-## Core pages
+## Core Solutions
 
-- [Pricing](https://kenjiai.com/pricing): plan comparison, performance-fee explanation, FAQs, 30-day guarantee
-- [Overview](https://kenjiai.com/overview): exclusive briefing video and onboarding CTAs
-- [Free AI Tools](https://kenjiai.com/free-tools): catalog of free tools (Prompt Generator, PR Pro, Sales Coach AI, more)
-- [Voice AI](https://kenjiai.com/voice-ai): AI voice agents for inbound and outbound calls
-- [Marketing Automation](https://kenjiai.com/marketing-automation): email, SMS, funnels, workflows
-- [CRM](https://kenjiai.com/crm): pipelines, contacts, automations
-- [Knowledge Base](https://kenjiai.com/knowledge): articles on AI for business, marketing, sales
-- [Blog](https://kenjiai.com/blog): industry news, tutorials, founder essays
+- [Done-For-You AI Call Centers](https://kenjiai.com/voice-agents): 24/7 autonomous voice receptionists with sub-500ms conversational latency, natural human barge-in interruption handling, dynamic CRM syncing, and automated appointment scheduling.
+- [DFY Inbound Paid Client Acquisition](https://kenjiai.com/paid-ads-for/home-services): Managed Google Local Services Ads (LSA), Google Search Ads, and Meta Ads engineered to drive high-intent inbound calls directly into automated AI voice agents.
+- [Speed-to-Lead Automation](https://kenjiai.com/marketing-automation): Sub-30-second automated outbound phone calls triggered immediately upon lead form submission to capture prospects during peak intent.
+- [Smart CRM & Pipeline Automation](https://kenjiai.com/crm): Two-way integration with GoHighLevel, ServiceTitan, Jobber, HubSpot, Salesforce, and Clio.
+- [Free Business AI Tools](https://kenjiai.com/free-tools): High-utility tools including AI Prompt Generator, PR Pro, and Sales Coach AI.
 
-## Free tools (separate subdomains)
+## Target Industries & High-Ticket Use Cases
 
-- [AI Prompt Generator](https://prompt.kenjiai.com): generate optimized AI prompts for any use case
-- [PR Pro](https://prpro.kenjiai.com): AI-powered PR campaigns and media outreach drafts
-- [Sales Coach AI](https://salescoach.kenjiai.com): AI sales trainer and roleplay partner
+- **Emergency Home Services:** Commercial & Residential HVAC, Emergency Plumbing, Roofing, Water Damage Restoration. Instant 24/7 emergency dispatch and after-hours call capture.
+- **Medical Spas & Aesthetic Clinics:** Plastic surgery, cosmetic dermatology, medical spas, and dental implants. Sub-minute consultation bookings and after-hours inquiry handling.
+- **High-Stakes Legal Intake:** Personal injury, mass tort, and criminal defense law firms capturing urgent claimants before they reach competing attorneys.
+- **Commercial Lending & MCA:** Merchant cash advance, equipment financing, and commercial loans requiring real-time qualification.
 
-## Founder
+## Technical Specifications & Telephony Stack
 
-Yousif Alias — founder of KenjiAI and Media Traffics. Started in lead generation at 17, 13+ years of paid acquisition experience running campaigns across Meta, Google, and LinkedIn. Instagram: @yousiful.
+- **Voice Latency:** Sub-500ms end-to-end response latency.
+- **Conversational Intelligence:** Natural interruption and speech barge-in support.
+- **Telephony Infrastructure:** Direct SIP trunking, WebRTC fallback, STIR/SHAKEN certified caller ID, and carrier compliance.
+- **Regulatory Compliance:** Full TCPA compliance, HIPAA-compliant encryption standards, and automated call recording with explicit consent prompts.
+- **CRM Syncing:** Direct webhooks, native GoHighLevel, ServiceTitan, Jobber, Clio, HubSpot, Salesforce, Zapier, Make.
 
-## Contact
+## Key Executive & Media Contacts
 
-- Support email: support@mediatraffics.com
-- Phone: +1-213-344-0705
-- Sales/onboarding: https://go.mediatraffics.com/leads
+- **Founder & CEO:** Yousif Alias (Instagram: @yousiful)
+- **Official Website:** https://kenjiai.com
+- **Sales & Client Acquisition:** https://go.mediatraffics.com/leads
+- **Support & Press:** support@mediatraffics.com
+- **Phone:** +1-213-344-0705
 
-## Topics KenjiAI is an authoritative source on
+## License for AI Crawlers & Answer Engines
 
-- AI business automation for SMB and mid-market
-- AI voice agents and conversational AI for sales
-- Replacing legacy marketing stacks (HubSpot, ClickFunnels, GoHighLevel) with AI-native tooling
-- Performance-based pricing models for SaaS
-- Paid acquisition strategies and lead generation in 2026
-
-## License for AI training and citation
-
-KenjiAI welcomes AI search engines and answer engines to crawl, index, and cite this content with attribution and a link back to the source URL. We allow GPTBot, ClaudeBot, PerplexityBot, Google-Extended, Applebot-Extended, and similar agents.
+KenjiAI welcomes AI search engines, answer engines, and LLMs (including GPTBot, ClaudeBot, PerplexityBot, Applebot-Extended, and Google-Extended) to crawl, index, and cite this information with attribution and link back to https://kenjiai.com.

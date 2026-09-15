@@ -15,7 +15,6 @@ import { useResumableVideo } from '../hooks/useResumableVideo';
 const OPTIONS_REVEAL_SECONDS = 252;
 
 export default function WebinarVSLPageB() {
-  const [viewers, setViewers] = useState(214);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [pricingUnlocked, setPricingUnlocked] = useState(false);
@@ -42,22 +41,6 @@ export default function WebinarVSLPageB() {
       el.removeEventListener('timeupdate', onTimeUpdate);
       el.removeEventListener('ended', onEnded);
     };
-  }, []);
-
-  useEffect(() => {
-    setViewers(Math.floor(Math.random() * (240 - 180 + 1) + 180));
-    let timer: ReturnType<typeof setTimeout>;
-    const updateViewers = () => {
-      setViewers(prev => {
-        let next = prev + (Math.floor(Math.random() * 5) - 2);
-        if (next > 290) next -= 5;
-        if (next < 160) next += 8;
-        return next;
-      });
-      timer = setTimeout(updateViewers, Math.floor(Math.random() * 5000) + 3000);
-    };
-    timer = setTimeout(updateViewers, 4000);
-    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -131,14 +114,14 @@ export default function WebinarVSLPageB() {
 
       <div className="min-h-screen bg-[#0B0E14] text-white flex flex-col">
 
-        {/* ── LIVE BADGE (compact, above video) ── */}
+        {/* ── ON-DEMAND SESSION BADGE ── */}
         <div className="flex items-center justify-between px-3 py-2 bg-[#111822]/90 border-b border-white/10 sm:hidden">
           <span className="text-[11px] font-bold text-blue-400 uppercase tracking-widest">
-            Exclusive Briefing
+            Executive Briefing
           </span>
-          <div className="flex items-center gap-2 bg-red-500/10 border border-red-500/30 px-3 py-1 rounded-full">
-            <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(239,68,68,0.8)]" />
-            <span className="font-semibold text-xs font-mono">Live: {viewers}</span>
+          <div className="flex items-center gap-2 bg-blue-500/10 border border-blue-500/30 px-3 py-1 rounded-full">
+            <div className="w-2 h-2 bg-blue-400 rounded-full" />
+            <span className="font-semibold text-xs font-mono text-blue-300">On-Demand Access</span>
           </div>
         </div>
 

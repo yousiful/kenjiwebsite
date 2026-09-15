@@ -14,7 +14,10 @@ export const BackgroundLines = ({
 }) => {
   return (
     <div className={`relative w-full ${className ?? ""}`}>
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+      <div 
+        className="absolute inset-0 overflow-hidden pointer-events-none z-0"
+        style={{ transform: 'translate3d(0, 0, 0)', willChange: 'transform', contain: 'strict' }}
+      >
         <SVG svgOptions={svgOptions} />
       </div>
       <div className="relative z-10">{children}</div>

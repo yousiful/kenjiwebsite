@@ -6,6 +6,10 @@ const LinkValidator: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
+    // Completely disable in production to avoid DOM thrashing and frame drops
+    if (process.env.NODE_ENV !== 'development' && !import.meta.env.DEV) {
+      return;
+    }
     const validateLinks = () => {
       const links = document.querySelectorAll('a[href]');
 

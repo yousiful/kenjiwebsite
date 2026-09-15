@@ -179,17 +179,32 @@ const Footer: React.FC = () => {
         </div>
       </div>
 
+      {/* FTC & Meta Ads Legal Compliance Bar */}
+      <div className="relative z-10 border-t border-gray-800/80 bg-gray-950/90 py-8 text-center text-gray-500 text-xs">
+        <div className="max-w-5xl mx-auto px-4 space-y-3">
+          <p className="leading-relaxed text-gray-400">
+            <strong>FTC Earnings & Results Disclaimer:</strong> Results vary significantly based on individual business models, operational capacity, existing marketing budget, and market execution. KenjiAI does not make any income claims, guarantees, or promises of specific financial returns. Any business metrics, testimonials, or performance examples presented are illustrative of individual experiences and should not be considered typical.
+          </p>
+          <p className="leading-relaxed text-[11px] text-gray-500">
+            <strong>Meta & Platform Trademark Notice:</strong> This site is NOT a part of the Facebook™ or Meta™ website or Meta Platforms, Inc. Additionally, this site is NOT endorsed or sponsored by Meta Platforms, Inc. in any way. FACEBOOK™ and META™ are registered trademarks of META PLATFORMS, INC. Google™ and YouTube™ are trademarks of Google LLC.
+          </p>
+          <p className="text-[11px] text-gray-500">
+            Operated by Nataki LLC / KenjiAI • 32 N Gould St, Sheridan, WY 82801 • Support: <a href="mailto:support@mediatraffics.com" className="underline hover:text-gray-300">support@mediatraffics.com</a> • Phone: +1-213-344-0705
+          </p>
+        </div>
+      </div>
+
       {/* Bottom Bar */}
       <div className="relative z-10 border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-gray-600 text-xs">
-              © {new Date().getFullYear()} KenjiAI. All Rights Reserved.
+              © {new Date().getFullYear()} KenjiAI (Nataki LLC). All Rights Reserved.
             </p>
             <div className="flex items-center gap-5 text-xs text-gray-600">
-              <Link to="/terms" className="hover:text-blue-400 transition-colors">Terms</Link>
-              <Link to="/privacy" className="hover:text-blue-400 transition-colors">Privacy</Link>
-              <Link to="/disclaimer" className="hover:text-blue-400 transition-colors">Disclaimer</Link>
+              <Link to="/terms" className="hover:text-blue-400 transition-colors">Terms of Service</Link>
+              <Link to="/privacy" className="hover:text-blue-400 transition-colors">Privacy Policy</Link>
+              <Link to="/disclaimer" className="hover:text-blue-400 transition-colors">Earnings Disclaimer</Link>
             </div>
           </div>
         </div>

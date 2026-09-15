@@ -2,20 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const headlines = [
-  "Your Business Runs While You Sleep",
-  "Never Miss Another Lead Again",
-  "Close More Deals Without Hiring More People",
-  "Stop Doing Everything Yourself",
-  "One Platform. Everything Handled.",
-  "Let AI Do the Busy Work",
-  "More Clients, Less Chaos"
+  "Done-For-You AI Call Centers",
+  "Never Miss Another High-Ticket Lead",
+  "24/7 AI Voice Agents Booking Appointments",
+  "Inbound Paid Ads That Fill Your Calendar",
+  "Close More Deals Without Hiring More Reps"
 ];
 
 export function TypingHeadline() {
   const [currentHeadlineIndex, setCurrentHeadlineIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState('');
+  // Initialize with full first headline so crawlers and users see complete H1 immediately
+  const [displayedText, setDisplayedText] = useState(headlines[0]);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [typingSpeed, setTypingSpeed] = useState(80);
+  const [typingSpeed, setTypingSpeed] = useState(2500); // initial dwell time before cycling
 
   useEffect(() => {
     const currentHeadline = headlines[currentHeadlineIndex];

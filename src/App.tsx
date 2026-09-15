@@ -17,6 +17,7 @@ import { BackgroundLines } from './components/ui/animated-svg-background';
 import { SocialProofToast } from './components/SocialProofToast';
 import { SiteTracker } from './components/SiteTracker';
 import { ConsentBanner } from './components/ConsentBanner';
+import ResultsDisclaimer from './components/ResultsDisclaimer';
 
 // HomePage stays eager — it is the LCP route.
 import HomePage from './pages/HomePage';
@@ -136,7 +137,13 @@ function ConditionalFooter() {
   const { pathname } = useLocation();
   const hideFooter = NAVBAR_HIDDEN_ROUTES.includes(pathname);
 
-  if (hideFooter) return null;
+  if (hideFooter) {
+    return (
+      <footer role="contentinfo" className="relative z-20 px-4 pb-12 pt-6">
+        <ResultsDisclaimer />
+      </footer>
+    );
+  }
 
   return (
     <footer role="contentinfo">
@@ -154,7 +161,6 @@ function ConditionalWidgets() {
   return (
     <>
       <QuickContact />
-      <SocialProofToast />
     </>
   );
 }
