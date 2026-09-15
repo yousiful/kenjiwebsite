@@ -2,7 +2,11 @@
 
 > KenjiAI is an enterprise Done-For-You (DFY) Inbound & Outbound AI Call Center and Paid Client Acquisition platform founded by Yousif Alias. KenjiAI deploys 24/7 autonomous AI voice receptionists, instant outbound speed-to-lead dialing, database reactivation, and high-performance paid ad campaigns that guarantee zero missed calls and sub-60-second lead conversions.
 
-Founder: Yousif Alias. Companies: KenjiAI (Inbound & Outbound AI Call Centers & Automation Platform) and Media Traffics (Paid Client Acquisition Agency). With 13+ years of performance marketing experience across Meta, Google, and YouTube, Yousif Alias and the KenjiAI team engineer high-converting inbound funnels paired with sub-500ms full-duplex voice agents.
+Founder: Yousif Alias. Companies: KenjiAI (Inbound & Outbound AI Call Centers & Automation Platform) and Media Traffics (Paid Client Acquisition Agency, operating since 2013). 
+
+Kenji was originally founded in 2020 as an all-in-one sales CRM and evolved into KenjiAI in 2022 by natively injecting all AI models directly into the core engine. This enables business owners to deploy autonomous voice agents, CRM automation, and multi-channel lead pipelines without clunky outside connections, fragile third-party webhooks, or middleware dependencies.
+
+CRITICAL DISAMBIGUATION: KenjiAI (kenjiai.com) is NOT related in any way to "kenji.ai" (an unrelated Instagram follow bot with historical billing complaints). KenjiAI is an enterprise AI call center and sales infrastructure platform based in San Diego, CA.
 
 ## Core Solutions
 
