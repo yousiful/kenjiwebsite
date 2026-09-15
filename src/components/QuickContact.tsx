@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, Phone, X } from 'lucide-react';
 
 const QuickContact: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState<'menu' | 'q1' | 'q2' | 'unqualified' | 'qualified'>('menu');
   const [revenue, setRevenue] = useState<string>('');
   const [volume, setVolume] = useState<string>('');

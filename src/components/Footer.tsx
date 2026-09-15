@@ -6,17 +6,35 @@ import { Link } from 'react-router-dom';
 const Footer: React.FC = () => {
 
   const navLinks = {
+    solutions: [
+      { name: 'AI Voice Agents', href: '/voice-agents' },
+      { name: 'Done-For-You Call Centers', href: '/voice-ai' },
+      { name: 'Marketing Automation', href: '/marketing-automation' },
+      { name: 'Smart CRM Pipelines', href: '/crm' },
+      { name: 'Free AI Growth Tools', href: '/free-tools' },
+      { name: 'Missed Call Calculator', href: '/tools/missed-call-calculator' },
+    ],
+    industries: [
+      { name: 'HVAC Call Centers', href: '/paid-ads-for/hvac' },
+      { name: 'Med Spa Voice Agents', href: '/paid-ads-for/med-spa' },
+      { name: 'Legal Intake Automation', href: '/paid-ads-for/legal' },
+      { name: 'Roofing Emergency Intake', href: '/paid-ads-for/roofing' },
+      { name: 'Home Services Dispatch', href: '/paid-ads-for/home-services' },
+      { name: 'Dental Practice Agents', href: '/paid-ads-for/dental' },
+      { name: 'Solar Inbound Calls', href: '/paid-ads-for/solar' },
+      { name: 'SaaS Inbound Ads', href: '/paid-ads-for/saas' },
+    ],
     company: [
-      { name: 'Pricing', href: '/pricing' },
-      { name: 'Free Tools', href: '/free-tools' },
+      { name: 'Pricing & Guarantee', href: '/pricing' },
       { name: 'Funding & Credit', href: '/funding' },
       { name: 'Knowledge Base', href: '/knowledge' },
+      { name: 'AI Education Academy', href: '/ai-education' },
       { name: 'Become a Partner', href: 'https://closers.kenjiai.com/', external: true },
     ],
     legal: [
       { name: 'Terms of Service', href: '/terms' },
       { name: 'Privacy Policy', href: '/privacy' },
-      { name: 'Disclaimer', href: '/disclaimer' },
+      { name: 'Earnings Disclaimer', href: '/disclaimer' },
     ],
   };
 
@@ -91,12 +109,40 @@ const Footer: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.55, delay: 0.15 }}
-            className="lg:col-span-12 grid grid-cols-2 sm:grid-cols-3 gap-8"
+            className="lg:col-span-12 grid grid-cols-2 md:grid-cols-4 gap-8"
             aria-label="Footer Navigation"
           >
-            {/* Company */}
+            {/* Solutions */}
             <div>
-              <h4 className="text-white font-semibold text-sm mb-4 tracking-wide">Company</h4>
+              <h4 className="text-white font-semibold text-sm mb-4 tracking-wide">Solutions</h4>
+              <ul className="space-y-2.5">
+                {navLinks.solutions.map((link) => (
+                  <li key={link.name}>
+                    <Link to={link.href} className="text-gray-500 hover:text-blue-400 text-sm transition-colors duration-200">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Target Industries */}
+            <div>
+              <h4 className="text-white font-semibold text-sm mb-4 tracking-wide">High-Ticket Industries</h4>
+              <ul className="space-y-2.5">
+                {navLinks.industries.map((link) => (
+                  <li key={link.name}>
+                    <Link to={link.href} className="text-gray-500 hover:text-blue-400 text-sm transition-colors duration-200">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Company & Resources */}
+            <div>
+              <h4 className="text-white font-semibold text-sm mb-4 tracking-wide">Company & Growth</h4>
               <ul className="space-y-2.5">
                 {navLinks.company.map((link) => (
                   <li key={link.name}>
@@ -119,23 +165,9 @@ const Footer: React.FC = () => {
               </ul>
             </div>
 
-            {/* Legal */}
-            <div>
-              <h4 className="text-white font-semibold text-sm mb-4 tracking-wide">Legal</h4>
-              <ul className="space-y-2.5">
-                {navLinks.legal.map((link) => (
-                  <li key={link.name}>
-                    <Link to={link.href} className="text-gray-500 hover:text-blue-400 text-sm transition-colors duration-200">
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
             {/* Compliance & Contact */}
             <div>
-              <h4 className="text-white font-semibold text-sm mb-4 tracking-wide">Contact & Address</h4>
+              <h4 className="text-white font-semibold text-sm mb-4 tracking-wide">Contact & Office</h4>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <MapPin className="w-4 h-4 text-blue-400 shrink-0 mt-0.5" />
