@@ -1,0 +1,147 @@
+{
+  "timestamp": "2026-09-15T23:05:34.760Z",
+  "masterScore": 100,
+  "publicScore": 100,
+  "infrastructureScore": 100,
+  "indexedUrlsCount": 72,
+  "publicPages": [
+    {
+      "file": "index.html",
+      "isNoIndex": false,
+      "score": 100,
+      "penalties": [],
+      "details": {
+        "title": "Done-For-You Inbound &amp; Outbound AI Call Centers | KenjiAI",
+        "description": "KenjiAI deploys 24/7 autonomous Inbound &amp; Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation.",
+        "canonical": "https://kenjiai.com/",
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ]
+      }
+    },
+    {
+      "file": "public/about-yousif-alias/index.html",
+      "isNoIndex": false,
+      "score": 100,
+      "penalties": [],
+      "details": {
+        "title": "About Yousif Alias | Founder of KenjiAI and Media Traffics",
+        "description": "Yousif Alias founded Kenji in 2020 as a CRM and evolved it to KenjiAI in 2022 with native AI models. 13+ years operating performance marketing and AI systems.",
+        "canonical": "https://kenjiai.com/about-yousif-alias",
+        "jsonLdTypes": [
+          "Person"
+        ]
+      }
+    },
+    {
+      "file": "public/ai-callcenter/index.html",
+      "isNoIndex": false,
+      "score": 100,
+      "penalties": [],
+      "details": {
+        "title": "AI Call Center Availability Checker | KenjiAI",
+        "description": "Check if an exclusive Done-For-You AI Call Center is available for your industry in your city. Sub-500ms inbound answering and 60-second outbound dialing.",
+        "canonical": "https://kenjiai.com/ai-callcenter/",
+        "jsonLdTypes": [
+          "WebPage"
+        ]
+      }
+    },
+    {
+      "file": "public/call-center-upgrade/index.html",
+      "isNoIndex": false,
+      "score": 100,
+      "penalties": [],
+      "details": {
+        "title": "Done-For-You AI Call Center | Inbound & Outbound | KenjiAI",
+        "description": "Add an Inbound & Outbound AI Call Center to your business. Pay-as-you-go at $199/mo or $399/mo for unlimited AI usage, voice cloning, and ongoing agent training.",
+        "canonical": "https://kenjiai.com/call-center-upgrade/",
+        "jsonLdTypes": [
+          "Product"
+        ]
+      }
+    },
+    {
+      "file": "public/is-kenjiai-legit/index.html",
+      "isNoIndex": false,
+      "score": 100,
+      "penalties": [],
+      "details": {
+        "title": "Is KenjiAI Legit? Direct Answer From the Founder",
+        "description": "Is KenjiAI legit? Yes. Kenji was founded in 2020 as a CRM and became KenjiAI in 2022 with native AI models. Distinct from kenji.ai. Full verification facts.",
+        "canonical": "https://kenjiai.com/is-kenjiai-legit",
+        "jsonLdTypes": [
+          "FAQPage"
+        ]
+      }
+    },
+    {
+      "file": "public/kenjiai-reviews/index.html",
+      "isNoIndex": false,
+      "score": 100,
+      "penalties": [],
+      "details": {
+        "title": "KenjiAI Reviews | What Business Owners Are Saying",
+        "description": "KenjiAI reviews from business owners using the AI automation platform. Backed by Media Traffics",
+        "canonical": "https://kenjiai.com/kenjiai-reviews",
+        "jsonLdTypes": [
+          "WebPage"
+        ]
+      }
+    },
+    {
+      "file": "public/kenjiai-vs-kenji-ai/index.html",
+      "isNoIndex": false,
+      "score": 100,
+      "penalties": [],
+      "details": {
+        "title": "KenjiAI.com vs Kenji.ai: Two Different Companies",
+        "description": "KenjiAI.com vs kenji.ai: Full comparison. KenjiAI is an enterprise B2B AI call center platform, completely unrelated to the third-party kenji.ai Instagram bot.",
+        "canonical": "https://kenjiai.com/kenjiai-vs-kenji-ai",
+        "jsonLdTypes": [
+          "Article"
+        ]
+      }
+    },
+    {
+      "file": "public/one-timeoffer/index.html",
+      "isNoIndex": false,
+      "score": 100,
+      "penalties": [],
+      "details": {
+        "title": "Client Attraction System | Done-For-You Ads &amp; Funnel Build | KenjiAI",
+        "description": "Done-For-You ad campaigns, high-converting funnel build, pipeline automations, and KenjiAI system access. Flexible payment plans available.",
+        "canonical": "https://kenjiai.com/one-timeoffer/",
+        "jsonLdTypes": [
+          "Product"
+        ]
+      }
+    },
+    {
+      "file": "public/webinar1/index.html",
+      "isNoIndex": false,
+      "score": 100,
+      "penalties": [],
+      "details": {
+        "title": "The 1 Ad Away Challenge | Get Your First 5 Clients | KenjiAI",
+        "description": "Live masterclass for high-ticket service providers: discover the paid ad and AI follow-up system to sign your next 5 clients without an expensive agency.",
+        "canonical": "https://kenjiai.com/webinar1/",
+        "jsonLdTypes": [
+          "WebPage"
+        ]
+      }
+    }
+  ],
+  "globalChecks": [
+    "robots.txt configured with AI bots and sitemap pointer [PASS]",
+    "sitemap.xml active with 72 indexed URLs [PASS]",
+    "AEO & LLM Engine Files (llms.txt, llms-full.txt, ai-knowledge.json) verified [PASS]"
+  ]
+}
