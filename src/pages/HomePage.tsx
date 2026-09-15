@@ -56,9 +56,9 @@ const HomePage: React.FC = () => {
   return (
     <>
       <SEOHead 
-        title="AI Voice Agents, CRM & Business Automation | KenjiAI"
-        description="AI voice agents, CRM, funnels, and workflow automation, built and managed for your business. Free AI tools available: prompt generator, PR tools, sales coach."
-        keywords="AI voice agents, business automation, AI automation platform, free AI tools, AI prompt generator, AI sales automation, AI marketing automation, AI business platform, CRM automation, funnel automation"
+        title="Done-For-You Inbound & Outbound AI Call Centers | KenjiAI"
+        description="KenjiAI deploys 24/7 autonomous Inbound & Outbound AI voice call centers for high-ticket businesses. Sub-500ms inbound answering, 60-second speed-to-lead outbound dialing, and automated database reactivation."
+        keywords="AI call center, inbound AI receptionist, outbound speed to lead, database reactivation, AI voice agents, business automation CRM, KenjiAI, Done-For-You AI call center"
         structuredData={structuredData}
       />
       

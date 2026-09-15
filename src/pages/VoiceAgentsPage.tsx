@@ -125,9 +125,9 @@ const VoiceAgentsPage: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="AI Voice Agents for Sales & Customer Service | KenjiAI - 24/7 Automated Calling"
-        description="AI voice agents that handle sales calls, customer service, and appointment booking 24/7. 85% qualification rate, 300% more calls handled. Human-like conversations that close deals."
-        keywords="AI voice agents, automated calling, AI phone calls, voice AI, sales automation, customer service automation, AI receptionist, 24/7 phone answering, automated sales calls"
+        title="Inbound & Outbound AI Voice Agents | 24/7 Call Center Automation | KenjiAI"
+        description="Autonomous 24/7 Inbound receptionists (<500ms latency) and Outbound speed-to-lead dialing (<60s callbacks). Natural barge-in, dynamic CRM syncing, and appointment booking."
+        keywords="Inbound AI receptionist, Outbound speed to lead, AI voice agents, automated calling, AI phone calls, voice AI, 24/7 phone answering, AI call center"
         canonical="https://kenjiai.com/voice-agents"
         structuredData={structuredData}
       />

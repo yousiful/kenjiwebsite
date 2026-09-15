@@ -24,6 +24,15 @@
     <mobile:mobile/>
   </url>
 
+  <!-- AI Call Center Availability Checker -->
+  <url>
+    <loc>https://kenjiai.com/ai-callcenter/</loc>
+    <lastmod>2026-09-15T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <mobile:mobile/>
+  </url>
+
   <!-- Brand Authority & Disambiguation Pages (Crucial for AI Knowledge) -->
   <url>
     <loc>https://kenjiai.com/kenjiai-vs-kenji-ai</loc>

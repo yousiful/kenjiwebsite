@@ -19,9 +19,9 @@ export interface SEOHeadProps {
 }
 
 const SEOHead: React.FC<SEOHeadProps> = ({
-  title = "Free AI Tools + Automation Platform for Business | KenjiAI",
-  description = "KenjiAI gives business owners the AI tools and automation to replace 17+ apps. Voice agents, CRM, marketing workflows, and free AI tools. Performance-based pricing.",
-  keywords = "",
+  title = "Done-For-You Inbound & Outbound AI Call Centers | KenjiAI",
+  description = "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI voice call centers for high-ticket businesses. Sub-500ms inbound answering, 60-second speed-to-lead outbound dialing, and automated database reactivation.",
+  keywords = "AI call center, inbound AI receptionist, outbound speed to lead, database reactivation, AI voice agents, business automation CRM, KenjiAI",
   canonical,
   ogImage = "https://kenjiai.com/og-image.svg",
   ogType = "website",

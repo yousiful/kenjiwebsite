@@ -118,9 +118,9 @@ const CRMPage: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="AI-Powered CRM Platform | KenjiAI - Sales Pipeline, Contact Management & Analytics"
-        description="Complete CRM solution with AI automation. Manage contacts, sales pipeline, and customer relationships. 35% faster sales cycle, 250% more qualified leads."
-        keywords="CRM software, sales pipeline, contact management, customer relationship management, sales automation, AI CRM, best CRM platform, small business CRM"
+        title="Native AI Sales CRM & Telephony Infrastructure | KenjiAI"
+        description="Founded in 2020 as a high-conversion sales CRM, KenjiAI natively injected AI models in 2022. Automate inbound & outbound calls and pipelines without outside clunky connections. Two-way sync with ServiceTitan, Jobber, GoHighLevel."
+        keywords="AI CRM, sales pipeline, contact management, sales automation, native AI CRM, small business CRM, Kenji CRM, telephony CRM"
         canonical="https://kenjiai.com/crm"
         structuredData={structuredData}
       />

@@ -31,7 +31,7 @@ const AppWithTracking = () => {
   return (
     <StrictMode>
       <HelmetProvider>
-        <Helmet defaultTitle="KenjiAI - AI Business Automation Platform">
+        <Helmet defaultTitle="Done-For-You Inbound & Outbound AI Call Centers | KenjiAI">
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta name="theme-color" content="#3B82F6" />
