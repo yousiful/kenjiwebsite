@@ -333,7 +333,7 @@ const MissedCallCalculatorPage: React.FC = () => {
             {/* CTA */}
             <div className="pt-2">
               <a
-                href="https://kenjiai.com/pricing2"
+                href="https://kenjiai.com/call-center-upgrade"
                 target={isEmbed ? "_blank" : "_self"}
                 rel="noreferrer"
                 className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-sm shadow-lg shadow-blue-500/25 transition-all transform hover:-translate-y-0.5"

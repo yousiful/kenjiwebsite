@@ -7,6 +7,7 @@ const Footer: React.FC = () => {
 
   const navLinks = {
     solutions: [
+      { name: 'Buy DFY AI Call Center', href: 'https://kenjiai.com/call-center-upgrade', external: true },
       { name: 'AI Voice Agents', href: '/voice-agents' },
       { name: 'Done-For-You Call Centers', href: '/voice-ai' },
       { name: 'Marketing Automation', href: '/marketing-automation' },
@@ -118,9 +119,18 @@ const Footer: React.FC = () => {
               <ul className="space-y-2.5">
                 {navLinks.solutions.map((link) => (
                   <li key={link.name}>
-                    <Link to={link.href} className="text-gray-500 hover:text-blue-400 text-sm transition-colors duration-200">
-                      {link.name}
-                    </Link>
+                    {link.external ? (
+                      <a
+                        href={link.href}
+                        className="text-gray-500 hover:text-blue-400 text-sm transition-colors duration-200"
+                      >
+                        {link.name}
+                      </a>
+                    ) : (
+                      <Link to={link.href} className="text-gray-500 hover:text-blue-400 text-sm transition-colors duration-200">
+                        {link.name}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>

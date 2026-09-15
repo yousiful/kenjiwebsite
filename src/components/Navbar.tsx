@@ -30,11 +30,12 @@ const Navbar: React.FC = () => {
   ];
 
   const solutions = [
-    { name: "AI Automation", href: "/ai-automation", description: "Complete business automation" },
-    { name: "Voice Agents", href: "/voice-agents", description: "AI that handles calls 24/7" },
-    { name: "Voice AI", href: "/voice-ai", description: "AI voice agents starting at $10/month" },
-    { name: "Marketing Automation", href: "/marketing-automation", description: "Smart campaigns that convert" },
-    { name: "CRM & Sales", href: "/crm", description: "Manage customers and close deals" }
+    { name: "AI Call Center (DFY)", href: "https://kenjiai.com/call-center-upgrade", description: "Answers & books calls 24/7", external: true },
+    { name: "AI Automation", href: "/ai-automation", description: "Complete business automation", external: false },
+    { name: "Voice Agents", href: "/voice-agents", description: "AI that handles calls 24/7", external: false },
+    { name: "Voice AI", href: "/voice-ai", description: "AI voice agents starting at $10/month", external: false },
+    { name: "Marketing Automation", href: "/marketing-automation", description: "Smart campaigns that convert", external: false },
+    { name: "CRM & Sales", href: "/crm", description: "Manage customers and close deals", external: false }
   ];
 
   const navItems = [
@@ -173,17 +174,36 @@ const Navbar: React.FC = () => {
                         }}
                       >
                         {solutions.map((solution) => (
-                          <Link
-                            key={`${solution.name}-${solution.href}`}
-                            to={solution.href}
-                            className="block px-4 py-4 text-gray-300 hover:text-white hover:bg-cyan-950/40 transition-colors mobile-hover touch-target border-b last:border-b-0"
-                            style={{ borderColor: 'rgba(0,255,255,0.08)' }}
-                            role="menuitem"
-                            onClick={() => setShowSolutionsDropdown(false)}
-                          >
-                            <div className="font-semibold text-white mb-1">{solution.name}</div>
-                            <div className="text-sm text-gray-400">{solution.description}</div>
-                          </Link>
+                          solution.external ? (
+                            <a
+                              key={`${solution.name}-${solution.href}`}
+                              href={solution.href}
+                              className="block px-4 py-4 text-gray-300 hover:text-white hover:bg-cyan-950/40 transition-colors mobile-hover touch-target border-b last:border-b-0"
+                              style={{ borderColor: 'rgba(0,255,255,0.08)' }}
+                              role="menuitem"
+                              onClick={() => setShowSolutionsDropdown(false)}
+                            >
+                              <div className="font-semibold text-white mb-1 flex items-center justify-between">
+                                {solution.name}
+                                <span className="text-[10px] bg-blue-500/20 text-blue-400 px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">
+                                  DFY
+                                </span>
+                              </div>
+                              <div className="text-sm text-gray-400">{solution.description}</div>
+                            </a>
+                          ) : (
+                            <Link
+                              key={`${solution.name}-${solution.href}`}
+                              to={solution.href}
+                              className="block px-4 py-4 text-gray-300 hover:text-white hover:bg-cyan-950/40 transition-colors mobile-hover touch-target border-b last:border-b-0"
+                              style={{ borderColor: 'rgba(0,255,255,0.08)' }}
+                              role="menuitem"
+                              onClick={() => setShowSolutionsDropdown(false)}
+                            >
+                              <div className="font-semibold text-white mb-1">{solution.name}</div>
+                              <div className="text-sm text-gray-400">{solution.description}</div>
+                            </Link>
+                          )
                         ))}
                       </motion.div>
                     )}

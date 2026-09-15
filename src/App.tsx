@@ -166,6 +166,13 @@ function ConditionalWidgets() {
   );
 }
 
+const CallCenterUpgradeRedirect: React.FC = () => {
+  useEffect(() => {
+    window.location.replace('/call-center-upgrade/index.html');
+  }, []);
+  return null;
+};
+
 function App() {
   return (
     <ErrorBoundary>
@@ -189,6 +196,7 @@ function App() {
                     <Suspense fallback={<RouteFallback />}>
                     <Routes>
                       <Route path="/" element={<HomePage />} />
+                      <Route path="/call-center-upgrade" element={<CallCenterUpgradeRedirect />} />
                       <Route path="/tools" element={<Navigate to="/free-tools" replace />} />
                       <Route path="/tools/missed-call-calculator" element={<MissedCallCalculatorPage />} />
                       <Route path="/free-tools" element={<FreeToolsPage />} />

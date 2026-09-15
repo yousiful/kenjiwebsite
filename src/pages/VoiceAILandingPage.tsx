@@ -258,11 +258,9 @@ const VoiceAILandingPage: React.FC = () => {
   const handleCTA = (planId: string) => {
     const plan = plans.find((p) => p.id === planId);
     if (!plan) return;
-    trackCheckout(plan.id, plan.price, plan.name);
-    // Scale + Ads is a done-for-you offer sold on /pricing, not a
-    // standalone Stripe checkout — send clicks there instead.
+    // Scale + Ads is a done-for-you call center offer — send clicks to /call-center-upgrade
     if (planId === 'scale') {
-      navigate('/pricing');
+      window.location.href = 'https://kenjiai.com/call-center-upgrade';
       return;
     }
     window.open(plan.link, '_blank');

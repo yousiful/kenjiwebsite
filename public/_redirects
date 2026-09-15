@@ -8,6 +8,12 @@
 /about-yousif-alias        /about-yousif-alias/index.html      200
 /about-yousif-alias/       /about-yousif-alias/index.html      200
 
+# AI Call Center Upgrade — static HTML, bypass SPA fallback
+/call-center-upgrade       /call-center-upgrade/index.html     200
+/call-center-upgrade/      /call-center-upgrade/index.html     200
+/ai-callcenter             /ai-callcenter/index.html           200
+/ai-callcenter/            /ai-callcenter/index.html           200
+
 # Evergreen webinar funnel — static HTML, bypass SPA fallback
 /webinar1                  /webinar1/index.html                200
 /webinar1/                 /webinar1/index.html                200
