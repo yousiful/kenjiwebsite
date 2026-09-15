@@ -1,10 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, Search, TrendingUp, AlertCircle } from 'lucide-react';
+import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, Search, TrendingUp, AlertCircle, PhoneCall } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 const FreeToolsPage: React.FC = () => {
   const freeTools = [
+    {
+      name: "Missed Call Revenue Loss Calculator",
+      description: "Interactive diagnostic tool for high-ticket businesses to calculate pipeline revenue lost to unanswered calls and discover ROI on 24/7 AI call answering agents.",
+      url: "/tools/missed-call-calculator",
+      icon: PhoneCall,
+      gradient: "from-blue-600 via-indigo-600 to-emerald-500",
+      features: ["Instant ROI Model", "Industry Benchmarks", "Embeddable Widget", "Free Forever"],
+      category: "Diagnostics",
+      rating: 5.0,
+      users: "15K+",
+      keywords: ["missed call calculator", "call center ROI", "inbound lead loss", "AI receptionist calculator", "business revenue recovery"],
+      revenue: "Calculate exact annual revenue bleed"
+    },
     {
       name: "AI Prompt Generator",
       description: "Generate perfect AI prompts for any use case with our intelligent prompt engineering tool. Create optimized prompts for ChatGPT, Claude, GPT-4, and other AI models. Free forever, no signup required.",
@@ -371,16 +384,16 @@ const FreeToolsPage: React.FC = () => {
                       {/* CTA */}
                       <motion.a
                         href={tool.url}
-                        target="_blank"
+                        target={tool.url.startsWith('/') ? undefined : '_blank'}
                         aria-label={`Start using ${tool.name}`}
-                        rel="noopener noreferrer"
+                        rel={tool.url.startsWith('/') ? undefined : 'noopener noreferrer'}
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         className={`inline-flex items-center gap-2 bg-gradient-to-r ${tool.gradient} text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg`}
                       >
                         <Sparkles className="w-5 h-5" />
-                        Start Making Money Free
-                        <ExternalLink className="w-4 h-4" />
+                        {tool.url.startsWith('/') ? 'Launch Interactive Tool' : 'Start Making Money Free'}
+                        {tool.url.startsWith('/') ? <ArrowRight className="w-4 h-4" /> : <ExternalLink className="w-4 h-4" />}
                       </motion.a>
                     </div>
                   </div>
