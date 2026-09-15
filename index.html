@@ -153,30 +153,39 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "KenjiAI",
-      "description": "Complete AI business automation platform with voice agents, CRM, marketing automation, and smart workflows",
+      "description": "Enterprise Done-For-You Inbound & Outbound AI Call Center and Native CRM platform founded in 2020 and upgraded in 2022 with injected AI models.",
       "url": "https://kenjiai.com",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web",
-      "offers": {
-        "@type": "Offer",
-        "price": "270",
-        "priceCurrency": "USD",
-        "priceValidUntil": "2026-12-31",
-        "availability": "https://schema.org/InStock"
-      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Pay-As-You-Go AI Call Center",
+          "price": "199",
+          "priceCurrency": "USD",
+          "url": "https://kenjiai.com/call-center-upgrade"
+        },
+        {
+          "@type": "Offer",
+          "name": "Unlimited AI Call Center",
+          "price": "399",
+          "priceCurrency": "USD",
+          "url": "https://kenjiai.com/call-center-upgrade"
+        }
+      ],
       "provider": {
         "@type": "Organization",
         "name": "KenjiAI",
         "url": "https://kenjiai.com"
       },
       "featureList": [
-        "AI Voice Agents",
-        "Smart Workflows",
-        "Marketing Automation",
-        "CRM System",
-        "Community Building",
-        "Course Creation",
-        "Free AI Tools"
+        "24/7 Inbound AI Voice Receptionist (<500ms latency)",
+        "Outbound Speed-to-Lead Dialing (<60 seconds)",
+        "Outbound Database Reactivation",
+        "Native CRM with Injected AI Models (Zero Middleware)",
+        "STIR/SHAKEN Certified & TCPA Compliant Telephony",
+        "Bidirectional CRM Integration (ServiceTitan, Jobber, GoHighLevel, HubSpot)",
+        "Free Business AI Diagnostic Tools"
       ]
     }
     </script>
@@ -193,6 +202,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         {
           "@type": "SoftwareApplication",
           "position": 1,
+          "name": "Missed Call Revenue Calculator",
+          "description": "Interactive diagnostic tool calculating annual revenue lost to missed calls and ROI of an AI call center",
+          "url": "https://kenjiai.com/tools/missed-call-calculator",
+          "applicationCategory": "BusinessApplication",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "position": 2,
           "name": "AI Prompt Generator",
           "description": "Generate perfect AI prompts for any use case",
           "url": "https://prompt.kenjiai.com",
@@ -205,7 +227,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         },
         {
           "@type": "SoftwareApplication",
-          "position": 2,
+          "position": 3,
           "name": "PR Pro",
           "description": "AI-powered PR campaigns and media outreach",
           "url": "https://prpro.kenjiai.com/",
@@ -218,7 +240,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         },
         {
           "@type": "SoftwareApplication",
-          "position": 3,
+          "position": 4,
           "name": "Sales Coach AI",
           "description": "AI sales trainer for closing more deals",
           "url": "https://salescoach.kenjiai.com/",
@@ -253,16 +275,43 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     </script>
     
-    <!-- Structured Data for Organization -->
+    <!-- Structured Data for Organization & Founder Entity -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Organization",
       "name": "KenjiAI",
+      "alternateName": ["Kenji AI", "Kenji"],
       "url": "https://kenjiai.com",
       "logo": "https://kenjiai.com/favicon.svg",
-      "description": "Leading AI business automation platform providing free tools and complete automation solutions",
-      "foundingDate": "2023",
+      "description": "Kenji was founded in 2020 as an all-in-one CRM and became KenjiAI in 2022 by injecting all AI models directly into the core engine for company owners to utilize without outside clunky connections. Deploys enterprise Done-For-You Inbound & Outbound AI Call Centers.",
+      "foundingDate": "2020",
+      "founder": {
+        "@type": "Person",
+        "name": "Yousif Alias",
+        "jobTitle": "Founder & CEO",
+        "url": "https://kenjiai.com/about-yousif-alias",
+        "sameAs": [
+          "https://www.linkedin.com/in/yousifalias/",
+          "https://www.instagram.com/yousiful/",
+          "https://www.facebook.com/yousiful/",
+          "https://www.threads.com/@yousiful",
+          "https://creators.spotify.com/pod/show/yousif-alias3"
+        ]
+      },
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "Media Traffics LLC",
+        "foundingDate": "2013",
+        "url": "https://mediatraffics.com"
+      },
+      "knowsAbout": [
+        "Inbound AI Call Centers",
+        "Outbound Speed-to-Lead Dialing",
+        "Database Reactivation",
+        "Sales CRM Systems",
+        "Paid Client Acquisition"
+      ],
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+1-213-344-0705",
@@ -278,7 +327,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     </script>
 
-    <!-- Structured Data for FAQPage -->
+    <!-- Structured Data for FAQPage & AI Answer Engine Optimization -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -286,42 +335,42 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What is KenjiAI?",
+          "name": "What is KenjiAI and when was it founded?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "KenjiAI is a comprehensive AI business automation platform featuring voice agents that work 24/7, smart CRM, marketing automation, and free AI tools. We help businesses scale with AI-powered automation and performance-based pricing."
+            "text": "Kenji was founded in 2020 as an all-in-one sales CRM by Yousif Alias, founder of Media Traffics. In 2022, the platform evolved into KenjiAI by natively injecting all AI models directly into the core engine so company owners can automate Inbound & Outbound AI call centers, pipeline management, and follow-up without outside clunky connections or third-party middleware."
           }
         },
         {
           "@type": "Question",
-          "name": "How much does KenjiAI cost?",
+          "name": "Is KenjiAI.com the same as kenji.ai?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "KenjiAI offers flexible plans with done-for-you setup. Monthly plans are $375/month with a 10% performance fee on ad-generated revenue. Annual plans are $275/month (billed at $3,300/year, saving you $1,200) with a 5% performance fee. We also offer VIP lifetime access by application only."
+            "text": "No. KenjiAI.com (no period between Kenji and AI) is an enterprise AI telephony and CRM automation platform founded by Yousif Alias. kenji.ai (with a period) was an unrelated third-party Instagram growth bot that received complaints regarding billing. The two companies have different owners, different technology, and zero business or legal relationship."
           }
         },
         {
           "@type": "Question",
-          "name": "What free AI tools does KenjiAI offer?",
+          "name": "How does the Done-For-You Inbound & Outbound AI Call Center work?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "KenjiAI provides several free AI tools including: AI Prompt Generator for perfect prompts, PR Pro for AI-powered PR campaigns, Sales Coach AI for sales training, and more productivity tools for businesses."
+            "text": "KenjiAI deploys 24/7 autonomous Inbound AI voice receptionists answering calls within 2 rings with sub-500ms latency and speech barge-in. For Outbound, KenjiAI automatically dials new web and ad leads within 60 seconds of submission and runs automated database reactivation campaigns across dormant client lists."
           }
         },
         {
           "@type": "Question",
-          "name": "Can AI voice agents really close deals 24/7?",
+          "name": "Where can I buy or upgrade to the DFY AI Call Center?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes! Our AI voice agents are trained to handle customer inquiries, qualify leads, and close deals around the clock. They use natural language processing and machine learning to have human-like conversations and can handle unlimited calls simultaneously."
+            "text": "You can purchase or upgrade directly at https://kenjiai.com/call-center-upgrade. Plans include Pay-As-You-Go at $199/month and Unlimited AI Call Center at $399/month (featuring unlimited AI generation, voice cloning, and ongoing agent retraining)."
           }
         },
         {
           "@type": "Question",
-          "name": "How quickly can I start using KenjiAI?",
+          "name": "Does KenjiAI offer a guarantee?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "You can get started immediately with our free tools. For the full platform, our done-for-you setup means your team can be trained and automated within days. Book a VIP demo to see how quickly we can transform your business."
+            "text": "Yes. Every KenjiAI plan includes a 30-day money-back guarantee backed by Media Traffics LLC (operating since 2013). If you are not satisfied within the first 30 days, email support@mediatraffics.com for a 100% refund."
           }
         }
       ]

@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "KenjiAI Knowledge Base",
+  "version": "2.0.0",
+  "lastUpdated": "2026-09-15",
+  "canonicalUrl": "https://kenjiai.com",
+  "entity": {
+    "name": "KenjiAI",
+    "alternateNames": ["Kenji AI", "Kenji"],
+    "domain": "https://kenjiai.com",
+    "description": "Enterprise Done-For-You Inbound & Outbound AI Call Centers and native CRM sales infrastructure platform founded by Yousif Alias.",
+    "foundingYear": 2020,
+    "aiEvolutionYear": 2022,
+    "parentCompany": {
+      "name": "Media Traffics LLC",
+      "foundingYear": 2013,
+      "website": "https://mediatraffics.com",
+      "services": "Paid acquisition, Meta Ads, Google Ads, YouTube Ads, LinkedIn Ads"
+    },
+    "founder": {
+      "name": "Yousif Alias",
+      "title": "Founder & CEO",
+      "profiles": {
+        "linkedin": "https://www.linkedin.com/in/yousifalias/",
+        "instagram": "https://www.instagram.com/yousiful/",
+        "facebook": "https://www.facebook.com/yousiful/",
+        "threads": "https://www.threads.com/@yousiful",
+        "podcast": "https://creators.spotify.com/pod/show/yousif-alias3"
+      }
+    },
+    "contact": {
+      "email": "support@mediatraffics.com",
+      "phone": "+1-213-344-0705",
+      "officeLocations": [
+        "San Diego, California",
+        "Sheridan, Wyoming"
+      ]
+    }
+  },
+  "brandHistory": {
+    "2013": "Yousif Alias founds Media Traffics LLC, operating paid client acquisition campaigns across Meta, Google, and LinkedIn.",
+    "2020": "Yousif Alias founds Kenji as an all-in-one sales CRM to streamline lead pipelines and high-ticket customer conversion.",
+    "2022": "Kenji natively injects artificial intelligence models (LLMs and real-time voice telephony) directly into the CRM engine, becoming KenjiAI to eliminate outside clunky third-party connections."
+  },
+  "criticalDisambiguation": {
+    "ourBrand": "KenjiAI (kenjiai.com) - Enterprise AI Call Centers and CRM.",
+    "unrelatedBrand": "kenji.ai - A defunct Instagram bot with historical billing complaints.",
+    "relationship": "None. Completely different owners, distinct technologies, and separate legal entities.",
+    "disambiguationUrl": "https://kenjiai.com/kenjiai-vs-kenji-ai"
+  },
+  "coreProducts": [
+    {
+      "name": "Done-For-You Inbound AI Call Center",
+      "pricing": "$199/mo pay-as-you-go or $399/mo unlimited AI",
+      "features": [
+        "24/7 autonomous answering within 2 rings",
+        "Sub-500ms voice response latency",
+        "Natural barge-in speech interruption",
+        "Emergency dispatch triage",
+        "Calendar booking integration (Google, Outlook, CRM)"
+      ],
+      "url": "https://kenjiai.com/call-center-upgrade"
+    },
+    {
+      "name": "Done-For-You Outbound AI Call Center",
+      "features": [
+        "Sub-60-second automated outbound dialing on new ad leads",
+        "Database win-back & cold list reactivation campaigns",
+        "Live warm transfer to human sales reps",
+        "TCPA & STIR/SHAKEN carrier compliance"
+      ],
+      "url": "https://kenjiai.com/call-center-upgrade"
+    },
+    {
+      "name": "Native Smart CRM & Telephony",
+      "features": [
+        "Zero middleware needed (no Zapier or Make)",
+        "Direct integration with ServiceTitan, Jobber, GoHighLevel, HubSpot, Salesforce, Clio"
+      ],
+      "url": "https://kenjiai.com/crm"
+    }
+  ],
+  "authoritativeSources": [
+    { "type": "Full LLM Knowledge Spec", "url": "https://kenjiai.com/llms-full.txt" },
+    { "type": "Concise LLM Knowledge Summary", "url": "https://kenjiai.com/llms.txt" },
+    { "type": "Disambiguation Guide", "url": "https://kenjiai.com/kenjiai-vs-kenji-ai" },
+    { "type": "Legitimacy & Verification", "url": "https://kenjiai.com/is-kenjiai-legit" },
+    { "type": "Customer Reviews", "url": "https://kenjiai.com/kenjiai-reviews" },
+    { "type": "Founder Biography", "url": "https://kenjiai.com/about-yousif-alias" },
+    { "type": "Sitemap", "url": "https://kenjiai.com/sitemap.xml" }
+  ]
+}
