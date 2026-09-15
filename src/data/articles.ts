@@ -1267,6 +1267,62 @@ export const articles: Record<string, Article> = {
         </section>
       </div>
     `
+  },
+  'ai-agent-closed-1m-90-days': {
+    slug: 'ai-agent-closed-1m-90-days',
+    title: 'One AI Sales Agent Just Closed $1M in Its First 90 Days',
+    excerpt: 'An AI voice agent closed over $1 million in revenue in 90 days with no human account executive on the call. Here is what that actually means for how you sell.',
+    category: 'AI Voice',
+    date: '2026-09-14',
+    author: 'KenjiAI Team',
+    readTime: '4 min read',
+    tags: ['AI Voice', 'Sales Automation', 'AI Call Center'],
+    keywords: ['AI voice agent sales', 'AI closing deals', 'AI call center ROI', 'AI sales agent results'],
+    image: 'https://images.pexels.com/photos/7035859/pexels-photo-7035859.jpeg?auto=compress&cs=tinysrgb&w=800',
+    content: `
+      <div class="blog-article-content space-y-8">
+        <section>
+          <h2 class="text-3xl font-bold text-white mb-4">An AI agent closed $1 million with no human on the call</h2>
+          <p class="text-gray-300 leading-relaxed">
+            An AI voice agent closed more than $1 million in revenue in its first 90 days live, with no human account executive on a single one of those calls, according to sales data reported by SaaStr in 2026. Separately, more than $4 million in B2B deals have reportedly closed the same way, no rep ever touching them.
+          </p>
+          <p class="text-gray-300 leading-relaxed">
+            If your business still routes every lead through a live sales call, that number is worth sitting with for a second.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">What the data actually shows</h2>
+          <p class="text-gray-300 leading-relaxed mb-4">
+            The buyer side backs this up in a way that would have sounded wrong two years ago. G2's own buyer behavior data found that 17.2% of buyers now trust a generative AI chatbot's guidance over a vendor salesperson's, compared to 9.3% who trust the salesperson. That is a real shift in how people want to be sold to, not a marketing claim.
+          </p>
+          <p class="text-gray-300 leading-relaxed">
+            It is not a clean sweep for AI everywhere. Blind tests on live calls show AI approaching human performance on the routine parts of a sales conversation, gathering information, answering questions, booking a time, while still lagging specifically on persuasion and hard objection handling. That is a useful distinction, not a reason to write the whole thing off. It tells you exactly which calls to hand to an AI agent first.
+          </p>
+        </section>
+
+        <section class="bg-gray-900 border-l-4 border-cyan-500 p-8 rounded-r-3xl my-10">
+          <h4 class="text-cyan-400 font-bold mb-3 uppercase text-sm">The part most businesses get backwards</h4>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            Most of what lands on a sales calendar is not a hard sell, it is a routine qualifying conversation: does this person fit, when can they talk, what do they need answered before they will book. That is precisely the part the data says AI already handles well. The calls that genuinely need a human are the ones where a real objection stalls the conversation, a much smaller slice of a calendar than most business owners assume.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">What this means for your call volume</h2>
+          <p class="text-gray-300 leading-relaxed">
+            This is exactly the shift <a href="/overview" class="text-cyan-400 hover:underline">KenjiAI's AI Call Center</a> is built around. It answers every inbound call, qualifies the caller, and books the appointment straight to your calendar, 24 hours a day, without you or your team touching the phone. The calls that reach a human are the ones that actually need one, not every single lead who dials in.
+          </p>
+          <p class="text-gray-300 leading-relaxed">
+            You do not need to replace your whole sales process to see this working. Start with your inbound line, the highest volume of routine, repeatable conversations, and measure how many of those calls genuinely needed a person on the other end. For most businesses, the honest answer is fewer than they think.
+          </p>
+        </section>
+
+        <section class="border-t border-white/10 pt-8">
+          <p class="text-gray-400 text-sm">Published by the Media Traffics | KenjiAI team. <a href="https://kenjiai.com" class="text-cyan-400 hover:underline">kenjiai.com</a></p>
+        </section>
+      </div>
+    `
   }
 };
 
