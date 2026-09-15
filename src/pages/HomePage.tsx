@@ -12,6 +12,7 @@ import { TrustBadges } from '../components/TrustBadges';
 import { MoneyBackGuarantee } from '../components/MoneyBackGuarantee';
 import FAQ from '../components/FAQ';
 import QuickContact from '../components/QuickContact';
+import { CallSimulator } from '../components/CallSimulator';
 
 const HomePage: React.FC = () => {
   const structuredData = {
@@ -64,6 +65,7 @@ const HomePage: React.FC = () => {
       <div className="pt-0">
         <Hero />
         <TrustBadges />
+        <CallSimulator />
         <BusinessTransformation />
         <Features />
         <Tools />
