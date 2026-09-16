@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-16T01:00:05.225Z",
+  "timestamp": "2026-09-16T15:16:51.591Z",
   "masterScore": 100,
   "publicScore": 100,
   "infrastructureScore": 100,
@@ -64,7 +64,8 @@
         "description": "Add an Inbound & Outbound AI Call Center to your business. Pay-as-you-go at $199/mo or $399/mo for unlimited AI usage, voice cloning, and ongoing agent training.",
         "canonical": "https://kenjiai.com/call-center-upgrade/",
         "jsonLdTypes": [
-          "Product"
+          "Product",
+          "BreadcrumbList"
         ]
       }
     },
