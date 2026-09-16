@@ -6,6 +6,7 @@ export interface SEOHeadProps {
   description?: string;
   keywords?: string;
   canonical?: string;
+  canonicalUrl?: string;
   ogImage?: string;
   ogType?: string;
   article?: {
@@ -23,6 +24,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   description = "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI voice call centers for high-ticket businesses. Sub-500ms inbound answering, 60-second speed-to-lead outbound dialing, and automated database reactivation.",
   keywords = "AI call center, inbound AI receptionist, outbound speed to lead, database reactivation, AI voice agents, business automation CRM, KenjiAI",
   canonical,
+  canonicalUrl: canonicalUrlProp,
   ogImage = "https://kenjiai.com/og-image.svg",
   ogType = "website",
   article,
@@ -34,7 +36,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   const currentUrl = typeof window !== 'undefined'
     ? `${window.location.origin}${window.location.pathname}`
     : 'https://kenjiai.com';
-  const canonicalUrl = canonical || currentUrl;
+  const canonicalUrl = canonical || canonicalUrlProp || currentUrl;
   
   // Ensure structuredData is a string
   const structuredDataString = typeof structuredData === 'string' 
