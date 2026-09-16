@@ -196,6 +196,12 @@ const FreeToolsPage: React.FC = () => {
         <meta name="description" content="Free AI tools for business: prompt generator, PR outreach, sales coach, and investor connect. No signup, free forever, from the team behind KenjiAI." />
         <meta name="keywords" content="free AI tools, AI prompt generator, free PR tools, AI sales coach, free startup tools, ChatGPT prompts, GPT-4 prompts, AI business tools, free marketing tools, AI automation tools, prompt engineering, free AI software, business automation, AI productivity tools, free AI apps" />
         <link rel="canonical" href="https://kenjiai.com/free-tools" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Free AI Tools for Business | KenjiAI" />
+        <meta property="og:description" content="Free AI tools for business: prompt generator, PR outreach, sales coach, and missed call ROI calculator." />
+        <meta property="og:url" content="https://kenjiai.com/free-tools" />
+        <meta property="og:image" content="https://kenjiai.com/og-image.svg" />
+        <meta name="twitter:card" content="summary_large_image" />
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}
         </script>
