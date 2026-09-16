@@ -1,10 +1,10 @@
 {
-  "name": "KenjiAI - AI Business Automation Platform",
+  "name": "KenjiAI - Done-For-You Inbound & Outbound AI Call Centers",
   "short_name": "KenjiAI",
-  "description": "Transform your business with AI automation. Voice agents, smart CRM, marketing automation, and free AI tools.",
+  "description": "Deploy 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice answering, 60s speed-to-lead dialing, and automated database reactivation.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
+  "background_color": "#0a0e14",
   "theme_color": "#3b82f6",
   "orientation": "portrait-primary",
   "icons": [
@@ -23,9 +23,34 @@
   "categories": [
     "business",
     "productivity",
+    "telephony",
     "utilities"
   ],
   "shortcuts": [
+    {
+      "name": "AI Call Center Upgrade",
+      "short_name": "Call Center",
+      "description": "Deploy 24/7 Inbound & Outbound AI Call Center",
+      "url": "/call-center-upgrade",
+      "icons": [
+        {
+          "src": "/favicon.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Missed Call Calculator",
+      "short_name": "Calculator",
+      "description": "Calculate annual revenue lost to missed calls",
+      "url": "/tools/missed-call-calculator",
+      "icons": [
+        {
+          "src": "/favicon.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
     {
       "name": "Free Tools",
       "short_name": "Free Tools",
