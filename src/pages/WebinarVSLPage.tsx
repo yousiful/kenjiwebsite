@@ -237,16 +237,16 @@ export default function WebinarVSLPage() {
         <div className="hidden sm:flex items-center justify-between bg-[#111822]/80 border-b border-white/10 backdrop-blur-md px-6 py-4 max-w-4xl w-full mx-auto">
           <div>
             <span className="text-blue-500 text-xs font-extrabold uppercase tracking-widest block mb-1">
-              Exclusive Briefing
+              Executive Briefing
             </span>
             <h1 className="text-lg sm:text-xl font-bold tracking-tight">
               How To Automate Leads &amp; Scale Without More Work
             </h1>
           </div>
-          <div className="flex items-center gap-3 bg-red-500/10 border border-red-500/30 px-4 py-2 rounded-full shrink-0">
-            <div className="w-2.5 h-2.5 bg-red-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.8)]" />
-            <span className="font-semibold text-sm tracking-wide">
-              Live: <span className="font-mono">{viewers}</span>
+          <div className="flex items-center gap-3 bg-blue-500/10 border border-blue-500/30 px-4 py-2 rounded-full shrink-0">
+            <div className="w-2.5 h-2.5 bg-blue-400 rounded-full" />
+            <span className="font-semibold text-sm tracking-wide text-blue-300">
+              On-Demand Access
             </span>
           </div>
         </div>
