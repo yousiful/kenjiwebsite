@@ -119,9 +119,9 @@ const MarketingAutomationPage: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="AI Marketing Automation Platform | KenjiAI - Email, Social Media & Lead Nurturing"
-        description="Automate your marketing with AI. Smart email campaigns, social media automation, lead nurturing, and analytics."
-        keywords="marketing automation, email automation, social media automation, lead nurturing, AI marketing, email marketing platform, automated email campaigns"
+        title="AI Marketing & Speed-to-Lead Automation | KenjiAI"
+        description="Automate your pipeline with KenjiAI. Instant sub-60-second outbound dialing on ad leads, multi-channel SMS & email follow-up, and automated database reactivation."
+        keywords="speed to lead automation, outbound AI calling, marketing automation, lead nurturing, database reactivation, automated ad callbacks, KenjiAI"
         canonical="https://kenjiai.com/marketing-automation"
         structuredData={structuredData}
       />

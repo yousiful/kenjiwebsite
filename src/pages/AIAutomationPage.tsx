@@ -88,9 +88,9 @@ const AIAutomationPage: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="AI Business Automation Platform | KenjiAI - Automate Operations & Scale Growth"
-        description="Transform your business with AI automation. Automate workflows, customer service, sales processes, and operations. Get started today."
-        keywords="AI automation, business automation, workflow automation, AI business processes, intelligent automation, business AI platform, automate business operations, AI workflow software"
+        title="AI Business & Voice Call Center Automation | KenjiAI"
+        description="Deploy enterprise AI automation with KenjiAI. 24/7 autonomous Inbound & Outbound AI call centers, native CRM pipeline syncing, and intelligent workflows."
+        keywords="AI automation, AI call center, inbound voice AI, outbound speed to lead, business workflow automation, CRM automation, KenjiAI"
         canonical="https://kenjiai.com/ai-automation"
         structuredData={structuredData}
       />
