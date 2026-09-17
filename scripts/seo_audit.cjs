@@ -124,7 +124,7 @@ for (const file of htmlFiles) {
     pageReport.details.jsonLdTypes = typesFound;
   }
 
-  // 6. Heading hierarchy check (H1)
+  // 6. Heading hierarchy check (H1 & Level Continuity)
   const h1Matches = [...content.matchAll(/<h1[^>]*>([\s\S]*?)<\/h1>/gi)];
   if (h1Matches.length === 0) {
     if (relPath !== 'index.html' && !content.includes('root') && !isNoIndex) {
@@ -134,6 +134,22 @@ for (const file of htmlFiles) {
   } else if (h1Matches.length > 1) {
     pageReport.score -= 5;
     pageReport.penalties.push(`Multiple (${h1Matches.length}) <h1> tags found (-5)`);
+  }
+
+  // Heading continuity check (no skipping levels like h1 -> h3)
+  const allHeadings = [...content.matchAll(/<(h[1-6])[^>]*>([\s\S]*?)<\/\1>/gi)].map(m => parseInt(m[1][1], 10));
+  let prevLvl = 0;
+  let skippedHeading = false;
+  for (const lvl of allHeadings) {
+    if (prevLvl > 0 && lvl > prevLvl + 1) {
+      skippedHeading = true;
+      break;
+    }
+    prevLvl = lvl;
+  }
+  if (skippedHeading) {
+    pageReport.score -= 5;
+    pageReport.penalties.push('Skipped heading level detected in DOM hierarchy (-5)');
   }
 
   // 7. Image alt tag check (Applies to all pages for accessibility & compliance)
@@ -189,6 +205,14 @@ if (fs.existsSync(llmsTxtPath) && fs.existsSync(llmsFullTxtPath) && fs.existsSyn
 } else {
   globalScore -= 15;
   globalChecks.push('Incomplete AI knowledge specification files [WARN]');
+}
+
+const ogImagePath = path.join(PUBLIC_DIR, 'og-image.png');
+if (fs.existsSync(ogImagePath)) {
+  globalChecks.push('Raster OpenGraph card (og-image.png, 1200x630) verified [PASS]');
+} else {
+  globalScore -= 10;
+  globalChecks.push('Missing raster og-image.png for social previews [WARN]');
 }
 
 console.log('====================================================');

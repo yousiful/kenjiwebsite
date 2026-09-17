@@ -200,7 +200,7 @@ const FreeToolsPage: React.FC = () => {
         <meta property="og:title" content="Free AI Tools for Business | KenjiAI" />
         <meta property="og:description" content="Free AI tools for business: prompt generator, PR outreach, sales coach, and missed call ROI calculator." />
         <meta property="og:url" content="https://kenjiai.com/free-tools" />
-        <meta property="og:image" content="https://kenjiai.com/og-image.svg" />
+        <meta property="og:image" content="https://kenjiai.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <script type="application/ld+json">
           {JSON.stringify(structuredData)}

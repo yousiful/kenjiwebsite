@@ -22,6 +22,10 @@
 /webinar1/replay           /webinar1/replay/index.html         200
 /webinar1/replay/          /webinar1/replay/index.html         200
 
+# Client Attraction System (One-Time Offer) — static HTML, bypass SPA fallback
+/one-timeoffer             /one-timeoffer/index.html           200
+/one-timeoffer/            /one-timeoffer/index.html           200
+
 # /overview-b: distinct "Client Maxing" VSL (webinar-2.mp4, DFY deliverables
 # list, buyer-qualifier checkout router) instead of the React SPA route, so
 # it and /overview are genuinely different, not just a video swap.

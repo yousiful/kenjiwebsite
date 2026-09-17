@@ -29,7 +29,16 @@ export const internalRoutes = [
   '/setup',
   '/helpful-links',
   '/partnerup',
-  '/workshop'
+  '/workshop',
+  '/call-center-upgrade',
+  '/ai-callcenter',
+  '/is-kenjiai-legit',
+  '/kenjiai-vs-kenji-ai',
+  '/kenjiai-reviews',
+  '/about-yousif-alias',
+  '/one-timeoffer',
+  '/webinar1',
+  '/tools/missed-call-calculator'
 ] as const;
 
 export const externalRoutes = {

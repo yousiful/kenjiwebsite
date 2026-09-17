@@ -8,8 +8,9 @@ const Footer: React.FC = () => {
   const navLinks = {
     solutions: [
       { name: 'Buy DFY AI Call Center', href: 'https://kenjiai.com/call-center-upgrade', external: true },
+      { name: 'AI Call Center Checker', href: '/ai-callcenter' },
       { name: 'AI Voice Agents', href: '/voice-agents' },
-      { name: 'Done-For-You Call Centers', href: '/voice-ai' },
+      { name: 'Client Attraction System', href: '/one-timeoffer' },
       { name: 'Marketing Automation', href: '/marketing-automation' },
       { name: 'Smart CRM Pipelines', href: '/crm' },
       { name: 'Free AI Growth Tools', href: '/free-tools' },
@@ -27,6 +28,10 @@ const Footer: React.FC = () => {
     ],
     company: [
       { name: 'Pricing & Guarantee', href: '/pricing' },
+      { name: 'About Yousif Alias', href: '/about-yousif-alias' },
+      { name: 'Is KenjiAI Legit?', href: '/is-kenjiai-legit' },
+      { name: 'Customer Reviews', href: '/kenjiai-reviews' },
+      { name: 'KenjiAI vs Kenji.ai', href: '/kenjiai-vs-kenji-ai' },
       { name: 'Funding & Credit', href: '/funding' },
       { name: 'Knowledge Base', href: '/knowledge' },
       { name: 'AI Education Academy', href: '/ai-education' },

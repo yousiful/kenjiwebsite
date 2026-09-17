@@ -8,7 +8,8 @@ export default function TermsOfServicePage() {
       <Helmet>
         <title>Terms of Service | KenjiAI</title>
         <meta name="description" content="KenjiAI Terms of Service - Legal terms and conditions for using our AI automation platform." />
-        <meta name="robots" content="noindex, follow" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://kenjiai.com/terms" />
       </Helmet>
 
       <div className="min-h-screen bg-gray-900 pt-24 pb-16">

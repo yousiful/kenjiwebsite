@@ -25,7 +25,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   keywords = "AI call center, inbound AI receptionist, outbound speed to lead, database reactivation, AI voice agents, business automation CRM, KenjiAI",
   canonical,
   canonicalUrl: canonicalUrlProp,
-  ogImage = "https://kenjiai.com/og-image.svg",
+  ogImage = "https://kenjiai.com/og-image.png",
   ogType = "website",
   article,
   structuredData

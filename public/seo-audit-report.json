@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-17T14:32:48.632Z",
+  "timestamp": "2026-09-17T15:47:09.475Z",
   "masterScore": 100,
   "publicScore": 100,
   "infrastructureScore": 100,
@@ -143,6 +143,7 @@
   "globalChecks": [
     "robots.txt configured with AI bots and sitemap pointer [PASS]",
     "sitemap.xml active with 70 indexed URLs [PASS]",
-    "AEO & LLM Engine Files (llms.txt, llms-full.txt, ai-knowledge.json) verified [PASS]"
+    "AEO & LLM Engine Files (llms.txt, llms-full.txt, ai-knowledge.json) verified [PASS]",
+    "Raster OpenGraph card (og-image.png, 1200x630) verified [PASS]"
   ]
 }

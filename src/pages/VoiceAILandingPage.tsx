@@ -284,7 +284,7 @@ const VoiceAILandingPage: React.FC = () => {
           `}
         </script>
         <noscript>
-          {`<img height="1" width="1" style="display:none"
+          {`<img height="1" width="1" style="display:none" alt=""
           src="https://www.facebook.com/tr?id=${META_CONFIG.pixelId}&ev=PageView&noscript=1"
           />`}
         </noscript>

@@ -8,7 +8,8 @@ export default function DisclaimerPage() {
       <Helmet>
         <title>Disclaimer | KenjiAI</title>
         <meta name="description" content="Important disclaimers about KenjiAI services, results, and limitations." />
-        <meta name="robots" content="noindex, follow" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://kenjiai.com/disclaimer" />
       </Helmet>
 
       <div className="min-h-screen bg-gray-900 pt-24 pb-16">

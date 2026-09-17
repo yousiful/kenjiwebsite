@@ -232,9 +232,9 @@ export default function WebinarVSLPageB() {
 
         {/* ── TITLE (mobile only, below video) ── */}
         <div className="sm:hidden px-4 pt-3 pb-1">
-          <h1 className="text-base font-bold leading-snug text-white">
+          <p className="text-base font-bold leading-snug text-white">
             How To Automate Leads &amp; Scale Without More Work
-          </h1>
+          </p>
         </div>
 
         {/* ── CTA SECTION (locked until the training finishes) ── */}

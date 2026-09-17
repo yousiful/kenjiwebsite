@@ -8,7 +8,8 @@ export default function PrivacyPolicyPage() {
       <Helmet>
         <title>Privacy Policy | KenjiAI</title>
         <meta name="description" content="KenjiAI Privacy Policy - Learn how we collect, use, and protect your personal information." />
-        <meta name="robots" content="noindex, follow" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://kenjiai.com/privacy" />
       </Helmet>
 
       <div className="min-h-screen bg-gray-900 pt-24 pb-16">
