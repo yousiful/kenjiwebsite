@@ -14,6 +14,12 @@ const MONTHLY_FEATURES = [
   "We build and launch your first ad campaign in week one",
   "Live onboarding call within 48 hours of signup",
   "Real human support, not chatbots, usually back to you in under 2 hours",
+  "Done-for-you ad setup and management",
+  "Done-for-you AI workflows built around your business",
+  "Done-for-you AI call center that answers and qualifies every call",
+  "Done-for-you community setup to keep your customers engaged",
+  "An accountability coach keeping your rollout on track",
+  "A complete marketing team, not one freelancer juggling everything",
 ];
 
 const YEARLY_FEATURES = [
@@ -22,6 +28,7 @@ const YEARLY_FEATURES = [
   "Custom workflow built for your business in week one",
   "Sales team placement included if you need help closing",
   "Save $1,260 vs paying monthly",
+  "A dedicated done-for-you call center that follows up on every lead for you",
 ];
 
 const VIP_FEATURES = [
