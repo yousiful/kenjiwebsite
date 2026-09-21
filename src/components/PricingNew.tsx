@@ -166,7 +166,7 @@ export function PricingNew() {
             </div>
 
             <motion.button
-              onClick={() => handlePlanClick('https://freedom.kenjiai.com/checkout-4912-2457-3370', 'monthly')}
+              onClick={() => handlePlanClick('https://freedom.kenjiai.com/finishhere', 'monthly')}
               disabled={isLoading === 'monthly'}
               className={`w-full py-3.5 rounded-xl font-bold text-base flex flex-col items-center justify-center transition-all duration-300 mb-2 relative overflow-hidden group ${isLoading === 'monthly' ? 'opacity-90 cursor-wait bg-amber-600 text-white' : 'bg-[#10A37F] text-white hover:bg-[#0E906F]'}`}
             >
@@ -231,7 +231,7 @@ export function PricingNew() {
             </div>
 
             <motion.button
-              onClick={() => handlePlanClick('https://freedom.kenjiai.com/checkout-4912-2457-3370', 'yearly')}
+              onClick={() => handlePlanClick('https://freedom.kenjiai.com/finishhere', 'yearly')}
               disabled={isLoading === 'yearly'}
               className={`w-full py-3.5 rounded-xl font-bold text-base flex flex-col items-center justify-center transition-all duration-300 mb-2 relative overflow-hidden group ${isLoading === 'yearly' ? 'opacity-90 cursor-wait bg-[#10A37F] text-white' : 'bg-[#10A37F] text-white hover:bg-[#0E906F]'}`}
             >
