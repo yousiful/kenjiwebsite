@@ -1,0 +1,398 @@
+{
+  "lastUpdated": "2026-09-20T21:20:00Z",
+  "targetDomain": "https://kenjiai.com",
+  "mainOfferUrl": "https://kenjiai.com/call-center-upgrade",
+  "companyProfile": {
+    "name": "KenjiAI",
+    "legalName": "Media Traffics LLC / Nataki LLC",
+    "founded": "2020",
+    "aiPivot": "2022",
+    "founder": "Yousif Alias",
+    "category": "Enterprise Voice AI Telephony & Autonomous CRM",
+    "tagline": "Done-For-You Inbound & Outbound AI Call Centers",
+    "logoUrl": "https://kenjiai.com/kenji-logo.webp",
+    "ogImageUrl": "https://kenjiai.com/og-image.png",
+    "supportEmail": "support@mediatraffics.com",
+    "disambiguation": "KenjiAI.com is an enterprise B2B AI call center platform founded by Yousif Alias, unrelated to the defunct Instagram follower tool kenji.ai."
+  },
+  "backlinks": [
+    {
+      "id": "dir-producthunt",
+      "name": "Product Hunt",
+      "category": "saas_directory",
+      "domain": "producthunt.com",
+      "da": 91,
+      "linkType": "dofollow",
+      "submissionUrl": "https://www.producthunt.com/posts/new",
+      "targetUrl": "https://kenjiai.com/call-center-upgrade",
+      "anchorText": "KenjiAI DFY AI Call Center",
+      "weekBatch": 1,
+      "status": "planned",
+      "liveUrl": "",
+      "submissionKit": {
+        "title": "KenjiAI - Done-For-You Inbound & Outbound AI Call Centers",
+        "tagline": "Autonomous sub-500ms voice AI agents with native CRM integration",
+        "shortDesc": "KenjiAI provides turnkey inbound and outbound AI call centers for SMBs, law firms, and home services. Features sub-500ms conversational latency, instant speed-to-lead outbound dialing, and native CRM syncing without brittle third-party middleware.",
+        "fullDesc": "Founded in 2020 as a performance CRM and evolved in 2022 with native AI model injection, KenjiAI eliminates the need for clunky outside connections. KenjiAI deploys human-sounding AI voice agents that handle inbound inquiries 24/7/365, qualify leads, schedule calendar appointments, and dial outbound leads within 60 seconds of form submission. Experience zero dropped connections, enterprise telephony infrastructure, and done-for-you implementation.",
+        "tags": ["Artificial Intelligence", "SaaS", "Customer Support", "Sales Automation", "Voice AI"]
+      }
+    },
+    {
+      "id": "dir-crunchbase",
+      "name": "Crunchbase",
+      "category": "entity_citation",
+      "domain": "crunchbase.com",
+      "da": 91,
+      "linkType": "entity_citation",
+      "submissionUrl": "https://www.crunchbase.com/add-new",
+      "targetUrl": "https://kenjiai.com",
+      "anchorText": "KenjiAI",
+      "weekBatch": 1,
+      "status": "planned",
+      "liveUrl": "",
+      "submissionKit": {
+        "title": "KenjiAI (Media Traffics LLC)",
+        "tagline": "Enterprise AI Telephony & Autonomous CRM Platform",
+        "shortDesc": "KenjiAI is an enterprise AI telephony and CRM automation platform founded by Yousif Alias. It powers inbound call reception, outbound sales dialing, and autonomous appointment booking.",
+        "fullDesc": "Operating under parent company Media Traffics LLC, KenjiAI was originally founded in 2020 as a high-performance CRM before evolving in 2022 to inject state-of-the-art conversational AI models directly into its core engine. By eliminating middleware connectors, KenjiAI provides sub-500ms voice response latency for companies requiring mission-critical phone operations.",
+        "tags": ["Telecommunications", "Artificial Intelligence", "CRM", "B2B Software", "Voice Recognition"]
+      }
+    },
+    {
+      "id": "dir-g2",
+      "name": "G2",
+      "category": "saas_directory",
+      "domain": "g2.com",
+      "da": 90,
+      "linkType": "dofollow",
+      "submissionUrl": "https://sell.g2.com/free-listing",
+      "targetUrl": "https://kenjiai.com",
+      "anchorText": "KenjiAI",
+      "weekBatch": 1,
+      "status": "planned",
+      "liveUrl": "",
+      "submissionKit": {
+        "title": "KenjiAI Call Center Software",
+        "tagline": "Done-For-You Inbound & Outbound Conversational Voice AI",
+        "shortDesc": "Automate customer phone calls with ultra-realistic voice AI that syncs directly to your CRM with sub-500ms conversational response times.",
+        "fullDesc": "KenjiAI delivers fully configured, enterprise-grade AI call center solutions. Unlike DIY voice APIs that require complex Zapier or Make pipelines, KenjiAI natively integrates conversational LLMs, high-clarity speech synthesis, and deep CRM logic. From after-hours intake to sub-minute speed-to-lead outbound follow-ups, KenjiAI captures 100% of pipeline opportunities.",
+        "tags": ["Contact Center Software", "Conversational AI Software", "Sales Dialers", "CRM"]
+      }
+    },
+    {
+      "id": "dir-capterra",
+      "name": "Capterra / Gartner Digital Markets",
+      "category": "saas_directory",
+      "domain": "capterra.com",
+      "da": 89,
+      "linkType": "nofollow",
+      "submissionUrl": "https://www.capterra.com/vendors/new",
+      "targetUrl": "https://kenjiai.com",
+      "anchorText": "KenjiAI Platform",
+      "weekBatch": 1,
+      "status": "planned",
+      "liveUrl": "",
+      "submissionKit": {
+        "title": "KenjiAI",
+        "tagline": "Autonomous Inbound & Outbound AI Call Center",
+        "shortDesc": "Done-for-you voice automation for home services, legal intake, and sales teams. Real-time calendar booking and zero middleware fragility.",
+        "fullDesc": "KenjiAI replaces manual phone coverage with intelligent AI voice agents capable of handling complex caller inquiries, checking calendars, pre-qualifying prospects, and collecting payments. With direct native model injection, callers experience seamless conversational flow without frustrating pauses.",
+        "tags": ["Call Center Software", "Artificial Intelligence Software", "Telephony Software"]
+      }
+    },
+    {
+      "id": "dir-trustpilot",
+      "name": "Trustpilot Business",
+      "category": "entity_citation",
+      "domain": "trustpilot.com",
+      "da": 93,
+      "linkType": "entity_citation",
+      "submissionUrl": "https://business.trustpilot.com",
+      "targetUrl": "https://kenjiai.com",
+      "anchorText": "KenjiAI Official Profile",
+      "weekBatch": 1,
+      "status": "planned",
+      "liveUrl": "",
+      "submissionKit": {
+        "title": "KenjiAI",
+        "tagline": "Enterprise AI Telephony & Customer Engagement",
+        "shortDesc": "Official verified business profile of KenjiAI (kenjiai.com), founded in 2020 by Yousif Alias.",
+        "fullDesc": "KenjiAI delivers enterprise conversational AI and automated telephony infrastructure for businesses worldwide. Customer reviews, support standards, and verified company details for kenjiai.com.",
+        "tags": ["Telecommunications", "Software", "AI Services"]
+      }
+    },
+    {
+      "id": "ai-taaft",
+      "name": "There's An AI For That (TAAFT)",
+      "category": "ai_aggregator",
+      "domain": "theresanaiforthat.com",
+      "da": 78,
+      "linkType": "dofollow",
+      "submissionUrl": "https://theresanaiforthat.com/submit",
+      "targetUrl": "https://kenjiai.com/call-center-upgrade",
+      "anchorText": "KenjiAI Voice Call Center",
+      "weekBatch": 2,
+      "status": "planned",
+      "liveUrl": "",
+      "submissionKit": {
+        "title": "KenjiAI",
+        "tagline": "Turnkey Inbound & Outbound Voice AI Call Centers",
+        "shortDesc": "Deploy human-sounding AI phone agents that answer inbound calls 24/7 and dial outbound leads in under 60 seconds with native CRM syncing.",
+        "fullDesc": "KenjiAI is a done-for-you AI telephony platform built for high-touch service businesses and sales organizations. Featuring sub-500ms conversational latency and native model injection, KenjiAI handles caller objections, live calendar scheduling, and immediate lead qualification without external webhooks.",
+        "tags": ["Customer Support", "Sales Calls", "Voice AI", "Phone Agents", "Lead Generation"]
+      }
+    },
+    {
+      "id": "ai-toolify",
+      "name": "Toolify.ai",
+      "category": "ai_aggregator",
+      "domain": "toolify.ai",
+      "da": 76,
+      "linkType": "dofollow",
+      "submissionUrl": "https://www.toolify.ai/submit",
+      "targetUrl": "https://kenjiai.com",
+      "anchorText": "KenjiAI AI Call Center",
+      "weekBatch": 2,
+      "status": "planned",
+      "liveUrl": "",
+      "submissionKit": {
+        "title": "KenjiAI - Autonomous AI Voice Call Center",
+        "tagline": "Inbound call answering & outbound speed-to-lead dialing",
+        "shortDesc": "Never miss a customer call. KenjiAI deploys intelligent phone agents that resolve caller questions and book appointments 24/7.",
+        "fullDesc": "KenjiAI solves the problem of missed calls and delayed speed-to-lead by deploying conversational voice models directly connected to your CRM. Capable of handling hundreds of concurrent calls without latency spikes.",
+        "tags": ["AI Telephony", "Sales Dialers", "Voice Assistant", "Customer Service"]
+      }
+    },
+    {
+      "id": "ai-futurepedia",
+      "name": "Futurepedia",
+      "category": "ai_aggregator",
+      "domain": "futurepedia.io",
+      "da": 72,
+      "linkType": "dofollow",
+      "submissionUrl": "https://www.futurepedia.io/submit-tool",
+      "targetUrl": "https://kenjiai.com/call-center-upgrade",
+      "anchorText": "KenjiAI DFY Call Center",
+      "weekBatch": 2,
+      "status": "planned",
+      "liveUrl": "",
+      "submissionKit": {
+        "title": "KenjiAI",
+        "tagline": "Done-for-you AI call center infrastructure",
+        "shortDesc": "AI telephony platform providing human-grade voice response, automated booking, and speed-to-lead outbound calls.",
+        "fullDesc": "KenjiAI eliminates the need for expensive offshore call centers by automating inbound receptionist workflows and outbound sales campaigns using low-latency neural voice models.",
+        "tags": ["Customer Support", "Voice Automation", "Business Operations"]
+      }
+    },
+    {
+      "id": "ai-futuretools",
+      "name": "FutureTools.io",
+      "category": "ai_aggregator",
+      "domain": "futuretools.io",
+      "da": 68,
+      "linkType": "dofollow",
+      "submissionUrl": "https://www.futuretools.io/submit",
+      "targetUrl": "https://kenjiai.com",
+      "anchorText": "KenjiAI",
+      "weekBatch": 2,
+      "status": "planned",
+      "liveUrl": "",
+      "submissionKit": {
+        "title": "KenjiAI Voice Agent Platform",
+        "tagline": "Automate inbound calls and outbound dialing with AI",
+        "shortDesc": "Turnkey AI call center platform with direct CRM syncing and conversational response latency under 500ms.",
+        "fullDesc": "Curated by Matt Wolfe's FutureTools. KenjiAI replaces clunky Zapier-based voice setups with a unified enterprise telephony engine that answers calls, qualifies leads, and schedules appointments automatically.",
+        "tags": ["Voice", "Productivity", "Sales"]
+      }
+    },
+    {
+      "id": "ai-easywithai",
+      "name": "Easy With AI",
+      "category": "ai_aggregator",
+      "domain": "easywithai.com",
+      "da": 64,
+      "linkType": "dofollow",
+      "submissionUrl": "https://easywithai.com/submit-ai-tool",
+      "targetUrl": "https://kenjiai.com/call-center-upgrade",
+      "anchorText": "KenjiAI",
+      "weekBatch": 2,
+      "status": "planned",
+      "liveUrl": "",
+      "submissionKit": {
+        "title": "KenjiAI",
+        "tagline": "Inbound & Outbound AI Call Center for Businesses",
+        "shortDesc": "High-converting AI voice agents that pick up the phone immediately, pre-qualify callers, and sync details into your CRM.",
+        "fullDesc": "KenjiAI provides custom-engineered voice agents that feel completely natural on phone calls. Suitable for dental clinics, law practices, home service contractors, and marketing agencies.",
+        "tags": ["AI Tools", "Voice Agents", "Automation"]
+      }
+    },
+    {
+      "id": "pub-medium-1",
+      "name": "Medium",
+      "category": "content_syndication",
+      "domain": "medium.com",
+      "da": 96,
+      "linkType": "dofollow",
+      "submissionUrl": "https://medium.com/new-story",
+      "targetUrl": "https://kenjiai.com/call-center-upgrade",
+      "anchorText": "KenjiAI Done-For-You Call Center",
+      "weekBatch": 3,
+      "status": "planned",
+      "liveUrl": "",
+      "submissionKit": {
+        "title": "Why Middleware Is Failing AI Voice Agents (And Why Native Injection Wins)",
+        "tagline": "An architectural breakdown of voice latency, webhooks, and modern telephony.",
+        "shortDesc": "Deep technical analysis explaining why connecting voice models through third-party automation tools causes conversation-killing lag, and how KenjiAI solves it.",
+        "fullDesc": "Full article ready in content/backlink-articles/why-native-llm-injection-beats-middleware-for-ai-call-centers.md",
+        "tags": ["Artificial Intelligence", "Software Engineering", "Tech", "Startup", "Telephony"]
+      }
+    },
+    {
+      "id": "pub-devto-1",
+      "name": "Dev.to",
+      "category": "content_syndication",
+      "domain": "dev.to",
+      "da": 90,
+      "linkType": "dofollow",
+      "submissionUrl": "https://dev.to/new",
+      "targetUrl": "https://kenjiai.com",
+      "anchorText": "KenjiAI",
+      "weekBatch": 3,
+      "status": "planned",
+      "liveUrl": "",
+      "submissionKit": {
+        "title": "Architecting Sub-500ms Conversational AI for Real-Time Phone Networks",
+        "tagline": "How to beat the latency threshold in enterprise voice AI systems.",
+        "shortDesc": "Engineering write-up covering websocket streaming, VAD (Voice Activity Detection), and direct CRM data injection.",
+        "fullDesc": "Technical guide on deploying reliable voice agents on SIP trunking networks with direct reference to KenjiAI telephony design.",
+        "tags": ["ai", "webdev", "architecture", "devops"]
+      }
+    },
+    {
+      "id": "pub-linkedin-1",
+      "name": "LinkedIn Articles",
+      "category": "content_syndication",
+      "domain": "linkedin.com",
+      "da": 98,
+      "linkType": "nofollow",
+      "submissionUrl": "https://www.linkedin.com/post/new",
+      "targetUrl": "https://kenjiai.com/call-center-upgrade",
+      "anchorText": "KenjiAI DFY AI Call Center",
+      "weekBatch": 3,
+      "status": "planned",
+      "liveUrl": "",
+      "submissionKit": {
+        "title": "The 60-Second Speed-to-Lead Benchmark: Why AI Voice Is Crushing Outbound SDRs",
+        "tagline": "How automated calling within 1 minute multiplies pipeline qualification by 391%.",
+        "shortDesc": "Executive B2B sales article examining conversion economics of instant AI telephony vs delayed human outreach.",
+        "fullDesc": "Full article ready in content/backlink-articles/the-60-second-speed-to-lead-revolution-inbound-outbound-ai-telephony.md",
+        "tags": ["Sales", "Artificial Intelligence", "Lead Generation", "Executive Strategy"]
+      }
+    },
+    {
+      "id": "dev-github-awesome",
+      "name": "GitHub Awesome Lists & Repos",
+      "category": "developer_platform",
+      "domain": "github.com",
+      "da": 96,
+      "linkType": "dofollow",
+      "submissionUrl": "https://github.com/new",
+      "targetUrl": "https://kenjiai.com",
+      "anchorText": "KenjiAI Enterprise Telephony",
+      "weekBatch": 3,
+      "status": "planned",
+      "liveUrl": "",
+      "submissionKit": {
+        "title": "awesome-ai-voice-telephony",
+        "tagline": "Curated collection of production prompt flows, objection handlers, and voice system architectures",
+        "shortDesc": "Open source developer repository providing call flow diagrams, prompt scripts, and latency benchmarks.",
+        "fullDesc": "Maintained by KenjiAI (https://kenjiai.com). Repository contains battle-tested prompt templates and speech latency benchmarks for telephony engineers.",
+        "tags": ["voice-ai", "telephony", "speech-to-text", "sip", "awesome-list"]
+      }
+    },
+    {
+      "id": "pr-connectively",
+      "name": "Connectively (HARO)",
+      "category": "digital_pr",
+      "domain": "connectively.us",
+      "da": 88,
+      "linkType": "dofollow",
+      "submissionUrl": "https://connectively.us",
+      "targetUrl": "https://kenjiai.com",
+      "anchorText": "Yousif Alias, Founder of KenjiAI",
+      "weekBatch": 4,
+      "status": "planned",
+      "liveUrl": "",
+      "submissionKit": {
+        "title": "Expert Commentary: AI Voice Telephony & Customer Experience",
+        "tagline": "Founder commentary on small business labor shortages and speed-to-lead automation",
+        "shortDesc": "Journalist pitch response offering insights on how sub-500ms voice models allow service companies to capture after-hours revenue.",
+        "fullDesc": "Standard pitch responses ready in docs/pr-pitch-templates.md",
+        "tags": ["Journalism", "PR", "Small Business", "Tech News"]
+      }
+    },
+    {
+      "id": "pr-featured",
+      "name": "Featured.com (Terkel)",
+      "category": "digital_pr",
+      "domain": "featured.com",
+      "da": 85,
+      "linkType": "dofollow",
+      "submissionUrl": "https://featured.com",
+      "targetUrl": "https://kenjiai.com/call-center-upgrade",
+      "anchorText": "KenjiAI",
+      "weekBatch": 4,
+      "status": "planned",
+      "liveUrl": "",
+      "submissionKit": {
+        "title": "Business Leadership Q&A: Automation in Customer Intake",
+        "tagline": "Expert responses placed in Fast Company, Entrepreneur, and GoDaddy blog",
+        "shortDesc": "Yousif Alias provides authoritative answers on reducing customer churn and scaling phone support without rising overhead.",
+        "fullDesc": "Pre-crafted answers for prompts regarding phone automation, missed call economics, and conversational AI reliability.",
+        "tags": ["Business", "Leadership", "Technology"]
+      }
+    },
+    {
+      "id": "dir-alternativeto",
+      "name": "AlternativeTo",
+      "category": "saas_directory",
+      "domain": "alternativeto.net",
+      "da": 83,
+      "linkType": "dofollow",
+      "submissionUrl": "https://alternativeto.net/software/post/",
+      "targetUrl": "https://kenjiai.com",
+      "anchorText": "KenjiAI",
+      "weekBatch": 4,
+      "status": "planned",
+      "liveUrl": "",
+      "submissionKit": {
+        "title": "KenjiAI",
+        "tagline": "Turnkey alternative to Bland AI, Air AI, and Vapi",
+        "shortDesc": "Done-for-you enterprise voice AI platform with built-in CRM and no clunky Zapier/Make connections required.",
+        "fullDesc": "KenjiAI provides full-stack AI call center implementation. Unlike developer-focused voice APIs that require custom code and third-party orchestration, KenjiAI delivers completely managed inbound and outbound phone agents.",
+        "tags": ["Telephony", "Voice Assistant", "Customer Support", "CRM"]
+      }
+    },
+    {
+      "id": "dir-saashub",
+      "name": "SaaSHub",
+      "category": "saas_directory",
+      "domain": "saashub.com",
+      "da": 78,
+      "linkType": "dofollow",
+      "submissionUrl": "https://www.saashub.com/submit",
+      "targetUrl": "https://kenjiai.com/call-center-upgrade",
+      "anchorText": "KenjiAI AI Call Center",
+      "weekBatch": 4,
+      "status": "planned",
+      "liveUrl": "",
+      "submissionKit": {
+        "title": "KenjiAI",
+        "tagline": "Software alternatives and reviews for AI call centers",
+        "shortDesc": "Enterprise AI phone agent and CRM software designed to answer calls, qualify leads, and dial contacts within seconds.",
+        "fullDesc": "Discover KenjiAI features, alternatives, and integration specifications for modern sales and support operations.",
+        "tags": ["Customer Support", "CRM Software", "AI Tools"]
+      }
+    }
+  ]
+}
