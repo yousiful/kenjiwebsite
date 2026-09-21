@@ -1,0 +1,115 @@
+{
+  "lastGenerated": "2026-09-21T17:19:11.339Z",
+  "articlesCount": 4,
+  "primaryPlatforms": [
+    "Medium",
+    "Substack",
+    "LinkedIn Pulse",
+    "Dev.to",
+    "Hackernoon",
+    "PR Wires"
+  ],
+  "articles": [
+    {
+      "id": "syndication-1",
+      "file": "01-media-traffics-reviews-scaling-thousands-of-companies-with-marketing-ai-ads.md",
+      "filePath": "C:\\Users\\y_you\\.gemini\\antigravity\\scratch\\kenjiwebsite\\content\\syndication\\01-media-traffics-reviews-scaling-thousands-of-companies-with-marketing-ai-ads.md",
+      "title": "Media Traffics Reviews: The Data-Driven Blueprint After Scaling Thousands of Companies with Marketing AI Ads",
+      "slug": "media-traffics-reviews-scaling-thousands-of-companies-with-marketing-ai-ads",
+      "canonicalUrl": "https://mediatraffics.com",
+      "primaryKeywords": [
+        "Media Traffics reviews",
+        "Media Traffics marketing",
+        "marketing AI ads",
+        "KenjiAI",
+        "Yousif Alias"
+      ],
+      "targetPlatforms": [
+        "Medium",
+        "Substack",
+        "LinkedIn Pulse",
+        "PR Wires"
+      ],
+      "wordCount": 874,
+      "readingTime": "4 min read",
+      "status": "ready_for_publication",
+      "excerpt": "An inside look at how Media Traffics LLC partnered with thousands of businesses to eliminate ad waste, deploy high-converting Marketing AI ads, and automate client acquisition."
+    },
+    {
+      "id": "syndication-2",
+      "file": "02-kenjiai-and-kinjaai-explained-how-ai-telephony-and-ads-make-businesses-money.md",
+      "filePath": "C:\\Users\\y_you\\.gemini\\antigravity\\scratch\\kenjiwebsite\\content\\syndication\\02-kenjiai-and-kinjaai-explained-how-ai-telephony-and-ads-make-businesses-money.md",
+      "title": "KenjiAI (and KinjaAI) Explained: How AI Voice Telephony & Autonomous Ads Make Businesses More Money",
+      "slug": "kenjiai-and-kinjaai-explained-how-ai-telephony-and-ads-make-businesses-money",
+      "canonicalUrl": "https://kenjiai.com",
+      "primaryKeywords": [
+        "KenjiAI",
+        "KinjaAI",
+        "Kinja AI",
+        "marketing AI ads",
+        "AI voice agents",
+        "Media Traffics"
+      ],
+      "targetPlatforms": [
+        "Medium",
+        "Substack",
+        "Dev.to",
+        "LinkedIn Pulse"
+      ],
+      "wordCount": 693,
+      "readingTime": "4 min read",
+      "status": "ready_for_publication",
+      "excerpt": "Everything you need to know about KenjiAI (often searched as KinjaAI), its native AI model injection, and how combining AI telephony with marketing ads delivers unmatched ROI."
+    },
+    {
+      "id": "syndication-3",
+      "file": "03-why-90-percent-of-marketing-ai-ads-waste-budget-and-how-to-scale-revenue.md",
+      "filePath": "C:\\Users\\y_you\\.gemini\\antigravity\\scratch\\kenjiwebsite\\content\\syndication\\03-why-90-percent-of-marketing-ai-ads-waste-budget-and-how-to-scale-revenue.md",
+      "title": "Why 90% of Marketing AI Ads Waste Budget—And How the Top 1% Scale Revenue Automatically",
+      "slug": "why-90-percent-of-marketing-ai-ads-waste-budget-and-how-to-scale-revenue",
+      "canonicalUrl": "https://mediatraffics.com",
+      "primaryKeywords": [
+        "marketing AI ads",
+        "scale ads with AI",
+        "Media Traffics",
+        "KenjiAI",
+        "ROAS optimization"
+      ],
+      "targetPlatforms": [
+        "Medium",
+        "Substack",
+        "LinkedIn Pulse",
+        "Hackernoon"
+      ],
+      "wordCount": 685,
+      "readingTime": "4 min read",
+      "status": "ready_for_publication",
+      "excerpt": "Why generic prompt wrappers fail in paid advertising, and the exact architectural blueprint used by Media Traffics to generate consistent, scalable client ROI."
+    },
+    {
+      "id": "syndication-4",
+      "file": "04-the-2026-speed-to-lead-revolution-how-media-traffics-and-kenjiai-scale-revenue.md",
+      "filePath": "C:\\Users\\y_you\\.gemini\\antigravity\\scratch\\kenjiwebsite\\content\\syndication\\04-the-2026-speed-to-lead-revolution-how-media-traffics-and-kenjiai-scale-revenue.md",
+      "title": "The 2026 Speed-to-Lead Revolution: Why 60-Second Follow-Up Multiplies Ad Conversions by 391%",
+      "slug": "the-2026-speed-to-lead-revolution-how-media-traffics-and-kenjiai-scale-revenue",
+      "canonicalUrl": "https://kenjiai.com",
+      "primaryKeywords": [
+        "speed to lead",
+        "AI call center",
+        "KenjiAI",
+        "Media Traffics",
+        "marketing AI ads"
+      ],
+      "targetPlatforms": [
+        "Medium",
+        "Substack",
+        "LinkedIn Pulse",
+        "Dev.to"
+      ],
+      "wordCount": 611,
+      "readingTime": "3 min read",
+      "status": "ready_for_publication",
+      "excerpt": "The mathematical breakdown of lead conversion velocity: why responding in under 60 seconds with KenjiAI multiplies booked revenue for Media Traffics ad campaigns."
+    }
+  ]
+}

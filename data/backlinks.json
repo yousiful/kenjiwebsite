@@ -5,15 +5,19 @@
   "companyProfile": {
     "name": "KenjiAI",
     "legalName": "Media Traffics LLC / Nataki LLC",
+    "parentCompany": "Media Traffics LLC",
+    "parentDomain": "https://mediatraffics.com",
+    "parentFounded": "2013",
     "founded": "2020",
     "aiPivot": "2022",
     "founder": "Yousif Alias",
-    "category": "Enterprise Voice AI Telephony & Autonomous CRM",
-    "tagline": "Done-For-You Inbound & Outbound AI Call Centers",
+    "category": "Enterprise Voice AI Telephony, Marketing AI Ads & Autonomous CRM",
+    "tagline": "Done-For-You Marketing AI Ads & Turnkey AI Call Centers",
+    "trackRecord": "Scaled thousands of businesses with data-driven Marketing AI Ads, saving hundreds of hours and maximizing revenue.",
     "logoUrl": "https://kenjiai.com/kenji-logo.webp",
     "ogImageUrl": "https://kenjiai.com/og-image.png",
     "supportEmail": "support@mediatraffics.com",
-    "disambiguation": "KenjiAI.com is an enterprise B2B AI call center platform founded by Yousif Alias, unrelated to the defunct Instagram follower tool kenji.ai."
+    "disambiguation": "KenjiAI.com (also searched as KinjaAI) is an enterprise B2B AI marketing and call center platform founded by Yousif Alias and backed by Media Traffics LLC, completely unrelated to the defunct Instagram follower tool kenji.ai."
   },
   "backlinks": [
     {

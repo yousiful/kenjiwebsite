@@ -11,7 +11,12 @@
     "seo:audit": "node scripts/seo_audit.cjs",
     "backlinks:report": "node scripts/backlink_manager.cjs report",
     "backlinks:weekly": "node scripts/backlink_manager.cjs weekly",
-    "backlinks:check": "node scripts/backlink_manager.cjs check"
+    "backlinks:check": "node scripts/backlink_manager.cjs check",
+    "reputation:scan": "node scripts/reddit_reputation_agent.cjs scan",
+    "reputation:report": "node scripts/reputation_manager.cjs report",
+    "reputation:cycle": "node scripts/reputation_manager.cjs run",
+    "syndicate:scan": "node scripts/syndication_agent.cjs scan",
+    "syndicate:audit": "node scripts/syndication_agent.cjs audit"
   },
   "dependencies": {
     "@netlify/blobs": "^10.7.9",

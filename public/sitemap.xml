@@ -221,6 +221,38 @@
 
   <!-- Blog Posts - Knowledge Base Articles -->
   <url>
+    <loc>https://kenjiai.com/blog/ai-marketing-ads-vs-manual-campaigns-2026</loc>
+    <lastmod>2026-09-21T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <mobile:mobile/>
+  </url>
+
+  <url>
+    <loc>https://kenjiai.com/blog/why-agencies-get-fired-lead-response-time-voice-ai</loc>
+    <lastmod>2026-09-21T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <mobile:mobile/>
+  </url>
+
+  <url>
+    <loc>https://kenjiai.com/blog/media-traffics-kenjiai-reviews-kinjaai-guide</loc>
+    <lastmod>2026-09-21T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <mobile:mobile/>
+  </url>
+
+  <url>
+    <loc>https://kenjiai.com/blog/how-autonomous-marketing-ai-ads-save-25-hours-a-week</loc>
+    <lastmod>2026-09-21T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <mobile:mobile/>
+  </url>
+
+  <url>
     <loc>https://kenjiai.com/blog/ai-automation-business-growth-2025</loc>
     <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
