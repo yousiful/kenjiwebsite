@@ -33,6 +33,15 @@
     <mobile:mobile/>
   </url>
 
+  <!-- TrendPulse & AdForge - Free Growth & Marketing Tool -->
+  <url>
+    <loc>https://kenjiai.com/trendpulse</loc>
+    <lastmod>2026-09-21T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+    <mobile:mobile/>
+  </url>
+
   <!-- Client Attraction System / One Time Offer -->
   <url>
     <loc>https://kenjiai.com/one-timeoffer/</loc>

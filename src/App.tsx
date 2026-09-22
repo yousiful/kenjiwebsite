@@ -69,6 +69,7 @@ const PartnerUpPage = lazyRoute(() => import('./pages/PartnerUpPage'));
 const ModernPage = lazyRoute(() => import('./pages/ModernPage'));
 const WorkshopPage = lazyRoute(() => import('./pages/WorkshopPage'));
 const MissedCallCalculatorPage = lazyRoute(() => import('./pages/MissedCallCalculatorPage'));
+const TrendPulsePage = lazyRoute(() => import('./pages/TrendPulsePage'));
 
 const RouteFallback: React.FC = () => (
   <div
@@ -199,6 +200,7 @@ function App() {
                       <Route path="/call-center-upgrade" element={<CallCenterUpgradeRedirect />} />
                       <Route path="/tools" element={<Navigate to="/free-tools" replace />} />
                       <Route path="/tools/missed-call-calculator" element={<MissedCallCalculatorPage />} />
+                      <Route path="/trendpulse" element={<TrendPulsePage />} />
                       <Route path="/free-tools" element={<FreeToolsPage />} />
                       <Route path="/ai-automation" element={<AIAutomationPage />} />
                       <Route path="/voice-agents" element={<VoiceAgentsPage />} />

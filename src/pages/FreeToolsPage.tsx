@@ -1,10 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, Search, TrendingUp, AlertCircle, PhoneCall } from 'lucide-react';
+import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, Search, TrendingUp, AlertCircle, PhoneCall, Flame } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 const FreeToolsPage: React.FC = () => {
   const freeTools = [
+    {
+      name: "TrendPulse & AdForge - Viral Trends, $100M Offers & Ad Hooks",
+      description: "Real-time trend radar, buyer intent miner, Alex Hormozi $100M Grand Slam Offer architect, and 6-vector psychological ad angle and viral UGC hook generator.",
+      url: "/trendpulse",
+      icon: Flame,
+      gradient: "from-purple-600 via-indigo-600 to-pink-500",
+      features: ["Live Trend Radar", "$100M Offer Architect", "6 Psychological Ad Angles", "Viral UGC Hook Vault", "Free Forever"],
+      category: "Marketing & Growth",
+      rating: 5.0,
+      users: "NEW",
+      keywords: ["trend analyzer", "viral ad hooks", "$100M offers", "marketing angles", "direct response copy", "google trends tool"],
+      revenue: "Discover winning trends and deploy offers in 60s"
+    },
     {
       name: "Missed Call Revenue Loss Calculator",
       description: "Interactive diagnostic tool for high-ticket businesses to calculate pipeline revenue lost to unanswered calls and discover ROI on 24/7 AI call answering agents.",
