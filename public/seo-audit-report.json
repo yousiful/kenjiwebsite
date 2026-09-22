@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-09-22T15:33:16.666Z",
+  "timestamp": "2026-09-22T17:00:03.356Z",
   "masterScore": 100,
   "publicScore": 100,
   "infrastructureScore": 100,
-  "indexedUrlsCount": 74,
+  "indexedUrlsCount": 75,
   "publicPages": [
     {
       "file": "index.html",
@@ -142,7 +142,7 @@
   ],
   "globalChecks": [
     "robots.txt configured with AI bots and sitemap pointer [PASS]",
-    "sitemap.xml active with 74 indexed URLs [PASS]",
+    "sitemap.xml active with 75 indexed URLs [PASS]",
     "AEO & LLM Engine Files (llms.txt, llms-full.txt, ai-knowledge.json) verified [PASS]",
     "Raster OpenGraph card (og-image.png, 1200x630) verified [PASS]"
   ]
