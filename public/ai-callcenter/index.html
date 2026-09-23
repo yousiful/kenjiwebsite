@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Call Center Availability Checker | KenjiAI</title>
-<meta name="description" content="Check if an exclusive Done-For-You AI Call Center is available for your industry in your city. Sub-500ms inbound answering and 60-second outbound dialing.">
+<title>Never Miss Another Call | AI Call Center | KenjiAI</title>
+<meta name="description" content="See the demo, then lock in your city. One exclusive Done-For-You AI Call Center per industry, per city. Sub-500ms inbound answering, 60-second outbound speed-to-lead.">
 <link rel="canonical" href="https://kenjiai.com/ai-callcenter/" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="AI Call Center Availability Checker | KenjiAI" />
-<meta property="og:description" content="Check if an exclusive Done-For-You AI Call Center is available for your industry in your city. Sub-500ms inbound answering and 60-second outbound dialing." />
+<meta property="og:title" content="Never Miss Another Call | AI Call Center | KenjiAI" />
+<meta property="og:description" content="See the demo, then lock in your city. One exclusive Done-For-You AI Call Center per industry, per city." />
 <meta property="og:url" content="https://kenjiai.com/ai-callcenter/" />
 <meta property="og:image" content="https://kenjiai.com/og-image.png" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -29,70 +29,85 @@
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0a0e14; --card:#121821; --card2:#161d29; --line:#232b3a;
-    --ink:#f2f5fa; --muted:#9aa7bd; --muted2:#6b7688;
-    --blue:#3b82f6; --blue2:#60a5fa; --grad: linear-gradient(135deg,#3b82f6,#8b5cf6);
+    --bg:#000000; --card:#0d0d0d; --card2:#131313; --line:#262626;
+    --ink:#f5f5f0; --muted:#a3a3a3; --muted2:#737373;
+    --lime:#c8ff3d; --lime2:#d4ff5c; --grad: linear-gradient(135deg,#c8ff3d,#a8e01a);
     --green:#22c55e; --gold:#f59e0b; --red:#f87171;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.5}
   .wrap{max-width:900px;margin:0 auto;padding:0 24px}
   a{color:inherit}
-  .eyebrow{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue2);background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.3);padding:6px 14px;border-radius:999px}
+  .eyebrow{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);background:rgba(200,255,61,.1);border:1px solid rgba(200,255,61,.3);padding:7px 14px;border-radius:999px}
 
-  header.hero{padding:64px 0 12px;text-align:center}
-  h1{font-size:clamp(30px,5vw,50px);font-weight:800;line-height:1.1;margin:20px 0 16px;text-wrap:balance}
-  h1 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-  .sub{font-size:18px;color:var(--muted);max-width:600px;margin:0 auto 8px}
-  .not-a-template{font-size:14px;color:var(--gold);font-weight:600;margin-top:10px}
+  header.hero{padding:56px 0 8px;text-align:center}
+  h1{font-size:clamp(30px,6vw,54px);font-weight:900;line-height:1.05;letter-spacing:-0.02em;margin:22px 0 18px;text-wrap:balance}
+  h1 .hl{color:var(--lime)}
+  .sub{font-size:18px;color:var(--muted);max-width:600px;margin:0 auto}
 
-  .tool{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:32px;max-width:640px;margin:36px auto 0;box-shadow:0 20px 60px -20px rgba(59,130,246,.25)}
+  /* Benefit strip -- asymmetric ticker, not a generic 3-card grid */
+  .benefit-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;max-width:760px;margin:26px auto 0;}
+  .benefit-pill{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:9px 16px 9px 10px;font-size:13.5px;font-weight:700;white-space:nowrap}
+  .benefit-pill .dot{width:7px;height:7px;border-radius:50%;background:var(--lime);flex-shrink:0}
 
-  .step-track{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:24px}
-  .step-dot{width:8px;height:8px;border-radius:50%;background:var(--line);transition:background .2s}
-  .step-dot.done{background:var(--blue)}
-  .step-dot.now{background:var(--blue2);box-shadow:0 0 0 4px rgba(96,165,250,.2)}
-  .step-label{font-size:12px;color:var(--muted2);text-align:center;margin-bottom:18px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+  /* Blurred video block */
+  .video-block{max-width:640px;margin:38px auto 0;position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/9;background:#000;cursor:pointer}
+  .video-block img{width:100%;height:100%;object-fit:cover;filter:blur(18px) brightness(.55) saturate(1.3);transform:scale(1.08);transition:filter .3s}
+  .video-block iframe{width:100%;height:100%;border:0;display:block}
+  .video-block .overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.55))}
+  .video-block .playbtn{width:74px;height:74px;border-radius:50%;background:var(--lime);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 0 rgba(200,255,61,.5);animation:pulse 2.2s infinite}
+  .video-block .playbtn svg{margin-left:4px}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(200,255,61,.45)}70%{box-shadow:0 0 0 22px rgba(200,255,61,0)}100%{box-shadow:0 0 0 0 rgba(200,255,61,0)}}
+  .video-block .unlock-label{color:#fff;font-weight:800;font-size:15.5px;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+  .video-block .unlock-sub{color:rgba(255,255,255,.75);font-size:12.5px;font-weight:600}
 
-  .field{margin-bottom:14px;text-align:left}
-  .field label{display:block;font-size:13px;font-weight:600;color:var(--muted);margin-bottom:6px}
-  .field select, .field input{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:14px 16px;font-size:16px;font-family:inherit}
-  .field select:focus, .field input:focus{outline:none;border-color:var(--blue)}
-  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  @media (max-width:520px){.row2{grid-template-columns:1fr}}
+  /* Modal (opt-in gate) */
+  .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.82);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
+  .modal-backdrop.open{display:flex}
+  .modal{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;max-width:420px;width:100%;position:relative}
+  .modal-close{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;background:var(--card2);border:1px solid var(--line);color:var(--muted);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
+  .progress-track{height:8px;background:var(--card2);border-radius:999px;overflow:hidden;margin-bottom:22px}
+  .progress-fill{height:100%;background:var(--grad);border-radius:999px;transition:width .4s ease}
+  .modal h3{font-size:19px;font-weight:800;margin:0 0 18px;text-align:center;text-wrap:balance}
 
-  .btn{display:block;width:100%;background:var(--grad);color:#fff;border:none;border-radius:10px;padding:15px 20px;font-size:15.5px;font-weight:700;cursor:pointer;font-family:inherit}
+  .field{margin-bottom:12px;text-align:left}
+  .field label{display:block;font-size:12.5px;font-weight:700;color:var(--muted);margin-bottom:5px}
+  .field select, .field input{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:13px 15px;font-size:15.5px;font-family:inherit}
+  .field select:focus, .field input:focus{outline:none;border-color:var(--lime)}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media (max-width:420px){.row2{grid-template-columns:1fr}}
+
+  .btn{display:block;width:100%;background:var(--grad);color:#0a0a0a;border:none;border-radius:10px;padding:14px 20px;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit;margin-top:4px}
   .btn:disabled{opacity:.6;cursor:default}
   .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
-  .tool-hint{font-size:13px;color:var(--muted2);margin-top:10px;text-align:center}
-  .tool-error{color:var(--red);font-size:14px;margin-top:12px;display:none;text-align:center}
+  .tool-hint{font-size:12.5px;color:var(--muted2);margin-top:10px;text-align:center}
+  .tool-error{color:var(--red);font-size:13.5px;margin-top:10px;display:none;text-align:center}
+  .back-link{background:none;border:none;color:var(--muted2);font-size:13px;cursor:pointer;padding:0;margin-bottom:14px;font-family:inherit}
 
-  .result-card{border-radius:14px;padding:20px;margin-top:18px;border:1px solid var(--line);text-align:left}
-  .result-card.available{border-color:rgba(34,197,94,.4);background:rgba(34,197,94,.08)}
-  .result-card.taken{border-color:rgba(245,158,11,.4);background:rgba(245,158,11,.08)}
-  .result-card .headline{font-weight:700;font-size:16px;margin-bottom:6px}
-  .result-card p{margin:0 0 14px;color:var(--muted);font-size:14.5px}
+  .result-note{border-radius:12px;padding:14px 16px;margin-top:4px;margin-bottom:14px;border:1px solid var(--line);text-align:left;font-size:13.5px}
+  .result-note.available{border-color:rgba(34,197,94,.4);background:rgba(34,197,94,.08);color:#d3f9d8}
+  .result-note.taken{border-color:rgba(245,158,11,.4);background:rgba(245,158,11,.08);color:#fde7c2}
 
   [hidden]{display:none!important}
 
-  .final-cta{text-align:center;margin-top:26px}
-  .cta{display:inline-flex;align-items:center;gap:8px;background:var(--grad);color:#fff;font-weight:700;font-size:17px;padding:16px 34px;border-radius:12px;text-decoration:none;box-shadow:0 8px 28px -6px rgba(59,130,246,.45)}
-
-  section{padding:56px 0}
-  .section-head{text-align:center;max-width:600px;margin:0 auto 40px}
-  .section-head h2{font-size:clamp(22px,3.2vw,30px);font-weight:800;margin:14px 0 12px;text-wrap:balance}
+  section{padding:60px 0}
+  .section-head{text-align:center;max-width:600px;margin:0 auto 36px}
+  .section-head h2{font-size:clamp(22px,3.2vw,30px);font-weight:900;margin:14px 0 12px;letter-spacing:-0.01em;text-wrap:balance}
   .section-head p{color:var(--muted);font-size:15.5px}
 
-  .diff{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
-  .diff .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px}
-  .diff .card h3{font-size:15.5px;margin:0 0 8px}
-  .diff .card p{font-size:14px;color:var(--muted);margin:0}
+  /* Editorial numbered list instead of generic emoji-card grid */
+  .why-list{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:0}
+  .why-row{display:flex;gap:20px;padding:22px 0;border-top:1px solid var(--line)}
+  .why-row:last-child{border-bottom:1px solid var(--line)}
+  .why-num{font-size:28px;font-weight:900;color:var(--lime);flex-shrink:0;width:44px;font-variant-numeric:tabular-nums}
+  .why-row h3{font-size:16.5px;margin:0 0 6px;font-weight:800}
+  .why-row p{font-size:14.5px;color:var(--muted);margin:0;line-height:1.6}
 
-  .guarantee{background:linear-gradient(180deg,rgba(245,158,11,.1),var(--card2));border:1px solid rgba(245,158,11,.35);border-radius:18px;padding:34px;text-align:center;max-width:640px;margin:0 auto}
-  .guarantee .amt{font-size:34px;font-weight:800;color:var(--gold);margin:10px 0}
+  .guarantee{background:var(--card);border:1px solid var(--lime);border-radius:18px;padding:34px;text-align:center;max-width:640px;margin:0 auto}
+  .guarantee .amt{font-size:32px;font-weight:900;color:var(--lime);margin:10px 0}
   .guarantee p{color:var(--muted);font-size:15px;margin:0}
 
   footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--muted2);font-size:13px}
@@ -102,22 +117,39 @@
 
 <header class="hero">
   <div class="wrap">
-    <span class="eyebrow">One Per Industry, Per City. That's It.</span>
-    <h1>We Only Build <span class="grad">One of These</span><br>Per City.</h1>
-    <p class="sub">Once one plumber in your city has an AI Call Center from us, no other plumber in that city gets one. Check if yours is still open below.</p>
-    <p class="not-a-template">If it's open, tell us about your business and we'll get your demo built.</p>
+    <span class="eyebrow">● One Per Industry, Per City</span>
+    <h1>Every Missed Call Is A Job You Just Handed <span class="hl">A Competitor.</span></h1>
+    <p class="sub">Watch the 90-second demo, then lock in your city before another business in your industry does.</p>
+
+    <div class="benefit-strip">
+      <div class="benefit-pill"><span class="dot"></span>Answers in under 500ms</div>
+      <div class="benefit-pill"><span class="dot"></span>Calls new leads back in 60 seconds</div>
+      <div class="benefit-pill"><span class="dot"></span>Never sleeps, never misses a call</div>
+      <div class="benefit-pill"><span class="dot"></span>Books straight to your calendar</div>
+    </div>
   </div>
 
-  <div class="tool">
-    <div class="step-track">
-      <div class="step-dot now" id="dot1"></div>
-      <div class="step-dot" id="dot2"></div>
-      <div class="step-dot" id="dot3"></div>
+  <div class="wrap">
+    <div class="video-block" id="videoBlock">
+      <img src="https://img.youtube.com/vi/XbcQb5OcwSI/maxresdefault.jpg" alt="AI Call Center demo" id="videoThumb">
+      <div class="overlay" id="videoOverlay">
+        <div class="playbtn"><svg width="26" height="26" viewBox="0 0 24 24" fill="#0a0a0a"><path d="M8 5v14l11-7z"/></svg></div>
+        <div class="unlock-label">Watch The 90-Second Demo</div>
+        <div class="unlock-sub">Answer 2 quick questions to unlock it</div>
+      </div>
     </div>
+  </div>
+</header>
 
-    <!-- STEP 1: market check -->
-    <div id="step1">
-      <div class="step-label">Step 1 of 3 — Check Your City</div>
+<!-- OPT-IN GATE MODAL -->
+<div class="modal-backdrop" id="modalBackdrop">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">✕</button>
+
+    <!-- STEP A: industry + city -->
+    <div id="gateStepA">
+      <div class="progress-track"><div class="progress-fill" id="progressFillA" style="width:35%"></div></div>
+      <h3>First, let's check your city</h3>
       <div class="field">
         <label for="industry">Industry</label>
         <select id="industry">
@@ -155,40 +187,27 @@
       </div>
       <button class="btn" id="checkBtn">Check My City →</button>
       <div class="tool-error" id="step1Error"></div>
-
-      <div class="result-card available" id="availableCard" hidden>
-        <div class="headline" id="availableHeadline"></div>
-        <p id="availableBody"></p>
-        <button class="btn" id="continueBtn">Continue →</button>
-      </div>
-
-      <div class="result-card taken" id="takenCard" hidden>
-        <div class="headline" id="takenHeadline"></div>
-        <p id="takenBody">We only work with one business per industry per city so you're never competing with our own client. Leave your email and we'll reach out the moment it opens up.</p>
-        <div class="field">
-          <label for="waitlistEmail">Email</label>
-          <input type="email" id="waitlistEmail" placeholder="you@business.com">
-        </div>
-        <button class="btn ghost" id="waitlistBtn">Notify Me If It Opens Up</button>
-        <div class="tool-hint" id="waitlistDone" hidden>You're on the list. We'll email you the second this opens up.</div>
-      </div>
     </div>
 
-    <!-- STEP 2: website (info only, no live generation) -->
-    <div id="step2" hidden>
-      <div class="step-label">Step 2 of 3 — Your Website</div>
+    <!-- STEP A RESULT: taken -->
+    <div id="gateTaken" hidden>
+      <div class="progress-track"><div class="progress-fill" style="width:60%"></div></div>
+      <button class="back-link" id="backFromTaken">← Back</button>
+      <h3 id="takenHeadline">This spot is claimed.</h3>
+      <div class="result-note taken">We only work with one business per industry per city, so you're never competing with our own client. Leave your email and we'll reach out the moment it opens up.</div>
       <div class="field">
-        <label for="siteUrl">Your website</label>
-        <input type="text" id="siteUrl" placeholder="yourbusiness.com" autocomplete="off">
+        <label for="waitlistEmail">Email</label>
+        <input type="email" id="waitlistEmail" placeholder="you@business.com">
       </div>
-      <button class="btn" id="toStep3Btn">Continue →</button>
-      <div class="tool-error" id="step2Error"></div>
+      <button class="btn ghost" id="waitlistBtn">Notify Me If It Opens Up</button>
+      <div class="tool-hint" id="waitlistDone" hidden>You're on the list. We'll email you the second this opens up.</div>
     </div>
 
-    <!-- STEP 3: contact capture -->
-    <div id="step3" hidden>
-      <div class="step-label">Step 3 of 3 — Who Gets The Demo?</div>
-      <p style="color:var(--muted);font-size:14.5px;margin-top:0">Tell us who to show the call center demo to and we'll get it built around your business.</p>
+    <!-- STEP B: opt-in to unlock video -->
+    <div id="gateStepB" hidden>
+      <div class="progress-track"><div class="progress-fill" style="width:75%"></div></div>
+      <button class="back-link" id="backFromB">← Back</button>
+      <h3 id="gateBHeadline">Your city's open. Unlock the demo.</h3>
       <div class="field">
         <label for="leadName">Name</label>
         <input type="text" id="leadName" placeholder="Your name">
@@ -203,42 +222,40 @@
           <input type="tel" id="leadPhone" placeholder="(555) 555-5555">
         </div>
       </div>
-      <button class="btn" id="lockBtn">Show Me My Demo</button>
+      <button class="btn" id="lockBtn">Unlock My Demo →</button>
       <div class="tool-error" id="step3Error"></div>
     </div>
-
-    <!-- FINAL: direct-buy CTA -->
-    <div id="stepFinal" hidden style="text-align:left">
-      <div class="result-card available">
-        <div class="headline" id="finalHeadline"></div>
-        <p>Your spot is held. Pick your plan below and we'll get it built.</p>
-      </div>
-      <div class="final-cta">
-        <a href="https://kenjiai.com/call-center-upgrade/" class="cta">See Pricing & Get Started →</a>
-      </div>
-    </div>
   </div>
-</header>
+</div>
 
 <section>
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">Why This Is Different</span>
       <h2>Most "AI call center" pitches sell the same bot to everyone in your market.</h2>
-      <p>We only sell one per city, per industry, and we show you yours before you've paid us a dollar or booked a single call.</p>
+      <p>We only sell one per city, per industry, and you watch it work before you've paid a dollar.</p>
     </div>
-    <div class="diff">
-      <div class="card">
-        <h3>🔒 Real exclusivity</h3>
-        <p>Once a business in your industry and city has this, we stop selling it there. You're never sharing an edge with a competitor down the street.</p>
+    <div class="why-list">
+      <div class="why-row">
+        <div class="why-num">01</div>
+        <div>
+          <h3>Real exclusivity</h3>
+          <p>Once a business in your industry and city has this, we stop selling it there. You're never sharing an edge with a competitor down the street.</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>🎯 Built from your real business</h3>
-        <p>Not a generic script with your name pasted in. Tell us your site and we build the demo around what you actually do.</p>
+      <div class="why-row">
+        <div class="why-num">02</div>
+        <div>
+          <h3>Built from your real business</h3>
+          <p>Not a generic script with your name pasted in. Tell us your site and we build the demo around what you actually do.</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>⚡ Live in days, not a sales cycle</h3>
-        <p>Pick your plan, we build the full version out, and it's answering real calls fast, not stuck in a 6-week onboarding queue.</p>
+      <div class="why-row">
+        <div class="why-num">03</div>
+        <div>
+          <h3>Live in days, not a sales cycle</h3>
+          <p>Pick your plan, we build the full version out, and it's answering real calls fast, not stuck in a 6-week onboarding queue.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -265,31 +282,45 @@ const otherInput = document.getElementById('otherIndustry');
 industrySel.addEventListener('change', () => {
   otherField.hidden = industrySel.value !== '__other';
 });
-
 function currentIndustry(){
   return industrySel.value === '__other' ? otherInput.value.trim() : industrySel.value;
 }
 
-function setDots(n){
-  document.getElementById('dot1').className = 'step-dot' + (n>1?' done':n===1?' now':'');
-  document.getElementById('dot2').className = 'step-dot' + (n>2?' done':n===2?' now':'');
-  document.getElementById('dot3').className = 'step-dot' + (n===3?' now':'');
-}
-
 let state = { industry: '', city: '', website: '' };
 
-// STEP 1
+const backdrop = document.getElementById('modalBackdrop');
+const videoBlock = document.getElementById('videoBlock');
+const videoThumb = document.getElementById('videoThumb');
+const videoOverlay = document.getElementById('videoOverlay');
+
+const gateStepA = document.getElementById('gateStepA');
+const gateTaken = document.getElementById('gateTaken');
+const gateStepB = document.getElementById('gateStepB');
+
+function showGate(step){
+  gateStepA.hidden = step !== 'A';
+  gateTaken.hidden = step !== 'taken';
+  gateStepB.hidden = step !== 'B';
+}
+
+videoBlock.addEventListener('click', () => {
+  backdrop.classList.add('open');
+  showGate('A');
+});
+document.getElementById('modalClose').addEventListener('click', () => backdrop.classList.remove('open'));
+backdrop.addEventListener('click', (e) => { if (e.target === backdrop) backdrop.classList.remove('open'); });
+
+document.getElementById('backFromTaken').addEventListener('click', () => showGate('A'));
+document.getElementById('backFromB').addEventListener('click', () => showGate('A'));
+
+// STEP A: market check
 const checkBtn = document.getElementById('checkBtn');
 const step1Error = document.getElementById('step1Error');
-const availableCard = document.getElementById('availableCard');
-const takenCard = document.getElementById('takenCard');
 
 checkBtn.addEventListener('click', async () => {
   const industry = currentIndustry();
   const city = document.getElementById('city').value.trim();
   step1Error.style.display = 'none';
-  availableCard.hidden = true;
-  takenCard.hidden = true;
   if (!industry || !city) {
     step1Error.textContent = 'Enter your industry and city first.';
     step1Error.style.display = 'block';
@@ -305,12 +336,11 @@ checkBtn.addEventListener('click', async () => {
     if (!res.ok) throw new Error(data.error || 'Check failed');
     state.industry = industry; state.city = city;
     if (data.available) {
-      document.getElementById('availableHeadline').textContent = `✅ ${city} is open for ${industry}.`;
-      document.getElementById('availableBody').textContent = `You'd be the only ${industry.toLowerCase()} business in ${city} with this. Let's build your preview.`;
-      availableCard.hidden = false;
+      document.getElementById('gateBHeadline').textContent = `${city} is open for ${industry}. Unlock the demo.`;
+      showGate('B');
     } else {
-      document.getElementById('takenHeadline').textContent = `🔒 ${industry} in ${city} is already claimed.`;
-      takenCard.hidden = false;
+      document.getElementById('takenHeadline').textContent = `${industry} in ${city} is already claimed.`;
+      showGate('taken');
     }
   } catch (err) {
     step1Error.textContent = 'Something went wrong, try again.';
@@ -318,12 +348,6 @@ checkBtn.addEventListener('click', async () => {
   } finally {
     checkBtn.disabled = false; checkBtn.textContent = 'Check My City →';
   }
-});
-
-document.getElementById('continueBtn').addEventListener('click', () => {
-  document.getElementById('step1').hidden = true;
-  document.getElementById('step2').hidden = false;
-  setDots(2);
 });
 
 document.getElementById('waitlistBtn').addEventListener('click', async () => {
@@ -343,23 +367,7 @@ document.getElementById('waitlistBtn').addEventListener('click', async () => {
   }
 });
 
-// STEP 2 (website, info only -- no live generation call, see the 2026-09-13
-// simplification: OpenRouter-backed preview generation was removed, this
-// step just captures the URL for whoever builds the demo, then moves on)
-const siteInput = document.getElementById('siteUrl');
-const step2Error = document.getElementById('step2Error');
-
-document.getElementById('toStep3Btn').addEventListener('click', () => {
-  const url = siteInput.value.trim();
-  step2Error.style.display = 'none';
-  if (!url) { step2Error.textContent = 'Enter your website first.'; step2Error.style.display='block'; return; }
-  state.website = url;
-  document.getElementById('step2').hidden = true;
-  document.getElementById('step3').hidden = false;
-  setDots(3);
-});
-
-// STEP 3 (contact capture -> final)
+// STEP B: opt-in -> unlock video
 document.getElementById('lockBtn').addEventListener('click', async () => {
   const name = document.getElementById('leadName').value.trim();
   const email = document.getElementById('leadEmail').value.trim();
@@ -372,7 +380,7 @@ document.getElementById('lockBtn').addEventListener('click', async () => {
     err.style.display = 'block';
     return;
   }
-  btn.disabled = true; btn.textContent = 'Submitting...';
+  btn.disabled = true; btn.textContent = 'Unlocking...';
   try {
     const res = await fetch('/.netlify/functions/ghl-lead-callcenter', {
       method: 'POST', headers: {'Content-Type':'application/json'},
@@ -383,19 +391,28 @@ document.getElementById('lockBtn').addEventListener('click', async () => {
       })
     });
     if (!res.ok) throw new Error('failed');
-    document.getElementById('step3').hidden = true;
-    document.getElementById('finalHeadline').textContent = `${state.city}'s ${state.industry} spot is yours.`;
-    document.getElementById('stepFinal').hidden = false;
+    backdrop.classList.remove('open');
+    // Unlock: replace blurred thumbnail with the real playing video
+    videoOverlay.remove();
+    videoThumb.remove();
+    const iframe = document.createElement('iframe');
+    iframe.src = 'https://www.youtube.com/embed/XbcQb5OcwSI?autoplay=1';
+    iframe.title = 'AI Call Center demo';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    iframe.allowFullscreen = true;
+    videoBlock.appendChild(iframe);
+    videoBlock.style.cursor = 'default';
+    videoBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
     if (window.fbq) fbq('track', 'Lead', { content_name: 'ai-callcenter' });
     if (window.gtag) gtag('event', 'generate_lead', { event_category: 'ai-callcenter' });
   } catch (e) {
     err.textContent = 'Something went wrong, try again.';
     err.style.display = 'block';
-    btn.disabled = false; btn.textContent = 'Show Me My Demo';
+    btn.disabled = false; btn.textContent = 'Unlock My Demo →';
   }
 });
 </script>
 
-<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6aa8b2969fb146dfd065d2c3"></script>
 </body>
 </html>
