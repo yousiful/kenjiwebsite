@@ -222,6 +222,10 @@
           <input type="tel" id="leadPhone" placeholder="(555) 555-5555">
         </div>
       </div>
+      <div class="field">
+        <label for="leadWebsite">Business website (optional)</label>
+        <input type="text" id="leadWebsite" placeholder="yourbusiness.com">
+      </div>
       <button class="btn" id="lockBtn">Unlock My Demo →</button>
       <div class="tool-error" id="step3Error"></div>
     </div>
@@ -372,6 +376,8 @@ document.getElementById('lockBtn').addEventListener('click', async () => {
   const name = document.getElementById('leadName').value.trim();
   const email = document.getElementById('leadEmail').value.trim();
   const phone = document.getElementById('leadPhone').value.trim();
+  const website = document.getElementById('leadWebsite').value.trim();
+  state.website = website;
   const btn = document.getElementById('lockBtn');
   const err = document.getElementById('step3Error');
   err.style.display = 'none';
