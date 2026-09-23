@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-23T05:00:05.374Z",
+  "timestamp": "2026-09-23T17:00:50.088Z",
   "masterScore": 100,
   "publicScore": 100,
   "infrastructureScore": 100,
@@ -46,8 +46,8 @@
       "score": 100,
       "penalties": [],
       "details": {
-        "title": "AI Call Center Availability Checker | KenjiAI",
-        "description": "Check if an exclusive Done-For-You AI Call Center is available for your industry in your city. Sub-500ms inbound answering and 60-second outbound dialing.",
+        "title": "Never Miss Another Call | AI Call Center | KenjiAI",
+        "description": "See the demo, then lock in your city. One exclusive Done-For-You AI Call Center per industry, per city. Sub-500ms inbound answering, 60-second outbound speed-to-lead.",
         "canonical": "https://kenjiai.com/ai-callcenter/",
         "jsonLdTypes": [
           "WebPage"
