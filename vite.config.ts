@@ -28,6 +28,7 @@ const STATIC_ROUTES = [
   '/tools',
   '/voice-agents',
   '/voice-ai',
+  '/trendpulse',
 ];
 
 const BLOG_SLUGS = [

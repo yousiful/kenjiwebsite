@@ -38,7 +38,8 @@ export const internalRoutes = [
   '/about-yousif-alias',
   '/one-timeoffer',
   '/webinar1',
-  '/tools/missed-call-calculator'
+  '/tools/missed-call-calculator',
+  '/trendpulse'
 ] as const;
 
 export const externalRoutes = {

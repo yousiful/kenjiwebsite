@@ -71,7 +71,7 @@
   .modal-close{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;background:var(--card2);border:1px solid var(--line);color:var(--muted);cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
   .progress-track{height:8px;background:var(--card2);border-radius:999px;overflow:hidden;margin-bottom:22px}
   .progress-fill{height:100%;background:var(--grad);border-radius:999px;transition:width .4s ease}
-  .modal h3{font-size:19px;font-weight:800;margin:0 0 18px;text-align:center;text-wrap:balance}
+  .modal h2, .modal h3{font-size:19px;font-weight:800;margin:0 0 18px;text-align:center;text-wrap:balance}
 
   .field{margin-bottom:12px;text-align:left}
   .field label{display:block;font-size:12.5px;font-weight:700;color:var(--muted);margin-bottom:5px}
@@ -149,7 +149,7 @@
     <!-- STEP A: industry + city -->
     <div id="gateStepA">
       <div class="progress-track"><div class="progress-fill" id="progressFillA" style="width:35%"></div></div>
-      <h3>First, let's check your city</h3>
+      <h2>First, let's check your city</h2>
       <div class="field">
         <label for="industry">Industry</label>
         <select id="industry">
@@ -193,7 +193,7 @@
     <div id="gateTaken" hidden>
       <div class="progress-track"><div class="progress-fill" style="width:60%"></div></div>
       <button class="back-link" id="backFromTaken">← Back</button>
-      <h3 id="takenHeadline">This spot is claimed.</h3>
+      <h2 id="takenHeadline">This spot is claimed.</h2>
       <div class="result-note taken">We only work with one business per industry per city, so you're never competing with our own client. Leave your email and we'll reach out the moment it opens up.</div>
       <div class="field">
         <label for="waitlistEmail">Email</label>
@@ -207,7 +207,7 @@
     <div id="gateStepB" hidden>
       <div class="progress-track"><div class="progress-fill" style="width:75%"></div></div>
       <button class="back-link" id="backFromB">← Back</button>
-      <h3 id="gateBHeadline">Your city's open. Unlock the demo.</h3>
+      <h2 id="gateBHeadline">Your city's open. Unlock the demo.</h2>
       <div class="field">
         <label for="leadName">Name</label>
         <input type="text" id="leadName" placeholder="Your name">
