@@ -78,23 +78,23 @@
 </script>
 <style>
   :root{
-    --bg:#0a0e14; --card:#121821; --card2:#161d29; --line:#232b3a;
-    --ink:#f2f5fa; --muted:#9aa7bd; --muted2:#6b7688;
-    --blue:#3b82f6; --blue2:#60a5fa; --grad: linear-gradient(135deg,#3b82f6,#8b5cf6);
-    --green:#22c55e; --gold:#f59e0b; --red:#f87171;
+    --bg:#000000; --card:#0d0d0d; --card2:#121212; --line:#262626;
+    --ink:#f5f5f0; --muted:#a3a3a3; --muted2:#737373;
+    --blue:#c8ff3d; --blue2:#d4ff5c; --grad: linear-gradient(135deg,#c8ff3d,#a8e01a);
+    --green:#22c55e; --gold:#f59e0b; --red:#f87171; --lime:#c8ff3d;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.5}
   .wrap{max-width:960px;margin:0 auto;padding:0 24px}
   a{color:inherit}
-  .eyebrow{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue2);background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.3);padding:6px 14px;border-radius:999px}
+  .eyebrow{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue2);background:rgba(200,255,61,.12);border:1px solid rgba(200,255,61,.3);padding:6px 14px;border-radius:999px}
 
   header.hero{padding:64px 0 12px;text-align:center}
   h1{font-size:clamp(28px,5vw,46px);font-weight:800;line-height:1.15;margin:20px 0 16px;text-wrap:balance}
   h1 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
   .sub{font-size:18px;color:var(--muted);max-width:620px;margin:0 auto}
 
-  .video-wrap{max-width:720px;margin:40px auto 0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 60px -20px rgba(59,130,246,.25);aspect-ratio:16/9;background:#000}
+  .video-wrap{max-width:720px;margin:40px auto 0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 60px -20px rgba(200,255,61,.2);aspect-ratio:16/9;background:#000}
   .video-wrap iframe{width:100%;height:100%;border:0;display:block}
 
   section{padding:56px 0}
@@ -105,9 +105,9 @@
   .plans{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:760px;margin:0 auto}
   @media (max-width:640px){.plans{grid-template-columns:1fr}}
   .plan{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px;position:relative;display:flex;flex-direction:column;transition:border-color .15s}
-  .plan.featured{border-color:rgba(139,92,246,.5);box-shadow:0 20px 60px -20px rgba(139,92,246,.4)}
+  .plan.featured{border-color:rgba(200,255,61,.5);box-shadow:0 20px 60px -20px rgba(200,255,61,.25)}
   .plan.selected{border-color:var(--blue)}
-  .plan .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--grad);color:#fff;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:6px 16px;border-radius:999px;white-space:nowrap}
+  .plan .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--grad);color:#0a0a0a;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:6px 16px;border-radius:999px;white-space:nowrap}
   .plan h3{font-size:16px;font-weight:700;margin:8px 0 4px;color:var(--muted)}
   .plan .price{font-size:40px;font-weight:800;margin:6px 0 2px}
   .plan .price span{font-size:15px;font-weight:600;color:var(--muted2)}
@@ -117,7 +117,7 @@
   .plan li:first-child{border-top:none}
   .plan li .ok{color:var(--green);flex-shrink:0}
 
-  .btn{display:block;width:100%;background:var(--grad);color:#fff;border:none;border-radius:10px;padding:15px 20px;font-size:15.5px;font-weight:700;cursor:pointer;font-family:inherit;text-align:center;text-decoration:none}
+  .btn{display:block;width:100%;background:var(--grad);color:#0a0a0a;border:none;border-radius:10px;padding:15px 20px;font-size:15.5px;font-weight:700;cursor:pointer;font-family:inherit;text-align:center;text-decoration:none}
   .btn:disabled{opacity:.6;cursor:default}
   .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
 
@@ -127,7 +127,7 @@
   .capture .picked strong{color:var(--ink)}
   .capture .ask{font-size:18px;font-weight:700;margin:0 0 20px;text-wrap:balance}
   .qbtn{display:block;width:100%;text-align:left;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:12px;padding:16px 18px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;margin-bottom:12px;transition:border-color .15s,background .15s}
-  .qbtn:hover{border-color:var(--blue);background:rgba(59,130,246,.08)}
+  .qbtn:hover{border-color:var(--blue);background:rgba(200,255,61,.08)}
   .qbtn .sub{display:block;font-size:12.5px;font-weight:500;color:var(--muted);margin-top:3px}
   .change-plan{display:block;text-align:center;font-size:13px;color:var(--muted2);margin-top:12px;text-decoration:underline;cursor:pointer;background:none;border:none;font-family:inherit}
 
@@ -148,13 +148,34 @@
 <header class="hero">
   <div class="wrap">
     <span class="eyebrow">KenjiAI • Inbound &amp; Outbound Telephony</span>
-    <h1>Done-For-You <span class="grad">Inbound &amp; Outbound</span><br>AI Call Center.</h1>
-    <p class="sub">Answers every inbound call on Ring 1 and automatically calls new ad leads within 60 seconds. Qualifies, books, and follows up 24/7.</p>
+    <h1>For Businesses Running Ads Who Can't Afford <span class="grad">Another Missed Lead</span>.</h1>
+    <p class="sub">Answers every inbound call on Ring 1 and automatically calls new ad leads within 60 seconds. Qualifies, books, and follows up 24/7. No hold music, no voicemail, no lost sales.</p>
   </div>
   <div class="video-wrap wrap">
     <iframe src="https://www.youtube.com/embed/XbcQb5OcwSI" title="AI Call Center demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
   </div>
 </header>
+
+<div class="wrap" style="margin-top:48px;">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:16px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:28px 0;">
+    <div style="text-align:center;">
+      <div style="font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--lime);">$3.35M+</div>
+      <div style="font-size:12.5px;color:var(--muted);margin-top:4px;">Generated for clients</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--lime);">500+</div>
+      <div style="font-size:12.5px;color:var(--muted);margin-top:4px;">Businesses served</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--lime);">&lt;500ms</div>
+      <div style="font-size:12.5px;color:var(--muted);margin-top:4px;">Inbound pickup time</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--lime);">60 Sec</div>
+      <div style="font-size:12.5px;color:var(--muted);margin-top:4px;">Speed-to-lead on new leads</div>
+    </div>
+  </div>
+</div>
 
 <section>
   <div class="wrap">
@@ -198,6 +219,10 @@
       </div>
     </div>
 
+    <p style="text-align:center;color:var(--muted2);font-size:13.5px;max-width:520px;margin:20px auto 0;">
+      Built for businesses already generating leads through ads, referrals, or organic. If you're not getting inbound calls yet, get your ads running first, this has nothing to work with until you do.
+    </p>
+
     <div class="capture" id="capture">
       <p class="picked">Nice, <strong id="pickedLabel"></strong> it is.</p>
       <p class="ask">Quick one before we get you set up: are you already using KenjiAI?</p>
@@ -233,6 +258,48 @@
         <h3>🗓️ Two-Way CRM &amp; Calendar Sync</h3>
         <p>Transcripts, audio recordings, tags, and confirmed calendar appointments push directly into GoHighLevel, HubSpot, or your CRM.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap" style="max-width:760px;">
+    <div class="section-head">
+      <span class="eyebrow">Real Questions</span>
+      <h2>Before you ask, here's the honest answer.</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+
+      <details style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;">
+        <summary style="cursor:pointer;font-weight:700;font-size:15px;list-style:none;">Isn't $199-399/mo plus usage a lot for an answering service?</summary>
+        <p style="color:var(--muted);font-size:14px;margin:12px 0 0;line-height:1.6;">A part-time answering service costs about the same and still puts callers on hold, closes at 5pm, and can't dial a lead back the second they fill out a form. One recovered $7 sale a month already covers the base fee on the metered plan. This isn't priced against "free," it's priced against every lead you're already losing to a call that rang out.</p>
+      </details>
+
+      <details style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;">
+        <summary style="cursor:pointer;font-weight:700;font-size:15px;list-style:none;">I already have a receptionist or answering service. Why switch?</summary>
+        <p style="color:var(--muted);font-size:14px;margin:12px 0 0;line-height:1.6;">Keep them for what they're good at. This isn't a replacement for a person, it's coverage for the hours and the leads a person can't get to fast enough, nights, weekends, and the 60-second window after someone submits an ad form. Most clients run it alongside their existing team, not instead of them.</p>
+      </details>
+
+      <details style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;">
+        <summary style="cursor:pointer;font-weight:700;font-size:15px;list-style:none;">Does it actually sound human, or is it obviously a bot?</summary>
+        <p style="color:var(--muted);font-size:14px;margin:12px 0 0;line-height:1.6;">The demo video above is the same voice model live on real calls today, not a scripted sample. The Unlimited tier adds voice cloning so it can run in your own brand voice. Most callers don't realize they're talking to AI until you tell them.</p>
+      </details>
+
+      <details style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;">
+        <summary style="cursor:pointer;font-weight:700;font-size:15px;list-style:none;">What if a caller asks something it can't answer?</summary>
+        <p style="color:var(--muted);font-size:14px;margin:12px 0 0;line-height:1.6;">It books the appointment, tags the call, and flags it for a human follow-up instead of guessing. You get the transcript and recording either way, so nothing falls through silently.</p>
+      </details>
+
+      <details style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;">
+        <summary style="cursor:pointer;font-weight:700;font-size:15px;list-style:none;">How fast can this actually be live?</summary>
+        <p style="color:var(--muted);font-size:14px;margin:12px 0 0;line-height:1.6;">Most accounts are answering real calls within days of onboarding, not weeks. Existing KenjiAI clients move even faster since your CRM connection already exists.</p>
+      </details>
+
+      <details style="background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 22px;">
+        <summary style="cursor:pointer;font-weight:700;font-size:15px;list-style:none;">Is there a contract, or can I cancel anytime?</summary>
+        <p style="color:var(--muted);font-size:14px;margin:12px 0 0;line-height:1.6;">No long-term contract. You can move between the metered and unlimited tier anytime, and cancel the add-on without touching your core KenjiAI account.</p>
+      </details>
+
     </div>
   </div>
 </section>
