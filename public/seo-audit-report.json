@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-25T13:40:11.822Z",
+  "timestamp": "2026-09-25T17:00:44.543Z",
   "masterScore": 100,
   "publicScore": 100,
   "infrastructureScore": 100,
@@ -122,6 +122,20 @@
         "canonical": "https://kenjiai.com/one-timeoffer/",
         "jsonLdTypes": [
           "Product"
+        ]
+      }
+    },
+    {
+      "file": "public/trendpulse/index.html",
+      "isNoIndex": false,
+      "score": 100,
+      "penalties": [],
+      "details": {
+        "title": "TrendPulse & AdForge | Winning Trends, Offers & Viral Hooks",
+        "description": "Discover winning market trends, architect high-converting offers, and generate viral ad hooks with TrendPulse & AdForge by KenjiAI.",
+        "canonical": "https://kenjiai.com/trendpulse",
+        "jsonLdTypes": [
+          "SoftwareApplication"
         ]
       }
     },
