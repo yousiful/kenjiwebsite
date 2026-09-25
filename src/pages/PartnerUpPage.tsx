@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Check, X, ShieldCheck, ArrowRight } from 'lucide-react';
 
-const APPLICATION_URL = 'https://freedom.kenjiai.com/qualify';
+const APPLICATION_URL = '/partner-apply';
 
 const FOR_POINTS = [
   'You’re already spending real money on ads, or you’re ready to.',
