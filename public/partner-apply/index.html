@@ -187,7 +187,8 @@
     <div class="step" data-step="done">
       <div class="success-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
       <h1>Application received.</h1>
-      <p class="qsub">We'll review your answers and reach out within 1 business day, whether or not it's a fit. Keep an eye on your email and phone.</p>
+      <p class="qsub">Next, grab a time on the calendar so we can go over your answers live. Taking you there now&hellip;</p>
+      <a class="redirect-cta" href="https://go.mediatraffics.com/leads" id="bookCallBtn">Book Your Call →</a>
     </div>
   </main>
 
@@ -306,6 +307,7 @@ form.addEventListener('submit', async (e) => {
     if (!res.ok) throw new Error('failed');
     if (window.fbq) fbq('track', 'Lead', { content_name: 'partner-apply' }, { eventID: payload.event_id });
     goTo('done');
+    setTimeout(() => { window.location.href = 'https://go.mediatraffics.com/leads'; }, 1800);
   } catch (err) {
     formError.textContent = 'Something went wrong, please try again.';
     formError.style.display = 'block';
