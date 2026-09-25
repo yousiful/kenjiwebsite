@@ -36,5 +36,10 @@
 /overview-b                /webinar1/vsl2/watch/index.html     200
 /overview-b/                /webinar1/vsl2/watch/index.html     200
 
+# TrendPulse & AdForge - Standalone Direct-Response Command Center & Ad Spy
+/trendpulse                /trendpulse/index.html              200
+/trendpulse/               /trendpulse/index.html              200
+/trendpulse/*              /trendpulse/:splat                  200
+
 # Catchall (SPA) stays last
 /* /index.html 200
