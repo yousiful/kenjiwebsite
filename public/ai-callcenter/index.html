@@ -110,6 +110,41 @@
   .guarantee .amt{font-size:32px;font-weight:900;color:var(--lime);margin:10px 0}
   .guarantee p{color:var(--muted);font-size:15px;margin:0}
 
+  /* Before/after call-log comparison */
+  .compare-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:900px;margin:0 auto;position:relative}
+  .compare-vs{position:absolute;top:36px;left:50%;transform:translateX(-50%);width:34px;height:34px;border-radius:50%;background:var(--bg);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--muted);z-index:2}
+  .compare-col{background:var(--card);border:1px solid var(--line);padding:20px}
+  .compare-col.before{border-radius:16px 0 0 16px;border-right:none}
+  .compare-col.after{border-radius:0 16px 16px 0;border-color:rgba(34,197,94,.35)}
+  .compare-head{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-bottom:16px}
+  .compare-col.before .compare-head{color:var(--red)}
+  .compare-col.after .compare-head{color:var(--green)}
+  .call-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 0;border-top:1px solid var(--line)}
+  .call-row:first-of-type{border-top:none}
+  .call-row .txt{min-width:0}
+  .call-row .txt .name{font-size:13.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .call-row .txt .meta{font-size:11.5px;color:var(--muted2);margin-top:2px}
+  .call-row.spam .txt .name{color:var(--muted2);text-decoration:line-through}
+  .call-pill{flex-shrink:0;font-size:10px;font-weight:800;letter-spacing:.04em;padding:4px 8px;border-radius:999px;white-space:nowrap}
+  .call-pill.spam{background:rgba(248,113,113,.12);color:var(--red)}
+  .call-pill.real{background:var(--card2);color:var(--ink)}
+  .call-pill.blocked{background:var(--card2);color:var(--muted)}
+  .call-pill.good{background:rgba(34,197,94,.14);color:var(--green)}
+  .compare-foot{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);text-align:center;font-size:13px;font-weight:800}
+  .compare-col.before .compare-foot{color:var(--red)}
+  .compare-col.after .compare-foot{color:var(--green)}
+  @media (max-width:680px){
+    .compare-wrap{grid-template-columns:1fr;gap:14px}
+    .compare-col.before,.compare-col.after{border-radius:16px;border:1px solid var(--line)}
+    .compare-col.after{border-color:rgba(34,197,94,.35)}
+    .compare-vs{top:auto;position:static;transform:none;margin:0 auto}
+  }
+
+  .proofstat-row{display:flex;flex-wrap:wrap;justify-content:center;gap:0;max-width:760px;margin:34px auto 0;border-top:1px solid var(--line)}
+  .proofstat{flex:1;min-width:150px;text-align:center;padding:20px 12px 0;border-top:2px solid var(--line);margin-top:-1px}
+  .proofstat .num{font-size:clamp(20px,2.6vw,28px);font-weight:900;color:var(--lime)}
+  .proofstat .lbl{font-size:12px;color:var(--muted);margin-top:4px}
+
   footer{border-top:1px solid var(--line);padding:32px 0;text-align:center;color:var(--muted2);font-size:13px}
 </style>
 </head>
@@ -269,6 +304,46 @@
           <p>Robocalls and spam get detected and filtered automatically, before they eat up your time or clog your call log. Every call that gets through is a real one.</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Before / After</span>
+      <h2>Same phone number. Completely different call log.</h2>
+      <p>This is what a normal business day looks like on your line before KenjiAI, and after it starts answering.</p>
+    </div>
+
+    <div class="compare-wrap">
+      <div class="compare-vs">VS</div>
+      <div class="compare-col before">
+        <div class="compare-head">Your phone, today</div>
+        <div class="call-row spam"><div class="txt"><div class="name">"Extended car warranty"</div><div class="meta">2m 40s wasted</div></div><span class="call-pill spam">SPAM</span></div>
+        <div class="call-row"><div class="txt"><div class="name">New customer, quote request</div><div class="meta">Rang 6 times, hung up</div></div><span class="call-pill real">MISSED</span></div>
+        <div class="call-row spam"><div class="txt"><div class="name">"Google Business Profile listing"</div><div class="meta">1m 55s wasted</div></div><span class="call-pill spam">SPAM</span></div>
+        <div class="call-row"><div class="txt"><div class="name">Existing customer, reschedule</div><div class="meta">Went to voicemail</div></div><span class="call-pill real">MISSED</span></div>
+        <div class="call-row spam"><div class="txt"><div class="name">"Business funding offer"</div><div class="meta">1m 30s wasted</div></div><span class="call-pill spam">SPAM</span></div>
+        <div class="call-row"><div class="txt"><div class="name">After-hours emergency call</div><div class="meta">9:40pm, no answer</div></div><span class="call-pill real">MISSED</span></div>
+        <div class="compare-foot">3 real calls lost, 6+ minutes on spam</div>
+      </div>
+      <div class="compare-col after">
+        <div class="compare-head">Your phone, with KenjiAI</div>
+        <div class="call-row spam"><div class="txt"><div class="name">"Extended car warranty"</div><div class="meta">Blocked in 4s</div></div><span class="call-pill blocked">BLOCKED</span></div>
+        <div class="call-row"><div class="txt"><div class="name">New customer, quote request</div><div class="meta">Answered ring 1, lead captured</div></div><span class="call-pill good">ANSWERED</span></div>
+        <div class="call-row spam"><div class="txt"><div class="name">"Google Business Profile listing"</div><div class="meta">Blocked in 3s</div></div><span class="call-pill blocked">BLOCKED</span></div>
+        <div class="call-row"><div class="txt"><div class="name">Existing customer, reschedule</div><div class="meta">Handled, calendar updated</div></div><span class="call-pill good">ANSWERED</span></div>
+        <div class="call-row spam"><div class="txt"><div class="name">"Business funding offer"</div><div class="meta">Blocked in 5s</div></div><span class="call-pill blocked">BLOCKED</span></div>
+        <div class="call-row"><div class="txt"><div class="name">After-hours emergency call</div><div class="meta">9:40pm, booked on the spot</div></div><span class="call-pill good">BOOKED</span></div>
+        <div class="compare-foot">0 real calls lost, 0 minutes on spam</div>
+      </div>
+    </div>
+
+    <div class="proofstat-row">
+      <div class="proofstat"><div class="num">$3.35M+</div><div class="lbl">generated for clients on this system</div></div>
+      <div class="proofstat"><div class="num">&lt;500ms</div><div class="lbl">to answer every real inbound call</div></div>
+      <div class="proofstat"><div class="num">60 sec</div><div class="lbl">to call a new lead back, every time</div></div>
     </div>
   </div>
 </section>
