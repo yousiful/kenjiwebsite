@@ -1,5 +1,6 @@
 import type { Handler, HandlerEvent } from '@netlify/functions';
 import { slugify } from './check-market-availability';
+import crypto from 'crypto';
 
 /**
  * AI Call Center offer page (/ai-callcenter) -> GoHighLevel.
@@ -27,6 +28,9 @@ import { slugify } from './check-market-availability';
 const GHL_BASE = 'https://services.leadconnectorhq.com';
 const GHL_VERSION = '2021-07-28';
 const DEFAULT_LOCATION_ID = 'q5L4ttbBMHNxieXIcTVJ';
+const META_API_VERSION = 'v21.0';
+
+const sha256 = (v: string) => crypto.createHash('sha256').update(v.trim().toLowerCase()).digest('hex');
 
 interface LeadPayload {
   first_name?: string;
@@ -36,6 +40,9 @@ interface LeadPayload {
   city?: string;
   waitlist?: boolean; // true = market was already claimed at submit time
   business_website?: string; // the URL they ran through the preview tool, if any
+  fbc?: string;
+  fbp?: string;
+  event_id?: string;
 }
 
 const json = (statusCode: number, body: unknown) => ({
@@ -121,6 +128,53 @@ export const handler: Handler = async (event: HandlerEvent) => {
         },
         body: JSON.stringify({ body: noteLines.join('\n') }),
       }).catch(() => {});
+    }
+
+    // Server-side Meta CAPI Lead event, same event_id the client pixel used
+    // (dedup). Only fires on the real active-lead path (waitlist:false), same
+    // condition as the existing client-side fbq('track','Lead',...) call --
+    // a waitlist signup was never a conversion signal to begin with.
+    // No custom_data.value: zero historical conversions have come through this
+    // tag yet (checked 2026-09-24, 'voice AI' tag had 0 leads on record), so
+    // there's no real revenue-per-lead number to compute one from. Add it once
+    // this page has actual purchase data to derive it from, same way the
+    // webinar Lead event's value was computed -- don't guess a number here.
+    if (!waitlist) {
+      const pixelId = process.env.META_PIXEL_ID;
+      const capiToken = process.env.META_CAPI_TOKEN;
+      if (pixelId && capiToken) {
+        const clientIp =
+          event.headers['x-nf-client-connection-ip'] ||
+          event.headers['x-forwarded-for']?.split(',')[0]?.trim() ||
+          '';
+        const userAgent = event.headers['user-agent'] || '';
+        const userData: Record<string, unknown> = {
+          client_ip_address: clientIp,
+          client_user_agent: userAgent,
+        };
+        if (email) userData.em = [sha256(email)];
+        if (phone) userData.ph = [sha256(phone.replace(/^\+/, ''))];
+        if (payload.fbc) userData.fbc = payload.fbc;
+        if (payload.fbp) userData.fbp = payload.fbp;
+
+        fetch(`https://graph.facebook.com/${META_API_VERSION}/${pixelId}/events?access_token=${capiToken}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            data: [
+              {
+                event_name: 'Lead',
+                event_time: Math.floor(Date.now() / 1000),
+                event_id: payload.event_id,
+                action_source: 'website',
+                event_source_url: 'https://kenjiai.com/ai-callcenter',
+                user_data: userData,
+                custom_data: { content_name: 'ai-callcenter' },
+              },
+            ],
+          }),
+        }).catch(() => {});
+      }
     }
 
     return json(200, { ok: true, id: cid, waitlist });

@@ -631,7 +631,16 @@ setInterval(renderCountdown, 30000);
    and sends them to TICKER_URL. regForm3 (exit-intent) stays single-step
    on purpose, it's the low-friction "just hold my spot" ask.
    ================================================================= */
+function getCookie(name){
+  const m = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+  return m ? decodeURIComponent(m[1]) : undefined;
+}
+function genEventId(){
+  return (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'ev_' + Date.now() + '_' + Math.random().toString(36).slice(2);
+}
 function postLead(data){
+  data.fbc = data.fbc || getCookie('_fbc');
+  data.fbp = data.fbp || getCookie('_fbp');
   return fetch(GHL_ENDPOINT, {
     method:'POST',
     headers:{'Content-Type':'application/json'},
@@ -655,7 +664,9 @@ function handleStep1(form, surveyForm){
       fbq('init', '2406747486323295', { em: data.email, fn: data.first_name || undefined });
     }
 
-    if (window.fbq) fbq('track', 'Lead', { content_name: '1 Ad Away Challenge Registration' });
+    data.event_id = genEventId();
+    data.capi_event = 'Lead';
+    if (window.fbq) fbq('track', 'Lead', { content_name: '1 Ad Away Challenge Registration' }, { eventID: data.event_id });
     if (window.gtag) gtag('event', 'generate_lead', { event_category: 'webinar', event_label: '1_ad_away_challenge_registration' });
 
     // Send the lead now, don't wait on the survey, so nothing is lost if they drop off here.
@@ -680,7 +691,9 @@ function handleSurveyStep(surveyForm){
     const merged = Object.assign({}, surveyForm._step1Data || {}, surveyData);
     merged.source = '1 Ad Away Challenge Registration - Qualified';
 
-    if (window.fbq) fbq('track', 'CompleteRegistration', { content_name: '1 Ad Away Challenge Survey' });
+    merged.event_id = genEventId();
+    merged.capi_event = 'CompleteRegistration';
+    if (window.fbq) fbq('track', 'CompleteRegistration', { content_name: '1 Ad Away Challenge Survey' }, { eventID: merged.event_id });
     if (window.gtag) gtag('event', 'survey_complete', { event_category: 'webinar', readiness: surveyData.readiness });
 
     const finish = () => { window.location.href = TICKER_URL; };
@@ -764,7 +777,9 @@ if (regForm3) {
     data.session_time = new Date(sessionTarget).toISOString();
     data.source = '1 Ad Away Challenge Registration';
     if (window.fbq && data.email) fbq('init', '2406747486323295', { em: data.email, fn: data.first_name || undefined });
-    if (window.fbq) fbq('track', 'Lead', { content_name: '1 Ad Away Challenge Registration' });
+    data.event_id = genEventId();
+    data.capi_event = 'Lead';
+    if (window.fbq) fbq('track', 'Lead', { content_name: '1 Ad Away Challenge Registration' }, { eventID: data.event_id });
     if (window.gtag) gtag('event', 'generate_lead', { event_category: 'webinar', event_label: '1_ad_away_challenge_registration' });
     const watchUrl = new URL(WATCH_PAGE_URL, window.location.origin);
     if (data.email) watchUrl.searchParams.set('em', data.email);

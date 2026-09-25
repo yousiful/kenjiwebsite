@@ -1,7 +1,7 @@
 import type { Handler, HandlerEvent } from '@netlify/functions';
 import crypto from 'crypto';
 
-const META_API_VERSION = 'v17.0';
+const META_API_VERSION = 'v21.0';
 
 interface IncomingEvent {
   event_name: string;

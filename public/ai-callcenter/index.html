@@ -401,12 +401,15 @@ document.getElementById('lockBtn').addEventListener('click', async () => {
   }
   btn.disabled = true; btn.textContent = 'Unlocking...';
   try {
+    const eventId = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'ev_' + Date.now() + '_' + Math.random().toString(36).slice(2);
+    const getCookie = (n) => { const m = document.cookie.match(new RegExp('(?:^|; )' + n + '=([^;]*)')); return m ? decodeURIComponent(m[1]) : undefined; };
     const res = await fetch('/.netlify/functions/ghl-lead-callcenter', {
       method: 'POST', headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
         first_name: name, email, phone,
         industry: state.industry, city: state.city,
-        business_website: state.website, waitlist: false
+        business_website: state.website, waitlist: false,
+        event_id: eventId, fbc: getCookie('_fbc'), fbp: getCookie('_fbp')
       })
     });
     if (!res.ok) throw new Error('failed');
@@ -423,7 +426,7 @@ document.getElementById('lockBtn').addEventListener('click', async () => {
     videoBlock.appendChild(iframe);
     videoBlock.style.cursor = 'default';
     videoBlock.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    if (window.fbq) fbq('track', 'Lead', { content_name: 'ai-callcenter' });
+    if (window.fbq) fbq('track', 'Lead', { content_name: 'ai-callcenter' }, { eventID: eventId });
     if (window.gtag) gtag('event', 'generate_lead', { event_category: 'ai-callcenter' });
   } catch (e) {
     err.textContent = 'Something went wrong, try again.';
