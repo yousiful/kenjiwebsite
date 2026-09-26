@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, Search, TrendingUp, AlertCircle, PhoneCall, Flame } from 'lucide-react';
+import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, Search, TrendingUp, AlertCircle, PhoneCall, Flame, Music } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 const FreeToolsPage: React.FC = () => {
@@ -30,6 +30,19 @@ const FreeToolsPage: React.FC = () => {
       users: "15K+",
       keywords: ["missed call calculator", "call center ROI", "inbound lead loss", "AI receptionist calculator", "business revenue recovery"],
       revenue: "Calculate exact annual revenue bleed"
+    },
+    {
+      name: "Song & Jingle Prompt Generator",
+      description: "Build a real, producer-grade prompt for Suno, Udio, or Producer.ai, not generic AI slop. Make a personal song with your name in it, or a commercial jingle/anthem for your business.",
+      url: "/tools/song-prompt-generator",
+      icon: Music,
+      gradient: "from-purple-500 to-pink-600",
+      features: ["Genre-Specific Production Notes", "Real Song Structure", "Custom Hook Lines", "Personal or Commercial Jingle"],
+      category: "AI Tools",
+      rating: 5.0,
+      users: "NEW",
+      keywords: ["AI song generator", "Suno prompt generator", "Udio prompt", "jingle maker", "AI music prompt", "commercial jingle generator"],
+      revenue: "Producer-grade prompts in seconds"
     },
     {
       name: "AI Prompt Generator",
