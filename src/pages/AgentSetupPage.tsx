@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Helmet } from 'react-helmet-async';
+import SEOHead from '../components/SEOHead';
 import {
   Code, Bot, TrendingUp, Zap, CheckCircle, ArrowRight,
   Monitor, DollarSign, Shield, Star, ChevronDown, ChevronUp,
@@ -156,13 +156,14 @@ export default function AgentSetupPage() {
 
   return (
     <>
-      <Helmet>
-        <title>Done-For-You AI Agent Setup | KenjiAI</title>
-        <meta
-          name="description"
-          content="We install Claude Code, OpenClaw, and custom AI agents on your computer — wired to your business to make money, automate operations, or trade markets. Done for you in 48 hours."
-        />
-      </Helmet>
+      {/* Public offer page, so it gets a real self-referencing canonical. It
+          previously had none, which meant it inherited index.html's homepage
+          canonical and told Google /setup was a duplicate of /. */}
+      <SEOHead
+        title="Done-For-You AI Agent Setup | KenjiAI"
+        description="We install Claude Code, OpenClaw, and custom AI agents on your computer, wired to your business to make money, automate operations, or trade markets. Done for you in 48 hours."
+        canonical="https://kenjiai.com/setup"
+      />
 
       <div className="bg-[#0B0E14] text-white min-h-screen font-sans">
 

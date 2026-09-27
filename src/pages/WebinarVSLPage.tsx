@@ -131,6 +131,7 @@ export default function WebinarVSLPage() {
     <>
       <Helmet>
         <title>Exclusive Overview | KenjiAI</title>
+        <meta name="description" content="On-demand overview session: how KenjiAI builds done-for-you AI call centers and paid inbound for high-ticket businesses. Invite only." />
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 

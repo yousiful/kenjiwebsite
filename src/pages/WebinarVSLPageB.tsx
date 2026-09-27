@@ -108,6 +108,7 @@ export default function WebinarVSLPageB() {
     <>
       <Helmet>
         <title>Exclusive Overview | KenjiAI</title>
+        <meta name="description" content="On-demand overview session: how KenjiAI builds done-for-you AI call centers and paid inbound for high-ticket businesses. Invite only." />
         <meta name="robots" content="noindex, nofollow" />
         <script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6aa8b2969fb146dfd065d2c3"></script>
       </Helmet>

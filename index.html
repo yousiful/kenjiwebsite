@@ -41,7 +41,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="KenjiAI">
     
-    <!-- Primary Meta Tags -->
+    <!-- Primary Meta Tags.
+         NOTE: the description/robots/canonical/og/twitter tags below are the
+         no-JS fallback only. They are correct for the homepage and are what
+         social scrapers and other non-rendering crawlers read, since
+         react-helmet-async cannot run for them. react-helmet-async emits a
+         route-specific copy of each of these at runtime and does NOT remove
+         static ones, so DefaultSEO in src/App.tsx deletes these shell copies
+         once its own helmet-owned tags are in the DOM. Keep the two sets in
+         sync: anything added here must also be emitted by SEOHead, or it will
+         disappear from every rendered page. -->
     <title>Done-For-You Inbound &amp; Outbound AI Call Centers | KenjiAI</title>
     <meta name="title" content="Done-For-You Inbound &amp; Outbound AI Call Centers | KenjiAI" />
     <meta name="description" content="KenjiAI deploys 24/7 autonomous Inbound &amp; Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation." />

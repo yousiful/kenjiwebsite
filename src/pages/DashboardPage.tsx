@@ -309,6 +309,7 @@ export default function DashboardPage() {
     <>
       <Helmet>
         <title>Analytics Dashboard | KenjiAI</title>
+        <meta name="description" content="Private KenjiAI analytics dashboard: visitor, funnel and voice agent numbers for the team. Not a public page." />
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 

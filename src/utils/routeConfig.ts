@@ -29,6 +29,7 @@ export const internalRoutes = [
   '/setup',
   '/helpful-links',
   '/partnerup',
+  '/modern',
   '/workshop',
   '/call-center-upgrade',
   '/ai-callcenter',

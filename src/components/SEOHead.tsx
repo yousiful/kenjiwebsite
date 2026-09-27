@@ -9,6 +9,10 @@ export interface SEOHeadProps {
   canonicalUrl?: string;
   ogImage?: string;
   ogType?: string;
+  /** Transactional / private-flow pages (checkout success, dashboards) that
+   *  should never be a search result. Emits noindex, nofollow instead of the
+   *  default index, follow. */
+  noindex?: boolean;
   article?: {
     publishedTime?: string;
     modifiedTime?: string;
@@ -27,6 +31,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   canonicalUrl: canonicalUrlProp,
   ogImage = "https://kenjiai.com/og-image.png",
   ogType = "website",
+  noindex = false,
   article,
   structuredData
 }) => {
@@ -50,7 +55,14 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="title" content={fullTitle} />
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
-      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      <meta
+        name="robots"
+        content={
+          noindex
+            ? 'noindex, nofollow'
+            : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+        }
+      />
       <meta name="language" content="English" />
       <meta name="author" content="KenjiAI" />
       <meta name="publisher" content="KenjiAI" />

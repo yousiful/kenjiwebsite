@@ -19,6 +19,8 @@ import { SiteTracker } from './components/SiteTracker';
 import { ConsentBanner } from './components/ConsentBanner';
 import ResultsDisclaimer from './components/ResultsDisclaimer';
 
+import SEOHead from './components/SEOHead';
+
 // HomePage stays eager — it is the LCP route.
 import HomePage from './pages/HomePage';
 
@@ -121,6 +123,66 @@ const VisitorTracker: React.FC = () => {
   return null;
 };
 
+/**
+ * index.html ships a static canonical/description/robots/og/twitter block. Those
+ * are the homepage's values and they are the only metadata a non-rendering
+ * crawler (every social link-preview scraper, for one) ever sees, so they have to
+ * stay in the shell. But react-helmet-async only ever replaces tags it rendered
+ * itself (data-rh="true"), so on every React route the static copies survived
+ * alongside helmet's route-specific ones: two canonicals and two meta
+ * descriptions per page, which means Google picks which canonical to honour
+ * instead of us.
+ *
+ * These are the shell copies. They are removed once helmet's own tags are
+ * actually in the DOM — never before, so a page is never left with no metadata
+ * at all. Helmet writes inside a requestAnimationFrame, which does not fire while
+ * the tab is hidden; in that case helmet writes nothing and this strip correctly
+ * does nothing either, leaving the static block as the page's only metadata.
+ */
+const STATIC_SHELL_HEAD_TAGS = [
+  'link[rel="canonical"]:not([data-rh])',
+  'meta[name="description"]:not([data-rh])',
+  'meta[name="robots"]:not([data-rh])',
+  'meta[property^="og:"]:not([data-rh])',
+  'meta[property^="twitter:"]:not([data-rh])',
+].join(',');
+
+/**
+ * Site-wide head defaults, owned by react-helmet-async, plus the shell cleanup
+ * above. Helmet dedupes by name/property (and by rel for canonical), so any page
+ * that sets its own title/description/canonical/og/robots — via SEOHead or a bare
+ * <Helmet> — overrides what is set here and the DOM ends up with exactly one of
+ * each. Pages that set nothing fall back to these rather than to nothing, which
+ * is what keeps the bare-<Helmet> pages from losing their OpenGraph tags when the
+ * static block is stripped.
+ */
+const DefaultSEO: React.FC = () => {
+  const { pathname } = useLocation();
+  const canonical = `https://kenjiai.com${pathname === '/' ? '/' : pathname.replace(/\/+$/, '')}`;
+
+  useEffect(() => {
+    // SEOHead always emits a canonical, so a helmet-owned one appearing is the
+    // signal that helmet has flushed and the shell copies are now redundant.
+    // Watching <head> rather than waiting a fixed number of frames means this
+    // still fires if helmet's write is delayed, and never fires early.
+    const stripShellTags = () => {
+      if (!document.querySelector('link[rel="canonical"][data-rh="true"]')) return false;
+      document.head.querySelectorAll(STATIC_SHELL_HEAD_TAGS).forEach((el) => el.remove());
+      return true;
+    };
+
+    if (stripShellTags()) return;
+
+    const observer = new MutationObserver(() => {
+      if (stripShellTags()) observer.disconnect();
+    });
+    observer.observe(document.head, { childList: true });
+    return () => observer.disconnect();
+  }, []);
+
+  return <SEOHead canonical={canonical} />;
+};
+
 const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/overview-b', '/setup', '/helpful-links', '/partnerup', '/workshop'];
 
 function ConditionalNavbar() {
@@ -185,6 +247,7 @@ function App() {
             <VisitorTracker />
             <LinkValidator />
             <RedirectSystem />
+            <DefaultSEO />
             <SiteTracker />
             <ConsentBanner />
             <BrowserCompatibility />

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, Rocket, Mail, Calendar, ArrowRight, Gift, Star, Users, Zap, Crown, Trophy, Sparkles, Download, Play, MessageCircle, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEOHead from '../components/SEOHead';
 
 const SuccessPage: React.FC = () => {
   const [sessionId, setSessionId] = useState<string | null>(null);
@@ -166,10 +167,17 @@ const SuccessPage: React.FC = () => {
 
   return (
     <>
-      {/* SEO Head */}
-      <title>🎉 Welcome to Your AI Empire! | KenjiAI Success</title>
-      <meta name="description" content="Welcome to KenjiAI! Your payment was successful. Access your dashboard, claim bonuses, and start your AI business transformation journey." />
-      <meta name="robots" content="noindex, nofollow" />
+      {/* Post-checkout confirmation page: nobody should reach this from a search
+          result, so it is noindex and is deliberately absent from sitemap.xml.
+          These were previously bare <title>/<meta> elements, which React 18 renders
+          into the body instead of hoisting into <head> — so the noindex never
+          actually applied and the page served the generic site-wide title. */}
+      <SEOHead
+        noindex
+        title="Payment Confirmed | KenjiAI"
+        description="Your KenjiAI payment went through. Access your dashboard, book your setup call, and get your AI call center live."
+        canonical="https://kenjiai.com/success"
+      />
       
       {/* Confetti Background */}
       {showConfetti && (

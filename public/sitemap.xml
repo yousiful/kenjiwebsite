@@ -153,14 +153,6 @@
   </url>
 
   <url>
-    <loc>https://kenjiai.com/ai-education</loc>
-    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <mobile:mobile/>
-  </url>
-
-  <url>
     <loc>https://kenjiai.com/voice-agents</loc>
     <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -199,15 +191,6 @@
     <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <mobile:mobile/>
-  </url>
-
-  <!-- Success Page -->
-  <url>
-    <loc>https://kenjiai.com/success</loc>
-    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
     <mobile:mobile/>
   </url>
 
@@ -278,23 +261,7 @@
   </url>
 
   <url>
-    <loc>https://kenjiai.com/blog/ai-marketing-automation-roi-case-studies</loc>
-    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <mobile:mobile/>
-  </url>
-
-  <url>
     <loc>https://kenjiai.com/blog/chatbot-customer-service-automation</loc>
-    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <mobile:mobile/>
-  </url>
-
-  <url>
-    <loc>https://kenjiai.com/blog/ai-content-generation-seo-strategy</loc>
     <lastmod>2026-05-28T10:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -309,27 +276,61 @@
     <mobile:mobile/>
   </url>
 
+  <!-- Published articles from src/data/articles.ts that were missing here -->
   <url>
-    <loc>https://kenjiai.com/blog/ai-email-marketing-personalization</loc>
-    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://kenjiai.com/blog/meta-muse-ai-agent-success-what-it-means-for-business</loc>
+    <lastmod>2026-09-22T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
     <mobile:mobile/>
   </url>
-
   <url>
-    <loc>https://kenjiai.com/blog/machine-learning-business-intelligence</loc>
-    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://kenjiai.com/blog/ai-agent-closed-1m-90-days</loc>
+    <lastmod>2026-09-14T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
     <mobile:mobile/>
   </url>
-
   <url>
-    <loc>https://kenjiai.com/blog/ai-workflow-automation-enterprise</loc>
-    <lastmod>2026-05-28T10:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://kenjiai.com/blog/ai-agents-per-company-triple</loc>
+    <lastmod>2026-08-23T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <mobile:mobile/>
+  </url>
+  <url>
+    <loc>https://kenjiai.com/blog/what-is-agentic-ai-marketing</loc>
+    <lastmod>2026-08-21T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <mobile:mobile/>
+  </url>
+  <url>
+    <loc>https://kenjiai.com/blog/ai-ad-automation-cost</loc>
+    <lastmod>2026-08-19T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <mobile:mobile/>
+  </url>
+  <url>
+    <loc>https://kenjiai.com/blog/can-ai-replace-media-buyer</loc>
+    <lastmod>2026-08-17T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <mobile:mobile/>
+  </url>
+  <url>
+    <loc>https://kenjiai.com/blog/good-customer-acquisition-cost-2026</loc>
+    <lastmod>2026-08-15T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <mobile:mobile/>
+  </url>
+  <url>
+    <loc>https://kenjiai.com/blog/how-ai-lead-qualification-works</loc>
+    <lastmod>2026-08-13T12:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
     <mobile:mobile/>
   </url>
 
