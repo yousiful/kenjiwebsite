@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, Search, TrendingUp, AlertCircle, PhoneCall, Flame, Music } from 'lucide-react';
+import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, Search, TrendingUp, AlertCircle, PhoneCall, Flame, Music, Target } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 const FreeToolsPage: React.FC = () => {
@@ -17,6 +17,19 @@ const FreeToolsPage: React.FC = () => {
       users: "NEW",
       keywords: ["trend analyzer", "viral ad hooks", "$100M offers", "marketing angles", "direct response copy", "google trends tool"],
       revenue: "Discover winning trends and deploy offers in 60s"
+    },
+    {
+      name: "ICP Generator - Ideal Customer Profile For Ad Targeting",
+      description: "Describe what you sell and what you charge. Get 2 or 3 named buyer segments with real Meta Ads detailed-targeting interests, exclusions, buying triggers, objection counters, and lookalike seeds you can configure a campaign from today.",
+      url: "/tools/icp-generator",
+      icon: Target,
+      gradient: "from-blue-600 via-indigo-600 to-emerald-500",
+      features: ["2-3 Named Buyer Segments", "Real Meta Targeting Terms", "Exclusions & Lookalike Seeds", "Affordability Check"],
+      category: "Paid Ads",
+      rating: 5.0,
+      users: "NEW",
+      keywords: ["ICP generator", "ideal customer profile", "ad targeting tool", "Meta ads audience builder", "customer avatar generator", "lookalike audience"],
+      revenue: "Stop paying for clicks that cannot buy"
     },
     {
       name: "Missed Call Revenue Loss Calculator",

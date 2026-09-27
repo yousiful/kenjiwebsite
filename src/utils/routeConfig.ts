@@ -40,6 +40,8 @@ export const internalRoutes = [
   '/one-timeoffer',
   '/webinar1',
   '/tools/missed-call-calculator',
+  '/tools/song-prompt-generator',
+  '/tools/icp-generator',
   '/trendpulse'
 ] as const;
 
