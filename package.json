@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "seo:audit": "node scripts/seo_audit.cjs",
+    "seo:audit:runtime": "node scripts/seo_audit_runtime.cjs",
     "backlinks:report": "node scripts/backlink_manager.cjs report",
     "backlinks:weekly": "node scripts/backlink_manager.cjs weekly",
     "backlinks:check": "node scripts/backlink_manager.cjs check",

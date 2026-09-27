@@ -1,0 +1,1251 @@
+{
+  "timestamp": "2026-09-27T03:48:37.764Z",
+  "mode": "runtime-rendered-dom",
+  "target": "https://kenjiai.com",
+  "runtimeScore": 87,
+  "indexableScore": 85,
+  "routesScored": 29,
+  "perfectRoutes": 4,
+  "thinContentThreshold": 300,
+  "seoHeadDefaults": {
+    "title": "Done-For-You Inbound & Outbound AI Call Centers | KenjiAI",
+    "description": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI voice call centers for high-ticket businesses. Sub-500ms inbound answering, 60-second speed-to-lead outbound dialing, and automated database reactivation."
+  },
+  "summary": {
+    "notFoundRoutes": [],
+    "fallbackTitleRoutes": [
+      "/success"
+    ],
+    "fallbackDescriptionRoutes": [],
+    "wrongCanonicalRoutes": [
+      "/success",
+      "/setup"
+    ],
+    "duplicateHeadTagRoutes": [
+      "/tools/missed-call-calculator",
+      "/tools/song-prompt-generator",
+      "/free-tools",
+      "/ai-automation",
+      "/voice-agents",
+      "/voice-ai",
+      "/marketing-automation",
+      "/crm",
+      "/knowledge",
+      "/blog",
+      "/pricing",
+      "/pricing2",
+      "/success",
+      "/privacy",
+      "/disclaimer",
+      "/terms",
+      "/helpful-links",
+      "/partnerup",
+      "/workshop",
+      "/setup",
+      "/funding",
+      "/paid-ads-for/saas",
+      "/paid-ads-for/real-estate",
+      "/paid-ads-for/med-spa"
+    ],
+    "thinContentRoutes": [
+      "/trendpulse",
+      "/marketing-automation",
+      "/crm",
+      "/success"
+    ],
+    "externalRedirectRoutes": [
+      {
+        "route": "/ai-education",
+        "to": "https://startlearning.kenjiai.com/"
+      }
+    ],
+    "unreachableRoutes": [
+      {
+        "route": "/modern",
+        "bouncedTo": "/pricing"
+      }
+    ]
+  },
+  "pages": [
+    {
+      "route": "/",
+      "url": "https://kenjiai.com/",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 100,
+      "penalties": [],
+      "details": {
+        "title": "Done-For-You Inbound & Outbound AI Call Centers | KenjiAI",
+        "description": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation.",
+        "canonical": "https://kenjiai.com/",
+        "canonicalExpected": "https://kenjiai.com/",
+        "canonicalHelmetOwned": false,
+        "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        "isNoIndex": false,
+        "helmetFlushed": false,
+        "duplicatedHeadTags": [],
+        "wordCount": 1536,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/tools/missed-call-calculator",
+      "url": "https://kenjiai.com/tools/missed-call-calculator",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 90,
+      "penalties": [
+        "Duplicate head tags served (canonical x2, meta description x2, og:title x2, og:description x2, og:url x2) — index.html tags not replaced by react-helmet-async (-10)"
+      ],
+      "details": {
+        "title": "Missed Call Revenue Loss Calculator | KenjiAI",
+        "description": "Calculate how much revenue your business loses to missed calls each month. See instant recovery projections with KenjiAI 24/7 Done-For-You AI Call Centers.",
+        "canonical": "https://kenjiai.com/tools/missed-call-calculator",
+        "canonicalExpected": "https://kenjiai.com/tools/missed-call-calculator",
+        "canonicalHelmetOwned": true,
+        "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        "isNoIndex": false,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "canonical x2",
+          "meta description x2",
+          "og:title x2",
+          "og:description x2",
+          "og:url x2"
+        ],
+        "wordCount": 419,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/tools/song-prompt-generator",
+      "url": "https://kenjiai.com/tools/song-prompt-generator",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 85,
+      "penalties": [
+        "Description length (191 chars) outside optimal 60-175 range (-5)",
+        "Duplicate head tags served (canonical x2, meta description x2, og:title x2, og:description x2, og:url x2) — index.html tags not replaced by react-helmet-async (-10)"
+      ],
+      "details": {
+        "title": "Free AI Song & Jingle Prompt Generator | KenjiAI",
+        "description": "Build a real, producer-grade prompt for Suno, Udio, or Producer.ai, not generic AI slop. Make a personal song with your name, or a commercial jingle/anthem for your business. Free, no signup.",
+        "canonical": "https://kenjiai.com/tools/song-prompt-generator",
+        "canonicalExpected": "https://kenjiai.com/tools/song-prompt-generator",
+        "canonicalHelmetOwned": true,
+        "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        "isNoIndex": false,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "canonical x2",
+          "meta description x2",
+          "og:title x2",
+          "og:description x2",
+          "og:url x2"
+        ],
+        "wordCount": 395,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/trendpulse",
+      "url": "https://kenjiai.com/trendpulse",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 90,
+      "penalties": [
+        "Thin content: 114 visible words (under 300) (-10)"
+      ],
+      "details": {
+        "title": "TrendPulse & AdForge | Winning Trends, Offers & Viral Hooks",
+        "description": "Discover winning market trends, architect high-converting offers, and generate viral ad hooks with TrendPulse & AdForge by KenjiAI.",
+        "canonical": "https://kenjiai.com/trendpulse",
+        "canonicalExpected": "https://kenjiai.com/trendpulse",
+        "canonicalHelmetOwned": false,
+        "robots": null,
+        "isNoIndex": false,
+        "helmetFlushed": false,
+        "duplicatedHeadTags": [],
+        "wordCount": 114,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "SoftwareApplication"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/free-tools",
+      "url": "https://kenjiai.com/free-tools",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 90,
+      "penalties": [
+        "Duplicate head tags served (canonical x2, meta description x2, og:title x2, og:description x2, og:image x2, og:url x2) — index.html tags not replaced by react-helmet-async (-10)"
+      ],
+      "details": {
+        "title": "Free AI Tools for Business | KenjiAI",
+        "description": "Free AI tools for business: prompt generator, PR outreach, sales coach, and investor connect. No signup, free forever, from the team behind KenjiAI.",
+        "canonical": "https://kenjiai.com/free-tools",
+        "canonicalExpected": "https://kenjiai.com/free-tools",
+        "canonicalHelmetOwned": true,
+        "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        "isNoIndex": false,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "canonical x2",
+          "meta description x2",
+          "og:title x2",
+          "og:description x2",
+          "og:image x2",
+          "og:url x2"
+        ],
+        "wordCount": 1057,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList",
+          "CollectionPage"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/ai-automation",
+      "url": "https://kenjiai.com/ai-automation",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 90,
+      "penalties": [
+        "Duplicate head tags served (canonical x2, meta description x2, og:title x2, og:description x2, og:image x2, og:url x2) — index.html tags not replaced by react-helmet-async (-10)"
+      ],
+      "details": {
+        "title": "AI Business & Voice Call Center Automation | KenjiAI",
+        "description": "Deploy enterprise AI automation with KenjiAI. 24/7 autonomous Inbound & Outbound AI call centers, native CRM pipeline syncing, and intelligent workflows.",
+        "canonical": "https://kenjiai.com/ai-automation",
+        "canonicalExpected": "https://kenjiai.com/ai-automation",
+        "canonicalHelmetOwned": true,
+        "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        "isNoIndex": false,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "canonical x2",
+          "meta description x2",
+          "og:title x2",
+          "og:description x2",
+          "og:image x2",
+          "og:url x2"
+        ],
+        "wordCount": 386,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/voice-agents",
+      "url": "https://kenjiai.com/voice-agents",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 90,
+      "penalties": [
+        "Duplicate head tags served (canonical x2, meta description x2, og:title x2, og:description x2, og:image x2, og:url x2) — index.html tags not replaced by react-helmet-async (-10)"
+      ],
+      "details": {
+        "title": "Inbound & Outbound AI Voice Agents | 24/7 Call Center Automation | KenjiAI",
+        "description": "Autonomous 24/7 Inbound receptionists (<500ms latency) and Outbound speed-to-lead dialing (<60s callbacks). Natural barge-in, dynamic CRM syncing, and appointment booking.",
+        "canonical": "https://kenjiai.com/voice-agents",
+        "canonicalExpected": "https://kenjiai.com/voice-agents",
+        "canonicalHelmetOwned": true,
+        "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        "isNoIndex": false,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "canonical x2",
+          "meta description x2",
+          "og:title x2",
+          "og:description x2",
+          "og:image x2",
+          "og:url x2"
+        ],
+        "wordCount": 388,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/voice-ai",
+      "url": "https://kenjiai.com/voice-ai",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 90,
+      "penalties": [
+        "Duplicate head tags served (canonical x2, meta description x2) — index.html tags not replaced by react-helmet-async (-10)"
+      ],
+      "details": {
+        "title": "AI Voice Front Desk & AI Caller — Starts Free | KenjiAI",
+        "description": "Deploy an AI voice agent that answers calls 24/7, qualifies leads, books appointments, and closes deals — starting at $0/month. Plans from $0 to $375/mo with done-for-you ads.",
+        "canonical": "https://kenjiai.com/voice-ai",
+        "canonicalExpected": "https://kenjiai.com/voice-ai",
+        "canonicalHelmetOwned": true,
+        "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        "isNoIndex": false,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "canonical x2",
+          "meta description x2"
+        ],
+        "wordCount": 1031,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/marketing-automation",
+      "url": "https://kenjiai.com/marketing-automation",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 80,
+      "penalties": [
+        "Duplicate head tags served (canonical x2, meta description x2, og:title x2, og:description x2, og:image x2, og:url x2) — index.html tags not replaced by react-helmet-async (-10)",
+        "Thin content: 282 visible words (under 300) (-10)"
+      ],
+      "details": {
+        "title": "AI Marketing & Speed-to-Lead Automation | KenjiAI",
+        "description": "Automate your pipeline with KenjiAI. Instant sub-60-second outbound dialing on ad leads, multi-channel SMS & email follow-up, and automated database reactivation.",
+        "canonical": "https://kenjiai.com/marketing-automation",
+        "canonicalExpected": "https://kenjiai.com/marketing-automation",
+        "canonicalHelmetOwned": true,
+        "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        "isNoIndex": false,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "canonical x2",
+          "meta description x2",
+          "og:title x2",
+          "og:description x2",
+          "og:image x2",
+          "og:url x2"
+        ],
+        "wordCount": 282,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/crm",
+      "url": "https://kenjiai.com/crm",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 75,
+      "penalties": [
+        "Description length (229 chars) outside optimal 60-175 range (-5)",
+        "Duplicate head tags served (canonical x2, meta description x2, og:title x2, og:description x2, og:image x2, og:url x2) — index.html tags not replaced by react-helmet-async (-10)",
+        "Thin content: 286 visible words (under 300) (-10)"
+      ],
+      "details": {
+        "title": "Native AI Sales CRM & Telephony Infrastructure | KenjiAI",
+        "description": "Founded in 2020 as a high-conversion sales CRM, KenjiAI natively injected AI models in 2022. Automate inbound & outbound calls and pipelines without outside clunky connections. Two-way sync with ServiceTitan, Jobber, GoHighLevel.",
+        "canonical": "https://kenjiai.com/crm",
+        "canonicalExpected": "https://kenjiai.com/crm",
+        "canonicalHelmetOwned": true,
+        "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        "isNoIndex": false,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "canonical x2",
+          "meta description x2",
+          "og:title x2",
+          "og:description x2",
+          "og:image x2",
+          "og:url x2"
+        ],
+        "wordCount": 286,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/knowledge",
+      "url": "https://kenjiai.com/knowledge",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 90,
+      "penalties": [
+        "Duplicate head tags served (canonical x2, meta description x2) — index.html tags not replaced by react-helmet-async (-10)"
+      ],
+      "details": {
+        "title": "KenjiAI Academy: Elite AI & Business Mastery",
+        "description": "Access premium AI automation courses, sales mastery tracks, and the interactive AI knowledge assessment.",
+        "canonical": "https://kenjiai.com/knowledge",
+        "canonicalExpected": "https://kenjiai.com/knowledge",
+        "canonicalHelmetOwned": true,
+        "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        "isNoIndex": false,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "canonical x2",
+          "meta description x2"
+        ],
+        "wordCount": 318,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/ai-education",
+      "url": "https://kenjiai.com/ai-education",
+      "httpStatus": 200,
+      "classification": "external-redirect",
+      "score": 100,
+      "penalties": [],
+      "details": {
+        "title": "Freedom Club - Learn How to Run Ads That Actually Make Money",
+        "description": "Learn how to run ads that actually make money, even if you've never run a single ad before. Step-by-step Meta Ads training, templates, and prompts. Join hundreds of entrepreneurs just like you.",
+        "canonical": null,
+        "canonicalExpected": "https://kenjiai.com/ai-education",
+        "canonicalHelmetOwned": false,
+        "robots": null,
+        "isNoIndex": false,
+        "helmetFlushed": false,
+        "duplicatedHeadTags": [],
+        "wordCount": 891,
+        "h1Count": 1,
+        "jsonLdTypes": [],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false,
+        "redirectedTo": "https://startlearning.kenjiai.com/"
+      }
+    },
+    {
+      "route": "/blog",
+      "url": "https://kenjiai.com/blog",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 90,
+      "penalties": [
+        "Duplicate head tags served (canonical x2, meta description x2) — index.html tags not replaced by react-helmet-async (-10)"
+      ],
+      "details": {
+        "title": "Blog: AI Insights, Guides & Industry News | KenjiAI",
+        "description": "Read the latest AI automation guides, lead generation strategies, voice agent breakdowns, and industry analysis from the KenjiAI team.",
+        "canonical": "https://kenjiai.com/blog",
+        "canonicalExpected": "https://kenjiai.com/blog",
+        "canonicalHelmetOwned": true,
+        "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        "isNoIndex": false,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "canonical x2",
+          "meta description x2"
+        ],
+        "wordCount": 934,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/pricing",
+      "url": "https://kenjiai.com/pricing",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 90,
+      "penalties": [
+        "Duplicate head tags served (canonical x2, meta description x2) — index.html tags not replaced by react-helmet-async (-10)"
+      ],
+      "details": {
+        "title": "KenjiAI Pricing | Voice Agents, CRM, and AI Automation Plans",
+        "description": "KenjiAI pricing for business owners replacing 17+ tools. Monthly $375, annual $270/mo, lifetime custom. Performance-based fees, cancel anytime.",
+        "canonical": "https://kenjiai.com/pricing",
+        "canonicalExpected": "https://kenjiai.com/pricing",
+        "canonicalHelmetOwned": true,
+        "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        "isNoIndex": false,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "canonical x2",
+          "meta description x2"
+        ],
+        "wordCount": 1054,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList",
+          "Product"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/pricing2",
+      "url": "https://kenjiai.com/pricing2",
+      "httpStatus": 200,
+      "classification": "noindex",
+      "score": 90,
+      "penalties": [
+        "Duplicate head tags served (meta description x2) — index.html tags not replaced by react-helmet-async (-10)"
+      ],
+      "details": {
+        "title": "Done For You Ads Pricing | KenjiAI",
+        "description": "Done for you ad management from KenjiAI. We agree on a lead target before you pay. Miss it and you get your setup fee back.",
+        "canonical": "https://kenjiai.com/",
+        "canonicalExpected": "https://kenjiai.com/pricing2",
+        "canonicalHelmetOwned": false,
+        "robots": "noindex, nofollow",
+        "isNoIndex": true,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "meta description x2"
+        ],
+        "wordCount": 366,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/success",
+      "url": "https://kenjiai.com/success",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 40,
+      "penalties": [
+        "Title is the generic SEOHead/index.html default — page sets no title of its own (-25)",
+        "Effective canonical is https://kenjiai.com/ but route is https://kenjiai.com/success — duplicate-content risk (-15)",
+        "Duplicate head tags served (meta description x2) — index.html tags not replaced by react-helmet-async (-10)",
+        "Thin content: 248 visible words (under 300) (-10)"
+      ],
+      "details": {
+        "title": "Done-For-You Inbound & Outbound AI Call Centers | KenjiAI",
+        "description": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation.",
+        "canonical": "https://kenjiai.com/",
+        "canonicalExpected": "https://kenjiai.com/success",
+        "canonicalHelmetOwned": false,
+        "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        "isNoIndex": false,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "meta description x2"
+        ],
+        "wordCount": 248,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": true,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/privacy",
+      "url": "https://kenjiai.com/privacy",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 85,
+      "penalties": [
+        "Title length (24 chars) outside optimal 25-75 range (-5)",
+        "Duplicate head tags served (canonical x2, meta description x2) — index.html tags not replaced by react-helmet-async (-10)"
+      ],
+      "details": {
+        "title": "Privacy Policy | KenjiAI",
+        "description": "KenjiAI Privacy Policy - Learn how we collect, use, and protect your personal information.",
+        "canonical": "https://kenjiai.com/privacy",
+        "canonicalExpected": "https://kenjiai.com/privacy",
+        "canonicalHelmetOwned": true,
+        "robots": "index, follow",
+        "isNoIndex": false,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "canonical x2",
+          "meta description x2"
+        ],
+        "wordCount": 930,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/disclaimer",
+      "url": "https://kenjiai.com/disclaimer",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 85,
+      "penalties": [
+        "Title length (20 chars) outside optimal 25-75 range (-5)",
+        "Duplicate head tags served (canonical x2, meta description x2) — index.html tags not replaced by react-helmet-async (-10)"
+      ],
+      "details": {
+        "title": "Disclaimer | KenjiAI",
+        "description": "Important disclaimers about KenjiAI services, results, and limitations.",
+        "canonical": "https://kenjiai.com/disclaimer",
+        "canonicalExpected": "https://kenjiai.com/disclaimer",
+        "canonicalHelmetOwned": true,
+        "robots": "index, follow",
+        "isNoIndex": false,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "canonical x2",
+          "meta description x2"
+        ],
+        "wordCount": 956,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/terms",
+      "url": "https://kenjiai.com/terms",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 90,
+      "penalties": [
+        "Duplicate head tags served (canonical x2, meta description x2) — index.html tags not replaced by react-helmet-async (-10)"
+      ],
+      "details": {
+        "title": "Terms of Service | KenjiAI",
+        "description": "KenjiAI Terms of Service - Legal terms and conditions for using our AI automation platform.",
+        "canonical": "https://kenjiai.com/terms",
+        "canonicalExpected": "https://kenjiai.com/terms",
+        "canonicalHelmetOwned": true,
+        "robots": "index, follow",
+        "isNoIndex": false,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "canonical x2",
+          "meta description x2"
+        ],
+        "wordCount": 1218,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/dashboard",
+      "url": "https://kenjiai.com/dashboard",
+      "httpStatus": 200,
+      "classification": "noindex",
+      "score": 100,
+      "penalties": [],
+      "details": {
+        "title": "Analytics Dashboard | KenjiAI",
+        "description": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation.",
+        "canonical": "https://kenjiai.com/",
+        "canonicalExpected": "https://kenjiai.com/dashboard",
+        "canonicalHelmetOwned": false,
+        "robots": "noindex, nofollow",
+        "isNoIndex": true,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [],
+        "wordCount": 37,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/overview",
+      "url": "https://kenjiai.com/overview",
+      "httpStatus": 200,
+      "classification": "noindex",
+      "score": 100,
+      "penalties": [],
+      "details": {
+        "title": "Exclusive Overview | KenjiAI",
+        "description": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation.",
+        "canonical": "https://kenjiai.com/",
+        "canonicalExpected": "https://kenjiai.com/overview",
+        "canonicalHelmetOwned": false,
+        "robots": "noindex, nofollow",
+        "isNoIndex": true,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [],
+        "wordCount": 98,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/overview-b",
+      "url": "https://kenjiai.com/overview-b",
+      "httpStatus": 200,
+      "classification": "noindex",
+      "score": 100,
+      "penalties": [],
+      "details": {
+        "title": "You're In: The Client Maxing Workshop",
+        "description": null,
+        "canonical": null,
+        "canonicalExpected": "https://kenjiai.com/overview-b",
+        "canonicalHelmetOwned": false,
+        "robots": "noindex,nofollow",
+        "isNoIndex": true,
+        "helmetFlushed": false,
+        "duplicatedHeadTags": [],
+        "wordCount": 391,
+        "h1Count": 1,
+        "jsonLdTypes": [],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/helpful-links",
+      "url": "https://kenjiai.com/helpful-links",
+      "httpStatus": 200,
+      "classification": "noindex",
+      "score": 85,
+      "penalties": [
+        "Title length (23 chars) outside optimal 25-75 range (-5)",
+        "Duplicate head tags served (meta description x2) — index.html tags not replaced by react-helmet-async (-10)"
+      ],
+      "details": {
+        "title": "Helpful Links | KenjiAI",
+        "description": "The most useful KenjiAI links in one place: pricing, the free overview, and the ad-training program.",
+        "canonical": "https://kenjiai.com/",
+        "canonicalExpected": "https://kenjiai.com/helpful-links",
+        "canonicalHelmetOwned": false,
+        "robots": "noindex, nofollow",
+        "isNoIndex": true,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "meta description x2"
+        ],
+        "wordCount": 54,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/partnerup",
+      "url": "https://kenjiai.com/partnerup",
+      "httpStatus": 200,
+      "classification": "noindex",
+      "score": 90,
+      "penalties": [
+        "Duplicate head tags served (meta description x2) — index.html tags not replaced by react-helmet-async (-10)"
+      ],
+      "details": {
+        "title": "Partner Program | KenjiAI",
+        "description": "A done-for-you ad partnership for businesses spending $20K+/month. Revenue-share, not a flat retainer: I only get paid a percentage of what I actually grow.",
+        "canonical": "https://kenjiai.com/",
+        "canonicalExpected": "https://kenjiai.com/partnerup",
+        "canonicalHelmetOwned": false,
+        "robots": "noindex, nofollow",
+        "isNoIndex": true,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "meta description x2"
+        ],
+        "wordCount": 334,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/modern",
+      "url": "https://kenjiai.com/modern",
+      "httpStatus": 200,
+      "classification": "internal-redirect",
+      "score": 100,
+      "penalties": [],
+      "details": {
+        "title": "KenjiAI Pricing | Voice Agents, CRM, and AI Automation Plans",
+        "description": "KenjiAI pricing for business owners replacing 17+ tools. Monthly $375, annual $270/mo, lifetime custom. Performance-based fees, cancel anytime.",
+        "canonical": "https://kenjiai.com/pricing",
+        "canonicalExpected": "https://kenjiai.com/modern",
+        "canonicalHelmetOwned": true,
+        "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        "isNoIndex": false,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "canonical x2",
+          "meta description x2"
+        ],
+        "wordCount": 1054,
+        "h1Count": 1,
+        "jsonLdTypes": [],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false,
+        "redirectedTo": "/pricing",
+        "landedOnTitle": "KenjiAI Pricing | Voice Agents, CRM, and AI Automation Plans"
+      }
+    },
+    {
+      "route": "/workshop",
+      "url": "https://kenjiai.com/workshop",
+      "httpStatus": 200,
+      "classification": "noindex",
+      "score": 90,
+      "penalties": [
+        "Duplicate head tags served (meta description x2) — index.html tags not replaced by react-helmet-async (-10)"
+      ],
+      "details": {
+        "title": "The Partner System Workshop | KenjiAI",
+        "description": "A paid, 90-minute workshop breaking down the exact performance-based ad structure behind the KenjiAI Partner Program. $27, capped seats.",
+        "canonical": "https://kenjiai.com/",
+        "canonicalExpected": "https://kenjiai.com/workshop",
+        "canonicalHelmetOwned": false,
+        "robots": "noindex, nofollow",
+        "isNoIndex": true,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "meta description x2"
+        ],
+        "wordCount": 527,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/setup",
+      "url": "https://kenjiai.com/setup",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 70,
+      "penalties": [
+        "Description length (176 chars) outside optimal 60-175 range (-5)",
+        "Effective canonical is https://kenjiai.com/ but route is https://kenjiai.com/setup — duplicate-content risk (-15)",
+        "Duplicate head tags served (meta description x2) — index.html tags not replaced by react-helmet-async (-10)"
+      ],
+      "details": {
+        "title": "Done-For-You AI Agent Setup | KenjiAI",
+        "description": "We install Claude Code, OpenClaw, and custom AI agents on your computer — wired to your business to make money, automate operations, or trade markets. Done for you in 48 hours.",
+        "canonical": "https://kenjiai.com/",
+        "canonicalExpected": "https://kenjiai.com/setup",
+        "canonicalHelmetOwned": false,
+        "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        "isNoIndex": false,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "meta description x2"
+        ],
+        "wordCount": 814,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/funding",
+      "url": "https://kenjiai.com/funding",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 90,
+      "penalties": [
+        "Duplicate head tags served (canonical x2, meta description x2) — index.html tags not replaced by react-helmet-async (-10)"
+      ],
+      "details": {
+        "title": "Funding & Credit Partners | KenjiAI",
+        "description": "KenjiAI's trusted funding and credit partners. Access business funding, build business credit, and get funding-ready to grow your business.",
+        "canonical": "https://kenjiai.com/funding",
+        "canonicalExpected": "https://kenjiai.com/funding",
+        "canonicalHelmetOwned": true,
+        "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        "isNoIndex": false,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "canonical x2",
+          "meta description x2"
+        ],
+        "wordCount": 777,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/paid-ads-for/saas",
+      "url": "https://kenjiai.com/paid-ads-for/saas",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 90,
+      "penalties": [
+        "Duplicate head tags served (canonical x2, meta description x2, og:title x2, og:description x2, og:image x2, og:url x2) — index.html tags not replaced by react-helmet-async (-10)"
+      ],
+      "details": {
+        "title": "Paid Ads Agency for SaaS Companies + AI Automation | KenjiAI",
+        "description": "KenjiAI runs paid ads for SaaS companies and gives you the AI automation platform to convert and retain every lead. No junior account managers. Senior operators only.",
+        "canonical": "https://kenjiai.com/paid-ads-for/saas",
+        "canonicalExpected": "https://kenjiai.com/paid-ads-for/saas",
+        "canonicalHelmetOwned": true,
+        "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        "isNoIndex": false,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "canonical x2",
+          "meta description x2",
+          "og:title x2",
+          "og:description x2",
+          "og:image x2",
+          "og:url x2"
+        ],
+        "wordCount": 566,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList",
+          "ProfessionalService"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/paid-ads-for/real-estate",
+      "url": "https://kenjiai.com/paid-ads-for/real-estate",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 90,
+      "penalties": [
+        "Duplicate head tags served (canonical x2, meta description x2, og:title x2, og:description x2, og:image x2, og:url x2) — index.html tags not replaced by react-helmet-async (-10)"
+      ],
+      "details": {
+        "title": "Paid Ads Agency for Real Estate + AI Automation | KenjiAI",
+        "description": "KenjiAI runs Facebook and Google ads for real estate teams and automates every lead touchpoint with AI — so no buyer or seller lead ever goes cold.",
+        "canonical": "https://kenjiai.com/paid-ads-for/real-estate",
+        "canonicalExpected": "https://kenjiai.com/paid-ads-for/real-estate",
+        "canonicalHelmetOwned": true,
+        "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        "isNoIndex": false,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "canonical x2",
+          "meta description x2",
+          "og:title x2",
+          "og:description x2",
+          "og:image x2",
+          "og:url x2"
+        ],
+        "wordCount": 562,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList",
+          "ProfessionalService"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    },
+    {
+      "route": "/paid-ads-for/med-spa",
+      "url": "https://kenjiai.com/paid-ads-for/med-spa",
+      "httpStatus": 200,
+      "classification": "audited",
+      "score": 90,
+      "penalties": [
+        "Duplicate head tags served (canonical x2, meta description x2, og:title x2, og:description x2, og:image x2, og:url x2) — index.html tags not replaced by react-helmet-async (-10)"
+      ],
+      "details": {
+        "title": "Paid Ads Agency for Med Spas + AI Automation | KenjiAI",
+        "description": "KenjiAI runs Google and Meta ads for med spas and automates the entire patient acquisition funnel — from first click to booked appointment — with AI.",
+        "canonical": "https://kenjiai.com/paid-ads-for/med-spa",
+        "canonicalExpected": "https://kenjiai.com/paid-ads-for/med-spa",
+        "canonicalHelmetOwned": true,
+        "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+        "isNoIndex": false,
+        "helmetFlushed": true,
+        "duplicatedHeadTags": [
+          "canonical x2",
+          "meta description x2",
+          "og:title x2",
+          "og:description x2",
+          "og:image x2",
+          "og:url x2"
+        ],
+        "wordCount": 555,
+        "h1Count": 1,
+        "jsonLdTypes": [
+          "WebSite",
+          "SoftwareApplication",
+          "ItemList",
+          "Blog",
+          "Organization",
+          "FAQPage",
+          "Offer",
+          "BreadcrumbList",
+          "ProfessionalService"
+        ],
+        "usingFallbackTitle": false,
+        "usingFallbackDescription": false
+      }
+    }
+  ],
+  "skippedRoutes": [
+    {
+      "route": "/call-center-upgrade",
+      "reason": "redirects to static /call-center-upgrade/index.html (covered by seo_audit.cjs)"
+    },
+    {
+      "route": "/tools",
+      "reason": "client-side <Navigate> redirect to /free-tools"
+    },
+    {
+      "route": "*",
+      "reason": "router catchall (404 handler), not an indexable route"
+    }
+  ]
+}
