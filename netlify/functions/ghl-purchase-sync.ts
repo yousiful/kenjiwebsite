@@ -3,24 +3,38 @@ import { getStore } from '@netlify/blobs';
 import crypto from 'crypto';
 
 /**
- * Runs every 15 minutes. Fixes the real gap found 2026-08-30/31: the
- * OrderFormPurchase pixel event only fires on the order confirmation page,
- * three pages past checkout on the GHL-native funnel -- so any customer
- * whose browser doesn't complete that full redirect chain pays successfully
- * but is never counted. Meta's delivery algorithm was starved of real
- * conversion signal for days because of this, not because sales weren't
- * happening.
+ * Runs every 15 minutes. Fixes the real gap found 2026-08-30/31: a purchase
+ * pixel event only fired on the order confirmation page, three pages past
+ * checkout on the GHL-native funnel -- so any customer whose browser
+ * doesn't complete that full redirect chain pays successfully but is never
+ * counted. Meta's delivery algorithm was starved of real conversion signal
+ * for days because of this, not because sales weren't happening.
  *
  * This decouples tracking from the page journey entirely: poll GHL's
- * payment records directly for new succeeded transactions and fire the
- * OrderFormPurchase event server-side, straight off the real payment
- * event. A customer who pays is counted, whether or not they ever see the
+ * payment records directly for new succeeded transactions and fire a
+ * Purchase event server-side, straight off the real payment event. A
+ * customer who pays is counted, whether or not they ever see the
  * confirmation page.
+ *
+ * **Second real bug found and fixed 2026-09-26**: this function sent
+ * `event_name: 'OrderFormPurchase'`, a non-standard custom event name, not
+ * Meta's actual `Purchase` standard event -- confirmed via the pixel's own
+ * /stats endpoint, which showed real `OrderFormPurchase` events landing but
+ * zero events ever named `Purchase`. That's very likely the deeper reason
+ * behind the recurring "Meta shows 0 purchases despite real sales" pattern
+ * documented multiple times this account's history -- a custom-named event
+ * doesn't feed standard purchase reporting/optimization no matter how
+ * correct the rest of the payload (fbc/fbp/value/hashed PII) is. Renamed to
+ * the real `Purchase` standard event. If a confirmation-page pixel fire
+ * still exists inside GHL's own page builder for this funnel (not visible
+ * to this repo, no public API to check it), it may still be firing the old
+ * `OrderFormPurchase` name -- worth a manual check in GHL if this doesn't
+ * fully resolve the pattern.
  *
  * Dedup via Netlify Blobs (one key per GHL transaction _id) so a
  * transaction already sent here is never double-fired, including for ones
- * that DO also reach the confirmation page and fire the client-side pixel
- * -- Meta dedupes on event_id if the client-side pixel ever sends the same
+ * that DO also reach the confirmation page and fire a client-side pixel --
+ * Meta dedupes on event_id if a client-side pixel ever sends the same
  * transaction id, but the store here is the first line of defense so this
  * function itself never re-sends on its own re-runs.
  *
@@ -125,7 +139,7 @@ export default async () => {
     const payload = {
       data: [
         {
-          event_name: 'OrderFormPurchase',
+          event_name: 'Purchase',
           event_time: eventTime,
           event_id: t._id,
           action_source: 'website',
