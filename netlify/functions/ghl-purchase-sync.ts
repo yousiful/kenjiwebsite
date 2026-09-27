@@ -61,10 +61,24 @@ interface GhlTransaction {
   createdAt: string;
 }
 
+interface GhlAttribution {
+  fbc?: string;
+  fbp?: string;
+  ip?: string;
+  userAgent?: string;
+}
+
 interface GhlContact {
   contact?: {
     phone?: string;
-    attributionSource?: { fbc?: string; fbp?: string };
+    firstName?: string;
+    lastName?: string;
+    city?: string;
+    state?: string;
+    postalCode?: string;
+    country?: string;
+    attributionSource?: GhlAttribution;
+    lastAttributionSource?: GhlAttribution;
   };
 }
 
@@ -110,20 +124,53 @@ export default async () => {
       continue;
     }
 
-    // Pull phone + fbc/fbp for match quality. Best-effort -- an email-only
-    // match is still useful to Meta, don't fail the whole event over it.
+    // Pull every real match-quality field GHL actually has on file. Best-effort
+    // throughout -- a thinner match is still useful to Meta, don't fail the
+    // whole event over a missing field.
+    //
+    // Fixed 2026-09-27: this used to send only em/ph/fbc/fbp, and EMQ (Event
+    // Match Quality) came back 4/10 once the event-name fix above got it
+    // scored at all. `client_ip_address` and `client_user_agent` -- the two
+    // fields Meta's own CAPI docs call the biggest single lever for
+    // server-side "website" events -- were never sent, even though GHL has
+    // both on file at `attributionSource.ip`/`attributionSource.userAgent`
+    // (confirmed via a live contact pull). Also added fn/ln/ct/st/zp/country
+    // (all on the base contact record) and a hashed external_id (the GHL
+    // contactId) so Meta can still link repeat events for the same person
+    // when the PII fields don't align. Prefer `lastAttributionSource` over
+    // `attributionSource` for fbc/fbp/ip/userAgent -- the most recent session
+    // is closer in time to the actual purchase than the contact's first-ever
+    // touch, especially for a repeat visitor.
     let phone: string | undefined;
+    let firstName: string | undefined;
+    let lastName: string | undefined;
+    let city: string | undefined;
+    let state: string | undefined;
+    let postalCode: string | undefined;
+    let country: string | undefined;
     let fbc: string | undefined;
     let fbp: string | undefined;
+    let clientIp: string | undefined;
+    let clientUserAgent: string | undefined;
     try {
       const cRes = await fetch(`${GHL_BASE}/contacts/${t.contactId}`, {
         headers: { Authorization: `Bearer ${ghlToken}`, Version: GHL_VERSION },
       });
       if (cRes.ok) {
         const cData = (await cRes.json()) as GhlContact;
-        phone = cData.contact?.phone;
-        fbc = cData.contact?.attributionSource?.fbc;
-        fbp = cData.contact?.attributionSource?.fbp;
+        const c = cData.contact;
+        phone = c?.phone;
+        firstName = c?.firstName;
+        lastName = c?.lastName;
+        city = c?.city;
+        state = c?.state;
+        postalCode = c?.postalCode;
+        country = c?.country;
+        const attr = c?.lastAttributionSource || c?.attributionSource;
+        fbc = attr?.fbc;
+        fbp = attr?.fbp;
+        clientIp = attr?.ip;
+        clientUserAgent = attr?.userAgent;
       }
     } catch {
       /* best-effort, proceed without it */
@@ -132,8 +179,20 @@ export default async () => {
     const userData: Record<string, unknown> = {};
     if (t.contactEmail) userData.em = [sha256(t.contactEmail)];
     if (phone) userData.ph = [sha256(phone.replace(/^\+/, ''))];
+    if (firstName) userData.fn = [sha256(firstName)];
+    if (lastName) userData.ln = [sha256(lastName)];
+    if (city) userData.ct = [sha256(city.replace(/[^a-zA-Z]/g, ''))];
+    // Note: Meta's spec wants a 2-letter state code -- if GHL has the full
+    // state name on file instead, this still hashes cleanly and gives Meta
+    // partial signal, just not as tight a match as a proper abbreviation.
+    if (state) userData.st = [sha256(state.replace(/[^a-zA-Z]/g, ''))];
+    if (postalCode) userData.zp = [sha256(postalCode.split('-')[0].trim())];
+    if (country) userData.country = [sha256(country)];
     if (fbc) userData.fbc = fbc;
     if (fbp) userData.fbp = fbp;
+    if (clientIp) userData.client_ip_address = clientIp;
+    if (clientUserAgent) userData.client_user_agent = clientUserAgent;
+    userData.external_id = [sha256(t.contactId)];
 
     const eventTime = Math.floor(new Date(t.createdAt).getTime() / 1000);
     const payload = {
