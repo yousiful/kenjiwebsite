@@ -1,10 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, Search, TrendingUp, AlertCircle, PhoneCall, Flame, Music, Target } from 'lucide-react';
+import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, Search, TrendingUp, AlertCircle, PhoneCall, Flame, Music, Target, Building2 } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 const FreeToolsPage: React.FC = () => {
   const freeTools = [
+    {
+      name: "AI Business & $100M Offer Name Generator",
+      description: "Generate viral business names, Alex Hormozi $100M Grand Slam offer titles, SaaS products, and lead magnets with domain checks, ad hooks, and conversion psychology.",
+      url: "/tools/name-generator",
+      icon: Building2,
+      gradient: "from-cyan-600 via-blue-600 to-emerald-500",
+      features: ["Alex Hormozi M.A.G.I.C. Framework", "Live Domain (.com / .ai) Checks", "Conversion Psychology", "Ad Hook Generator", "Saved Vault & Export"],
+      category: "Marketing & Growth",
+      rating: 5.0,
+      users: "NEW",
+      keywords: ["business name generator", "offer name generator", "$100M offers", "brand names", "SaaS names", "Alex Hormozi", "company name generator"],
+      revenue: "Create high-converting names that command premium pricing"
+    },
     {
       name: "TrendPulse & AdForge - Viral Trends, $100M Offers & Ad Hooks",
       description: "Real-time trend radar, buyer intent miner, Alex Hormozi $100M Grand Slam Offer architect, and 6-vector psychological ad angle and viral UGC hook generator.",

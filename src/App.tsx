@@ -74,6 +74,7 @@ const MissedCallCalculatorPage = lazyRoute(() => import('./pages/MissedCallCalcu
 const SongPromptGeneratorPage = lazyRoute(() => import('./pages/SongPromptGeneratorPage'));
 const ICPGeneratorPage = lazyRoute(() => import('./pages/ICPGeneratorPage'));
 const TrendPulsePage = lazyRoute(() => import('./pages/TrendPulsePage'));
+const NameGeneratorPage = lazyRoute(() => import('./pages/NameGeneratorPage'));
 
 const RouteFallback: React.FC = () => (
   <div
@@ -267,6 +268,8 @@ function App() {
                       <Route path="/tools/missed-call-calculator" element={<MissedCallCalculatorPage />} />
                       <Route path="/tools/song-prompt-generator" element={<SongPromptGeneratorPage />} />
                       <Route path="/tools/icp-generator" element={<ICPGeneratorPage />} />
+                      <Route path="/tools/name-generator" element={<NameGeneratorPage />} />
+                      <Route path="/tools/business-name-generator" element={<Navigate to="/tools/name-generator" replace />} />
                       <Route path="/trendpulse" element={<TrendPulsePage />} />
                       <Route path="/free-tools" element={<FreeToolsPage />} />
                       <Route path="/ai-automation" element={<AIAutomationPage />} />

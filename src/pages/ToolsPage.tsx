@@ -1,13 +1,23 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { ExternalLink, Zap, Users, Megaphone, MessageSquare, Brain, Code, BarChart3, Globe, Palette, ArrowRight } from 'lucide-react';
+import { ExternalLink, Zap, Users, Megaphone, MessageSquare, Brain, Code, BarChart3, Globe, Palette, ArrowRight, Sparkles } from 'lucide-react';
 
 const ToolsPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
   const [selectedCategory, setSelectedCategory] = React.useState("All");
 
   const tools = [
+    {
+      name: "AI Business & Offer Name Generator",
+      description: "Generate viral business names, Alex Hormozi-style $100M Grand Slam offer titles, SaaS products, and lead magnets with domain checks and conversion psychology.",
+      url: "/tools/name-generator",
+      icon: Sparkles,
+      gradient: "from-cyan-500 to-blue-600",
+      features: ["$100M Hormozi Framework", "Live Domain Checks", "Ad Hooks & Vault"],
+      category: "Business",
+      insideKenjiAI: true
+    },
     {
       name: "Prompt Generator",
       description: "Generate perfect AI prompts for any use case with our intelligent prompt engineering tool",

@@ -24,6 +24,7 @@ const Navbar: React.FC = () => {
     { name: "Prompt Generator", href: "http://prompt.kenjiai.com", external: true },
     { name: "PR Pro", href: "https://prpro.kenjiai.com/", external: true },
     { name: "Sales Coach", href: "https://salescoach.kenjiai.com/", external: true },
+    { name: "Name & Offer Generator", href: "/tools/name-generator", external: false },
     { name: "Support", href: "https://support.kenjiai.com/", external: true },
     { name: "All Free Tools", href: "/free-tools", external: false },
     { name: "All Tools", href: "/tools", external: false }

@@ -42,6 +42,8 @@ export const internalRoutes = [
   '/tools/missed-call-calculator',
   '/tools/song-prompt-generator',
   '/tools/icp-generator',
+  '/tools/name-generator',
+  '/tools/business-name-generator',
   '/trendpulse'
 ] as const;
 
