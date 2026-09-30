@@ -1541,6 +1541,215 @@ export const articles: Record<string, Article> = {
       </div>
     `
   },
+  'speed-to-lead-why-leads-go-cold': {
+    slug: 'speed-to-lead-why-leads-go-cold',
+    title: 'Speed to Lead: Why Your Leads Go Cold Before You Ever Call Them Back',
+    excerpt: 'A Harvard Business Review study of 2,241 companies found 23% never responded to a lead at all, and the average response took 42 hours. Here is what that actually costs you and how to fix it.',
+    category: 'AI Marketing',
+    date: '2026-09-30',
+    author: 'KenjiAI Team',
+    readTime: '6 min read',
+    tags: ['Speed to Lead', 'Lead Response Time', 'AI Voice Agents', 'Sales'],
+    keywords: ['speed to lead', 'lead response time study', 'why leads go cold', 'AI voice agent lead response', 'HBR lead response study'],
+    image: 'https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=800',
+    content: `
+      <div class="blog-article-content space-y-8">
+        <section>
+          <h2 class="text-3xl font-bold text-white mb-4">Almost a Quarter of Businesses Never Call Their Leads Back at All</h2>
+          <p class="text-gray-300 leading-relaxed">
+            Harvard Business Review researchers James Oldroyd, Kristina McElheran, and David Elkington audited how 2,241 US companies actually responded to online sales leads, not how they said they responded. The study, "The Short Life of Online Sales Leads," published in HBR in March 2011, is still one of the most cited pieces of research on response time because the numbers are brutal and nothing about buyer behavior has gotten more patient since then.
+          </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            Only 37% of companies responded to a lead within an hour. 16% took between one and 24 hours. 24% took longer than a day. And 23% never responded at all. The average response time among the companies that did respond was 42 hours, nearly two full days.
+          </p>
+        </section>
+
+        <section class="bg-gray-900 border-l-4 border-cyan-500 p-8 rounded-r-3xl my-10">
+          <h3 class="text-cyan-400 font-bold mb-3 uppercase text-sm">The One Stat That Matters Most</h3>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            Firms that responded to a web lead within an hour were almost 7 times more likely to qualify that lead than firms that waited even one hour longer. Not seven times more likely to close, seven times more likely to have a real, qualified conversation at all. Every hour you wait, the odds of that lead turning into a conversation drop fast.
+          </p>
+          <p class="text-gray-300 text-sm leading-relaxed mt-4">
+            You can read the full study on <a href="https://hbr.org/2011/03/the-short-life-of-online-sales-leads" class="text-cyan-400 hover:underline" target="_blank" rel="noopener">Harvard Business Review</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Why Leads Go Cold So Fast</h2>
+          <p class="text-gray-300 leading-relaxed">
+            A lead fills out a form or calls your business because they have a problem right now. They are usually comparing you against two or three competitors at the same moment. The business that picks up first, or texts back first, gets the conversation. Everyone else is competing for a callback that may never come.
+          </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            Most small and mid-sized businesses do not have someone staffed to answer every call the second it rings, especially nights, weekends, and the gap between the end of a job and checking voicemail. That gap is where the 23% who never respond comes from. It is rarely a decision. It is just nobody available at the right second.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">The Fix Is Not "Try Harder," It Is Removing the Human Bottleneck</h2>
+          <p class="text-gray-300 leading-relaxed">
+            You cannot staff a receptionist for every hour a lead might come in without it costing more than the leads are worth. The alternative is an AI system that answers the phone and texts back inside seconds, every time, without needing a lunch break or a night off.
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-gray-300 mt-4">
+            <li><strong>Instant answer, not a queue:</strong> a KenjiAI <a href="/voice-agents" class="text-cyan-400 hover:underline">AI voice agent</a> picks up on the first or second ring, has a real conversation, and qualifies the caller before a human ever needs to get involved.</li>
+            <li><strong>Instant SMS on missed calls and web forms:</strong> if a call is missed, a text goes out immediately so the lead knows someone is coming back to them, instead of assuming you ignored them and calling the next company on the list.</li>
+            <li><strong>Booking happens in the same conversation:</strong> the agent puts the appointment directly on your calendar, so speed to lead does not depend on someone remembering to follow up later that day.</li>
+          </ul>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            This is the same problem we have spent over 12 years solving in lead generation, and it is why we built the <a href="/call-center-upgrade" class="text-cyan-400 hover:underline">AI Call Center</a> the way we did: answer first, qualify fast, and never let a lead sit in a queue waiting on a human to have a free minute.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">What This Looks Like in Practice</h2>
+          <p class="text-gray-300 leading-relaxed">
+            A homeowner submits a form for a quote at 9pm on a Saturday. With a typical business, that lead sits until Monday morning, by which point they have already booked with someone who called back Saturday night. With an AI voice agent watching the line, that same lead gets a call back inside a minute, gets their questions answered, and is on the calendar before they have even closed the browser tab.
+          </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            The math from the HBR study is not subtle. Waiting even one extra hour cuts your odds of qualifying that lead by roughly seven times. Most businesses are not losing leads because their offer is weak. They are losing them because somebody else answered the phone first.
+          </p>
+        </section>
+
+        <section class="border-t border-white/10 pt-8">
+          <p class="text-gray-400 text-sm">See how a done-for-you, performance-based AI Call Center closes the response gap at <a href="/overview" class="text-cyan-400 hover:underline">kenjiai.com/overview</a>.</p>
+        </section>
+      </div>
+    `
+  },
+  'self-liquidating-offers-ad-spend-pays-for-itself': {
+    slug: 'self-liquidating-offers-ad-spend-pays-for-itself',
+    title: 'Self-Liquidating Offers: How a Low-Priced Front End Can Cover Your Ad Spend',
+    excerpt: 'A self-liquidating offer is built so the front-end sale pays for the ad that brought the customer in. Here is how order bumps, upsells, and AOV make that math work, with a simple worked example.',
+    category: 'AI Marketing',
+    date: '2026-09-30',
+    author: 'KenjiAI Team',
+    readTime: '7 min read',
+    tags: ['Self-Liquidating Offers', 'Funnel Strategy', 'Customer Acquisition Cost', 'Offers'],
+    keywords: ['self-liquidating offer', 'SLO funnel', 'order bump', 'upsell', 'customer acquisition cost', 'average order value'],
+    image: 'https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800',
+    content: `
+      <div class="blog-article-content space-y-8">
+        <section>
+          <h2 class="text-3xl font-bold text-white mb-4">What a Self-Liquidating Offer Actually Is</h2>
+          <p class="text-gray-300 leading-relaxed">
+            A self-liquidating offer, usually shortened to SLO, is a front-end offer priced so that when enough buyers take it, the revenue covers the cost of the ad spend that brought them in. The business is not trying to profit on the front-end sale itself. It is trying to break even or close to it, so acquiring a new customer costs close to nothing out of pocket.
+          </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            The real profit does not come from that first sale. It comes from what happens after: order bumps at checkout, upsells right after purchase, and the follow-up system that turns a $7 or $27 buyer into a long-term customer.
+          </p>
+        </section>
+
+        <section class="bg-gray-900 border-l-4 border-cyan-500 p-8 rounded-r-3xl my-10">
+          <h3 class="text-cyan-400 font-bold mb-3 uppercase text-sm">The Three Pieces That Make an SLO Work</h3>
+          <ol class="list-decimal list-inside space-y-2 text-gray-300 text-sm leading-relaxed">
+            <li><strong>The front-end offer:</strong> low-priced, low-friction, and specific enough that the right buyer says yes fast. This is what covers the ad spend.</li>
+            <li><strong>The order bump and upsell:</strong> a bump is a one-click add-on shown at checkout before they pay. An upsell is a second offer shown right after they buy the first one. Both raise average order value without raising acquisition cost.</li>
+            <li><strong>The follow-up system:</strong> email, SMS, and retargeting that keeps talking to the buyer after the sale, because a customer who already bought once is far cheaper to sell to again than a brand new lead.</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">AOV vs. Cost Per Acquisition</h2>
+          <p class="text-gray-300 leading-relaxed">
+            Two numbers decide whether an SLO funnel works: average order value (AOV), meaning what a typical buyer spends across the front-end offer plus any bumps and upsells, and cost per acquisition (CPA), meaning what it costs in ad spend to get one buyer. If AOV is higher than CPA, the funnel is liquidating itself or better. If AOV is lower than CPA, every sale is costing you money before you have even gotten to the part of the business that actually makes a profit.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">A Simple Worked Example</h2>
+          <p class="text-gray-300 leading-relaxed">
+            This is an illustrative example to show the math, not a claimed result from a real campaign.
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-gray-300 mt-4">
+            <li>Front-end offer: $27</li>
+            <li>Order bump taken by 30% of buyers, priced at $17, adding about $5.10 to average order value</li>
+            <li>Post-purchase upsell taken by 20% of buyers, priced at $47, adding about $9.40 to average order value</li>
+            <li>Average order value across all buyers: roughly $41.50</li>
+            <li>Cost per acquisition from ads: $35</li>
+          </ul>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            In this illustrative example, the funnel is self-liquidating with about $6.50 left over per buyer after ad spend, before counting anything from the follow-up sequence. That leftover margin, multiplied across volume, is what funds scaling the ad spend further, because every new buyer is close to free to acquire. Then the follow-up emails and texts to that buyer list are where the actual profit gets made, since that audience already trusts you enough to have paid once.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Where Most Businesses Get This Wrong</h2>
+          <p class="text-gray-300 leading-relaxed">
+            The most common mistake is treating the front-end offer as the whole business, judging it purely on whether it turns a profit by itself. An SLO is not supposed to be the profit center. It is the customer acquisition machine. If you kill a front-end offer because it "only broke even," you are often killing the cheapest new customers you will ever get.
+          </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            The second mistake is having no real follow-up system after the sale. Without one, a self-liquidating offer really does just liquidate itself and stop there, with no back end to make the acquisition worth it. The follow-up automation, not the front-end price, is what turns a breakeven funnel into a profitable one.
+          </p>
+        </section>
+
+        <section class="border-t border-white/10 pt-8">
+          <p class="text-gray-400 text-sm">See our own pricing and offer structure at <a href="/pricing" class="text-cyan-400 hover:underline">kenjiai.com/pricing</a>, or get the full done-for-you system at <a href="/overview" class="text-cyan-400 hover:underline">kenjiai.com/overview</a>.</p>
+        </section>
+      </div>
+    `
+  },
+  'attention-is-not-a-business-celebrity-brand-shutdowns': {
+    slug: 'attention-is-not-a-business-celebrity-brand-shutdowns',
+    title: 'Attention Is Not a Business: What a Wave of Celebrity Brand Shutdowns Teaches Small Businesses',
+    excerpt: 'Messi, Alex Cooper, Kim Kardashian, Gwen Stefani, and Drew Barrymore all had brands with massive built-in audiences shut down anyway. Millions of followers is not the same as an offer people want.',
+    category: 'Viral News',
+    date: '2026-09-30',
+    author: 'KenjiAI Team',
+    readTime: '6 min read',
+    tags: ['Celebrity Brands', 'Business Strategy', 'Offers', 'Marketing'],
+    keywords: ['celebrity brand shutdowns', 'attention is not a business', 'why celebrity brands fail', 'followers vs customers'],
+    image: 'https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=800',
+    content: `
+      <div class="blog-article-content space-y-8">
+        <section>
+          <h2 class="text-3xl font-bold text-white mb-4">Five Celebrity Brands, Hundreds of Millions of Followers, Still Shut Down</h2>
+          <p class="text-gray-300 leading-relaxed">
+            Modern Retail reported on August 25, 2026 that a wave of celebrity-led brands have shut down or been discontinued in the past two years, despite each founder having one of the largest audiences on the planet behind them. Lionel Messi's Mas+ drink line was discontinued less than two years after launch. Alex Cooper's Unwell drink was discontinued in under a year. Kim Kardashian's Skkn skincare line closed and was folded into Skims. Gwen Stefani's Gxve Beauty shut down in 2026. Drew Barrymore's Flower Beauty was discontinued.
+          </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            You can read the full reporting at <a href="https://www.modernretail.co/operations/why-more-celebrity-led-brands-are-shutting-down/" class="text-cyan-400 hover:underline" target="_blank" rel="noopener">Modern Retail</a>.
+          </p>
+        </section>
+
+        <section class="bg-gray-900 border-l-4 border-cyan-500 p-8 rounded-r-3xl my-10">
+          <h3 class="text-cyan-400 font-bold mb-3 uppercase text-sm">Attention Is Not the Same as Permission to Sell</h3>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            A brand expert quoted in that reporting put it plainly: there is a big difference between having attention and having permission to enter a category. Messi has hundreds of millions of followers watching him play soccer. That does not mean those same people were waiting to buy a drink from him. Alex Cooper has one of the biggest podcasts in the world. That did not automatically mean her audience wanted her specific beverage on a store shelf next to a hundred other options.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Why Huge Audiences Did Not Save These Brands</h2>
+          <p class="text-gray-300 leading-relaxed">
+            None of these are stories about a lack of reach. Every one of these people could put a product in front of tens of millions of people instantly, for free, any time they wanted. That is the exact opposite of the problem most small businesses have. And it still was not enough.
+          </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            An audience that follows someone for one reason, entertainment, sports, a podcast, does not automatically transfer into buyers for an unrelated product in a crowded category. Beauty and beverage are two of the most competitive retail categories that exist, full of brands built specifically to win in that category, not brands that showed up because the founder was already famous for something else.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">The Lesson for a Small Business Without a Celebrity Following</h2>
+          <p class="text-gray-300 leading-relaxed">
+            This should be reassuring, not discouraging, if you run a local or service business without a huge social following. Followers and views were never the thing standing between these celebrities and a successful business. What actually decides whether a business survives is the same two things every time: an offer people genuinely want, and a system that follows up with the people who show interest until they become a customer.
+          </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            A landscaping company with 200 Instagram followers and a fast callback system will out-earn a brand with a million followers and no real reason for people to buy. Attention gets someone to look. It does not get them to buy, and it definitely does not get them to buy twice. That second part, the follow-up and the retention, is where the actual business lives.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">What This Means If You Are Building Instead of Just Posting</h2>
+          <p class="text-gray-300 leading-relaxed">
+            If you are spending time chasing views and follower counts instead of building the offer and the follow-up system underneath it, you are repeating the same mistake these brands made, just at a smaller scale. Views do not pay bills. Booked appointments and closed deals do. A voice agent that answers the phone the moment someone calls and a CRM that keeps following up matters more to your revenue than another viral post ever will.
+          </p>
+        </section>
+
+        <section class="border-t border-white/10 pt-8">
+          <p class="text-gray-400 text-sm">Build the offer and the follow-up system that actually converts attention into customers at <a href="/overview" class="text-cyan-400 hover:underline">kenjiai.com/overview</a>.</p>
+        </section>
+      </div>
+    `
+  },
   'meta-muse-ai-agent-success-what-it-means-for-business': {
     slug: 'meta-muse-ai-agent-success-what-it-means-for-business',
     title: 'Meta\'s Muse AI Just Beat ChatGPT\'s Download Numbers. Here\'s Why That Matters For Your Business.',
