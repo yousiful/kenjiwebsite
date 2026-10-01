@@ -44,7 +44,9 @@ export const internalRoutes = [
   '/tools/icp-generator',
   '/tools/name-generator',
   '/tools/business-name-generator',
-  '/trendpulse'
+  '/trendpulse',
+  '/book',
+  '/book2'
 ] as const;
 
 export const externalRoutes = {

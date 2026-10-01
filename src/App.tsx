@@ -75,6 +75,8 @@ const SongPromptGeneratorPage = lazyRoute(() => import('./pages/SongPromptGenera
 const ICPGeneratorPage = lazyRoute(() => import('./pages/ICPGeneratorPage'));
 const TrendPulsePage = lazyRoute(() => import('./pages/TrendPulsePage'));
 const NameGeneratorPage = lazyRoute(() => import('./pages/NameGeneratorPage'));
+const BookPage = lazyRoute(() => import('./pages/BookPage'));
+const Book2Page = lazyRoute(() => import('./pages/Book2Page'));
 
 const RouteFallback: React.FC = () => (
   <div
@@ -284,6 +286,8 @@ function App() {
                       <Route path="/paid-ads-for/:niche" element={<NicheAdPage />} />
                       <Route path="/pricing" element={<ProductSelectionPage />} />
                       <Route path="/pricing2" element={<PricingV2Page />} />
+                      <Route path="/book" element={<BookPage />} />
+                      <Route path="/book2" element={<Book2Page />} />
                       <Route path="/success" element={<SuccessPage />} />
                       <Route path="/privacy" element={<PrivacyPolicyPage />} />
                       <Route path="/disclaimer" element={<DisclaimerPage />} />
