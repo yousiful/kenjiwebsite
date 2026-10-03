@@ -58,12 +58,12 @@ const PRICING_STRUCTURED_DATA = {
     {
       "@type": "Offer",
       "name": "Annual",
-      "price": "199",
+      "price": "250",
       "priceCurrency": "USD",
       "url": "https://kenjiai.com/pricing",
       "priceValidUntil": "2027-08-01",
       "availability": "https://schema.org/InStock",
-      "description": "5% performance fee on new revenue generated, billed annually at $2,388/yr.",
+      "description": "5% performance fee on new revenue generated, billed annually at $3,000/yr.",
     },
   ],
 };
@@ -73,7 +73,7 @@ const ProductSelectionPage: React.FC = () => {
     <>
       <Helmet>
         <title>KenjiAI Pricing | Voice Agents, CRM, and AI Automation Plans</title>
-        <meta name="description" content="KenjiAI pricing for business owners replacing 17+ tools. Monthly $297, annual $199/mo, lifetime custom. Performance-based fees, cancel anytime." />
+        <meta name="description" content="KenjiAI pricing for business owners replacing 17+ tools. Monthly $297, annual $250/mo, lifetime custom. Performance-based fees, cancel anytime." />
         <link rel="canonical" href="https://kenjiai.com/pricing" />
         <script type="application/ld+json">{JSON.stringify(PRICING_STRUCTURED_DATA)}</script>
       </Helmet>
