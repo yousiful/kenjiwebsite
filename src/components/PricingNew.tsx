@@ -27,7 +27,7 @@ const YEARLY_FEATURES = [
   "Quarterly strategy call with our growth team to plan your next 90 days",
   "Custom workflow built for your business in week one",
   "Sales team placement included if you need help closing",
-  "Save $1,260 vs paying monthly",
+  "Save $1,176 vs paying monthly",
   "A dedicated done-for-you call center that follows up on every lead for you",
 ];
 
@@ -148,6 +148,30 @@ export function PricingNew() {
       </div>
 
       <div className="max-w-7xl mx-auto mt-12 sm:mt-16">
+        {/* Holiday price drop. Yousif, 2026-10-03: $297/mo and $199/mo yearly, ends after the next 6 onboardings */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="max-w-3xl mx-auto mb-10 px-4 sm:px-6"
+        >
+          <div className="relative overflow-hidden rounded-2xl border-2 border-red-500/60 bg-gradient-to-r from-red-950/60 via-gray-900/80 to-emerald-950/60 p-5 sm:p-6 text-center" style={{ boxShadow: '0 0 40px rgba(239,68,68,0.2)' }}>
+            <div className="inline-flex items-center gap-2 bg-red-500 text-white rounded-full px-4 py-1 mb-3 text-xs sm:text-sm font-black uppercase tracking-widest animate-pulse">
+              🎄 Holiday Season Discount
+            </div>
+            <div className="text-white text-xl sm:text-2xl font-black leading-tight">
+              Prices just dropped: <span className="text-gray-400 line-through decoration-red-500 decoration-2">$375</span>{' '}
+              <span className="text-emerald-400">$297/mo</span>
+              <span className="text-gray-500 mx-2">|</span>
+              <span className="text-gray-400 line-through decoration-red-500 decoration-2">$270</span>{' '}
+              <span className="text-emerald-400">$199/mo</span> <span className="text-gray-300 text-base font-bold">paid yearly</span>
+            </div>
+            <div className="mt-2 text-amber-300 font-bold text-sm sm:text-base">
+              This holiday pricing goes away after the next 6 onboardings.
+            </div>
+          </div>
+        </motion.div>
+
         {/* 3-Column Pricing Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 px-4 lg:px-8 max-w-6xl mx-auto">
 
@@ -164,7 +188,7 @@ export function PricingNew() {
             </div>
 
             <div className="mb-4">
-              <SlashPrice from={475} to={375} accentClass="text-white" />
+              <SlashPrice from={375} to={297} accentClass="text-white" />
             </div>
 
             <div className="mb-5 bg-blue-500/5 border border-blue-500/10 rounded-lg p-3">
@@ -187,7 +211,7 @@ export function PricingNew() {
                   <span>Redirecting...</span>
                 </motion.div>
               ) : (
-                <span className="flex items-center gap-2">Claim Spot for $375/mo</span>
+                <span className="flex items-center gap-2">Claim Spot for $297/mo</span>
               )}
             </motion.button>
             <div className="text-center text-gray-500 text-xs mb-1">Secured by Stripe</div>
@@ -229,7 +253,7 @@ export function PricingNew() {
             </div>
 
             <div className="mb-4">
-              <SlashPrice from={375} to={270} accentClass="text-[#10A37F]" />
+              <SlashPrice from={270} to={199} accentClass="text-[#10A37F]" />
             </div>
 
             <div className="mb-5 bg-[#10A37F]/5 border border-[#10A37F]/10 rounded-lg p-3">
@@ -252,10 +276,10 @@ export function PricingNew() {
                   <span>Redirecting...</span>
                 </motion.div>
               ) : (
-                <span className="flex items-center gap-2">Claim Spot for $270/mo ($3,240/yr)</span>
+                <span className="flex items-center gap-2">Claim Spot for $199/mo ($2,388/yr)</span>
               )}
             </motion.button>
-            <div className="text-center text-[#10A37F] font-semibold text-xs mb-1">You save $1,260/yr vs monthly</div>
+            <div className="text-center text-[#10A37F] font-semibold text-xs mb-1">You save $1,176/yr vs monthly</div>
             <a
               href="https://go.mediatraffics.com/leads"
               target="_blank"
@@ -309,7 +333,7 @@ export function PricingNew() {
             <div className="mb-3 bg-amber-500/10 border border-amber-500/40 rounded-lg p-3">
               <div className="text-amber-300 text-sm font-bold">Zero fees forever = the plan pays for itself</div>
               <div className="text-gray-300 text-xs mt-1 leading-relaxed">
-                Annual members pay $3,240/yr plus a 5% success fee. Golden Members never pay
+                Annual members pay $2,388/yr plus a 5% success fee. Golden Members never pay
                 either again, at $1M in tracked sales that's <span className="text-amber-300 font-bold">$50,000+ kept</span>, not counting the subscription you stopped paying.
               </div>
             </div>
