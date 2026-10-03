@@ -1,424 +1,137 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check, ArrowRight } from 'lucide-react';
-import { ToolReplacementBar } from './ToolReplacementBar';
+import { Check } from 'lucide-react';
 import { ExitIntentPopup } from './ExitIntentPopup';
 import { SlashPrice } from './SlashPrice';
-import FAQ from './FAQ';
-import { getSeasonCopy } from '../utils/seasonCopy';
+
+const CHECKOUT_URL = 'https://freedom.kenjiai.com/finishhere';
+const CALL_URL = 'https://go.mediatraffics.com/leads';
 
 // Yousif, 2026-10-03: plans include only these three deliverables. AI call center and closer placement are paid add-ons.
 const MONTHLY_FEATURES = [
-  "Done-for-you paid ads setup: we build and launch your campaign (setup only, ongoing management not included)",
-  "Done-for-you funnel, built from the layouts our winning clients convert with",
-  "Done-for-you workflows: follow-up, booking, and reminders built inside your CRM",
+  'Paid ads set up and launched for you (setup only, no ongoing management)',
+  'Done-for-you funnel',
+  'Done-for-you workflows inside your CRM',
 ];
 
 const YEARLY_FEATURES = [
-  "Performance fee cut in half (5% vs 10%)",
-  "Save $565.20 vs paying monthly",
-];
-
-const ADD_ONS = [
-  { title: "AI Agent Call Center", body: "AI agents that answer, call, and text every lead, qualify them, and book appointments 24/7." },
-  { title: "Closer Placement", body: "Trained closers placed into your company to work your booked calls and close deals." },
+  ...MONTHLY_FEATURES,
+  'Half the performance fee (5% vs 10%)',
 ];
 
 const VIP_FEATURES = [
-  "Everything in Annual, paid one time, never billed again",
-  "Zero performance fee, forever, keep 100% of every sale",
-  "We migrate your current tools for you (white-glove)",
-  "Direct line to the founding team",
+  'Everything in Annual, paid once',
+  'Zero performance fee, forever',
+  'We migrate your current tools for you',
 ];
+
+function FeatureList({ items, checkClass }: { items: string[]; checkClass: string }) {
+  return (
+    <ul className="space-y-2.5">
+      {items.map((f) => (
+        <li key={f} className="flex items-start gap-2.5">
+          <Check className={`w-4 h-4 flex-shrink-0 mt-0.5 ${checkClass}`} />
+          <span className="text-gray-300 text-sm leading-snug">{f}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export function PricingNew() {
   const [isLoading, setIsLoading] = useState<string | null>(null);
-  const season = getSeasonCopy();
 
-  const handlePlanClick = async (url: string, planName: string) => {
+  const handlePlanClick = (planName: string) => {
     setIsLoading(planName);
-    await new Promise(resolve => setTimeout(resolve, 500));
-    window.location.href = url;
+    window.location.href = CHECKOUT_URL;
   };
 
+  const planButton = (planName: string, label: string) => (
+    <button
+      onClick={() => handlePlanClick(planName)}
+      disabled={isLoading === planName}
+      className="w-full py-3.5 rounded-xl font-bold text-base bg-[#10A37F] text-white hover:bg-[#0E906F] transition-colors disabled:opacity-80 disabled:cursor-wait"
+    >
+      {isLoading === planName ? 'Redirecting...' : label}
+    </button>
+  );
+
   return (
-    <div className="py-16 sm:py-24 px-4" style={{ backgroundColor: '#0B0E14' }}>
+    <div className="py-16 sm:py-20 px-4" style={{ backgroundColor: '#0B0E14' }}>
+      {/* Header + holiday offer. Yousif, 2026-10-03: $297/mo and $249.90/mo yearly, ends after the next 6 onboardings */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="max-w-3xl mx-auto text-center mb-12 sm:mb-14"
+      >
+        <div className="inline-flex items-center gap-2 bg-red-500/15 border border-red-500/40 rounded-full px-4 py-1.5 mb-6">
+          <span className="text-red-300 font-bold text-xs sm:text-sm uppercase tracking-widest">🎄 Holiday Season Discount</span>
+        </div>
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight mb-5">
+          Simple pricing. <span className="text-emerald-400">Done for you.</span>
+        </h1>
+        <p className="text-lg sm:text-xl text-gray-300">
+          Holiday pricing ends after the next <span className="text-amber-300 font-bold">6 onboardings</span>.
+        </p>
+      </motion.div>
 
-      {/* Hero Section */}
-      <div className="max-w-6xl mx-auto mb-12 sm:mb-16 text-center px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-        >
-          <div className="inline-flex items-center gap-2 bg-amber-500/15 border border-amber-500/30 rounded-full px-5 py-2 mb-6">
-            <span className="text-amber-300 font-bold text-xs sm:text-sm uppercase tracking-widest">
-              {season.badge}
-            </span>
-          </div>
+      {/* Plans */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6 max-w-6xl mx-auto lg:px-4">
 
-          <h1
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 sm:mb-8 leading-tight"
-            style={{ fontFamily: 'Inter, Montserrat, sans-serif' }}
-          >
-            <span style={{
-              background: 'linear-gradient(90deg, #10B981 0%, #34D399 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              letterSpacing: '-0.01em'
-            }}>
-              Stop Leaving Money
-            </span>
-            <br />
-            <span className="text-white">on the Table This Season</span>
-          </h1>
+        {/* Annual */}
+        <div className="relative bg-gray-900/60 border-2 border-[#10A37F] rounded-2xl p-6 sm:p-7 flex flex-col">
+          <span className="absolute -top-3 left-6 bg-[#10A37F] text-white text-xs font-bold px-3 py-1 rounded-full">Most Popular</span>
+          <h3 className="text-xl font-bold text-white mb-1">Annual</h3>
+          <p className="text-gray-400 text-sm mb-5">Lowest monthly cost.</p>
+          <div className="mb-1"><SlashPrice from={270} to={249.9} accentClass="text-[#10A37F]" /></div>
+          <p className="text-gray-500 text-xs mb-6">Billed $2,998.80/yr · save $565.20 · 5% fee only on new revenue we generate</p>
+          {planButton('yearly', 'Get Started')}
+          <div className="mt-6 flex-1"><FeatureList items={YEARLY_FEATURES} checkClass="text-[#10A37F]" /></div>
+        </div>
 
-          <p className="text-xl sm:text-2xl text-gray-200 font-semibold max-w-3xl mx-auto mb-8 leading-relaxed">
-            {season.subheadline}
-          </p>
-        </motion.div>
-      </div>
+        {/* Monthly */}
+        <div className="bg-gray-900/60 border border-gray-800 rounded-2xl p-6 sm:p-7 flex flex-col">
+          <h3 className="text-xl font-bold text-white mb-1">Monthly</h3>
+          <p className="text-gray-400 text-sm mb-5">Cancel anytime.</p>
+          <div className="mb-1"><SlashPrice from={375} to={297} accentClass="text-white" /></div>
+          <p className="text-gray-500 text-xs mb-6">10% fee only on new revenue we generate</p>
+          {planButton('monthly', 'Get Started')}
+          <div className="mt-6 flex-1"><FeatureList items={MONTHLY_FEATURES} checkClass="text-gray-400" /></div>
+        </div>
 
-      {/* Low-pressure call CTA up top, catches visitors who want to talk before they buy */}
-      <div className="max-w-3xl mx-auto mb-12 sm:mb-16 px-4 sm:px-6">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-gray-900/60 border border-gray-700/50 rounded-2xl p-5 sm:p-6 text-center sm:text-left">
-          <p className="text-gray-200 font-semibold">
-            Not ready to pick a plan? Book a free demo and we'll walk you through it before we take this page down, no pressure, no pitch.
-          </p>
+        {/* Lifetime */}
+        <div className="bg-gray-900/60 border border-amber-500/50 rounded-2xl p-6 sm:p-7 flex flex-col">
+          <h3 className="text-xl font-bold text-amber-300 mb-1">👑 Lifetime</h3>
+          <p className="text-gray-400 text-sm mb-5">Pay once. Keep 100% of every sale.</p>
+          <div className="text-3xl font-black text-white mb-1">Custom</div>
+          <p className="text-gray-500 text-xs mb-6">By application, revealed on your call</p>
           <a
-            href="https://go.mediatraffics.com/leads"
+            href={CALL_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 inline-flex items-center justify-center gap-2 bg-white text-gray-900 hover:bg-gray-200 px-6 py-3 rounded-xl font-bold transition-all duration-300 whitespace-nowrap"
+            className="w-full py-3.5 rounded-xl font-bold text-base text-center bg-amber-500 hover:bg-amber-400 text-gray-950 transition-colors"
           >
-            Book a Free Demo
+            Apply
           </a>
+          <div className="mt-6 flex-1"><FeatureList items={VIP_FEATURES} checkClass="text-amber-400" /></div>
         </div>
       </div>
 
-      {/* What's included — benefits only, no dollar anchoring */}
-      <div className="max-w-5xl mx-auto mb-12 sm:mb-16 px-4 sm:px-6">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl sm:text-4xl font-black text-white mb-3">
-            What Your Plan Actually Buys You
-          </h2>
-          <p className="text-lg font-semibold text-gray-300 max-w-2xl mx-auto">
-            Three things, done for you, from week one.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {[
-            {
-              title: 'Paid Ads, Set Up For You',
-              body: 'We write, build, and launch your ad campaign from campaigns that have already produced sales. Setup only, you own and run it from there.',
-            },
-            {
-              title: 'Funnel, Built For You',
-              body: "No blank page. We install the funnel layouts our winning clients already convert with, branded to you, live in week one.",
-            },
-            {
-              title: 'Workflows, Built For You',
-              body: 'Every lead gets followed up, booked, and reminded automatically inside your CRM, so nothing slips through.',
-            },
-          ].map((item) => (
-            <div
-              key={item.title}
-              className="bg-gray-900/60 border border-emerald-500/25 rounded-2xl p-6"
-              style={{ boxShadow: '0 0 24px rgba(16,185,129,0.10)' }}
-            >
-              <h3 className="text-lg font-black text-white mb-2 leading-tight">{item.title}</h3>
-              <p className="text-gray-300 text-sm font-medium leading-relaxed">{item.body}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Tool Replacement Bar */}
-      <div className="hidden sm:block">
-        <ToolReplacementBar />
-      </div>
-
-      <div className="max-w-7xl mx-auto mt-12 sm:mt-16">
-        {/* Holiday price drop. Yousif, 2026-10-03: $297/mo and $249.90/mo yearly, ends after the next 6 onboardings */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="max-w-3xl mx-auto mb-10 px-4 sm:px-6"
-        >
-          <div className="relative overflow-hidden rounded-2xl border-2 border-red-500/60 bg-gradient-to-r from-red-950/60 via-gray-900/80 to-emerald-950/60 p-5 sm:p-6 text-center" style={{ boxShadow: '0 0 40px rgba(239,68,68,0.2)' }}>
-            <div className="inline-flex items-center gap-2 bg-red-500 text-white rounded-full px-4 py-1 mb-3 text-xs sm:text-sm font-black uppercase tracking-widest animate-pulse">
-              🎄 Holiday Season Discount
-            </div>
-            <div className="text-white text-xl sm:text-2xl font-black leading-tight">
-              Prices just dropped: <span className="text-gray-400 line-through decoration-red-500 decoration-2">$375</span>{' '}
-              <span className="text-emerald-400">$297/mo</span>
-              <span className="text-gray-500 mx-2">|</span>
-              <span className="text-gray-400 line-through decoration-red-500 decoration-2">$270</span>{' '}
-              <span className="text-emerald-400">$249.90/mo</span> <span className="text-gray-300 text-base font-bold">paid yearly</span>
-            </div>
-            <div className="mt-2 text-amber-300 font-bold text-sm sm:text-base">
-              This holiday pricing goes away after the next 6 onboardings.
-            </div>
-          </div>
-        </motion.div>
-
-        {/* 3-Column Pricing Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 px-4 lg:px-8 max-w-6xl mx-auto">
-
-          {/* Monthly Plan */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-            className="relative bg-gray-900/60 backdrop-blur-sm border border-gray-800 hover:border-blue-500/60 hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)] transition-all duration-500 rounded-2xl p-5 sm:p-6 flex flex-col order-2 lg:order-2"
-          >
-            <div className="mb-4">
-              <h3 className="text-xl font-bold text-white mb-1 flex items-center gap-2">Monthly</h3>
-              <p className="text-gray-400 text-sm">Test KenjiAI without committing to a year. Cancel anytime.</p>
-            </div>
-
-            <div className="mb-4">
-              <SlashPrice from={375} to={297} accentClass="text-white" />
-            </div>
-
-            <div className="mb-5 bg-blue-500/5 border border-blue-500/10 rounded-lg p-3">
-              <div className="text-blue-400 text-sm font-semibold">10% performance fee on new revenue we generate</div>
-              <div className="text-gray-500 text-xs mt-0.5">You only pay it after we make you money. No revenue, no fee.</div>
-            </div>
-
-            <motion.button
-              onClick={() => handlePlanClick('https://freedom.kenjiai.com/finishhere', 'monthly')}
-              disabled={isLoading === 'monthly'}
-              className={`w-full py-3.5 rounded-xl font-bold text-base flex flex-col items-center justify-center transition-all duration-300 mb-2 relative overflow-hidden group ${isLoading === 'monthly' ? 'opacity-90 cursor-wait bg-amber-600 text-white' : 'bg-[#10A37F] text-white hover:bg-[#0E906F]'}`}
-            >
-              {isLoading === 'monthly' ? (
-                <motion.div className="flex items-center gap-2">
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }}
-                    className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
-                  />
-                  <span>Redirecting...</span>
-                </motion.div>
-              ) : (
-                <span className="flex items-center gap-2">Claim Spot for $297/mo</span>
-              )}
-            </motion.button>
-            <div className="text-center text-gray-500 text-xs mb-1">Secured by Stripe</div>
-            <a
-              href="https://go.mediatraffics.com/leads"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block text-center text-gray-400 hover:text-white text-xs underline underline-offset-2 mb-6"
-            >
-              Not sure yet? Book a free call instead
-            </a>
-
-            <div className="flex-1">
-              <div className="text-white text-sm font-semibold mb-3">Everything included:</div>
-              <div className="space-y-1">
-                {MONTHLY_FEATURES.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-2 p-1.5 -mx-1.5 rounded-md hover:bg-white/5 transition-colors group cursor-default">
-                    <Check className="w-4 h-4 text-gray-400 group-hover:text-amber-500 transition-colors flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300 group-hover:text-white transition-colors text-sm leading-tight tracking-tight">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Yearly Plan */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.05 }}
-            className="relative bg-gray-900/60 backdrop-blur-sm border-2 border-[#10A37F] hover:-translate-y-2 hover:shadow-[0_0_40px_rgba(16,163,127,0.2)] transition-all duration-500 rounded-2xl p-5 sm:p-6 flex flex-col order-1 lg:order-1"
-          >
-            <div className="mb-4 flex items-start justify-between">
-              <div>
-                <h3 className="text-xl font-bold text-white mb-1">Annual</h3>
-                <p className="text-gray-400 text-sm">Lowest monthly cost. For owners ready to scale.</p>
-              </div>
-              <span className="bg-[#10A37F]/10 text-[#10A37F] text-xs font-bold px-2 py-1 rounded">Most Popular</span>
-            </div>
-
-            <div className="mb-4">
-              <SlashPrice from={270} to={249.9} accentClass="text-[#10A37F]" />
-            </div>
-
-            <div className="mb-5 bg-[#10A37F]/5 border border-[#10A37F]/10 rounded-lg p-3">
-              <div className="text-[#10A37F] text-sm font-semibold">5% performance fee on new revenue we generate</div>
-              <div className="text-gray-500 text-xs mt-0.5">Half the rate of monthly. Still $0 if we don't make you money.</div>
-            </div>
-
-            <motion.button
-              onClick={() => handlePlanClick('https://freedom.kenjiai.com/finishhere', 'yearly')}
-              disabled={isLoading === 'yearly'}
-              className={`w-full py-3.5 rounded-xl font-bold text-base flex flex-col items-center justify-center transition-all duration-300 mb-2 relative overflow-hidden group ${isLoading === 'yearly' ? 'opacity-90 cursor-wait bg-[#10A37F] text-white' : 'bg-[#10A37F] text-white hover:bg-[#0E906F]'}`}
-            >
-              {isLoading === 'yearly' ? (
-                <motion.div className="flex items-center gap-2">
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ duration: 0.7, repeat: Infinity, ease: 'linear' }}
-                    className="w-4 h-4 border-2 border-white border-t-transparent rounded-full"
-                  />
-                  <span>Redirecting...</span>
-                </motion.div>
-              ) : (
-                <span className="flex items-center gap-2">Claim Spot for $249.90/mo ($2,998.80/yr)</span>
-              )}
-            </motion.button>
-            <div className="text-center text-[#10A37F] font-semibold text-xs mb-1">You save $565.20/yr vs monthly</div>
-            <a
-              href="https://go.mediatraffics.com/leads"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block text-center text-gray-400 hover:text-white text-xs underline underline-offset-2 mb-6"
-            >
-              Not sure yet? Book a free call instead
-            </a>
-
-            <div className="flex-1">
-              <div className="text-white text-sm font-semibold mb-3">Everything in Monthly, plus:</div>
-              <div className="space-y-1">
-                {YEARLY_FEATURES.filter(f => !MONTHLY_FEATURES.includes(f)).map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-2 p-1.5 -mx-1.5 rounded-md hover:bg-white/5 transition-colors group cursor-default">
-                    <Check className="w-4 h-4 text-[#10A37F] group-hover:text-emerald-400 transition-colors flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-200 group-hover:text-white transition-colors text-[13px] font-medium leading-tight tracking-tight">{feature}</span>
-                  </div>
-                ))}
-                {MONTHLY_FEATURES.map((feature, idx) => (
-                  <div key={`m-${idx}`} className="flex items-start gap-2 p-1.5 -mx-1.5 rounded-md hover:bg-white/5 transition-colors group cursor-default">
-                    <Check className="w-4 h-4 text-gray-500 group-hover:text-gray-400 transition-colors flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-400 group-hover:text-gray-300 transition-colors text-[13px] leading-tight tracking-tight">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Lifetime — Golden Member */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
-            className="relative bg-gradient-to-b from-amber-950/40 via-gray-900/70 to-gray-900/60 backdrop-blur-sm border-2 border-amber-500/60 hover:border-amber-400 hover:-translate-y-2 transition-all duration-500 rounded-2xl p-5 sm:p-6 flex flex-col order-3 lg:order-3"
-            style={{ boxShadow: '0 0 45px rgba(245,158,11,0.18)' }}
-          >
-            {/* Golden ribbon */}
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-              <div className="bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-500 text-gray-950 px-5 py-1.5 rounded-full text-xs font-black uppercase tracking-widest shadow-lg shadow-amber-500/40 whitespace-nowrap">
-                👑 Golden Member
-              </div>
-            </div>
-
-            <div className="mb-4 mt-2 flex items-start justify-between">
-              <div>
-                <h3 className="text-xl font-black bg-gradient-to-r from-amber-300 to-yellow-200 bg-clip-text text-transparent mb-1">Lifetime</h3>
-                <p className="text-gray-300 text-sm">Pay once. Own KenjiAI forever. Then keep 100% of everything you make.</p>
-              </div>
-            </div>
-
-            <div className="mb-3 bg-amber-500/10 border border-amber-500/40 rounded-lg p-3">
-              <div className="text-amber-300 text-sm font-bold">Zero fees forever = the plan pays for itself</div>
-              <div className="text-gray-300 text-xs mt-1 leading-relaxed">
-                Annual members pay $2,998.80/yr plus a 5% success fee. Golden Members never pay
-                either again, at $1M in tracked sales that's <span className="text-amber-300 font-bold">$50,000+ kept</span>, not counting the subscription you stopped paying.
-              </div>
-            </div>
-
-            <div className="mb-5 bg-gray-800/50 border border-gray-700/50 rounded-lg p-3">
-              <div className="text-gray-200 text-sm font-semibold">Custom one-time investment</div>
-              <div className="text-gray-400 text-xs mt-0.5">Revealed on your discovery call. Limited to a handful of Golden Members per quarter.</div>
-            </div>
-
-            <a
-              href="https://go.mediatraffics.com/leads"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-3.5 rounded-xl font-black text-base flex flex-col items-center justify-center transition-all duration-300 mb-2 bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-gray-950 shadow-lg shadow-amber-500/30"
-            >
-              <span className="flex items-center gap-2">Apply for Golden Membership</span>
-            </a>
-            <div className="text-center text-amber-300/70 text-xs mb-6">By application only</div>
-
-            <div className="flex-1">
-              <div className="text-white text-sm font-semibold mb-3">Golden Member benefits:</div>
-              <div className="space-y-1">
-                {VIP_FEATURES.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-2 p-1.5 -mx-1.5 rounded-md hover:bg-amber-500/5 transition-colors group cursor-default">
-                    <Check className="w-4 h-4 text-amber-400 group-hover:text-amber-300 transition-colors flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300 group-hover:text-white transition-colors text-[13px] leading-tight tracking-tight">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        </div>
-
-        {/* Paid add-ons */}
-        <div className="mt-12 max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-6">
-            <h3 className="text-2xl sm:text-3xl font-black text-white mb-2">Want Us to Handle More? Add It On</h3>
-            <p className="text-gray-400">Available on any plan. Ask on your onboarding call.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {ADD_ONS.map((a) => (
-              <div key={a.title} className="bg-gray-900/60 border border-blue-500/30 rounded-2xl p-6">
-                <div className="inline-block bg-blue-500/15 text-blue-300 text-xs font-bold uppercase tracking-widest rounded-full px-3 py-1 mb-3">Add-on</div>
-                <h4 className="text-lg font-black text-white mb-2">{a.title}</h4>
-                <p className="text-gray-300 text-sm leading-relaxed">{a.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Secondary Conversion / Unsure Leads */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className="mt-12 max-w-3xl mx-auto text-center bg-gray-900/40 border border-gray-700/50 rounded-2xl p-8 backdrop-blur-sm"
-        >
-          <h4 className="text-2xl font-bold text-white mb-3">Not Sure Which Plan Is Right For You?</h4>
-          <p className="text-gray-400 mb-6">
-            Hop on a quick 15-minute discovery call with our team. We'll show you exactly how KenjiAI works and help you decide the best path forward.
-          </p>
-          <a
-            href="https://go.mediatraffics.com/leads"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white px-8 py-3 rounded-xl font-bold transition-all duration-300"
-          >
-            <span>Book a Free Strategy Call</span>
-            <ArrowRight className="w-5 h-5" />
+      {/* Add-ons + call, one quiet line each */}
+      <div className="max-w-3xl mx-auto mt-10 text-center space-y-3">
+        <p className="text-gray-400 text-sm">
+          <span className="text-white font-semibold">Add-ons:</span> AI Agent Call Center · Closer Placement. Ask on your onboarding call.
+        </p>
+        <p className="text-gray-400 text-sm">
+          Not sure yet?{' '}
+          <a href={CALL_URL} target="_blank" rel="noopener noreferrer" className="text-white underline underline-offset-2 hover:text-emerald-400">
+            Book a free call
           </a>
-        </motion.div>
-
+        </p>
       </div>
-
-      <FAQ />
 
       <ExitIntentPopup />
-
-      <style>{`
-        @keyframes shine-slow {
-          0% { transform: translateX(-100%) skewX(-15deg); }
-          100% { transform: translateX(200%) skewX(-15deg); }
-        }
-        .animate-shine-slow { animation: shine-slow 2s ease-in-out infinite; }
-
-        .scrollbar-thin::-webkit-scrollbar { width: 4px; }
-        .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
-        .scrollbar-thin::-webkit-scrollbar-thumb {
-          background: rgba(107, 114, 128, 0.3);
-          border-radius: 4px;
-        }
-        .scrollbar-thin { scrollbar-width: thin; scrollbar-color: rgba(107, 114, 128, 0.3) transparent; }
-      `}</style>
     </div>
   );
 }
