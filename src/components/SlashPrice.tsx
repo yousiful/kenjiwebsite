@@ -57,7 +57,7 @@ export function SlashPrice({ from, to, suffix = '/mo', accentClass = 'text-[#10A
         transition={{ duration: 0.3 }}
         className={`text-3xl font-black ${accentClass} tabular-nums`}
       >
-        ${display}{suffix}
+        ${Number.isInteger(display) ? display : display.toFixed(2)}{suffix}
       </motion.span>
     </div>
   );
