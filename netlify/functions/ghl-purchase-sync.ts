@@ -59,7 +59,37 @@ interface GhlTransaction {
   amount: number;
   currency: string;
   createdAt: string;
+  entitySourceName?: string;
+  entitySourceSubType?: string;
+  chargeSnapshot?: { description?: string };
 }
+
+/**
+ * Third real bug, found 2026-10-02: this function used to send EVERY succeeded
+ * GHL transaction as a Purchase. In a real 3-day window that was 37 events
+ * (28 recurring "Manual Payment" charges, 8 $7 subscription renewals, 1 real
+ * new buyer) against 40 Purchase events on the pixel, so Meta was optimizing
+ * the low-ticket ad sets toward existing clients paying bills, and reporting
+ * "4 purchases" on days with zero new sales.
+ *
+ * Only a NEW low-ticket order-form purchase counts now:
+ * - source is one of the low-ticket funnels (LOW_TICKET_FUNNELS, overridable via env),
+ * - not a "Manual Payment" (GHL billing, never an ad conversion),
+ * - not a subscription renewal: GHL renewal charges carry a Stripe description
+ *   "Invoice XXXX-000N"; the first charge carries the product name instead.
+ */
+const LOW_TICKET_FUNNELS = (process.env.LOW_TICKET_FUNNEL_MATCH || '#1 All Offers In 1 funnel|#1 NEW CLIENTs HERO')
+  .split('|')
+  .map((s) => s.trim().toLowerCase())
+  .filter(Boolean);
+
+const isNewLowTicketPurchase = (t: GhlTransaction) => {
+  const source = (t.entitySourceName || '').trim().toLowerCase();
+  const description = (t.chargeSnapshot?.description || '').trim();
+  if (!source || source.startsWith('manual')) return false;
+  if (/^invoice\b/i.test(description)) return false;
+  return LOW_TICKET_FUNNELS.some((f) => source.startsWith(f));
+};
 
 interface GhlAttribution {
   fbc?: string;
@@ -106,11 +136,13 @@ export default async () => {
   const txData = (await txRes.json()) as { data?: GhlTransaction[] };
   const cutoff = Date.now() - LOOKBACK_MS;
 
-  const candidates = (txData.data || []).filter((t) => {
+  const recent = (txData.data || []).filter((t) => {
     if (t.status !== 'succeeded') return false;
     const created = new Date(t.createdAt).getTime();
     return created >= cutoff;
   });
+  const candidates = recent.filter(isNewLowTicketPurchase);
+  const ignored = recent.length - candidates.length;
 
   let sent = 0;
   let skipped = 0;
@@ -232,7 +264,7 @@ export default async () => {
     }
   }
 
-  const summary = `ghl-purchase-sync: ${sent} sent, ${skipped} already processed, ${failed} failed (checked ${candidates.length} succeeded transactions in the last 6 days)`;
+  const summary = `ghl-purchase-sync: ${sent} sent, ${skipped} already processed, ${failed} failed, ${ignored} ignored as renewals/manual/non-low-ticket (checked ${recent.length} succeeded transactions in the last 6 days)`;
   console.log(summary);
   return new Response(summary, { status: 200 });
 };
