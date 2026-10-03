@@ -11,16 +11,16 @@ import { ObjectionsHandler } from '../components/ObjectionsHandler';
 const BENEFITS = [
   {
     icon: Megaphone,
-    title: 'Done-For-You Ads',
-    description: 'We build, launch, and manage your ad campaigns. Leads go straight into your CRM.',
+    title: 'Done-For-You Ads Setup',
+    description: 'We build and launch your ad campaigns. Leads go straight into your CRM.',
     color: 'from-blue-500 to-cyan-500',
     border: 'border-blue-500/30',
     glow: 'rgba(59,130,246,0.15)',
   },
   {
     icon: Bot,
-    title: 'Done-For-You AI Workflows & Funnels',
-    description: 'Custom AI automations and high-converting funnels built for your business, ready from day one.',
+    title: 'Done-For-You Funnels & Workflows',
+    description: 'High-converting funnels and follow-up workflows built for your business, ready from day one.',
     color: 'from-emerald-500 to-green-500',
     border: 'border-emerald-500/30',
     glow: 'rgba(16,185,129,0.15)',
@@ -39,7 +39,7 @@ const PRICING_STRUCTURED_DATA = {
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "KenjiAI",
-  "description": "AI business automation platform replacing 17+ marketing and sales tools: voice agents, CRM, funnels, email and SMS automation, ads management.",
+  "description": "Done-for-you paid ads setup, funnel, and workflows on an all-in-one CRM. AI agent call center and closer placement available as add-ons.",
   "brand": {
     "@type": "Brand",
     "name": "KenjiAI",

@@ -7,34 +7,26 @@ import { SlashPrice } from './SlashPrice';
 import FAQ from './FAQ';
 import { getSeasonCopy } from '../utils/seasonCopy';
 
+// Yousif, 2026-10-03: plans include only these three deliverables. AI call center and closer placement are paid add-ons.
 const MONTHLY_FEATURES = [
-  "Proven website and funnel built for you, the same layouts our winning clients convert with",
-  "Proven follow-up AI agents that call, text, and book appointments around the clock",
-  "Replace 17+ tools (CRM, funnels, email, SMS, calendar, ads, more)",
-  "We build and launch your first ad campaign in week one",
-  "Live onboarding call within 48 hours of signup",
-  "Real human support, not chatbots, usually back to you in under 2 hours",
-  "Done-for-you ad setup and management",
-  "Done-for-you AI workflows built around your business",
-  "Done-for-you AI call center that answers and qualifies every call",
-  "Done-for-you community setup to keep your customers engaged",
-  "An accountability coach keeping your rollout on track",
-  "A complete marketing team, not one freelancer juggling everything",
+  "Done-for-you paid ads setup: we build and launch your campaign (setup only, ongoing management not included)",
+  "Done-for-you funnel, built from the layouts our winning clients convert with",
+  "Done-for-you workflows: follow-up, booking, and reminders built inside your CRM",
 ];
 
 const YEARLY_FEATURES = [
-  "Everything in Monthly, with the performance fee cut in half (5% vs 10%)",
-  "Quarterly strategy call with our growth team to plan your next 90 days",
-  "Custom workflow built for your business in week one",
-  "Sales team placement included if you need help closing",
+  "Performance fee cut in half (5% vs 10%)",
   "Save $1,176 vs paying monthly",
-  "A dedicated done-for-you call center that follows up on every lead for you",
+];
+
+const ADD_ONS = [
+  { title: "AI Agent Call Center", body: "AI agents that answer, call, and text every lead, qualify them, and book appointments 24/7." },
+  { title: "Closer Placement", body: "Trained closers placed into your company to work your booked calls and close deals." },
 ];
 
 const VIP_FEATURES = [
   "Everything in Annual, paid one time, never billed again",
   "Zero performance fee, forever, keep 100% of every sale",
-  "Trained sales people placed into your company, free (Golden Members only)",
   "We migrate your current tools for you (white-glove)",
   "Direct line to the founding team",
 ];
@@ -112,22 +104,22 @@ export function PricingNew() {
             What Your Plan Actually Buys You
           </h2>
           <p className="text-lg font-semibold text-gray-300 max-w-2xl mx-auto">
-            Everything below is included, done for you, from week one.
+            Three things, done for you, from week one.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {[
             {
-              title: 'Proven Website, Built For You',
-              body: "No blank page. We install the funnel and website layouts our winning clients already convert with, branded to you, live in week one.",
+              title: 'Paid Ads, Set Up For You',
+              body: 'We write, build, and launch your ad campaign from campaigns that have already produced sales. Setup only, you own and run it from there.',
             },
             {
-              title: 'Proven Follow-Up Agents',
-              body: 'AI agents call, text, and email every lead within minutes, handle objections, and book appointments 24/7. Most leads die from slow follow-up. Yours won’t.',
+              title: 'Funnel, Built For You',
+              body: "No blank page. We install the funnel layouts our winning clients already convert with, branded to you, live in week one.",
             },
             {
-              title: 'Copy That Already Works',
-              body: 'Your ads and pages are written from campaigns that have already produced sales in your niche, then managed and optimized for you.',
+              title: 'Workflows, Built For You',
+              body: 'Every lead gets followed up, booked, and reminded automatically inside your CRM, so nothing slips through.',
             },
           ].map((item) => (
             <div
@@ -298,7 +290,7 @@ export function PricingNew() {
                     <span className="text-gray-200 group-hover:text-white transition-colors text-[13px] font-medium leading-tight tracking-tight">{feature}</span>
                   </div>
                 ))}
-                {MONTHLY_FEATURES.slice(0, 5).map((feature, idx) => (
+                {MONTHLY_FEATURES.map((feature, idx) => (
                   <div key={`m-${idx}`} className="flex items-start gap-2 p-1.5 -mx-1.5 rounded-md hover:bg-white/5 transition-colors group cursor-default">
                     <Check className="w-4 h-4 text-gray-500 group-hover:text-gray-400 transition-colors flex-shrink-0 mt-0.5" />
                     <span className="text-gray-400 group-hover:text-gray-300 transition-colors text-[13px] leading-tight tracking-tight">{feature}</span>
@@ -365,6 +357,23 @@ export function PricingNew() {
               </div>
             </div>
           </motion.div>
+        </div>
+
+        {/* Paid add-ons */}
+        <div className="mt-12 max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-6">
+            <h3 className="text-2xl sm:text-3xl font-black text-white mb-2">Want Us to Handle More? Add It On</h3>
+            <p className="text-gray-400">Available on any plan. Ask on your onboarding call.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {ADD_ONS.map((a) => (
+              <div key={a.title} className="bg-gray-900/60 border border-blue-500/30 rounded-2xl p-6">
+                <div className="inline-block bg-blue-500/15 text-blue-300 text-xs font-bold uppercase tracking-widest rounded-full px-3 py-1 mb-3">Add-on</div>
+                <h4 className="text-lg font-black text-white mb-2">{a.title}</h4>
+                <p className="text-gray-300 text-sm leading-relaxed">{a.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Secondary Conversion / Unsure Leads */}

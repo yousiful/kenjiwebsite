@@ -9,11 +9,11 @@ const FAQ: React.FC = () => {
   const faqs = [
     {
       question: "What would all of this cost me if I hired it out?",
-      answer: "Run the numbers: a marketing agency retainer is $3,000-$5,000/mo, an appointment setter is another $3,000/mo, a copywriter $2,000/mo, and the software stack underneath them $1,000+/mo. That's $9,000+ every month before your first sale. KenjiAI gives you the built website, the follow-up agents, the ads, and the team for $297/mo with our holiday pricing, about $10 a day and less than you'd tip a waiter. Our performance fee only exists when we actually make you money. Either it produces and pays for itself, or you use the guarantee and pay nothing. There's no version of this where you lose."
+      answer: "Run the numbers: a marketing agency retainer is $3,000-$5,000/mo, an appointment setter is another $3,000/mo, a copywriter $2,000/mo, and the software stack underneath them $1,000+/mo. That's $9,000+ every month before your first sale. KenjiAI sets up your ads, builds your funnel, and builds your workflows for $297/mo with our holiday pricing, about $10 a day and less than you'd tip a waiter. Our performance fee only exists when we actually make you money. Either it produces and pays for itself, or you use the guarantee and pay nothing. There's no version of this where you lose."
     },
     {
       question: "How fast does this pay for itself?",
-      answer: "Your ads are live in week one, and your AI agents start calling and booking leads the moment they come in. One or two closed clients typically covers months of KenjiAI. And you're protected while you find out: if you use the system for 30 days and don't have more leads, more booked appointments, or more revenue than the day you signed up, we refund every dollar and you keep everything we built."
+      answer: "Your ads are live in week one, and your workflows follow up and book leads the moment they come in. One or two closed clients typically covers months of KenjiAI. And you're protected while you find out: if you use the system for 30 days and don't have more leads, more booked appointments, or more revenue than the day you signed up, we refund every dollar and you keep everything we built."
     },
     {
       question: "Do I have to get on a sales call to buy?",
@@ -25,7 +25,7 @@ const FAQ: React.FC = () => {
     },
     {
       question: "How is this different from cheap DIY software?",
-      answer: "Cheap software hands you an empty login and wishes you luck. You still have to build the funnels, write the copy, set up the follow-up, and run the ads yourself, which is why most of those subscriptions get cancelled unused. Platforms in our class charge $300-$500/mo for software alone with zero services attached. KenjiAI includes the proven website build, the follow-up agents, the ad management, and a real team. The average customer cancels over $3,400/mo in other software within their first 30 days of joining."
+      answer: "Cheap software hands you an empty login and wishes you luck. You still have to build the funnels, write the copy, set up the follow-up, and run the ads yourself, which is why most of those subscriptions get cancelled unused. Platforms in our class charge $300-$500/mo for software alone with zero services attached. KenjiAI includes the funnel build, the workflows, and your ad setup, done by a real team. The average customer cancels over $3,400/mo in other software within their first 30 days of joining."
     },
     {
       question: "Can I cancel anytime?",
@@ -41,7 +41,7 @@ const FAQ: React.FC = () => {
     },
     {
       question: "What's included in the setup?",
-      answer: "Everything. Your CRM, automation workflows, voice AI agents, email and SMS campaigns, ad campaigns, funnels, and full team training. We handle it all so you can focus on serving your clients."
+      answer: "Three things, done for you: your paid ads set up and launched, your funnel built, and your workflows built inside your CRM. Ongoing ad management is not included. The AI agent call center and closer placement are available as add-ons."
     },
     {
       question: "Do you offer a guarantee?",
@@ -49,7 +49,7 @@ const FAQ: React.FC = () => {
     },
     {
       question: "How much time will this save me?",
-      answer: "Most clients report saving 15-25 hours per week on tasks like follow-ups, lead management, scheduling, and customer communication. Your AI handles it 24/7 while you focus on growth."
+      answer: "Most clients report saving 15-25 hours per week on tasks like follow-ups, lead management, scheduling, and customer communication. Your workflows handle it 24/7 while you focus on growth."
     },
     {
       question: "What kind of support do I get?",
