@@ -1,15 +1,17 @@
 import type { Handler, HandlerEvent } from '@netlify/functions';
-import { getStore } from '@netlify/blobs';
+import { connectLambda, getStore } from '@netlify/blobs';
 import type { SessionRecord } from './funnel-track';
 
 // Secret-protected read endpoint behind kenjiai.com/funnel-stats/.
 // GET ?funnel=lowticket&days=7 -> raw sessions for the dashboard to aggregate.
 // Uses the same WEBINAR_STATS_SECRET as webinar-stats so there's one secret to manage.
 
-const SITE_ID = '22d32da4-ca6e-4ea2-aea7-156e152407f5';
-function funnelStore() {
-  const token = process.env.NETLIFY_BLOBS_TOKEN;
-  return token ? getStore({ name: 'funnel-sessions', siteID: SITE_ID, token }) : getStore('funnel-sessions');
+// Blobs context comes from the invocation event (connectLambda). The old
+// NETLIFY_BLOBS_TOKEN env var was a personal token that got revoked, which
+// silently broke tracking with 401s; this needs no token.
+function funnelStore(event: HandlerEvent) {
+  connectLambda(event as unknown as Parameters<typeof connectLambda>[0]);
+  return getStore('funnel-sessions');
 }
 
 export const handler: Handler = async (event: HandlerEvent) => {
@@ -22,7 +24,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
 
   const funnel = 'lowticket'; // only funnel tracked so far
   const days = Math.min(Math.max(Number(event.queryStringParameters?.days) || 7, 1), 60);
-  const store = funnelStore();
+  const store = funnelStore(event);
 
   const sessions: SessionRecord[] = [];
   for (let d = 0; d < days; d++) {

@@ -1,16 +1,17 @@
 import type { Handler, HandlerEvent } from '@netlify/functions';
-import { getStore } from '@netlify/blobs';
+import { connectLambda, getStore } from '@netlify/blobs';
 
 // Public write endpoint for funnel drop-off tracking (startlearning.kenjiai.com
 // sends events here via sendBeacon). One blob per visitor session, keyed
 // <funnel>/<YYYY-MM-DD>/<sid>, holding every step that session reached.
 // funnel-stats.ts reads them back and builds the drop-off funnel.
 
-// See webinar-track.ts for why this manual fallback exists.
-const SITE_ID = '22d32da4-ca6e-4ea2-aea7-156e152407f5';
-function funnelStore() {
-  const token = process.env.NETLIFY_BLOBS_TOKEN;
-  return token ? getStore({ name: 'funnel-sessions', siteID: SITE_ID, token }) : getStore('funnel-sessions');
+// Blobs context comes from the invocation event (connectLambda). The old
+// NETLIFY_BLOBS_TOKEN env var was a personal token that got revoked, which
+// silently broke tracking with 401s; this needs no token.
+function funnelStore(event: HandlerEvent) {
+  connectLambda(event as unknown as Parameters<typeof connectLambda>[0]);
+  return getStore('funnel-sessions');
 }
 
 const ALLOWED_FUNNELS = new Set(['lowticket']);
@@ -67,7 +68,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
 
   const now = new Date().toISOString();
   const key = `${payload.funnel}/${now.slice(0, 10)}/${payload.sid}`;
-  const store = funnelStore();
+  const store = funnelStore(event);
   // A session that crosses midnight UTC keeps writing to the day it started on.
   const prevKey = `${payload.funnel}/${new Date(Date.now() - 864e5).toISOString().slice(0, 10)}/${payload.sid}`;
   let useKey = key;

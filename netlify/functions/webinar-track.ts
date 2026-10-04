@@ -1,14 +1,12 @@
 import type { Handler, HandlerEvent } from '@netlify/functions';
-import { getStore } from '@netlify/blobs';
+import { connectLambda, getStore } from '@netlify/blobs';
 
-// @netlify/blobs' automatic environment detection doesn't reliably reach esbuild-
-// bundled TypeScript functions on this site (MissingBlobsEnvironmentError even
-// when running on Netlify's own infra) — fall back to explicit manual config
-// once NETLIFY_BLOBS_TOKEN is set. Site ID is public, safe to inline.
-const SITE_ID = '22d32da4-ca6e-4ea2-aea7-156e152407f5';
-function webinarStore() {
-  const token = process.env.NETLIFY_BLOBS_TOKEN;
-  return token ? getStore({ name: 'webinar-stats', siteID: SITE_ID, token }) : getStore('webinar-stats');
+// Blobs context comes from the invocation event (connectLambda). The old
+// NETLIFY_BLOBS_TOKEN env var was a personal token that got revoked, which
+// silently broke tracking with 401s; this needs no token.
+function webinarStore(event: HandlerEvent) {
+  connectLambda(event as unknown as Parameters<typeof connectLambda>[0]);
+  return getStore('webinar-stats');
 }
 
 // Event types the watch/replay pages actually send. Anything else is rejected
@@ -58,7 +56,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
     return { statusCode: 400, body: JSON.stringify({ error: 'Unrecognized event or page' }) };
   }
 
-  const store = webinarStore();
+  const store = webinarStore(event);
   const key = payload.page;
   const existing = (await store.get(key, { type: 'json' })) as PageAggregate | null;
   const agg: PageAggregate = existing || emptyAggregate();

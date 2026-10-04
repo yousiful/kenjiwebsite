@@ -1,13 +1,14 @@
 import type { Handler, HandlerEvent } from '@netlify/functions';
-import { getStore } from '@netlify/blobs';
+import { connectLambda, getStore } from '@netlify/blobs';
 
 const PAGES = ['watch', 'vsl2-watch', 'replay', 'overview'] as const;
 
-// See webinar-track.ts for why this manual fallback exists.
-const SITE_ID = '22d32da4-ca6e-4ea2-aea7-156e152407f5';
-function webinarStore() {
-  const token = process.env.NETLIFY_BLOBS_TOKEN;
-  return token ? getStore({ name: 'webinar-stats', siteID: SITE_ID, token }) : getStore('webinar-stats');
+// Blobs context comes from the invocation event (connectLambda). The old
+// NETLIFY_BLOBS_TOKEN env var was a personal token that got revoked, which
+// silently broke tracking with 401s; this needs no token.
+function webinarStore(event: HandlerEvent) {
+  connectLambda(event as unknown as Parameters<typeof connectLambda>[0]);
+  return getStore('webinar-stats');
 }
 
 export const handler: Handler = async (event: HandlerEvent) => {
@@ -21,7 +22,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
     return { statusCode: 401, body: JSON.stringify({ error: 'Unauthorized' }) };
   }
 
-  const store = webinarStore();
+  const store = webinarStore(event);
   const pages: Record<string, unknown> = {};
 
   for (const page of PAGES) {
