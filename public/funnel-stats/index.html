@@ -86,7 +86,8 @@ function bars(title, rows, sessions, base) {
 
 function render(data) {
   const dev = $('device').value;
-  const sessions = data.sessions.filter(s => !dev || s.device === dev).filter(s => s.steps.page_view);
+  const sessions = data.sessions.filter(s => !dev || s.device === dev).filter(s => s.steps.page_view)
+    .filter(s => !(s.utm_content || '').startsWith('claude-e2e')); // Claude's own test visits
   const total = sessions.length;
   if (!total) { $('out').innerHTML = '<div class="card">No visits recorded yet for this range. Tracking started when the new page went live.</div>'; return; }
 
