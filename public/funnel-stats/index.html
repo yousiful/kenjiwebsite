@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Funnel Drop-Off</title>
+<style>
+  :root { --bg:#0b0f17; --card:#131a26; --line:#243045; --text:#e8edf5; --muted:#8a97ab; --bar:#2bb3a3; --bar2:#3a7bd5; --bad:#e5604d; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
+  main { max-width:960px; margin:0 auto; padding:24px 16px 60px; }
+  h1 { font-size:22px; margin:0 0 4px; }
+  h2 { font-size:16px; margin:28px 0 10px; }
+  .muted { color:var(--muted); font-size:13px; }
+  .row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin:14px 0; }
+  input, select, button { background:var(--card); color:var(--text); border:1px solid var(--line); border-radius:8px; padding:8px 10px; font:inherit; }
+  button { cursor:pointer; background:var(--bar2); border-color:var(--bar2); }
+  .tiles { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; }
+  .tile { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px; }
+  .tile b { display:block; font-size:26px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px; }
+  .step { display:grid; grid-template-columns:170px 1fr 120px; gap:10px; align-items:center; padding:5px 0; }
+  .track { background:#0e1520; border-radius:6px; height:22px; overflow:hidden; }
+  .fill { height:100%; background:var(--bar); border-radius:6px; }
+  .num { text-align:right; font-variant-numeric:tabular-nums; }
+  .drop { color:var(--bad); font-size:12px; }
+  .alert { border-left:4px solid var(--bad); padding:10px 14px; background:#1d1416; border-radius:6px; margin-top:14px; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  td, th { padding:6px 4px; border-bottom:1px solid var(--line); text-align:left; }
+  td.n, th.n { text-align:right; font-variant-numeric:tabular-nums; }
+  @media (max-width:600px){ .step { grid-template-columns:110px 1fr 84px; font-size:13px; } }
+</style>
+</head>
+<body>
+<main>
+  <h1>Low-ticket funnel drop-off</h1>
+  <div class="muted">startlearning.kenjiai.com &rarr; where visitors stop. Order form steps (opt-in, payment) happen on GHL and aren't in this view.</div>
+
+  <div class="row">
+    <input id="secret" type="password" placeholder="Stats secret" size="22">
+    <select id="days"><option value="1">Today</option><option value="3">3 days</option><option value="7" selected>7 days</option><option value="14">14 days</option><option value="30">30 days</option></select>
+    <select id="device"><option value="">All devices</option><option value="mobile">Mobile</option><option value="desktop">Desktop</option></select>
+    <button id="load">Load</button>
+    <span id="status" class="muted"></span>
+  </div>
+
+  <div id="out"></div>
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+try { $('secret').value = localStorage.getItem('funnelStatsSecret') || ''; } catch {}
+
+const FUNNEL = [
+  ['page_view', 'Landed on page'],
+  ['time_10s', 'Stayed 10s+'],
+  ['video_play', 'Pressed play'],
+  ['video_25', 'Video 25%'],
+  ['video_50', 'Video 50%'],
+  ['video_75', 'Video 75%'],
+  ['video_100', 'Finished video'],
+  ['cta_click', 'Clicked a CTA'],
+];
+const SECTIONS = [
+  ['section_hero','Hero'],['section_proof','Proof stats'],['section_pain','Pain'],['section_member_area','Member area'],
+  ['section_how_it_works','How it works'],['section_objections','Objections'],['section_reviews','Reviews'],
+  ['section_faq','FAQ'],['section_final_cta','Final CTA'],
+];
+const CTAS = [['cta_hero-cta','Hero button'],['cta_dashboard-cta','Member-area button'],['cta_final-cta','Final button'],['cta_sticky-mobile-cta','Sticky mobile bar'],['cta_exit-popup','Exit popup']];
+
+function count(sessions, step) { return sessions.filter(s => s.steps[step]).length; }
+const pct = (a, b) => b ? Math.round(a / b * 100) : 0;
+
+function bars(title, rows, sessions, base) {
+  let html = `<h2>${title}</h2><div class="card">`;
+  let prev = null;
+  for (const [step, label] of rows) {
+    const n = count(sessions, step);
+    const drop = prev !== null && prev > 0 ? Math.round((prev - n) / prev * 100) : null;
+    html += `<div class="step"><div>${label}</div><div class="track"><div class="fill" style="width:${pct(n, base)}%"></div></div>
+      <div class="num">${n} <span class="muted">(${pct(n, base)}%)</span>${drop !== null && drop > 0 ? `<div class="drop">-${drop}% from above</div>` : ''}</div></div>`;
+    prev = n;
+  }
+  return html + '</div>';
+}
+
+function render(data) {
+  const dev = $('device').value;
+  const sessions = data.sessions.filter(s => !dev || s.device === dev).filter(s => s.steps.page_view);
+  const total = sessions.length;
+  if (!total) { $('out').innerHTML = '<div class="card">No visits recorded yet for this range. Tracking started when the new page went live.</div>'; return; }
+
+  const clicks = count(sessions, 'cta_click');
+  const played = count(sessions, 'video_play');
+  const bounced = sessions.filter(s => !s.steps.time_10s && !s.steps.video_play && !s.steps.cta_click).length;
+
+  // Biggest single drop along the main path.
+  let worst = null, prev = null, prevLabel = '';
+  for (const [step, label] of FUNNEL) {
+    const n = count(sessions, step);
+    if (prev) { const lost = prev - n; if (!worst || lost / prev > worst.rate) worst = { from: prevLabel, to: label, rate: lost / prev, lost }; }
+    prev = n; prevLabel = label;
+  }
+
+  let html = `<div class="tiles">
+    <div class="tile"><span class="muted">Visitors</span><b>${total}</b></div>
+    <div class="tile"><span class="muted">Left in under 10s</span><b>${pct(bounced, total)}%</b></div>
+    <div class="tile"><span class="muted">Pressed play</span><b>${pct(played, total)}%</b></div>
+    <div class="tile"><span class="muted">Clicked to checkout</span><b>${pct(clicks, total)}%</b></div>
+  </div>`;
+  if (worst) html += `<div class="alert"><b>Biggest leak:</b> ${worst.from} &rarr; ${worst.to}: lost ${worst.lost} people (${Math.round(worst.rate * 100)}%).</div>`;
+
+  html += bars('Main path', FUNNEL, sessions, total);
+  html += bars('How far down they scrolled', SECTIONS, sessions, total);
+
+  html += '<h2>Which button they clicked</h2><div class="card"><table><tr><th>Button</th><th class="n">Clicks</th><th class="n">% of clicks</th></tr>';
+  for (const [step, label] of CTAS) { const n = count(sessions, step); html += `<tr><td>${label}</td><td class="n">${n}</td><td class="n">${pct(n, clicks)}%</td></tr>`; }
+  html += '</table></div>';
+
+  // By ad (utm_content), then by device.
+  const groups = {};
+  for (const s of sessions) { const k = s.utm_content || s.utm_campaign || s.utm_source || '(no utm)'; (groups[k] ||= []).push(s); }
+  html += '<h2>By ad / source</h2><div class="card"><table><tr><th>Ad / source</th><th class="n">Visitors</th><th class="n">Played</th><th class="n">Clicked CTA</th></tr>';
+  for (const [k, ss] of Object.entries(groups).sort((a, b) => b[1].length - a[1].length).slice(0, 25)) {
+    html += `<tr><td>${k.replace(/[<>&]/g, '')}</td><td class="n">${ss.length}</td><td class="n">${pct(count(ss, 'video_play'), ss.length)}%</td><td class="n">${pct(count(ss, 'cta_click'), ss.length)}%</td></tr>`;
+  }
+  html += '</table></div>';
+
+  $('out').innerHTML = html;
+}
+
+let last = null;
+async function load() {
+  const secret = $('secret').value.trim();
+  try { localStorage.setItem('funnelStatsSecret', secret); } catch {}
+  $('status').textContent = 'Loading...';
+  try {
+    const r = await fetch(`/.netlify/functions/funnel-stats?days=${$('days').value}`, { headers: { 'x-webinar-stats-secret': secret } });
+    if (r.status === 401) { $('status').textContent = 'Wrong secret.'; return; }
+    last = await r.json();
+    $('status').textContent = `Updated ${new Date(last.fetchedAt).toLocaleTimeString()}`;
+    render(last);
+  } catch (e) { $('status').textContent = 'Could not load: ' + e.message; }
+}
+$('load').onclick = load;
+$('device').onchange = () => last && render(last);
+$('days').onchange = load;
+if ($('secret').value) load();
+</script>
+</body>
+</html>
