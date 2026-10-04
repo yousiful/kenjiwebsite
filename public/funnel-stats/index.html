@@ -34,10 +34,11 @@
 </head>
 <body>
 <main>
-  <h1>Low-ticket funnel drop-off</h1>
-  <div class="muted">startlearning.kenjiai.com &rarr; where visitors stop. Order form steps (opt-in, payment) happen on GHL and aren't in this view.</div>
+  <h1>Where people drop off</h1>
+  <div class="muted">Every step a visitor reaches, from landing to clicking through to checkout. Order form steps (opt-in, payment) happen on GHL and aren't in this view.</div>
 
   <div class="row">
+    <select id="funnel"><option value="lowticket">Freedom Club page (startlearning)</option><option value="kenjiai">kenjiai.com (all pages)</option></select>
     <input id="secret" type="password" placeholder="Stats secret" size="22">
     <select id="days"><option value="1">Today</option><option value="3">3 days</option><option value="7" selected>7 days</option><option value="14">14 days</option><option value="30">30 days</option></select>
     <select id="device"><option value="">All devices</option><option value="mobile">Mobile</option><option value="desktop">Desktop</option></select>
@@ -51,6 +52,7 @@
 const $ = (id) => document.getElementById(id);
 try { $('secret').value = localStorage.getItem('funnelStatsSecret') || ''; } catch {}
 
+const SCROLL = [['scroll_25', 'Scrolled 25%'], ['scroll_50', 'Scrolled 50%'], ['scroll_75', 'Scrolled 75%'], ['scroll_100', 'Reached the bottom']];
 const FUNNEL = [
   ['page_view', 'Landed on page'],
   ['time_10s', 'Stayed 10s+'],
@@ -87,7 +89,8 @@ function bars(title, rows, sessions, base) {
 function render(data) {
   const dev = $('device').value;
   const sessions = data.sessions.filter(s => !dev || s.device === dev).filter(s => s.steps.page_view)
-    .filter(s => !(s.utm_content || '').startsWith('claude-e2e')); // Claude's own test visits
+    .filter(s => !(s.utm_content || '').startsWith('claude-e2e')) // Claude's own test visits
+    .filter(s => !pageFilter || s.page === pageFilter);
   const total = sessions.length;
   if (!total) { $('out').innerHTML = '<div class="card">No visits recorded yet for this range. Tracking started when the new page went live.</div>'; return; }
 
@@ -97,7 +100,7 @@ function render(data) {
 
   // Biggest single drop along the main path.
   let worst = null, prev = null, prevLabel = '';
-  for (const [step, label] of FUNNEL) {
+  for (const [step, label] of mainPath()) {
     const n = count(sessions, step);
     if (prev) { const lost = prev - n; if (!worst || lost / prev > worst.rate) worst = { from: prevLabel, to: label, rate: lost / prev, lost }; }
     prev = n; prevLabel = label;
@@ -109,10 +112,13 @@ function render(data) {
     <div class="tile"><span class="muted">Pressed play</span><b>${pct(played, total)}%</b></div>
     <div class="tile"><span class="muted">Clicked to checkout</span><b>${pct(clicks, total)}%</b></div>
   </div>`;
+  if (pageFilter) html += `<div class="alert" style="border-left-color:var(--bar2);background:#121b2b">Showing only <b>${pageFilter.replace(/[<>&]/g, '')}</b>. Click it again in the page table to see everything.</div>`;
   if (worst) html += `<div class="alert"><b>Biggest leak:</b> ${worst.from} &rarr; ${worst.to}: lost ${worst.lost} people (${Math.round(worst.rate * 100)}%).</div>`;
 
-  html += bars('Main path', FUNNEL, sessions, total);
-  html += bars('How far down they scrolled', SECTIONS, sessions, total);
+  html += bars('Main path', mainPath(), sessions, total);
+  html += bars('Where we lose the scroll', SCROLL, sessions, total);
+  if (data.funnel === 'lowticket') html += bars('Which sections they reached', SECTIONS, sessions, total);
+  html += byPage(data.sessions) + byVersion(sessions);
 
   html += '<h2>Which button they clicked</h2><div class="card"><table><tr><th>Button</th><th class="n">Clicks</th><th class="n">% of clicks</th></tr>';
   for (const [step, label] of CTAS) { const n = count(sessions, step); html += `<tr><td>${label}</td><td class="n">${n}</td><td class="n">${pct(n, clicks)}%</td></tr>`; }
@@ -130,13 +136,44 @@ function render(data) {
   $('out').innerHTML = html;
 }
 
+let pageFilter = '';
+function mainPath() {
+  return last && last.funnel === 'kenjiai'
+    ? [['page_view', 'Landed on page'], ['time_10s', 'Stayed 10s+'], ['scroll_50', 'Scrolled halfway'], ['scroll_100', 'Reached the bottom'], ['cta_click', 'Clicked to checkout/booking']]
+    : FUNNEL;
+}
+const clean = (list) => list.filter(s => s.steps.page_view && !(s.utm_content || '').startsWith('claude-e2e'));
+function byPage(all) {
+  const groups = {};
+  for (const s of clean(all)) (groups[s.page || '/'] ||= []).push(s);
+  const rows = Object.entries(groups).sort((a, b) => b[1].length - a[1].length).slice(0, 30);
+  if (rows.length < 2 && !pageFilter) return '';
+  let h = '<h2>Every page: where the scroll stops</h2><div class="card"><table><tr><th>Page</th><th class="n">Visits</th><th class="n">25%</th><th class="n">50%</th><th class="n">75%</th><th class="n">Bottom</th><th class="n">Clicked</th><th>Biggest drop</th></tr>';
+  for (const [pg, ss] of rows) {
+    const n = (k) => count(ss, k), steps = [ss.length, n('scroll_25'), n('scroll_50'), n('scroll_75'), n('scroll_100')];
+    const names = ['landing', '25%', '50%', '75%', 'bottom'];
+    let worst = '', wr = 0;
+    for (let i = 1; i < steps.length; i++) if (steps[i - 1] && (steps[i - 1] - steps[i]) / steps[i - 1] > wr) { wr = (steps[i - 1] - steps[i]) / steps[i - 1]; worst = `${names[i - 1]} &rarr; ${names[i]} (-${Math.round(wr * 100)}%)`; }
+    const esc = pg.replace(/[<>&"]/g, '');
+    h += `<tr><td><a href="#" data-page="${esc}" style="color:inherit">${esc}</a></td><td class="n">${ss.length}</td>` + steps.slice(1).map(v => `<td class="n">${pct(v, ss.length)}%</td>`).join('') + `<td class="n">${pct(n('cta_click'), ss.length)}%</td><td>${worst}</td></tr>`;
+  }
+  return h + '</table><div class="muted" style="margin-top:8px">Click a page to see only its numbers above.</div></div>';
+}
+function byVersion(sessions) {
+  const groups = {};
+  for (const s of sessions) (groups[s.version || 'before-versioning'] ||= []).push(s);
+  const rows = Object.entries(groups).sort((a, b) => (a[0] < b[0] ? 1 : -1));
+  let h = '<h2>Did the last change help? (by page version)</h2><div class="card"><table><tr><th>Version (deploy)</th><th class="n">Visits</th><th class="n">Stayed 10s</th><th class="n">Scrolled 50%</th><th class="n">Pressed play</th><th class="n">Clicked CTA</th></tr>';
+  for (const [v, ss] of rows) h += `<tr><td>${v.replace(/[<>&]/g, '')}</td><td class="n">${ss.length}</td><td class="n">${pct(count(ss, 'time_10s'), ss.length)}%</td><td class="n">${pct(count(ss, 'scroll_50'), ss.length)}%</td><td class="n">${pct(count(ss, 'video_play'), ss.length)}%</td><td class="n">${pct(count(ss, 'cta_click'), ss.length)}%</td></tr>`;
+  return h + '</table><div class="muted" style="margin-top:8px">Each deploy is a new version. Compare once a version has 50+ visits; small numbers swing a lot.</div></div>';
+}
 let last = null;
 async function load() {
   const secret = $('secret').value.trim();
   try { localStorage.setItem('funnelStatsSecret', secret); } catch {}
   $('status').textContent = 'Loading...';
   try {
-    const r = await fetch(`/.netlify/functions/funnel-stats?days=${$('days').value}`, { headers: { 'x-webinar-stats-secret': secret } });
+    const r = await fetch(`/.netlify/functions/funnel-stats?days=${$('days').value}&funnel=${$('funnel').value}`, { headers: { 'x-webinar-stats-secret': secret } });
     if (r.status === 401) { $('status').textContent = 'Wrong secret.'; return; }
     last = await r.json();
     $('status').textContent = `Updated ${new Date(last.fetchedAt).toLocaleTimeString()}`;
@@ -146,6 +183,8 @@ async function load() {
 $('load').onclick = load;
 $('device').onchange = () => last && render(last);
 $('days').onchange = load;
+$('funnel').onchange = () => { pageFilter = ''; load(); };
+document.addEventListener('click', (e) => { const a = e.target.closest('[data-page]'); if (!a) return; e.preventDefault(); pageFilter = pageFilter === a.dataset.page ? '' : a.dataset.page; render(last); });
 if ($('secret').value) load();
 </script>
 </body>

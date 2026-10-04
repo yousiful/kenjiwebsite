@@ -15,9 +15,10 @@ function funnelStore(event: HandlerEvent) {
   return getStore('funnel-sessions');
 }
 
-const ALLOWED_FUNNELS = new Set(['lowticket']);
+// lowticket = startlearning.kenjiai.com; kenjiai = every page on kenjiai.com (public/ft.js).
+const ALLOWED_FUNNELS = new Set(['lowticket', 'kenjiai']);
 // Anything not on this list is rejected so the public endpoint can't be stuffed.
-const STEP_PATTERN = /^(page_view|video_play|video_(25|50|75|95|100)|section_[a-z_]{1,30}|time_\d{1,3}s|cta_click|cta_[a-z-]{1,30}|exit_popup_shown)$/;
+const STEP_PATTERN = /^(page_view|video_play|video_(25|50|75|95|100)|scroll_(25|50|75|100)|section_[a-z_]{1,30}|time_\d{1,3}s|cta_click|cta_[a-z-]{1,30}|exit_popup_shown)$/;
 
 interface IncomingEvent {
   funnel: string;
@@ -28,6 +29,8 @@ interface IncomingEvent {
   utm_campaign?: string;
   utm_content?: string;
   device?: string;
+  page?: string;
+  version?: string;
 }
 
 export interface SessionRecord {
@@ -38,6 +41,8 @@ export interface SessionRecord {
   utm_campaign: string;
   utm_content: string;
   device: string;
+  page: string;
+  version: string;
 }
 
 // What each event blob holds. Only page_view carries the utm/device fields.
@@ -47,6 +52,8 @@ export interface EventBlob {
   utm_campaign?: string;
   utm_content?: string;
   device?: string;
+  page?: string;
+  version?: string;
 }
 
 const CORS = {
@@ -91,6 +98,8 @@ export const handler: Handler = async (event: HandlerEvent) => {
       utm_campaign: clip(payload.utm_campaign),
       utm_content: clip(payload.utm_content),
       device: payload.device === 'mobile' ? 'mobile' : 'desktop',
+      page: clip(payload.page, 60),
+      version: clip(payload.version, 40),
     });
   } else {
     put(payload.step, { t: now });

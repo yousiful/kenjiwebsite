@@ -22,7 +22,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
     return { statusCode: 401, body: JSON.stringify({ error: 'Unauthorized' }) };
   }
 
-  const funnel = 'lowticket'; // only funnel tracked so far
+  const funnel = event.queryStringParameters?.funnel === 'kenjiai' ? 'kenjiai' : 'lowticket';
   const days = Math.min(Math.max(Number(event.queryStringParameters?.days) || 7, 1), 60);
   const store = funnelStore(event);
 
@@ -36,7 +36,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
     for (const b of blobs) {
       const [, , sid, step] = b.key.split('/');
       if (!sid || !step) continue;
-      const rec = bySid.get(sid) || { firstSeen: '', lastSeen: '', steps: {}, utm_source: '', utm_campaign: '', utm_content: '', device: '' };
+      const rec = bySid.get(sid) || { firstSeen: '', lastSeen: '', steps: {}, utm_source: '', utm_campaign: '', utm_content: '', device: '', page: '', version: '' };
       rec.steps[step] = day; // truthy marker; the dashboard checks steps[step]
       bySid.set(sid, rec);
       if (step === 'page_view') pageViewKey.set(sid, b.key);
@@ -53,6 +53,8 @@ export const handler: Handler = async (event: HandlerEvent) => {
       rec.utm_campaign = pv.utm_campaign || '';
       rec.utm_content = pv.utm_content || '';
       rec.device = pv.device || '';
+      rec.page = pv.page || '/';
+      rec.version = pv.version || 'before-versioning';
     }),
   );
   const sessions = [...bySid.values()];
