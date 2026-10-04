@@ -37,7 +37,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
       const [, , sid, step] = b.key.split('/');
       if (!sid || !step) continue;
       const rec = bySid.get(sid) || { firstSeen: '', lastSeen: '', steps: {}, utm_source: '', utm_campaign: '', utm_content: '', device: '' };
-      rec.steps[step] = '';
+      rec.steps[step] = day; // truthy marker; the dashboard checks steps[step]
       bySid.set(sid, rec);
       if (step === 'page_view') pageViewKey.set(sid, b.key);
     }
