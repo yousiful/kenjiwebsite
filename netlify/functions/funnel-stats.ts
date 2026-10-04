@@ -1,6 +1,6 @@
 import type { Handler, HandlerEvent } from '@netlify/functions';
 import { connectLambda, getStore } from '@netlify/blobs';
-import type { SessionRecord } from './funnel-track';
+import type { SessionRecord, EventBlob } from './funnel-track';
 
 // Secret-protected read endpoint behind kenjiai.com/funnel-stats/.
 // GET ?funnel=lowticket&days=7 -> raw sessions for the dashboard to aggregate.
@@ -26,13 +26,36 @@ export const handler: Handler = async (event: HandlerEvent) => {
   const days = Math.min(Math.max(Number(event.queryStringParameters?.days) || 7, 1), 60);
   const store = funnelStore(event);
 
-  const sessions: SessionRecord[] = [];
+  // Keys are <funnel>/<day>/<sid>/<step>. A session that crosses midnight UTC
+  // shows up under both days, and grouping by sid joins it back up.
+  const bySid = new Map<string, SessionRecord>();
+  const pageViewKey = new Map<string, string>();
   for (let d = 0; d < days; d++) {
     const day = new Date(Date.now() - d * 864e5).toISOString().slice(0, 10);
     const { blobs } = await store.list({ prefix: `${funnel}/${day}/` });
-    const recs = await Promise.all(blobs.map((b) => store.get(b.key, { type: 'json' }) as Promise<SessionRecord | null>));
-    for (const r of recs) if (r) sessions.push(r);
+    for (const b of blobs) {
+      const [, , sid, step] = b.key.split('/');
+      if (!sid || !step) continue;
+      const rec = bySid.get(sid) || { firstSeen: '', lastSeen: '', steps: {}, utm_source: '', utm_campaign: '', utm_content: '', device: '' };
+      rec.steps[step] = '';
+      bySid.set(sid, rec);
+      if (step === 'page_view') pageViewKey.set(sid, b.key);
+    }
   }
+  // Only page_view blobs carry utm/device and the visit time, so fetch just those.
+  await Promise.all(
+    [...pageViewKey.entries()].map(async ([sid, key]) => {
+      const pv = (await store.get(key, { type: 'json' })) as EventBlob | null;
+      const rec = bySid.get(sid);
+      if (!pv || !rec) return;
+      rec.firstSeen = pv.t;
+      rec.utm_source = pv.utm_source || '';
+      rec.utm_campaign = pv.utm_campaign || '';
+      rec.utm_content = pv.utm_content || '';
+      rec.device = pv.device || '';
+    }),
+  );
+  const sessions = [...bySid.values()];
 
   return {
     statusCode: 200,

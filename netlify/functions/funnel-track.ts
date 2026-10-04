@@ -2,9 +2,10 @@ import type { Handler, HandlerEvent } from '@netlify/functions';
 import { connectLambda, getStore } from '@netlify/blobs';
 
 // Public write endpoint for funnel drop-off tracking (startlearning.kenjiai.com
-// sends events here via sendBeacon). One blob per visitor session, keyed
-// <funnel>/<YYYY-MM-DD>/<sid>, holding every step that session reached.
-// funnel-stats.ts reads them back and builds the drop-off funnel.
+// sends events here via sendBeacon). One blob per event, keyed
+// <funnel>/<YYYY-MM-DD>/<sid>/<step>, so events that arrive at the same moment
+// can't overwrite each other (a single per-session blob lost most steps to
+// read-modify-write races). funnel-stats.ts groups them back by session.
 
 // Blobs context comes from the invocation event (connectLambda). The old
 // NETLIFY_BLOBS_TOKEN env var was a personal token that got revoked, which
@@ -39,6 +40,15 @@ export interface SessionRecord {
   device: string;
 }
 
+// What each event blob holds. Only page_view carries the utm/device fields.
+export interface EventBlob {
+  t: string;
+  utm_source?: string;
+  utm_campaign?: string;
+  utm_content?: string;
+  device?: string;
+}
+
 const CORS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -67,32 +77,28 @@ export const handler: Handler = async (event: HandlerEvent) => {
   }
 
   const now = new Date().toISOString();
-  const key = `${payload.funnel}/${now.slice(0, 10)}/${payload.sid}`;
   const store = funnelStore(event);
-  // A session that crosses midnight UTC keeps writing to the day it started on.
-  const prevKey = `${payload.funnel}/${new Date(Date.now() - 864e5).toISOString().slice(0, 10)}/${payload.sid}`;
-  let useKey = key;
-  let rec = (await store.get(key, { type: 'json' })) as SessionRecord | null;
-  if (!rec && payload.step !== 'page_view') {
-    const prev = (await store.get(prevKey, { type: 'json' })) as SessionRecord | null;
-    if (prev) {
-      rec = prev;
-      useKey = prevKey;
-    }
+  const base = `${payload.funnel}/${now.slice(0, 10)}/${payload.sid}`;
+  const writes: Promise<unknown>[] = [];
+  const put = (step: string, blob: EventBlob) =>
+    // onlyIfNew keeps the first time a step was reached.
+    writes.push(store.setJSON(`${base}/${step}`, blob, { onlyIfNew: true }).catch(() => {}));
+
+  if (payload.step === 'page_view') {
+    put('page_view', {
+      t: now,
+      utm_source: clip(payload.utm_source),
+      utm_campaign: clip(payload.utm_campaign),
+      utm_content: clip(payload.utm_content),
+      device: payload.device === 'mobile' ? 'mobile' : 'desktop',
+    });
+  } else {
+    put(payload.step, { t: now });
   }
-  rec = rec || {
-    firstSeen: now,
-    lastSeen: now,
-    steps: {},
-    utm_source: clip(payload.utm_source),
-    utm_campaign: clip(payload.utm_campaign),
-    utm_content: clip(payload.utm_content),
-    device: payload.device === 'mobile' ? 'mobile' : 'desktop',
-  };
-  if (!rec.steps[payload.step]) rec.steps[payload.step] = now;
-  if (payload.step === 'cta_click' && payload.source) rec.steps['cta_' + clip(payload.source, 30)] ||= now;
-  rec.lastSeen = now;
-  await store.setJSON(useKey, rec);
+  if (payload.step === 'cta_click' && payload.source && /^[a-z-]{1,30}$/.test(payload.source)) {
+    put('cta_' + payload.source, { t: now });
+  }
+  await Promise.all(writes);
 
   return { statusCode: 204, headers: CORS, body: '' };
 };
