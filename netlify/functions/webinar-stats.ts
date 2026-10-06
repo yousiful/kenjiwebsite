@@ -1,7 +1,7 @@
 import type { Handler, HandlerEvent } from '@netlify/functions';
 import { connectLambda, getStore } from '@netlify/blobs';
 
-const PAGES = ['watch', 'vsl2-watch', 'replay', 'overview'] as const;
+const PAGES = ['watch', 'vsl2-watch', 'replay', 'overview', 'pricing'] as const;
 
 // Blobs context comes from the invocation event (connectLambda). The old
 // NETLIFY_BLOBS_TOKEN env var was a personal token that got revoked, which

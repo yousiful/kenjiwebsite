@@ -1,7 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { PricingNew } from '../components/PricingNew';
-import { Reviews } from '../components/Reviews';
+import { PricingVSL } from '../components/PricingVSL';
+import { ReviewsNative } from '../components/ReviewsNative';
 import FAQ from '../components/FAQ';
 
 const PRICING_STRUCTURED_DATA = {
@@ -49,8 +50,9 @@ const ProductSelectionPage: React.FC = () => {
 
       <div className="min-h-screen" style={{ backgroundColor: '#0B0E14' }}>
         <div className="pt-16">
+          <PricingVSL />
           <PricingNew />
-          <Reviews />
+          <ReviewsNative />
           <FAQ />
         </div>
       </div>

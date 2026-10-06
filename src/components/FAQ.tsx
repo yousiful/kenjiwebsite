@@ -9,7 +9,7 @@ const FAQ: React.FC = () => {
   const faqs = [
     {
       question: "What would all of this cost me if I hired it out?",
-      answer: "Run the numbers: a marketing agency retainer is $3,000-$5,000/mo, an appointment setter is another $3,000/mo, a copywriter $2,000/mo, and the software stack underneath them $1,000+/mo. That's $9,000+ every month before your first sale. KenjiAI sets up your ads, builds your funnel, and builds your workflows for $297/mo with our holiday pricing, about $10 a day and less than you'd tip a waiter. Our performance fee only exists when we actually make you money. Either it produces and pays for itself, or you use the guarantee and pay nothing. There's no version of this where you lose."
+      answer: "Run the numbers: a marketing agency retainer is $3,000-$5,000/mo, an appointment setter is another $3,000/mo, a copywriter $2,000/mo, and the software stack underneath them $1,000+/mo. That's $9,000+ every month before your first sale. KenjiAI sets up your ads, builds your funnel, and builds your workflows for $297/mo, about $10 a day and less than you'd tip a waiter. Our performance fee only exists when we actually make you money. Either it produces and pays for itself, or you use the guarantee and pay nothing. There's no version of this where you lose."
     },
     {
       question: "How fast does this pay for itself?",

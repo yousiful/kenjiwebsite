@@ -12,7 +12,7 @@ function webinarStore(event: HandlerEvent) {
 // Event types the watch/replay pages actually send. Anything else is rejected
 // so this public endpoint can't be used to stuff arbitrary data into the store.
 const ALLOWED_EVENTS = new Set(['video_progress', 'video_watch_seconds', 'offer_revealed']);
-const ALLOWED_PAGES = new Set(['watch', 'vsl2-watch', 'replay', 'overview']);
+const ALLOWED_PAGES = new Set(['watch', 'vsl2-watch', 'replay', 'overview', 'pricing']);
 const MILESTONES = [25, 50, 75, 95, 100] as const;
 
 interface IncomingEvent {
