@@ -198,8 +198,8 @@ const GrowthQuizPage: React.FC = () => {
 
   const start = () => { track('QuizStarted', false); go(0); };
 
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const submit = async () => {
+    if (busy || !lead.first_name.trim() || !lead.email.trim() || !lead.phone.trim()) return;
     setBusy(true); setError('');
     let qualified = qualifiedLocally(answers);
     try {
@@ -288,7 +288,9 @@ const GrowthQuizPage: React.FC = () => {
           <motion.section key="contact" initial={{ opacity: 0, x: 28 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -28 }} transition={{ duration: 0.32, ease: [0.16, 1, 0.3, 1] }} className="pt-10 sm:pt-14">
             <h1 className="display text-[30px] sm:text-[40px] leading-[1.08] font-extrabold text-balance">Where should we send your results?</h1>
             <p className="mt-3 text-[17px] text-[#A9B4C4]">You’ll see your next step right after this.</p>
-            <form onSubmit={submit} className="mt-8 space-y-4" noValidate>
+            {/* Deliberately not a <form>: GHL's site-wide external-tracking script saves every form
+                submit as its own contact, which created a blank duplicate for each quiz lead. */}
+            <div role="form" aria-label="Your details" className="mt-8 space-y-4" onKeyDown={(e) => { if (e.key === 'Enter') submit(); }}>
               {([
                 ['first_name', 'First name', 'text', 'given-name', ''],
                 ['email', 'Email', 'email', 'email', 'you@business.com'],
@@ -306,7 +308,7 @@ const GrowthQuizPage: React.FC = () => {
               ))}
               {error && <p role="alert" className="text-[15px] font-semibold text-[#FFB4A1]">{error}</p>}
               <button
-                type="submit" disabled={busy || !lead.first_name.trim() || !lead.email.trim() || !lead.phone.trim()}
+                type="button" onClick={submit} disabled={busy || !lead.first_name.trim() || !lead.email.trim() || !lead.phone.trim()}
                 className="w-full mt-2 inline-flex items-center justify-center gap-2.5 rounded-2xl bg-[#5EEAD4] text-[#06221E] font-bold text-[18px] px-7 py-4 disabled:opacity-40 disabled:cursor-not-allowed hover:bg-[#7FF0DF] transition-colors"
               >
                 {busy ? <><Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" /> Checking your answers</> : <>See my results <ArrowRight className="w-5 h-5" aria-hidden="true" /></>}
@@ -314,7 +316,7 @@ const GrowthQuizPage: React.FC = () => {
               <p className="text-[13px] leading-relaxed text-[#7D8899]">
                 By continuing you agree that KenjiAI can contact you by phone, text and email about your results. Message and data rates may apply. Reply STOP to opt out anytime.
               </p>
-            </form>
+            </div>
           </motion.section>
         )}
       </AnimatePresence>
