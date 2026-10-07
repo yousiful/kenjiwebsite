@@ -89,15 +89,46 @@ const DISQUALIFY: Record<string, string[]> = {
 };
 const qualifiedLocally = (a: Record<string, string>) => Object.entries(DISQUALIFY).every(([q, bad]) => a[q] && !bad.includes(a[q]));
 
-type FbqWindow = Window & { fbq?: (...args: unknown[]) => void };
-function track(event: string, standard: boolean, params: Record<string, unknown> = {}) {
+// The site-wide GTM container doesn't load the Meta pixel on these pages, so the funnel loads
+// its own. "Client Attraction/Kenji" pixel, owned by the Media ADZ ad account the quiz ads run from.
+const PIXEL_ID = '2406747486323295';
+type Fbq = ((...args: unknown[]) => void) & { callMethod?: (...a: unknown[]) => void; queue?: unknown[]; push?: unknown; loaded?: boolean; version?: string };
+type FbqWindow = Window & { fbq?: Fbq; _fbq?: Fbq };
+function ensurePixel() {
   const w = window as FbqWindow;
-  try { w.fbq?.(standard ? 'track' : 'trackCustom', event, { content_name: 'growth-quiz', ...params }); } catch { /* tracking is optional */ }
+  if (w.fbq) return;
+  const n: Fbq = function (...args: unknown[]) { if (n.callMethod) n.callMethod(...args); else n.queue!.push(args); } as Fbq;
+  n.push = n; n.loaded = true; n.version = '2.0'; n.queue = [];
+  w.fbq = n; w._fbq = n;
+  const s = document.createElement('script');
+  s.async = true; s.src = 'https://connect.facebook.net/en_US/fbevents.js';
+  document.head.appendChild(s);
+  n('init', PIXEL_ID);
+  n('track', 'PageView');
+}
+const cookie = (name: string) => document.cookie.split('; ').find((c) => c.startsWith(name + '='))?.split('=')[1];
+
+/** Browser pixel + server-side CAPI with a shared event_id, so Meta counts it once even when the browser blocks the pixel. */
+function track(event: string, standard: boolean, params: Record<string, unknown> = {}, user?: { email?: string; phone?: string }) {
+  ensurePixel();
+  const w = window as FbqWindow;
+  const eventID = `gq-${event}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  const data = { content_name: 'growth-quiz', ...params };
+  try { w.fbq?.(standard ? 'track' : 'trackCustom', event, data, { eventID }); } catch { /* tracking is optional */ }
+  if (!standard) return;
+  fetch('/.netlify/functions/meta-capi', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true,
+    body: JSON.stringify({
+      event_name: event, event_id: eventID, event_source_url: window.location.href, custom_data: data,
+      user_data: { em: user?.email, ph: user?.phone?.replace(/\D/g, ''), fbp: cookie('_fbp'), fbc: cookie('_fbc') },
+    }),
+  }).catch(() => null);
 }
 
 type Lead = { first_name: string; email: string; phone: string };
 const saveLead = (l: Lead) => { try { sessionStorage.setItem(LEAD_KEY, JSON.stringify(l)); } catch { /* private mode */ } };
 const readLead = (): Lead | null => { try { return JSON.parse(sessionStorage.getItem(LEAD_KEY) || 'null'); } catch { return null; } };
+const QUALIFIED_KEY = 'kenji-growth-quiz-qualified';
 
 /* ---------- shared shell ---------- */
 
@@ -141,7 +172,7 @@ const GrowthQuizPage: React.FC = () => {
   const total = QUESTIONS.length;
   const q = step >= 0 && step < total ? QUESTIONS[step] : null;
 
-  useEffect(() => () => { if (advanceTimer.current) window.clearTimeout(advanceTimer.current); }, []);
+  useEffect(() => { ensurePixel(); return () => { if (advanceTimer.current) window.clearTimeout(advanceTimer.current); }; }, []);
 
   const go = useCallback((n: number) => { setDir(n > step ? 1 : -1); setStep(n); setError(''); }, [step]);
 
@@ -181,7 +212,8 @@ const GrowthQuizPage: React.FC = () => {
       if (typeof data.qualified === 'boolean') qualified = data.qualified;
     } catch { /* offline or server down: route on the local score */ }
     saveLead(lead);
-    track('Lead', true, { qualified });
+    try { if (qualified) sessionStorage.setItem(QUALIFIED_KEY, 'pending'); else sessionStorage.removeItem(QUALIFIED_KEY); } catch { /* private mode */ }
+    track('Lead', true, { qualified }, { email: lead.email, phone: lead.phone });
     track(qualified ? 'QualifiedLead' : 'UnqualifiedLead', false);
     navigate(qualified ? '/growth-quiz/book' : '/growth-quiz/next-step');
   };
@@ -306,6 +338,17 @@ export const GrowthQuizBookPage: React.FC = () => {
   }, [lead]);
 
   useEffect(() => {
+    // The qualified-lead event: fires once, only when they land here straight from a qualifying quiz.
+    ensurePixel();
+    try {
+      if (sessionStorage.getItem(QUALIFIED_KEY) === 'pending') {
+        sessionStorage.setItem(QUALIFIED_KEY, 'sent');
+        track('SubmitApplication', true, { qualified: true }, { email: lead?.email, phone: lead?.phone });
+      }
+    } catch { /* private mode */ }
+  }, [lead]);
+
+  useEffect(() => {
     // Track the actual booking when the GHL widget reports it.
     const onMsg = (e: MessageEvent) => {
       if (typeof e.data === 'string' ? /booked|appointment/i.test(e.data) : /booked|appointment/i.test(JSON.stringify(e.data || ''))) track('Schedule', true);
@@ -348,6 +391,7 @@ export const GrowthQuizBookPage: React.FC = () => {
 
 export const GrowthQuizNextStepPage: React.FC = () => {
   const lead = useMemo(readLead, []);
+  useEffect(() => { ensurePixel(); }, []);
   return (
     <Shell title="Your next step | KenjiAI" description="A better first step for growing your business.">
       <section className="pt-12 sm:pt-16">
