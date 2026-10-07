@@ -69,6 +69,9 @@ const PricingV2Page = lazyRoute(() => import('./pages/PricingV2Page'));
 const HelpfulLinksPage = lazyRoute(() => import('./pages/HelpfulLinksPage'));
 const PartnerUpPage = lazyRoute(() => import('./pages/PartnerUpPage'));
 const ModernPage = lazyRoute(() => import('./pages/ModernPage'));
+const GrowthQuizPage = lazyRoute(() => import('./pages/GrowthQuizPage'));
+const GrowthQuizBookPage = lazyRoute(() => import('./pages/GrowthQuizPage').then((m) => ({ default: m.GrowthQuizBookPage })));
+const GrowthQuizNextStepPage = lazyRoute(() => import('./pages/GrowthQuizPage').then((m) => ({ default: m.GrowthQuizNextStepPage })));
 const WorkshopPage = lazyRoute(() => import('./pages/WorkshopPage'));
 const MissedCallCalculatorPage = lazyRoute(() => import('./pages/MissedCallCalculatorPage'));
 const SongPromptGeneratorPage = lazyRoute(() => import('./pages/SongPromptGeneratorPage'));
@@ -187,7 +190,7 @@ const DefaultSEO: React.FC = () => {
   return <SEOHead canonical={canonical} />;
 };
 
-const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/overview-b', '/setup', '/helpful-links', '/partnerup', '/workshop'];
+const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/overview-b', '/setup', '/helpful-links', '/partnerup', '/workshop', '/growth-quiz', '/growth-quiz/book', '/growth-quiz/next-step'];
 
 function ConditionalNavbar() {
   const { pathname } = useLocation();
@@ -298,6 +301,9 @@ function App() {
                       <Route path="/helpful-links" element={<HelpfulLinksPage />} />
                       <Route path="/partnerup" element={<PartnerUpPage />} />
                       <Route path="/modern" element={<ModernPage />} />
+                      <Route path="/growth-quiz" element={<GrowthQuizPage />} />
+                      <Route path="/growth-quiz/book" element={<GrowthQuizBookPage />} />
+                      <Route path="/growth-quiz/next-step" element={<GrowthQuizNextStepPage />} />
                       <Route path="/workshop" element={<WorkshopPage />} />
                       <Route path="/setup" element={<AgentSetupPage />} />
                       <Route path="/funding" element={<FundingPage />} />
