@@ -348,6 +348,24 @@ export const GrowthQuizBookPage: React.FC = () => {
     } catch { /* private mode */ }
   }, [lead]);
 
+  // GHL's widget reports its real height as it moves between the calendar, time slots and the
+  // details form; follow it so nothing gets cut off. Their embed script does the same for its own iframes.
+  const [frameHeight, setFrameHeight] = useState(1100);
+  useEffect(() => {
+    const onHeight = (e: MessageEvent) => {
+      if (!/leadconnectorhq\.com|msgsndr\.com/.test(e.origin)) return;
+      const d = e.data;
+      const h = Array.isArray(d) && d[0] === 'highlevel.setHeight' ? Number(d[1]?.height)
+        : typeof d === 'object' && d && 'height' in d ? Number((d as { height: unknown }).height) : NaN;
+      if (h > 300 && h < 5000) setFrameHeight(Math.ceil(h) + 24);
+    };
+    window.addEventListener('message', onHeight);
+    const s = document.createElement('script');
+    s.src = 'https://link.msgsndr.com/js/form_embed.js'; s.async = true;
+    document.body.appendChild(s);
+    return () => { window.removeEventListener('message', onHeight); s.remove(); };
+  }, []);
+
   useEffect(() => {
     // Track the actual booking when the GHL widget reports it.
     const onMsg = (e: MessageEvent) => {
@@ -379,7 +397,7 @@ export const GrowthQuizBookPage: React.FC = () => {
           ))}
         </ul>
         <div className="mt-9 rounded-3xl overflow-hidden bg-white shadow-[0_24px_60px_-28px_rgba(0,0,0,0.8)]">
-          <iframe src={src} title="Book your growth call" className="w-full block border-0" style={{ minHeight: 900 }} scrolling="no" id={`${CALENDAR_ID}_booking`} />
+          <iframe src={src} title="Book your growth call" className="w-full block border-0" style={{ height: frameHeight, minHeight: 700 }} scrolling="auto" id={`${CALENDAR_ID}_booking`} />
         </div>
         <p className="mt-6 text-[15px] text-[#A9B4C4]">{PROOF}. Your answers are already with our team, so the call starts where you are.</p>
       </section>
