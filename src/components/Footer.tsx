@@ -1,9 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, ArrowRight, Shield, Star, Headphones as HeadphonesIcon } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Footer: React.FC = () => {
+  // The homepage (rebuilt 2026-10-08) ends on its own quiz CTA; this band repeats calls + unverified counts there.
+  const { pathname } = useLocation();
+  const showCtaBand = pathname !== '/';
 
   const navLinks = {
     solutions: [
@@ -54,6 +57,7 @@ const Footer: React.FC = () => {
       </div>
 
       {/* CTA Banner */}
+      {showCtaBand && (
       <div className="relative z-10 border-b border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
           <motion.div
@@ -103,6 +107,7 @@ const Footer: React.FC = () => {
           </motion.div>
         </div>
       </div>
+      )}
 
 
       {/* Main Content */}
@@ -220,7 +225,7 @@ const Footer: React.FC = () => {
             <div className="hidden sm:block w-px h-4 bg-gray-700" />
             <div className="flex items-center gap-2 text-sm text-gray-400">
               <Star className="w-4 h-4 text-yellow-400 shrink-0" />
-              <span><span className="text-white font-semibold">4.9-star rated</span> across 500+ reviews</span>
+              <span><span className="text-white font-semibold">5.0 on Google</span> across 31 reviews</span>
             </div>
           </div>
         </div>

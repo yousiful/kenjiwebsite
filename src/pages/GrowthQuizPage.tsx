@@ -156,7 +156,7 @@ const Shell: React.FC<{ title: string; description: string; children: React.Reac
   </>
 );
 
-const PROOF = '$3.35M generated for 500+ businesses';
+// $3.35M is company revenue, not a client result (Yousif, 2026-10-08), so this funnel never shows it as proof.
 
 /* ---------- quiz ---------- */
 
@@ -173,6 +173,16 @@ const GrowthQuizPage: React.FC = () => {
   const q = step >= 0 && step < total ? QUESTIONS[step] : null;
 
   useEffect(() => { ensurePixel(); return () => { if (advanceTimer.current) window.clearTimeout(advanceTimer.current); }; }, []);
+
+  // The homepage asks question 1 inline and links here with ?role=<answer>, so the quiz picks up at question 2.
+  useEffect(() => {
+    const role = new URLSearchParams(window.location.search).get('role');
+    if (role && QUESTIONS[0].options.some((o) => o.value === role)) {
+      setAnswers((a) => ({ ...a, [QUESTIONS[0].id]: role }));
+      track('QuizStarted', false);
+      setStep(1);
+    }
+  }, []);
 
   const go = useCallback((n: number) => { setDir(n > step ? 1 : -1); setStep(n); setError(''); }, [step]);
 
@@ -250,7 +260,7 @@ const GrowthQuizPage: React.FC = () => {
             <button type="button" onClick={start} className="mt-9 inline-flex items-center gap-2.5 rounded-2xl bg-[#5EEAD4] text-[#06221E] font-bold text-[18px] px-7 py-4 shadow-[0_14px_34px_-14px_rgba(94,234,212,0.7)] hover:bg-[#7FF0DF] transition-colors">
               Start the quiz <ArrowRight className="w-5 h-5" aria-hidden="true" />
             </button>
-            <p className="mt-8 text-[15px] text-[#A9B4C4]">{PROOF}, with ads, AI call answering and follow-up systems.</p>
+            <p className="mt-8 text-[15px] text-[#A9B4C4]">Better ads plus better follow-up. That’s the system behind a 5x return on ad spend for our clients.</p>
           </motion.section>
         )}
 
@@ -401,7 +411,7 @@ export const GrowthQuizBookPage: React.FC = () => {
         <div className="mt-9 rounded-3xl overflow-hidden bg-white shadow-[0_24px_60px_-28px_rgba(0,0,0,0.8)]">
           <iframe src={src} title="Book your growth call" className="w-full block border-0" style={{ height: frameHeight, minHeight: 700 }} scrolling="auto" id={`${CALENDAR_ID}_booking`} />
         </div>
-        <p className="mt-6 text-[15px] text-[#A9B4C4]">{PROOF}. Your answers are already with our team, so the call starts where you are.</p>
+        <p className="mt-6 text-[15px] text-[#A9B4C4]">500+ businesses since 2013. Your answers are already with our team, so the call starts where you are.</p>
       </section>
     </Shell>
   );

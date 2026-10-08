@@ -31,24 +31,25 @@ function Stars({ size = 'w-4 h-4' }: { size?: string }) {
   );
 }
 
-export function ReviewsNative() {
+export function ReviewsNative({ variant = 'default' }: { variant?: 'default' | 'home' }) {
+  const home = variant === 'home';
   const [showAll, setShowAll] = useState(false);
 
   return (
-    <section className="px-4 sm:px-6 py-20 sm:py-24" aria-labelledby="reviews-heading">
-      <div className="max-w-5xl mx-auto">
-        <h2 id="reviews-heading" className="text-3xl sm:text-5xl font-black text-white text-center leading-tight tracking-tight [text-wrap:balance]">
+    <section className={home ? 'px-5 sm:px-8 py-20 sm:py-28' : 'px-4 sm:px-6 py-20 sm:py-24'} aria-labelledby="reviews-heading">
+      <div className={home ? 'max-w-6xl mx-auto' : 'max-w-5xl mx-auto'}>
+        <h2 id="reviews-heading" className={home ? 'display text-[34px] sm:text-[48px] leading-[1.02] font-extrabold text-[#F3EEE6] text-balance max-w-3xl' : 'text-3xl sm:text-5xl font-black text-white text-center leading-tight tracking-tight [text-wrap:balance]'}>
           What owners say after working with us
         </h2>
-        <p className="mt-4 text-center text-gray-300 flex items-center justify-center gap-2 text-base sm:text-lg">
+        <p className={home ? 'mt-4 text-[#C9D2DE] flex items-center gap-2 text-[17px]' : 'mt-4 text-center text-gray-300 flex items-center justify-center gap-2 text-base sm:text-lg'}>
           <Stars /> <span><span className="text-white font-semibold">5.0</span> average across 31 Google reviews</span>
         </p>
 
-        <figure className="mt-14 max-w-3xl mx-auto text-center">
-          <blockquote className="text-xl sm:text-2xl leading-relaxed text-white font-medium [text-wrap:pretty]">
+        <figure className={home ? 'mt-14 max-w-4xl' : 'mt-14 max-w-3xl mx-auto text-center'}>
+          <blockquote className={home ? 'display text-[24px] sm:text-[30px] leading-[1.3] text-[#F3EEE6] font-semibold [text-wrap:pretty]' : 'text-xl sm:text-2xl leading-relaxed text-white font-medium [text-wrap:pretty]'}>
             "{FEATURED.text}"
           </blockquote>
-          <figcaption className="mt-6 flex items-center justify-center gap-3 text-gray-400">
+          <figcaption className={home ? 'mt-6 flex items-center gap-3 text-gray-400' : 'mt-6 flex items-center justify-center gap-3 text-gray-400'}>
             <Stars size="w-3.5 h-3.5" />
             <span className="text-white font-semibold">{FEATURED.name}</span>
             <span>{FEATURED.date}</span>
@@ -67,7 +68,7 @@ export function ReviewsNative() {
           ))}
         </div>
 
-        <div className="mt-10 text-center">
+        <div className={home ? 'mt-10' : 'mt-10 text-center'}>
           {showAll ? (
             <iframe
               className="w-full min-h-[560px] sm:min-h-[420px] rounded-2xl"
