@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-08T00:00:00Z",
+  "title": "Design System: Media Traffics | KenjiAI",
+  "extensions": {
+    "scope": "Homepage (src/pages/HomePage.tsx), growth quiz funnel (src/pages/GrowthQuizPage.tsx) and ReviewsNative variant=home. Global nav, footer and older pages still use the earlier blue/green gradient look and are outside this system.",
+    "colorMeta": {
+      "night-ground": { "role": "neutral", "displayName": "Night Ground", "tonalRamp": ["#05070A", "#0B0E14", "#151A23", "#232A36", "#3A4352", "#5B6577", "#8E97A6", "#D4D8DF"] },
+      "harbor-glow": { "role": "neutral", "displayName": "Harbor Glow", "tonalRamp": ["#0A111B", "#142133", "#1E3049", "#2C4363", "#45607F", "#6C84A1", "#A3B4C8", "#DCE4EE"] },
+      "warm-paper": { "role": "neutral", "displayName": "Warm Paper", "tonalRamp": ["#2A2620", "#4A443B", "#6E675C", "#958D80", "#BCB4A7", "#DAD3C8", "#F3EEE6", "#FBF9F5"] },
+      "mist": { "role": "neutral", "displayName": "Mist", "tonalRamp": ["#1F242B", "#383F49", "#545D69", "#727C89", "#939CA9", "#B3BCC8", "#C9D2DE", "#EEF1F5"] },
+      "slate-mist": { "role": "neutral", "displayName": "Slate Mist", "tonalRamp": ["#1C2129", "#333A45", "#4C5563", "#677182", "#848EA0", "#A9B4C4", "#C9D0DB", "#ECEFF3"] },
+      "dusk-gray": { "role": "neutral", "displayName": "Dusk Gray", "tonalRamp": ["#181B20", "#2C3139", "#434A55", "#5E6774", "#7D8899", "#9DA6B4", "#C3C9D2", "#E9ECF0"] },
+      "signal-teal": { "role": "primary", "displayName": "Signal Teal", "tonalRamp": ["#06221E", "#0B4A41", "#127567", "#1EA390", "#36CDB6", "#5EEAD4", "#9FF4E6", "#DDFBF6"] },
+      "signal-teal-bright": { "role": "primary", "displayName": "Signal Teal Bright", "tonalRamp": ["#06221E", "#0B4A41", "#127567", "#1EA390", "#36CDB6", "#7FF0DF", "#A9F6EA", "#E2FCF8"] },
+      "deep-kelp": { "role": "primary", "displayName": "Deep Kelp", "tonalRamp": ["#030F0D", "#06221E", "#0B3A33", "#11564B", "#1A7466", "#2A9584", "#5CC0B0", "#B4E6DE"] },
+      "burned-coral": { "role": "secondary", "displayName": "Burned Coral", "tonalRamp": ["#3A1209", "#652516", "#923B27", "#C0573F", "#E27D63", "#FFB4A1", "#FFD2C6", "#FFF0EB"] },
+      "hairline": { "role": "neutral", "displayName": "Hairline (white 10%)" },
+      "control-stroke": { "role": "neutral", "displayName": "Control Stroke (white 12%)" },
+      "control-fill": { "role": "neutral", "displayName": "Control Fill (white 3.5%)" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Page H1. 40/56/68px at base/640/1024." },
+      "stat": { "displayName": "Stat", "purpose": "One teal proof figure per page. 56/88/104px." },
+      "headline": { "displayName": "Headline", "purpose": "Section H2s. 34/48px." },
+      "title": { "displayName": "Title", "purpose": "H3s and quiz question legends." },
+      "quote": { "displayName": "Quote", "purpose": "Featured review excerpt, Bricolage 600." },
+      "body-lead": { "displayName": "Body Lead", "purpose": "Paragraph under a heading, mist, 46-66ch." },
+      "body": { "displayName": "Body", "purpose": "Ledger cells, answer options, lists." },
+      "meta": { "displayName": "Meta", "purpose": "Proof and helper lines in slate-mist." },
+      "label": { "displayName": "Label", "purpose": "Ledger row headers in dusk-gray, sentence case." }
+    },
+    "shadows": [
+      { "name": "teal-bloom", "value": "0 14px 34px -14px rgba(94,234,212,0.7)", "purpose": "Under the primary button only." },
+      { "name": "embed-drop", "value": "0 24px 60px -28px rgba(0,0,0,0.8)", "purpose": "Frames the third-party calendar embed on the quiz booking page. Not a general pattern." }
+    ],
+    "motion": [
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "All entrances, reveals and progress changes." },
+      { "name": "ledger-reveal", "value": "opacity 0.25 to 1, translateX -6px to 0, 0.55s, delay 0.15s + 0.18s per row", "purpose": "Gain column lights up row by row. Skipped under prefers-reduced-motion." },
+      { "name": "step-change", "value": "0.32-0.4s, 12px vertical or 28px horizontal slide with fade", "purpose": "Quiz step transitions." },
+      { "name": "progress-fill", "value": "width, 0.45s", "purpose": "Quiz progress bar." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ],
+    "focus": { "value": "outline: 2px solid #5EEAD4; outline-offset: 3px; border-radius: 14px", "purpose": "Every focus-visible element." },
+    "selection": { "value": "background: rgba(94,234,212,0.35); color: #fff" }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one action per view: start or continue the growth quiz.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">See if you qualify <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 10px; border-radius: 16px; background: #5EEAD4; color: #06221E; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 700; font-size: 18px; padding: 16px 28px; text-decoration: none; box-shadow: 0 14px 34px -14px rgba(94,234,212,0.7); transition: background-color 0.15s; } .ds-btn-primary:hover { background: #7FF0DF; } .ds-btn-primary:focus-visible { outline: 2px solid #5EEAD4; outline-offset: 3px; }"
+    },
+    {
+      "name": "Answer Option",
+      "kind": "custom",
+      "refersTo": "answer-option",
+      "description": "Numbered quiz answer row; choosing one advances the quiz.",
+      "html": "<button type=\"button\" class=\"ds-answer\"><span class=\"ds-answer-index\">1</span><span class=\"ds-answer-label\">I own a business that's already making sales</span><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\" style=\"opacity:.6\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></button>",
+      "css": ".ds-answer { display: flex; align-items: center; gap: 14px; width: 100%; max-width: 420px; text-align: left; border-radius: 16px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.035); color: #F3EEE6; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 17px; font-weight: 500; padding: 16px; cursor: pointer; transition: border-color 0.15s, background-color 0.15s; } .ds-answer-label { flex: 1; } .ds-answer-index { flex-shrink: 0; width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center; font-size: 14px; font-weight: 700; font-variant-numeric: tabular-nums; background: rgba(255,255,255,0.08); color: #A9B4C4; transition: background-color 0.15s, color 0.15s; } .ds-answer:hover, .ds-answer:focus-visible { border-color: #5EEAD4; background: rgba(94,234,212,0.12); } .ds-answer:hover .ds-answer-index { background: #5EEAD4; color: #06221E; } .ds-answer:focus-visible { outline: 2px solid #5EEAD4; outline-offset: 3px; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input-text",
+      "description": "Contact fields on the quiz's final step.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"First name\" />",
+      "css": ".ds-input { width: 100%; max-width: 360px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.04); color: #F3EEE6; caret-color: #5EEAD4; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 17px; padding: 14px 16px; transition: border-color 0.15s; } .ds-input::placeholder { color: #7D8899; } .ds-input:focus { border-color: #5EEAD4; outline: none; }"
+    },
+    {
+      "name": "Text Link",
+      "kind": "custom",
+      "description": "Secondary path (phone, $7 community) under the main action.",
+      "html": "<p class=\"ds-meta\">Rather talk first? <a class=\"ds-link\" href=\"#\">Call (213) 344-0705</a></p>",
+      "css": ".ds-meta { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 15px; color: #A9B4C4; } .ds-link { color: #F3EEE6; font-weight: 600; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.3); text-underline-offset: 4px; transition: text-decoration-color 0.15s; } .ds-link:hover { text-decoration-color: #5EEAD4; } .ds-link:focus-visible { outline: 2px solid #5EEAD4; outline-offset: 3px; border-radius: 4px; }"
+    },
+    {
+      "name": "Progress Bar",
+      "kind": "custom",
+      "refersTo": "progress-bar",
+      "description": "Quiz progress track.",
+      "html": "<div class=\"ds-progress\"><div class=\"ds-progress-fill\"></div></div>",
+      "css": ".ds-progress { width: 320px; height: 6px; border-radius: 9999px; background: rgba(255,255,255,0.10); overflow: hidden; } .ds-progress-fill { width: 42%; height: 100%; border-radius: 9999px; background: #5EEAD4; transition: width 0.45s cubic-bezier(0.16,1,0.3,1); }"
+    },
+    {
+      "name": "Comparison Ledger",
+      "kind": "custom",
+      "description": "Signature: without vs with, row by row, ending in a display-type outcome.",
+      "html": "<div class=\"ds-ledger\"><div class=\"ds-ledger-head\"><span></span><span class=\"ds-loss-h\">Ads without a system</span><span class=\"ds-gain-h\">Ads with Media Traffics + KenjiAI</span></div><div class=\"ds-ledger-row\"><span class=\"ds-ledger-label\">The lead</span><span class=\"ds-loss\">Sits in an inbox for hours</span><span class=\"ds-gain\">Gets a reply in seconds, day or night</span></div><div class=\"ds-ledger-row ds-ledger-out\"><span class=\"ds-ledger-label\">The result</span><span class=\"ds-loss-out\">Ad money burned</span><span class=\"ds-gain-out\">5x return on ad spend</span></div></div>",
+      "css": ".ds-ledger { background: #0B0E14; color: #F3EEE6; padding: 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; } .ds-ledger-head, .ds-ledger-row { display: grid; grid-template-columns: 120px 1fr 1fr; column-gap: 32px; border-bottom: 1px solid rgba(255,255,255,0.10); padding: 14px 0; } .ds-ledger-head { padding-top: 0; font-size: 15px; font-weight: 600; } .ds-loss-h { color: #FFB4A1; } .ds-gain-h { color: #5EEAD4; } .ds-ledger-label { font-size: 14px; font-weight: 600; color: #7D8899; } .ds-loss { font-size: 17px; color: rgba(255,180,161,0.75); } .ds-gain { font-size: 17px; font-weight: 500; color: #F3EEE6; } .ds-ledger-out { border-bottom: none; align-items: baseline; } .ds-loss-out, .ds-gain-out { font-family: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif; font-weight: 800; letter-spacing: -0.02em; } .ds-loss-out { font-size: 28px; color: rgba(255,180,161,0.8); text-decoration: line-through; text-decoration-thickness: 2px; text-decoration-color: rgba(255,180,161,0.5); } .ds-gain-out { font-size: 34px; line-height: 1; color: #5EEAD4; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Ledger at Night",
+    "overview": "The world is one argument laid out like an account book: the same ad spend, without a system and with ours, line by line, ending in a result. A near-black blue ground with a soft harbor glow at the top, warm paper-colored type, and a single teal that means both \"with us\" and \"do this\". Coral is the only other voice, reserved for what is lost.\n\nDensity is low and the pages read top to bottom in long, quiet sections separated by hairlines, never boxed into tiles. The display face is a heavy, slightly quirky grotesque that does the shouting so the body copy can stay plain. Warmth comes from the cream type and generous spacing, not from decoration: no banners, no scarcity devices, no pulsing calls to action (a brand commitment in PRODUCT.md that this world honors).",
+    "keyCharacteristics": [
+      "Dark ground (night-ground) with a radial top glow (harbor-glow), never a flat black.",
+      "One action color (signal-teal) that also carries every \"with us\" gain.",
+      "Coral (burned-coral) only for losses and errors.",
+      "Content separated by white hairlines and whitespace, not cards.",
+      "Heavy Bricolage Grotesque display at -0.02em, system-stack body.",
+      "Generously rounded controls (16px); motion is a short ease-out reveal, always skipped under reduced motion."
+    ],
+    "rules": [
+      { "name": "The One Teal Rule", "body": "Teal means two things only: the action, and the \"with us\" side of the argument. Never use it as decoration or as a second section color.", "section": "colors" },
+      { "name": "The Coral Is Loss Rule", "body": "Coral appears only for what the visitor loses without a system, or for an error. It never labels an action.", "section": "colors" },
+      { "name": "The Display Does The Shouting Rule", "body": "Emphasis lives in size and weight of the display face. Body copy stays regular weight; no all-caps, no tracked-out small caps, no gradient or outlined text.", "section": "typography" },
+      { "name": "The Hairline Not Box Rule", "body": "Group and separate with white/10 hairlines and space. Don't wrap content in cards to make sections.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do set every new surface in this world on the night-ground with the harbor-glow radial at the top.",
+      "Do use Signal Teal for the one action and the \"with us\" side, with Deep Kelp text on it.",
+      "Do separate sections and rows with white/10 hairlines and open each section with a top hairline.",
+      "Do set headings and figures in Bricolage Grotesque 800 at -0.02em, and keep body in the system stack.",
+      "Do honor reduced motion: every entrance and reveal renders in its final state when it is set.",
+      "Do keep the 16px control radius and 2px teal focus outline on anything interactive."
+    ],
+    "donts": [
+      "Don't build card grids, feature tiles or boxed sections; the world groups with hairlines and space.",
+      "Don't put gradients, outlines or clip effects on text.",
+      "Don't use coral for anything but loss or error.",
+      "Don't bring in the older site's blue/green gradients, or Tailwind gray text, inside this world.",
+      "Don't add banners, scarcity badges, exit popups or pulsing buttons (PRODUCT.md brand commitment)."
+    ]
+  }
+}
