@@ -2,17 +2,17 @@ import { useEffect, useRef, useState } from 'react';
 import { Play, Star } from 'lucide-react';
 import { useResumableVideo } from '../hooks/useResumableVideo';
 
-// Yousif, 2026-10-06: "add the best video u can find on explaining our high ticket offer n use it as the vsl".
-// webinar-1.mp4 is the done-for-you walkthrough (ads, funnel, follow-up, performance or one-time build).
-// It never states a price and at 4:28 tells viewers the plans are "underneath this video".
-const VIDEO_SRC = '/webinar1/webinar-1.mp4';
-const POSTER_SRC = '/videos/pricing-vsl-poster.jpg';
+// Yousif, 2026-10-08: swapped to "I Tested 300 MARKETING Systems and Found What Really Works"
+// (youtu.be/Dy_AVOXgS7s, 3:18), self-hosted so the watch-time tracking below keeps working.
+// Poster is the video's own YouTube thumbnail. The previous VSL was /webinar1/webinar-1.mp4.
+const VIDEO_SRC = '/videos/pricing-vsl-300.mp4';
+const POSTER_SRC = '/videos/pricing-vsl-300-poster.jpg';
 
 export function PricingVSL() {
   const videoElRef = useRef<HTMLVideoElement>(null);
   const [started, setStarted] = useState(false);
 
-  useResumableVideo(videoElRef, 'kenjiai-video-progress:/pricing');
+  useResumableVideo(videoElRef, 'kenjiai-video-progress:/pricing:300-systems');
 
   // Same milestone tracking as /overview, under its own page key so the two are comparable.
   useEffect(() => {
