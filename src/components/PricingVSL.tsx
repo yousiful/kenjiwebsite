@@ -5,14 +5,61 @@ import { useResumableVideo } from '../hooks/useResumableVideo';
 // Yousif, 2026-10-08: swapped to "I Tested 300 MARKETING Systems and Found What Really Works"
 // (youtu.be/Dy_AVOXgS7s, 3:18), self-hosted so the watch-time tracking below keeps working.
 // Poster is the video's own YouTube thumbnail. The previous VSL was /webinar1/webinar-1.mp4.
-const VIDEO_SRC = '/videos/pricing-vsl-300.mp4';
-const POSTER_SRC = '/videos/pricing-vsl-300-poster.jpg';
+// A/B test: each visitor is assigned one version and keeps it (localStorage). Add a version here
+// to put it in the rotation; ?vsl=<id> forces one for checking. Results: kenjiai.com/funnel-stats/
+// ("Video drop-off" section), from the vsl_v_<id> and vsl_t<seconds> steps sent below.
+const VARIANTS: { id: string; src: string; poster: string }[] = [
+  { id: 'a', src: '/videos/pricing-vsl-300.mp4', poster: '/videos/pricing-vsl-300-poster.jpg' },
+];
+const pickVariant = () => {
+  const forced = new URLSearchParams(window.location.search).get('vsl');
+  const byId = (id: string | null) => VARIANTS.find((v) => v.id === id);
+  if (byId(forced)) return byId(forced)!;
+  try {
+    const saved = byId(localStorage.getItem('kenji-pricing-vsl'));
+    if (saved) return saved;
+    const v = VARIANTS[Math.floor(Math.random() * VARIANTS.length)];
+    localStorage.setItem('kenji-pricing-vsl', v.id);
+    return v;
+  } catch {
+    return VARIANTS[0];
+  }
+};
+const ft = (step: string) => (window as any).__ft?.send(step);
 
 export function PricingVSL() {
   const videoElRef = useRef<HTMLVideoElement>(null);
   const [started, setStarted] = useState(false);
+  const [variant] = useState(pickVariant);
 
-  useResumableVideo(videoElRef, 'kenjiai-video-progress:/pricing:300-systems');
+  useResumableVideo(videoElRef, `kenjiai-video-progress:/pricing:${variant.id}`);
+
+  // Second-by-second drop-off: report each 5-second stretch the viewer actually plays through.
+  // A jump of more than 1.5s between timeupdates is a seek, so skipped stretches never count.
+  useEffect(() => {
+    ft(`vsl_v_${variant.id}`);
+    const el = videoElRef.current;
+    if (!el) return;
+    let lastT = el.currentTime;
+    const onTime = () => {
+      const t = el.currentTime;
+      if (t >= lastT && t - lastT < 1.5) ft(`vsl_t${Math.floor(t / 5) * 5}`);
+      lastT = t;
+    };
+    const onSeek = () => { ft('vsl_seek'); lastT = el.currentTime; };
+    const onPlay = () => ft('video_play');
+    const onEnd = () => ft('vsl_end');
+    el.addEventListener('timeupdate', onTime);
+    el.addEventListener('seeking', onSeek);
+    el.addEventListener('play', onPlay);
+    el.addEventListener('ended', onEnd);
+    return () => {
+      el.removeEventListener('timeupdate', onTime);
+      el.removeEventListener('seeking', onSeek);
+      el.removeEventListener('play', onPlay);
+      el.removeEventListener('ended', onEnd);
+    };
+  }, [variant.id]);
 
   // Same milestone tracking as /overview, under its own page key so the two are comparable.
   useEffect(() => {
@@ -76,8 +123,8 @@ export function PricingVSL() {
       <div className="relative max-w-5xl mx-auto aspect-video bg-black rounded-2xl overflow-hidden border border-white/10 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.9)]">
         <video
           ref={videoElRef}
-          src={VIDEO_SRC}
-          poster={POSTER_SRC}
+          src={variant.src}
+          poster={variant.poster}
           preload="metadata"
           playsInline
           controls={started}

@@ -52,6 +52,9 @@
     }, 800);
   }
 
+  // Lets page code (e.g. the pricing VSL) report its own steps into the same visit.
+  window.__ft = { send: function (step) { if (sid) send(step); } };
+
   addEventListener('scroll', onScroll, { passive: true });
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a[href], [data-track-cta]');

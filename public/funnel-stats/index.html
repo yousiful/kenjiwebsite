@@ -118,6 +118,7 @@ function render(data) {
   html += bars('Main path', mainPath(), sessions, total);
   html += bars('Where we lose the scroll', SCROLL, sessions, total);
   if (data.funnel === 'lowticket') html += bars('Which sections they reached', SECTIONS, sessions, total);
+  html += vslCurve(sessions);
   html += byPage(data.sessions) + byVersion(sessions);
 
   html += '<h2>Which button they clicked</h2><div class="card"><table><tr><th>Button</th><th class="n">Clicks</th><th class="n">% of clicks</th></tr>';
@@ -134,6 +135,41 @@ function render(data) {
   html += '</table></div>';
 
   $('out').innerHTML = html;
+}
+
+
+// Second-by-second video drop-off for pages that send vsl_* steps (the pricing VSL A/B test).
+function vslCurve(sessions) {
+  const ids = [...new Set(sessions.flatMap(s => Object.keys(s.steps).filter(k => k.startsWith('vsl_v_')).map(k => k.slice(6))))].sort();
+  if (!ids.length) return '';
+  const colors = ['#2bb3a3', '#e5a64d', '#3a7bd5', '#c46bd1'];
+  const fmt = (t) => `${Math.floor(t / 60)}:${String(t % 60).padStart(2, '0')}`;
+  let lines = '', legend = '', table = '<table><tr><th>Version</th><th class="n">Visitors</th><th class="n">Pressed play</th><th class="n">Still watching at 0:30</th><th class="n">Finished</th><th class="n">Checkout clicks / 100 visitors</th><th>Biggest exits</th></tr>';
+  let maxT = 0;
+  const data = ids.map((id) => {
+    const ss = sessions.filter(s => s.steps['vsl_v_' + id]);
+    const played = ss.filter(s => s.steps.vsl_t0 || s.steps.video_play);
+    const ts = played.flatMap(s => Object.keys(s.steps).filter(k => /^vsl_t\d+$/.test(k)).map(k => +k.slice(5)));
+    const top = ts.length ? Math.max(...ts) : 0; maxT = Math.max(maxT, top);
+    const curve = []; for (let t = 0; t <= top; t += 5) curve.push([t, played.filter(s => s.steps['vsl_t' + t]).length]);
+    return { id, ss, played, curve };
+  });
+  const W = 860, H = 220;
+  data.forEach((d, i) => {
+    const base = d.played.length || 1;
+    const pts = d.curve.map(([t, n]) => `${(t / Math.max(maxT, 5) * W).toFixed(1)},${(H - n / base * H).toFixed(1)}`).join(' ');
+    lines += `<polyline fill="none" stroke="${colors[i % 4]}" stroke-width="2.5" points="${pts}"/>`;
+    legend += `<span style="color:${colors[i % 4]};margin-right:14px">&#9632; Version ${d.id.toUpperCase()}</span>`;
+    const drops = [];
+    for (let k = 1; k < d.curve.length; k++) drops.push([d.curve[k - 1][0], d.curve[k - 1][1] - d.curve[k][1]]);
+    const worst = drops.filter(x => x[1] > 0).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([t, n]) => `${fmt(t)}&ndash;${fmt(t + 5)} (-${n})`).join(', ');
+    const at30 = (d.curve.find(c => c[0] === 30) || [0, 0])[1];
+    table += `<tr><td>${d.id.toUpperCase()}</td><td class="n">${d.ss.length}</td><td class="n">${pct(d.played.length, d.ss.length)}%</td><td class="n">${pct(at30, d.played.length)}%</td><td class="n">${pct(count(d.ss, 'vsl_end'), d.played.length)}%</td><td class="n">${d.ss.length ? (count(d.ss, 'cta_click') / d.ss.length * 100).toFixed(1) : '0'}</td><td>${worst || '&ndash;'}</td></tr>`;
+  });
+  const ticks = []; for (let t = 0; t <= maxT; t += 30) ticks.push(`<text x="${(t / Math.max(maxT, 5) * W).toFixed(0)}" y="${H + 16}" fill="#8a97ab" font-size="12">${fmt(t)}</text>`);
+  return `<h2>Video drop-off, second by second</h2><div class="card"><div class="muted" style="margin-bottom:8px">Share of people who pressed play that were still watching at each moment. Skipped-ahead stretches don't count. ${legend}</div>
+    <svg viewBox="0 0 ${W} ${H + 22}" style="width:100%;height:auto"><line x1="0" y1="${H}" x2="${W}" y2="${H}" stroke="#243045"/><line x1="0" y1="${H / 2}" x2="${W}" y2="${H / 2}" stroke="#243045" stroke-dasharray="4 4"/>${lines}${ticks.join('')}</svg>
+    ${table}</table><div class="muted" style="margin-top:8px">The winner is the version with the most checkout clicks per 100 visitors, not the longest watch time. Wait for 50+ plays per version before calling it.</div></div>`;
 }
 
 let pageFilter = '';

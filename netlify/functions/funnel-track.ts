@@ -18,7 +18,9 @@ function funnelStore(event: HandlerEvent) {
 // lowticket = startlearning.kenjiai.com; kenjiai = every page on kenjiai.com (public/ft.js).
 const ALLOWED_FUNNELS = new Set(['lowticket', 'kenjiai']);
 // Anything not on this list is rejected so the public endpoint can't be stuffed.
-const STEP_PATTERN = /^(page_view|video_play|video_(25|50|75|95|100)|scroll_(25|50|75|100)|section_[a-z_]{1,30}|time_\d{1,3}s|cta_click|cta_[a-z-]{1,30}|exit_popup_shown)$/;
+const STEP_PATTERN = /^(page_view|video_play|video_(25|50|75|95|100)|scroll_(25|50|75|100)|section_[a-z_]{1,30}|time_\d{1,3}s|cta_click|cta_[a-z-]{1,30}|exit_popup_shown|vsl_t\d{1,4}|vsl_v_[a-z0-9]{1,12}|vsl_seek|vsl_end)$/;
+// vsl_*: second-by-second video drop-off. vsl_t<N> = the viewer actually played through second N
+// (5-second buckets, seeks don't count), vsl_v_<x> = which A/B video version they were shown.
 
 interface IncomingEvent {
   funnel: string;
