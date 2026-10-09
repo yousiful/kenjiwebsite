@@ -43,6 +43,8 @@ export const internalRoutes = [
   '/tools/missed-call-calculator',
   '/tools/song-prompt-generator',
   '/tools/icp-generator',
+  '/tools/roas-calculator',
+  '/tools/google-review-link-generator',
   '/tools/name-generator',
   '/tools/business-name-generator',
   '/trendpulse',

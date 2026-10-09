@@ -1,10 +1,36 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, Search, TrendingUp, AlertCircle, PhoneCall, Flame, Music, Target, Building2 } from 'lucide-react';
+import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, Search, TrendingUp, AlertCircle, PhoneCall, Flame, Music, Target, Building2, Calculator } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 const FreeToolsPage: React.FC = () => {
   const freeTools = [
+    {
+      name: "ROAS & Break-Even Calculator",
+      description: "Enter ad spend, revenue, order value, and margin. Get your ROAS, the break-even ROAS your margins require, the most you can pay per customer, and real profit after ad spend.",
+      url: "/tools/roas-calculator",
+      icon: Calculator,
+      gradient: "from-emerald-600 via-teal-600 to-blue-600",
+      features: ["ROAS & Break-Even ROAS", "Max Cost Per Customer", "Profit After Ad Spend", "Embeddable"],
+      category: "Paid Ads",
+      rating: 5.0,
+      users: "NEW",
+      keywords: ["ROAS calculator", "break even ROAS calculator", "return on ad spend", "ad profit calculator", "CPA calculator"],
+      revenue: "Know if your ads actually make money"
+    },
+    {
+      name: "Google Review Link Generator",
+      description: "Make a direct link to your Google review box plus a printable QR code, with ready-to-send text and email templates for asking customers.",
+      url: "/tools/google-review-link-generator",
+      icon: Star,
+      gradient: "from-amber-500 via-orange-500 to-rose-500",
+      features: ["Direct Review Link", "Printable QR Code", "Text & Email Templates", "No Signup"],
+      category: "Local Business",
+      rating: 5.0,
+      users: "NEW",
+      keywords: ["google review link generator", "google review QR code", "get more google reviews", "review request template"],
+      revenue: "Collect more reviews with one link"
+    },
     {
       name: "AI Business & $100M Offer Name Generator",
       description: "Generate viral business names, Alex Hormozi $100M Grand Slam offer titles, SaaS products, and lead magnets with domain checks, ad hooks, and conversion psychology.",

@@ -76,6 +76,8 @@ const WorkshopPage = lazyRoute(() => import('./pages/WorkshopPage'));
 const MissedCallCalculatorPage = lazyRoute(() => import('./pages/MissedCallCalculatorPage'));
 const SongPromptGeneratorPage = lazyRoute(() => import('./pages/SongPromptGeneratorPage'));
 const ICPGeneratorPage = lazyRoute(() => import('./pages/ICPGeneratorPage'));
+const ROASCalculatorPage = lazyRoute(() => import('./pages/ROASCalculatorPage'));
+const ReviewLinkGeneratorPage = lazyRoute(() => import('./pages/ReviewLinkGeneratorPage'));
 const TrendPulsePage = lazyRoute(() => import('./pages/TrendPulsePage'));
 const NameGeneratorPage = lazyRoute(() => import('./pages/NameGeneratorPage'));
 const BookPage = lazyRoute(() => import('./pages/BookPage'));
@@ -273,6 +275,8 @@ function App() {
                       <Route path="/tools/missed-call-calculator" element={<MissedCallCalculatorPage />} />
                       <Route path="/tools/song-prompt-generator" element={<SongPromptGeneratorPage />} />
                       <Route path="/tools/icp-generator" element={<ICPGeneratorPage />} />
+                      <Route path="/tools/roas-calculator" element={<ROASCalculatorPage />} />
+                      <Route path="/tools/google-review-link-generator" element={<ReviewLinkGeneratorPage />} />
                       <Route path="/tools/name-generator" element={<NameGeneratorPage />} />
                       <Route path="/tools/business-name-generator" element={<Navigate to="/tools/name-generator" replace />} />
                       <Route path="/trendpulse" element={<TrendPulsePage />} />
