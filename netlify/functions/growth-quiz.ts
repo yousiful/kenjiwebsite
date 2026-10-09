@@ -28,7 +28,7 @@ const DISQUALIFY: Record<string, string[]> = {
 const LABELS: Record<string, Record<string, string>> = {
   role: { owner: 'Owns a business already making sales', agency: 'Runs a marketing agency', launching: 'About to launch a business', browsing: 'Just looking around' },
   industry: { home: 'Home services', health: 'Health, wellness or med spa', professional: 'Legal, tax or financial services', realestate: 'Real estate', coaching: 'Coaching, consulting or courses', ecommerce: 'Ecommerce', other: 'Something else' },
-  revenue: { under_10k: 'Under $10K/mo', '10k_30k': '$10K-$30K/mo', '30k_100k': '$30K-$100K/mo', '100k_plus': '$100K+/mo' },
+  revenue: { under_10k: 'Under $10K/mo', '10k_30k': '$10K-$30K/mo', '30k_100k': '$30K-$100K/mo', '100k_plus': '$100K+/mo', '100k_1m': '$100K-$1M/mo', '1m_plus': '$1M+/mo' },
   bottleneck: { leads: 'Not enough leads', conversion: "Leads don't book or buy", followup: 'Missed calls and slow follow-up', time: 'Doing everything themselves', ad_cost: 'Ads cost too much for what they bring in' },
   budget: { under_1k: 'Under $1,000/mo', '1k_3k': '$1,000-$3,000/mo', '3k_10k': '$3,000-$10,000/mo', '10k_plus': '$10,000+/mo' },
   timeline: { now: 'Right away', '30_days': 'Within 30 days', '1_3_months': 'In 1 to 3 months', researching: 'Just researching' },

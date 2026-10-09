@@ -42,7 +42,8 @@ const QUESTIONS: Question[] = [
       { value: 'under_10k', label: 'Under $10K' },
       { value: '10k_30k', label: '$10K to $30K' },
       { value: '30k_100k', label: '$30K to $100K' },
-      { value: '100k_plus', label: '$100K or more' },
+      { value: '100k_1m', label: '$100K to $1M' },
+      { value: '1m_plus', label: '$1M or more' },
     ],
   },
   {
@@ -109,13 +110,13 @@ function ensurePixel() {
 const cookie = (name: string) => document.cookie.split('; ').find((c) => c.startsWith(name + '='))?.split('=')[1];
 
 /** Browser pixel + server-side CAPI with a shared event_id, so Meta counts it once even when the browser blocks the pixel. */
-function track(event: string, standard: boolean, params: Record<string, unknown> = {}, user?: { email?: string; phone?: string }) {
+function track(event: string, standard: boolean, params: Record<string, unknown> = {}, user?: { email?: string; phone?: string }, capi = standard) {
   ensurePixel();
   const w = window as FbqWindow;
   const eventID = `gq-${event}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
   const data = { content_name: 'growth-quiz', ...params };
   try { w.fbq?.(standard ? 'track' : 'trackCustom', event, data, { eventID }); } catch { /* tracking is optional */ }
-  if (!standard) return;
+  if (!capi) return;
   fetch('/.netlify/functions/meta-capi', {
     method: 'POST', headers: { 'Content-Type': 'application/json' }, keepalive: true,
     body: JSON.stringify({
@@ -126,6 +127,13 @@ function track(event: string, standard: boolean, params: Record<string, unknown>
 }
 
 type Lead = { first_name: string; email: string; phone: string };
+
+/* Yousif 2026-10-08: teach Meta what a high-end lead looks like. Every quiz Lead carries a dollar value
+   by revenue tier (bigger business = worth more), and qualified owners doing $100K+/mo also fire
+   HighValueLead (pixel + CAPI) so campaigns can optimize toward them once there's enough volume. */
+const TIER_VALUE: Record<string, number> = { under_10k: 0, '10k_30k': 50, '30k_100k': 150, '100k_1m': 500, '1m_plus': 2000, '100k_plus': 500 };
+const leadValue = (a: Record<string, string>) => (TIER_VALUE[a.revenue] ?? 0) * (a.budget === '10k_plus' ? 1.5 : 1);
+const HIGH_VALUE = ['100k_1m', '1m_plus'];
 const saveLead = (l: Lead) => { try { sessionStorage.setItem(LEAD_KEY, JSON.stringify(l)); } catch { /* private mode */ } };
 const readLead = (): Lead | null => { try { return JSON.parse(sessionStorage.getItem(LEAD_KEY) || 'null'); } catch { return null; } };
 const QUALIFIED_KEY = 'kenji-growth-quiz-qualified';
@@ -223,7 +231,11 @@ const GrowthQuizPage: React.FC = () => {
     } catch { /* offline or server down: route on the local score */ }
     saveLead(lead);
     try { if (qualified) sessionStorage.setItem(QUALIFIED_KEY, 'pending'); else sessionStorage.removeItem(QUALIFIED_KEY); } catch { /* private mode */ }
-    track('Lead', true, { qualified }, { email: lead.email, phone: lead.phone });
+    const value = leadValue(answers);
+    track('Lead', true, { qualified, value, currency: 'USD', revenue_tier: answers.revenue }, { email: lead.email, phone: lead.phone });
+    if (qualified && HIGH_VALUE.includes(answers.revenue)) {
+      track('HighValueLead', false, { value, currency: 'USD', revenue_tier: answers.revenue }, { email: lead.email, phone: lead.phone }, true);
+    }
     track(qualified ? 'QualifiedLead' : 'UnqualifiedLead', false);
     navigate(qualified ? '/growth-quiz/book' : '/growth-quiz/next-step');
   };
