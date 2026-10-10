@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Play, Star } from 'lucide-react';
 import { useResumableVideo } from '../hooks/useResumableVideo';
+import { pickVslVariant, useVslDropoff } from '../hooks/useVslDropoff';
 
 // Yousif, 2026-10-08: swapped to "I Tested 300 MARKETING Systems and Found What Really Works"
 // (youtu.be/Dy_AVOXgS7s, 3:18), self-hosted so the watch-time tracking below keeps working.
@@ -11,55 +12,15 @@ import { useResumableVideo } from '../hooks/useResumableVideo';
 const VARIANTS: { id: string; src: string; poster: string }[] = [
   { id: 'a', src: '/videos/pricing-vsl-300.mp4', poster: '/videos/pricing-vsl-300-poster.jpg' },
 ];
-const pickVariant = () => {
-  const forced = new URLSearchParams(window.location.search).get('vsl');
-  const byId = (id: string | null) => VARIANTS.find((v) => v.id === id);
-  if (byId(forced)) return byId(forced)!;
-  try {
-    const saved = byId(localStorage.getItem('kenji-pricing-vsl'));
-    if (saved) return saved;
-    const v = VARIANTS[Math.floor(Math.random() * VARIANTS.length)];
-    localStorage.setItem('kenji-pricing-vsl', v.id);
-    return v;
-  } catch {
-    return VARIANTS[0];
-  }
-};
-const ft = (step: string) => (window as any).__ft?.send(step);
 
 export function PricingVSL() {
   const videoElRef = useRef<HTMLVideoElement>(null);
   const [started, setStarted] = useState(false);
-  const [variant] = useState(pickVariant);
+  const [variant] = useState(() => pickVslVariant(VARIANTS, 'kenji-pricing-vsl'));
 
   useResumableVideo(videoElRef, `kenjiai-video-progress:/pricing:${variant.id}`);
 
-  // Second-by-second drop-off: report each 5-second stretch the viewer actually plays through.
-  // A jump of more than 1.5s between timeupdates is a seek, so skipped stretches never count.
-  useEffect(() => {
-    ft(`vsl_v_${variant.id}`);
-    const el = videoElRef.current;
-    if (!el) return;
-    let lastT = el.currentTime;
-    const onTime = () => {
-      const t = el.currentTime;
-      if (t >= lastT && t - lastT < 1.5) ft(`vsl_t${Math.floor(t / 5) * 5}`);
-      lastT = t;
-    };
-    const onSeek = () => { ft('vsl_seek'); lastT = el.currentTime; };
-    const onPlay = () => ft('video_play');
-    const onEnd = () => ft('vsl_end');
-    el.addEventListener('timeupdate', onTime);
-    el.addEventListener('seeking', onSeek);
-    el.addEventListener('play', onPlay);
-    el.addEventListener('ended', onEnd);
-    return () => {
-      el.removeEventListener('timeupdate', onTime);
-      el.removeEventListener('seeking', onSeek);
-      el.removeEventListener('play', onPlay);
-      el.removeEventListener('ended', onEnd);
-    };
-  }, [variant.id]);
+  useVslDropoff(videoElRef, variant.id);
 
   // Same milestone tracking as /overview, under its own page key so the two are comparable.
   useEffect(() => {

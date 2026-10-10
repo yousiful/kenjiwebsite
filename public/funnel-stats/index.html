@@ -209,10 +209,24 @@ async function load() {
   try { localStorage.setItem('funnelStatsSecret', secret); } catch {}
   $('status').textContent = 'Loading...';
   try {
-    const r = await fetch(`/.netlify/functions/funnel-stats?days=${$('days').value}&funnel=${$('funnel').value}`, { headers: { 'x-webinar-stats-secret': secret } });
-    if (r.status === 401) { $('status').textContent = 'Wrong secret.'; return; }
-    last = await r.json();
-    $('status').textContent = `Updated ${new Date(last.fetchedAt).toLocaleTimeString()}`;
+    // One request per day, in parallel: a multi-day read of site-wide traffic times out in one call.
+    const days = Number($('days').value);
+    const rs = await Promise.all([...Array(days).keys()].map(d =>
+      fetch(`/.netlify/functions/funnel-stats?offset=${d}&funnel=${$('funnel').value}`, { headers: { 'x-webinar-stats-secret': secret } })));
+    if (rs.some(r => r.status === 401)) { $('status').textContent = 'Wrong secret.'; return; }
+    const bad = rs.filter(r => !r.ok).length;
+    const parts = await Promise.all(rs.filter(r => r.ok).map(r => r.json()));
+    // A visit that crosses midnight UTC is in two days' results; join it back up by sid.
+    const bySid = new Map();
+    for (const s of parts.flatMap(p => p.sessions)) {
+      const m = bySid.get(s.sid);
+      if (!m) { bySid.set(s.sid, s); continue; }
+      Object.assign(m.steps, s.steps);
+      for (const k of ['firstSeen', 'utm_source', 'utm_campaign', 'utm_content', 'device', 'page', 'version']) if (!m[k] && s[k]) m[k] = s[k];
+    }
+    last = { sessions: [...bySid.values()], fetchedAt: new Date().toISOString() };
+    if (bad) $('status').textContent = `${bad} of ${days} days failed to load, numbers are partial. `;
+    $('status').textContent = (bad ? $('status').textContent : '') + `Updated ${new Date(last.fetchedAt).toLocaleTimeString()}`;
     render(last);
   } catch (e) { $('status').textContent = 'Could not load: ' + e.message; }
 }

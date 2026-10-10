@@ -24,19 +24,24 @@ export const handler: Handler = async (event: HandlerEvent) => {
 
   const funnel = event.queryStringParameters?.funnel === 'kenjiai' ? 'kenjiai' : 'lowticket';
   const days = Math.min(Math.max(Number(event.queryStringParameters?.days) || 7, 1), 60);
+  // ?offset=N reads just the one UTC day N days ago. Site-wide kenjiai traffic is too many blobs
+  // to read 7 days inside the 10s function limit (502s), so the dashboard asks day by day in
+  // parallel and merges by sid.
+  const offsetParam = event.queryStringParameters?.offset;
+  const offset = offsetParam === undefined ? null : Math.min(Math.max(Math.floor(Number(offsetParam)) || 0, 0), 59);
   const store = funnelStore(event);
 
   // Keys are <funnel>/<day>/<sid>/<step>. A session that crosses midnight UTC
   // shows up under both days, and grouping by sid joins it back up.
-  const bySid = new Map<string, SessionRecord>();
+  const bySid = new Map<string, SessionRecord & { sid: string }>();
   const pageViewKey = new Map<string, string>();
-  for (let d = 0; d < days; d++) {
+  for (let d = offset ?? 0; d < (offset === null ? days : offset + 1); d++) {
     const day = new Date(Date.now() - d * 864e5).toISOString().slice(0, 10);
     const { blobs } = await store.list({ prefix: `${funnel}/${day}/` });
     for (const b of blobs) {
       const [, , sid, step] = b.key.split('/');
       if (!sid || !step) continue;
-      const rec = bySid.get(sid) || { firstSeen: '', lastSeen: '', steps: {}, utm_source: '', utm_campaign: '', utm_content: '', device: '', page: '', version: '' };
+      const rec = bySid.get(sid) || { sid, firstSeen: '', lastSeen: '', steps: {}, utm_source: '', utm_campaign: '', utm_content: '', device: '', page: '', version: '' };
       rec.steps[step] = day; // truthy marker; the dashboard checks steps[step]
       bySid.set(sid, rec);
       if (step === 'page_view') pageViewKey.set(sid, b.key);

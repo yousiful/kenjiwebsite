@@ -3,6 +3,16 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { CheckCircle2, XCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { Reviews } from '../components/Reviews';
+import { pickVslVariant, useVslDropoff } from '../hooks/useVslDropoff';
+
+// Yousif 2026-10-10: test both booking VSLs (Desktop\Output\VSL and Landing Pages\landing1_full /
+// landing2_full) for drop-off. Every visitor to /book or /book2 gets one of them and keeps it;
+// ?vsl=l1 or ?vsl=l2 forces one. Drop-off by version: kenjiai.com/funnel-stats/, kenjiai.com
+// funnel, click /book in the page table.
+const BOOK_VSLS = [
+  { id: 'l1', src: '/videos/book-vsl-1.mp4', poster: '/videos/book-vsl-1-poster.jpg' },
+  { id: 'l2', src: '/videos/book-vsl-2.mp4', poster: '/videos/book-vsl-2-poster.jpg' },
+];
 
 type FbqWindow = Window & {
   fbq?: (...args: unknown[]) => void;
@@ -82,13 +92,14 @@ const FAQS = [
 
 interface BookVSLPageProps {
   variant: 'book' | 'book2';
-  videoSrc: string;
-  posterSrc: string;
 }
 
-export const BookVSLPage: React.FC<BookVSLPageProps> = ({ variant, videoSrc, posterSrc }) => {
+export const BookVSLPage: React.FC<BookVSLPageProps> = ({ variant }) => {
   const qualifierRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLDivElement>(null);
+  const videoElRef = useRef<HTMLVideoElement>(null);
+  const [vsl] = useState(() => pickVslVariant(BOOK_VSLS, 'kenji-book-vsl'));
+  useVslDropoff(videoElRef, vsl.id);
   const [step, setStep] = useState(0); // 0 = not started, 1-3 = quiz steps, 4 = result
   const [answers, setAnswers] = useState<{ business?: string; revenue?: string; ready?: string }>({});
   const [outcome, setOutcome] = useState<'qualified' | 'not-fit' | null>(null);
@@ -96,16 +107,16 @@ export const BookVSLPage: React.FC<BookVSLPageProps> = ({ variant, videoSrc, pos
   const [calendarRevealed, setCalendarRevealed] = useState(false);
 
   useEffect(() => {
-    track('ViewContent', variant);
-  }, [variant]);
+    track('ViewContent', variant, { vsl: vsl.id });
+  }, [variant, vsl.id]);
 
   useEffect(() => {
     if (calendarRevealed) {
-      track('Schedule', variant);
+      track('Schedule', variant, { vsl: vsl.id });
       const w = window as FbqWindow;
       if (w.fbq) w.fbq('track', 'Lead', { content_name: `book-vsl-${variant}-calendar` });
     }
-  }, [calendarRevealed, variant]);
+  }, [calendarRevealed, variant, vsl.id]);
 
   const scrollToQualifier = () => {
     qualifierRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -171,9 +182,10 @@ export const BookVSLPage: React.FC<BookVSLPageProps> = ({ variant, videoSrc, pos
         <div className="max-w-4xl mx-auto">
           <div className="aspect-video w-full rounded-xl overflow-hidden border border-white/10 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] bg-black">
             <video
+              ref={videoElRef}
               className="w-full h-full"
-              src={videoSrc}
-              poster={posterSrc}
+              src={vsl.src}
+              poster={vsl.poster}
               controls
               playsInline
               preload="metadata"
