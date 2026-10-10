@@ -3,16 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { CheckCircle2, XCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { Reviews } from '../components/Reviews';
-import { pickVslVariant, useVslDropoff } from '../hooks/useVslDropoff';
+import { BOOK_VSLS, BOOK_VSL_KEY, pickVslVariant, useVslDropoff } from '../hooks/useVslDropoff';
 
-// Yousif 2026-10-10: test both booking VSLs (Desktop\Output\VSL and Landing Pages\landing1_full /
-// landing2_full) for drop-off. Every visitor to /book or /book2 gets one of them and keeps it;
-// ?vsl=l1 or ?vsl=l2 forces one. Drop-off by version: kenjiai.com/funnel-stats/, kenjiai.com
-// funnel, click /book in the page table.
-const BOOK_VSLS = [
-  { id: 'l1', src: '/videos/book-vsl-1.mp4', poster: '/videos/book-vsl-1-poster.jpg' },
-  { id: 'l2', src: '/videos/book-vsl-2.mp4', poster: '/videos/book-vsl-2-poster.jpg' },
-];
+// Yousif 2026-10-10: both booking VSLs rotate here for a drop-off test (see BOOK_VSLS).
+// ?vsl=l1 or ?vsl=l2 forces one. Results: kenjiai.com/funnel-stats/, click /book in the page table.
 
 type FbqWindow = Window & {
   fbq?: (...args: unknown[]) => void;
@@ -98,7 +92,7 @@ export const BookVSLPage: React.FC<BookVSLPageProps> = ({ variant }) => {
   const qualifierRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLDivElement>(null);
   const videoElRef = useRef<HTMLVideoElement>(null);
-  const [vsl] = useState(() => pickVslVariant(BOOK_VSLS, 'kenji-book-vsl'));
+  const [vsl] = useState(() => pickVslVariant(BOOK_VSLS, BOOK_VSL_KEY));
   useVslDropoff(videoElRef, vsl.id);
   const [step, setStep] = useState(0); // 0 = not started, 1-3 = quiz steps, 4 = result
   const [answers, setAnswers] = useState<{ business?: string; revenue?: string; ready?: string }>({});

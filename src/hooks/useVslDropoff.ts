@@ -1,5 +1,14 @@
 import { RefObject, useEffect } from 'react';
 
+// The two booking VSLs (Desktop\Output\VSL and Landing Pages\landing1_full / landing2_full), tested
+// against each other on /growth-quiz/book, /book and /book2 from 2026-10-10. One shared storage key,
+// so a visitor sees the same one on every booking page.
+export const BOOK_VSLS = [
+  { id: 'l1', src: '/videos/book-vsl-1.mp4', poster: '/videos/book-vsl-1-poster.jpg' },
+  { id: 'l2', src: '/videos/book-vsl-2.mp4', poster: '/videos/book-vsl-2-poster.jpg' },
+];
+export const BOOK_VSL_KEY = 'kenji-book-vsl';
+
 const ft = (step: string) => (window as any).__ft?.send(step);
 
 // A/B pick for a page's VSL: each visitor is assigned one version and keeps it (localStorage).

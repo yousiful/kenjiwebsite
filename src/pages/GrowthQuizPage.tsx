@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Check, Loader2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { BOOK_VSLS, BOOK_VSL_KEY, pickVslVariant, useVslDropoff } from '../hooks/useVslDropoff';
 
 /* Growth quiz: one question per screen, then contact details, then the server decides where
    they go. Qualified -> /growth-quiz/book (calendar). Not yet -> /growth-quiz/next-step ($7 offer). */
@@ -352,6 +353,11 @@ export default GrowthQuizPage;
 
 export const GrowthQuizBookPage: React.FC = () => {
   const lead = useMemo(readLead, []);
+  // Yousif 2026-10-10: short walkthrough video above the calendar, two versions tested for drop-off.
+  // ?vsl=l1 or ?vsl=l2 forces one. Results: kenjiai.com/funnel-stats/, click /growth-quiz/book.
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [vsl] = useState(() => pickVslVariant(BOOK_VSLS, BOOK_VSL_KEY));
+  useVslDropoff(videoRef, vsl.id);
   const src = useMemo(() => {
     const p = new URLSearchParams();
     if (lead?.first_name) p.set('first_name', lead.first_name);
@@ -393,11 +399,11 @@ export const GrowthQuizBookPage: React.FC = () => {
   useEffect(() => {
     // Track the actual booking when the GHL widget reports it.
     const onMsg = (e: MessageEvent) => {
-      if (typeof e.data === 'string' ? /booked|appointment/i.test(e.data) : /booked|appointment/i.test(JSON.stringify(e.data || ''))) track('Schedule', true);
+      if (typeof e.data === 'string' ? /booked|appointment/i.test(e.data) : /booked|appointment/i.test(JSON.stringify(e.data || ''))) track('Schedule', true, { vsl: vsl.id });
     };
     window.addEventListener('message', onMsg);
     return () => window.removeEventListener('message', onMsg);
-  }, []);
+  }, [vsl.id]);
 
   return (
     <Shell title="Pick a time | KenjiAI" description="Book your growth call with the KenjiAI team." wide>
@@ -406,8 +412,12 @@ export const GrowthQuizBookPage: React.FC = () => {
           {lead?.first_name ? `You’re a fit, ${lead.first_name}.` : 'You’re a fit.'} Pick a time that works.
         </h1>
         <p className="mt-4 text-[18px] leading-relaxed text-[#C9D2DE] max-w-[46ch]">
-          It’s a 15-minute call with our team. Here’s what we’ll cover:
+          It’s a 15-minute call with our team. Watch this first, it’s under 2 minutes.
         </p>
+        <div className="mt-7 aspect-video rounded-3xl overflow-hidden bg-black border border-white/10">
+          <video ref={videoRef} src={vsl.src} poster={vsl.poster} controls playsInline preload="metadata" className="w-full h-full" />
+        </div>
+        <p className="mt-8 text-[18px] leading-relaxed text-[#C9D2DE]">Here’s what we’ll cover on the call:</p>
         <ul className="mt-5 space-y-3 text-[17px]">
           {[
             'Where your leads are leaking right now, from the ad to the booked appointment.',
