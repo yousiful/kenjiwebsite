@@ -1,10 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, Search, TrendingUp, AlertCircle, PhoneCall, Flame, Music, Target, Building2, Calculator } from 'lucide-react';
+import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, Search, TrendingUp, AlertCircle, PhoneCall, Flame, Music, Target, Building2, Calculator, Wallet } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 const FreeToolsPage: React.FC = () => {
   const freeTools = [
+    {
+      name: "Facebook Ads Budget Calculator",
+      description: "Enter the customers you want each month, your cost per lead, and your close rate. Get the daily and monthly Meta ads budget you need, cost per customer, and whether you have enough volume to exit the learning phase.",
+      url: "/tools/facebook-ads-budget-calculator",
+      icon: Wallet,
+      gradient: "from-blue-600 via-indigo-600 to-violet-600",
+      features: ["Daily & Monthly Budget", "Leads Needed", "Cost Per Customer", "Learning Phase Check"],
+      category: "Paid Ads",
+      rating: 5.0,
+      users: "NEW",
+      keywords: ["facebook ads budget calculator", "how much to spend on facebook ads", "meta ads budget", "facebook ad cost calculator"],
+      revenue: "Know the exact daily budget to set"
+    },
     {
       name: "ROAS & Break-Even Calculator",
       description: "Enter ad spend, revenue, order value, and margin. Get your ROAS, the break-even ROAS your margins require, the most you can pay per customer, and real profit after ad spend.",

@@ -45,6 +45,7 @@ export const internalRoutes = [
   '/tools/icp-generator',
   '/tools/roas-calculator',
   '/tools/google-review-link-generator',
+  '/tools/facebook-ads-budget-calculator',
   '/tools/name-generator',
   '/tools/business-name-generator',
   '/trendpulse',
