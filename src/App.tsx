@@ -67,6 +67,7 @@ const AgentSetupPage = lazyRoute(() => import('./pages/AgentSetupPage'));
 const FundingPage = lazyRoute(() => import('./pages/FundingPage'));
 const PricingV2Page = lazyRoute(() => import('./pages/PricingV2Page'));
 const HelpfulLinksPage = lazyRoute(() => import('./pages/HelpfulLinksPage'));
+const GitHubToolsPage = lazyRoute(() => import('./pages/GitHubToolsPage'));
 const PartnerUpPage = lazyRoute(() => import('./pages/PartnerUpPage'));
 const ModernPage = lazyRoute(() => import('./pages/ModernPage'));
 const GrowthQuizPage = lazyRoute(() => import('./pages/GrowthQuizPage'));
@@ -193,7 +194,7 @@ const DefaultSEO: React.FC = () => {
   return <SEOHead canonical={canonical} />;
 };
 
-const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/overview-b', '/setup', '/helpful-links', '/partnerup', '/workshop', '/growth-quiz', '/growth-quiz/book', '/growth-quiz/next-step'];
+const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/overview-b', '/setup', '/helpful-links', '/github-tools', '/partnerup', '/workshop', '/growth-quiz', '/growth-quiz/book', '/growth-quiz/next-step'];
 
 function ConditionalNavbar() {
   const { pathname } = useLocation();
@@ -305,6 +306,7 @@ function App() {
                       <Route path="/overview" element={<WebinarVSLPage />} />
                       <Route path="/overview-b" element={<WebinarVSLPageB />} />
                       <Route path="/helpful-links" element={<HelpfulLinksPage />} />
+                      <Route path="/github-tools" element={<GitHubToolsPage />} />
                       <Route path="/partnerup" element={<PartnerUpPage />} />
                       <Route path="/modern" element={<ModernPage />} />
                       <Route path="/growth-quiz" element={<GrowthQuizPage />} />

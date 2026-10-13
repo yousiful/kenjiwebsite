@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { Zap, DollarSign, Play, ArrowUpRight } from 'lucide-react';
+import { Zap, DollarSign, Play, Github, ArrowUpRight } from 'lucide-react';
 
 const LINKS = [
   {
@@ -27,6 +27,14 @@ const LINKS = [
     href: 'https://kenjiai.com/overview',
     color: 'from-cyan-500 to-blue-500',
     glow: 'rgba(0,255,255,0.18)',
+  },
+  {
+    icon: Github,
+    title: 'Open-Source Tools We Use',
+    subtitle: 'The free GitHub projects behind our AI agents, video, and design work.',
+    href: 'https://kenjiai.com/github-tools',
+    color: 'from-slate-500 to-gray-700',
+    glow: 'rgba(148,163,184,0.15)',
   },
 ];
 

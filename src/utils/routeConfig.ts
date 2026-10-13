@@ -28,6 +28,7 @@ export const internalRoutes = [
   '/dashboard',
   '/setup',
   '/helpful-links',
+  '/github-tools',
   '/partnerup',
   '/modern',
   '/growth-quiz',
