@@ -68,16 +68,24 @@ async function sendViaGhl(email: string, code: string): Promise<{ ok: boolean; s
     body: JSON.stringify({ tags: ['kenji invites user'] }),
   }).catch(() => null);
 
-  const msg = await fetch(`${GHL_BASE}/conversations/messages`, {
-    method: 'POST',
-    headers: { ...base, Version: '2021-04-15' },
-    body: JSON.stringify({
-      type: 'Email',
-      contactId,
-      subject: `Your Kenji Invites code: ${code}`,
-      html: emailHtml(code),
-    }),
-  });
+  // Send from the location's authenticated sending subdomain (hlp.mediatraffics.com has
+  // SPF for mailgun/leadconnector, DKIM and DMARC). The default sender, support@mediatraffics.com,
+  // is on a domain whose SPF only covers IONOS, so Gmail accepted those emails and then dropped them.
+  // If GHL rejects the custom sender, retry once with the location default.
+  const emailFrom = process.env.INVITES_EMAIL_FROM || 'Kenji Invites <invites@hlp.mediatraffics.com>';
+  const payload = {
+    type: 'Email',
+    contactId,
+    subject: `Your Kenji Invites code: ${code}`,
+    html: emailHtml(code),
+    message: `Your Kenji Invites sign-in code is ${code}. It works for 10 minutes. If you didn't ask for it, you can ignore this email.`,
+  };
+  const post = (body: object) => fetch(`${GHL_BASE}/conversations/messages`, { method: 'POST', headers: { ...base, Version: '2021-04-15' }, body: JSON.stringify(body) });
+  let msg = await post({ ...payload, emailFrom });
+  if (!msg.ok) {
+    console.error('[invites-auth] custom sender rejected, using location default', msg.status, (await msg.text().catch(() => '')).slice(0, 300));
+    msg = await post(payload);
+  }
   const msgData = (await msg.json().catch(() => ({}))) as { messageId?: string; emailMessageId?: string; conversationId?: string };
   if (!msg.ok) return { ok: false, status: msg.status, detail: msgData };
   return { ok: true, status: msg.status, detail: { messageId: msgData?.messageId, emailMessageId: msgData?.emailMessageId, conversationId: msgData?.conversationId } };
