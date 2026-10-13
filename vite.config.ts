@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import viteCompression from 'vite-plugin-compression';
+import { fileURLToPath } from 'node:url';
 
 // Prerender disabled 2026-05-29 — the DataTagManager pixel script (pixel_popup.js)
 // injected a $7 tripwire overlay during the puppeteer snapshot, which then
@@ -86,6 +87,11 @@ export default defineConfig({
       },
     },
     rollupOptions: {
+      // invite.html is the small standalone entry for guest invitations (/i/:code).
+      input: {
+        main: fileURLToPath(new URL('./index.html', import.meta.url)),
+        invite: fileURLToPath(new URL('./invite.html', import.meta.url)),
+      },
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],

@@ -1,10 +1,23 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, Search, TrendingUp, AlertCircle, PhoneCall, Flame, Music, Target, Building2, Calculator, Wallet } from 'lucide-react';
+import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, Search, TrendingUp, AlertCircle, PhoneCall, Flame, Music, Target, Building2, Calculator, Wallet, Heart } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 const FreeToolsPage: React.FC = () => {
   const freeTools = [
+    {
+      name: "Kenji Invites: Free Wedding Invitations with RSVP",
+      description: "Make a beautiful wedding invitation, send it by text or email from your own phone, and see who's coming. Eight designs, a timeline for the events before the big day, and a guest list that fills itself in.",
+      url: "/invites",
+      icon: Heart,
+      gradient: "from-rose-500 via-pink-500 to-amber-400",
+      features: ["8 Invitation Designs", "Text & Email From Your Phone", "RSVP Tracking", "No Account for Guests"],
+      category: "Free App",
+      rating: 5.0,
+      users: "NEW",
+      keywords: ["free wedding invitations", "online wedding invitation with RSVP", "digital wedding invitation", "wedding RSVP tracker"],
+      revenue: "Free for families, no catch"
+    },
     {
       name: "Facebook Ads Budget Calculator",
       description: "Enter the customers you want each month, your cost per lead, and your close rate. Get the daily and monthly Meta ads budget you need, cost per customer, and whether you have enough volume to exit the learning phase.",

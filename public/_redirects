@@ -41,5 +41,8 @@
 /trendpulse/               /trendpulse/index.html              200
 /trendpulse/*              /trendpulse/:splat                  200
 
+# Kenji Invites guest invitations: small standalone page (invite.html), no site chrome
+/i/*                       /invite.html                        200
+
 # Catchall (SPA) stays last
 /* /index.html 200

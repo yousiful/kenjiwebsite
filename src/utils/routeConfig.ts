@@ -51,7 +51,9 @@ export const internalRoutes = [
   '/tools/business-name-generator',
   '/trendpulse',
   '/book',
-  '/book2'
+  '/book2',
+  '/invites',
+  '/i'
 ] as const;
 
 export const externalRoutes = {

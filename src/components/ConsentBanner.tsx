@@ -13,6 +13,9 @@ export function ConsentBanner() {
 
   useEffect(() => {
     const consent = localStorage.getItem(CONSENT_KEY);
+    // Kenji Invites pages (/invites, /i/<code>) keep the screen clear for older hosts and guests.
+    const p = window.location.pathname;
+    if (p === '/invites' || p.startsWith('/invites/') || p.startsWith('/i/')) return;
     if (!consent) {
       // Show after 1.5s delay so it doesn't compete with page load
       const timer = setTimeout(() => setVisible(true), 1500);

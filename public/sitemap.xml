@@ -139,6 +139,13 @@
     <mobile:mobile/>
   </url>
   <url>
+    <loc>https://kenjiai.com/invites</loc>
+    <lastmod>2026-10-13T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <mobile:mobile/>
+  </url>
+  <url>
     <loc>https://kenjiai.com/tools/facebook-ads-budget-calculator</loc>
     <lastmod>2026-10-12T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>

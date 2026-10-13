@@ -84,6 +84,15 @@ const TrendPulsePage = lazyRoute(() => import('./pages/TrendPulsePage'));
 const NameGeneratorPage = lazyRoute(() => import('./pages/NameGeneratorPage'));
 const BookPage = lazyRoute(() => import('./pages/BookPage'));
 const Book2Page = lazyRoute(() => import('./pages/Book2Page'));
+// Kenji Invites (free wedding invitations + RSVP). /i/:code is normally served by
+// invite.html (see public/_redirects); the route here covers in-app navigation.
+const InvitesLanding = lazyRoute(() => import('./invites/pages/InvitesLanding'));
+const InvitesLogin = lazyRoute(() => import('./invites/pages/InvitesLogin'));
+const InvitesDashboard = lazyRoute(() => import('./invites/pages/InvitesDashboard'));
+const InvitesWizard = lazyRoute(() => import('./invites/pages/InvitesWizard'));
+const InvitesEvent = lazyRoute(() => import('./invites/pages/InvitesEvent'));
+const InvitePreviewRoute = lazyRoute(() => import('./invites/pages/InvitePreviewRoute'));
+const InviteRoute = lazyRoute(() => import('./invites/pages/InviteRoute'));
 
 const RouteFallback: React.FC = () => (
   <div
@@ -194,11 +203,14 @@ const DefaultSEO: React.FC = () => {
   return <SEOHead canonical={canonical} />;
 };
 
+// Kenji Invites pages carry their own header and hide all site chrome.
+const isInvitesPath = (p: string) => p === '/invites' || p.startsWith('/invites/') || p.startsWith('/i/');
+
 const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/overview-b', '/setup', '/helpful-links', '/github-tools', '/partnerup', '/workshop', '/growth-quiz', '/growth-quiz/book', '/growth-quiz/next-step'];
 
 function ConditionalNavbar() {
   const { pathname } = useLocation();
-  const hideNavbar = NAVBAR_HIDDEN_ROUTES.includes(pathname);
+  const hideNavbar = NAVBAR_HIDDEN_ROUTES.includes(pathname) || isInvitesPath(pathname);
 
   if (hideNavbar) return null;
 
@@ -212,6 +224,8 @@ function ConditionalNavbar() {
 function ConditionalFooter() {
   const { pathname } = useLocation();
   const hideFooter = NAVBAR_HIDDEN_ROUTES.includes(pathname);
+
+  if (isInvitesPath(pathname)) return null;
 
   if (hideFooter) {
     return (
@@ -230,7 +244,7 @@ function ConditionalFooter() {
 
 function ConditionalWidgets() {
   const { pathname } = useLocation();
-  const hideWidgets = NAVBAR_HIDDEN_ROUTES.includes(pathname);
+  const hideWidgets = NAVBAR_HIDDEN_ROUTES.includes(pathname) || isInvitesPath(pathname);
 
   if (hideWidgets) return null;
 
@@ -315,6 +329,14 @@ function App() {
                       <Route path="/workshop" element={<WorkshopPage />} />
                       <Route path="/setup" element={<AgentSetupPage />} />
                       <Route path="/funding" element={<FundingPage />} />
+                      <Route path="/invites" element={<InvitesLanding />} />
+                      <Route path="/invites/login" element={<InvitesLogin />} />
+                      <Route path="/invites/dashboard" element={<InvitesDashboard />} />
+                      <Route path="/invites/new" element={<InvitesWizard />} />
+                      <Route path="/invites/e/:id" element={<InvitesEvent />} />
+                      <Route path="/invites/e/:id/edit" element={<InvitesWizard />} />
+                      <Route path="/invites/e/:id/preview" element={<InvitePreviewRoute />} />
+                      <Route path="/i/:code" element={<InviteRoute />} />
                       <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                     </Suspense>

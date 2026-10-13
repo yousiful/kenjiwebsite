@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { Zap, DollarSign, Play, Github, ArrowUpRight } from 'lucide-react';
+import { Zap, DollarSign, Play, Github, ArrowUpRight, Heart } from 'lucide-react';
 
 const LINKS = [
   {
@@ -35,6 +35,14 @@ const LINKS = [
     href: 'https://kenjiai.com/github-tools',
     color: 'from-slate-500 to-gray-700',
     glow: 'rgba(148,163,184,0.15)',
+  },
+  {
+    icon: Heart,
+    title: 'Kenji Invites',
+    subtitle: "Free wedding invitations: send them by text or email and see who's coming.",
+    href: 'https://kenjiai.com/invites',
+    color: 'from-rose-500 to-pink-500',
+    glow: 'rgba(244,63,94,0.18)',
   },
 ];
 
