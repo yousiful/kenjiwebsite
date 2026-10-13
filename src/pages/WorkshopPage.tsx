@@ -36,10 +36,6 @@ const FAQS = [
     a: 'You need to be spending real money on ads already, or be close to it. This isn’t a beginner course on how to launch your first campaign, it’s the structure behind how we take over an existing ad account.',
   },
   {
-    q: 'What if I’m not at $20K+/month yet?',
-    a: 'The Partner Program itself is built for businesses spending $20K+/month. If you’re not there yet but you’re on your way, the workshop still shows you exactly what to build toward.',
-  },
-  {
     q: 'What happens right after I pay?',
     a: 'You get access details by email immediately after checkout.',
   },

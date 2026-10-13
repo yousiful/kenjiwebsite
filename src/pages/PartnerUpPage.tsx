@@ -26,7 +26,7 @@ const PartnerUpPage: React.FC = () => {
         <title>Partner Program | KenjiAI</title>
         <meta
           name="description"
-          content="A done-for-you ad partnership for businesses spending $20K+/month. Revenue-share, not a flat retainer: I only get paid a percentage of what I actually grow."
+          content="A done-for-you ad partnership for businesses ready to scale. Revenue-share, not a flat retainer: I only get paid a percentage of what I actually grow."
         />
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
@@ -59,8 +59,7 @@ const PartnerUpPage: React.FC = () => {
             This isn&apos;t for everyone.
           </h1>
           <p className="text-gray-400 text-base sm:text-lg leading-relaxed">
-            If you&apos;re not spending $20K+ a month on ads, or getting ready to, this page isn&apos;t for you.
-            Close the tab, no hard feelings.
+            It&apos;s for businesses already running ads that want a partner who only gets paid when it works.
           </p>
         </motion.div>
 
