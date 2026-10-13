@@ -1,6 +1,6 @@
-import type { Handler, HandlerEvent } from '@netlify/functions';
+import type { HandlerEvent, HandlerResponse } from '@netlify/functions';
 import { randomInt, timingSafeEqual } from 'node:crypto';
-import { invitesStore, emailHash, hmac, makeToken, json, fail, parseBody, str } from './_invites/common';
+import { asV2, invitesStore, emailHash, hmac, makeToken, json, fail, parseBody, str } from './_invites/common';
 import { isEmail } from '../../src/invites/shared';
 
 /**
@@ -83,7 +83,7 @@ async function sendViaGhl(email: string, code: string): Promise<{ ok: boolean; s
   return { ok: true, status: msg.status, detail: { messageId: msgData?.messageId, emailMessageId: msgData?.emailMessageId, conversationId: msgData?.conversationId } };
 }
 
-export const handler: Handler = async (event: HandlerEvent) => {
+const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
   if (event.httpMethod !== 'POST') return fail(405, 'Method not allowed');
   const op = event.queryStringParameters?.op;
   const body = parseBody(event);
@@ -92,7 +92,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
   const email = str(body.email, 200).toLowerCase();
   if (!isEmail(email)) return fail(400, 'Please check your email address. It should look like name@example.com.');
 
-  const store = invitesStore(event);
+  const store = invitesStore();
   const key = `login/${emailHash(email)}`;
   const now = Date.now();
 
@@ -149,3 +149,6 @@ export const handler: Handler = async (event: HandlerEvent) => {
 
   return fail(400, 'Unknown request');
 };
+
+// Netlify Functions v2 (needed for strongly consistent Blobs reads); same URL and ops.
+export default asV2(handler);

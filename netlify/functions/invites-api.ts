@@ -1,5 +1,5 @@
-import type { Handler, HandlerEvent, HandlerResponse } from '@netlify/functions';
-import { invitesStore, readToken, randomId, json, fail, parseBody, str } from './_invites/common';
+import type { HandlerEvent, HandlerResponse } from '@netlify/functions';
+import { asV2, invitesStore, readToken, randomId, json, fail, parseBody, str } from './_invites/common';
 import {
   THEME_IDS, LIMITS, isDate, isTime, isEmail, cleanPhone, parseGuestList, todayIn, buildIcs,
   type InviteEvent, type Guest, type SubEvent, type ThemeId,
@@ -207,13 +207,13 @@ function readRsvp(b: Record<string, unknown>, seats: number): { attending: boole
   return { attending, partySize, partyNames: attending ? str(b.partyNames, LIMITS.partyNames) : '', note: str(b.note, LIMITS.note) };
 }
 
-export const handler: Handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
+const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
   const op = event.queryStringParameters?.op || '';
   const q = event.queryStringParameters || {};
   const method = event.httpMethod;
   let store: Store;
   try {
-    store = invitesStore(event);
+    store = invitesStore();
   } catch (e) {
     console.error('[invites-api] store', e);
     return fail(500, 'Something went wrong on our side. Please try again.');
@@ -478,3 +478,6 @@ export const handler: Handler = async (event: HandlerEvent): Promise<HandlerResp
     return fail(500, 'Something went wrong on our side. Please try again.');
   }
 };
+
+// Netlify Functions v2 (needed for strongly consistent Blobs reads); same URL and ops.
+export default asV2(handler);

@@ -1,22 +1,43 @@
-import type { HandlerEvent } from '@netlify/functions';
-import { connectLambda, getStore } from '@netlify/blobs';
+import type { HandlerEvent, HandlerResponse } from '@netlify/functions';
+import { getStore } from '@netlify/blobs';
 import { createHmac, randomBytes, timingSafeEqual } from 'node:crypto';
 
 // Shared server helpers for invites-auth.ts and invites-api.ts.
 // Storage is the Netlify Blobs store "invites" (one JSON per key, see the spec).
+//
+// Both functions run as Netlify Functions v2 (default export taking a Request):
+// only v2 gets the uncached edge URL that strong consistency needs. With the old
+// Lambda-style handler + connectLambda, reads were eventually consistent in
+// production, so a host listing guests right after a write saw stale (empty) data.
 
-export function invitesStore(event: HandlerEvent) {
-  connectLambda(event as unknown as Parameters<typeof connectLambda>[0]);
-  // Strong reads when the runtime supports them (a host adds a guest and immediately
-  // lists guests); `netlify dev` has no uncached edge URL, so fall back there.
-  let strong = false;
-  try {
-    const raw = process.env.NETLIFY_BLOBS_CONTEXT || '';
-    strong = !!JSON.parse(Buffer.from(raw, 'base64').toString('utf8')).uncachedEdgeURL;
-  } catch {
-    strong = false;
-  }
-  return getStore(strong ? { name: 'invites', consistency: 'strong' } : { name: 'invites' });
+export function invitesStore() {
+  // `netlify dev`'s local blob sandbox has no uncached edge URL.
+  if (process.env.NETLIFY_DEV === 'true') return getStore({ name: 'invites' });
+  return getStore({ name: 'invites', consistency: 'strong' });
+}
+
+/** Wraps a Lambda-style handler as a v2 function so the ops and URLs stay the same. */
+export function asV2(handler: (event: HandlerEvent) => Promise<HandlerResponse>) {
+  return async (req: Request): Promise<Response> => {
+    const url = new URL(req.url);
+    const headers: Record<string, string> = {};
+    req.headers.forEach((v, k) => { headers[k] = v; });
+    const event = {
+      httpMethod: req.method,
+      headers,
+      multiValueHeaders: {},
+      queryStringParameters: Object.fromEntries(url.searchParams),
+      multiValueQueryStringParameters: {},
+      path: url.pathname,
+      rawUrl: req.url,
+      rawQuery: url.search.slice(1),
+      body: req.method === 'GET' || req.method === 'HEAD' ? null : await req.text(),
+      isBase64Encoded: false,
+    } as unknown as HandlerEvent;
+    const r = await handler(event);
+    const body = r.isBase64Encoded ? Buffer.from(r.body || '', 'base64') : r.body || null;
+    return new Response(body, { status: r.statusCode, headers: (r.headers || {}) as Record<string, string> });
+  };
 }
 
 export function secret(): string {
