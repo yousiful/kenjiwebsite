@@ -57,6 +57,8 @@ export type PublicEvent = Omit<InviteEvent, 'openLinkEnabled' | 'openCode' | 'cr
 export interface GuestView { name: string; seats: number; status: Guest['status']; partySize: number; partyNames: string; note: string; respondedAt: string }
 
 export const api = {
+  savePhone: (phone: string) => call<{ ok: boolean; saved: boolean; devText?: string }>(`${AUTH}?op=save-phone`, { method: 'POST', body: JSON.stringify({ phone }) }),
+  findByPhone: (phone: string) => call<{ ok: boolean; message: string; devText?: string }>(`${AUTH}?op=find`, { method: 'POST', body: JSON.stringify({ phone }) }, false),
   async saveLead(email: string) {
     const r = await call<{ ok: boolean; saved: boolean }>(`${AUTH}?op=lead`, { method: 'POST', body: JSON.stringify({ email }) });
     try { localStorage.setItem(LEAD_STORE, email); } catch { /* ignore */ }

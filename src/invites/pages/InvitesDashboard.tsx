@@ -46,6 +46,7 @@ export default function InvitesDashboard() {
             <h2 style={{ marginBottom: 10 }}>No invitations on this device yet</h2>
             <p className="kv-muted" style={{ marginBottom: 22 }}>It takes about 10 minutes to make one. You can stop any time and come back; everything saves as you go.</p>
             <Link to="/invites/new" className="kv-btn kv-btn--primary kv-btn--big">Make my invitation</Link>
+            {!ok && <p style={{ marginTop: 18 }}><Link to="/invites/find">Lost your invitations? Get your link by text</Link></p>}
           </div>
         )}
         {events && events.length > 0 && (
@@ -76,7 +77,8 @@ export default function InvitesDashboard() {
         {!ok && (
           <div className="kv-card" style={{ marginTop: 24 }}>
             <h2 style={{ fontSize: 24, marginBottom: 8 }}>Made an invitation on another phone or computer?</h2>
-            <p>Open the private link you saved there (from your texts or email) on this device, and your invitations will show up here.</p>
+            <p style={{ marginBottom: 16 }}>Open the private link you saved there (from your texts or email) on this device, and your invitations will show up here.</p>
+            <Link to="/invites/find" className="kv-btn kv-btn--secondary">Lost your link? Get it by text</Link>
           </div>
         )}
       </div>

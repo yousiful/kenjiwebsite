@@ -88,7 +88,8 @@ export default function InvitesLanding() {
           <div style={{ marginTop: 36 }}>
             <Link to={start} className="kv-btn kv-btn--primary kv-btn--big">Make my invitation</Link>
           </div>
-          <p className="kv-muted" style={{ marginTop: 40, fontSize: 17 }}>Kenji Invites is a free tool from <Link to="/">KenjiAI</Link>.</p>
+          <p className="kv-muted" style={{ marginTop: 40, fontSize: 17 }}>Lost your invitations? <Link to="/invites/find">Get your private link by text</Link>.</p>
+          <p className="kv-muted" style={{ marginTop: 8, fontSize: 17 }}>Kenji Invites is a free tool from <Link to="/">KenjiAI</Link>.</p>
         </section>
       </div>
     </Page>

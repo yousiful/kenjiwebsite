@@ -237,3 +237,9 @@
 }
 .kv-manage { border: 2px solid var(--kv-primary); }
 .kv-warn { background: var(--kv-wait-tint); color: #5a4110; border-radius: 12px; padding: 12px 14px; }
+
+.kv-textme { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--kv-line); }
+.kv-textme-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.kv-textme-row .kv-input { flex: 1 1 220px; }
+.kv-textme-row .kv-btn { flex: 1 1 200px; }
+.kv-consent { font-size: 16px; color: var(--kv-soft); margin-top: 10px !important; line-height: 1.45; }
