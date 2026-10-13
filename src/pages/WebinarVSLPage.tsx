@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Maximize2, Volume2, VolumeX } from 'lucide-react';
-import WebinarObjectionSection from '../components/WebinarObjectionSection';
 import { useResumableVideo } from '../hooks/useResumableVideo';
 
 // Fixed real-content timestamp (webinar-1.mp4): the point where the video starts
@@ -324,7 +323,6 @@ export default function WebinarVSLPage() {
           </motion.div>
         )}
 
-        <WebinarObjectionSection />
       </div>
     </>
   );

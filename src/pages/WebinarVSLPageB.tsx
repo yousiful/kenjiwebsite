@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Maximize2, Volume2, VolumeX } from 'lucide-react';
-import WebinarObjectionSection from '../components/WebinarObjectionSection';
 import { useResumableVideo } from '../hooks/useResumableVideo';
 
 // A/B variant B of /overview. Identical to WebinarVSLPage except the video,
@@ -303,7 +302,6 @@ export default function WebinarVSLPageB() {
           </motion.div>
         )}
 
-        <WebinarObjectionSection />
       </div>
     </>
   );
