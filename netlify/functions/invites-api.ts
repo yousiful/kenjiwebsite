@@ -20,7 +20,7 @@ import {
  */
 
 type Store = ReturnType<typeof invitesStore>;
-type Owner = { ownerHash: string; email: string };
+type Owner = { ownerHash: string };
 type StoredEvent = InviteEvent & { ownerHash: string };
 
 const SITE = 'https://kenjiai.com';
@@ -314,7 +314,7 @@ const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
         if (!ev) return null;
         return { ...hostEvent(ev), summary: summarize(await listGuests(store, id)) };
       }));
-      return json(200, { email: owner.email, events: events.filter(Boolean).sort((a, b) => (a!.createdAt < b!.createdAt ? 1 : -1)) });
+      return json(200, { events: events.filter(Boolean).sort((a, b) => (a!.createdAt < b!.createdAt ? 1 : -1)) });
     }
 
     if (method === 'GET' && op === 'event') {

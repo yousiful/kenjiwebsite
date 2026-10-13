@@ -49,32 +49,36 @@ export function secret(): string {
 export const hmac = (data: string) => createHmac('sha256', secret()).update(data).digest('base64url');
 export const randomId = (bytes: number) => randomBytes(bytes).toString('base64url');
 
-export const emailHash = (email: string) => hmac('email:' + email.trim().toLowerCase()).slice(0, 32);
-export const ownerHashFor = (email: string) => hmac('owner:' + email.trim().toLowerCase()).slice(0, 32);
-
-const SESSION_DAYS = 180;
-
-export function makeToken(email: string): string {
-  const payload = Buffer.from(
-    JSON.stringify({ o: ownerHashFor(email), m: email.trim().toLowerCase(), x: Date.now() + SESSION_DAYS * 86400000 })
-  ).toString('base64url');
-  return `${payload}.${hmac('session:' + payload)}`;
+// Host identity is a private key the browser keeps (no accounts, no sign-in).
+// Key = 32 random bytes (base64url) + "." + an HMAC tag, so the server can check a
+// key without storing it. Events store only ownerHash = HMAC(key secret), never the key.
+export function makeHostKey(): string {
+  const raw = randomBytes(32).toString('base64url');
+  return `${raw}.${hmac('hostkey:' + raw).slice(0, 22)}`;
 }
 
-export function readToken(event: HandlerEvent): { ownerHash: string; email: string } | null {
-  const h = event.headers.authorization || event.headers.Authorization || '';
-  const m = /^Bearer\s+([A-Za-z0-9_-]+)\.([A-Za-z0-9_-]+)$/.exec(h);
+const KEY_RE = /^([A-Za-z0-9_-]{43})\.([A-Za-z0-9_-]{22})$/;
+
+export function ownerHashForKey(key: string): string | null {
+  const m = KEY_RE.exec(key);
   if (!m) return null;
-  const expected = Buffer.from(hmac('session:' + m[1]));
+  const expected = Buffer.from(hmac('hostkey:' + m[1]).slice(0, 22));
   const given = Buffer.from(m[2]);
   if (expected.length !== given.length || !timingSafeEqual(expected, given)) return null;
-  try {
-    const p = JSON.parse(Buffer.from(m[1], 'base64url').toString('utf8'));
-    if (typeof p.o !== 'string' || typeof p.x !== 'number' || p.x < Date.now()) return null;
-    return { ownerHash: p.o, email: String(p.m || '') };
-  } catch {
-    return null;
-  }
+  return hmac('owner:' + m[1]).slice(0, 32);
+}
+
+export function readToken(event: HandlerEvent): { ownerHash: string } | null {
+  const h = event.headers.authorization || event.headers.Authorization || '';
+  const m = /^Bearer\s+(\S+)$/.exec(h);
+  const ownerHash = m ? ownerHashForKey(m[1]) : null;
+  return ownerHash ? { ownerHash } : null;
+}
+
+/** Client IP (Netlify sets x-nf-client-connection-ip), hashed before it is stored anywhere. */
+export function ipHash(event: HandlerEvent): string {
+  const ip = event.headers['x-nf-client-connection-ip'] || String(event.headers['x-forwarded-for'] || '').split(',')[0].trim() || 'unknown';
+  return hmac('ip:' + ip).slice(0, 24);
 }
 
 export const json = (statusCode: number, body: unknown, extra: Record<string, string> = {}) => ({

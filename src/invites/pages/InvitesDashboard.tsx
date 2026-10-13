@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { api, getEmail, photoUrl, signOut, type HostEvent, type Summary } from '../api';
-import { Page, useRequireAuth, ErrorBox } from '../ui';
+import { Link } from 'react-router-dom';
+import { api, getToken, photoUrl, type HostEvent, type Summary } from '../api';
+import { Page, ErrorBox } from '../ui';
+import ManageLinkCard from '../ManageLinkCard';
 import { Icon } from '../icons';
 import InvitationCard from '../InvitationCard';
 import { daysToGo, longDate, loadThemeFonts } from '../format';
@@ -18,13 +19,12 @@ function daysLabel(ev: HostEvent): string {
 }
 
 export default function InvitesDashboard() {
-  const ok = useRequireAuth();
-  const navigate = useNavigate();
+  const ok = !!getToken();
   const [events, setEvents] = useState<Row[] | null>(null);
   const [error, setError] = useState('');
 
   useEffect(() => {
-    if (!ok) return;
+    if (!ok) { setEvents([]); return; }
     api.events()
       .then((r) => { setEvents(r.events); loadThemeFonts([...new Set(r.events.map((e) => e.theme))]); })
       .catch((e) => setError(e.message));
@@ -36,7 +36,6 @@ export default function InvitesDashboard() {
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, justifyContent: 'space-between', alignItems: 'center', marginBottom: 28 }}>
           <div>
             <h1>My invitations</h1>
-            {getEmail() && <p className="kv-muted" style={{ marginTop: 6, overflowWrap: 'anywhere' }}>Signed in as {getEmail()}</p>}
           </div>
           <Link to="/invites/new" className="kv-btn kv-btn--primary kv-btn--big"><Icon name="plus" /> Make a new invitation</Link>
         </div>
@@ -44,7 +43,7 @@ export default function InvitesDashboard() {
         {events === null && !error && <p className="kv-muted" role="status">Loading your invitations...</p>}
         {events && events.length === 0 && (
           <div className="kv-card kv-empty">
-            <h2 style={{ marginBottom: 10 }}>No invitations yet</h2>
+            <h2 style={{ marginBottom: 10 }}>No invitations on this device yet</h2>
             <p className="kv-muted" style={{ marginBottom: 22 }}>It takes about 10 minutes to make one. You can stop any time and come back; everything saves as you go.</p>
             <Link to="/invites/new" className="kv-btn kv-btn--primary kv-btn--big">Make my invitation</Link>
           </div>
@@ -73,9 +72,13 @@ export default function InvitesDashboard() {
             ))}
           </ul>
         )}
-        <p style={{ marginTop: 40 }}>
-          <button type="button" className="kv-btn kv-btn--secondary" onClick={() => { signOut(); navigate('/invites'); }}>Sign out</button>
-        </p>
+        {ok && events && events.length > 0 && <div style={{ marginTop: 32 }}><ManageLinkCard /></div>}
+        {!ok && (
+          <div className="kv-card" style={{ marginTop: 24 }}>
+            <h2 style={{ fontSize: 24, marginBottom: 8 }}>Made an invitation on another phone or computer?</h2>
+            <p>Open the private link you saved there (from your texts or email) on this device, and your invitations will show up here.</p>
+          </div>
+        )}
       </div>
     </Page>
   );

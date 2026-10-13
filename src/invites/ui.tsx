@@ -1,12 +1,11 @@
 import { useEffect, useState, type ReactNode } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { BrandMark, Icon } from './icons';
-import { getToken, signOut } from './api';
+import { ensureHostKey, getToken } from './api';
 import './app.css';
 
 export function Page({ title, children, signedIn = true, noindex = true }: { title: string; children: ReactNode; signedIn?: boolean; noindex?: boolean }) {
-  const navigate = useNavigate();
   const hasToken = !!getToken();
   return (
     <div className="kv">
@@ -21,15 +20,8 @@ export function Page({ title, children, signedIn = true, noindex = true }: { tit
             <span>Kenji Invites</span>
           </Link>
           {signedIn && hasToken && (
-            <nav className="kv-top-links" aria-label="Account">
+            <nav className="kv-top-links" aria-label="Your invitations">
               <Link to="/invites/dashboard" className="kv-btn kv-btn--secondary">My invitations</Link>
-              <button
-                type="button"
-                className="kv-btn kv-btn--quiet"
-                onClick={() => { signOut(); navigate('/invites'); }}
-              >
-                Sign out
-              </button>
             </nav>
           )}
         </div>
@@ -39,15 +31,21 @@ export function Page({ title, children, signedIn = true, noindex = true }: { tit
   );
 }
 
-/** Sends people who aren't signed in to the sign-in page, then back here. */
-export function useRequireAuth(): boolean {
+/**
+ * There is no sign-in. With `create`, a private host key is fetched the first time
+ * (the wizard). Without it, a browser that has no key is sent to My invitations,
+ * which explains how to open the private link on this device.
+ */
+export function useHostKey(create = false): { ok: boolean; error: string } {
   const navigate = useNavigate();
-  const loc = useLocation();
-  const ok = !!getToken();
+  const [ok, setOk] = useState(!!getToken());
+  const [error, setError] = useState('');
   useEffect(() => {
-    if (!ok) navigate(`/invites/login?next=${encodeURIComponent(loc.pathname + loc.search)}`, { replace: true });
-  }, [ok, navigate, loc.pathname, loc.search]);
-  return ok;
+    if (ok) return;
+    if (!create) { navigate('/invites/dashboard', { replace: true }); return; }
+    ensureHostKey().then(() => setOk(true)).catch((e) => setError((e as Error).message));
+  }, [ok, create, navigate]);
+  return { ok, error };
 }
 
 export function Field({ id, label, hint, children }: { id: string; label: string; hint?: string; children: ReactNode }) {

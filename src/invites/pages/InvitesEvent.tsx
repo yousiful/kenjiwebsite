@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { api, type HostEvent } from '../api';
-import { Page, Field, Stepper, ConfirmButton, ErrorBox, useRequireAuth, StatusChip } from '../ui';
+import { Page, Field, Stepper, ConfirmButton, ErrorBox, useHostKey, StatusChip } from '../ui';
 import { Icon } from '../icons';
 import { formatPhone, LIMITS, type Guest } from '../shared';
 import { countdownText, longDate } from '../format';
@@ -74,7 +74,7 @@ function GuestEdit({ ev, guest, onSaved, onCancel }: { ev: HostEvent; guest: Gue
 }
 
 export default function InvitesEvent() {
-  const ok = useRequireAuth();
+  const { ok } = useHostKey();
   const { id = '' } = useParams();
   const navigate = useNavigate();
   const [ev, setEv] = useState<HostEvent | null>(null);

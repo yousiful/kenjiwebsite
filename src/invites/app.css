@@ -235,3 +235,5 @@
   .kv-top-in { min-height: 64px; }
   .kv-top-links .kv-btn--quiet { display: none; }
 }
+.kv-manage { border: 2px solid var(--kv-primary); }
+.kv-warn { background: var(--kv-wait-tint); color: #5a4110; border-radius: 12px; padding: 12px 14px; }

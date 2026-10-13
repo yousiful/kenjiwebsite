@@ -2,20 +2,29 @@ import type { InviteEvent, Guest } from './shared';
 
 const API = '/.netlify/functions/invites-api';
 const AUTH = '/.netlify/functions/invites-auth';
-const TOKEN_KEY = 'kenji-invites-token';
-const EMAIL_KEY = 'kenji-invites-email';
+const KEY_STORE = 'kenji-invites-key';
+const LEAD_STORE = 'kenji-invites-lead';
+export const HOST_KEY_RE = /^[A-Za-z0-9_-]{43}\.[A-Za-z0-9_-]{22}$/;
 
+/** The private host key that identifies this browser's invitations (no accounts). */
 export function getToken(): string {
-  try { return localStorage.getItem(TOKEN_KEY) || ''; } catch { return ''; }
+  try { return localStorage.getItem(KEY_STORE) || ''; } catch { return ''; }
 }
-export function getEmail(): string {
-  try { return localStorage.getItem(EMAIL_KEY) || ''; } catch { return ''; }
+export function setHostKey(key: string) {
+  try { localStorage.setItem(KEY_STORE, key); } catch { /* private mode */ }
 }
-export function setSession(token: string, email: string) {
-  try { localStorage.setItem(TOKEN_KEY, token); localStorage.setItem(EMAIL_KEY, email); } catch { /* private mode */ }
+export function getLeadEmail(): string {
+  try { return localStorage.getItem(LEAD_STORE) || ''; } catch { return ''; }
 }
-export function signOut() {
-  try { localStorage.removeItem(TOKEN_KEY); localStorage.removeItem(EMAIL_KEY); } catch { /* ignore */ }
+export const manageLink = (key = getToken()) => `${window.location.origin}/invites/manage#k=${key}`;
+
+/** Returns this browser's host key, asking the server for a new one the first time. */
+export async function ensureHostKey(): Promise<string> {
+  const existing = getToken();
+  if (existing) return existing;
+  const r = await call<{ key: string }>(`${AUTH}?op=new`, { method: 'POST', body: '{}' }, false);
+  setHostKey(r.key);
+  return r.key;
 }
 
 export class ApiError extends Error {
@@ -34,7 +43,6 @@ async function call<T>(url: string, init: RequestInit = {}, auth = true): Promis
   }
   const data = await res.json().catch(() => ({}));
   if (!res.ok) {
-    if (res.status === 401 && auth) signOut();
     throw new ApiError(data?.error || 'Something went wrong. Please try again.', res.status);
   }
   return data as T;
@@ -49,10 +57,13 @@ export type PublicEvent = Omit<InviteEvent, 'openLinkEnabled' | 'openCode' | 'cr
 export interface GuestView { name: string; seats: number; status: Guest['status']; partySize: number; partyNames: string; note: string; respondedAt: string }
 
 export const api = {
-  sendCode: (email: string) => call<{ ok: boolean; devCode?: string }>(`${AUTH}?op=send`, { method: 'POST', body: JSON.stringify({ email }) }, false),
-  verifyCode: (email: string, code: string) => call<{ token: string; email: string }>(`${AUTH}?op=verify`, { method: 'POST', body: JSON.stringify({ email, code }) }, false),
+  async saveLead(email: string) {
+    const r = await call<{ ok: boolean; saved: boolean }>(`${AUTH}?op=lead`, { method: 'POST', body: JSON.stringify({ email }) });
+    try { localStorage.setItem(LEAD_STORE, email); } catch { /* ignore */ }
+    return r;
+  },
 
-  events: () => get<{ email: string; events: (HostEvent & { summary: Summary })[] }>('events'),
+  events: () => get<{ events: (HostEvent & { summary: Summary })[] }>('events'),
   event: (id: string) => get<{ event: HostEvent; guests: Guest[]; summary: Summary }>('event', { id }),
   createEvent: (fields: Partial<HostEvent>) => post<{ event: HostEvent }>('create-event', fields),
   updateEvent: (id: string, fields: Partial<HostEvent>) => post<{ event: HostEvent }>('update-event', { id, ...fields }),

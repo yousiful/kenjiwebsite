@@ -26,7 +26,7 @@ const FAQ: [string, string][] = [
 
 export default function InvitesLanding() {
   useEffect(() => { loadThemeFonts(['ivory', 'garden', 'midnight']); }, []);
-  const start = getToken() ? '/invites/new' : '/invites/login?next=%2Finvites%2Fnew';
+  const start = '/invites/new';
 
   return (
     <Page title="Free Wedding Invitations with RSVP | Kenji Invites" noindex={false}>
@@ -54,7 +54,7 @@ export default function InvitesLanding() {
                 <Link to={start} className="kv-btn kv-btn--primary kv-btn--big" data-testid="landing-start">Make my invitation</Link>
                 {getToken() && <Link to="/invites/dashboard" className="kv-btn kv-btn--secondary kv-btn--big">My invitations</Link>}
               </div>
-              <p className="kv-muted" style={{ marginTop: 14 }}>Already started one? <Link to="/invites/login">Sign in with your email</Link>.</p>
+              <p className="kv-muted" style={{ marginTop: 14 }}>No account, no password. Already started one? <Link to="/invites/dashboard">See my invitations</Link>.</p>
             </div>
             <div className="kv-hero-cards" aria-label="Three of the eight designs">
               {PREVIEWS.map((d, i) => (

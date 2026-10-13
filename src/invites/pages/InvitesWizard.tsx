@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import { api, photoUrl, inviteLink, type HostEvent } from '../api';
-import { Page, Field, Stepper, SavedNote, ConfirmButton, ErrorBox, useRequireAuth, StatusChip } from '../ui';
+import { api, photoUrl, inviteLink, getLeadEmail, type HostEvent } from '../api';
+import ManageLinkCard from '../ManageLinkCard';
+import { Page, Field, Stepper, SavedNote, ConfirmButton, ErrorBox, useHostKey, StatusChip } from '../ui';
 import { Icon } from '../icons';
 import InvitationCard, { THEMES, ACCENTS } from '../InvitationCard';
-import { THEME_IDS, SUB_EVENT_PRESETS, LIMITS, formatPhone, type Guest, type SubEvent, type ThemeId } from '../shared';
+import { THEME_IDS, SUB_EVENT_PRESETS, LIMITS, formatPhone, isEmail, type Guest, type SubEvent, type ThemeId } from '../shared';
 import { browserTimezone, loadThemeFonts } from '../format';
 import { smsHref, inviteText, copyText } from '../send';
 import QrCode from '../QrCode';
@@ -63,7 +64,8 @@ async function resizePhoto(file: File): Promise<string> {
 }
 
 export default function InvitesWizard() {
-  const ok = useRequireAuth();
+  const { ok, error: keyError } = useHostKey(true);
+  const [leadEmail, setLeadEmail] = useState(getLeadEmail());
   const { id } = useParams();
   const [params, setParams] = useSearchParams();
   const navigate = useNavigate();
@@ -127,6 +129,7 @@ export default function InvitesWizard() {
   function validate(): string {
     if (step === 1 && (!ev.coupleNames[0].trim() || !ev.coupleNames[1].trim())) return 'Please type both names.';
     if (step === 2 && !ev.date) return 'Please pick the wedding date. You can change it later.';
+    if (step === 1 && leadEmail.trim() && !isEmail(leadEmail.trim().toLowerCase())) return 'Please check your email address, or leave it empty. It is optional.';
     return '';
   }
 
@@ -134,6 +137,9 @@ export default function InvitesWizard() {
     const v = validate();
     if (v) { setError(v); return; }
     setError('');
+    // optional lead capture: saved once, never required, never blocks the next step
+    const le = leadEmail.trim().toLowerCase();
+    if (step === 1 && le && le !== getLeadEmail()) api.saveLead(le).catch(() => {});
     if (!id) {
       setSave('saving');
       try {
@@ -161,7 +167,7 @@ export default function InvitesWizard() {
     setParams({ step: String(step - 1) });
   }
 
-  if (!ok) return null;
+  if (!ok) return <Page title="Kenji Invites"><div className="kv-wrap">{keyError ? <ErrorBox message={keyError} /> : <p role="status">Getting things ready...</p>}</div></Page>;
   if (!loaded) return <Page title="Kenji Invites"><div className="kv-wrap"><p role="status">Loading...</p></div></Page>;
 
   const preview = (
@@ -171,7 +177,7 @@ export default function InvitesWizard() {
   );
 
   let body: ReactNode = null;
-  if (step === 1) body = <StepNames ev={ev} patch={patch} />;
+  if (step === 1) body = <StepNames ev={ev} patch={patch} leadEmail={leadEmail} setLeadEmail={setLeadEmail} />;
   if (step === 2) body = <StepWhen ev={ev} patch={patch} />;
   if (step === 3) body = <StepDesign ev={ev} patch={patch} setEv={setEv} />;
   if (step === 4) body = <StepEvents ev={ev} patch={patch} />;
@@ -218,7 +224,7 @@ export default function InvitesWizard() {
 
 type StepProps = { ev: HostEvent; patch: (f: Partial<HostEvent>) => void };
 
-function StepNames({ ev, patch }: StepProps) {
+function StepNames({ ev, patch, leadEmail, setLeadEmail }: StepProps & { leadEmail: string; setLeadEmail: (v: string) => void }) {
   return (
     <div>
       <p className="kv-muted" style={{ marginBottom: 24 }}>Write the two names the way you want them on the invitation. You can change them later.</p>
@@ -229,6 +235,10 @@ function StepNames({ ev, patch }: StepProps) {
       <Field id="kv-n2" label="Second name on the invitation" hint="For example: James Carter">
         <input id="kv-n2" className="kv-input" value={ev.coupleNames[1]} maxLength={LIMITS.name} autoComplete="off"
           onChange={(e) => patch({ coupleNames: [ev.coupleNames[0], e.target.value] })} />
+      </Field>
+      <Field id="kv-lead" label="Your email (optional, so we can send you tips and updates)" hint="You can leave this empty. You don't need it to make or send your invitation.">
+        <input id="kv-lead" className="kv-input" type="email" inputMode="email" autoComplete="email" autoCapitalize="none" spellCheck={false}
+          value={leadEmail} maxLength={200} onChange={(e) => setLeadEmail(e.target.value)} placeholder="name@example.com" />
       </Field>
     </div>
   );
@@ -602,6 +612,7 @@ function StepSend({ ev, guests, setGuests, goGuests }: { ev: HostEvent; guests: 
           <QrCode text={openLink} label={`Scan code for the wedding invitation of ${ev.title}`} />
         </div>
       )}
+      <ManageLinkCard compact />
       <p><Link to={`/invites/e/${ev.id}`}>Go to my guest list and see who's coming</Link></p>
     </div>
   );
