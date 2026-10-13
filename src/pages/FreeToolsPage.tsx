@@ -11,7 +11,7 @@ const FreeToolsPage: React.FC = () => {
       url: "/invites",
       icon: Heart,
       gradient: "from-rose-500 via-pink-500 to-amber-400",
-      features: ["8 Invitation Designs", "Text & Email From Your Phone", "RSVP Tracking", "No Account for Guests"],
+      features: ["13 Invitation Designs", "Text & Email From Your Phone", "RSVP Tracking", "No Account for Guests"],
       category: "Free App",
       rating: 5.0,
       users: "NEW",

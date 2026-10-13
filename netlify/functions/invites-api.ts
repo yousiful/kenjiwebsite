@@ -1,5 +1,5 @@
 import type { HandlerEvent, HandlerResponse } from '@netlify/functions';
-import { asV2, invitesStore, readToken, randomId, json, fail, parseBody, str } from './_invites/common';
+import { asV2, invitesStore, readToken, randomId, hmac, json, fail, parseBody, str } from './_invites/common';
 import {
   THEME_IDS, LIMITS, isDate, isTime, isEmail, cleanPhone, parseGuestList, todayIn, buildIcs,
   type InviteEvent, type Guest, type SubEvent, type ThemeId,
@@ -8,7 +8,8 @@ import {
 /**
  * Kenji Invites API (kenjiai.com/invites). Storage: Netlify Blobs store "invites".
  *   events/<eventId>                 event JSON
- *   owners/<ownerHash>/<eventId>     empty marker, lists a host's events by prefix
+ *   owners/<ownerHash>/<eventId>     empty marker, lists a host's events by prefix (one per host)
+ *   cohost/<tokenHash>               one-time co-host invite {eventId, exp, by}, 7 days, single use
  *   guests/<eventId>/<guestId>       one JSON per guest so RSVPs never overwrite each other
  *   codes/<code>                     {eventId, guestId} or {eventId, open:true}
  *   photos/<eventId>                 resized JPEG bytes
@@ -21,7 +22,18 @@ import {
 
 type Store = ReturnType<typeof invitesStore>;
 type Owner = { ownerHash: string };
-type StoredEvent = InviteEvent & { ownerHash: string };
+// owners: every host who can manage the event (creator + co-hosts); creator: who made it.
+// Older records had a single ownerHash; normalizeOwners() migrates them on read.
+type StoredEvent = InviteEvent & { ownerHash?: string; owners?: string[]; creator?: string };
+const MAX_HOSTS = 5;
+const COHOST_DAYS = 7;
+
+function normalizeOwners(ev: StoredEvent): StoredEvent & { owners: string[]; creator: string } {
+  if (!ev.owners || !ev.owners.length) ev.owners = ev.ownerHash ? [ev.ownerHash] : [];
+  if (!ev.creator) ev.creator = ev.ownerHash || ev.owners[0] || '';
+  delete ev.ownerHash;
+  return ev as StoredEvent & { owners: string[]; creator: string };
+}
 
 const SITE = 'https://kenjiai.com';
 const MAX_PHOTO_BYTES = 3 * 1024 * 1024;
@@ -84,6 +96,7 @@ function applyEventFields(ev: StoredEvent, b: Record<string, unknown>): string {
   }
   if ('accent' in b) ev.accent = /^#[0-9a-fA-F]{6}$/.test(String(b.accent || '')) ? String(b.accent) : '';
   if ('personalMessage' in b) ev.personalMessage = str(b.personalMessage, LIMITS.message);
+  if ('opening' in b) ev.opening = b.opening === 'fade' ? 'fade' : 'envelope';
   if ('rsvpBy' in b) {
     if (b.rsvpBy && !isDate(b.rsvpBy)) return 'Please pick the reply-by date again.';
     ev.rsvpBy = (b.rsvpBy as string) || '';
@@ -98,22 +111,29 @@ function publicEvent(ev: StoredEvent) {
   return {
     id: ev.id, coupleNames: ev.coupleNames, title: ev.title, date: ev.date, time: ev.time, timezone: ev.timezone,
     venueName: ev.venueName, address: ev.address, theme: ev.theme, accent: ev.accent, photo: ev.photo,
-    photoVersion: ev.photoVersion, personalMessage: ev.personalMessage, rsvpBy: ev.rsvpBy, defaultSeats: ev.defaultSeats,
+    photoVersion: ev.photoVersion, personalMessage: ev.personalMessage, opening: ev.opening === 'fade' ? 'fade' : 'envelope', rsvpBy: ev.rsvpBy, defaultSeats: ev.defaultSeats,
     subEvents: ev.subEvents,
   };
 }
 
-function hostEvent(ev: StoredEvent): InviteEvent {
-  const rest: Partial<StoredEvent> = { ...ev };
-  delete rest.ownerHash;
-  return rest as InviteEvent;
+/** Event as a host sees it, plus who the hosts are relative to the viewer. */
+function hostEvent(ev: StoredEvent, me: string) {
+  const n = normalizeOwners({ ...ev });
+  const { owners, creator, ...rest } = n;
+  return {
+    ...(rest as InviteEvent),
+    you: me,
+    isCreator: creator === me,
+    hosts: owners.map((h) => ({ id: h, creator: h === creator, you: h === me })),
+  };
 }
 
 async function loadOwned(store: Store, owner: Owner, id: unknown): Promise<StoredEvent | null> {
   if (typeof id !== 'string' || !/^[A-Za-z0-9_-]{8,32}$/.test(id)) return null;
   const ev = (await store.get(`events/${id}`, { type: 'json' })) as StoredEvent | null;
-  if (!ev || ev.ownerHash !== owner.ownerHash) return null;
-  return ev;
+  if (!ev) return null;
+  const n = normalizeOwners(ev);
+  return n.owners.includes(owner.ownerHash) ? n : null;
 }
 
 async function listGuests(store: Store, eventId: string): Promise<Guest[]> {
@@ -134,11 +154,11 @@ function summarize(guests: Guest[]) {
   return s;
 }
 
-function newGuest(f: { name: string; phone: string; email: string; seats: number }): Guest {
+function newGuest(f: { name: string; phone: string; email: string; seats: number }, addedBy = ''): Guest {
   const t = nowIso();
   return {
     id: randomId(9), code: randomId(12), name: f.name, phone: f.phone, email: f.email, seats: f.seats,
-    status: 'invited', partySize: 0, partyNames: '', note: '', openedAt: '', respondedAt: '', sentAt: '', sentVia: '',
+    status: 'invited', partySize: 0, partyNames: '', note: '', openedAt: '', respondedAt: '', sentAt: '', sentVia: '', addedBy,
     createdAt: t, updatedAt: t,
   };
 }
@@ -312,7 +332,7 @@ const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
       const events = await Promise.all(ids.map(async (id) => {
         const ev = await loadOwned(store, owner, id);
         if (!ev) return null;
-        return { ...hostEvent(ev), summary: summarize(await listGuests(store, id)) };
+        return { ...hostEvent(ev, owner.ownerHash), summary: summarize(await listGuests(store, id)) };
       }));
       return json(200, { events: events.filter(Boolean).sort((a, b) => (a!.createdAt < b!.createdAt ? 1 : -1)) });
     }
@@ -321,7 +341,7 @@ const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
       const ev = await loadOwned(store, owner, q.id);
       if (!ev) return fail(404, "We couldn't find that invitation.");
       const guests = await listGuests(store, ev.id);
-      return json(200, { event: hostEvent(ev), guests, summary: summarize(guests) });
+      return json(200, { event: hostEvent(ev, owner.ownerHash), guests, summary: summarize(guests) });
     }
 
     if (method === 'GET' && op === 'csv') {
@@ -349,8 +369,8 @@ const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
       if (blobs.length >= 25) return fail(400, 'You have a lot of invitations already. Please delete one you no longer need first.');
       const t = nowIso();
       const ev: StoredEvent = {
-        id: randomId(12), ownerHash: owner.ownerHash, coupleNames: ['', ''], title: '', date: '', time: '', timezone: 'America/New_York',
-        venueName: '', address: '', theme: 'ivory', accent: '', photo: false, photoVersion: 0, personalMessage: '', rsvpBy: '',
+        id: randomId(12), owners: [owner.ownerHash], creator: owner.ownerHash, coupleNames: ['', ''], title: '', date: '', time: '', timezone: 'America/New_York',
+        venueName: '', address: '', theme: 'ivory', accent: '', photo: false, photoVersion: 0, personalMessage: '', opening: 'envelope', rsvpBy: '',
         defaultSeats: 2, openLinkEnabled: false, openCode: '', subEvents: [], createdAt: t, updatedAt: t,
       };
       const err = applyEventFields(ev, b);
@@ -358,11 +378,52 @@ const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
       if (!ev.title) return fail(400, 'Please type both names.');
       await store.setJSON(`events/${ev.id}`, ev);
       await store.set(`owners/${owner.ownerHash}/${ev.id}`, '');
-      return json(200, { event: hostEvent(ev) });
+      return json(200, { event: hostEvent(ev, owner.ownerHash) });
+    }
+
+    if (op === 'join') {
+      const token = String(b.token || '');
+      if (!/^[A-Za-z0-9_-]{20,64}$/.test(token)) return fail(400, "This co-host link doesn't look complete. Please open the whole link you were sent.");
+      const key = `cohost/${hmac('cohost:' + token).slice(0, 40)}`;
+      const inv = (await store.get(key, { type: 'json' })) as { eventId: string; exp: number } | null;
+      if (!inv || inv.exp < Date.now()) return fail(400, 'This co-host link has expired or was already used. Please ask for a new one.');
+      await store.delete(key); // single use
+      const raw = (await store.get(`events/${inv.eventId}`, { type: 'json' })) as StoredEvent | null;
+      if (!raw) return fail(404, 'That invitation was deleted.');
+      const jev = normalizeOwners(raw);
+      if (!jev.owners.includes(owner.ownerHash)) {
+        if (jev.owners.length >= MAX_HOSTS) return fail(400, `An invitation can have up to ${MAX_HOSTS} hosts.`);
+        jev.owners.push(owner.ownerHash);
+        jev.updatedAt = nowIso();
+        await store.setJSON(`events/${jev.id}`, jev);
+        await store.set(`owners/${owner.ownerHash}/${jev.id}`, '');
+      }
+      return json(200, { eventId: jev.id });
     }
 
     const ev = await loadOwned(store, owner, b.id);
     if (!ev) return fail(404, "We couldn't find that invitation.");
+    const isCreator = normalizeOwners(ev).creator === owner.ownerHash;
+
+    if (op === 'cohost-invite') {
+      if (!isCreator) return fail(403, 'Only the person who made this invitation can add a co-host.');
+      if (normalizeOwners(ev).owners.length >= MAX_HOSTS) return fail(400, `An invitation can have up to ${MAX_HOSTS} hosts.`);
+      const token = randomId(24);
+      await store.setJSON(`cohost/${hmac('cohost:' + token).slice(0, 40)}`, { eventId: ev.id, exp: Date.now() + COHOST_DAYS * 86400000, by: owner.ownerHash });
+      return json(200, { token, days: COHOST_DAYS });
+    }
+
+    if (op === 'remove-cohost') {
+      if (!isCreator) return fail(403, 'Only the person who made this invitation can remove a co-host.');
+      const host = String(b.host || '');
+      const n = normalizeOwners(ev);
+      if (host === n.creator || !n.owners.includes(host)) return fail(400, "We couldn't find that co-host.");
+      n.owners = n.owners.filter((h) => h !== host);
+      n.updatedAt = nowIso();
+      await store.setJSON(`events/${ev.id}`, n);
+      await store.delete(`owners/${host}/${ev.id}`);
+      return json(200, { event: hostEvent(n, owner.ownerHash) });
+    }
 
     if (op === 'update-event') {
       const err = applyEventFields(ev, b);
@@ -373,15 +434,16 @@ const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
       }
       ev.updatedAt = nowIso();
       await store.setJSON(`events/${ev.id}`, ev);
-      return json(200, { event: hostEvent(ev) });
+      return json(200, { event: hostEvent(ev, owner.ownerHash) });
     }
 
     if (op === 'delete-event') {
+      if (!isCreator) return fail(403, 'Only the person who made this invitation can delete it.');
       const guests = await listGuests(store, ev.id);
       await Promise.all(guests.flatMap((g) => [store.delete(`guests/${ev.id}/${g.id}`), store.delete(`codes/${g.code}`), store.delete(`rl/${g.code}`)]));
       if (ev.openCode) await store.delete(`codes/${ev.openCode}`);
       await store.delete(`photos/${ev.id}`);
-      await store.delete(`owners/${owner.ownerHash}/${ev.id}`);
+      await Promise.all(normalizeOwners(ev).owners.map((h) => store.delete(`owners/${h}/${ev.id}`)));
       await store.delete(`events/${ev.id}`);
       return json(200, { ok: true });
     }
@@ -397,7 +459,7 @@ const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
       ev.photoVersion = (ev.photoVersion || 0) + 1;
       ev.updatedAt = nowIso();
       await store.setJSON(`events/${ev.id}`, ev);
-      return json(200, { event: hostEvent(ev) });
+      return json(200, { event: hostEvent(ev, owner.ownerHash) });
     }
 
     if (op === 'photo-delete') {
@@ -405,7 +467,7 @@ const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
       ev.photo = false;
       ev.updatedAt = nowIso();
       await store.setJSON(`events/${ev.id}`, ev);
-      return json(200, { event: hostEvent(ev) });
+      return json(200, { event: hostEvent(ev, owner.ownerHash) });
     }
 
     if (op === 'add-guests') {
@@ -432,7 +494,7 @@ const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
       if (!incoming.length) return fail(400, problems[0] || 'Please add at least one guest.');
       const { blobs } = await store.list({ prefix: `guests/${ev.id}/` });
       if (blobs.length + incoming.length > LIMITS.guests) return fail(400, `An invitation can have up to ${LIMITS.guests} guests.`);
-      const created = incoming.map((f) => newGuest(f));
+      const created = incoming.map((f) => newGuest(f, owner.ownerHash));
       await Promise.all(created.map((g) => saveNewGuest(store, ev.id, g)));
       return json(200, { added: created, problems });
     }

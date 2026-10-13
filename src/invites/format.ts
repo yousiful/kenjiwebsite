@@ -89,6 +89,8 @@ const FAMILIES: Record<string, string> = {
   cinzel: 'Cinzel:wght@400;500;600',
   alexbrush: 'Alex+Brush',
   josefin: 'Josefin+Sans:wght@400;600',
+  cinzeldeco: 'Cinzel+Decorative:wght@400;700',
+  poiret: 'Poiret+One',
 };
 export const THEME_FONTS: Record<ThemeId, string[]> = {
   ivory: ['cormorant', 'pinyon'],
@@ -99,6 +101,11 @@ export const THEME_FONTS: Record<ThemeId, string[]> = {
   kraft: ['alexbrush', 'josefin', 'lora'],
   boho: ['cormorant', 'josefin'],
   emerald: ['pinyon', 'cinzel', 'cormorant'],
+  waxseal: ['pinyon', 'cormorant'],
+  blacktie: ['pinyon', 'cinzel', 'cormorant'],
+  vellum: ['parisienne', 'cormorant'],
+  tile: ['greatvibes', 'playfair', 'cormorant'],
+  deco: ['cinzeldeco', 'poiret', 'cormorant'],
 };
 
 const loaded = new Set<string>();

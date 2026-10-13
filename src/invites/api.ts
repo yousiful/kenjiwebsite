@@ -51,7 +51,8 @@ async function call<T>(url: string, init: RequestInit = {}, auth = true): Promis
 const post = <T>(op: string, body: unknown, auth = true) => call<T>(`${API}?op=${op}`, { method: 'POST', body: JSON.stringify(body) }, auth);
 const get = <T>(op: string, params: Record<string, string> = {}, auth = true) => call<T>(`${API}?${new URLSearchParams({ op, ...params })}`, {}, auth);
 
-export type HostEvent = InviteEvent;
+export interface HostInfo { id: string; creator: boolean; you: boolean }
+export type HostEvent = InviteEvent & { you?: string; isCreator?: boolean; hosts?: HostInfo[] };
 export interface Summary { invited: number; opened: number; coming: number; notComing: number; noAnswer: number; peopleComing: number; sent: number }
 export type PublicEvent = Omit<InviteEvent, 'openLinkEnabled' | 'openCode' | 'createdAt' | 'updatedAt'>;
 export interface GuestView { name: string; seats: number; status: Guest['status']; partySize: number; partyNames: string; note: string; respondedAt: string }
@@ -69,6 +70,9 @@ export const api = {
   event: (id: string) => get<{ event: HostEvent; guests: Guest[]; summary: Summary }>('event', { id }),
   createEvent: (fields: Partial<HostEvent>) => post<{ event: HostEvent }>('create-event', fields),
   updateEvent: (id: string, fields: Partial<HostEvent>) => post<{ event: HostEvent }>('update-event', { id, ...fields }),
+  cohostInvite: (id: string) => post<{ token: string; days: number }>('cohost-invite', { id }),
+  joinAsCohost: (token: string) => post<{ eventId: string }>('join', { token }),
+  removeCohost: (id: string, host: string) => post<{ event: HostEvent }>('remove-cohost', { id, host }),
   deleteEvent: (id: string) => post<{ ok: boolean }>('delete-event', { id }),
   uploadPhoto: (id: string, data: string) => post<{ event: HostEvent }>('photo-upload', { id, data }),
   deletePhoto: (id: string) => post<{ event: HostEvent }>('photo-delete', { id }),

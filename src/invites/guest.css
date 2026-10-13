@@ -12,6 +12,8 @@
   --kg-env: #f6efe0;
   --kg-env-dark: #e7dcc5;
   --kg-seal: #8b2d2d;
+  --kg-seal-hi: color-mix(in srgb, var(--kg-seal) 62%, #fff);
+  --kg-seal-lo: color-mix(in srgb, var(--kg-seal) 60%, #000);
   position: relative;
   z-index: 30;
   min-height: 100vh;
@@ -116,25 +118,6 @@
 .kg-foot a { color: inherit; text-underline-offset: 3px; }
 .kg-previewbar { position: sticky; top: 0; z-index: 20; margin: -28px -16px 20px !important; background: #221c18; color: #fff; text-align: center; padding: 12px 16px; font-weight: 600; font-size: 17px; }
 
-/* envelope opening (about 1.1s, skippable, never shown with reduced motion) */
-.kg-env { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; background: radial-gradient(120% 70% at 50% 0%, var(--kg-bg) 0%, var(--kg-bg2) 100%); animation: kg-fade 0.35s ease-in 0.78s forwards; cursor: pointer; perspective: 1200px; }
-.kg-env-body { position: relative; width: min(78vw, 400px); aspect-ratio: 1.5; }
-.kg-env-card { position: absolute; left: 7%; right: 7%; top: 8%; bottom: 6%; background: #fffdf8; border-radius: 4px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); animation: kg-rise 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) 0.42s forwards; }
-.kg-env-front { position: absolute; inset: 0; border-radius: 6px; background:
-  linear-gradient(to top right, transparent 49.6%, var(--kg-env-dark) 50%, transparent 50.4%) left / 50.5% 100% no-repeat,
-  linear-gradient(to top left, transparent 49.6%, var(--kg-env-dark) 50%, transparent 50.4%) right / 50.5% 100% no-repeat,
-  var(--kg-env);
-  clip-path: polygon(0 0, 50% 52%, 100% 0, 100% 100%, 0 100%);
-  box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.45); }
-.kg-env-flap { position: absolute; left: 0; right: 0; top: 0; height: 56%; background: var(--kg-env-dark); clip-path: polygon(0 0, 100% 0, 50% 100%); transform-origin: 50% 0; animation: kg-flap 0.42s cubic-bezier(0.4, 0, 0.2, 1) 0.05s forwards; z-index: 3; }
-.kg-env-seal { position: absolute; left: 50%; top: 52%; width: 18%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; background: radial-gradient(circle at 35% 30%, color-mix(in srgb, var(--kg-seal) 70%, white), var(--kg-seal) 60%); color: rgba(255, 255, 255, 0.85); display: grid; place-items: center; font: 600 clamp(14px, 3.6vw, 20px)/1 Georgia, serif; letter-spacing: 0.04em; z-index: 4; animation: kg-seal 0.2s ease-out forwards; }
-.kg-env-skip { position: absolute; top: 16px; right: 16px; min-height: 48px; padding: 0 18px; border-radius: 999px; border: 2px solid currentColor; background: transparent; color: var(--kg-on); font-family: inherit; font-weight: 600; font-size: 17px; line-height: 1; cursor: pointer; }
-@keyframes kg-flap { to { transform: rotateX(180deg); z-index: 0; } }
-@keyframes kg-seal { to { opacity: 0; transform: translate(-50%, -50%) scale(0.85); } }
-@keyframes kg-rise { to { transform: translateY(-46%); } }
-@keyframes kg-fade { to { opacity: 0; visibility: hidden; } }
-@media (prefers-reduced-motion: reduce) { .kg-env { display: none; } }
-
 /* ---------- per-design page colors ---------- */
 .kg--ivory { --kg-bg: #f1e9da; --kg-bg2: #e5d8c1; --kg-on: #3d3126; --kg-head: #6b5326; --kg-btn: #6b4f1d; --kg-script: 'Pinyon Script', cursive; --kg-display: 'Cormorant Garamond', Georgia, serif; --kg-env: #f8f2e4; --kg-env-dark: #ebdfc6; --kg-seal: #9a7a35; }
 .kg--garden { --kg-bg: #eef2ea; --kg-bg2: #dfe7da; --kg-on: #3a3f35; --kg-head: #8a4f4d; --kg-btn: #4f6b56; --kg-script: 'Great Vibes', cursive; --kg-display: 'Lora', Georgia, serif; --kg-env: #fbf8f1; --kg-env-dark: #ece5d8; --kg-seal: #c9807c; }
@@ -143,10 +126,14 @@
 .kg--blush { --kg-bg: #f5e3dd; --kg-bg2: #ecd0c8; --kg-on: #5a3d39; --kg-head: #94524c; --kg-btn: #94524c; --kg-script: 'Parisienne', cursive; --kg-display: 'Cormorant Garamond', Georgia, serif; --kg-env: #fbefea; --kg-env-dark: #f0d8d0; --kg-seal: #c08a7c; }
 .kg--midnight { --kg-bg: #13213f; --kg-bg2: #080f22; --kg-on: #f1e8d2; --kg-head: #1c2c52; --kg-btn: #1c2c52; --kg-script: 'Playfair Display', Georgia, serif; --kg-display: 'Playfair Display', Georgia, serif; --kg-env: #1a2a4c; --kg-env-dark: #22365f; --kg-seal: #c9a24f; }
 .kg--midnight .kg-greet { font-style: italic; color: #e9d08a; }
-.kg--midnight .kg-env-card { background: #0f1b33; }
 .kg--kraft { --kg-bg: #ebe2d3; --kg-bg2: #dccdb6; --kg-on: #3a2c1f; --kg-head: #2f4a3a; --kg-btn: #2f4a3a; --kg-script: 'Alex Brush', cursive; --kg-display: 'Lora', Georgia, serif; --kg-env: #c9a77c; --kg-env-dark: #b8956a; --kg-seal: #56705f; }
 .kg--boho { --kg-bg: #f1e2d0; --kg-bg2: #e6cfb5; --kg-on: #4a3326; --kg-head: #9c4a29; --kg-btn: #9c4a29; --kg-script: 'Cormorant Garamond', Georgia, serif; --kg-display: 'Cormorant Garamond', Georgia, serif; --kg-env: #f6e9d9; --kg-env-dark: #e9d0b4; --kg-seal: #c8693f; }
 .kg--boho .kg-greet { font-style: italic; }
 .kg--emerald { --kg-bg: #10392d; --kg-bg2: #07211a; --kg-on: #f1e8d0; --kg-head: #0f3a2e; --kg-btn: #0f3a2e; --kg-script: 'Pinyon Script', cursive; --kg-display: 'Cormorant Garamond', Georgia, serif; --kg-env: #14473a; --kg-env-dark: #1a5646; --kg-seal: #c9a24f; }
 .kg--emerald .kg-greet { color: #ecd393; }
-.kg--emerald .kg-env-card { background: #0f3a2e; }
+.kg--waxseal { --kg-bg: #efe7d8; --kg-bg2: #e1d5bf; --kg-on: #2c2420; --kg-head: #7d1f2a; --kg-btn: #7d1f2a; --kg-script: 'Pinyon Script', cursive; --kg-display: 'Cormorant Garamond', Georgia, serif; --kg-env: #f4ecdc; --kg-env-dark: #e3d6bc; --kg-seal: #7d1f2a; }
+.kg--blacktie { --kg-bg: #ecebe7; --kg-bg2: #dddbd5; --kg-on: #111; --kg-head: #111; --kg-btn: #111; --kg-script: 'Pinyon Script', cursive; --kg-display: 'Cormorant Garamond', Georgia, serif; --kg-env: #fbfaf6; --kg-env-dark: #e9e7e0; --kg-seal: #1a1a1a; }
+.kg--vellum { --kg-bg: #eeeef0; --kg-bg2: #dfdde6; --kg-on: #3f4038; --kg-head: #5e5a80; --kg-btn: #5e5a80; --kg-script: 'Parisienne', cursive; --kg-display: 'Cormorant Garamond', Georgia, serif; --kg-env: #f7f6f1; --kg-env-dark: #e6e3ec; --kg-seal: #8a7fb0; }
+.kg--tile { --kg-bg: #e9eef8; --kg-bg2: #d5dff0; --kg-on: #1d2b4f; --kg-head: #1f3f8f; --kg-btn: #1f3f8f; --kg-script: 'Great Vibes', cursive; --kg-display: 'Playfair Display', Georgia, serif; --kg-env: #fbf8f1; --kg-env-dark: #e7e1d3; --kg-seal: #1f3f8f; }
+.kg--deco { --kg-bg: #1b1a17; --kg-bg2: #0a0a09; --kg-on: #f3e7c6; --kg-head: #1b1a17; --kg-btn: #1b1a17; --kg-script: 'Cinzel Decorative', serif; --kg-display: 'Cormorant Garamond', Georgia, serif; --kg-env: #1f1e1b; --kg-env-dark: #2a2824; --kg-seal: #b8913f; }
+.kg--deco .kg-greet { color: #e9d08a; font-size: clamp(26px, 6vw, 36px); }

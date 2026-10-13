@@ -10,9 +10,9 @@ const SAMPLE = {
   date: '2027-06-12', time: '16:30', venueName: 'The Rose Garden', address: 'Charleston, South Carolina', personalMessage: '', accent: '',
 };
 const PREVIEWS: CardData[] = [
-  { ...SAMPLE, coupleNames: ['Amelia', 'Daniel'], theme: 'ivory' },
+  { ...SAMPLE, coupleNames: ['Amelia', 'Daniel'], theme: 'waxseal' },
   { ...SAMPLE, coupleNames: ['Grace', 'Michael'], theme: 'garden' },
-  { ...SAMPLE, coupleNames: ['Sofia', 'James'], theme: 'midnight' },
+  { ...SAMPLE, coupleNames: ['Sofia', 'James'], theme: 'deco' },
 ];
 
 const FAQ: [string, string][] = [
@@ -25,7 +25,7 @@ const FAQ: [string, string][] = [
 ];
 
 export default function InvitesLanding() {
-  useEffect(() => { loadThemeFonts(['ivory', 'garden', 'midnight']); }, []);
+  useEffect(() => { loadThemeFonts(['waxseal', 'garden', 'deco']); }, []);
   const start = '/invites/new';
 
   return (
@@ -70,7 +70,7 @@ export default function InvitesLanding() {
           <h2 id="kv-how" style={{ marginBottom: 24 }}>How it works</h2>
           <ol className="kv-steps">
             <li><h3>Add your names, date and place</h3><p className="kv-muted">Big boxes, one question at a time. Everything saves as you go.</p></li>
-            <li><h3>Pick a design and add your guests</h3><p className="kv-muted">Eight designs, a spot for your photo, and a list of who's invited and how many people each can bring.</p></li>
+            <li><h3>Pick a design and add your guests</h3><p className="kv-muted">Thirteen designs, a spot for your photo, and a list of who's invited and how many people each can bring.</p></li>
             <li><h3>Send it, then watch the answers come in</h3><p className="kv-muted">Text or email each guest their own link from your phone. Your guest list shows who opened it and who's coming.</p></li>
           </ol>
         </section>

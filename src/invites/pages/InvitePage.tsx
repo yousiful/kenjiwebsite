@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { api, icsUrl, photoUrl, type GuestView, type PublicEvent } from '../api';
 import InvitationCard from '../InvitationCard';
+import { EnvelopeIntro, TiltCard } from '../Opening';
 import { Icon } from '../icons';
 import { buildIcs, googleCalendarUrl, cleanPhone, isEmail, type CalItem } from '../shared';
 import { clockTime, countdownText, daysToGo, loadThemeFonts, longDate, mapsUrl, shortDate } from '../format';
@@ -9,26 +10,6 @@ import '../guest.css';
 interface Data { event: PublicEvent; guest: GuestView | null; open: boolean; canChange: boolean; openSeats?: number }
 
 const reducedMotion = () => typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-
-function Envelope({ initials, onDone }: { initials: string; onDone: () => void }) {
-  useEffect(() => {
-    const t = window.setTimeout(onDone, 1150);
-    const key = () => onDone();
-    window.addEventListener('keydown', key);
-    return () => { window.clearTimeout(t); window.removeEventListener('keydown', key); };
-  }, [onDone]);
-  return (
-    <div className="kg-env" onClick={onDone} aria-hidden="true">
-      <div className="kg-env-body">
-        <div className="kg-env-card" />
-        <div className="kg-env-front" />
-        <div className="kg-env-flap" />
-        <div className="kg-env-seal">{initials}</div>
-      </div>
-      <button type="button" className="kg-env-skip" onClick={onDone} tabIndex={-1}>Skip</button>
-    </div>
-  );
-}
 
 function CalendarButtons({ item, ics }: { item: CalItem; ics: string }) {
   const href = ics || `data:text/calendar;charset=utf-8,${encodeURIComponent(buildIcs(item))}`;
@@ -198,7 +179,7 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
         setData(d);
         let seen = false;
         try { seen = sessionStorage.getItem(`kg-seen-${initialCode}`) === '1'; sessionStorage.setItem(`kg-seen-${initialCode}`, '1'); } catch { /* ignore */ }
-        if (!seen && !reducedMotion()) setIntro(true);
+        if (!seen && !reducedMotion() && d.event.opening !== 'fade') setIntro(true);
       })
       .catch((e) => setError(e.message));
   }, [initialCode, previewEvent, preview]);
@@ -219,6 +200,8 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
   if (!data) return <div className="kg kg--ivory" aria-busy="true"><p className="kg-loading" role="status">Opening your invitation...</p></div>;
 
   const ev = data.event;
+  const motionOk = !reducedMotion();
+  const fade = ev.opening === 'fade' || !motionOk;
   const theme = ev.theme;
   const pUrl = photoUrl(ev);
   const n = daysToGo(ev.date, ev.timezone);
@@ -236,12 +219,14 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
 
   return (
     <div className={`kg kg--${theme}`}>
-      {intro && <Envelope initials={initials} onDone={() => setIntro(false)} />}
+      {intro && <EnvelopeIntro data={{ ...ev, photoUrl: pUrl }} initials={initials} onDone={() => setIntro(false)} />}
       {preview && <p className="kg-previewbar">Preview: this is what your guests see. Answers here are not saved.</p>}
       <div className="kg-main" role={standalone ? 'main' : undefined}>
         {greeting && <p className="kg-greet">{greeting}</p>}
-        <div className="kg-card">
-          <InvitationCard data={{ ...ev, photoUrl: pUrl }} minText={18} />
+        <div className={`kg-card${!intro && fade ? ' kg-fadein' : ''}`}>
+          <TiltCard enabled={motionOk}>
+            <InvitationCard data={{ ...ev, photoUrl: pUrl }} minText={18} />
+          </TiltCard>
         </div>
 
         {n !== null && (

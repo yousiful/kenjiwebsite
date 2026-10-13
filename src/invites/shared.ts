@@ -1,7 +1,7 @@
 // Shared between the browser (src/invites/*) and the Netlify functions
 // (netlify/functions/invites-*.ts). Keep it dependency-free.
 
-export const THEME_IDS = ['ivory', 'garden', 'minimal', 'blush', 'midnight', 'kraft', 'boho', 'emerald'] as const;
+export const THEME_IDS = ['ivory', 'waxseal', 'blacktie', 'vellum', 'garden', 'blush', 'emerald', 'midnight', 'deco', 'tile', 'minimal', 'kraft', 'boho'] as const;
 export type ThemeId = (typeof THEME_IDS)[number];
 
 export interface SubEvent {
@@ -28,6 +28,7 @@ export interface InviteEvent {
   photo: boolean;
   photoVersion: number;
   personalMessage: string;
+  opening: 'envelope' | 'fade'; // how the guest page opens
   rsvpBy: string;
   defaultSeats: number;
   openLinkEnabled: boolean;
@@ -55,6 +56,7 @@ export interface Guest {
   sentAt: string;
   sentVia: string;
   fromOpenLink?: boolean;
+  addedBy?: string; // ownerHash of the host who added them ('' = replied on the shared link)
   createdAt: string;
   updatedAt: string;
 }

@@ -1,0 +1,123 @@
+/* 3D envelope opening + card tilt for the guest page. Transforms and opacity only. */
+
+.kg3 {
+  position: fixed; inset: 0; z-index: 200;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+  background: radial-gradient(120% 80% at 50% 10%, var(--kg-bg) 0%, var(--kg-bg2) 100%);
+  transition: opacity 0.6s ease 0.05s, visibility 0s linear 0.7s;
+}
+.kg3-stage { width: min(82vw, 440px); perspective: 1100px; }
+.kg3-env { position: relative; width: 100%; aspect-ratio: 1.42; transform-style: preserve-3d; }
+
+/* back panel and inside of the pocket */
+.kg3-back {
+  position: absolute; inset: 0; border-radius: 8px;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--kg-env-dark) 82%, #000) 0%, var(--kg-env-dark) 100%);
+  box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.55), 0 8px 18px -10px rgba(0, 0, 0, 0.35);
+}
+/* the invitation inside, sliding up and then toward the viewer */
+.kg3-card {
+  position: absolute; left: 6%; right: 6%; top: 5%; height: 92%; z-index: 1;
+  overflow: hidden; border-radius: 3px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  transform: perspective(1100px) translate3d(0, 0, 0);
+  transition: transform 0.75s cubic-bezier(0.22, 0.8, 0.24, 1) 0.6s;
+  will-change: transform;
+}
+.kg3-card .kc-paper { min-height: 0; padding-top: 9cqi; padding-bottom: 9cqi; justify-content: flex-start; }
+.kg3-card .kc-shadow { display: none; }
+/* front pocket with the classic V */
+.kg3-front {
+  position: absolute; inset: 0; z-index: 2; border-radius: 8px; pointer-events: none;
+  background:
+    linear-gradient(to top right, transparent 49.7%, rgba(0, 0, 0, 0.07) 50%, transparent 50.6%) left bottom / 50.2% 100% no-repeat,
+    linear-gradient(to top left, transparent 49.7%, rgba(0, 0, 0, 0.07) 50%, transparent 50.6%) right bottom / 50.2% 100% no-repeat,
+    linear-gradient(170deg, color-mix(in srgb, var(--kg-env) 92%, #fff) 0%, var(--kg-env) 60%, color-mix(in srgb, var(--kg-env) 90%, #000) 100%);
+  clip-path: polygon(0 0, 50% 54%, 100% 0, 100% 100%, 0 100%);
+}
+.kg3-front::after {
+  content: ''; position: absolute; inset: 0; opacity: 0.3; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .4 0 0 0 0 .35 0 0 0 0 .3 0 0 0 .45 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* the flap: a real 3D hinge at the top edge */
+.kg3-flap {
+  position: absolute; left: 0; right: 0; top: 0; height: 58%; z-index: 3;
+  transform-origin: 50% 0; transform: perspective(1100px) rotateX(0deg);
+  transition: transform 0.7s cubic-bezier(0.45, 0, 0.2, 1) 0.15s, z-index 0s linear 0.5s;
+  will-change: transform;
+}
+.kg3-flap-face {
+  position: absolute; inset: 0; display: block;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--kg-env) 88%, #fff) 0%, color-mix(in srgb, var(--kg-env) 94%, #000) 100%);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+/* wax seal you tap to break */
+.kg3-seal {
+  position: absolute; left: 50%; top: 58%; z-index: 4; width: 23%; aspect-ratio: 1;
+  transform: translate(-50%, -50%); border: 0; padding: 0; background: none; cursor: pointer;
+  border-radius: 50%; box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.45);
+  transition: box-shadow 0.3s ease;
+  touch-action: manipulation;
+}
+.kg3-seal:focus-visible { outline: 3px solid #2b59c3; outline-offset: 6px; border-radius: 50%; }
+.kg3-seal-half { position: absolute; inset: 0; transition: transform 0.45s cubic-bezier(0.3, 0.7, 0.3, 1), opacity 0.4s ease 0.1s; will-change: transform, opacity; }
+.kg3-seal-half svg { width: 100%; height: 100%; display: block; }
+.kg3-seal-l { clip-path: polygon(0 0, 54% 0, 46% 38%, 55% 62%, 47% 100%, 0 100%); }
+.kg3-seal-r { clip-path: polygon(54% 0, 100% 0, 100% 100%, 47% 100%, 55% 62%, 46% 38%); }
+.kg3-seal-mono {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  font: 600 clamp(15px, 4.4vw, 24px)/1 'Cormorant Garamond', Georgia, serif; letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.78); text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.35), 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: opacity 0.2s ease;
+}
+.kg3-hint { margin: 0; min-height: 1.6em; font: 600 19px/1.4 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: var(--kg-on); text-align: center; padding: 0 16px; }
+.kg3-skip {
+  position: absolute; top: 16px; right: 16px; min-height: 48px; padding: 0 20px; border-radius: 999px;
+  border: 2px solid currentColor; background: transparent; color: var(--kg-on);
+  font: 600 17px/1 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; cursor: pointer;
+}
+
+/* open: seal breaks, flap swings up and back, card slides out of the pocket */
+.kg3--open .kg3-seal-l, .kg3--rise .kg3-seal-l { transform: translate(-22%, 14%) rotate(-24deg); opacity: 0; }
+.kg3--open .kg3-seal-r, .kg3--rise .kg3-seal-r { transform: translate(22%, 18%) rotate(20deg); opacity: 0; }
+.kg3--open .kg3-seal-mono, .kg3--rise .kg3-seal-mono { opacity: 0; }
+.kg3--open .kg3-seal, .kg3--rise .kg3-seal { pointer-events: none; box-shadow: none; }
+.kg3--open .kg3-flap, .kg3--rise .kg3-flap { transform: perspective(1100px) rotateX(178deg); z-index: 0; }
+.kg3--open .kg3-card { transform: perspective(1100px) translate3d(0, -62%, 0); }
+/* rise: the card comes up toward you while the envelope falls away */
+.kg3--rise .kg3-card {
+  z-index: 5;
+  transform: perspective(1100px) translate3d(0, -42%, 260px) rotateX(-4deg);
+  transition: transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.kg3--rise { opacity: 0; visibility: hidden; }
+.kg3--rise .kg3-back, .kg3--rise .kg3-front { transform: translate3d(0, 30%, -120px); opacity: 0; transition: transform 0.6s ease-in, opacity 0.5s ease-in; }
+.kg3--open .kg3-hint, .kg3--rise .kg3-hint { opacity: 0; }
+
+/* simple fade opening, and the reduced-motion version of everything */
+.kg-fadein { animation: kg-fadein 0.7s ease-out both; }
+@keyframes kg-fadein { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* ---------- tilt ---------- */
+.kg-tilt { position: relative; }
+.kg-tilt--on { perspective: 1200px; touch-action: pan-y; }
+.kg-tilt--on > .kc { transform-style: flat; will-change: transform; transform-origin: 50% 40%; }
+.kg-tilt--idle > .kc { animation: kg-sway 9s ease-in-out infinite; }
+@keyframes kg-sway {
+  0%, 100% { transform: rotateX(1.5deg) rotateY(-2.5deg); }
+  50% { transform: rotateX(-1.5deg) rotateY(2.5deg); }
+}
+/* light catching the paper and foil: a pre-drawn glow moved only with transform */
+.kg-sheen { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 5; border-radius: 6px; mix-blend-mode: soft-light; }
+.kg-sheen > div {
+  position: absolute; left: -30%; top: -25%; width: 160%; height: 90%;
+  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0));
+  opacity: 0.35; will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kg3 { display: none; }
+  .kg-tilt--on > .kc, .kg-tilt--idle > .kc { transform: none !important; animation: none !important; }
+  .kg-sheen { display: none; }
+  .kg-fadein { animation: none; }
+}

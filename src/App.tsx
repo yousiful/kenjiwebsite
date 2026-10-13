@@ -89,6 +89,7 @@ const Book2Page = lazyRoute(() => import('./pages/Book2Page'));
 const InvitesLanding = lazyRoute(() => import('./invites/pages/InvitesLanding'));
 const InvitesManage = lazyRoute(() => import('./invites/pages/InvitesManage'));
 const InvitesFind = lazyRoute(() => import('./invites/pages/InvitesFind'));
+const InvitesJoin = lazyRoute(() => import('./invites/pages/InvitesJoin'));
 const InvitesDashboard = lazyRoute(() => import('./invites/pages/InvitesDashboard'));
 const InvitesWizard = lazyRoute(() => import('./invites/pages/InvitesWizard'));
 const InvitesEvent = lazyRoute(() => import('./invites/pages/InvitesEvent'));
@@ -334,6 +335,7 @@ function App() {
                       <Route path="/invites/login" element={<Navigate to="/invites/dashboard" replace />} />
                       <Route path="/invites/manage" element={<InvitesManage />} />
                       <Route path="/invites/find" element={<InvitesFind />} />
+                      <Route path="/invites/join" element={<InvitesJoin />} />
                       <Route path="/invites/dashboard" element={<InvitesDashboard />} />
                       <Route path="/invites/new" element={<InvitesWizard />} />
                       <Route path="/invites/e/:id" element={<InvitesEvent />} />

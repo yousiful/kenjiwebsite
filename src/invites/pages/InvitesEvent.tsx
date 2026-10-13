@@ -6,6 +6,7 @@ import { Icon } from '../icons';
 import { formatPhone, LIMITS, type Guest } from '../shared';
 import { countdownText, longDate } from '../format';
 import SendButtons, { sentLabel } from '../SendButtons';
+import { copyText, mailtoHref, smsHref } from '../send';
 
 type Filter = 'all' | 'yes' | 'no' | 'none';
 
@@ -73,6 +74,62 @@ function GuestEdit({ ev, guest, onSaved, onCancel }: { ev: HostEvent; guest: Gue
   );
 }
 
+function HostsCard({ ev, onChange }: { ev: HostEvent; onChange: (e: HostEvent) => void }) {
+  const [link, setLink] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState('');
+  const [copied, setCopied] = useState(false);
+  const hosts = ev.hosts || [];
+  const msg = (l: string) => `Join me as a host of our wedding invitation on Kenji Invites, so you can see and manage it from your phone: ${l} (This link works once and expires in 7 days.)`;
+  return (
+    <section className="kv-card" style={{ marginTop: 28 }} aria-labelledby="kv-hosts" data-testid="hosts-card">
+      <h2 id="kv-hosts" style={{ marginBottom: 6 }}>Hosts: {hosts.length}</h2>
+      <p className="kv-muted" style={{ marginBottom: 14 }}>Hosts can see the guest list, add guests and see every answer. Each host uses their own phone.</p>
+      <ul style={{ listStyle: 'none', margin: '0 0 16px', padding: 0 }}>
+        {hosts.map((h, i) => (
+          <li key={h.id} className="kv-host-row">
+            <span>
+              <strong>{h.you ? 'You' : h.creator ? 'The person who made this invitation' : `Co-host ${i}`}</strong>
+              {h.creator && h.you && <span className="kv-muted"> (you made this invitation)</span>}
+              {!h.creator && !h.you && <span className="kv-muted"> (co-host)</span>}
+              {!h.creator && h.you && <span className="kv-muted"> (co-host)</span>}
+            </span>
+            {ev.isCreator && !h.creator && (
+              <ConfirmButton label={<><Icon name="trash" /> Remove</>} question="Remove this co-host? They will no longer see this invitation." confirmLabel="Yes, remove"
+                onConfirm={async () => { try { const r = await api.removeCohost(ev.id, h.id); onChange(r.event); } catch (e) { setErr((e as Error).message); } }} />
+            )}
+          </li>
+        ))}
+      </ul>
+      <ErrorBox message={err} />
+      {ev.isCreator && !link && (
+        <button type="button" className="kv-btn kv-btn--primary" disabled={busy || hosts.length >= 5} data-testid="add-cohost"
+          onClick={async () => {
+            setBusy(true); setErr('');
+            try { const r = await api.cohostInvite(ev.id); setLink(`${window.location.origin}/invites/join#t=${r.token}`); }
+            catch (e) { setErr((e as Error).message); } finally { setBusy(false); }
+          }}>
+          <Icon name="plus" /> {busy ? 'One moment...' : 'Add a co-host'}
+        </button>
+      )}
+      {link && (
+        <div className="kv-walk" style={{ padding: 18 }} data-testid="cohost-link-box">
+          <p style={{ fontWeight: 650, marginBottom: 8 }}>Send this to your partner so they can see and manage this invitation from their own phone.</p>
+          <p className="kv-hint" style={{ marginBottom: 14 }}>The link works once and expires in 7 days. Anyone who opens it first becomes a host, so send it only to your partner.</p>
+          <div className="kv-btn-row">
+            <a className="kv-btn kv-btn--primary" href={smsHref('', msg(link))}><Icon name="message" /> Text</a>
+            <a className="kv-btn kv-btn--secondary" href={mailtoHref('', 'Help me host our wedding invitation', msg(link))}><Icon name="mail" /> Email</a>
+            <button type="button" className="kv-btn kv-btn--secondary" onClick={async () => { if (await copyText(link)) { setCopied(true); window.setTimeout(() => setCopied(false), 2500); } }}>
+              <Icon name={copied ? 'check' : 'copy'} /> {copied ? 'Copied' : 'Copy link'}
+            </button>
+          </div>
+          <p className="kv-sr" data-testid="cohost-link">{link}</p>
+        </div>
+      )}
+    </section>
+  );
+}
+
 export default function InvitesEvent() {
   const { ok } = useHostKey();
   const { id = '' } = useParams();
@@ -128,7 +185,7 @@ export default function InvitesEvent() {
         </div>
 
         <section className="kv-card" style={{ marginTop: 28 }} aria-labelledby="kv-gl">
-          <h2 id="kv-gl" style={{ marginBottom: 8 }}>Guest list</h2>
+          <h2 id="kv-gl" style={{ marginBottom: 8 }}>Your guests (the people you're inviting)</h2>
           <div className="kv-tabs" role="tablist" aria-label="Show">
             {tabs.map(([f, label, n]) => (
               <button key={f} type="button" role="tab" className="kv-tab" aria-selected={filter === f} onClick={() => setFilter(f)}>{label} ({n})</button>
@@ -148,6 +205,7 @@ export default function InvitesEvent() {
                       {g.note && <p style={{ marginTop: 4 }}>Note: &ldquo;{g.note}&rdquo;</p>}
                       <p className="kv-guest-meta" style={{ marginTop: 4 }}>
                         Invited for up to {g.seats} · {g.openedAt ? `Opened ${shortStamp(g.openedAt)}` : 'Not opened yet'} · {sentLabel(g)}
+                        {(ev.hosts?.length || 0) > 1 && <> · <span data-testid="added-by">{g.addedBy === ev.you ? 'Added by you' : g.addedBy ? 'Added by your co-host' : 'Replied on the shared link'}</span></>}
                       </p>
                       <p className="kv-guest-meta">{[formatPhone(g.phone), g.email].filter(Boolean).join(' · ')}</p>
                     </div>
@@ -174,14 +232,16 @@ export default function InvitesEvent() {
           </ul>
         </section>
 
-        <div style={{ marginTop: 40 }}>
+        <HostsCard ev={ev} onChange={setEv} />
+
+        {ev.isCreator !== false && <div style={{ marginTop: 40 }}>
           <ConfirmButton
             label={<><Icon name="trash" /> Delete this invitation</>}
             question="Delete this invitation and the whole guest list? Guests' links will stop working. This can't be undone."
             confirmLabel="Yes, delete everything"
             onConfirm={async () => { await api.deleteEvent(id); navigate('/invites/dashboard'); }}
           />
-        </div>
+        </div>}
       </div>
     </Page>
   );

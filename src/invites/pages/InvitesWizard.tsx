@@ -11,11 +11,21 @@ import { smsHref, inviteText, copyText } from '../send';
 import QrCode from '../QrCode';
 import SendButtons, { sentLabel } from '../SendButtons';
 
-const STEPS = ['Your names', 'Date, time and place', 'Pick a design', 'Events before the big day', 'Your guests', 'Send'];
+// Every step is a plain question with one sentence of help, so nobody wonders whose names
+// or which people a step is about.
+const STEPS = ['Whose wedding is it?', 'When and where is the wedding?', 'How should your invitation look?', 'Any other events around the wedding?', 'Who are you inviting?', 'How do you want to send it?'];
+const HELP = [
+  'Type the names of the two people getting married. These go at the top of the invitation.',
+  'Pick the wedding date and start time, and tell your guests where to go.',
+  'Tap a design to try it. You can also add a photo, a short note and how it opens.',
+  "Having a rehearsal dinner, a party or a brunch? Add it and guests will see it with the dates. You can skip this step.",
+  "Add your guests (the people you're inviting), one at a time or as a list.",
+  "Each guest gets their own link. Send it by text or email from your own phone.",
+];
 
 const blankEvent = (): HostEvent => ({
   id: '', coupleNames: ['', ''], title: '', date: '', time: '', timezone: browserTimezone(), venueName: '', address: '',
-  theme: 'ivory', accent: '', photo: false, photoVersion: 0, personalMessage: '', rsvpBy: '', defaultSeats: 2,
+  theme: 'ivory', accent: '', photo: false, photoVersion: 0, personalMessage: '', opening: 'envelope', rsvpBy: '', defaultSeats: 2,
   openLinkEnabled: false, openCode: '', subEvents: [], createdAt: '', updatedAt: '',
 });
 
@@ -196,7 +206,8 @@ export default function InvitesWizard() {
               </div>
               <div className="kv-bar" aria-hidden="true"><span style={{ width: `${(step / 6) * 100}%` }} /></div>
             </div>
-            <h1 id="kv-step-title" ref={headingRef} tabIndex={-1} style={{ marginBottom: 22, outline: 'none' }}>{STEPS[step - 1]}</h1>
+            <h1 id="kv-step-title" ref={headingRef} tabIndex={-1} style={{ marginBottom: 10, outline: 'none' }}>{STEPS[step - 1]}</h1>
+            <p className="kv-step-help" style={{ marginBottom: 24 }}>{HELP[step - 1]}</p>
             <ErrorBox message={error} />
             {body}
             <div className="kv-only-phone" style={{ marginTop: 32 }}>
@@ -227,15 +238,18 @@ type StepProps = { ev: HostEvent; patch: (f: Partial<HostEvent>) => void };
 function StepNames({ ev, patch, leadEmail, setLeadEmail }: StepProps & { leadEmail: string; setLeadEmail: (v: string) => void }) {
   return (
     <div>
-      <p className="kv-muted" style={{ marginBottom: 24 }}>Write the two names the way you want them on the invitation. You can change them later.</p>
-      <Field id="kv-n1" label="First name on the invitation" hint="For example: Sarah Johnson">
-        <input id="kv-n1" className="kv-input" value={ev.coupleNames[0]} maxLength={LIMITS.name} autoComplete="off"
+      <Field id="kv-n1" label="First person getting married">
+        <input id="kv-n1" className="kv-input" value={ev.coupleNames[0]} maxLength={LIMITS.name} autoComplete="off" placeholder="e.g. Sarah Johnson"
           onChange={(e) => patch({ coupleNames: [e.target.value, ev.coupleNames[1]] })} />
       </Field>
-      <Field id="kv-n2" label="Second name on the invitation" hint="For example: James Carter">
-        <input id="kv-n2" className="kv-input" value={ev.coupleNames[1]} maxLength={LIMITS.name} autoComplete="off"
+      <Field id="kv-n2" label="Second person getting married">
+        <input id="kv-n2" className="kv-input" value={ev.coupleNames[1]} maxLength={LIMITS.name} autoComplete="off" placeholder="e.g. James Smith"
           onChange={(e) => patch({ coupleNames: [ev.coupleNames[0], e.target.value] })} />
       </Field>
+      <p className="kv-says" aria-live="polite" data-testid="names-line">
+        Your invitation will say: <strong>{ev.coupleNames[0].trim() || 'Sarah Johnson'} &amp; {ev.coupleNames[1].trim() || 'James Smith'}</strong>
+      </p>
+      <p className="kv-hint" style={{ marginBottom: 26 }}>You'll add your guests (the people you're inviting) later, in step 5.</p>
       <Field id="kv-lead" label="Your email (optional, so we can send you tips and updates)" hint="You can leave this empty. You don't need it to make or send your invitation.">
         <input id="kv-lead" className="kv-input" type="email" inputMode="email" autoComplete="email" autoCapitalize="none" spellCheck={false}
           value={leadEmail} maxLength={200} onChange={(e) => setLeadEmail(e.target.value)} placeholder="name@example.com" />
@@ -295,7 +309,6 @@ function StepDesign({ ev, patch, setEv }: StepProps & { setEv: (f: (e: HostEvent
 
   return (
     <div className="kv-stack">
-      <p className="kv-muted">Tap a design to try it. The preview shows your names and details.</p>
       <div className="kv-themes" role="group" aria-label="Designs">
         {THEME_IDS.map((t: ThemeId) => (
           <button key={t} type="button" className="kv-theme" aria-pressed={ev.theme === t} onClick={() => patch({ theme: t })} data-theme={t}>
@@ -320,6 +333,21 @@ function StepDesign({ ev, patch, setEv }: StepProps & { setEv: (f: (e: HostEvent
             <ConfirmButton label={<><Icon name="trash" /> Remove photo</>} question="Remove this photo from the invitation?" confirmLabel="Yes, remove it"
               onConfirm={async () => { const r = await api.deletePhoto(ev.id); setEv((cur) => ({ ...cur, photo: r.event.photo })); }} />
           )}
+        </div>
+      </div>
+
+      <div className="kv-card">
+        <p className="kv-label" id="kv-open-label" style={{ marginBottom: 6 }}>Opening effect</p>
+        <p className="kv-hint" style={{ marginBottom: 14 }}>What your guests see first when they open their link.</p>
+        <div className="kv-choice-row" role="group" aria-labelledby="kv-open-label">
+          <button type="button" className="kv-choice" aria-pressed={ev.opening !== 'fade'} onClick={() => patch({ opening: 'envelope' })} data-testid="opening-envelope">
+            <strong>3D envelope (recommended)</strong>
+            <span>They tap a wax seal, the envelope opens and the card rises out.</span>
+          </button>
+          <button type="button" className="kv-choice" aria-pressed={ev.opening === 'fade'} onClick={() => patch({ opening: 'fade' })} data-testid="opening-fade">
+            <strong>Simple fade</strong>
+            <span>The invitation just appears, softly.</span>
+          </button>
         </div>
       </div>
 
@@ -358,7 +386,6 @@ function StepEvents({ ev, patch }: StepProps) {
   };
   return (
     <div className="kv-stack">
-      <p className="kv-muted">Having a party, a dinner or a brunch around the wedding? Add it here and guests will see it in a timeline with the dates. You can skip this step.</p>
       <div>
         <p className="kv-label" style={{ marginBottom: 10 }}>Tap to add one</p>
         <div className="kv-presets">
@@ -491,7 +518,7 @@ function StepGuests({ ev, patch, guests, setGuests }: StepProps & { guests: Gues
       </div>
 
       <div className="kv-card">
-        <h2 style={{ fontSize: 24, marginBottom: 16 }}>Add a guest</h2>
+        <h2 style={{ fontSize: 24, marginBottom: 16 }}>Add a guest (someone you're inviting)</h2>
         <ErrorBox message={err} />
         {msg && <p className="kv-note" role="status" style={{ marginBottom: 16 }}>{msg}</p>}
         <GuestEditor seatsDefault={2} submitLabel="Add this guest" onSubmit={addOne} />
@@ -511,7 +538,7 @@ function StepGuests({ ev, patch, guests, setGuests }: StepProps & { guests: Gues
       </div>
 
       <div className="kv-card">
-        <h2 style={{ fontSize: 24, marginBottom: 6 }}>Your guest list</h2>
+        <h2 style={{ fontSize: 24, marginBottom: 6 }}>Your guests (the people you're inviting)</h2>
         <p className="kv-muted" style={{ marginBottom: 8 }}>{guests.length} {guests.length === 1 ? 'guest' : 'guests'}, up to {guests.reduce((n, g) => n + g.seats, 0)} people</p>
         {guests.length === 0 && <p className="kv-muted">No guests yet. Add the first one above.</p>}
         <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
@@ -558,7 +585,7 @@ function StepSend({ ev, guests, setGuests, goGuests }: { ev: HostEvent; guests: 
 
   return (
     <div className="kv-stack">
-      <p className="kv-muted">Each guest gets their own link. Tap <strong>Text</strong> or <strong>Email</strong> and your phone opens a message with the invitation ready. It comes from you, so they'll know it's real. Then just press send.</p>
+      <p className="kv-muted">Tap <strong>Text</strong> or <strong>Email</strong> next to a guest and your phone opens a message with their invitation ready. It comes from you, so they'll know it's real. Then just press send.</p>
       {guests.length === 0 ? (
         <div className="kv-card kv-empty">
           <p style={{ marginBottom: 16 }}>You haven't added any guests yet.</p>
