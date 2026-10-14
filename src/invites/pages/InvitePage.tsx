@@ -3,6 +3,7 @@ import { api, icsUrl, photoUrl, type GuestView, type PublicEvent } from '../api'
 import InvitationCard from '../InvitationCard';
 import { EnvelopeIntro, TiltCard } from '../Opening';
 import { Celebration, StaticSparkles } from '../Celebration';
+import { SketchArt, SketchIntro } from '../Sketch';
 import { MusicBox } from '../music';
 import { Icon } from '../icons';
 import { buildIcs, googleCalendarUrl, cleanPhone, isEmail, type CalItem } from '../shared';
@@ -184,9 +185,19 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
   const [code, setCode] = useState(initialCode);
   const [data, setData] = useState<Data | null>(null);
   const [error, setError] = useState('');
-  const [intro, setIntro] = useState(false);
+  // opening sequence: sketch -> envelope -> card + party. Plays on every visit (nothing is
+  // remembered), and again from the "Replay the celebration" button.
+  const [stage, setStage] = useState<'sketch' | 'envelope' | 'done'>('done');
   const [party, setParty] = useState(false);
-  const [firstOpen, setFirstOpen] = useState(false);
+  const [run, setRun] = useState(0);
+  const intro = stage !== 'done';
+  const play = (opening: PublicEvent['opening']) => {
+    setRun((r) => r + 1);
+    setParty(false);
+    if (reducedMotion()) { setStage('done'); return; }
+    if (opening === 'fade') { setStage('done'); window.setTimeout(() => setParty(true), 350); return; }
+    setStage(opening === 'envelope' ? 'envelope' : 'sketch');
+  };
   const preview = !!previewEvent || (typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('preview') === '1');
 
   useEffect(() => {
@@ -204,13 +215,7 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
     api.invite(initialCode, preview)
       .then((d) => {
         setData(d);
-        let seen = false;
-        try { seen = sessionStorage.getItem(`kg-seen-${initialCode}`) === '1'; sessionStorage.setItem(`kg-seen-${initialCode}`, '1'); } catch { /* ignore */ }
-        if (!seen) setFirstOpen(true);
-        if (!seen && !reducedMotion()) {
-          if (d.event.opening !== 'fade') setIntro(true);
-          else window.setTimeout(() => setParty(true), 350);
-        }
+        play(d.event.opening);
       })
       .catch((e) => setError(e.message));
   }, [initialCode, previewEvent, preview]);
@@ -250,23 +255,33 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
 
   return (
     <div className={`kg kg--${theme}`}>
-      {intro && <EnvelopeIntro data={{ ...ev, photoUrl: pUrl }} initials={initials} onDone={() => { setIntro(false); setParty(true); }} />}
-      {party && <Celebration theme={theme} onDone={() => setParty(false)} />}
+      {stage === 'sketch' && <SketchIntro key={`s${run}`} theme={theme} figures={ev.figures || 'bride-groom'} showCross={!!ev.showCross} onDone={() => setStage('envelope')} onSkipAll={() => { setStage('done'); setParty(true); }} />}
+      {stage === 'envelope' && <EnvelopeIntro key={`e${run}`} data={{ ...ev, photoUrl: pUrl }} initials={initials} onDone={() => { setStage('done'); setParty(true); }} />}
+      {party && <Celebration key={`p${run}`} theme={theme} onDone={() => setParty(false)} />}
       {preview && <p className="kg-previewbar">Preview: this is what your guests see. Answers here are not saved.</p>}
       <div className="kg-main" role={standalone ? 'main' : undefined}>
         {greeting && (
-          <div className={`kg-hello${firstOpen && motionOk ? ' kg-hello--reveal' : ''}`} data-testid="greeting">
-            {!motionOk && firstOpen && <StaticSparkles />}
+          <div key={`g${run}${intro ? 'i' : ''}`} className={`kg-hello${motionOk ? ' kg-hello--reveal' : ''}`} data-testid="greeting">
+            {!motionOk && <SketchArt theme={theme} figures={ev.figures || 'bride-groom'} showCross={!!ev.showCross} still className="kg-sketch-still" />}
+            {!motionOk && <StaticSparkles />}
             <p className="kg-greet">{greeting}</p>
             {data.guest?.name && <p className="kg-invited">you're invited!</p>}
           </div>
         )}
         {ev.music && <MusicButton id={ev.music} />}
         <div className={`kg-card${!intro && fade ? ' kg-fadein' : ''}`}>
-          <TiltCard enabled={motionOk} sweep={firstOpen && motionOk && !intro}>
+          <TiltCard key={`t${run}${intro ? 'i' : ''}`} enabled={motionOk} sweep={motionOk && !intro}>
             <InvitationCard data={{ ...ev, photoUrl: pUrl }} minText={18} />
           </TiltCard>
         </div>
+        {motionOk && (
+          <p className="kg-replay-row">
+            <button type="button" className="kg-replay" onClick={() => { window.scrollTo({ top: 0 }); play(ev.opening); }} data-testid="replay">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              Replay the celebration
+            </button>
+          </p>
+        )}
 
         {n !== null && (
           <p className="kg-count" data-testid="countdown">

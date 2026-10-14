@@ -36,10 +36,11 @@ export interface InviteEvent {
   photo: boolean;
   photoVersion: number;
   personalMessage: string;
-  opening: 'envelope' | 'fade'; // how the guest page opens
+  opening: 'sketch' | 'envelope' | 'fade'; // how the guest page opens
   music: MusicId; // '' = none; synthesized in the browser, never autoplayed
   figures: Figures; // who is drawn on the Bride & Groom design
   showCross: boolean; // church design: show a cross (host's choice)
+  ogVersion?: number; // link-preview image version (0/undefined = none yet)
   rsvpBy: string;
   defaultSeats: number;
   openLinkEnabled: boolean;

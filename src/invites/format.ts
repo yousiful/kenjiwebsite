@@ -116,6 +116,9 @@ export const THEME_FONTS: Record<ThemeId, string[]> = {
   renewal: ['pinyon', 'cormorant'],
 };
 
+/** Google Fonts stylesheet URL for a set of font keys. */
+export const fontCssUrl = (keys: string[]) => `https://fonts.googleapis.com/css2?${keys.filter((k) => FAMILIES[k]).map((k) => `family=${FAMILIES[k]}`).join('&')}&display=swap`;
+
 const loaded = new Set<string>();
 export function loadFonts(keys: string[]) {
   const need = keys.filter((k) => FAMILIES[k] && !loaded.has(k));
@@ -133,7 +136,7 @@ export function loadFonts(keys: string[]) {
   }
   const link = document.createElement('link');
   link.rel = 'stylesheet';
-  link.href = `https://fonts.googleapis.com/css2?${need.map((k) => `family=${FAMILIES[k]}`).join('&')}&display=swap`;
+  link.href = fontCssUrl(need);
   document.head.appendChild(link);
 }
 export const loadThemeFonts = (themes: ThemeId[]) => loadFonts([...new Set(themes.flatMap((t) => THEME_FONTS[t]))]);

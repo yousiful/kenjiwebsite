@@ -96,7 +96,7 @@ function applyEventFields(ev: StoredEvent, b: Record<string, unknown>): string {
   }
   if ('accent' in b) ev.accent = /^#[0-9a-fA-F]{6}$/.test(String(b.accent || '')) ? String(b.accent) : '';
   if ('personalMessage' in b) ev.personalMessage = str(b.personalMessage, LIMITS.message);
-  if ('opening' in b) ev.opening = b.opening === 'fade' ? 'fade' : 'envelope';
+  if ('opening' in b) ev.opening = b.opening === 'fade' ? 'fade' : b.opening === 'envelope' ? 'envelope' : 'sketch';
   if ('music' in b) ev.music = MUSIC_IDS.includes(b.music as MusicId) ? (b.music as MusicId) : '';
   if ('figures' in b) ev.figures = FIGURES.includes(b.figures as Figures) ? (b.figures as Figures) : 'bride-groom';
   if ('showCross' in b) ev.showCross = bool(b.showCross);
@@ -114,7 +114,7 @@ function publicEvent(ev: StoredEvent) {
   return {
     id: ev.id, coupleNames: ev.coupleNames, title: ev.title, date: ev.date, time: ev.time, timezone: ev.timezone,
     venueName: ev.venueName, address: ev.address, theme: ev.theme, accent: ev.accent, photo: ev.photo,
-    photoVersion: ev.photoVersion, personalMessage: ev.personalMessage, opening: ev.opening === 'fade' ? 'fade' : 'envelope', music: ev.music || '', figures: ev.figures || 'bride-groom', showCross: !!ev.showCross, rsvpBy: ev.rsvpBy, defaultSeats: ev.defaultSeats,
+    photoVersion: ev.photoVersion, personalMessage: ev.personalMessage, opening: ev.opening === 'fade' || ev.opening === 'envelope' ? ev.opening : 'sketch', music: ev.music || '', figures: ev.figures || 'bride-groom', showCross: !!ev.showCross, rsvpBy: ev.rsvpBy, defaultSeats: ev.defaultSeats,
     subEvents: ev.subEvents,
   };
 }
@@ -257,6 +257,39 @@ const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
       };
     }
 
+    if (method === 'GET' && op === 'og-image') {
+      if (!/^[A-Za-z0-9_-]{8,32}$/.test(q.e || '')) return { statusCode: 404, body: '' };
+      const data = (await store.get(`og/${q.e}`, { type: 'arrayBuffer' })) as ArrayBuffer | null;
+      if (!data) return { statusCode: 302, headers: { Location: `${SITE}/invites-og.jpg` }, body: '' };
+      return {
+        statusCode: 200,
+        headers: { 'Content-Type': 'image/jpeg', 'Cache-Control': 'public, max-age=31536000, immutable' },
+        body: Buffer.from(data).toString('base64'),
+        isBase64Encoded: true,
+      };
+    }
+
+    // link-preview tags for /i/<code> (read by the edge function; never marks the invite opened)
+    if (method === 'GET' && op === 'og') {
+      const r = await resolveCode(store, q.code);
+      if (!r) return json(404, { error: 'not found' });
+      const ev = r.ev;
+      const first = (n: string) => (n.trim().split(/\s+/)[0] || n).slice(0, 30);
+      const couple = `${first(ev.coupleNames[0])} & ${first(ev.coupleNames[1])}`;
+      const city = (ev.address.split(',')[1] || '').trim();
+      const where = [ev.venueName, city && !/\d/.test(city) ? city : ''].filter(Boolean).join(', ');
+      const when = ev.date ? new Date(`${ev.date}T12:00:00Z`).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }) : '';
+      const v = ev.ogVersion || 0;
+      return json(200, {
+        title: `You're invited: ${couple}'s wedding`,
+        description: [when, where, 'Tap to RSVP'].filter(Boolean).join(' \u00b7 '),
+        image: v ? `${SITE}/.netlify/functions/invites-api?op=og-image&e=${ev.id}&v=${v}` : `${SITE}/invites-og.jpg`,
+        width: 1200,
+        height: 630,
+        url: `${SITE}/i/${q.code}`,
+      }, { 'Cache-Control': 'no-store' });
+    }
+
     if (method === 'GET' && op === 'ics') {
       const r = await resolveCode(store, q.code);
       if (!r) return { statusCode: 404, body: 'Not found' };
@@ -373,7 +406,7 @@ const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
       const t = nowIso();
       const ev: StoredEvent = {
         id: randomId(12), owners: [owner.ownerHash], creator: owner.ownerHash, coupleNames: ['', ''], title: '', date: '', time: '', timezone: 'America/New_York',
-        venueName: '', address: '', theme: 'ivory', accent: '', photo: false, photoVersion: 0, personalMessage: '', opening: 'envelope', music: '', figures: 'bride-groom', showCross: false, rsvpBy: '',
+        venueName: '', address: '', theme: 'ivory', accent: '', photo: false, photoVersion: 0, personalMessage: '', opening: 'sketch', music: '', figures: 'bride-groom', showCross: false, rsvpBy: '',
         defaultSeats: 2, openLinkEnabled: false, openCode: '', subEvents: [], createdAt: t, updatedAt: t,
       };
       const err = applyEventFields(ev, b);
@@ -446,6 +479,7 @@ const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
       await Promise.all(guests.flatMap((g) => [store.delete(`guests/${ev.id}/${g.id}`), store.delete(`codes/${g.code}`), store.delete(`rl/${g.code}`)]));
       if (ev.openCode) await store.delete(`codes/${ev.openCode}`);
       await store.delete(`photos/${ev.id}`);
+      await store.delete(`og/${ev.id}`);
       await Promise.all(normalizeOwners(ev).owners.map((h) => store.delete(`owners/${h}/${ev.id}`)));
       await store.delete(`events/${ev.id}`);
       return json(200, { ok: true });
@@ -463,6 +497,15 @@ const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
       ev.updatedAt = nowIso();
       await store.setJSON(`events/${ev.id}`, ev);
       return json(200, { event: hostEvent(ev, owner.ownerHash) });
+    }
+
+    if (op === 'og-upload') {
+      const buf = Buffer.from(String(b.data || '').replace(/^data:image\/[a-z]+;base64,/, ''), 'base64');
+      if (!buf.length || buf.length > 1.5 * 1024 * 1024 || detectImage(buf) !== 'image/jpeg') return fail(400, 'Preview image not saved.');
+      await store.set(`og/${ev.id}`, buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength) as ArrayBuffer);
+      ev.ogVersion = (ev.ogVersion || 0) + 1;
+      await store.setJSON(`events/${ev.id}`, ev);
+      return json(200, { ok: true, ogVersion: ev.ogVersion });
     }
 
     if (op === 'photo-delete') {

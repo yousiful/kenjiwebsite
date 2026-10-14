@@ -58,11 +58,10 @@ export type PublicEvent = Omit<InviteEvent, 'openLinkEnabled' | 'openCode' | 'cr
 export interface GuestView { name: string; seats: number; status: Guest['status']; partySize: number; partyNames: string; note: string; respondedAt: string }
 
 export const api = {
-  savePhone: (phone: string) => call<{ ok: boolean; saved: boolean; devText?: string }>(`${AUTH}?op=save-phone`, { method: 'POST', body: JSON.stringify({ phone }) }),
-  findByPhone: (phone: string) => call<{ ok: boolean; message: string; devText?: string }>(`${AUTH}?op=find`, { method: 'POST', body: JSON.stringify({ phone }) }, false),
-  async saveLead(email: string) {
-    const r = await call<{ ok: boolean; saved: boolean }>(`${AUTH}?op=lead`, { method: 'POST', body: JSON.stringify({ email }) });
-    try { localStorage.setItem(LEAD_STORE, email); } catch { /* ignore */ }
+  /** The host's own optional contact details, kept inside Kenji Invites only (no CRM). */
+  async saveProfile(fields: { email?: string; phone?: string; consentEmail?: boolean; consentSms?: boolean; source?: string }) {
+    const r = await call<{ ok: boolean }>(`${AUTH}?op=profile`, { method: 'POST', body: JSON.stringify(fields) });
+    if (fields.email) { try { localStorage.setItem(LEAD_STORE, fields.email); } catch { /* ignore */ } }
     return r;
   },
 
@@ -75,6 +74,7 @@ export const api = {
   removeCohost: (id: string, host: string) => post<{ event: HostEvent }>('remove-cohost', { id, host }),
   deleteEvent: (id: string) => post<{ ok: boolean }>('delete-event', { id }),
   uploadPhoto: (id: string, data: string) => post<{ event: HostEvent }>('photo-upload', { id, data }),
+  uploadOg: (id: string, data: string) => post<{ ok: boolean; ogVersion: number }>('og-upload', { id, data }),
   deletePhoto: (id: string) => post<{ event: HostEvent }>('photo-delete', { id }),
   addGuests: (id: string, payload: { guests?: Partial<Guest>[]; text?: string }) => post<{ added: Guest[]; problems: string[] }>('add-guests', { id, ...payload }),
   updateGuest: (id: string, guestId: string, fields: Record<string, unknown>) => post<{ guest: Guest }>('update-guest', { id, guestId, ...fields }),

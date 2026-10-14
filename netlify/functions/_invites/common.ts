@@ -1,6 +1,6 @@
 import type { HandlerEvent, HandlerResponse } from '@netlify/functions';
 import { getStore } from '@netlify/blobs';
-import { createCipheriv, createDecipheriv, createHash, createHmac, randomBytes, timingSafeEqual } from 'node:crypto';
+import { createHmac, randomBytes, timingSafeEqual } from 'node:crypto';
 
 // Shared server helpers for invites-auth.ts and invites-api.ts.
 // Storage is the Netlify Blobs store "invites" (one JSON per key, see the spec).
@@ -104,28 +104,6 @@ export function parseBody(event: HandlerEvent): Record<string, unknown> | null {
 // eslint-disable-next-line no-control-regex
 export const str = (v: unknown, max: number) => String(v ?? '').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, '').trim().slice(0, max);
 
-// ---------- recovery by text (host keys encrypted at rest) ----------
-const recoveryKey = () => createHash('sha256').update('kenji-invites-recovery:' + secret()).digest();
-
-/** AES-256-GCM, key derived from INVITES_SECRET. Output: iv.tag.ciphertext (base64url). */
-export function encryptText(plain: string): string {
-  const iv = randomBytes(12);
-  const c = createCipheriv('aes-256-gcm', recoveryKey(), iv);
-  const enc = Buffer.concat([c.update(plain, 'utf8'), c.final()]);
-  return [iv, c.getAuthTag(), enc].map((b) => b.toString('base64url')).join('.');
-}
-
-export function decryptText(box: string): string | null {
-  try {
-    const [iv, tag, enc] = box.split('.').map((p) => Buffer.from(p, 'base64url'));
-    const d = createDecipheriv('aes-256-gcm', recoveryKey(), iv);
-    d.setAuthTag(tag);
-    return Buffer.concat([d.update(enc), d.final()]).toString('utf8');
-  } catch {
-    return null;
-  }
-}
-
 /** US/Canada numbers only (NANP). Returns +1XXXXXXXXXX or ''. */
 export function usPhone(raw: unknown): string {
   let d = String(raw ?? '').replace(/\D/g, '');
@@ -134,4 +112,3 @@ export function usPhone(raw: unknown): string {
   return '+1' + d;
 }
 
-export const phoneHash = (e164: string) => hmac('phone:' + e164).slice(0, 32);

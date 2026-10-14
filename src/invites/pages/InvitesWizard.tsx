@@ -6,6 +6,7 @@ import { Page, Field, Stepper, SavedNote, ConfirmButton, ErrorBox, useHostKey, S
 import { Icon } from '../icons';
 import InvitationCard, { THEMES, ACCENTS, OCCASIONS, occasionOf } from '../InvitationCard';
 import { MUSIC, MusicBox } from '../music';
+import { OgStage, snapshotOg } from '../OgSnapshot';
 import { THEME_IDS, SUB_EVENT_PRESETS, LIMITS, formatPhone, isEmail, type Guest, type SubEvent, type ThemeId } from '../shared';
 import { browserTimezone, loadThemeFonts } from '../format';
 import { smsHref, inviteText, copyText } from '../send';
@@ -26,7 +27,7 @@ const HELP = [
 
 const blankEvent = (): HostEvent => ({
   id: '', coupleNames: ['', ''], title: '', date: '', time: '', timezone: browserTimezone(), venueName: '', address: '',
-  theme: 'ivory', accent: '', photo: false, photoVersion: 0, personalMessage: '', opening: 'envelope', music: '', figures: 'bride-groom', showCross: false, rsvpBy: '', defaultSeats: 2,
+  theme: 'ivory', accent: '', photo: false, photoVersion: 0, personalMessage: '', opening: 'sketch', music: '', figures: 'bride-groom', showCross: false, rsvpBy: '', defaultSeats: 2,
   openLinkEnabled: false, openCode: '', subEvents: [], createdAt: '', updatedAt: '',
 });
 
@@ -90,6 +91,8 @@ export default function InvitesWizard() {
   const pending = useRef<Partial<HostEvent>>({});
   const timer = useRef<number | undefined>(undefined);
   const headingRef = useRef<HTMLHeadingElement>(null);
+  const ogRef = useRef<HTMLDivElement>(null);
+  const ogKey = useRef('');
 
   const evIdRef = useRef(ev.id);
   evIdRef.current = ev.id;
@@ -150,7 +153,7 @@ export default function InvitesWizard() {
     setError('');
     // optional lead capture: saved once, never required, never blocks the next step
     const le = leadEmail.trim().toLowerCase();
-    if (step === 1 && le && le !== getLeadEmail()) api.saveLead(le).catch(() => {});
+    if (step === 1 && le && le !== getLeadEmail()) api.saveProfile({ email: le, consentEmail: true, source: 'wizard' }).catch(() => {});
     if (!id) {
       setSave('saving');
       try {
@@ -167,8 +170,22 @@ export default function InvitesWizard() {
       return;
     }
     if (!(await flush())) return;
+    refreshOg();
     if (step === 6) navigate(`/invites/e/${id}`);
     else setParams({ step: String(step + 1) });
+  }
+
+  /** New link-preview picture when anything shown on the card changed (runs in the background). */
+  function refreshOg() {
+    if (!id || !ogRef.current) return;
+    const k = JSON.stringify([ev.theme, ev.coupleNames, ev.date, ev.time, ev.venueName, ev.address, ev.accent, ev.photo, ev.photoVersion, ev.figures, ev.showCross]);
+    if (k === ogKey.current) return;
+    ogKey.current = k;
+    const node = ogRef.current;
+    window.setTimeout(async () => {
+      const data = await snapshotOg(node, ev.theme);
+      if (data) api.uploadOg(id, data).catch(() => {});
+    }, 50);
   }
 
   async function goBack() {
@@ -198,6 +215,7 @@ export default function InvitesWizard() {
   return (
     <Page title={`${STEPS[step - 1]} | Kenji Invites`}>
       <div className="kv-wrap">
+        {id && <OgStage ref={ogRef} data={{ ...ev, photoUrl: photoUrl(ev) }} />}
         <div className="kv-wiz">
           <section aria-labelledby="kv-step-title">
             <div className="kv-progress">
@@ -389,8 +407,12 @@ function StepDesign({ ev, patch, setEv }: StepProps & { setEv: (f: (e: HostEvent
         <p className="kv-label" id="kv-open-label" style={{ marginBottom: 6 }}>Opening effect</p>
         <p className="kv-hint" style={{ marginBottom: 14 }}>What your guests see first when they open their link.</p>
         <div className="kv-choice-row" role="group" aria-labelledby="kv-open-label">
-          <button type="button" className="kv-choice" aria-pressed={ev.opening !== 'fade'} onClick={() => patch({ opening: 'envelope' })} data-testid="opening-envelope">
-            <strong>3D envelope (recommended)</strong>
+          <button type="button" className="kv-choice" aria-pressed={ev.opening !== 'fade' && ev.opening !== 'envelope'} onClick={() => patch({ opening: 'sketch' })} data-testid="opening-sketch">
+            <strong>Sketch + envelope (recommended)</strong>
+            <span>A drawing of the two of you sketches itself, then the envelope opens and the card rises out.</span>
+          </button>
+          <button type="button" className="kv-choice" aria-pressed={ev.opening === 'envelope'} onClick={() => patch({ opening: 'envelope' })} data-testid="opening-envelope">
+            <strong>Envelope only</strong>
             <span>They tap a wax seal, the envelope opens and the card rises out.</span>
           </button>
           <button type="button" className="kv-choice" aria-pressed={ev.opening === 'fade'} onClick={() => patch({ opening: 'fade' })} data-testid="opening-fade">

@@ -146,3 +146,8 @@
   .kg-confetti, .kg-sweepwrap { display: none; }
   .kg-hello--reveal .kg-greet, .kg-hello--reveal .kg-invited { animation: none; }
 }
+
+.kg-replay-row { text-align: center; margin: 14px 0 0 !important; }
+.kg-replay { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 18px; border-radius: 999px; border: 1px solid currentColor; background: transparent; color: var(--kg-on); font: 600 17px/1 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; cursor: pointer; opacity: 0.85; }
+.kg-replay:hover { opacity: 1; }
+.kg-replay svg { width: 20px; height: 20px; }

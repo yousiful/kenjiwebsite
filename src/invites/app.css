@@ -252,7 +252,7 @@
 .kv-host-row:first-child { border-top: 0; }
 
 .kv-choice-row { display: grid; grid-template-columns: 1fr; gap: 12px; }
-@media (min-width: 640px) { .kv-choice-row { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 640px) { .kv-choice-row { grid-template-columns: 1fr 1fr 1fr; } }
 .kv-choice { text-align: left; min-height: 96px; padding: 16px 18px; border-radius: 14px; border: 3px solid var(--kv-line); background: var(--kv-surface); color: var(--kv-ink); cursor: pointer; display: flex; flex-direction: column; gap: 6px; font: 400 17px/1.4 var(--kv-sans); }
 .kv-choice strong { font-size: 19px; }
 .kv-choice span { color: var(--kv-soft); }
@@ -272,3 +272,10 @@
 .kv-music-row { display: flex; gap: 10px; align-items: stretch; }
 .kv-music-row .kv-choice { flex: 1; min-height: 72px; }
 .kv-choice[aria-checked='true'] { border-color: var(--kv-primary); box-shadow: 0 0 0 3px var(--kv-primary-tint); }
+
+/* off-screen stage for the link-preview picture */
+.kv-og-host { position: fixed; left: -12000px; top: 0; width: 1200px; height: 630px; pointer-events: none; overflow: hidden; }
+.kv-og { width: 1200px; height: 630px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.kv-og-card { width: 372px; max-height: 590px; overflow: hidden; border-radius: 4px; box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.45); }
+/* the snapshot library can't render gradient border-images; use a solid gold edge there */
+.kv-og .kc-gild { border-image: none !important; border-color: #c3a056 !important; }
