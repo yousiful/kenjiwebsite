@@ -100,10 +100,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="contact" content="support@mediatraffics.com" />
     <meta name="phone" content="+1-213-344-0705" />
 
-    <!-- GHL Tracking -->
-    <script
-      src="https://safeclick.kenjiai.com/js/external-tracking.js"
-      data-tracking-id="tk_76d68546c8534d479179b49a1784584c">
+    <!-- GHL Tracking. Not loaded on the Kenji Invites app: GHL turns every form
+         submit into a CRM contact, which would fill the CRM with hosts' and guests' forms. -->
+    <script>
+      if (!/^\/(invites|i)(\/|$)/.test(location.pathname)) {
+        var t = document.createElement('script');
+        t.src = 'https://safeclick.kenjiai.com/js/external-tracking.js';
+        t.setAttribute('data-tracking-id', 'tk_76d68546c8534d479179b49a1784584c');
+        document.head.appendChild(t);
+      }
     </script>
 
     <!-- DataTagManager Pixel — deferred to load after first paint so it doesn't
