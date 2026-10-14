@@ -344,7 +344,7 @@ function StepDesign({ ev, patch, setEv }: StepProps & { setEv: (f: (e: HostEvent
       <div className="kv-occasions" role="group" aria-labelledby="kv-occ-label">
         {OCCASIONS.map((o) => (
           <button key={o.id} type="button" className="kv-occasion" aria-pressed={occ === o.id} data-occasion={o.id}
-            onClick={() => { setOcc(o.id); if (!o.themes.includes(ev.theme)) patch({ theme: o.themes[0] }); }}>
+            onClick={() => { if (occ !== o.id || ev.theme !== o.themes[0]) { setOcc(o.id); patch({ theme: o.themes[0] }); } }}>
             <span className="kv-occasion-pic" aria-hidden="true"><InvitationCard data={{ ...sample, theme: o.themes[0], accent: '', personalMessage: '', photoUrl: '' }} /></span>
             <span className="kv-occasion-name">{o.name}</span>
             <span className="kv-occasion-hint">{o.hint}</span>
