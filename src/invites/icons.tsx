@@ -38,9 +38,10 @@ export function Icon({ name, className, title }: { name: IconName; className?: s
 export function BrandMark({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 32 32" fill="none" aria-hidden="true">
-      <circle cx="12.5" cy="17" r="7.5" stroke="#6e2638" strokeWidth="2.2" />
-      <circle cx="19.5" cy="17" r="7.5" stroke="#b08a3e" strokeWidth="2.2" />
-      <path d="M19.5 7.2l1.6-2.4h-3.2z" fill="#b08a3e" />
+      {/* an envelope with a small star: fits every kind of celebration */}
+      <rect x="3.5" y="8" width="25" height="18" rx="2.5" stroke="#6e2638" strokeWidth="2.2" />
+      <path d="M4.5 9.5 16 18.5 27.5 9.5" stroke="#6e2638" strokeWidth="2.2" strokeLinejoin="round" />
+      <path d="M24.5 2.2l1.1 2.6 2.6 1.1-2.6 1.1-1.1 2.6-1.1-2.6-2.6-1.1 2.6-1.1z" fill="#b08a3e" />
     </svg>
   );
 }

@@ -392,7 +392,7 @@ export default function CardEditor({ ev, onLayout, onPatch, onClose }: {
         <button type="button" className="kv-btn kv-btn--secondary" onClick={undo} disabled={!past.current.length} data-testid="ed-undo">Undo</button>
         <button type="button" className="kv-btn kv-btn--secondary" onClick={redo} disabled={!future.current.length} data-testid="ed-redo">Redo</button>
         <button type="button" className="kv-btn kv-btn--secondary" onClick={autoArrange} data-testid="ed-arrange">Auto-arrange</button>
-        <button type="button" className="kv-btn kv-btn--secondary" onClick={resetAll} disabled={!layout} data-testid="ed-reset">Reset to original design</button>
+        <button type="button" className="kv-btn kv-btn--secondary" onClick={resetAll} disabled={!layout} data-testid="ed-reset" aria-label="Reset to original design"><span className="kv-ed-long">Reset to original design</span><span className="kv-ed-short">Reset design</span></button>
         <button type="button" className="kv-btn kv-btn--primary" onClick={onClose} data-testid="ed-done">Done</button>
       </div>
       <div className="kv-ed-main">

@@ -118,7 +118,8 @@
 .kv-chip--invited { background: var(--kv-sunk); color: var(--kv-soft); }
 
 /* wizard */
-.kv-wiz { display: grid; grid-template-columns: 1fr; gap: 32px; }
+.kv-wiz { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; }
+.kv-wiz > * { min-width: 0; }
 @media (min-width: 1000px) { .kv-wiz { grid-template-columns: minmax(0, 1fr) minmax(360px, 440px); align-items: start; gap: 48px; } }
 @media (min-width: 1000px) { .kv-wiz.kv-wiz--editing { grid-template-columns: minmax(0, 1fr); } }
 .kv-progress { margin-bottom: 22px; }
@@ -312,13 +313,16 @@
 .kv-ed-bar { position: sticky; top: 0; z-index: 20; display: flex; flex-wrap: wrap; gap: 10px; padding: 12px; margin-bottom: 16px; background: var(--kv-surface); border-radius: 14px; box-shadow: 0 6px 20px -12px rgba(0, 0, 0, 0.4); }
 .kv-ed-bar .kv-btn--primary { margin-left: auto; }
 @media (max-width: 640px) {
-  .kv-ed-bar { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; padding: 8px; }
-  .kv-ed-bar .kv-btn { min-height: 50px; padding: 0 8px; font-size: 16px; }
+  /* two even rows: Undo / Redo / Done, then Auto-arrange / Reset */
+  .kv-ed-bar { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; padding: 8px; }
+  .kv-ed-bar .kv-btn { min-height: 52px; padding: 0 6px; font-size: 17px; grid-column: span 2; white-space: normal; line-height: 1.15; }
   .kv-ed-bar .kv-btn--primary { margin-left: 0; }
-  .kv-ed-bar [data-testid=ed-reset] { grid-column: span 2; }
+  .kv-ed-bar [data-testid=ed-arrange], .kv-ed-bar [data-testid=ed-reset] { grid-column: span 3; order: 2; }
   .kv-wiz--editing .kv-step-help { display: none; }
+  .kv-ed-stage { padding: 6px; }
 }
-.kv-ed-main { display: grid; gap: 20px; }
+.kv-ed-main { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+.kv-ed-main > *, .kv-ed { min-width: 0; }
 @media (min-width: 900px) {
   .kv-ed-main { grid-template-columns: minmax(0, 440px) minmax(0, 1fr); align-items: start; }
   .kv-ed-stage { position: sticky; top: 92px; }
@@ -356,3 +360,9 @@
 /* landing: kinds of celebration */
 .kv-kinds { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
 .kv-kinds li { padding: 10px 16px; border-radius: 999px; background: var(--kv-surface); border: 2px solid var(--kv-line); font-weight: 600; font-size: 18px; }
+.kv-ed-short { display: none; }
+@media (max-width: 640px) { .kv-ed-long { display: none; } .kv-ed-short { display: inline; } }
+@media (max-width: 640px) {
+  .kv-ed-size { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .kv-ed-size input { grid-column: 1 / -1; order: -1; }
+}
