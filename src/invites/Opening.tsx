@@ -1,11 +1,9 @@
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import { useEffect, useRef, type ReactNode } from 'react';
 import InvitationCard, { type CardData } from './InvitationCard';
 import './opening.css';
 
 // Guest-page opening: a 3D envelope (pure CSS transforms) and a card that tilts with
 // the finger, mouse or phone. No 3D library. Everything animates transform/opacity only.
-
-type Phase = 'closed' | 'open' | 'rise' | 'done';
 
 let gyroAllowed = false;
 /** iOS asks permission for motion data; it must be requested inside a tap. */
@@ -19,32 +17,11 @@ export async function askForGyro() {
   }
 }
 
-export function EnvelopeIntro({ data, initials, onDone }: { data: CardData; initials: string; onDone: () => void }) {
-  const [phase, setPhase] = useState<Phase>('closed');
-  const timers = useRef<number[]>([]);
-
-  const open = useCallback(() => {
-    if (phase !== 'closed') return;
-    askForGyro();
-    setPhase('open');
-    timers.current.push(window.setTimeout(() => setPhase('rise'), 1250));
-    timers.current.push(window.setTimeout(() => { setPhase('done'); onDone(); }, 1950));
-  }, [phase, onDone]);
-
-  const skip = useCallback(() => { timers.current.forEach(clearTimeout); setPhase('done'); onDone(); }, [onDone]);
-
-  useEffect(() => {
-    // People who don't tap the seal still get their invitation.
-    const auto = window.setTimeout(open, 5000);
-    const key = (e: KeyboardEvent) => { if (e.key === 'Escape') skip(); };
-    window.addEventListener('keydown', key);
-    return () => { clearTimeout(auto); window.removeEventListener('keydown', key); };
-  }, [open, skip]);
-  useEffect(() => () => timers.current.forEach(clearTimeout), []);
-
-  if (phase === 'done') return null;
+/** The envelope itself (pocket, flap, wax seal and the card inside). Its motion comes from
+ *  the kg3--open / kg3--rise class on an ancestor, set by the opening timeline. */
+export function Envelope({ data, initials, onSeal }: { data: CardData; initials: string; onSeal: () => void }) {
   return (
-    <div className={`kg3 kg3--${phase}`} role="dialog" aria-label="Your invitation is in an envelope" data-testid="envelope">
+    <>
       <div className="kg3-stage">
         <div className="kg3-env">
           <div className="kg3-back" />
@@ -53,15 +30,13 @@ export function EnvelopeIntro({ data, initials, onDone }: { data: CardData; init
           </div>
           <div className="kg3-front" />
           <div className="kg3-flap"><i className="kg3-flap-face" /></div>
-          <button type="button" className="kg3-seal" onClick={open} aria-label="Break the seal to open your invitation" data-testid="seal">
+          <button type="button" className="kg3-seal" onClick={(e) => { e.stopPropagation(); askForGyro(); onSeal(); }} aria-label="Break the seal to open your invitation" data-testid="seal">
             <span className="kg3-seal-half kg3-seal-l"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#kg3-wax" /></svg></span>
             <span className="kg3-seal-half kg3-seal-r"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#kg3-wax" /></svg></span>
             <span className="kg3-seal-mono">{initials}</span>
           </button>
         </div>
       </div>
-      <p className="kg3-hint">{phase === 'closed' ? 'Tap the seal to open your invitation' : ' '}</p>
-      <button type="button" className="kg3-skip" onClick={skip}>Skip</button>
       <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
         <defs>
           <radialGradient id="kg3-wax-g" cx="0.38" cy="0.32" r="0.75">
@@ -76,7 +51,7 @@ export function EnvelopeIntro({ data, initials, onDone }: { data: CardData; init
           </symbol>
         </defs>
       </svg>
-    </div>
+    </>
   );
 }
 

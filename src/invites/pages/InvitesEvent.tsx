@@ -80,7 +80,8 @@ function HostsCard({ ev, onChange }: { ev: HostEvent; onChange: (e: HostEvent) =
   const [err, setErr] = useState('');
   const [copied, setCopied] = useState(false);
   const hosts = ev.hosts || [];
-  const msg = (l: string) => `Join me as a host of our wedding invitation on Kenji Invites, so you can see and manage it from your phone: ${l} (This link works once and expires in 7 days.)`;
+  const wedding = !ev.type || ev.type === 'wedding';
+  const msg = (l: string) => `Join me as a host of ${wedding ? 'our wedding invitation' : `the invitation for ${ev.title}`} on Kenji Invites, so you can see and manage it from your phone: ${l} (This link works once and expires in 7 days.)`;
   return (
     <section className="kv-card" style={{ marginTop: 28 }} aria-labelledby="kv-hosts" data-testid="hosts-card">
       <h2 id="kv-hosts" style={{ marginBottom: 6 }}>Hosts: {hosts.length}</h2>
@@ -118,7 +119,7 @@ function HostsCard({ ev, onChange }: { ev: HostEvent; onChange: (e: HostEvent) =
           <p className="kv-hint" style={{ marginBottom: 14 }}>The link works once and expires in 7 days. Anyone who opens it first becomes a host, so send it only to your partner.</p>
           <div className="kv-btn-row">
             <a className="kv-btn kv-btn--primary" href={smsHref('', msg(link))}><Icon name="message" /> Text</a>
-            <a className="kv-btn kv-btn--secondary" href={mailtoHref('', 'Help me host our wedding invitation', msg(link))}><Icon name="mail" /> Email</a>
+            <a className="kv-btn kv-btn--secondary" href={mailtoHref('', wedding ? 'Help me host our wedding invitation' : 'Help me host our invitation', msg(link))}><Icon name="mail" /> Email</a>
             <button type="button" className="kv-btn kv-btn--secondary" onClick={async () => { if (await copyText(link)) { setCopied(true); window.setTimeout(() => setCopied(false), 2500); } }}>
               <Icon name={copied ? 'check' : 'copy'} /> {copied ? 'Copied' : 'Copy link'}
             </button>
@@ -165,8 +166,8 @@ export default function InvitesEvent() {
         <h1 style={{ overflowWrap: 'anywhere' }}>{ev.title}</h1>
         <p className="kv-muted" style={{ marginTop: 6 }}>{ev.date ? `${longDate(ev.date)} · ${countdownText(ev.date, ev.timezone)}` : 'No date yet'}</p>
         <div className="kv-btn-row" style={{ margin: '20px 0 28px' }}>
-          <Link to={`/invites/e/${id}/edit?step=6`} className="kv-btn kv-btn--primary"><Icon name="message" /> Send invitations</Link>
-          <Link to={`/invites/e/${id}/edit?step=5`} className="kv-btn kv-btn--secondary"><Icon name="plus" /> Add guests</Link>
+          <Link to={`/invites/e/${id}/edit?step=7`} className="kv-btn kv-btn--primary"><Icon name="message" /> Send invitations</Link>
+          <Link to={`/invites/e/${id}/edit?step=6`} className="kv-btn kv-btn--secondary"><Icon name="plus" /> Add guests</Link>
           <Link to={`/invites/e/${id}/edit?step=1`} className="kv-btn kv-btn--secondary"><Icon name="edit" /> Edit invitation</Link>
           <Link to={`/invites/e/${id}/preview`} className="kv-btn kv-btn--secondary"><Icon name="eye" /> See it as a guest</Link>
           <button type="button" className="kv-btn kv-btn--secondary" onClick={() => api.downloadCsv(id, `${ev.title.replace(/[^\w]+/g, '-').toLowerCase()}-guests.csv`).catch((e) => setError(e.message))}>

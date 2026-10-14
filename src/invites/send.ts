@@ -19,33 +19,36 @@ export function mailtoHref(email: string, subject: string, body: string): string
 
 const firstName = (name: string) => name.trim().split(/\s+/)[0] || name;
 
-interface EvLike { title: string; date: string; rsvpBy: string }
+interface EvLike { title: string; date: string; rsvpBy: string; type?: string }
+
+/** "the wedding of Sarah & James" for weddings; other events say their own title ("Maya's 40th Birthday"). */
+const what = (ev: EvLike) => (!ev.type || ev.type === 'wedding' ? `the wedding of ${ev.title}` : ev.title);
 
 export function inviteText(ev: EvLike, guestName: string, link: string): string {
   const hi = guestName ? `Hi ${firstName(guestName)}, ` : 'Hi, ';
   const when = ev.date ? ` on ${longDate(ev.date)}` : '';
-  return `${hi}you're invited to the wedding of ${ev.title}${when}. Here is your invitation, where you can also tell us if you can come: ${link}`;
+  return `${hi}you're invited to ${what(ev)}${when}. Here is your invitation, where you can also tell us if you can come: ${link}`;
 }
 
 export function inviteSubject(ev: EvLike): string {
-  return `You're invited: the wedding of ${ev.title}`;
+  return `You're invited: ${what(ev)}`;
 }
 
 export function inviteEmailBody(ev: EvLike, guestName: string, link: string): string {
   const hi = guestName ? `Dear ${firstName(guestName)},` : 'Hello,';
   const when = ev.date ? ` on ${longDate(ev.date)}` : '';
   const by = ev.rsvpBy ? `\n\nPlease let us know if you can come by ${longDate(ev.rsvpBy)}.` : '';
-  return `${hi}\n\nYou're invited to the wedding of ${ev.title}${when}.\n\nYour invitation, with all the details and a simple way to tell us if you can come, is here:\n${link}${by}\n\nWith love`;
+  return `${hi}\n\nYou're invited to ${what(ev)}${when}.\n\nYour invitation, with all the details and a simple way to tell us if you can come, is here:\n${link}${by}\n\nWith love`;
 }
 
 export function reminderText(ev: EvLike, guestName: string, link: string): string {
   const hi = guestName ? `Hi ${firstName(guestName)}, ` : 'Hi, ';
   const by = ev.rsvpBy ? ` by ${longDate(ev.rsvpBy)}` : '';
-  return `${hi}a gentle reminder about the wedding of ${ev.title}${ev.date ? ` on ${longDate(ev.date)}` : ''}. We'd love to know if you can come${by}. You can answer here in a minute: ${link}`;
+  return `${hi}a gentle reminder about ${what(ev)}${ev.date ? ` on ${longDate(ev.date)}` : ''}. We'd love to know if you can come${by}. You can answer here in a minute: ${link}`;
 }
 
 export function reminderSubject(ev: EvLike): string {
-  return `A gentle reminder: the wedding of ${ev.title}`;
+  return `A gentle reminder: ${what(ev)}`;
 }
 
 export async function copyText(text: string): Promise<boolean> {

@@ -488,3 +488,242 @@
 .kc-maplink:hover .kc-address, .kc-maplink:focus-visible .kc-address { text-decoration-style: solid; }
 .kc-pin { width: 1.15em; height: 1.15em; vertical-align: -0.18em; margin-right: 0.25em; opacity: 0.75; }
 a.kc-maplink:not(.kc-where) { text-decoration: underline dotted; text-underline-offset: 0.5cqi; }
+
+/* ================= any kind of celebration ================= */
+
+/* a line under the names ("40th Birthday", "Class of 2027") and "Hosted by ..." */
+.kc-sub {
+  margin-top: 3cqi !important;
+  font-family: var(--kc-caps);
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: max(var(--kc-min), 3.3cqi);
+  line-height: 1.45;
+  color: var(--kc-accent);
+  max-width: 70cqi;
+  text-wrap: balance;
+}
+.kc-byline { margin-top: 5cqi !important; font-family: var(--kc-caps); letter-spacing: 0.12em; font-size: max(var(--kc-min), 2.7cqi); color: var(--kc-soft); text-wrap: balance; }
+.kc--foil .kc-sub { color: color-mix(in srgb, var(--kc-accent) 85%, var(--kc-ink)); }
+
+/* several photos, arranged by count (grid set inline); framed to match each design */
+.kc-collage { display: grid; gap: 1.6cqi; width: 76cqi; max-width: 100%; margin: 0 auto 6cqi; }
+.kc-ph { margin: 0; min-width: 0; min-height: 0; overflow: hidden; border-radius: 1cqi; padding: 0.4cqi; background: var(--kc-foil); box-shadow: 0 0.8cqi 1.8cqi -0.9cqi rgba(30, 20, 10, 0.45); }
+.kc-ph img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: inherit; }
+.kc--minimal .kc-ph, .kc--city .kc-ph, .kc--launch .kc-ph { border-radius: 0; padding: 0; background: none; box-shadow: none; }
+.kc--minimal .kc-collage, .kc--launch .kc-collage { gap: 1cqi; }
+.kc--minimal .kc-ph img { filter: grayscale(1) contrast(1.06); }
+.kc--kraft .kc-ph, .kc--barn .kc-ph, .kc--polaroid .kc-ph, .kc--beach .kc-ph, .kc--house .kc-ph {
+  background: #fffdf8; padding: 1.1cqi 1.1cqi 3cqi; border-radius: 0.3cqi; box-shadow: 0 0.8cqi 1.6cqi -0.8cqi rgba(40, 28, 15, 0.45);
+}
+.kc--kraft .kc-ph img, .kc--barn .kc-ph img, .kc--polaroid .kc-ph img, .kc--beach .kc-ph img, .kc--house .kc-ph img { border-radius: 0; }
+.kc--kraft .kc-ph:nth-child(odd), .kc--barn .kc-ph:nth-child(odd), .kc--polaroid .kc-ph:nth-child(odd) { transform: rotate(-1.6deg); }
+.kc--kraft .kc-ph:nth-child(even), .kc--barn .kc-ph:nth-child(even), .kc--polaroid .kc-ph:nth-child(even) { transform: rotate(1.8deg); }
+.kc--boho .kc-ph--main, .kc--emerald .kc-ph--main, .kc--blush .kc-ph--main, .kc--chapel .kc-ph--main, .kc--tile .kc-ph--main, .kc--crown .kc-ph--main { border-radius: 999px 999px 1cqi 1cqi; }
+.kc--midnight .kc-ph, .kc--nursery .kc-ph, .kc--balloons .kc-ph { border-radius: 2.4cqi; }
+.kc--deco .kc-ph, .kc--blacktie .kc-ph, .kc--gradcap .kc-ph, .kc--mitzvah .kc-ph { border-radius: 0; }
+.kc--blacktie .kc-ph { background: #111; }
+.kc--neon .kc-ph { background: #ff5fc8; padding: 0.3cqi; box-shadow: 0 0 1.2cqi rgba(255, 95, 200, 0.75), 0 0 3cqi rgba(255, 95, 200, 0.35); border-radius: 1.4cqi; }
+.kc--vellum .kc-ph { background: #fff; padding: 0.8cqi; border-radius: 0.3cqi; }
+.kc--vellum .kc-ph img { border-radius: 0; }
+.kc--photo .kc-art { width: 34cqi; margin-bottom: 3cqi; }
+
+/* "Customize my card": moved, resized, recolored and aligned elements */
+.kc--custom .kc-body { z-index: auto; }
+.kc--custom .kc-body > * { position: relative; z-index: 2; }
+.kc-el { display: flex; flex-direction: column; align-items: center; }
+.kc-colored, .kc-colored :is(p, span, dd, dt) { color: var(--el-c) !important; -webkit-text-fill-color: var(--el-c); background: none !important; }
+.kc-al-left { align-self: flex-start; text-align: left; align-items: flex-start; }
+.kc-al-right { align-self: flex-end; text-align: right; align-items: flex-end; }
+.kc-al-left.kc-names, .kc-al-right.kc-names { width: 100%; }
+.kc-al-left .kc-cols, .kc-al-right .kc-cols { width: auto; }
+.kc-stickers { position: absolute; inset: 0; pointer-events: none; }
+.kc-sticker { position: absolute; line-height: 0; }
+.kc-sticker svg { width: 100%; height: auto; display: block; overflow: visible; }
+.kc-bgphoto { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.kc-bgphoto img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.kc-bgphoto i { position: absolute; inset: 0; background: var(--kc-paper); opacity: 0.74; }
+.kc--darkbg .kc-bgphoto i { background: #0d1424; opacity: 0.7; }
+.kc--editable [data-el], .kc--editable [data-sticker] { cursor: pointer; }
+.kc--editable .kc-stickers { pointer-events: none; }
+.kc--editable .kc-sticker { pointer-events: auto; }
+.kc--editable a.kc-maplink { pointer-events: none; }
+
+/* ---------- Balloon Bouquet ---------- */
+.kc--balloons { --kc-ink: #4a3530; --kc-soft: #7a5a52; --kc-script: 'Dancing Script', cursive; --kc-caps: 'Quicksand', sans-serif; --kc-serif: 'Quicksand', sans-serif; --kc-accent: #d9654f; --kc-hair: rgba(217, 101, 79, 0.45); }
+.kc--balloons .kc-paper { background: radial-gradient(120% 90% at 50% 30%, #fffdf9 0%, #fdf0e6 100%); padding: 12cqi 12cqi 15cqi; }
+.kc-dots { position: absolute; inset: 0; z-index: 0; opacity: 0.55; background-image: radial-gradient(circle, rgba(240, 138, 118, 0.35) 0.5cqi, transparent 0.6cqi), radial-gradient(circle, rgba(111, 179, 156, 0.3) 0.45cqi, transparent 0.55cqi); background-size: 11cqi 11cqi, 14cqi 14cqi; background-position: 0 0, 5cqi 7cqi; -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 22%, transparent 80%, #000 100%); mask-image: linear-gradient(180deg, #000 0%, transparent 22%, transparent 80%, #000 100%); }
+.kc-balloons { width: 64cqi; height: auto; margin-bottom: 4cqi; }
+.kc--balloons .kc-intro { letter-spacing: 0.22em; font-weight: 600; font-size: max(var(--kc-min), 2.4cqi); }
+.kc--balloons .kc-name { font-weight: 700; font-size: calc(16cqi * var(--kc-nscale)); }
+.kc--balloons .kc-sub { font-weight: 600; }
+.kc--balloons .kc-photo { width: 40cqi; aspect-ratio: 1; padding: 0.8cqi; background: linear-gradient(135deg, #f08a76, #e9b949, #6fb39c); }
+
+/* ---------- Birthday Cake ---------- */
+.kc--cake { --kc-ink: #4b2a32; --kc-soft: #7b505a; --kc-script: 'Abril Fatface', serif; --kc-caps: 'Montserrat', sans-serif; --kc-serif: 'Lora', Georgia, serif; --kc-accent: #b8475f; --kc-hair: rgba(184, 71, 95, 0.4); }
+.kc--cake .kc-paper { background: radial-gradient(120% 90% at 50% 30%, #fff8f6 0%, #f9e1dd 100%); padding: 13cqi 12cqi 15cqi; }
+.kc--cake .kc-frame { inset: 4.4cqi; border: 0.5cqi dotted rgba(184, 71, 95, 0.35); border-radius: 3cqi; }
+.kc-cake { width: 44cqi; height: auto; margin-bottom: 4cqi; }
+.kc--cake .kc-intro { font-size: max(var(--kc-min), 2.2cqi); letter-spacing: 0.3em; font-weight: 500; }
+.kc--cake .kc-name { font-size: calc(14cqi * var(--kc-nscale)); line-height: 1.04; }
+.kc--cake .kc-day { font-family: 'Abril Fatface', serif; }
+.kc--cake .kc-photo { border-radius: 50%; aspect-ratio: 1; width: 38cqi; background: #b8475f; }
+
+/* ---------- Confetti Pop ---------- */
+.kc--confetti { --kc-ink: #1d1d22; --kc-soft: #4d4d55; --kc-script: 'Abril Fatface', serif; --kc-caps: 'Montserrat', sans-serif; --kc-serif: 'Montserrat', sans-serif; --kc-accent: #1d1d22; --kc-hair: #1d1d22; --kc-press: none; }
+.kc--confetti .kc-paper { background: #ffffff; padding: 18cqi 13cqi; border-radius: 0.3cqi; }
+.kc--confetti .kc-paper::before { opacity: 0.12; }
+.kc-confetti-field { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+.kc--confetti .kc-intro { font-weight: 600; letter-spacing: 0.34em; font-size: max(var(--kc-min), 2.2cqi); color: #1d1d22; }
+.kc--confetti .kc-name { font-size: calc(15cqi * var(--kc-nscale)); line-height: 1.02; }
+.kc--confetti .kc-sub { color: #e2604a; font-weight: 600; }
+.kc--confetti .kc-date--numeric { margin-top: 7cqi; padding-top: 5cqi; border-top: 0.5cqi solid #1d1d22; width: 50cqi; }
+.kc--confetti .kc-num { font-weight: 600; }
+.kc--confetti .kc-venue { font-weight: 600; letter-spacing: 0.2em; }
+.kc--confetti .kc-photo { border-radius: 2cqi; aspect-ratio: 4 / 5; width: 44cqi; background: #1d1d22; padding: 0.5cqi; }
+
+/* ---------- Neon Night ---------- */
+.kc--neon { --kc-ink: #fbeefe; --kc-soft: #d7c6ef; --kc-script: 'Dancing Script', cursive; --kc-caps: 'Montserrat', sans-serif; --kc-serif: 'Montserrat', sans-serif; --kc-accent: #ff7bd5; --kc-hair: rgba(95, 243, 255, 0.6); --kc-press: none; }
+.kc--neon .kc-paper { background: radial-gradient(120% 80% at 50% 25%, #2a1f52 0%, #17122b 60%, #0d0a1a 100%); padding: 15cqi 12cqi; }
+.kc--neon .kc-paper::before { opacity: 0.18; mix-blend-mode: screen; }
+.kc-neon-frame { position: absolute; inset: 5cqi; z-index: 1; border: 0.5cqi solid #5ff3ff; border-radius: 4cqi; box-shadow: 0 0 1cqi #5ff3ff, inset 0 0 1cqi #5ff3ff, 0 0 3cqi rgba(95, 243, 255, 0.45); opacity: 0.85; }
+.kc-neonspark { width: 46cqi; height: auto; margin-bottom: 3cqi; }
+.kc--neon .kc-intro { font-weight: 500; letter-spacing: 0.32em; font-size: max(var(--kc-min), 2.2cqi); color: #bff9ff; }
+.kc--neon .kc-name { font-weight: 700; font-size: calc(16cqi * var(--kc-nscale)); color: #ffe6f7; text-shadow: 0 0 0.6cqi #ff5fc8, 0 0 2cqi #ff5fc8, 0 0 4.5cqi rgba(255, 95, 200, 0.6); }
+.kc--neon .kc-amp { color: #5ff3ff; font-style: normal; }
+.kc--neon .kc-sub { color: #5ff3ff; text-shadow: 0 0 1.2cqi rgba(95, 243, 255, 0.8); }
+.kc--neon .kc-date, .kc--neon .kc-venue { letter-spacing: 0.08em; }
+.kc--neon .kc-date { margin-top: 6cqi; }
+.kc--neon .kc-photo { border-radius: 4cqi; aspect-ratio: 1; background: #ff5fc8; padding: 0.4cqi; box-shadow: 0 0 2cqi rgba(255, 95, 200, 0.7); }
+
+/* ---------- Cap & Diploma ---------- */
+.kc--gradcap { --kc-ink: #f1e8d0; --kc-soft: #d6c69a; --kc-caps: 'Cinzel', serif; --kc-script: 'Playfair Display', serif; --kc-accent: #e3c77b; --kc-hair: rgba(216, 184, 102, 0.6); --kc-press: 0 -0.1cqi 0 rgba(0, 0, 0, 0.4); }
+.kc--gradcap .kc-paper { background: radial-gradient(110% 80% at 50% 30%, #23345e 0%, #14213d 60%, #0b1428 100%); padding: 15cqi 13cqi; }
+.kc--gradcap .kc-paper::before { opacity: 0.16; mix-blend-mode: screen; }
+.kc--gradcap .kc-gild { display: block; }
+.kc--gradcap .kc-frame { inset: 4.8cqi; border: 1px solid rgba(216, 184, 102, 0.55); }
+.kc-gradcap { width: 50cqi; height: auto; margin-bottom: 4cqi; }
+.kc-laurel { width: 40cqi; height: auto; margin: 4cqi auto 3cqi; display: block; }
+.kc--gradcap .kc-intro { font-size: max(var(--kc-min), 2.2cqi); }
+.kc--gradcap .kc-name { font-style: italic; font-size: calc(13cqi * var(--kc-nscale)); line-height: 1.12; }
+.kc--gradcap .kc-day { font-family: 'Playfair Display', serif; }
+.kc--gradcap .kc-col, .kc--gradcap .kc-month, .kc--gradcap .kc-year { color: var(--kc-soft); }
+.kc--gradcap .kc-photo { border-radius: 0; aspect-ratio: 4 / 5; width: 36cqi; }
+
+/* ---------- Moon & Clouds (baby) ---------- */
+.kc--nursery { --kc-ink: #3a4a56; --kc-soft: #5f7381; --kc-script: 'Great Vibes', cursive; --kc-caps: 'Quicksand', sans-serif; --kc-serif: 'Quicksand', sans-serif; --kc-accent: #5b86ad; --kc-hair: rgba(91, 134, 173, 0.45); }
+.kc--nursery .kc-paper { background: radial-gradient(120% 90% at 50% 20%, #f8fbfd 0%, #e6f0f5 70%, #dde9e3 100%); padding: 12cqi 12cqi 15cqi; }
+.kc--nursery .kc-frame { inset: 4.6cqi; border: 1px solid rgba(91, 134, 173, 0.3); border-radius: 5cqi; }
+.kc-nursery { width: 60cqi; height: auto; margin-bottom: 4cqi; }
+.kc--nursery .kc-intro { font-weight: 600; font-size: max(var(--kc-min), 2.3cqi); }
+.kc--nursery .kc-name { font-size: calc(16cqi * var(--kc-nscale)); }
+.kc--nursery .kc-amp { font-family: var(--kc-script); font-style: normal; font-size: 8cqi; }
+.kc--nursery .kc-sub { font-weight: 600; }
+.kc--nursery .kc-photo { border-radius: 50%; aspect-ratio: 1; width: 36cqi; background: #fff; padding: 0.8cqi; }
+
+/* ---------- Diamond Ring ---------- */
+.kc--ring { --kc-ink: #4a3a33; --kc-soft: #6f5a50; --kc-accent: #9c7a3c; --kc-hair: rgba(184, 145, 63, 0.5); }
+.kc--ring .kc-paper { background: radial-gradient(120% 90% at 50% 35%, #fffaf6 0%, #f6e3da 100%); padding: 14cqi 13cqi; }
+.kc--ring .kc-frame { inset: 5.4cqi; border: 1px solid rgba(184, 145, 63, 0.5); }
+.kc--ring .kc-frame::after { content: ''; position: absolute; inset: 1.2cqi; border: 1px solid rgba(184, 145, 63, 0.22); }
+.kc-ring { width: 26cqi; height: auto; margin-bottom: 4cqi; }
+.kc--ring .kc-name { font-size: calc(15cqi * var(--kc-nscale)); }
+.kc--ring .kc-amp { font-family: var(--kc-script); font-style: normal; font-size: 7cqi; }
+.kc--ring .kc-photo { border-radius: 50%; width: 36cqi; }
+
+/* ---------- Tiara & Roses ---------- */
+.kc--crown { --kc-ink: #5a3842; --kc-soft: #845f69; --kc-script: 'Great Vibes', cursive; --kc-caps: 'Cinzel', serif; --kc-accent: #b0607a; --kc-hair: rgba(176, 96, 122, 0.45);
+  --kc-foil: linear-gradient(105deg, #8a4b3e 0%, #c18676 18%, #f1cbbd 32%, #a56b5c 48%, #dcae9c 64%, #94584a 80%, #e3b4a4 100%); }
+.kc--crown .kc-paper { background: radial-gradient(100% 75% at 50% 45%, #fff6f8 0%, #f6dfe6 100%); padding: 30cqi 12cqi 28cqi; }
+.kc--crown .kc-floral { width: 62cqi; }
+.kc--crown .kc-floral--br { width: 48cqi; }
+.kc-tiara { width: 40cqi; height: auto; margin-bottom: 3cqi; }
+.kc--crown .kc-intro { font-size: max(var(--kc-min), 2.2cqi); }
+.kc--crown .kc-name { font-size: calc(16cqi * var(--kc-nscale)); }
+.kc--crown .kc-sub { letter-spacing: 0.3em; }
+.kc--crown .kc-photo { border-radius: 999px 999px 1cqi 1cqi; aspect-ratio: 3 / 4; width: 34cqi; }
+
+/* ---------- Star of David ---------- */
+.kc--mitzvah { --kc-ink: #eef1f7; --kc-soft: #c3cbdb; --kc-caps: 'Cinzel', serif; --kc-script: 'Cinzel', serif; --kc-accent: #dfe5ef; --kc-hair: rgba(192, 200, 216, 0.6); --kc-press: 0 -0.1cqi 0 rgba(0, 0, 0, 0.4);
+  --kc-foil: linear-gradient(105deg, #8e9ab0 0%, #dfe5ef 18%, #ffffff 30%, #a9b4c6 46%, #eef2f8 62%, #8e9ab0 80%, #dfe5ef 100%); }
+.kc--mitzvah .kc-paper { background: radial-gradient(110% 80% at 50% 30%, #21336a 0%, #16244a 58%, #0c1630 100%); padding: 15cqi 13cqi; }
+.kc--mitzvah .kc-paper::before { opacity: 0.14; mix-blend-mode: screen; }
+.kc--mitzvah .kc-gild { display: block; }
+.kc--mitzvah .kc-frame { inset: 4.6cqi; border: 1px solid rgba(192, 200, 216, 0.55); }
+.kc--mitzvah .kc-frame::after { content: ''; position: absolute; inset: 1.2cqi; border: 1px solid rgba(192, 200, 216, 0.25); }
+.kc-star { width: 30cqi; height: auto; margin-bottom: 5cqi; }
+.kc--mitzvah .kc-intro { font-size: max(var(--kc-min), 2.2cqi); }
+.kc--mitzvah .kc-name { font-size: calc(11cqi * var(--kc-nscale)); letter-spacing: 0.08em; line-height: 1.1; font-weight: 500; }
+.kc--mitzvah .kc-day { font-family: 'Cinzel', serif; }
+.kc--mitzvah .kc-col, .kc--mitzvah .kc-month, .kc--mitzvah .kc-year { color: var(--kc-soft); }
+.kc--mitzvah .kc-photo { border-radius: 0; aspect-ratio: 4 / 5; width: 34cqi; }
+
+/* ---------- Sunset Horizon ---------- */
+.kc--sunset { --kc-ink: #4a342b; --kc-soft: #75574a; --kc-script: 'Dancing Script', cursive; --kc-caps: 'Josefin Sans', sans-serif; --kc-serif: 'Lora', Georgia, serif; --kc-accent: #c8613f; --kc-hair: rgba(200, 97, 63, 0.45); }
+.kc--sunset .kc-paper { background: #fdf6ee; padding: 50cqi 12cqi 16cqi; }
+.kc-sunset { position: absolute; top: 0; left: 0; width: 100%; height: 42cqi; z-index: 1; }
+.kc--sunset .kc-intro { font-size: max(var(--kc-min), 2.3cqi); letter-spacing: 0.3em; }
+.kc--sunset .kc-name { font-weight: 700; font-size: calc(15cqi * var(--kc-nscale)); }
+.kc--sunset .kc-photo { width: 36cqi; aspect-ratio: 1; padding: 0.8cqi; background: #fff; border-radius: 1cqi; }
+
+/* ---------- Home Sweet Home ---------- */
+.kc--house { --kc-ink: #3d3a35; --kc-soft: #625d55; --kc-script: 'Alex Brush', cursive; --kc-caps: 'Josefin Sans', sans-serif; --kc-serif: 'Lora', Georgia, serif; --kc-accent: #b0583a; --kc-hair: rgba(176, 88, 58, 0.45); }
+.kc--house .kc-paper { background: radial-gradient(120% 90% at 50% 35%, #fffcf6 0%, #f3ebdd 100%); padding: 14cqi 12cqi 16cqi; }
+.kc-house { width: 62cqi; height: auto; margin-bottom: 4cqi; }
+.kc--house .kc-intro { font-size: max(var(--kc-min), 2.3cqi); color: var(--kc-ink); }
+.kc--house .kc-name { font-size: calc(16cqi * var(--kc-nscale)); }
+.kc--house .kc-amp { font-family: var(--kc-caps); font-style: normal; font-size: 3cqi; letter-spacing: 0.3em; }
+.kc--house .kc-photo { border-radius: 0.6cqi; aspect-ratio: 4 / 5; padding: 1.2cqi 1.2cqi 4cqi; background: #fff; width: 36cqi; transform: rotate(-1.5deg); }
+.kc--house .kc-photo img { border-radius: 0; }
+
+/* ---------- Evergreen & Gold ---------- */
+.kc--winter { --kc-ink: #f1e8d0; --kc-soft: #d8c99f; --kc-caps: 'Cinzel', serif; --kc-accent: #e3c77b; --kc-hair: rgba(216, 184, 102, 0.6); --kc-press: 0 -0.1cqi 0 rgba(0, 0, 0, 0.35); }
+.kc--winter .kc-paper { background: radial-gradient(110% 80% at 50% 35%, #1b4a36 0%, #123828 58%, #0a2419 100%); padding: 22cqi 14cqi; }
+.kc--winter .kc-paper::before { opacity: 0.2; mix-blend-mode: screen; }
+.kc--winter .kc-gild { display: block; }
+.kc--winter .kc-frame { inset: 5cqi; border: 1px solid rgba(216, 184, 102, 0.55); }
+.kc-pine { position: absolute; width: 40cqi; height: auto; z-index: 1; pointer-events: none; }
+.kc-pine--tl { top: -1cqi; left: -1cqi; }
+.kc-pine--br { bottom: -1cqi; right: -1cqi; transform: rotate(180deg); }
+.kc-flake { position: absolute; z-index: 1; line-height: 0; }
+.kc-flake svg { width: 100%; height: auto; }
+.kc--winter .kc-intro { font-size: max(var(--kc-min), 2.2cqi); }
+.kc--winter .kc-name { font-size: calc(15cqi * var(--kc-nscale)); }
+.kc--winter .kc-amp { font-size: max(var(--kc-min), 2.6cqi); font-style: normal; text-transform: uppercase; letter-spacing: 0.36em; margin: 1.8cqi 0; }
+.kc--winter .kc-photo { border-radius: 999px 999px 1cqi 1cqi; aspect-ratio: 3 / 4; width: 34cqi; }
+
+/* ---------- Champagne Toast ---------- */
+.kc--cheers { --kc-ink: #463826; --kc-soft: #6f5a40; --kc-script: 'Great Vibes', cursive; --kc-caps: 'Cinzel', serif; --kc-accent: #8c6626; --kc-hair: rgba(184, 145, 63, 0.5); }
+.kc--cheers .kc-paper { background: radial-gradient(110% 80% at 50% 35%, #fffaf0 0%, #f3e6cd 100%); padding: 15cqi 13cqi; }
+.kc--cheers .kc-gild { display: block; }
+.kc--cheers .kc-frame { inset: 5.5cqi; border: 1px solid rgba(184, 145, 63, 0.5); }
+.kc-champagne { width: 36cqi; height: auto; margin-bottom: 4cqi; }
+.kc--cheers .kc-intro { font-size: max(var(--kc-min), 2.2cqi); }
+.kc--cheers .kc-name { font-size: calc(15.5cqi * var(--kc-nscale)); }
+.kc--cheers .kc-amp { font-family: var(--kc-script); font-style: normal; font-size: 7cqi; }
+.kc--cheers .kc-photo { width: 36cqi; }
+
+/* ---------- Modern Launch ---------- */
+.kc--launch { --kc-ink: #14254f; --kc-soft: #46557a; --kc-script: 'Bodoni Moda', serif; --kc-serif: 'Bodoni Moda', serif; --kc-caps: 'Montserrat', sans-serif; --kc-accent: #14254f; --kc-hair: #14254f; --kc-press: none; }
+.kc--launch .kc-paper { background: #ffffff; padding: 22cqi 12cqi 18cqi; border-radius: 0; }
+.kc--launch .kc-paper::before { opacity: 0.1; }
+.kc-launch { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+.kc--launch .kc-body { align-items: flex-start; text-align: left; }
+.kc--launch .kc-intro { font-weight: 600; letter-spacing: 0.3em; font-size: max(var(--kc-min), 2.1cqi); color: #e46f55; max-width: 60cqi; }
+.kc--launch .kc-names { align-items: flex-start; }
+.kc--launch .kc-name { font-weight: 600; font-size: calc(13cqi * var(--kc-nscale)); line-height: 1.02; padding: 0; letter-spacing: -0.01em; }
+.kc--launch .kc-sub { color: #e46f55; }
+.kc--launch .kc-date--numeric { margin-top: 8cqi; padding-top: 5cqi; border-top: 0.5cqi solid #14254f; width: 52cqi; }
+.kc--launch .kc-num { justify-content: flex-start; font-family: var(--kc-caps); font-weight: 600; font-size: 8cqi; }
+.kc--launch .kc-small, .kc--launch .kc-venue, .kc--launch .kc-address { font-family: var(--kc-caps); }
+.kc--launch .kc-request, .kc--launch .kc-message { font-style: normal; font-family: var(--kc-caps); }
+.kc--launch .kc-photo { border-radius: 0; padding: 0; background: none; width: 76cqi; aspect-ratio: 16 / 10; margin-left: 0; box-shadow: none; }
+
+/* ---------- Snapshots (reunion) ---------- */
+.kc--polaroid { --kc-ink: #3d3a35; --kc-soft: #625d55; --kc-script: 'Dancing Script', cursive; --kc-caps: 'Josefin Sans', sans-serif; --kc-serif: 'Lora', Georgia, serif; --kc-accent: #2f5d74; --kc-hair: rgba(47, 93, 116, 0.4); }
+.kc--polaroid .kc-paper { background: radial-gradient(120% 90% at 50% 30%, #f8f6f1 0%, #ebe6dc 100%); padding: 12cqi 12cqi 15cqi; }
+.kc-polaroids { width: 82cqi; height: auto; margin-bottom: 5cqi; }
+.kc--polaroid .kc-intro { font-size: max(var(--kc-min), 2.3cqi); }
+.kc--polaroid .kc-name { font-weight: 700; font-size: calc(15cqi * var(--kc-nscale)); }
+.kc--polaroid .kc-photo { border-radius: 0.3cqi; aspect-ratio: 4 / 5; padding: 1.4cqi 1.4cqi 5cqi; background: #fffdf8; width: 40cqi; transform: rotate(-2deg); }
+.kc--polaroid .kc-photo img { border-radius: 0; }

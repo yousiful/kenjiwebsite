@@ -1,8 +1,9 @@
 import type { HandlerEvent, HandlerResponse } from '@netlify/functions';
 import { asV2, invitesStore, readToken, randomId, hmac, json, fail, parseBody, str } from './_invites/common';
 import {
-  THEME_IDS, MUSIC_IDS, FIGURES, LIMITS, weddingTitle, isDate, isTime, isEmail, cleanPhone, parseGuestList, todayIn, buildIcs,
-  type InviteEvent, type Guest, type SubEvent, type ThemeId, type MusicId, type Figures,
+  THEME_IDS, MUSIC_IDS, FIGURES, LIMITS, EVENT_TYPES, MAX_PHOTOS, isDate, isTime, isEmail, cleanPhone, parseGuestList, todayIn, buildIcs,
+  eventWording, namesError, cleanDetails, cleanPhotos, cleanLayout, typeOf,
+  type InviteEvent, type Guest, type SubEvent, type ThemeId, type MusicId, type Figures, type EventType, type PhotoRef,
 } from '../../src/invites/shared';
 
 /**
@@ -12,7 +13,8 @@ import {
  *   cohost/<tokenHash>               one-time co-host invite {eventId, exp, by}, 7 days, single use
  *   guests/<eventId>/<guestId>       one JSON per guest so RSVPs never overwrite each other
  *   codes/<code>                     {eventId, guestId} or {eventId, open:true}
- *   photos/<eventId>                 resized JPEG bytes
+ *   photos/<eventId>                 the single photo of events made before multi-photo (still served)
+ *   pics/<eventId>/<photoId>         a photo (up to 1600px), and <photoId>.s a small copy for the card
  *   rl/<code>                        RSVP write timestamps (rate limit)
  *
  * Host ops need `Authorization: Bearer <token>` from invites-auth and must own the event.
@@ -71,16 +73,23 @@ function cleanSubEvents(v: unknown): SubEvent[] {
 
 /** Applies the editable fields present in `b` onto `ev`. Returns an error message or ''. */
 function applyEventFields(ev: StoredEvent, b: Record<string, unknown>): string {
+  if ('type' in b) ev.type = EVENT_TYPES.includes(b.type as EventType) ? (b.type as EventType) : 'wedding';
+  if ('details' in b) ev.details = cleanDetails(b.details);
   if ('coupleNames' in b) {
     const n = Array.isArray(b.coupleNames) ? b.coupleNames : [];
-    const a = str(n[0], LIMITS.name);
-    const c = str(n[1], LIMITS.name);
-    if (!a || !c) return 'Please type both names.';
-    ev.coupleNames = [a, c];
-    ev.title = `${a} & ${c}`;
+    ev.coupleNames = [str(n[0], LIMITS.name), str(n[1], LIMITS.name)];
   }
+  if ('coupleNames' in b || 'type' in b || 'details' in b) {
+    const err = namesError(typeOf(ev), ev.coupleNames || ['', ''], ev.details);
+    if (err) return err;
+    // weddings keep their "Sarah & James" title; other events use their own ("Maya's 40th Birthday")
+    ev.title = typeOf(ev) === 'wedding' ? `${ev.coupleNames[0]} & ${ev.coupleNames[1]}` : eventWording(ev).title;
+  }
+  if ('photos' in b) ev.photos = cleanPhotos(b.photos, ev.photos || []);
+  if ('photoLayout' in b) ev.photoLayout = int(b.photoLayout, 0, 9, 0);
+  if ('layout' in b) ev.layout = cleanLayout(b.layout);
   if ('date' in b) {
-    if (b.date && !isDate(b.date)) return 'Please pick the wedding date again.';
+    if (b.date && !isDate(b.date)) return 'Please pick the date again.';
     ev.date = (b.date as string) || '';
   }
   if ('time' in b) {
@@ -114,7 +123,7 @@ function publicEvent(ev: StoredEvent) {
   return {
     id: ev.id, coupleNames: ev.coupleNames, title: ev.title, date: ev.date, time: ev.time, timezone: ev.timezone,
     venueName: ev.venueName, address: ev.address, theme: ev.theme, accent: ev.accent, photo: ev.photo,
-    photoVersion: ev.photoVersion, personalMessage: ev.personalMessage, opening: ev.opening === 'fade' || ev.opening === 'envelope' ? ev.opening : 'sketch', music: ev.music || '', figures: ev.figures || 'bride-groom', showCross: !!ev.showCross, rsvpBy: ev.rsvpBy, defaultSeats: ev.defaultSeats,
+    photoVersion: ev.photoVersion, type: typeOf(ev), details: ev.details || {}, photos: ev.photos || [], photoLayout: ev.photoLayout || 0, layout: ev.layout || null, personalMessage: ev.personalMessage, opening: ev.opening === 'fade' || ev.opening === 'envelope' ? ev.opening : 'sketch', music: ev.music || '', figures: ev.figures || 'bride-groom', showCross: !!ev.showCross, rsvpBy: ev.rsvpBy, defaultSeats: ev.defaultSeats,
     subEvents: ev.subEvents,
   };
 }
@@ -137,6 +146,19 @@ async function loadOwned(store: Store, owner: Owner, id: unknown): Promise<Store
   if (!ev) return null;
   const n = normalizeOwners(ev);
   return n.owners.includes(owner.ownerHash) ? n : null;
+}
+
+/**
+ * Reads the event again and applies `change` to the fresh copy before saving, so a slow
+ * photo upload never puts back an older copy over edits saved meanwhile (a design picked
+ * while the photos were still uploading, for example).
+ */
+async function saveFresh(store: Store, id: string, change: (ev: StoredEvent) => void): Promise<StoredEvent | null> {
+  const fresh = (await store.get(`events/${id}`, { type: 'json' })) as StoredEvent | null;
+  if (!fresh) return null;
+  change(fresh);
+  await store.setJSON(`events/${id}`, fresh);
+  return fresh;
 }
 
 async function listGuests(store: Store, eventId: string): Promise<Guest[]> {
@@ -257,6 +279,19 @@ const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
       };
     }
 
+    if (method === 'GET' && op === 'pic') {
+      if (!/^[A-Za-z0-9_-]{8,32}$/.test(q.e || '') || !/^[A-Za-z0-9_-]{4,16}$/.test(q.p || '')) return { statusCode: 404, body: '' };
+      const data = (await store.get(`pics/${q.e}/${q.p}${q.s === '1' ? '.s' : ''}`, { type: 'arrayBuffer' })) as ArrayBuffer | null;
+      if (!data) return { statusCode: 404, body: '' };
+      const buf = Buffer.from(data);
+      return {
+        statusCode: 200,
+        headers: { 'Content-Type': detectImage(buf) || 'image/jpeg', 'Cache-Control': 'public, max-age=31536000, immutable' },
+        body: buf.toString('base64'),
+        isBase64Encoded: true,
+      };
+    }
+
     if (method === 'GET' && op === 'og-image') {
       if (!/^[A-Za-z0-9_-]{8,32}$/.test(q.e || '')) return { statusCode: 404, body: '' };
       const data = (await store.get(`og/${q.e}`, { type: 'arrayBuffer' })) as ArrayBuffer | null;
@@ -276,12 +311,13 @@ const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
       const ev = r.ev;
       const first = (n: string) => (n.trim().split(/\s+/)[0] || n).slice(0, 30);
       const couple = `${first(ev.coupleNames[0])} & ${first(ev.coupleNames[1])}`;
+      const wedding = typeOf(ev) === 'wedding';
       const city = (ev.address.split(',')[1] || '').trim();
       const where = [ev.venueName, city && !/\d/.test(city) ? city : ''].filter(Boolean).join(', ');
       const when = ev.date ? new Date(`${ev.date}T12:00:00Z`).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }) : '';
       const v = ev.ogVersion || 0;
       return json(200, {
-        title: `You're invited: ${couple}'s wedding`,
+        title: wedding ? `You're invited: ${couple}'s wedding` : `You're invited: ${eventWording(ev).title}`,
         description: [when, where, 'Tap to RSVP'].filter(Boolean).join(' \u00b7 '),
         image: v ? `${SITE}/.netlify/functions/invites-api?op=og-image&e=${ev.id}&v=${v}` : `${SITE}/invites-og.jpg`,
         width: 1200,
@@ -297,12 +333,12 @@ const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
       const link = `${SITE}/i/${q.code}`;
       const sub = q.sub && q.sub !== 'main' ? ev.subEvents.find((s) => s.id === q.sub) : null;
       if (q.sub && q.sub !== 'main' && !sub) return { statusCode: 404, body: 'Not found' };
-      const wt = weddingTitle(ev.coupleNames);
+      const wt = eventWording(ev).title;
       const item = sub
         ? { uid: `${ev.id}-${sub.id}`, title: `${sub.title} · ${wt}`, date: sub.date || ev.date, time: sub.time, timezone: ev.timezone, location: [sub.venueName, sub.address].filter(Boolean).join(', '), details: [sub.notes, `Your invitation: ${link}`].filter(Boolean).join('\n'), hours: 3, url: link }
         : { uid: ev.id, title: wt, date: ev.date, time: ev.time, timezone: ev.timezone, location: [ev.venueName, ev.address].filter(Boolean).join(', '), details: `Your invitation: ${link}`, hours: 5, url: link };
       if (!item.date) return { statusCode: 404, body: 'No date yet' };
-      const fname = (sub ? sub.title : 'wedding').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'event';
+      const fname = (sub ? sub.title : wt).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'event';
       return {
         statusCode: 200,
         // inline on iPhone so Safari opens the Calendar "Add" sheet straight away
@@ -407,13 +443,13 @@ const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
       if (blobs.length >= 25) return fail(400, 'You have a lot of invitations already. Please delete one you no longer need first.');
       const t = nowIso();
       const ev: StoredEvent = {
-        id: randomId(12), owners: [owner.ownerHash], creator: owner.ownerHash, coupleNames: ['', ''], title: '', date: '', time: '', timezone: 'America/New_York',
+        id: randomId(12), owners: [owner.ownerHash], creator: owner.ownerHash, coupleNames: ['', ''], title: '', date: '', time: '', timezone: 'America/New_York', type: 'wedding', details: {}, photos: [], photoLayout: 0, layout: null,
         venueName: '', address: '', theme: 'ivory', accent: '', photo: false, photoVersion: 0, personalMessage: '', opening: 'sketch', music: '', figures: 'bride-groom', showCross: false, rsvpBy: '',
         defaultSeats: 2, openLinkEnabled: false, openCode: '', subEvents: [], createdAt: t, updatedAt: t,
       };
       const err = applyEventFields(ev, b);
       if (err) return fail(400, err);
-      if (!ev.title) return fail(400, 'Please type both names.');
+      if (!ev.title) return fail(400, namesError(typeOf(ev), ev.coupleNames, ev.details) || 'Please type both names.');
       await store.setJSON(`events/${ev.id}`, ev);
       await store.set(`owners/${owner.ownerHash}/${ev.id}`, '');
       return json(200, { event: hostEvent(ev, owner.ownerHash) });
@@ -481,6 +517,8 @@ const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
       await Promise.all(guests.flatMap((g) => [store.delete(`guests/${ev.id}/${g.id}`), store.delete(`codes/${g.code}`), store.delete(`rl/${g.code}`)]));
       if (ev.openCode) await store.delete(`codes/${ev.openCode}`);
       await store.delete(`photos/${ev.id}`);
+      const { blobs: pics } = await store.list({ prefix: `pics/${ev.id}/` });
+      await Promise.all(pics.map((p) => store.delete(p.key)));
       await store.delete(`og/${ev.id}`);
       await Promise.all(normalizeOwners(ev).owners.map((h) => store.delete(`owners/${h}/${ev.id}`)));
       await store.delete(`events/${ev.id}`);
@@ -494,28 +532,80 @@ const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
       if (buf.length > MAX_PHOTO_BYTES) return fail(400, 'That photo is too large. Please choose a smaller one.');
       if (!detectImage(buf)) return fail(400, 'Please choose a photo (JPG or PNG).');
       await store.set(`photos/${ev.id}`, buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength) as ArrayBuffer);
-      ev.photo = true;
-      ev.photoVersion = (ev.photoVersion || 0) + 1;
-      ev.updatedAt = nowIso();
-      await store.setJSON(`events/${ev.id}`, ev);
-      return json(200, { event: hostEvent(ev, owner.ownerHash) });
+      const saved = await saveFresh(store, ev.id, (f) => { f.photo = true; f.photoVersion = (f.photoVersion || 0) + 1; f.updatedAt = nowIso(); });
+      if (!saved) return fail(404, "We couldn't find that invitation.");
+      return json(200, { event: hostEvent(saved, owner.ownerHash) });
+    }
+
+    // multi-photo: the browser sends a resized photo and a small copy, plus a suggested focus point
+    if (op === 'pic-add') {
+      if ((ev.photos || []).length >= MAX_PHOTOS) return fail(400, `You can add up to ${MAX_PHOTOS} photos. Remove one first.`);
+      const decode = (v: unknown) => Buffer.from(String(v || '').replace(/^data:image\/[a-z]+;base64,/, ''), 'base64');
+      const full = decode(b.data);
+      const small = decode(b.small);
+      if (!full.length || !small.length) return fail(400, "We couldn't read that photo. Please try another one.");
+      if (full.length > MAX_PHOTO_BYTES || small.length > 600 * 1024) return fail(400, 'That photo is too large. Please choose a smaller one.');
+      if (!detectImage(full) || !detectImage(small)) return fail(400, 'Please choose a photo (JPG or PNG).');
+      const ab = (x: Buffer) => x.buffer.slice(x.byteOffset, x.byteOffset + x.byteLength) as ArrayBuffer;
+      // an event from before multi-photo keeps its one photo as the first of the set
+      let legacy: PhotoRef | null = null;
+      if (ev.photo && !(ev.photos || []).length) {
+        const old = (await store.get(`photos/${ev.id}`, { type: 'arrayBuffer' })) as ArrayBuffer | null;
+        if (old) {
+          const lid = randomId(8);
+          await store.set(`pics/${ev.id}/${lid}`, old);
+          await store.set(`pics/${ev.id}/${lid}.s`, old);
+          legacy = { id: lid, v: 1, fx: 0.5, fy: 0.4, w: 0, h: 0 };
+        }
+      }
+      const pid = randomId(8);
+      await store.set(`pics/${ev.id}/${pid}`, ab(full));
+      await store.set(`pics/${ev.id}/${pid}.s`, ab(small));
+      const f = (x: unknown) => { const n = Number(x); return Number.isFinite(n) ? Math.min(1, Math.max(0, n)) : 0.5; };
+      const added: PhotoRef = { id: pid, v: 1, fx: f(b.fx), fy: f(b.fy), w: int(b.w, 0, 20000, 0), h: int(b.h, 0, 20000, 0) };
+      let full8 = false;
+      const saved = await saveFresh(store, ev.id, (fr) => {
+        const list = [...(fr.photos || [])];
+        if (legacy && !list.length) { list.push(legacy); fr.photo = false; }
+        if (list.length >= MAX_PHOTOS) { full8 = true; return; }
+        list.push(added);
+        fr.photos = list;
+        fr.updatedAt = nowIso();
+      });
+      if (!saved) return fail(404, "We couldn't find that invitation.");
+      if (full8) {
+        await Promise.all([store.delete(`pics/${ev.id}/${pid}`), store.delete(`pics/${ev.id}/${pid}.s`)]);
+        return fail(400, `You can add up to ${MAX_PHOTOS} photos. Remove one first.`);
+      }
+      return json(200, { event: hostEvent(saved, owner.ownerHash) });
+    }
+
+    if (op === 'pic-delete') {
+      const pid = String(b.photo || '');
+      if (!(ev.photos || []).some((p) => p.id === pid)) return fail(404, "We couldn't find that photo.");
+      await Promise.all([store.delete(`pics/${ev.id}/${pid}`), store.delete(`pics/${ev.id}/${pid}.s`)]);
+      const saved = await saveFresh(store, ev.id, (fr) => {
+        fr.photos = (fr.photos || []).filter((p) => p.id !== pid);
+        if (fr.layout?.bg === `photo:${pid}`) { delete fr.layout.bg; fr.layout = cleanLayout(fr.layout); }
+        fr.updatedAt = nowIso();
+      });
+      if (!saved) return fail(404, "We couldn't find that invitation.");
+      return json(200, { event: hostEvent(saved, owner.ownerHash) });
     }
 
     if (op === 'og-upload') {
       const buf = Buffer.from(String(b.data || '').replace(/^data:image\/[a-z]+;base64,/, ''), 'base64');
       if (!buf.length || buf.length > 1.5 * 1024 * 1024 || detectImage(buf) !== 'image/jpeg') return fail(400, 'Preview image not saved.');
       await store.set(`og/${ev.id}`, buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength) as ArrayBuffer);
-      ev.ogVersion = (ev.ogVersion || 0) + 1;
-      await store.setJSON(`events/${ev.id}`, ev);
-      return json(200, { ok: true, ogVersion: ev.ogVersion });
+      const saved = await saveFresh(store, ev.id, (f) => { f.ogVersion = (f.ogVersion || 0) + 1; });
+      return json(200, { ok: true, ogVersion: saved?.ogVersion || 0 });
     }
 
     if (op === 'photo-delete') {
       await store.delete(`photos/${ev.id}`);
-      ev.photo = false;
-      ev.updatedAt = nowIso();
-      await store.setJSON(`events/${ev.id}`, ev);
-      return json(200, { event: hostEvent(ev, owner.ownerHash) });
+      const saved = await saveFresh(store, ev.id, (f) => { f.photo = false; f.updatedAt = nowIso(); });
+      if (!saved) return fail(404, "We couldn't find that invitation.");
+      return json(200, { event: hostEvent(saved, owner.ownerHash) });
     }
 
     if (op === 'add-guests') {

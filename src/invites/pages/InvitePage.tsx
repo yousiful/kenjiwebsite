@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
-import { api, icsUrl, photoUrl, type GuestView, type PublicEvent } from '../api';
-import InvitationCard from '../InvitationCard';
-import { EnvelopeIntro, TiltCard } from '../Opening';
-import { Celebration, StaticSparkles } from '../Celebration';
+import { api, icsUrl, cardPhotos, type GuestView, type PublicEvent } from '../api';
+import InvitationCard, { PAIRINGS, type CardPhoto } from '../InvitationCard';
+import { TiltCard } from '../Opening';
+import { Intro } from '../Intro';
+import { Celebration, StaticSparkles, lowEndDevice } from '../Celebration';
 import { LockWallpaper } from '../Wallpaper';
-import { SketchArt, SketchIntro } from '../Sketch';
+import { SketchArt } from '../Sketch';
 import { MusicBox } from '../music';
 import { Icon } from '../icons';
-import { buildIcs, googleCalendarUrl, cleanPhone, isEmail, weddingTitle, type CalItem } from '../shared';
-import { clockTime, countdownText, daysToGo, isAndroidDevice, isIOSDevice, loadThemeFonts, longDate, mapsUrl, shortDate } from '../format';
+import { buildIcs, googleCalendarUrl, cleanPhone, isEmail, eventWording, typeOf, type CalItem } from '../shared';
+import { THEME_FONTS, clockTime, countdownText, daysToGo, isAndroidDevice, isIOSDevice, loadThemeFonts, longDate, mapsUrl, shortDate } from '../format';
 import '../guest.css';
 
 interface Data { event: PublicEvent; guest: GuestView | null; open: boolean; canChange: boolean; openSeats?: number }
@@ -63,6 +64,7 @@ function GuestActions({ item, ics, mapHref, onSave, saving, onLock, lock }: { it
 
 function Rsvp({ data, code, preview, onSaved, actions }: { data: Data; code: string; preview: boolean; onSaved: (g: GuestView, newCode?: string) => void; actions?: ReactNode }) {
   const { event: ev, guest, open, canChange } = data;
+  const { host, noun } = eventWording(ev);
   const seats = open ? data.openSeats || ev.defaultSeats || 1 : guest?.seats || 1;
   const answered = guest && (guest.status === 'yes' || guest.status === 'no');
   const [editing, setEditing] = useState(!answered);
@@ -91,7 +93,7 @@ function Rsvp({ data, code, preview, onSaved, actions }: { data: Data; code: str
         const email = c.includes('@') ? c.toLowerCase() : '';
         const phone = email ? '' : c;
         if (!name.trim()) throw new Error('Please type your name.');
-        if (!c || (email && !isEmail(email)) || (!email && !cleanPhone(phone))) throw new Error('Please add your phone number or email, so the couple can reach you.');
+        if (!c || (email && !isEmail(email)) || (!email && !cleanPhone(phone))) throw new Error(`Please add your phone number or email, so ${host} can reach you.`);
         const r = await api.openRsvp({ code, name: name.trim(), phone, email, attending, partySize: attending ? party : 0, partyNames: names, note });
         onSaved(r.guest, r.code);
       } else {
@@ -127,7 +129,7 @@ function Rsvp({ data, code, preview, onSaved, actions }: { data: Data; code: str
         {guest.note && <p>Your note: &ldquo;{guest.note}&rdquo;</p>}
         {canChange ? (
           <>
-            <p className="kg-muted">Plans change. You can change your answer here any time before the wedding, using this same link.</p>
+            <p className="kg-muted">Plans change. You can change your answer here any time before the {noun}, using this same link.</p>
             <button type="button" className="kg-btn kg-btn--soft" onClick={() => { setEditing(true); setJustSaved(false); }}>Change my answer</button>
           </>
         ) : <p className="kg-muted">The celebration has passed, so answers are closed.</p>}
@@ -147,7 +149,7 @@ function Rsvp({ data, code, preview, onSaved, actions }: { data: Data; code: str
           </div>
           <div className="kg-field">
             <label htmlFor="kg-contact">Your phone number or email</label>
-            <p className="kg-hint">So the couple can reach you with any updates.</p>
+            <p className="kg-hint">So {host} can reach you with any updates.</p>
             <input id="kg-contact" className="kg-input" value={contact} onChange={(e) => setContact(e.target.value)} autoComplete="email" inputMode="email" maxLength={120} />
           </div>
         </>
@@ -186,7 +188,7 @@ function Rsvp({ data, code, preview, onSaved, actions }: { data: Data; code: str
       )}
       {attending !== null && (
         <div className="kg-field">
-          <label htmlFor="kg-note">{attending ? 'Anything the couple should know? (you can skip this)' : 'A note for the couple (you can skip this)'}</label>
+          <label htmlFor="kg-note">{attending ? `Anything ${host} should know? (you can skip this)` : `A note for ${host} (you can skip this)`}</label>
           {attending && <p className="kg-hint">For example, a food allergy.</p>}
           <textarea id="kg-note" className="kg-input kg-textarea" value={note} onChange={(e) => setNote(e.target.value)} maxLength={500} />
         </div>
@@ -197,6 +199,49 @@ function Rsvp({ data, code, preview, onSaved, actions }: { data: Data; code: str
       </button>
     </form>
   );
+}
+
+/** Swipeable photo gallery with big arrow buttons. Full-size photos load only when near. */
+function Gallery({ photos, at, title }: { photos: CardPhoto[]; at: { i: number; n: number }; title: string }) {
+  const track = useRef<HTMLDivElement>(null);
+  const [i, setI] = useState(0);
+  const go = (n: number) => {
+    const el = track.current;
+    if (!el) return;
+    const k = Math.max(0, Math.min(photos.length - 1, n));
+    el.scrollTo({ left: k * el.clientWidth, behavior: reducedMotion() ? 'auto' : 'smooth' });
+    setI(k);
+  };
+  // a tap on a photo in the card opens the gallery at that photo
+  useEffect(() => { if (at.n) go(at.i); }, [at.n]); // eslint-disable-line react-hooks/exhaustive-deps
+  return (
+    <section className="kg-panel" id="kg-photos" aria-labelledby="kg-photos-h" data-testid="gallery">
+      <h2 className="kg-h" id="kg-photos-h">Photos</h2>
+      <div className="kg-gallery">
+        <div className="kg-gal-track" ref={track} tabIndex={0} aria-label={`Photos for ${title}. Swipe to see more.`}
+          onScroll={(e) => { const el = e.currentTarget; const k = Math.round(el.scrollLeft / Math.max(1, el.clientWidth)); if (k !== i) setI(k); }}>
+          {photos.map((p, k) => (
+            <figure key={p.id} className="kg-gal-slide">
+              <img src={p.full} alt={`Photo ${k + 1} of ${photos.length}`} loading="lazy" decoding="async" />
+            </figure>
+          ))}
+        </div>
+        <div className="kg-gal-nav">
+          <button type="button" onClick={() => go(i - 1)} disabled={i <= 0} aria-label="Previous photo" data-testid="gal-prev">&lsaquo;</button>
+          <span className="kg-gal-count" aria-live="polite" data-testid="gal-count">{i + 1} of {photos.length}</span>
+          <button type="button" onClick={() => go(i + 1)} disabled={i >= photos.length - 1} aria-label="Next photo" data-testid="gal-next">&rsaquo;</button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/** Fonts and the main photo, ready before the opening starts (never longer than 1.5s). */
+function prepareIntro(fontKeys: string[], photo: CardPhoto | undefined): Promise<void> {
+  const fonts = loadThemeFonts([], fontKeys);
+  const img = photo ? new Promise<void>((res) => { const i = new Image(); i.src = photo.src; i.decode().then(() => res(), () => res()); }) : Promise.resolve();
+  return Promise.race([Promise.all([fonts, img]), new Promise((r) => window.setTimeout(r, 1500))])
+    .then(() => new Promise<void>((r) => requestAnimationFrame(() => requestAnimationFrame(() => r()))));
 }
 
 /** Big, friendly music toggle. Music never starts on its own. */
@@ -228,11 +273,13 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
   const [code, setCode] = useState(initialCode);
   const [data, setData] = useState<Data | null>(null);
   const [error, setError] = useState('');
-  // opening sequence: sketch -> envelope -> card + party. Plays on every visit (nothing is
-  // remembered), and again from the "Replay the celebration" button.
-  const [stage, setStage] = useState<'sketch' | 'envelope' | 'done'>('done');
+  // opening sequence: one timeline (sketch -> wash -> envelope -> card -> party). Plays on every
+  // visit (nothing is remembered), and again from the "Replay the celebration" button.
+  const [intro, setIntro] = useState<{ mode: 'sketch' | 'envelope'; ready: Promise<void> } | null>(null);
+  const [revealed, setRevealed] = useState(true);
   const [party, setParty] = useState(false);
   const [run, setRun] = useState(0);
+  const [galleryAt, setGalleryAt] = useState({ i: 0, n: 0 });
   // "Save the invitation to my phone": a 1080x1920 picture made on this device
   type Job = '' | 'making' | 'done' | 'error' | 'ready';
   const [saving, setSaving] = useState<Job>('');
@@ -242,13 +289,14 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
   const wpRef = useRef<HTMLDivElement>(null);
   const lockRef = useRef<HTMLDivElement>(null);
   const readyFile = useRef<{ save: File | null; lock: File | null }>({ save: null, lock: null });
-  const intro = stage !== 'done';
-  const play = (opening: PublicEvent['opening']) => {
+  const fontKeysOf = (e: PublicEvent) => [...(THEME_FONTS[e.theme] || []), ...(e.layout?.fonts && PAIRINGS[e.layout.fonts] ? PAIRINGS[e.layout.fonts].keys : [])];
+  const play = (e: PublicEvent) => {
     setRun((r) => r + 1);
     setParty(false);
-    if (reducedMotion()) { setStage('done'); return; }
-    if (opening === 'fade') { setStage('done'); window.setTimeout(() => setParty(true), 350); return; }
-    setStage(opening === 'envelope' ? 'envelope' : 'sketch');
+    if (reducedMotion()) { setIntro(null); setRevealed(true); return; }
+    if (e.opening === 'fade') { setIntro(null); setRevealed(true); window.setTimeout(() => setParty(true), 350); return; }
+    setRevealed(false);
+    setIntro({ mode: e.opening === 'envelope' ? 'envelope' : 'sketch', ready: prepareIntro(fontKeysOf(e), cardPhotos(e)[0]) });
   };
   const preview = !!previewEvent || (typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('preview') === '1');
 
@@ -267,15 +315,15 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
     api.invite(initialCode, preview)
       .then((d) => {
         setData(d);
-        play(d.event.opening);
+        play(d.event);
       })
       .catch((e) => setError(e.message));
   }, [initialCode, previewEvent, preview]);
 
   useEffect(() => {
     if (!data) return;
-    loadThemeFonts([data.event.theme]);
-    document.title = `${data.event.title} | Wedding invitation`;
+    loadThemeFonts([data.event.theme], fontKeysOf(data.event));
+    document.title = typeOf(data.event) === 'wedding' ? `${data.event.title} | Wedding invitation` : `${eventWording(data.event).title} | Invitation`;
   }, [data]);
 
   if (error) {
@@ -291,11 +339,14 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
   const motionOk = !reducedMotion();
   const fade = ev.opening === 'fade' || !motionOk;
   const theme = ev.theme;
-  const pUrl = photoUrl(ev);
+  const type = typeOf(ev);
+  const words = eventWording(ev);
+  const photos = cardPhotos(ev);
+  const cardData = { ...ev, photos, mapHref: '' };
   const n = daysToGo(ev.date, ev.timezone);
   const place = [ev.venueName, ev.address].filter(Boolean).join(', ');
   const link = code ? `${window.location.origin}/i/${code}` : window.location.href;
-  const wTitle = weddingTitle(ev.coupleNames);
+  const wTitle = words.title;
   const mainItem: CalItem = { uid: ev.id, title: wTitle, date: ev.date, time: ev.time, timezone: ev.timezone, location: place, details: `Your invitation: ${link}`, hours: 5, url: link };
   const icsFor = (sub: string) => (code && !preview ? icsUrl(code, sub, isIOSDevice()) : '');
   const mapHref = place ? mapsUrl(ev.venueName, ev.address) : '';
@@ -376,7 +427,7 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
       }
     }
     const { captureNode } = await import('../snapshot');
-    const url = await captureNode(stage, theme, W, H, 'png');
+    const url = await captureNode(stage, fontKeysOf(ev), W, H, 'png');
     setStageOn('');
     if (!url) { set('error'); return; }
     const blob = await (await fetch(url)).blob();
@@ -394,38 +445,50 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
   ].sort((a, b) => (a.date || '9999') + (a.time || '') < (b.date || '9999') + (b.time || '') ? -1 : 1);
 
   const greeting = data.guest?.name ? `Dear ${data.guest.name},` : data.open ? "You're invited" : '';
-  const initials = `${ev.coupleNames[0].charAt(0)}${ev.coupleNames[1].charAt(0)}`.toUpperCase();
+  const initials = type === 'wedding' ? `${ev.coupleNames[0].charAt(0)}${ev.coupleNames[1].charAt(0)}`.toUpperCase() : words.initials;
+  const onCardTap = (e: { target: EventTarget }) => {
+    const ph = (e.target as HTMLElement).closest?.('.kc-ph, .kc-photo');
+    if (!ph || photos.length < 2) return;
+    const all = Array.from(ph.parentElement?.querySelectorAll('.kc-ph') || []);
+    setGalleryAt((g) => ({ i: Math.max(0, all.indexOf(ph)), n: g.n + 1 }));
+    document.getElementById('kg-photos')?.scrollIntoView({ behavior: reducedMotion() ? 'auto' : 'smooth', block: 'start' });
+  };
 
   return (
     <div className={`kg kg--${theme}`}>
-      {stage === 'sketch' && <SketchIntro key={`s${run}`} theme={theme} figures={ev.figures || 'bride-groom'} showCross={!!ev.showCross} onDone={() => setStage('envelope')} onSkipAll={() => { setStage('done'); setParty(true); }} />}
-      {stage === 'envelope' && <EnvelopeIntro key={`e${run}`} data={{ ...ev, photoUrl: pUrl }} initials={initials} onDone={() => { setStage('done'); setParty(true); }} />}
-      {party && <Celebration key={`p${run}`} theme={theme} onDone={() => setParty(false)} />}
+      {intro && (
+        <Intro key={`i${run}`} mode={intro.mode} ready={intro.ready} data={cardData} initials={initials} theme={theme} type={type}
+          figures={ev.figures || 'bride-groom'} showCross={!!ev.showCross} lite={lowEndDevice()}
+          onReveal={() => setRevealed(true)} onParty={() => setParty(true)} onDone={() => setIntro(null)} />
+      )}
+      {party && <Celebration key={`p${run}`} theme={theme} type={type} onDone={() => setParty(false)} />}
       {preview && <p className="kg-previewbar">Preview: this is what your guests see. Answers here are not saved.</p>}
       <div className="kg-main" role={standalone ? 'main' : undefined}>
         {greeting && (
-          <div key={`g${run}${intro ? 'i' : ''}`} className={`kg-hello${motionOk ? ' kg-hello--reveal' : ''}`} data-testid="greeting">
-            {!motionOk && <SketchArt theme={theme} figures={ev.figures || 'bride-groom'} showCross={!!ev.showCross} still className="kg-sketch-still" />}
+          <div key={`g${run}${revealed ? '' : 'i'}`} className={`kg-hello${motionOk ? ' kg-hello--reveal' : ''}`} data-testid="greeting">
+            {!motionOk && <SketchArt theme={theme} type={type} figures={ev.figures || 'bride-groom'} showCross={!!ev.showCross} still className="kg-sketch-still" />}
             {!motionOk && <StaticSparkles />}
             <p className="kg-greet">{greeting}</p>
             {data.guest?.name && <p className="kg-invited">you're invited!</p>}
           </div>
         )}
         {ev.music && <MusicButton id={ev.music} />}
-        <div className={`kg-card${!intro && fade ? ' kg-fadein' : ''}`}>
-          <TiltCard key={`t${run}${intro ? 'i' : ''}`} enabled={motionOk} sweep={motionOk && !intro}>
-            <InvitationCard data={{ ...ev, photoUrl: pUrl, mapHref }} minText={18} />
+        <div className={`kg-card${revealed && fade ? ' kg-fadein' : ''}`} onClick={onCardTap}>
+          <TiltCard key={`t${run}`} enabled={motionOk} sweep={motionOk && revealed}>
+            <InvitationCard data={{ ...cardData, mapHref }} minText={18} />
           </TiltCard>
         </div>
         {motionOk && (
           <p className="kg-replay-row">
-            <button type="button" className="kg-replay" onClick={() => { window.scrollTo({ top: 0 }); play(ev.opening); }} data-testid="replay">
+            <button type="button" className="kg-replay" onClick={() => { window.scrollTo({ top: 0 }); play(ev); }} data-testid="replay">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4v4h4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
               Replay the celebration
             </button>
           </p>
         )}
         {actions}
+
+        {photos.length > 1 && <Gallery photos={photos} at={galleryAt} title={wTitle} />}
 
         {n !== null && (
           <p className="kg-count" data-testid="countdown">
@@ -455,7 +518,7 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
               </div>
             </div>
           )}
-          {ev.rsvpBy && <p className="kg-note">Please let the couple know if you can come by <strong>{longDate(ev.rsvpBy)}</strong>.</p>}
+          {ev.rsvpBy && <p className="kg-note">Please let {words.host} know if you can come by <strong>{longDate(ev.rsvpBy)}</strong>.</p>}
         </section>
 
         {ev.subEvents.length > 0 && (
@@ -464,7 +527,7 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
             <ol className="kg-timeline">
               {timeline.map((t) => {
                 const s = t.sub;
-                const title = s ? s.title : 'The wedding';
+                const title = s ? s.title : words.mainLabel;
                 const venue = s ? s.venueName : ev.venueName;
                 const address = s ? s.address : ev.address;
                 const item: CalItem = s
@@ -490,7 +553,7 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
 
         <section className="kg-panel kg-rsvp" id="reply" aria-labelledby="kg-reply">
           <h2 className="kg-h" id="kg-reply">Please reply</h2>
-          <p className="kg-muted" style={{ marginBottom: 18 }}>Let the couple know if you can come. (This is your RSVP. It takes less than a minute.)</p>
+          <p className="kg-muted" style={{ marginBottom: 18 }}>Let {words.host} know if you can come. (This is your RSVP. It takes less than a minute.)</p>
           <Rsvp
             data={data}
             code={code}
@@ -507,17 +570,17 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
           {data.open && !data.guest && <p className="kg-muted" style={{ marginTop: 16 }}>After you reply, you'll get your own link so you can change your answer later.</p>}
         </section>
 
-        <p className="kg-foot">Made with <a href="/invites">Kenji Invites</a>, free wedding invitations.</p>
+        <p className="kg-foot">Made with <a href="/invites">Kenji Invites</a>, {type === 'wedding' ? 'free wedding invitations' : 'free invitations for every celebration'}.</p>
         {stageOn === 'lock' && (
           <div className="kg-wp-host" aria-hidden="true" style={{ width: lockSize[0], height: lockSize[1] }}>
-            <LockWallpaper ref={lockRef} ev={ev} width={lockSize[0]} height={lockSize[1]} />
+            <LockWallpaper ref={lockRef} ev={ev} photos={photos} width={lockSize[0]} height={lockSize[1]} />
           </div>
         )}
         {stageOn === 'save' && (
           <div className="kg-wp-host" aria-hidden="true">
             <div ref={wpRef} className="kg-wp">
               <p className="kg-wp-top">{data.guest?.name ? `Dear ${data.guest.name}, you're invited` : "You're invited"}</p>
-              <div className="kg-wp-card"><InvitationCard data={{ ...ev, photoUrl: pUrl }} /></div>
+              <div className="kg-wp-card"><InvitationCard data={cardData} /></div>
               <p className="kg-wp-rsvp">RSVP: {link.replace(/^https?:\/\//, '')}</p>
             </div>
           </div>

@@ -7,8 +7,8 @@ import type { ThemeId } from './shared';
 
 /** The design's Google Fonts (latin subset only) with the font files inlined, so the
  *  snapshot (an SVG image, which can't load remote fonts) uses the real typefaces. */
-async function embeddedFontCss(theme: ThemeId): Promise<string> {
-  const css = await (await fetch(fontCssUrl(THEME_FONTS[theme]))).text();
+async function embeddedFontCss(keys: string[]): Promise<string> {
+  const css = await (await fetch(fontCssUrl(keys))).text();
   const blocks = css.split('/* ').filter((b) => b.startsWith('latin */'));
   const out = await Promise.all(blocks.map(async (b) => {
     const face = b.slice(b.indexOf('@font-face'));
@@ -23,13 +23,14 @@ async function embeddedFontCss(theme: ThemeId): Promise<string> {
 
 let busy = false;
 /** Renders `node` at width x height. Returns a data: URL, or null if it could not. */
-export async function captureNode(node: HTMLElement, theme: ThemeId, width: number, height: number, type: 'jpeg' | 'png'): Promise<string | null> {
+/** `fonts`: a design (its fonts) or a list of font keys (a design plus a chosen pairing). */
+export async function captureNode(node: HTMLElement, fonts: ThemeId | string[], width: number, height: number, type: 'jpeg' | 'png'): Promise<string | null> {
   if (busy) return null;
   busy = true;
   try {
     const lib = await import('html-to-image');
     let fontEmbedCSS = '';
-    try { fontEmbedCSS = await embeddedFontCss(theme); } catch { /* fonts optional */ }
+    try { fontEmbedCSS = await embeddedFontCss(Array.isArray(fonts) ? fonts : THEME_FONTS[fonts]); } catch { /* fonts optional */ }
     await document.fonts.ready;
     const opts = { width, height, pixelRatio: 1, fontEmbedCSS, cacheBust: false, skipAutoScale: true };
     return type === 'png' ? await lib.toPng(node, opts) : await lib.toJpeg(node, { ...opts, quality: 0.86 });

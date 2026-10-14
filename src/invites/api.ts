@@ -1,4 +1,4 @@
-import type { InviteEvent, Guest } from './shared';
+import type { InviteEvent, Guest, PhotoRef } from './shared';
 
 const API = '/.netlify/functions/invites-api';
 const AUTH = '/.netlify/functions/invites-auth';
@@ -76,6 +76,8 @@ export const api = {
   uploadPhoto: (id: string, data: string) => post<{ event: HostEvent }>('photo-upload', { id, data }),
   uploadOg: (id: string, data: string) => post<{ ok: boolean; ogVersion: number }>('og-upload', { id, data }),
   deletePhoto: (id: string) => post<{ event: HostEvent }>('photo-delete', { id }),
+  addPic: (id: string, body: { data: string; small: string; fx: number; fy: number; w: number; h: number }) => post<{ event: HostEvent }>('pic-add', { id, ...body }),
+  deletePic: (id: string, photo: string) => post<{ event: HostEvent }>('pic-delete', { id, photo }),
   addGuests: (id: string, payload: { guests?: Partial<Guest>[]; text?: string }) => post<{ added: Guest[]; problems: string[] }>('add-guests', { id, ...payload }),
   updateGuest: (id: string, guestId: string, fields: Record<string, unknown>) => post<{ guest: Guest }>('update-guest', { id, guestId, ...fields }),
   deleteGuest: (id: string, guestId: string) => post<{ ok: boolean }>('delete-guest', { id, guestId }),
@@ -99,5 +101,17 @@ export const api = {
 };
 
 export const photoUrl = (e: { id: string; photo: boolean; photoVersion: number }) => (e.photo ? `${API}?op=photo&e=${e.id}&v=${e.photoVersion}` : '');
+/** A photo as shown on the card (small copy) or full size (gallery). */
+export const picUrl = (eventId: string, p: PhotoRef, small = true) => `${API}?op=pic&e=${eventId}&p=${p.id}&v=${p.v}${small ? '&s=1' : ''}`;
+
+export interface CardPhoto { id: string; src: string; full: string; fx: number; fy: number }
+/** Every photo on the invitation, main photo first. Events from before multi-photo show their one photo. */
+export function cardPhotos(e: { id: string; photo: boolean; photoVersion: number; photos?: PhotoRef[] }): CardPhoto[] {
+  if (e.photos && e.photos.length) return e.photos.map((p) => ({ id: p.id, src: picUrl(e.id, p), full: picUrl(e.id, p, false), fx: p.fx, fy: p.fy }));
+  const u = photoUrl(e);
+  return u ? [{ id: 'legacy', src: u, full: u, fx: 0.5, fy: 0.5 }] : [];
+}
+/** An event as the card component wants it: its photos as card photos. */
+export const cardOf = <T extends { id: string; photo: boolean; photoVersion: number; photos?: PhotoRef[] }>(e: T): Omit<T, 'photos'> & { photos: CardPhoto[] } => ({ ...e, photos: cardPhotos(e) });
 export const icsUrl = (code: string, sub = 'main', inline = false) => `${API}?op=ics&code=${encodeURIComponent(code)}&sub=${encodeURIComponent(sub)}${inline ? '&inline=1' : ''}`;
 export const inviteLink = (code: string) => `${window.location.origin}/i/${code}`;

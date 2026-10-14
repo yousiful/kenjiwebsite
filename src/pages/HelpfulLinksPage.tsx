@@ -39,7 +39,7 @@ const LINKS = [
   {
     icon: Heart,
     title: 'Kenji Invites',
-    subtitle: "Free wedding invitations: send them by text or email and see who's coming.",
+    subtitle: "Free invitations for any celebration: send them by text or email and see who's coming.",
     href: 'https://kenjiai.com/invites',
     color: 'from-rose-500 to-pink-500',
     glow: 'rgba(244,63,94,0.18)',

@@ -20,7 +20,7 @@ export default function ManageLinkCard({ compact = false }: { compact?: boolean 
   const [opened, setOpened] = useState(false);
   if (!getToken()) return null;
   const link = manageLink();
-  const body = `Kenji Invites: my private link to manage my wedding invitations. Open it on any phone or computer: ${link}`;
+  const body = `Kenji Invites: my private link to manage my invitations. Open it on any phone or computer: ${link}`;
   // "Text me my link" saves the number inside Kenji Invites, then opens the host's own
   // messages app addressed to themselves, with the link ready to send.
   async function textMe(e: FormEvent) {

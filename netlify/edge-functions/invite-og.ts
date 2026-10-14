@@ -9,7 +9,7 @@ import type { Context } from 'https://edge.netlify.com';
 const SITE = 'https://kenjiai.com';
 const GENERIC = {
   title: "You're invited",
-  description: 'Open your wedding invitation and let the couple know if you can come.',
+  description: 'Open your invitation and let the host know if you can come.',
   image: `${SITE}/invites-og.jpg`,
   width: 1200,
   height: 630,
@@ -17,7 +17,7 @@ const GENERIC = {
 };
 const PRIVATE = {
   title: 'Kenji Invites: manage your invitation',
-  description: 'A private link to manage a wedding invitation. Only open it if it was sent to you.',
+  description: 'A private link to manage an invitation. Only open it if it was sent to you.',
   image: `${SITE}/invites-og.jpg`,
   width: 1200,
   height: 630,

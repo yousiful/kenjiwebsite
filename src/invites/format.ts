@@ -98,6 +98,10 @@ const FAMILIES: Record<string, string> = {
   josefin: 'Josefin+Sans:wght@400;600',
   cinzeldeco: 'Cinzel+Decorative:wght@400;700',
   poiret: 'Poiret+One',
+  dancing: 'Dancing+Script:wght@500;700',
+  quicksand: 'Quicksand:wght@500;600',
+  abril: 'Abril+Fatface',
+  bodoni: 'Bodoni+Moda:ital,wght@0,500;0,600;1,500',
 };
 export const THEME_FONTS: Record<ThemeId, string[]> = {
   ivory: ['cormorant', 'pinyon'],
@@ -121,29 +125,50 @@ export const THEME_FONTS: Record<ThemeId, string[]> = {
   passport: ['playfair', 'montserrat', 'greatvibes'],
   city: ['playfair', 'montserrat', 'parisienne'],
   renewal: ['pinyon', 'cormorant'],
+  balloons: ['dancing', 'quicksand'],
+  cake: ['abril', 'montserrat', 'lora'],
+  confetti: ['abril', 'montserrat'],
+  neon: ['dancing', 'montserrat'],
+  gradcap: ['playfair', 'cinzel', 'cormorant'],
+  nursery: ['greatvibes', 'quicksand'],
+  ring: ['pinyon', 'cormorant'],
+  crown: ['greatvibes', 'cinzel', 'cormorant'],
+  mitzvah: ['cinzel', 'cormorant'],
+  sunset: ['dancing', 'josefin', 'lora'],
+  house: ['alexbrush', 'josefin', 'lora'],
+  winter: ['pinyon', 'cinzel', 'cormorant'],
+  cheers: ['greatvibes', 'cinzel', 'cormorant'],
+  launch: ['bodoni', 'montserrat'],
+  polaroid: ['dancing', 'josefin', 'lora'],
 };
 
 /** Google Fonts stylesheet URL for a set of font keys. */
 export const fontCssUrl = (keys: string[]) => `https://fonts.googleapis.com/css2?${keys.filter((k) => FAMILIES[k]).map((k) => `family=${FAMILIES[k]}`).join('&')}&display=swap`;
 
-const loaded = new Set<string>();
-export function loadFonts(keys: string[]) {
+const loaded = new Map<string, Promise<void>>();
+export function loadFonts(keys: string[]): Promise<void> {
+  if (typeof document === 'undefined') return Promise.resolve();
   const need = keys.filter((k) => FAMILIES[k] && !loaded.has(k));
-  if (!need.length || typeof document === 'undefined') return;
-  need.forEach((k) => loaded.add(k));
-  if (!document.querySelector('link[data-kv-preconnect]')) {
-    for (const href of ['https://fonts.googleapis.com', 'https://fonts.gstatic.com']) {
-      const pc = document.createElement('link');
-      pc.rel = 'preconnect';
-      pc.href = href;
-      if (href.includes('gstatic')) pc.crossOrigin = 'anonymous';
-      pc.setAttribute('data-kv-preconnect', '');
-      document.head.appendChild(pc);
+  if (need.length) {
+    if (!document.querySelector('link[data-kv-preconnect]')) {
+      for (const href of ['https://fonts.googleapis.com', 'https://fonts.gstatic.com']) {
+        const pc = document.createElement('link');
+        pc.rel = 'preconnect';
+        pc.href = href;
+        if (href.includes('gstatic')) pc.crossOrigin = 'anonymous';
+        pc.setAttribute('data-kv-preconnect', '');
+        document.head.appendChild(pc);
+      }
     }
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = fontCssUrl(need);
+    const css = new Promise<void>((res) => { link.onload = () => res(); link.onerror = () => res(); });
+    document.head.appendChild(link);
+    // the stylesheet only declares the fonts; ask for each family so the files actually load
+    const fam = (k: string) => decodeURIComponent(FAMILIES[k].split(':')[0].replace(/\+/g, ' '));
+    need.forEach((k) => loaded.set(k, css.then(() => document.fonts.load(`1em "${fam(k)}"`)).then(() => undefined, () => undefined)));
   }
-  const link = document.createElement('link');
-  link.rel = 'stylesheet';
-  link.href = fontCssUrl(need);
-  document.head.appendChild(link);
+  return Promise.all(keys.filter((k) => loaded.has(k)).map((k) => loaded.get(k))).then(() => undefined);
 }
-export const loadThemeFonts = (themes: ThemeId[]) => loadFonts([...new Set(themes.flatMap((t) => THEME_FONTS[t]))]);
+export const loadThemeFonts = (themes: ThemeId[], extra: string[] = []) => loadFonts([...new Set([...themes.flatMap((t) => THEME_FONTS[t] || []), ...extra])]);

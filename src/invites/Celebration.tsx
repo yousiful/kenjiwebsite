@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react';
-import type { ThemeId } from './shared';
+import type { EventType, ThemeId } from './shared';
 
 // Party burst on the guest page: confetti, gold flecks and theme shapes (petals, doves,
 // bells, shells...) plus a firework for festive designs. One small canvas, about 2.5s of
 // heavy motion, then everything settles and the canvas is removed. No libraries.
 
-type Shape = 'rect' | 'circle' | 'petal' | 'heart' | 'star' | 'dove' | 'bell' | 'shell' | 'leaf' | 'plane';
+type Shape = 'rect' | 'circle' | 'petal' | 'heart' | 'star' | 'dove' | 'bell' | 'shell' | 'leaf' | 'plane' | 'balloon' | 'cap' | 'snowflake' | 'david' | 'note';
 interface PartyStyle { colors: string[]; shapes: Shape[]; fireworks?: boolean; streamers?: boolean }
 
 const GOLD = ['#c9a24f', '#e9d08a', '#b8913f', '#f3e2a6'];
@@ -31,7 +31,45 @@ export const PARTY: Record<ThemeId, PartyStyle> = {
   passport: { colors: ['#1f2f57', '#d8b866', '#f3e7c6', '#b4626a'], shapes: ['plane', 'heart', 'rect'], fireworks: true },
   city: { colors: ['#2e2e31', '#e9cfc4', ...GOLD], shapes: ['rect', 'star', 'circle'], fireworks: true, streamers: true },
   renewal: { colors: [...GOLD, '#fffaf0', '#e8b4ae'], shapes: ['heart', 'star', 'circle'] },
+  balloons: { colors: ['#f08a76', '#e9b949', '#6fb39c', '#9b84c9', '#e57a9b'], shapes: ['balloon', 'circle', 'rect'], streamers: true },
+  cake: { colors: ['#e57a9b', '#f6d36b', '#9fc9b9', '#ffffff', '#b8475f'], shapes: ['rect', 'circle', 'star'], streamers: true },
+  confetti: { colors: ['#f08a76', '#e9b949', '#6fb39c', '#9b84c9', '#5b8bd6', '#1d1d22'], shapes: ['rect', 'circle'], streamers: true, fireworks: true },
+  neon: { colors: ['#ff5fc8', '#5ff3ff', '#ffe066', '#b98cff'], shapes: ['star', 'circle', 'rect'], fireworks: true },
+  gradcap: { colors: [...GOLD, '#1d2b4f', '#ffffff'], shapes: ['cap', 'star', 'rect'], fireworks: true },
+  nursery: { colors: ['#bcd6ea', '#f6d9a8', '#ffffff', '#cfe3d6', '#f2c1c9'], shapes: ['star', 'circle', 'heart'] },
+  ring: { colors: [...GOLD, '#ffffff', '#e8b4ae'], shapes: ['heart', 'star', 'circle'] },
+  crown: { colors: ['#e8a9b8', '#f6d3dc', ...GOLD, '#ffffff'], shapes: ['heart', 'petal', 'star'] },
+  mitzvah: { colors: ['#c0c8d8', '#ffffff', '#3d5a9e', '#8fa3c9', '#e9d08a'], shapes: ['david', 'star', 'rect'], fireworks: true },
+  sunset: { colors: ['#f3a07f', '#f6c49a', '#fff1c9', '#6f9fb0'], shapes: ['circle', 'rect', 'star'] },
+  house: { colors: ['#c06a45', '#8aa676', '#f3d27a', '#ffffff'], shapes: ['leaf', 'heart', 'circle'] },
+  winter: { colors: [...GOLD, '#b3263a', '#ffffff'], shapes: ['snowflake', 'star', 'circle'] },
+  cheers: { colors: [...GOLD, '#fff8e7'], shapes: ['circle', 'star', 'rect'], fireworks: true, streamers: true },
+  launch: { colors: ['#14254f', '#e46f55', '#f6c7a8', '#ffffff'], shapes: ['rect', 'circle'], streamers: true },
+  polaroid: { colors: ['#2f5d74', '#e39b78', '#8aa676', '#f3dcc8', '#ffffff'], shapes: ['heart', 'rect', 'circle'] },
 };
+
+/** Each kind of celebration throws its own shapes, in the design's colors. */
+const TYPE_SHAPES: Partial<Record<EventType, Shape[]>> = {
+  birthday: ['balloon', 'rect', 'circle', 'star'],
+  graduation: ['cap', 'star', 'rect'],
+  baby: ['star', 'heart', 'circle'],
+  bridal: ['heart', 'petal', 'circle'],
+  engagement: ['heart', 'star', 'rect'],
+  anniversary: ['heart', 'star', 'circle'],
+  quince: ['heart', 'star', 'petal'],
+  mitzvah: ['david', 'star', 'rect'],
+  retirement: ['star', 'circle', 'rect', 'note'],
+  housewarming: ['heart', 'leaf', 'circle'],
+  holiday: ['snowflake', 'star', 'circle'],
+  business: ['rect', 'star', 'circle'],
+  reunion: ['heart', 'star', 'note'],
+};
+
+/** Fewer pieces on slower phones, so the burst stays smooth. */
+export function lowEndDevice(): boolean {
+  const n = navigator as Navigator & { deviceMemory?: number };
+  return (n.hardwareConcurrency || 8) <= 4 || (n.deviceMemory || 8) <= 4;
+}
 
 const PATHS: Partial<Record<Shape, string>> = {
   petal: 'M0 -10 C 7 -6 7 6 0 10 C -7 6 -7 -6 0 -10 Z',
@@ -42,18 +80,25 @@ const PATHS: Partial<Record<Shape, string>> = {
   shell: 'M0 8 C -8 6 -10 -4 -6 -8 C -3 -10 3 -10 6 -8 C 10 -4 8 6 0 8 Z M0 7 L-4 -8 M0 7 L0 -9 M0 7 L4 -8',
   leaf: 'M-10 0 C -4 -7 4 -7 10 0 C 4 7 -4 7 -10 0 Z',
   plane: 'M10 0 L-6 -2 L-9 -7 L-11 -7 L-9 -1 L-10 0 L-9 1 L-11 7 L-9 7 L-6 2 Z',
+  balloon: 'M0 -10 C 7 -10 8 -2 5 3 C 3 6 1 7 0 7 C -1 7 -3 6 -5 3 C -8 -2 -7 -10 0 -10 Z M-1.4 7 L1.4 7 L0 9.4 Z',
+  cap: 'M0 -6 L11 -1 L0 4 L-11 -1 Z M-6 1.6 L0 4.4 L6 1.6 V6 C 6 8 -6 8 -6 6 Z',
+  snowflake: 'M0 -10 L1 -1.6 L8.7 -5 L1.9 0 L8.7 5 L1 1.6 L0 10 L-1 1.6 L-8.7 5 L-1.9 0 L-8.7 -5 L-1 -1.6 Z',
+  david: 'M0 -10 L8.7 5 H-8.7 Z M0 10 L-8.7 -5 H8.7 Z',
+  note: 'M-6 5 C -6 2 -1 2 -1 5 C -1 8 -6 8 -6 5 Z M-2.4 5 V-8 L7 -10 V-6 L-1 -4.4 V5 Z',
 };
 
 interface P { x: number; y: number; vx: number; vy: number; r: number; vr: number; s: number; c: string; shape: Shape | 'spark' | 'ribbon'; life: number; age: number; wob: number; tilt: number }
 
-export function Celebration({ theme, onDone }: { theme: ThemeId; onDone?: () => void }) {
+export function Celebration({ theme, type, onDone }: { theme: ThemeId; type?: EventType; onDone?: () => void }) {
   const ref = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
     const canvas = ref.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-    const style = PARTY[theme] || PARTY.ivory;
+    const base = PARTY[theme] || PARTY.ivory;
+    const style = { ...base, shapes: (type && TYPE_SHAPES[type]) || base.shapes };
+    const few = lowEndDevice() ? 0.55 : 1;
     const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
     const W = window.innerWidth;
     const H = window.innerHeight;
@@ -65,7 +110,7 @@ export function Celebration({ theme, onDone }: { theme: ThemeId; onDone?: () => 
     const pick = <T,>(a: T[]) => a[Math.floor(Math.random() * a.length)];
     const parts: P[] = [];
     const small = W < 600;
-    const add = (n: number, fn: () => Partial<P>) => { for (let i = 0; i < n; i++) parts.push({ x: 0, y: 0, vx: 0, vy: 0, r: Math.random() * 6, vr: (Math.random() - 0.5) * 0.25, s: 1, c: pick(style.colors), shape: pick(style.shapes), life: 2.6, age: 0, wob: Math.random() * 6, tilt: Math.random(), ...fn() }); };
+    const add = (n: number, fn: () => Partial<P>) => { for (let i = 0; i < Math.round(n * few); i++) parts.push({ x: 0, y: 0, vx: 0, vy: 0, r: Math.random() * 6, vr: (Math.random() - 0.5) * 0.25, s: 1, c: pick(style.colors), shape: pick(style.shapes), life: 2.6, age: 0, wob: Math.random() * 6, tilt: Math.random(), ...fn() }); };
 
     // two cannons from the bottom corners, then a gentle fall from the top
     const cannon = (fromLeft: boolean) => add(small ? 34 : 50, () => {
@@ -90,8 +135,9 @@ export function Celebration({ theme, onDone }: { theme: ThemeId; onDone?: () => 
       while (fired < bursts.length && t >= bursts[fired][2]) {
         const [bx, by] = bursts[fired++];
         const c = pick(style.colors);
-        for (let i = 0; i < (small ? 42 : 60); i++) {
-          const a = (Math.PI * 2 * i) / (small ? 42 : 60);
+        const sparks = Math.round((small ? 42 : 60) * few);
+        for (let i = 0; i < sparks; i++) {
+          const a = (Math.PI * 2 * i) / sparks;
           const sp = 3 + Math.random() * 3.2;
           parts.push({ x: bx * W, y: by * H, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, r: 0, vr: 0, s: 1, c, shape: 'spark', life: 1.4, age: 0, wob: 0, tilt: 0 });
         }
@@ -146,7 +192,7 @@ export function Celebration({ theme, onDone }: { theme: ThemeId; onDone?: () => 
     };
     raf = requestAnimationFrame(frame);
     return () => cancelAnimationFrame(raf);
-  }, [theme, onDone]);
+  }, [theme, type, onDone]);
   return <canvas ref={ref} className="kg-confetti" aria-hidden="true" data-testid="confetti" />;
 }
 

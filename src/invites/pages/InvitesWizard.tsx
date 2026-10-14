@@ -1,35 +1,69 @@
-import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
+import { lazy, Suspense, useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { Link, useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import { api, photoUrl, inviteLink, getLeadEmail, type HostEvent } from '../api';
+import { api, cardOf, inviteLink, getLeadEmail, type HostEvent } from '../api';
 import ManageLinkCard from '../ManageLinkCard';
 import { Page, Field, Stepper, SavedNote, ConfirmButton, ErrorBox, useHostKey, StatusChip } from '../ui';
 import { Icon } from '../icons';
-import InvitationCard, { THEMES, ACCENTS, OCCASIONS, occasionOf } from '../InvitationCard';
+import InvitationCard, { THEMES, ACCENTS, OCCASIONS, DESIGNS_FOR, PAIRINGS, occasionOf, defaultTheme, type CardData } from '../InvitationCard';
 import { MUSIC, MusicBox } from '../music';
 import { OgStage, snapshotOg } from '../OgSnapshot';
-import { THEME_IDS, SUB_EVENT_PRESETS, LIMITS, formatPhone, isEmail, type Guest, type SubEvent, type ThemeId } from '../shared';
-import { browserTimezone, loadThemeFonts } from '../format';
+import PhotoManager from '../PhotoManager';
+import {
+  THEME_IDS, LIMITS, EVENT_TYPES, TYPES, DETAIL_LABELS, MILESTONES, formatPhone, isEmail, eventWording, namesError, typeOf,
+  type Guest, type SubEvent, type ThemeId, type EventType, type DetailKey,
+} from '../shared';
+import { THEME_FONTS, browserTimezone, loadThemeFonts } from '../format';
 import { smsHref, inviteText, copyText } from '../send';
 import QrCode from '../QrCode';
 import SendButtons, { sentLabel } from '../SendButtons';
 
+const CardEditor = lazy(() => import('../CardEditor'));
+
 // Every step is a plain question with one sentence of help, so nobody wonders whose names
-// or which people a step is about.
-const STEPS = ['Whose wedding is it?', 'When and where is the wedding?', 'How should your invitation look?', 'Any other events around the wedding?', 'Who are you inviting?', 'How do you want to send it?'];
-const HELP = [
-  'Type the names of the two people getting married. These go at the top of the invitation.',
-  'Pick the wedding date and start time, and tell your guests where to go.',
-  'Tap a design to try it. You can also add a photo, a short note and how it opens.',
-  "Having a rehearsal dinner, a party or a brunch? Add it and guests will see it with the dates. You can skip this step.",
-  "Add your guests (the people you're inviting), one at a time or as a list.",
-  "Each guest gets their own link. Send it by text or email from your own phone.",
-];
+// or which people a step is about. The questions follow what is being celebrated.
+const STEP_COUNT = 7;
+function stepText(type: EventType): [string, string][] {
+  const wedding = type === 'wedding';
+  const def = TYPES[type];
+  return [
+    ['What are you celebrating?', 'Tap the kind of celebration. You can change it later.'],
+    [def.question, def.help],
+    [wedding ? 'When and where is the wedding?' : 'When and where is it?', wedding ? 'Pick the wedding date and start time, and tell your guests where to go.' : 'Pick the date and start time, and tell your guests where to go.'],
+    ['How should your invitation look?', 'Tap a design to try it. You can add photos, make the card your own, and pick how it opens.'],
+    [wedding ? 'Any other events around the wedding?' : `Any other events around the ${def.noun}?`, wedding ? "Having a rehearsal dinner, a party or a brunch? Add it and guests will see it with the dates. You can skip this step." : 'Having a dinner, an after-party or a brunch too? Add it and guests will see it with the dates. You can skip this step.'],
+    ['Who are you inviting?', "Add your guests (the people you're inviting), one at a time or as a list."],
+    ['How do you want to send it?', 'Each guest gets their own link. Send it by text or email from your own phone.'],
+  ];
+}
+
+/** Example cards for the "What are you celebrating?" tiles. */
+const SAMPLES: Record<EventType, Pick<CardData, 'coupleNames' | 'details'>> = {
+  wedding: { coupleNames: ['Sarah', 'James'], details: {} },
+  birthday: { coupleNames: ['Maya', ''], details: { age: '40' } },
+  graduation: { coupleNames: ['Jordan Lee', ''], details: { classYear: '2027' } },
+  baby: { coupleNames: ['Ana', 'Luis'], details: {} },
+  bridal: { coupleNames: ['Sarah', ''], details: {} },
+  engagement: { coupleNames: ['Sarah', 'James'], details: {} },
+  anniversary: { coupleNames: ['Mary', 'Tom'], details: { years: '50' } },
+  quince: { coupleNames: ['Sofia', ''], details: { milestone: 'Quinceañera' } },
+  mitzvah: { coupleNames: ['Noah', ''], details: { milestone: 'Bar Mitzvah' } },
+  retirement: { coupleNames: ['Linda Park', ''], details: {} },
+  housewarming: { coupleNames: ['The Garcias', ''], details: {} },
+  holiday: { coupleNames: ['', ''], details: { eventName: 'Holiday Party' } },
+  business: { coupleNames: ['', ''], details: { eventName: 'The Spring Launch', company: 'Bright Co.' } },
+  reunion: { coupleNames: ['', ''], details: { eventName: 'Johnson Family Reunion' } },
+  custom: { coupleNames: ['', ''], details: { eventName: 'Summer BBQ' } },
+};
+const sampleCard = (t: EventType): CardData => ({ ...SAMPLES[t], type: t, theme: defaultTheme(t), date: '2027-06-12', time: '16:00', venueName: '', address: '', personalMessage: '' });
 
 const blankEvent = (): HostEvent => ({
   id: '', coupleNames: ['', ''], title: '', date: '', time: '', timezone: browserTimezone(), venueName: '', address: '',
   theme: 'ivory', accent: '', photo: false, photoVersion: 0, personalMessage: '', opening: 'sketch', music: '', figures: 'bride-groom', showCross: false, rsvpBy: '', defaultSeats: 2,
-  openLinkEnabled: false, openCode: '', subEvents: [], createdAt: '', updatedAt: '',
+  openLinkEnabled: false, openCode: '', subEvents: [], createdAt: '', updatedAt: '', type: 'wedding', details: {}, photos: [], photoLayout: 0, layout: null,
 });
+
+const titleOf = (e: HostEvent) => (typeOf(e) === 'wedding' ? `${e.coupleNames[0]} & ${e.coupleNames[1]}` : eventWording(e).title);
+const fontKeysOf = (e: HostEvent) => [...(THEME_FONTS[e.theme] || []), ...(e.layout?.fonts && PAIRINGS[e.layout.fonts] ? PAIRINGS[e.layout.fonts].keys : [])];
 
 const US_ZONES = [
   ['America/New_York', 'Eastern time (New York)'],
@@ -46,59 +80,33 @@ const US_ZONES = [
   ['Australia/Sydney', 'Sydney'],
 ];
 
-async function resizePhoto(file: File): Promise<string> {
-  if (!file.type.startsWith('image/')) throw new Error('Please choose a photo.');
-  const url = URL.createObjectURL(file);
-  try {
-    const img = new Image();
-    img.src = url;
-    await img.decode();
-    const max = 1600;
-    const s = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
-    const canvas = document.createElement('canvas');
-    canvas.width = Math.round(img.naturalWidth * s);
-    canvas.height = Math.round(img.naturalHeight * s);
-    const ctx = canvas.getContext('2d');
-    if (!ctx) throw new Error('This browser could not prepare the photo.');
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    let q = 0.8;
-    let data = canvas.toDataURL('image/jpeg', q);
-    while (data.length * 0.75 > 2.8 * 1024 * 1024 && q > 0.4) {
-      q -= 0.15;
-      data = canvas.toDataURL('image/jpeg', q);
-    }
-    return data.split(',')[1];
-  } catch (e) {
-    throw new Error((e as Error).message?.startsWith('Please') ? (e as Error).message : "We couldn't open that photo. Please try a different one.");
-  } finally {
-    URL.revokeObjectURL(url);
-  }
-}
-
 export default function InvitesWizard() {
   const { ok, error: keyError } = useHostKey(true);
   const [leadEmail, setLeadEmail] = useState(getLeadEmail());
   const { id } = useParams();
   const [params, setParams] = useSearchParams();
   const navigate = useNavigate();
-  const step = Math.min(6, Math.max(1, Number(params.get('step')) || 1));
+  const step = Math.min(STEP_COUNT, Math.max(1, Number(params.get('step')) || 1));
 
   const [ev, setEv] = useState<HostEvent>(blankEvent);
   const [guests, setGuests] = useState<Guest[]>([]);
   const [loaded, setLoaded] = useState(!id);
   const [save, setSave] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [error, setError] = useState('');
+  const [editing, setEditing] = useState(false);
   const pending = useRef<Partial<HostEvent>>({});
   const timer = useRef<number | undefined>(undefined);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const ogRef = useRef<HTMLDivElement>(null);
   const ogKey = useRef('');
+  const type = typeOf(ev);
+  const texts = stepText(type);
 
   const evIdRef = useRef(ev.id);
   evIdRef.current = ev.id;
   useEffect(() => {
     if (!ok || !id) return;
-    // Just created on step 1: this component stays mounted, so keep what's on screen.
+    // Just created on step 2: this component stays mounted, so keep what's on screen.
     if (evIdRef.current === id) { setLoaded(true); return; }
     api.event(id)
       // anything typed while loading wins over the stored copy
@@ -107,10 +115,12 @@ export default function InvitesWizard() {
   }, [ok, id]);
 
   useEffect(() => {
-    loadThemeFonts(step === 3 ? [...THEME_IDS] : [ev.theme]);
-  }, [step, ev.theme]);
+    if (step === 1) loadThemeFonts(EVENT_TYPES.map(defaultTheme));
+    else if (step === 4) loadThemeFonts(type === 'wedding' ? [...THEME_IDS] : DESIGNS_FOR[type]);
+    else loadThemeFonts([ev.theme]);
+  }, [step, ev.theme, type]);
 
-  useEffect(() => { headingRef.current?.focus(); window.scrollTo(0, 0); }, [step]);
+  useEffect(() => { headingRef.current?.focus(); window.scrollTo(0, 0); setEditing(false); }, [step]);
 
   const flush = useCallback(async (): Promise<boolean> => {
     window.clearTimeout(timer.current);
@@ -120,7 +130,7 @@ export default function InvitesWizard() {
     setSave('saving');
     try {
       const r = await api.updateEvent(id, fields);
-      setEv((cur) => ({ ...cur, openCode: r.event.openCode, updatedAt: r.event.updatedAt }));
+      setEv((cur) => ({ ...cur, openCode: r.event.openCode, updatedAt: r.event.updatedAt, title: r.event.title }));
       setSave('saved');
       return true;
     } catch (e) {
@@ -131,19 +141,26 @@ export default function InvitesWizard() {
     }
   }, [id]);
 
-  const patch = useCallback((fields: Partial<HostEvent>) => {
-    setEv((cur) => ({ ...cur, ...fields, title: fields.coupleNames ? `${fields.coupleNames[0]} & ${fields.coupleNames[1]}` : cur.title }));
+  /** Change fields on screen and save them shortly after. `hold` keeps them until Next. */
+  const patch = useCallback((fields: Partial<HostEvent>, hold = false) => {
+    setEv((cur) => {
+      const next = { ...cur, ...fields };
+      return { ...next, title: fields.coupleNames || fields.details || fields.type ? titleOf(next) : cur.title };
+    });
     pending.current = { ...pending.current, ...fields };
     window.clearTimeout(timer.current);
-    if (id) timer.current = window.setTimeout(() => { flush(); }, 1200);
+    if (id && !hold) timer.current = window.setTimeout(() => { flush(); }, 1200);
   }, [id, flush]);
 
   useEffect(() => () => window.clearTimeout(timer.current), []);
 
   function validate(): string {
-    if (step === 1 && (!ev.coupleNames[0].trim() || !ev.coupleNames[1].trim())) return 'Please type both names.';
-    if (step === 2 && !ev.date) return 'Please pick the wedding date. You can change it later.';
-    if (step === 1 && leadEmail.trim() && !isEmail(leadEmail.trim().toLowerCase())) return 'Please check your email address, or leave it empty. It is optional.';
+    if (step === 2) {
+      const n = namesError(type, ev.coupleNames, ev.details || {});
+      if (n) return n;
+      if (leadEmail.trim() && !isEmail(leadEmail.trim().toLowerCase())) return 'Please check your email address, or leave it empty. It is optional.';
+    }
+    if (step === 3 && !ev.date) return type === 'wedding' ? 'Please pick the wedding date. You can change it later.' : 'Please pick the date. You can change it later.';
     return '';
   }
 
@@ -151,18 +168,22 @@ export default function InvitesWizard() {
     const v = validate();
     if (v) { setError(v); return; }
     setError('');
+    // the kind of celebration is saved together with the names on the next step
+    if (step === 1) { setParams({ step: '2' }); return; }
     // optional lead capture: saved once, never required, never blocks the next step
     const le = leadEmail.trim().toLowerCase();
-    if (step === 1 && le && le !== getLeadEmail()) api.saveProfile({ email: le, consentEmail: true, source: 'wizard' }).catch(() => {});
+    if (step === 2 && le && le !== getLeadEmail()) api.saveProfile({ email: le, consentEmail: true, source: 'wizard' }).catch(() => {});
     if (!id) {
       setSave('saving');
       try {
-        const r = await api.createEvent({ coupleNames: [ev.coupleNames[0].trim(), ev.coupleNames[1].trim()], timezone: ev.timezone, theme: ev.theme });
+        const r = await api.createEvent({
+          type, details: ev.details || {}, coupleNames: [ev.coupleNames[0].trim(), ev.coupleNames[1].trim()], timezone: ev.timezone, theme: ev.theme,
+        });
         pending.current = {};
         evIdRef.current = r.event.id;
         setEv(r.event);
         setSave('saved');
-        navigate(`/invites/e/${r.event.id}/edit?step=2`, { replace: true });
+        navigate(`/invites/e/${r.event.id}/edit?step=3`, { replace: true });
       } catch (e) {
         setSave('error');
         setError((e as Error).message);
@@ -171,19 +192,20 @@ export default function InvitesWizard() {
     }
     if (!(await flush())) return;
     refreshOg();
-    if (step === 6) navigate(`/invites/e/${id}`);
+    if (step === STEP_COUNT) navigate(`/invites/e/${id}`);
     else setParams({ step: String(step + 1) });
   }
 
   /** New link-preview picture when anything shown on the card changed (runs in the background). */
   function refreshOg() {
     if (!id || !ogRef.current) return;
-    const k = JSON.stringify([ev.theme, ev.coupleNames, ev.date, ev.time, ev.venueName, ev.address, ev.accent, ev.photo, ev.photoVersion, ev.figures, ev.showCross]);
+    const k = JSON.stringify([ev.theme, ev.coupleNames, ev.date, ev.time, ev.venueName, ev.address, ev.accent, ev.photo, ev.photoVersion, ev.figures, ev.showCross, ev.type, ev.details, ev.photos, ev.photoLayout, ev.layout]);
     if (k === ogKey.current) return;
     ogKey.current = k;
     const node = ogRef.current;
+    const keys = fontKeysOf(ev);
     window.setTimeout(async () => {
-      const data = await snapshotOg(node, ev.theme);
+      const data = await snapshotOg(node, keys);
       if (data) api.uploadOg(id, data).catch(() => {});
     }, 50);
   }
@@ -191,6 +213,7 @@ export default function InvitesWizard() {
   async function goBack() {
     setError('');
     if (step === 1) { navigate(id ? `/invites/e/${id}` : '/invites/dashboard'); return; }
+    if (step === 2) { setParams({ step: '1' }); return; }
     await flush();
     setParams({ step: String(step - 1) });
   }
@@ -200,75 +223,138 @@ export default function InvitesWizard() {
 
   const preview = (
     <div className="kv-preview-card">
-      <InvitationCard data={{ ...ev, photoUrl: photoUrl(ev) }} />
+      <InvitationCard data={cardOf(ev)} />
     </div>
   );
 
+  /** Picking a kind of celebration also picks its first design. */
+  const chooseType = (t: EventType) => {
+    if (t === type) return;
+    patch({ type: t, theme: t === 'wedding' ? 'ivory' : defaultTheme(t) }, true);
+  };
+
   let body: ReactNode = null;
-  if (step === 1) body = <StepNames ev={ev} patch={patch} leadEmail={leadEmail} setLeadEmail={setLeadEmail} />;
-  if (step === 2) body = <StepWhen ev={ev} patch={patch} />;
-  if (step === 3) body = <StepDesign ev={ev} patch={patch} setEv={setEv} />;
-  if (step === 4) body = <StepEvents ev={ev} patch={patch} />;
-  if (step === 5) body = <StepGuests ev={ev} patch={patch} guests={guests} setGuests={setGuests} />;
-  if (step === 6) body = <StepSend ev={ev} guests={guests} setGuests={setGuests} goGuests={() => setParams({ step: '5' })} />;
+  if (step === 1) body = <StepType ev={ev} choose={chooseType} />;
+  if (step === 2) body = <StepNames ev={ev} patch={patch} leadEmail={leadEmail} setLeadEmail={setLeadEmail} />;
+  if (step === 3) body = <StepWhen ev={ev} patch={patch} />;
+  if (step === 4) body = <StepDesign ev={ev} patch={patch} setEv={setEv} openEditor={() => { setEditing(true); window.scrollTo(0, 0); }} />;
+  if (step === 5) body = <StepEvents ev={ev} patch={patch} />;
+  if (step === 6) body = <StepGuests ev={ev} patch={patch} guests={guests} setGuests={setGuests} />;
+  if (step === 7) body = <StepSend ev={ev} guests={guests} setGuests={setGuests} goGuests={() => setParams({ step: '6' })} />;
+
+  if (editing && step === 4) {
+    body = (
+      <Suspense fallback={<p role="status">Opening the editor...</p>}>
+        <CardEditor ev={ev} onLayout={(layout) => patch({ layout })} onPatch={(f) => patch(f)} onClose={() => { setEditing(false); flush(); window.scrollTo(0, 0); }} />
+      </Suspense>
+    );
+  }
 
   return (
-    <Page title={`${STEPS[step - 1]} | Kenji Invites`}>
+    <Page title={`${texts[step - 1][0]} | Kenji Invites`}>
       <div className="kv-wrap">
-        {id && <OgStage ref={ogRef} data={{ ...ev, photoUrl: photoUrl(ev) }} />}
-        <div className="kv-wiz">
+        {id && <OgStage ref={ogRef} data={cardOf(ev)} />}
+        <div className={`kv-wiz${editing ? ' kv-wiz--editing' : ''}`}>
           <section aria-labelledby="kv-step-title">
             <div className="kv-progress">
               <div className="kv-progress-top">
-                <span className="kv-progress-step">Step {step} of 6</span>
+                <span className="kv-progress-step">Step {step} of {STEP_COUNT}</span>
                 <SavedNote state={save} />
               </div>
-              <div className="kv-bar" aria-hidden="true"><span style={{ width: `${(step / 6) * 100}%` }} /></div>
+              <div className="kv-bar" aria-hidden="true"><span style={{ width: `${(step / STEP_COUNT) * 100}%` }} /></div>
             </div>
-            <h1 id="kv-step-title" ref={headingRef} tabIndex={-1} style={{ marginBottom: 10, outline: 'none' }}>{STEPS[step - 1]}</h1>
-            <p className="kv-step-help" style={{ marginBottom: 24 }}>{HELP[step - 1]}</p>
+            <h1 id="kv-step-title" ref={headingRef} tabIndex={-1} style={{ marginBottom: 10, outline: 'none' }}>{editing ? 'Make the card your own' : texts[step - 1][0]}</h1>
+            <p className="kv-step-help" style={{ marginBottom: 24 }}>{editing ? 'Tap anything on the card to change it. Changes save by themselves. Tap Done when you are happy.' : texts[step - 1][1]}</p>
             <ErrorBox message={error} />
             {body}
-            <div className="kv-only-phone" style={{ marginTop: 32 }}>
-              <h2 className="kv-preview-label" style={{ fontSize: 20 }}>How your invitation looks</h2>
-              {preview}
-            </div>
-            <nav className="kv-wiz-nav" aria-label="Steps">
-              <button type="button" className="kv-btn kv-btn--secondary kv-btn--big" onClick={goBack}>
-                <Icon name="back" /> Back
-              </button>
-              <button type="button" className="kv-btn kv-btn--primary kv-btn--big" onClick={goNext} data-testid="wizard-next">
-                {step === 6 ? 'Finish' : 'Next'} {step < 6 && <Icon name="next" />}
-              </button>
-            </nav>
+            {!editing && (
+              <div className="kv-only-phone" style={{ marginTop: 32 }}>
+                <h2 className="kv-preview-label" style={{ fontSize: 20 }}>How your invitation looks</h2>
+                {preview}
+              </div>
+            )}
+            {!editing && (
+              <nav className="kv-wiz-nav" aria-label="Steps">
+                <button type="button" className="kv-btn kv-btn--secondary kv-btn--big" onClick={goBack}>
+                  <Icon name="back" /> Back
+                </button>
+                <button type="button" className="kv-btn kv-btn--primary kv-btn--big" onClick={goNext} data-testid="wizard-next">
+                  {step === STEP_COUNT ? 'Finish' : 'Next'} {step < STEP_COUNT && <Icon name="next" />}
+                </button>
+              </nav>
+            )}
           </section>
-          <aside className="kv-preview kv-only-desktop" aria-label="Live preview">
-            <p className="kv-preview-label">How your invitation looks</p>
-            {preview}
-          </aside>
+          {!editing && (
+            <aside className="kv-preview kv-only-desktop" aria-label="Live preview">
+              <p className="kv-preview-label">How your invitation looks</p>
+              {preview}
+            </aside>
+          )}
         </div>
       </div>
     </Page>
   );
 }
 
-type StepProps = { ev: HostEvent; patch: (f: Partial<HostEvent>) => void };
+type StepProps = { ev: HostEvent; patch: (f: Partial<HostEvent>, hold?: boolean) => void };
+
+function StepType({ ev, choose }: { ev: HostEvent; choose: (t: EventType) => void }) {
+  const type = typeOf(ev);
+  return (
+    <div className="kv-occasions kv-types" role="group" aria-label="What are you celebrating?">
+      {EVENT_TYPES.map((t) => (
+        <button key={t} type="button" className="kv-occasion" aria-pressed={type === t} data-type={t} onClick={() => choose(t)}>
+          <span className="kv-occasion-pic" aria-hidden="true"><InvitationCard data={sampleCard(t)} /></span>
+          <span className="kv-occasion-name">{TYPES[t].label}</span>
+          <span className="kv-occasion-hint">{TYPES[t].hint}</span>
+        </button>
+      ))}
+    </div>
+  );
+}
 
 function StepNames({ ev, patch, leadEmail, setLeadEmail }: StepProps & { leadEmail: string; setLeadEmail: (v: string) => void }) {
+  const type = typeOf(ev);
+  const def = TYPES[type];
+  const d = ev.details || {};
+  const w = eventWording(ev);
+  const setDetail = (k: DetailKey, v: string) => patch({ details: { ...d, [k]: v } });
+  const says = type === 'wedding'
+    ? <>{ev.coupleNames[0].trim() || 'Sarah Johnson'} &amp; {ev.coupleNames[1].trim() || 'James Smith'}</>
+    : <>{[w.heads.filter(Boolean).join(' & ') || (def.names === 0 ? (def.eg.eventName || '').replace(/^e\.g\. /, '') : def.namePlaceholders[0].replace(/^e\.g\. /, '')), w.sub].filter(Boolean).join(', ')}</>;
   return (
     <div>
-      <Field id="kv-n1" label="First person getting married">
-        <input id="kv-n1" className="kv-input" value={ev.coupleNames[0]} maxLength={LIMITS.name} autoComplete="off" placeholder="e.g. Sarah Johnson"
-          onChange={(e) => patch({ coupleNames: [e.target.value, ev.coupleNames[1]] })} />
-      </Field>
-      <Field id="kv-n2" label="Second person getting married">
-        <input id="kv-n2" className="kv-input" value={ev.coupleNames[1]} maxLength={LIMITS.name} autoComplete="off" placeholder="e.g. James Smith"
-          onChange={(e) => patch({ coupleNames: [ev.coupleNames[0], e.target.value] })} />
-      </Field>
+      {def.names >= 1 && (
+        <Field id="kv-n1" label={def.nameLabels[0]}>
+          <input id="kv-n1" className="kv-input" value={ev.coupleNames[0]} maxLength={LIMITS.name} autoComplete="off" placeholder={def.namePlaceholders[0]}
+            onChange={(e) => patch({ coupleNames: [e.target.value, ev.coupleNames[1]] })} />
+        </Field>
+      )}
+      {(def.names === 2 || def.secondName) && (
+        <Field id="kv-n2" label={def.nameLabels[1]}>
+          <input id="kv-n2" className="kv-input" value={ev.coupleNames[1]} maxLength={LIMITS.name} autoComplete="off" placeholder={def.namePlaceholders[1]}
+            onChange={(e) => patch({ coupleNames: [ev.coupleNames[0], e.target.value] })} />
+        </Field>
+      )}
+      {def.fields.map((k) => (
+        k === 'milestone' ? (
+          <Field key={k} id={`kv-d-${k}`} label={DETAIL_LABELS[k]}>
+            <select id={`kv-d-${k}`} className="kv-select" value={d.milestone || (MILESTONES[type] || [''])[0]} onChange={(e) => setDetail(k, e.target.value)} data-testid={`detail-${k}`}>
+              {(MILESTONES[type] || []).map((m) => <option key={m} value={m}>{m}</option>)}
+            </select>
+          </Field>
+        ) : (
+          <Field key={k} id={`kv-d-${k}`} label={DETAIL_LABELS[k]}>
+            <input id={`kv-d-${k}`} className="kv-input" value={d[k] || ''} maxLength={k === 'age' || k === 'years' ? 3 : 80} autoComplete="off"
+              inputMode={k === 'age' || k === 'years' || k === 'classYear' ? 'numeric' : undefined} placeholder={def.eg[k]}
+              onChange={(e) => setDetail(k, e.target.value)} data-testid={`detail-${k}`} />
+          </Field>
+        )
+      ))}
       <p className="kv-says" aria-live="polite" data-testid="names-line">
-        Your invitation will say: <strong>{ev.coupleNames[0].trim() || 'Sarah Johnson'} &amp; {ev.coupleNames[1].trim() || 'James Smith'}</strong>
+        Your invitation will say: <strong>{says}</strong>
       </p>
-      <p className="kv-hint" style={{ marginBottom: 26 }}>You'll add your guests (the people you're inviting) later, in step 5.</p>
+      <p className="kv-hint" style={{ marginBottom: 26 }}>You'll add your guests (the people you're inviting) later, in step 6.</p>
       <Field id="kv-lead" label="Your email (optional, so we can send you tips and updates)" hint="You can leave this empty. You don't need it to make or send your invitation.">
         <input id="kv-lead" className="kv-input" type="email" inputMode="email" autoComplete="email" autoCapitalize="none" spellCheck={false}
           value={leadEmail} maxLength={200} onChange={(e) => setLeadEmail(e.target.value)} placeholder="name@example.com" />
@@ -279,23 +365,24 @@ function StepNames({ ev, patch, leadEmail, setLeadEmail }: StepProps & { leadEma
 
 function StepWhen({ ev, patch }: StepProps) {
   const zones = US_ZONES.some(([z]) => z === ev.timezone) ? US_ZONES : [[ev.timezone, ev.timezone], ...US_ZONES];
+  const wedding = typeOf(ev) === 'wedding';
   return (
     <div>
       <div className="kv-row2">
-        <Field id="kv-date" label="Wedding date">
+        <Field id="kv-date" label={wedding ? 'Wedding date' : 'Date'}>
           <input id="kv-date" type="date" className="kv-input" value={ev.date} onChange={(e) => patch({ date: e.target.value })} />
         </Field>
         <Field id="kv-time" label="Start time">
           <input id="kv-time" type="time" className="kv-input" value={ev.time} onChange={(e) => patch({ time: e.target.value })} />
         </Field>
       </div>
-      <Field id="kv-venue" label="Name of the place" hint="For example: St. Mary's Church, or The Rose Garden">
+      <Field id="kv-venue" label="Name of the place" hint={wedding ? "For example: St. Mary's Church, or The Rose Garden" : "For example: The Grand Hall, or Our House"}>
         <input id="kv-venue" className="kv-input" value={ev.venueName} maxLength={LIMITS.venue} onChange={(e) => patch({ venueName: e.target.value })} />
       </Field>
       <Field id="kv-address" label="Address" hint="Guests get a button that opens this in their maps app.">
         <textarea id="kv-address" className="kv-textarea" style={{ minHeight: 96 }} value={ev.address} maxLength={LIMITS.address} onChange={(e) => patch({ address: e.target.value })} />
       </Field>
-      <Field id="kv-tz" label="Time zone of the wedding">
+      <Field id="kv-tz" label={wedding ? 'Time zone of the wedding' : `Time zone of the ${TYPES[typeOf(ev)].noun}`}>
         <select id="kv-tz" className="kv-select" value={ev.timezone} onChange={(e) => patch({ timezone: e.target.value })}>
           {zones.map(([z, label]) => <option key={z} value={z}>{label}</option>)}
         </select>
@@ -304,11 +391,10 @@ function StepWhen({ ev, patch }: StepProps) {
   );
 }
 
-function StepDesign({ ev, patch, setEv }: StepProps & { setEv: (f: (e: HostEvent) => HostEvent) => void }) {
-  const [busy, setBusy] = useState(false);
-  const [err, setErr] = useState('');
-  const fileRef = useRef<HTMLInputElement>(null);
-  const sample = { ...ev, photoUrl: photoUrl(ev) };
+function StepDesign({ ev, patch, setEv, openEditor }: StepProps & { setEv: (f: (e: HostEvent) => HostEvent) => void; openEditor: () => void }) {
+  const type = typeOf(ev);
+  const wedding = type === 'wedding';
+  const sample = cardOf(ev);
   const [occ, setOcc] = useState(() => occasionOf(ev.theme));
   const occasion = OCCASIONS.find((o) => o.id === occ) || OCCASIONS[0];
   const box = useRef<MusicBox | null>(null);
@@ -321,44 +407,33 @@ function StepDesign({ ev, patch, setEv }: StepProps & { setEv: (f: (e: HostEvent
     await box.current.play(id);
     window.setTimeout(() => { setSampling((cur) => { if (cur === id) box.current?.stop(); return cur === id ? '' : cur; }); }, 12000);
   }
-
-  async function onFile(file: File | undefined) {
-    if (!file) return;
-    setErr('');
-    setBusy(true);
-    try {
-      const data = await resizePhoto(file);
-      const r = await api.uploadPhoto(ev.id, data);
-      setEv((cur) => ({ ...cur, photo: r.event.photo, photoVersion: r.event.photoVersion }));
-    } catch (e) {
-      setErr((e as Error).message);
-    } finally {
-      setBusy(false);
-      if (fileRef.current) fileRef.current.value = '';
-    }
-  }
+  const designs: ThemeId[] = wedding ? occasion.themes : DESIGNS_FOR[type];
 
   return (
     <div className="kv-stack">
-      <h2 className="kv-sub" id="kv-occ-label">What kind of wedding?</h2>
-      <div className="kv-occasions" role="group" aria-labelledby="kv-occ-label">
-        {OCCASIONS.map((o) => (
-          <button key={o.id} type="button" className="kv-occasion" aria-pressed={occ === o.id} data-occasion={o.id}
-            onClick={() => { if (occ !== o.id || ev.theme !== o.themes[0]) { setOcc(o.id); patch({ theme: o.themes[0] }); } }}>
-            <span className="kv-occasion-pic" aria-hidden="true"><InvitationCard data={{ ...sample, theme: o.themes[0], accent: '', personalMessage: '', photoUrl: '' }} /></span>
-            <span className="kv-occasion-name">{o.name}</span>
-            <span className="kv-occasion-hint">{o.hint}</span>
-          </button>
-        ))}
-      </div>
-
-      {occasion.themes.length > 1 && (
+      {wedding && (
         <>
-          <h2 className="kv-sub" id="kv-style-label">Pick a style</h2>
+          <h2 className="kv-sub" id="kv-occ-label">What kind of wedding?</h2>
+          <div className="kv-occasions" role="group" aria-labelledby="kv-occ-label">
+            {OCCASIONS.map((o) => (
+              <button key={o.id} type="button" className="kv-occasion" aria-pressed={occ === o.id} data-occasion={o.id}
+                onClick={() => { if (occ !== o.id || ev.theme !== o.themes[0]) { setOcc(o.id); patch({ theme: o.themes[0] }); } }}>
+                <span className="kv-occasion-pic" aria-hidden="true"><InvitationCard data={{ ...sample, theme: o.themes[0], accent: '', personalMessage: '', photos: [], photoUrl: '', layout: null }} /></span>
+                <span className="kv-occasion-name">{o.name}</span>
+                <span className="kv-occasion-hint">{o.hint}</span>
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+
+      {designs.length > 1 && (
+        <>
+          <h2 className="kv-sub" id="kv-style-label">{wedding ? 'Pick a style' : 'Pick a design'}</h2>
           <div className="kv-themes" role="group" aria-labelledby="kv-style-label">
-            {occasion.themes.map((t: ThemeId) => (
+            {designs.map((t: ThemeId) => (
               <button key={t} type="button" className="kv-theme" aria-pressed={ev.theme === t} onClick={() => patch({ theme: t })} data-theme={t}>
-                <span aria-hidden="true"><InvitationCard data={{ ...sample, theme: t, accent: '', personalMessage: '' }} /></span>
+                <span aria-hidden="true"><InvitationCard data={{ ...sample, theme: t, accent: '', personalMessage: '', layout: null }} /></span>
                 <span>{THEMES[t].name}</span>
                 {ev.theme === t && <span className="kv-theme-check">Chosen</span>}
               </button>
@@ -386,21 +461,19 @@ function StepDesign({ ev, patch, setEv }: StepProps & { setEv: (f: (e: HostEvent
         </div>
       )}
 
-      <div className="kv-card" style={{ marginTop: 28 }}>
-        <h2 style={{ fontSize: 24, marginBottom: 8 }}>Your photo <span className="kv-muted" style={{ fontWeight: 400, fontSize: 19 }}>(you can skip this)</span></h2>
-        <p className="kv-muted" style={{ marginBottom: 16 }}>A photo of the two of you looks lovely at the top of the invitation.</p>
-        <ErrorBox message={err} />
-        <div className="kv-photo-row">
-          {ev.photo && <img className="kv-photo-thumb" src={photoUrl(ev)} alt="Your photo" />}
-          <input ref={fileRef} id="kv-photo" type="file" accept="image/*" className="kv-sr" onChange={(e) => onFile(e.target.files?.[0])} data-testid="photo-input" />
-          <label htmlFor="kv-photo" className="kv-btn kv-btn--secondary" aria-disabled={busy}>
-            <Icon name="photo" /> {busy ? 'Adding photo...' : ev.photo ? 'Choose a different photo' : 'Add a photo'}
-          </label>
-          {ev.photo && !busy && (
-            <ConfirmButton label={<><Icon name="trash" /> Remove photo</>} question="Remove this photo from the invitation?" confirmLabel="Yes, remove it"
-              onConfirm={async () => { const r = await api.deletePhoto(ev.id); setEv((cur) => ({ ...cur, photo: r.event.photo })); }} />
+      <PhotoManager ev={ev} patch={patch} setEv={setEv} />
+
+      <div className="kv-card" data-testid="customize-card">
+        <h2 style={{ fontSize: 24, marginBottom: 8 }}>Make it your own <span className="kv-muted" style={{ fontWeight: 400, fontSize: 19 }}>(you can skip this)</span></h2>
+        <p className="kv-muted" style={{ marginBottom: 16 }}>Move things around, change the words, colors and fonts, or add stickers. Your guests see exactly what you make.</p>
+        <div className="kv-btn-row">
+          <button type="button" className="kv-btn kv-btn--primary" onClick={openEditor} data-testid="open-editor"><Icon name="edit" /> Customize my card</button>
+          {ev.layout && (
+            <ConfirmButton label="Reset to original design" question="Go back to the original design? Your changes to this card will be undone." confirmLabel="Yes, reset it"
+              onConfirm={() => patch({ layout: null })} />
           )}
         </div>
+        {ev.layout && <p className="kv-hint" style={{ marginTop: 10 }}>You have customized this card.</p>}
       </div>
 
       <div className="kv-card">
@@ -409,11 +482,11 @@ function StepDesign({ ev, patch, setEv }: StepProps & { setEv: (f: (e: HostEvent
         <div className="kv-choice-row" role="group" aria-labelledby="kv-open-label">
           <button type="button" className="kv-choice" aria-pressed={ev.opening !== 'fade' && ev.opening !== 'envelope'} onClick={() => patch({ opening: 'sketch' })} data-testid="opening-sketch">
             <strong>Sketch + envelope (recommended)</strong>
-            <span>A drawing of the two of you sketches itself, then the envelope opens and the card rises out.</span>
+            <span>{wedding ? 'A drawing of the two of you sketches itself, then the envelope opens and the card rises out.' : 'A drawing for your celebration sketches itself, then the envelope opens and the card rises out.'}</span>
           </button>
           <button type="button" className="kv-choice" aria-pressed={ev.opening === 'envelope'} onClick={() => patch({ opening: 'envelope' })} data-testid="opening-envelope">
             <strong>Envelope only</strong>
-            <span>They tap a wax seal, the envelope opens and the card rises out.</span>
+            <span>The wax seal breaks, the envelope opens and the card rises out.</span>
           </button>
           <button type="button" className="kv-choice" aria-pressed={ev.opening === 'fade'} onClick={() => patch({ opening: 'fade' })} data-testid="opening-fade">
             <strong>Simple fade</strong>
@@ -442,7 +515,7 @@ function StepDesign({ ev, patch, setEv }: StepProps & { setEv: (f: (e: HostEvent
       </div>
 
       <div className="kv-card">
-        <Field id="kv-msg" label="A short message (you can skip this)" hint="For example: Dinner and dancing to follow. We can't wait to celebrate with you.">
+        <Field id="kv-msg" label="A short message (you can skip this)" hint={wedding ? "For example: Dinner and dancing to follow. We can't wait to celebrate with you." : "For example: Food, drinks and good company. We can't wait to see you."}>
           <textarea id="kv-msg" className="kv-textarea" value={ev.personalMessage} maxLength={LIMITS.message} onChange={(e) => patch({ personalMessage: e.target.value })} />
         </Field>
         <p className="kv-hint">{ev.personalMessage.length} of {LIMITS.message} letters used</p>
@@ -479,7 +552,7 @@ function StepEvents({ ev, patch }: StepProps) {
       <div>
         <p className="kv-label" style={{ marginBottom: 10 }}>Tap to add one</p>
         <div className="kv-presets">
-          {SUB_EVENT_PRESETS.map((p) => (
+          {TYPES[typeOf(ev)].subPresets.map((p) => (
             <button key={p} type="button" className="kv-btn kv-btn--secondary" onClick={() => add(p)}><Icon name="plus" /> {p}</button>
           ))}
           <button type="button" className="kv-btn kv-btn--secondary" onClick={() => add('')}><Icon name="plus" /> Something else</button>
@@ -726,7 +799,7 @@ function StepSend({ ev, guests, setGuests, goGuests }: { ev: HostEvent; guests: 
             </button>
             <a className="kv-btn kv-btn--secondary" href={smsHref('', inviteText(ev, '', openLink))}><Icon name="message" /> Text it</a>
           </div>
-          <QrCode text={openLink} label={`Scan code for the wedding invitation of ${ev.title}`} />
+          <QrCode text={openLink} label={typeOf(ev) === 'wedding' ? `Scan code for the wedding invitation of ${ev.title}` : `Scan code for the invitation: ${ev.title}`} />
         </div>
       )}
       <ManageLinkCard compact />

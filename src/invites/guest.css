@@ -191,3 +191,45 @@
 .kg-howto-steps { margin: 10px 0 4px; padding-left: 28px; font-size: 20px; line-height: 1.5; }
 .kg-howto-steps li { margin-bottom: 6px; padding-left: 4px; }
 .kg-howto .kg-muted { margin-top: 8px !important; }
+
+/* page colors for the designs beyond weddings */
+.kg--balloons { --kg-bg: #fdf1e8; --kg-bg2: #f6dfd2; --kg-on: #4a3530; --kg-head: #b54e3a; --kg-btn: #b54e3a; --kg-script: 'Dancing Script', cursive; --kg-display: 'Quicksand', sans-serif; --kg-env: #fff9f2; --kg-env-dark: #f6e6d8; --kg-seal: #e46f55; }
+.kg--cake { --kg-bg: #fbe9e6; --kg-bg2: #f2d2cd; --kg-on: #4b2a32; --kg-head: #9c3a50; --kg-btn: #9c3a50; --kg-script: 'Abril Fatface', serif; --kg-display: 'Lora', Georgia, serif; --kg-env: #fff6f4; --kg-env-dark: #f4dcd8; --kg-seal: #b8475f; }
+.kg--cake .kg-greet, .kg--confetti .kg-greet { font-size: clamp(30px, 7vw, 40px); }
+.kg--confetti { --kg-bg: #f4f4f6; --kg-bg2: #e6e6ec; --kg-on: #1d1d22; --kg-head: #1d1d22; --kg-btn: #1d1d22; --kg-script: 'Abril Fatface', serif; --kg-display: 'Montserrat', sans-serif; --kg-env: #ffffff; --kg-env-dark: #ececf0; --kg-seal: #e2604a; }
+.kg--neon { --kg-bg: #1c1536; --kg-bg2: #0b0816; --kg-on: #fbeefe; --kg-head: #3a2a70; --kg-btn: #3a2a70; --kg-script: 'Dancing Script', cursive; --kg-display: 'Montserrat', sans-serif; --kg-env: #241b45; --kg-env-dark: #2f2459; --kg-seal: #ff5fc8; }
+.kg--neon .kg-greet { color: #ffe6f7; text-shadow: 0 0 10px rgba(255, 95, 200, 0.7); }
+.kg--gradcap { --kg-bg: #182746; --kg-bg2: #0a1328; --kg-on: #f1e8d2; --kg-head: #14213d; --kg-btn: #14213d; --kg-script: 'Playfair Display', Georgia, serif; --kg-display: 'Playfair Display', Georgia, serif; --kg-env: #1d2c52; --kg-env-dark: #24365f; --kg-seal: #c9a24f; }
+.kg--gradcap .kg-greet { font-style: italic; color: #e9d08a; }
+.kg--nursery { --kg-bg: #eef4f7; --kg-bg2: #dce8ee; --kg-on: #3a4a56; --kg-head: #43698c; --kg-btn: #43698c; --kg-script: 'Great Vibes', cursive; --kg-display: 'Quicksand', sans-serif; --kg-env: #f9fcfd; --kg-env-dark: #e3edf2; --kg-seal: #7fa7c9; }
+.kg--ring { --kg-bg: #f6e9e3; --kg-bg2: #ecd7cd; --kg-on: #4a3a33; --kg-head: #8c6626; --kg-btn: #8c6626; --kg-script: 'Pinyon Script', cursive; --kg-display: 'Cormorant Garamond', Georgia, serif; --kg-env: #fdf7f3; --kg-env-dark: #f0e0d6; --kg-seal: #b8913f; }
+.kg--crown { --kg-bg: #f8e6eb; --kg-bg2: #efd2db; --kg-on: #5a3842; --kg-head: #94506a; --kg-btn: #94506a; --kg-script: 'Great Vibes', cursive; --kg-display: 'Cormorant Garamond', Georgia, serif; --kg-env: #fff5f7; --kg-env-dark: #f3dde4; --kg-seal: #c27a8a; }
+.kg--mitzvah { --kg-bg: #1a2a55; --kg-bg2: #0b1530; --kg-on: #eef1f7; --kg-head: #16244a; --kg-btn: #16244a; --kg-script: 'Cinzel', serif; --kg-display: 'Cormorant Garamond', Georgia, serif; --kg-env: #1e2f5c; --kg-env-dark: #273b70; --kg-seal: #9aa7bf; }
+.kg--mitzvah .kg-greet { font-size: clamp(26px, 6vw, 36px); }
+.kg--sunset { --kg-bg: #fbeee2; --kg-bg2: #f3d9c4; --kg-on: #4a342b; --kg-head: #a94e31; --kg-btn: #a94e31; --kg-script: 'Dancing Script', cursive; --kg-display: 'Lora', Georgia, serif; --kg-env: #fdf6ee; --kg-env-dark: #f2e0cf; --kg-seal: #e08a62; }
+.kg--house { --kg-bg: #f3ece1; --kg-bg2: #e6dccb; --kg-on: #3d3a35; --kg-head: #9a4a30; --kg-btn: #9a4a30; --kg-script: 'Alex Brush', cursive; --kg-display: 'Lora', Georgia, serif; --kg-env: #fbf7f0; --kg-env-dark: #ece3d4; --kg-seal: #c06a45; }
+.kg--winter { --kg-bg: #15402e; --kg-bg2: #08221a; --kg-on: #f1e8d0; --kg-head: #123828; --kg-btn: #123828; --kg-script: 'Pinyon Script', cursive; --kg-display: 'Cormorant Garamond', Georgia, serif; --kg-env: #174532; --kg-env-dark: #1d5640; --kg-seal: #b3263a; }
+.kg--winter .kg-greet { color: #ecd393; }
+.kg--cheers { --kg-bg: #f3e9d6; --kg-bg2: #e6d6b7; --kg-on: #463826; --kg-head: #8c6626; --kg-btn: #8c6626; --kg-script: 'Great Vibes', cursive; --kg-display: 'Cormorant Garamond', Georgia, serif; --kg-env: #fdf8ee; --kg-env-dark: #efe2c8; --kg-seal: #b8913f; }
+.kg--launch { --kg-bg: #eef0f5; --kg-bg2: #dde1eb; --kg-on: #14254f; --kg-head: #14254f; --kg-btn: #14254f; --kg-script: 'Bodoni Moda', serif; --kg-display: 'Bodoni Moda', serif; --kg-env: #ffffff; --kg-env-dark: #e8ebf2; --kg-seal: #e46f55; }
+.kg--launch .kg-greet { font-style: italic; font-size: clamp(30px, 7vw, 40px); }
+.kg--polaroid { --kg-bg: #ece8e0; --kg-bg2: #ddd6ca; --kg-on: #3d3a35; --kg-head: #2f5d74; --kg-btn: #2f5d74; --kg-script: 'Dancing Script', cursive; --kg-display: 'Lora', Georgia, serif; --kg-env: #f8f6f1; --kg-env-dark: #e9e3d8; --kg-seal: #2f5d74; }
+.kg--neon .kg-music:not(.is-on), .kg--gradcap .kg-music:not(.is-on), .kg--mitzvah .kg-music:not(.is-on), .kg--winter .kg-music:not(.is-on) { background: rgba(255, 255, 255, 0.08); }
+.kg--neon .kg-actions .kg-save-note, .kg--gradcap .kg-actions .kg-save-note, .kg--mitzvah .kg-actions .kg-save-note, .kg--winter .kg-actions .kg-save-note { color: var(--kg-on); }
+
+/* photo gallery: swipe, or the big arrow buttons */
+.kg-gallery { position: relative; }
+.kg-gal-track { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; border-radius: 14px; }
+.kg-gal-track::-webkit-scrollbar { display: none; }
+.kg-gal-slide { flex: 0 0 100%; scroll-snap-align: center; margin: 0; aspect-ratio: 4 / 5; max-height: 72vh; background: #efe8de; border-radius: 14px; overflow: hidden; display: grid; place-items: center; }
+.kg-gal-slide img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.kg-gal-nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 14px; }
+.kg-gal-nav button { min-width: 64px; min-height: 56px; border-radius: 12px; border: 2px solid #a99a8a; background: #fff; color: #2b241f; font: 700 26px/1 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; cursor: pointer; }
+.kg-gal-nav button[disabled] { opacity: 0.4; cursor: not-allowed; }
+.kg-gal-count { font-weight: 700; font-size: 19px; }
+.kg-card .kc-ph, .kg-card .kc-photo { cursor: zoom-in; }
+/* the wallpaper's photo */
+.kg-lock-photo { flex: none; width: calc(var(--lw) * 0.4 * var(--orn, 1)); aspect-ratio: 1; border-radius: 50%; overflow: hidden; padding: calc(var(--lw) * 0.008); background: var(--kc-foil); box-shadow: 0 calc(var(--lw) * 0.02) calc(var(--lw) * 0.04) calc(var(--lw) * -0.02) rgba(0, 0, 0, 0.45); }
+.kg-lock-photo img { width: 100%; height: 100%; object-fit: cover; display: block; border-radius: 50%; }
+.kg-lock-sub { margin: 0 !important; font-family: var(--kc-caps); font-size: calc(var(--lw) * 0.05); letter-spacing: 0.18em; text-transform: uppercase; color: var(--kc-accent); max-width: 96%; line-height: 1.3; text-wrap: balance; }
+.kg-lock-names--event .kc-name { white-space: normal !important; text-wrap: balance; text-align: center; }

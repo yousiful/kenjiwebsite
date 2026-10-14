@@ -275,18 +275,20 @@ export function DecoFan({ gid, className }: G & { className?: string }) {
 export function MonogramFrame({ gid, a, b, className }: G & { a: string; b: string; className?: string }) {
   const p = `url(#${gid}-foil)`;
   return (
-    <svg className={className} viewBox="0 0 120 120" role="img" aria-label={`${a} and ${b}`}>
+    <svg className={className} viewBox="0 0 120 120" role="img" aria-label={b ? `${a} and ${b}` : a}>
       <path d="M60 4 L116 60 L60 116 L4 60 Z" fill="none" stroke={p} strokeWidth="1.2" />
       <path d="M60 12 L108 60 L60 108 L12 60 Z" fill="none" stroke={p} strokeWidth="0.6" />
       <circle cx="60" cy="4" r="2.2" fill={p} />
       <circle cx="60" cy="116" r="2.2" fill={p} />
       <circle cx="4" cy="60" r="2.2" fill={p} />
       <circle cx="116" cy="60" r="2.2" fill={p} />
-      <text x="60" y="68" textAnchor="middle" fontFamily="'Cinzel', serif" fontSize="26" fill={p} letterSpacing="1">
-        {a}
-        <tspan fontFamily="'Cormorant Garamond', serif" fontStyle="italic" fontSize="18" dx="2" dy="-1">&amp;</tspan>
-        <tspan dx="2" dy="1">{b}</tspan>
-      </text>
+      {b ? (
+        <text x="60" y="68" textAnchor="middle" fontFamily="'Cinzel', serif" fontSize="26" fill={p} letterSpacing="1">
+          {a}
+          <tspan fontFamily="'Cormorant Garamond', serif" fontStyle="italic" fontSize="18" dx="2" dy="-1">&amp;</tspan>
+          <tspan dx="2" dy="1">{b}</tspan>
+        </text>
+      ) : <text x="60" y="72" textAnchor="middle" fontFamily="'Cinzel', serif" fontSize="36" fill={p}>{a}</text>}
     </svg>
   );
 }

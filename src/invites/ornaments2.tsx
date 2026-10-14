@@ -20,7 +20,7 @@ export const DECKLE = (() => {
 /** Wax seal with an embossed monogram. */
 export function WaxSeal({ gid, a, b, className, color = '#7d1f2a' }: G & { a: string; b: string; className?: string; color?: string }) {
   return (
-    <svg className={className} viewBox="0 0 120 150" role="img" aria-label={`Wax seal with ${a} and ${b}`}>
+    <svg className={className} viewBox="0 0 120 150" role="img" aria-label={b ? `Wax seal with ${a} and ${b}` : `Wax seal with ${a}`}>
       <defs>
         <radialGradient id={`${gid}-wax`} cx="0.36" cy="0.3" r="0.8">
           <stop offset="0" stopColor="#c25b62" />
@@ -40,8 +40,8 @@ export function WaxSeal({ gid, a, b, className, color = '#7d1f2a' }: G & { a: st
         <circle cx="50" cy="50" r="33" fill="none" stroke="rgba(0,0,0,.28)" strokeWidth="2.6" />
         <circle cx="50" cy="51" r="33" fill="none" stroke="rgba(255,255,255,.16)" strokeWidth="1" />
         <circle cx="50" cy="50" r="27" fill="none" stroke="rgba(0,0,0,.18)" strokeWidth="0.8" strokeDasharray="1.2 2.4" />
-        <text x="50" y="58" textAnchor="middle" fontFamily="'Pinyon Script', cursive" fontSize="25" fill="rgba(0,0,0,.32)">{a}&amp;{b}</text>
-        <text x="50" y="57" textAnchor="middle" fontFamily="'Pinyon Script', cursive" fontSize="25" fill="rgba(255,255,255,.34)">{a}&amp;{b}</text>
+        <text x="50" y="58" textAnchor="middle" fontFamily="'Pinyon Script', cursive" fill="rgba(0,0,0,.32)" fontSize={b ? 25 : 36}>{b ? <>{a}&amp;{b}</> : a}</text>
+        <text x="50" y="57" textAnchor="middle" fontFamily="'Pinyon Script', cursive" fill="rgba(255,255,255,.34)" fontSize={b ? 25 : 36}>{b ? <>{a}&amp;{b}</> : a}</text>
         <ellipse cx="36" cy="26" rx="12" ry="6" fill="rgba(255,255,255,.16)" transform="rotate(-28 36 26)" />
       </g>
     </svg>

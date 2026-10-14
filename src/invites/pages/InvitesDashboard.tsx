@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { api, getToken, photoUrl, type HostEvent, type Summary } from '../api';
+import { api, getToken, cardOf, type HostEvent, type Summary } from '../api';
 import { Page, ErrorBox } from '../ui';
 import ManageLinkCard from '../ManageLinkCard';
 import { Icon } from '../icons';
@@ -54,7 +54,7 @@ export default function InvitesDashboard() {
             {events.map((ev) => (
               <li key={ev.id} className="kv-card kv-event">
                 <div className="kv-event-thumb" aria-hidden="true">
-                  <InvitationCard data={{ ...ev, photoUrl: photoUrl(ev) }} />
+                  <InvitationCard data={cardOf(ev)} />
                 </div>
                 <div>
                   <h3>{ev.title || 'Untitled'}</h3>

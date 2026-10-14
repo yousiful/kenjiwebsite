@@ -20,7 +20,7 @@
 .sk-heart { stroke: #b4626a; fill: rgba(180, 98, 106, 0); animation: sk-draw var(--dur) ease var(--t) forwards, sk-heartfill 0.5s ease 2.6s forwards; }
 @keyframes sk-heartfill { to { fill: rgba(180, 98, 106, 0.55); } }
 .sk-gold { stroke: #b8913f; stroke-width: 2.2; }
-.sk-washes { filter: blur(0.6px); }
+.sk-washes { opacity: 0.92; }
 .sk-wash { opacity: 0; transform: translate(1.6px, 1.2px); animation: sk-wash 0.8s ease 2.35s forwards; }
 @keyframes sk-wash { to { opacity: 1; } }
 .sk-wash-gown { fill: rgba(243, 220, 214, 0.65); }
@@ -34,6 +34,19 @@
 .sk-wash-stone { fill: rgba(216, 190, 150, 0.45); }
 .sk-wash-heart { fill: rgba(232, 180, 174, 0.6); }
 .sk-wash-blush { fill: rgba(244, 222, 217, 0.55); }
+.sk-wash-pink { fill: rgba(236, 160, 172, 0.5); }
+.sk-wash-cream { fill: rgba(246, 233, 205, 0.7); }
+.sk-wash-coral { fill: rgba(240, 138, 118, 0.55); }
+.sk-wash-gold { fill: rgba(233, 196, 106, 0.5); }
+.sk-wash-mint { fill: rgba(111, 179, 156, 0.4); }
+.sk-wash-navy { fill: rgba(40, 58, 102, 0.35); }
+.sk-wash-ice { fill: rgba(190, 220, 236, 0.6); }
+.sk-wash-sky { fill: rgba(170, 202, 226, 0.45); }
+.sk-evenodd { fill-rule: evenodd; }
+.sk-flame { stroke: #e39a2f; }
+.sk-goldline { stroke: #b8913f; }
+.sk-redline { stroke: #a8323f; }
+.sk-confetti { stroke: #e46f55; }
 .sk-sparkles path { fill: #d9b45a; opacity: 0; transform-box: fill-box; transform-origin: center; animation: sk-twinkle 0.9s ease-out var(--t) forwards; }
 @keyframes sk-twinkle { 0% { opacity: 0; transform: scale(0.2) rotate(-20deg); } 60% { opacity: 1; transform: scale(1.25) rotate(8deg); } 100% { opacity: 0.85; transform: scale(1) rotate(0); } }
 /* finished sketch, no motion */
