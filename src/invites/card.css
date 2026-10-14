@@ -376,7 +376,8 @@
 .kc--couple .kc-name { font-size: calc(14.5cqi * var(--kc-nscale)); }
 
 /* ---------- Church & Chapel: stained glass, gold tracery, bells ---------- */
-.kc--chapel { --kc-ink: #3a2a28; --kc-soft: #6a5048; --kc-caps: 'Cinzel', serif; --kc-accent: #8e2b3c; --il-accent: #8e2b3c; }
+.kc--chapel { --kc-ink: #3a2a28; --kc-soft: #6a5048; --kc-caps: 'Cinzel', serif; --kc-accent: #8e2b3c; --il-accent: #8e2b3c;
+  --kc-foil: linear-gradient(115deg, #6f4c17 0%, #a07a2c 22%, #cfae5c 40%, #8c6626 58%, #b8913f 78%, #75521c 100%); }
 .kc--chapel .kc-paper { background: radial-gradient(120% 90% at 50% 34%, #fffbf2 0%, #f3e9d6 100%); padding: 13cqi 13cqi 14cqi; }
 .kc--chapel .kc-gild { display: block; }
 .kc--chapel .kc-frame { inset: 5cqi; border: 1px solid rgba(184, 145, 63, 0.6); border-radius: 40cqi 40cqi 0.4cqi 0.4cqi; }
@@ -471,7 +472,8 @@
 .kc--city .kc-photo { border-radius: 0; width: 46cqi; aspect-ratio: 4 / 3; padding: 0; background: none; }
 
 /* ---------- Vow Renewal: golden rings on champagne ---------- */
-.kc--renewal { --kc-ink: #463826; --kc-soft: #6f5a40; --kc-accent: #8c6626; }
+.kc--renewal { --kc-ink: #463826; --kc-soft: #6f5a40; --kc-accent: #8c6626;
+  --kc-foil: linear-gradient(115deg, #6f4c17 0%, #a07a2c 22%, #cfae5c 40%, #8c6626 58%, #b8913f 78%, #75521c 100%); }
 .kc--renewal .kc-paper { background: radial-gradient(110% 80% at 50% 35%, #fffaf0 0%, #f2e6cf 100%); padding: 16cqi 13cqi; }
 .kc--renewal .kc-gild { display: block; }
 .kc--renewal .kc-frame { inset: 5.5cqi; border: 1px solid rgba(184, 145, 63, 0.5); }

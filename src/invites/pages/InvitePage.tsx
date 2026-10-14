@@ -3,6 +3,7 @@ import { api, icsUrl, photoUrl, type GuestView, type PublicEvent } from '../api'
 import InvitationCard from '../InvitationCard';
 import { EnvelopeIntro, TiltCard } from '../Opening';
 import { Celebration, StaticSparkles } from '../Celebration';
+import { LockWallpaper } from '../Wallpaper';
 import { SketchArt, SketchIntro } from '../Sketch';
 import { MusicBox } from '../music';
 import { Icon } from '../icons';
@@ -343,14 +344,37 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
     setStageOn(kind);
     await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
     const stage = (kind === 'save' ? wpRef : lockRef).current;
-    const card = stage?.querySelector<HTMLElement>(kind === 'save' ? '.kg-wp-card' : '.kg-lock-card');
-    if (!stage || !card) { set('error'); setStageOn(''); return; }
-    // the card keeps its proportions and is made as big as fits its area
-    const maxW = kind === 'save' ? 880 : Math.round(W * 0.78);
-    const maxH = kind === 'save' ? 1460 : Math.round(H * 0.49);
-    card.style.width = `${maxW}px`;
-    const h = card.getBoundingClientRect().height;
-    if (h > maxH) card.style.width = `${Math.floor((maxW * maxH) / h)}px`;
+    if (!stage) { set('error'); setStageOn(''); return; }
+    if (kind === 'save') {
+      // the card keeps its proportions and is made as big as fits between the title and the RSVP line
+      const card = stage.querySelector<HTMLElement>('.kg-wp-card');
+      if (card) {
+        card.style.width = '880px';
+        const h = card.getBoundingClientRect().height;
+        if (h > 1460) card.style.width = `${Math.floor((880 * 1460) / h)}px`;
+      }
+    } else {
+      // wallpaper: names as large as fit the width, everything inside the safe band
+      await document.fonts.ready;
+      const zone = stage.querySelector<HTMLElement>('.kg-lock-zone');
+      const names = stage.querySelector<HTMLElement>('.kg-lock-names');
+      if (zone && names) {
+        // names as wide as they can be (aim ~78% of the screen) while everything stays in the band;
+        // if the band still overflows, the illustration gives way a little (never below 75%)
+        const setName = (v: number) => { size = v; stage.style.setProperty('--name', `${Math.round(v)}px`); };
+        const fits = () => names.scrollWidth <= zone.clientWidth * 0.98 && zone.scrollHeight <= zone.clientHeight + 2;
+        let size = parseFloat(getComputedStyle(stage).getPropertyValue('--name')) || W * 0.15;
+        for (let i = 0; i < 40 && !fits() && size > W * 0.12; i++) setName(size * 0.95);
+        for (let i = 0; i < 20 && names.scrollWidth < W * 0.72 && size < W * 0.24; i++) {
+          const prev = size;
+          setName(size * 1.04);
+          if (!fits()) { setName(prev); break; }
+        }
+        let orn = 1;
+        for (let i = 0; i < 6 && !fits() && orn > 0.75; i++) { orn -= 0.05; stage.style.setProperty('--orn', String(orn)); }
+        for (let i = 0; i < 30 && !fits(); i++) setName(size * 0.95);
+      }
+    }
     const { captureNode } = await import('../snapshot');
     const url = await captureNode(stage, theme, W, H, 'png');
     setStageOn('');
@@ -486,13 +510,7 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
         <p className="kg-foot">Made with <a href="/invites">Kenji Invites</a>, free wedding invitations.</p>
         {stageOn === 'lock' && (
           <div className="kg-wp-host" aria-hidden="true" style={{ width: lockSize[0], height: lockSize[1] }}>
-            {/* top third stays calm for the lock-screen clock; nothing busy near the bottom buttons */}
-            <div ref={lockRef} className="kg-lock" style={{ width: lockSize[0], height: lockSize[1], fontSize: lockSize[0] / 36 }} data-w={lockSize[0]} data-h={lockSize[1]}>
-              <div className="kg-lock-area">
-                <div className="kg-lock-card"><InvitationCard data={{ ...ev, photoUrl: pUrl, personalMessage: '' }} /></div>
-                <p className="kg-lock-line">{[ev.date ? longDate(ev.date) : '', ev.venueName].filter(Boolean).join(' \u00b7 ')}</p>
-              </div>
-            </div>
+            <LockWallpaper ref={lockRef} ev={ev} width={lockSize[0]} height={lockSize[1]} />
           </div>
         )}
         {stageOn === 'save' && (

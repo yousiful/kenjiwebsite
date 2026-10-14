@@ -166,13 +166,26 @@
 .kg-wp-card .kc-gild { border-image: none !important; border-color: #c3a056 !important; }
 .kg-wp-rsvp { margin: 0 !important; font: 600 34px/1.3 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; letter-spacing: 0.01em; opacity: 0.85; }
 
-/* lock-screen wallpaper (size set from the phone); card sits in the 33%-82% band */
-.kg-lock { position: relative; background: radial-gradient(120% 70% at 50% 0%, var(--kg-bg) 0%, var(--kg-bg2) 100%); color: var(--kg-on); overflow: hidden; }
-.kg-lock::before { content: ''; position: absolute; inset: 0; opacity: 0.25; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .28 0 0 0 .35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-.kg-lock-area { position: absolute; left: 0; right: 0; top: 33%; height: 52%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 1.6em; }
-.kg-lock-card { box-shadow: 0 1.2em 2.6em -1.2em rgba(0, 0, 0, 0.55); }
-.kg-lock-card .kc-gild { border-image: none !important; border-color: #c3a056 !important; }
-.kg-lock-line { margin: 0 !important; font-family: var(--kg-display); font-size: 1.2em; letter-spacing: 0.04em; text-align: center; opacity: 0.9; max-width: 92%; text-wrap: balance; }
+/* lock-screen wallpaper: its own composition in the card's design (sizes from --lw = width) */
+.kg-lock { position: relative; overflow: hidden; }
+.kg-lock .kg-lock-paper { position: absolute !important; inset: 0; min-height: 0 !important; padding: 0 !important; border-radius: 0 !important; box-shadow: none !important; display: block !important; }
+.kg-lock-zone { position: absolute; z-index: 2; left: 7.5%; right: 7.5%; top: 33%; height: 52%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: calc(var(--lw) * 0.024); text-align: center; color: var(--kc-ink); }
+.kg-lock-orn { display: block; flex: none; width: auto; max-width: 88%; height: calc(var(--lw) * 0.24 * var(--orn, 1)); }
+.kg-lock-orn--tall { height: calc(var(--lw) * 0.32 * var(--orn, 1)); }
+.kg-lock-orn--small, .kg-lock-orn--seal { height: calc(var(--lw) * 0.2 * var(--orn, 1)); }
+.kg-lock-orn--band { width: calc(var(--lw) * 0.85); max-width: none; height: calc(var(--lw) * 0.28 * var(--orn, 1)); border-radius: calc(var(--lw) * 0.02); }
+.kg-lock-orn--tiles { height: calc(var(--lw) * 0.11); }
+.kg-lock .kc-paper::after { display: none; }
+.kg-lock-route { height: auto; display: flex; align-items: center; gap: calc(var(--lw) * 0.02); width: 92%; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: calc(var(--lw) * 0.085); color: var(--kc-ink); letter-spacing: 0.04em; }
+.kg-lock-route i { flex: 1; border-top: calc(var(--lw) * 0.004) dashed currentColor; opacity: 0.4; }
+.kg-lock-plane { width: calc(var(--lw) * 0.08); height: calc(var(--lw) * 0.08); transform: rotate(90deg); color: #b8913f; }
+.kg-lock-names { display: flex; flex-direction: column; align-items: center; line-height: 1.04; max-width: 100%; }
+.kg-lock-names .kc-name { font-size: var(--name) !important; white-space: nowrap; padding: 0 0.12em; }
+.kg-lock .kg-lock-amp { font-size: calc(var(--name) * 0.36) !important; margin: calc(var(--name) * 0.04) 0 !important; }
+.kg-lock-date { margin: calc(var(--lw) * 0.02) 0 0 !important; font-family: var(--kc-serif); font-weight: 500; font-size: calc(var(--lw) * 0.062); line-height: 1.2; text-wrap: balance; }
+.kg-lock-time { margin: 0 !important; font-family: var(--kc-caps); font-size: calc(var(--lw) * 0.042); letter-spacing: 0.14em; text-transform: uppercase; color: var(--kc-soft); }
+.kg-lock-venue { margin: 0 !important; font-family: var(--kc-caps); font-size: calc(var(--lw) * 0.042); letter-spacing: 0.12em; text-transform: uppercase; color: var(--kc-soft); max-width: 96%; line-height: 1.35; text-wrap: balance; }
+.kg-lock .kc-gild { display: none; }
 /* wallpaper how-to: big, numbered */
 .kg-howto { grid-column: 1 / -1; padding: 16px 18px; border-radius: 14px; background: #fff; color: #2b241f; border: 2px solid var(--kg-btn); }
 .kg-howto-steps { margin: 10px 0 4px; padding-left: 28px; font-size: 20px; line-height: 1.5; }
