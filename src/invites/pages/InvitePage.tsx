@@ -2,6 +2,8 @@ import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { api, icsUrl, photoUrl, type GuestView, type PublicEvent } from '../api';
 import InvitationCard from '../InvitationCard';
 import { EnvelopeIntro, TiltCard } from '../Opening';
+import { Celebration, StaticSparkles } from '../Celebration';
+import { MusicBox } from '../music';
 import { Icon } from '../icons';
 import { buildIcs, googleCalendarUrl, cleanPhone, isEmail, type CalItem } from '../shared';
 import { clockTime, countdownText, daysToGo, loadThemeFonts, longDate, mapsUrl, shortDate } from '../format';
@@ -153,6 +155,29 @@ function Rsvp({ data, code, preview, onSaved }: { data: Data; code: string; prev
   );
 }
 
+/** Big, friendly music toggle. Music never starts on its own. */
+function MusicButton({ id }: { id: NonNullable<PublicEvent['music']> }) {
+  const box = useRef<MusicBox | null>(null);
+  const [on, setOn] = useState(false);
+  useEffect(() => () => box.current?.stop(), []);
+  return (
+    <button
+      type="button"
+      className={`kg-music${on ? ' is-on' : ''}`}
+      aria-pressed={on}
+      data-testid="music"
+      onClick={async () => {
+        if (!box.current) box.current = new MusicBox();
+        if (on) { box.current.stop(); setOn(false); }
+        else { setOn(true); await box.current.play(id); }
+      }}
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /><circle cx="6" cy="18" r="3" fill="currentColor" /><circle cx="17" cy="16" r="3" fill="currentColor" /></svg>
+      {on ? 'Pause the music' : 'Tap to play music'}
+    </button>
+  );
+}
+
 export default function InvitePage({ code: initialCode = '', previewEvent }: { code?: string; previewEvent?: PublicEvent }) {
   // inside the main site the page already has a <main>; the standalone invite.html does not
   const standalone = typeof document !== 'undefined' && !document.getElementById('main-content');
@@ -160,6 +185,8 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
   const [data, setData] = useState<Data | null>(null);
   const [error, setError] = useState('');
   const [intro, setIntro] = useState(false);
+  const [party, setParty] = useState(false);
+  const [firstOpen, setFirstOpen] = useState(false);
   const preview = !!previewEvent || (typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('preview') === '1');
 
   useEffect(() => {
@@ -179,7 +206,11 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
         setData(d);
         let seen = false;
         try { seen = sessionStorage.getItem(`kg-seen-${initialCode}`) === '1'; sessionStorage.setItem(`kg-seen-${initialCode}`, '1'); } catch { /* ignore */ }
-        if (!seen && !reducedMotion() && d.event.opening !== 'fade') setIntro(true);
+        if (!seen) setFirstOpen(true);
+        if (!seen && !reducedMotion()) {
+          if (d.event.opening !== 'fade') setIntro(true);
+          else window.setTimeout(() => setParty(true), 350);
+        }
       })
       .catch((e) => setError(e.message));
   }, [initialCode, previewEvent, preview]);
@@ -219,12 +250,20 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
 
   return (
     <div className={`kg kg--${theme}`}>
-      {intro && <EnvelopeIntro data={{ ...ev, photoUrl: pUrl }} initials={initials} onDone={() => setIntro(false)} />}
+      {intro && <EnvelopeIntro data={{ ...ev, photoUrl: pUrl }} initials={initials} onDone={() => { setIntro(false); setParty(true); }} />}
+      {party && <Celebration theme={theme} onDone={() => setParty(false)} />}
       {preview && <p className="kg-previewbar">Preview: this is what your guests see. Answers here are not saved.</p>}
       <div className="kg-main" role={standalone ? 'main' : undefined}>
-        {greeting && <p className="kg-greet">{greeting}</p>}
+        {greeting && (
+          <div className={`kg-hello${firstOpen && motionOk ? ' kg-hello--reveal' : ''}`} data-testid="greeting">
+            {!motionOk && firstOpen && <StaticSparkles />}
+            <p className="kg-greet">{greeting}</p>
+            {data.guest?.name && <p className="kg-invited">you're invited!</p>}
+          </div>
+        )}
+        {ev.music && <MusicButton id={ev.music} />}
         <div className={`kg-card${!intro && fade ? ' kg-fadein' : ''}`}>
-          <TiltCard enabled={motionOk}>
+          <TiltCard enabled={motionOk} sweep={firstOpen && motionOk && !intro}>
             <InvitationCard data={{ ...ev, photoUrl: pUrl }} minText={18} />
           </TiltCard>
         </div>

@@ -4,7 +4,8 @@ import { api, photoUrl, inviteLink, getLeadEmail, type HostEvent } from '../api'
 import ManageLinkCard from '../ManageLinkCard';
 import { Page, Field, Stepper, SavedNote, ConfirmButton, ErrorBox, useHostKey, StatusChip } from '../ui';
 import { Icon } from '../icons';
-import InvitationCard, { THEMES, ACCENTS } from '../InvitationCard';
+import InvitationCard, { THEMES, ACCENTS, OCCASIONS, occasionOf } from '../InvitationCard';
+import { MUSIC, MusicBox } from '../music';
 import { THEME_IDS, SUB_EVENT_PRESETS, LIMITS, formatPhone, isEmail, type Guest, type SubEvent, type ThemeId } from '../shared';
 import { browserTimezone, loadThemeFonts } from '../format';
 import { smsHref, inviteText, copyText } from '../send';
@@ -25,7 +26,7 @@ const HELP = [
 
 const blankEvent = (): HostEvent => ({
   id: '', coupleNames: ['', ''], title: '', date: '', time: '', timezone: browserTimezone(), venueName: '', address: '',
-  theme: 'ivory', accent: '', photo: false, photoVersion: 0, personalMessage: '', opening: 'envelope', rsvpBy: '', defaultSeats: 2,
+  theme: 'ivory', accent: '', photo: false, photoVersion: 0, personalMessage: '', opening: 'envelope', music: '', figures: 'bride-groom', showCross: false, rsvpBy: '', defaultSeats: 2,
   openLinkEnabled: false, openCode: '', subEvents: [], createdAt: '', updatedAt: '',
 });
 
@@ -290,6 +291,18 @@ function StepDesign({ ev, patch, setEv }: StepProps & { setEv: (f: (e: HostEvent
   const [err, setErr] = useState('');
   const fileRef = useRef<HTMLInputElement>(null);
   const sample = { ...ev, photoUrl: photoUrl(ev) };
+  const [occ, setOcc] = useState(() => occasionOf(ev.theme));
+  const occasion = OCCASIONS.find((o) => o.id === occ) || OCCASIONS[0];
+  const box = useRef<MusicBox | null>(null);
+  const [sampling, setSampling] = useState('');
+  useEffect(() => () => box.current?.stop(), []);
+  async function sampleMusic(id: HostEvent['music']) {
+    if (!box.current) box.current = new MusicBox();
+    if (sampling === id) { box.current.stop(); setSampling(''); return; }
+    setSampling(id);
+    await box.current.play(id);
+    window.setTimeout(() => { setSampling((cur) => { if (cur === id) box.current?.stop(); return cur === id ? '' : cur; }); }, 12000);
+  }
 
   async function onFile(file: File | undefined) {
     if (!file) return;
@@ -309,15 +322,51 @@ function StepDesign({ ev, patch, setEv }: StepProps & { setEv: (f: (e: HostEvent
 
   return (
     <div className="kv-stack">
-      <div className="kv-themes" role="group" aria-label="Designs">
-        {THEME_IDS.map((t: ThemeId) => (
-          <button key={t} type="button" className="kv-theme" aria-pressed={ev.theme === t} onClick={() => patch({ theme: t })} data-theme={t}>
-            <span aria-hidden="true"><InvitationCard data={{ ...sample, theme: t, accent: '', personalMessage: '' }} /></span>
-            <span>{THEMES[t].name}</span>
-            {ev.theme === t && <span className="kv-theme-check">Chosen</span>}
+      <h2 className="kv-sub" id="kv-occ-label">What kind of wedding?</h2>
+      <div className="kv-occasions" role="group" aria-labelledby="kv-occ-label">
+        {OCCASIONS.map((o) => (
+          <button key={o.id} type="button" className="kv-occasion" aria-pressed={occ === o.id} data-occasion={o.id}
+            onClick={() => { setOcc(o.id); if (!o.themes.includes(ev.theme)) patch({ theme: o.themes[0] }); }}>
+            <span className="kv-occasion-pic" aria-hidden="true"><InvitationCard data={{ ...sample, theme: o.themes[0], accent: '', personalMessage: '', photoUrl: '' }} /></span>
+            <span className="kv-occasion-name">{o.name}</span>
+            <span className="kv-occasion-hint">{o.hint}</span>
           </button>
         ))}
       </div>
+
+      {occasion.themes.length > 1 && (
+        <>
+          <h2 className="kv-sub" id="kv-style-label">Pick a style</h2>
+          <div className="kv-themes" role="group" aria-labelledby="kv-style-label">
+            {occasion.themes.map((t: ThemeId) => (
+              <button key={t} type="button" className="kv-theme" aria-pressed={ev.theme === t} onClick={() => patch({ theme: t })} data-theme={t}>
+                <span aria-hidden="true"><InvitationCard data={{ ...sample, theme: t, accent: '', personalMessage: '' }} /></span>
+                <span>{THEMES[t].name}</span>
+                {ev.theme === t && <span className="kv-theme-check">Chosen</span>}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+
+      {ev.theme === 'couple' && (
+        <div className="kv-card">
+          <p className="kv-label" id="kv-fig-label" style={{ marginBottom: 12 }}>Who is in the picture?</p>
+          <div className="kv-btn-row" role="group" aria-labelledby="kv-fig-label">
+            {([['bride-groom', 'Bride & groom'], ['two-brides', 'Two brides'], ['two-grooms', 'Two grooms']] as const).map(([v, l]) => (
+              <button key={v} type="button" className={`kv-btn ${ev.figures === v ? 'kv-btn--primary' : 'kv-btn--secondary'}`} aria-pressed={ev.figures === v} onClick={() => patch({ figures: v })} data-testid={`figures-${v}`}>{l}</button>
+            ))}
+          </div>
+        </div>
+      )}
+      {ev.theme === 'chapel' && (
+        <div className="kv-card">
+          <label className="kv-check">
+            <input type="checkbox" checked={!!ev.showCross} onChange={(e) => patch({ showCross: e.target.checked })} data-testid="show-cross" />
+            <span><strong>Show a cross above the window</strong><span className="kv-hint" style={{ display: 'block', marginTop: 4 }}>Leave this off for a chapel look without religious symbols.</span></span>
+          </label>
+        </div>
+      )}
 
       <div className="kv-card" style={{ marginTop: 28 }}>
         <h2 style={{ fontSize: 24, marginBottom: 8 }}>Your photo <span className="kv-muted" style={{ fontWeight: 400, fontSize: 19 }}>(you can skip this)</span></h2>
@@ -348,6 +397,25 @@ function StepDesign({ ev, patch, setEv }: StepProps & { setEv: (f: (e: HostEvent
             <strong>Simple fade</strong>
             <span>The invitation just appears, softly.</span>
           </button>
+        </div>
+      </div>
+
+      <div className="kv-card">
+        <p className="kv-label" id="kv-music-label" style={{ marginBottom: 6 }}>Music (you can skip this)</p>
+        <p className="kv-hint" style={{ marginBottom: 14 }}>Guests see a "Tap to play music" button. It never plays by itself.</p>
+        <div className="kv-music-list" role="radiogroup" aria-labelledby="kv-music-label">
+          {MUSIC.map((m) => (
+            <div key={m.id || 'none'} className="kv-music-row">
+              <button type="button" role="radio" aria-checked={(ev.music || '') === m.id} className="kv-choice" onClick={() => patch({ music: m.id })} data-testid={`music-${m.id || 'none'}`}>
+                <strong>{m.name}</strong><span>{m.hint}</span>
+              </button>
+              {m.id && (
+                <button type="button" className="kv-btn kv-btn--secondary" onClick={() => sampleMusic(m.id)} aria-label={`${sampling === m.id ? 'Stop' : 'Play'} a sample of ${m.name}`}>
+                  {sampling === m.id ? 'Stop' : 'Listen'}
+                </button>
+              )}
+            </div>
+          ))}
         </div>
       </div>
 

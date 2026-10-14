@@ -1,8 +1,8 @@
 import type { HandlerEvent, HandlerResponse } from '@netlify/functions';
 import { asV2, invitesStore, readToken, randomId, hmac, json, fail, parseBody, str } from './_invites/common';
 import {
-  THEME_IDS, LIMITS, isDate, isTime, isEmail, cleanPhone, parseGuestList, todayIn, buildIcs,
-  type InviteEvent, type Guest, type SubEvent, type ThemeId,
+  THEME_IDS, MUSIC_IDS, FIGURES, LIMITS, isDate, isTime, isEmail, cleanPhone, parseGuestList, todayIn, buildIcs,
+  type InviteEvent, type Guest, type SubEvent, type ThemeId, type MusicId, type Figures,
 } from '../../src/invites/shared';
 
 /**
@@ -97,6 +97,9 @@ function applyEventFields(ev: StoredEvent, b: Record<string, unknown>): string {
   if ('accent' in b) ev.accent = /^#[0-9a-fA-F]{6}$/.test(String(b.accent || '')) ? String(b.accent) : '';
   if ('personalMessage' in b) ev.personalMessage = str(b.personalMessage, LIMITS.message);
   if ('opening' in b) ev.opening = b.opening === 'fade' ? 'fade' : 'envelope';
+  if ('music' in b) ev.music = MUSIC_IDS.includes(b.music as MusicId) ? (b.music as MusicId) : '';
+  if ('figures' in b) ev.figures = FIGURES.includes(b.figures as Figures) ? (b.figures as Figures) : 'bride-groom';
+  if ('showCross' in b) ev.showCross = bool(b.showCross);
   if ('rsvpBy' in b) {
     if (b.rsvpBy && !isDate(b.rsvpBy)) return 'Please pick the reply-by date again.';
     ev.rsvpBy = (b.rsvpBy as string) || '';
@@ -111,7 +114,7 @@ function publicEvent(ev: StoredEvent) {
   return {
     id: ev.id, coupleNames: ev.coupleNames, title: ev.title, date: ev.date, time: ev.time, timezone: ev.timezone,
     venueName: ev.venueName, address: ev.address, theme: ev.theme, accent: ev.accent, photo: ev.photo,
-    photoVersion: ev.photoVersion, personalMessage: ev.personalMessage, opening: ev.opening === 'fade' ? 'fade' : 'envelope', rsvpBy: ev.rsvpBy, defaultSeats: ev.defaultSeats,
+    photoVersion: ev.photoVersion, personalMessage: ev.personalMessage, opening: ev.opening === 'fade' ? 'fade' : 'envelope', music: ev.music || '', figures: ev.figures || 'bride-groom', showCross: !!ev.showCross, rsvpBy: ev.rsvpBy, defaultSeats: ev.defaultSeats,
     subEvents: ev.subEvents,
   };
 }
@@ -370,7 +373,7 @@ const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
       const t = nowIso();
       const ev: StoredEvent = {
         id: randomId(12), owners: [owner.ownerHash], creator: owner.ownerHash, coupleNames: ['', ''], title: '', date: '', time: '', timezone: 'America/New_York',
-        venueName: '', address: '', theme: 'ivory', accent: '', photo: false, photoVersion: 0, personalMessage: '', opening: 'envelope', rsvpBy: '',
+        venueName: '', address: '', theme: 'ivory', accent: '', photo: false, photoVersion: 0, personalMessage: '', opening: 'envelope', music: '', figures: 'bride-groom', showCross: false, rsvpBy: '',
         defaultSeats: 2, openLinkEnabled: false, openCode: '', subEvents: [], createdAt: t, updatedAt: t,
       };
       const err = applyEventFields(ev, b);

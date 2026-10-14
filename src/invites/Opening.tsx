@@ -84,7 +84,7 @@ export function EnvelopeIntro({ data, initials, onDone }: { data: CardData; init
  * Gentle 3D tilt + moving foil shine for the invitation card. Follows the mouse or a
  * dragging finger; uses the phone's motion sensor when allowed; otherwise sways slowly.
  */
-export function TiltCard({ children, enabled }: { children: ReactNode; enabled: boolean }) {
+export function TiltCard({ children, enabled, sweep = false }: { children: ReactNode; enabled: boolean; sweep?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const sheen = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -153,6 +153,7 @@ export function TiltCard({ children, enabled }: { children: ReactNode; enabled: 
     <div ref={ref} className={`kg-tilt${enabled ? ' kg-tilt--on' : ''}`} data-testid="tilt">
       {children}
       {enabled && <div className="kg-sheen" aria-hidden="true"><div ref={sheen} /></div>}
+      {sweep && <div className="kg-sweepwrap" aria-hidden="true"><div className="kg-sweep" /></div>}
     </div>
   );
 }

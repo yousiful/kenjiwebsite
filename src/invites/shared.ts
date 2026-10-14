@@ -1,7 +1,15 @@
 // Shared between the browser (src/invites/*) and the Netlify functions
 // (netlify/functions/invites-*.ts). Keep it dependency-free.
 
-export const THEME_IDS = ['ivory', 'waxseal', 'blacktie', 'vellum', 'garden', 'blush', 'emerald', 'midnight', 'deco', 'tile', 'minimal', 'kraft', 'boho'] as const;
+export const THEME_IDS = [
+  'ivory', 'waxseal', 'blacktie', 'vellum', 'garden', 'blush', 'emerald', 'midnight', 'deco', 'tile', 'minimal', 'kraft', 'boho',
+  // occasion designs with hand-drawn illustrations
+  'couple', 'chapel', 'arbor', 'beach', 'barn', 'passport', 'city', 'renewal',
+] as const;
+export const MUSIC_IDS = ['', 'canon', 'bridal', 'chimes'] as const;
+export type MusicId = (typeof MUSIC_IDS)[number];
+export const FIGURES = ['bride-groom', 'two-brides', 'two-grooms'] as const;
+export type Figures = (typeof FIGURES)[number];
 export type ThemeId = (typeof THEME_IDS)[number];
 
 export interface SubEvent {
@@ -29,6 +37,9 @@ export interface InviteEvent {
   photoVersion: number;
   personalMessage: string;
   opening: 'envelope' | 'fade'; // how the guest page opens
+  music: MusicId; // '' = none; synthesized in the browser, never autoplayed
+  figures: Figures; // who is drawn on the Bride & Groom design
+  showCross: boolean; // church design: show a cross (host's choice)
   rsvpBy: string;
   defaultSeats: number;
   openLinkEnabled: boolean;

@@ -106,6 +106,14 @@ export const THEME_FONTS: Record<ThemeId, string[]> = {
   vellum: ['parisienne', 'cormorant'],
   tile: ['greatvibes', 'playfair', 'cormorant'],
   deco: ['cinzeldeco', 'poiret', 'cormorant'],
+  couple: ['pinyon', 'cormorant'],
+  chapel: ['pinyon', 'cinzel', 'cormorant'],
+  arbor: ['greatvibes', 'lora'],
+  beach: ['parisienne', 'cormorant', 'josefin'],
+  barn: ['alexbrush', 'josefin', 'lora'],
+  passport: ['playfair', 'montserrat', 'greatvibes'],
+  city: ['playfair', 'montserrat', 'parisienne'],
+  renewal: ['pinyon', 'cormorant'],
 };
 
 const loaded = new Set<string>();
