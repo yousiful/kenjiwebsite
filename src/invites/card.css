@@ -479,3 +479,10 @@
 .kc--renewal .kc-name { font-size: calc(15cqi * var(--kc-nscale)); }
 .kc--renewal .kc-amp { font-size: max(var(--kc-min), 2.6cqi); font-style: normal; text-transform: uppercase; letter-spacing: 0.36em; margin: 1.8cqi 0; }
 .kc--renewal .kc-photo { width: 34cqi; }
+
+/* venue/address on the guest's card opens maps: a quiet dotted underline and a small pin */
+.kc-maplink { color: inherit; text-decoration: none; display: block; border-radius: 1cqi; }
+.kc-maplink .kc-address { text-decoration: underline dotted; text-decoration-thickness: 1px; text-underline-offset: 0.6cqi; text-decoration-color: color-mix(in srgb, currentColor 55%, transparent); }
+.kc-maplink:hover .kc-address, .kc-maplink:focus-visible .kc-address { text-decoration-style: solid; }
+.kc-pin { width: 1.15em; height: 1.15em; vertical-align: -0.18em; margin-right: 0.25em; opacity: 0.75; }
+a.kc-maplink:not(.kc-where) { text-decoration: underline dotted; text-underline-offset: 0.5cqi; }

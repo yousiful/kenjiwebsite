@@ -70,8 +70,15 @@ export function countdownText(date: string, timezone: string): string {
   return 'Thank you for celebrating with us';
 }
 
-export const mapsUrl = (venue: string, address: string) =>
-  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent([venue, address].filter(Boolean).join(', '))}`;
+export const isIOSDevice = () =>
+  typeof navigator !== 'undefined' && (/iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1));
+export const isAndroidDevice = () => typeof navigator !== 'undefined' && /Android/i.test(navigator.userAgent);
+
+/** Apple Maps on iPhone/iPad, Google Maps everywhere else. */
+export const mapsUrl = (venue: string, address: string) => {
+  const q = encodeURIComponent([venue, address].filter(Boolean).join(', '));
+  return isIOSDevice() ? `https://maps.apple.com/?q=${q}` : `https://www.google.com/maps/search/?api=1&query=${q}`;
+};
 
 export function browserTimezone(): string {
   try { return Intl.DateTimeFormat().resolvedOptions().timeZone || 'America/New_York'; } catch { return 'America/New_York'; }

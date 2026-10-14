@@ -210,6 +210,13 @@ export interface CalItem {
   location: string;
   details: string;
   hours: number;
+  url?: string; // the invitation link
+}
+
+/** "Sarah & James's Wedding" from the two names (first names only). */
+export function weddingTitle(names: [string, string]): string {
+  const f = (n: string) => n.trim().split(/\s+/)[0] || n;
+  return `${f(names[0])} & ${f(names[1])}'s Wedding`;
 }
 
 /** Start/end for Google Calendar's `dates` param. */
@@ -221,7 +228,8 @@ export function googleCalendarUrl(it: CalItem): string {
   } else {
     dates = `${icsDate(it.date)}/${icsDate(nextDay(it.date))}`;
   }
-  const q = new URLSearchParams({ action: 'TEMPLATE', text: it.title, dates, details: it.details, location: it.location });
+  // ctz shows the times in the event's own timezone
+  const q = new URLSearchParams({ action: 'TEMPLATE', text: it.title, dates, details: it.details, location: it.location, ctz: it.timezone });
   return `https://calendar.google.com/calendar/render?${q.toString()}`;
 }
 
@@ -239,6 +247,9 @@ export function buildIcs(it: CalItem): string {
   lines.push(`SUMMARY:${icsEscape(it.title)}`);
   if (it.location) lines.push(`LOCATION:${icsEscape(it.location)}`);
   if (it.details) lines.push(`DESCRIPTION:${icsEscape(it.details)}`);
+  if (it.url) lines.push(`URL:${it.url}`);
+  // reminder the day before
+  lines.push('BEGIN:VALARM', 'ACTION:DISPLAY', `DESCRIPTION:${icsEscape(it.title)} is tomorrow`, 'TRIGGER:-P1D', 'END:VALARM');
   lines.push('END:VEVENT', 'END:VCALENDAR');
   return lines.join('\r\n') + '\r\n';
 }

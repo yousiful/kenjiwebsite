@@ -21,6 +21,8 @@ export interface CardData {
   photoUrl?: string;
   figures?: Figures;
   showCross?: boolean;
+  /** when set, the venue and address on the card open this maps link */
+  mapHref?: string;
 }
 
 type DateStyle = 'formal' | 'columns' | 'numeric' | 'plain';
@@ -129,6 +131,10 @@ function DateBlock({ style, date, time }: { style: DateStyle; date: string; time
   );
 }
 
+const Pin = () => (
+  <svg className="kc-pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.5-5.8-6.5-11A6.5 6.5 0 0 1 18.5 10c0 5.2-6.5 11-6.5 11z M12 12.4a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8z" fill="currentColor" fillRule="evenodd" /></svg>
+);
+
 const initial = (s: string, d: string) => (s.trim() || d).charAt(0).toUpperCase();
 
 /** Destination design: the invitation laid out as a premium boarding pass. */
@@ -160,7 +166,7 @@ function BoardingPass({ data, a, b, t }: { data: CardData; a: string; b: string;
         <div><dt>Date</dt><dd>{p ? `${p.monthShort} ${p.d}, ${p.y}` : 'To come'}</dd></div>
         <div><dt>Boarding</dt><dd>{data.time ? clockTime(data.time) : 'To come'}</dd></div>
         <div className="kc-bp-wide"><dt>Destination</dt><dd>{data.venueName || 'To come'}</dd></div>
-        {data.address && <div className="kc-bp-wide"><dt>Address</dt><dd>{data.address}</dd></div>}
+        {data.address && <div className="kc-bp-wide"><dt>Address</dt><dd>{data.mapHref ? <a className="kc-maplink" href={data.mapHref} target="_blank" rel="noopener noreferrer" data-testid="card-map"><Pin />{data.address}</a> : data.address}</dd></div>}
         {p && <div><dt>Day</dt><dd>{p.weekday}</dd></div>}
         <div><dt>Seat</dt><dd>With us</dd></div>
       </dl>
@@ -303,12 +309,17 @@ function InvitationCardInner({ data, minText = 0, className = '' }: { data: Card
           {(theme === 'ivory' || theme === 'emerald' || theme === 'blush' || theme === 'waxseal' || theme === 'chapel' || theme === 'renewal') && <Flourish gid={gid} className="kc-flourish" />}
           {(theme === 'garden' || theme === 'vellum' || theme === 'blacktie' || theme === 'couple' || theme === 'arbor' || theme === 'beach') && <div className="kc-rule" aria-hidden="true" />}
           <DateBlock style={t.dateStyle} date={data.date} time={data.time} />
-          {where.length > 0 && (
+          {where.length > 0 && (data.mapHref ? (
+            <a className="kc-where kc-maplink" href={data.mapHref} target="_blank" rel="noopener noreferrer" aria-label={`Open ${where.join(', ')} in maps`} data-testid="card-map">
+              {data.venueName && <p className="kc-venue">{data.venueName}</p>}
+              {data.address && <p className="kc-address"><Pin />{data.address}</p>}
+            </a>
+          ) : (
             <div className="kc-where">
               {data.venueName && <p className="kc-venue">{data.venueName}</p>}
               {data.address && <p className="kc-address">{data.address}</p>}
             </div>
-          )}
+          ))}
           {data.personalMessage && <p className="kc-message">{data.personalMessage}</p>}
           {theme === 'waxseal' && data.photoUrl && <WaxSeal gid={`${gid}w`} a={ia} b={ib} className="kc-seal kc-seal--end" />}
           {theme === 'midnight' && <Flourish gid={gid} className="kc-flourish kc-flourish--end" />}

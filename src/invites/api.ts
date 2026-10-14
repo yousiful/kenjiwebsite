@@ -99,5 +99,5 @@ export const api = {
 };
 
 export const photoUrl = (e: { id: string; photo: boolean; photoVersion: number }) => (e.photo ? `${API}?op=photo&e=${e.id}&v=${e.photoVersion}` : '');
-export const icsUrl = (code: string, sub = 'main') => `${API}?op=ics&code=${encodeURIComponent(code)}&sub=${encodeURIComponent(sub)}`;
+export const icsUrl = (code: string, sub = 'main', inline = false) => `${API}?op=ics&code=${encodeURIComponent(code)}&sub=${encodeURIComponent(sub)}${inline ? '&inline=1' : ''}`;
 export const inviteLink = (code: string) => `${window.location.origin}/i/${code}`;

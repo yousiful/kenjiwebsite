@@ -1,7 +1,7 @@
 import type { HandlerEvent, HandlerResponse } from '@netlify/functions';
 import { asV2, invitesStore, readToken, randomId, hmac, json, fail, parseBody, str } from './_invites/common';
 import {
-  THEME_IDS, MUSIC_IDS, FIGURES, LIMITS, isDate, isTime, isEmail, cleanPhone, parseGuestList, todayIn, buildIcs,
+  THEME_IDS, MUSIC_IDS, FIGURES, LIMITS, weddingTitle, isDate, isTime, isEmail, cleanPhone, parseGuestList, todayIn, buildIcs,
   type InviteEvent, type Guest, type SubEvent, type ThemeId, type MusicId, type Figures,
 } from '../../src/invites/shared';
 
@@ -297,14 +297,16 @@ const handler = async (event: HandlerEvent): Promise<HandlerResponse> => {
       const link = `${SITE}/i/${q.code}`;
       const sub = q.sub && q.sub !== 'main' ? ev.subEvents.find((s) => s.id === q.sub) : null;
       if (q.sub && q.sub !== 'main' && !sub) return { statusCode: 404, body: 'Not found' };
+      const wt = weddingTitle(ev.coupleNames);
       const item = sub
-        ? { uid: `${ev.id}-${sub.id}`, title: `${sub.title}: ${ev.title}`, date: sub.date || ev.date, time: sub.time, timezone: ev.timezone, location: [sub.venueName, sub.address].filter(Boolean).join(', '), details: [sub.notes, `Invitation: ${link}`].filter(Boolean).join('\n'), hours: 3 }
-        : { uid: ev.id, title: `Wedding of ${ev.title}`, date: ev.date, time: ev.time, timezone: ev.timezone, location: [ev.venueName, ev.address].filter(Boolean).join(', '), details: `Invitation: ${link}`, hours: 5 };
+        ? { uid: `${ev.id}-${sub.id}`, title: `${sub.title} · ${wt}`, date: sub.date || ev.date, time: sub.time, timezone: ev.timezone, location: [sub.venueName, sub.address].filter(Boolean).join(', '), details: [sub.notes, `Your invitation: ${link}`].filter(Boolean).join('\n'), hours: 3, url: link }
+        : { uid: ev.id, title: wt, date: ev.date, time: ev.time, timezone: ev.timezone, location: [ev.venueName, ev.address].filter(Boolean).join(', '), details: `Your invitation: ${link}`, hours: 5, url: link };
       if (!item.date) return { statusCode: 404, body: 'No date yet' };
       const fname = (sub ? sub.title : 'wedding').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'event';
       return {
         statusCode: 200,
-        headers: { 'Content-Type': 'text/calendar; charset=utf-8', 'Content-Disposition': `attachment; filename="${fname}.ics"`, 'Cache-Control': 'no-store' },
+        // inline on iPhone so Safari opens the Calendar "Add" sheet straight away
+        headers: { 'Content-Type': 'text/calendar; charset=utf-8', 'Content-Disposition': `${q.inline === '1' ? 'inline' : 'attachment'}; filename="${fname}.ics"`, 'Cache-Control': 'no-store' },
         body: buildIcs(item),
       };
     }

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type FormEvent } from 'react';
+import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
 import { api, icsUrl, photoUrl, type GuestView, type PublicEvent } from '../api';
 import InvitationCard from '../InvitationCard';
 import { EnvelopeIntro, TiltCard } from '../Opening';
@@ -6,25 +6,39 @@ import { Celebration, StaticSparkles } from '../Celebration';
 import { SketchArt, SketchIntro } from '../Sketch';
 import { MusicBox } from '../music';
 import { Icon } from '../icons';
-import { buildIcs, googleCalendarUrl, cleanPhone, isEmail, type CalItem } from '../shared';
-import { clockTime, countdownText, daysToGo, loadThemeFonts, longDate, mapsUrl, shortDate } from '../format';
+import { buildIcs, googleCalendarUrl, cleanPhone, isEmail, weddingTitle, type CalItem } from '../shared';
+import { clockTime, countdownText, daysToGo, isAndroidDevice, isIOSDevice, loadThemeFonts, longDate, mapsUrl, shortDate } from '../format';
 import '../guest.css';
 
 interface Data { event: PublicEvent; guest: GuestView | null; open: boolean; canChange: boolean; openSeats?: number }
 
 const reducedMotion = () => typeof window !== 'undefined' && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
 
-function CalendarButtons({ item, ics }: { item: CalItem; ics: string }) {
+/** Google Calendar and Apple/Outlook (.ics) buttons; Android sees Google first, everyone else Apple first. */
+function CalendarButtons({ item, ics, big = false }: { item: CalItem; ics: string; big?: boolean }) {
   const href = ics || `data:text/calendar;charset=utf-8,${encodeURIComponent(buildIcs(item))}`;
+  const cls = big ? 'kg-btn kg-btn--action' : 'kg-btn kg-btn--soft';
+  const google = <a key="g" className={cls} href={googleCalendarUrl(item)} target="_blank" rel="noopener noreferrer" data-testid="cal-google"><Icon name="calendar" /> Add to Google Calendar</a>;
+  const apple = <a key="a" className={cls} href={href} download={ics ? undefined : 'event.ics'} data-testid="cal-ics"><Icon name="calendar" /> Add to Apple / Outlook Calendar</a>;
+  return <>{isAndroidDevice() ? [google, apple] : [apple, google]}</>;
+}
+
+/** Save / calendar / directions: under the card, and again right after a guest says Yes. */
+function GuestActions({ item, ics, mapHref, onSave, saving }: { item: CalItem | null; ics: string; mapHref: string; onSave: () => void; saving: string }) {
   return (
-    <div className="kg-btns">
-      <a className="kg-btn kg-btn--soft" href={href} download={ics ? undefined : 'event.ics'}><Icon name="calendar" /> Add to my calendar</a>
-      <a className="kg-btn kg-btn--soft" href={googleCalendarUrl(item)} target="_blank" rel="noopener noreferrer"><Icon name="calendar" /> Google Calendar</a>
+    <div className="kg-actions" data-testid="guest-actions">
+      <button type="button" className="kg-btn kg-btn--action kg-btn--save" onClick={onSave} disabled={saving === 'making'} data-testid="save-image">
+        <Icon name="download" /> {saving === 'making' ? 'Making your picture...' : 'Save the invitation to my phone'}
+      </button>
+      {item && <CalendarButtons item={item} ics={ics} big />}
+      {mapHref && <a className="kg-btn kg-btn--action" href={mapHref} target="_blank" rel="noopener noreferrer" data-testid="directions"><Icon name="map" /> Get directions</a>}
+      {saving === 'done' && <p className="kg-muted kg-save-note" role="status">Done. If a menu opened, choose <strong>Save Image</strong> to keep it in your photos.</p>}
+      {saving === 'error' && <p className="kg-error" role="alert">We couldn't make the picture on this device. You can take a screenshot of the invitation instead.</p>}
     </div>
   );
 }
 
-function Rsvp({ data, code, preview, onSaved }: { data: Data; code: string; preview: boolean; onSaved: (g: GuestView, newCode?: string) => void }) {
+function Rsvp({ data, code, preview, onSaved, actions }: { data: Data; code: string; preview: boolean; onSaved: (g: GuestView, newCode?: string) => void; actions?: ReactNode }) {
   const { event: ev, guest, open, canChange } = data;
   const seats = open ? data.openSeats || ev.defaultSeats || 1 : guest?.seats || 1;
   const answered = guest && (guest.status === 'yes' || guest.status === 'no');
@@ -75,8 +89,14 @@ function Rsvp({ data, code, preview, onSaved }: { data: Data; code: string; prev
     return (
       <div className="kg-done" data-testid="rsvp-done">
         <h3 ref={doneRef} tabIndex={-1}>
-          {yes ? `Thank you${guest.name ? `, ${guest.name}` : ''}! We can't wait to celebrate with you.` : `Thank you for letting us know${guest.name ? `, ${guest.name}` : ''}. You'll be missed.`}
+          {yes ? `You're all set${guest.name ? `, ${guest.name}` : ''}! We can't wait to see you.` : `Thank you for letting us know${guest.name ? `, ${guest.name}` : ''}. You'll be missed, and we'll be thinking of you.`}
         </h3>
+        {yes && actions && (
+          <div className="kg-save-prompt" data-testid="rsvp-save-prompt">
+            <p className="kg-strong">Save it so you don't forget:</p>
+            {actions}
+          </div>
+        )}
         <p className="kg-answer">
           Your answer: <strong>{yes ? `Yes, ${guest.partySize} ${guest.partySize === 1 ? 'person' : 'people'} coming` : 'Not coming'}</strong>
         </p>
@@ -190,6 +210,11 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
   const [stage, setStage] = useState<'sketch' | 'envelope' | 'done'>('done');
   const [party, setParty] = useState(false);
   const [run, setRun] = useState(0);
+  // "Save the invitation to my phone": a 1080x1920 picture made on this device
+  const [saving, setSaving] = useState<'' | 'making' | 'done' | 'error' | 'ready'>('');
+  const [wpOn, setWpOn] = useState(false);
+  const wpRef = useRef<HTMLDivElement>(null);
+  const readyFile = useRef<File | null>(null);
   const intro = stage !== 'done';
   const play = (opening: PublicEvent['opening']) => {
     setRun((r) => r + 1);
@@ -243,7 +268,58 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
   const n = daysToGo(ev.date, ev.timezone);
   const place = [ev.venueName, ev.address].filter(Boolean).join(', ');
   const link = code ? `${window.location.origin}/i/${code}` : window.location.href;
-  const mainItem: CalItem = { uid: ev.id, title: `Wedding of ${ev.title}`, date: ev.date, time: ev.time, timezone: ev.timezone, location: place, details: `Invitation: ${link}`, hours: 5 };
+  const wTitle = weddingTitle(ev.coupleNames);
+  const mainItem: CalItem = { uid: ev.id, title: wTitle, date: ev.date, time: ev.time, timezone: ev.timezone, location: place, details: `Your invitation: ${link}`, hours: 5, url: link };
+  const icsFor = (sub: string) => (code && !preview ? icsUrl(code, sub, isIOSDevice()) : '');
+  const mapHref = place ? mapsUrl(ev.venueName, ev.address) : '';
+
+  const shareFile = async (file: File) => {
+    const nav = navigator as Navigator & { canShare?: (d: ShareData) => boolean };
+    if (nav.share && nav.canShare?.({ files: [file] })) {
+      try {
+        await nav.share({ files: [file], title: `${wTitle} invitation` });
+        setSaving('done');
+      } catch (e) {
+        // the tap that started this may have expired while the picture was made: ask for one more tap
+        if ((e as Error).name === 'NotAllowedError') { readyFile.current = file; setSaving('ready'); }
+        else setSaving('');
+      }
+      return;
+    }
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(file);
+    a.download = file.name;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    window.setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    setSaving('done');
+  };
+
+  const saveImage = async () => {
+    if (saving === 'ready' && readyFile.current) { await shareFile(readyFile.current); return; }
+    setSaving('making');
+    setWpOn(true);
+    await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+    const stage = wpRef.current;
+    const card = stage?.querySelector<HTMLElement>('.kg-wp-card');
+    if (!stage || !card) { setSaving('error'); setWpOn(false); return; }
+    // the card keeps its proportions; make it as big as fits between the title and the RSVP line
+    card.style.width = '880px';
+    const h = card.getBoundingClientRect().height;
+    if (h > 1460) card.style.width = `${Math.floor((880 * 1460) / h)}px`;
+    const { captureNode } = await import('../snapshot');
+    const url = await captureNode(stage, theme, 1080, 1920, 'png');
+    setWpOn(false);
+    if (!url) { setSaving('error'); return; }
+    const blob = await (await fetch(url)).blob();
+    const name = `${wTitle.replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase()}-invitation.png`;
+    await shareFile(new File([blob], name, { type: 'image/png' }));
+  };
+
+  const actions = (
+    <GuestActions item={ev.date ? mainItem : null} ics={icsFor('main')} mapHref={mapHref} onSave={saveImage} saving={saving} />
+  );
 
   const timeline = [
     ...ev.subEvents.map((s) => ({ key: s.id, sub: s, date: s.date, time: s.time, main: false })),
@@ -271,7 +347,7 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
         {ev.music && <MusicButton id={ev.music} />}
         <div className={`kg-card${!intro && fade ? ' kg-fadein' : ''}`}>
           <TiltCard key={`t${run}${intro ? 'i' : ''}`} enabled={motionOk} sweep={motionOk && !intro}>
-            <InvitationCard data={{ ...ev, photoUrl: pUrl }} minText={18} />
+            <InvitationCard data={{ ...ev, photoUrl: pUrl, mapHref }} minText={18} />
           </TiltCard>
         </div>
         {motionOk && (
@@ -282,6 +358,7 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
             </button>
           </p>
         )}
+        {actions}
 
         {n !== null && (
           <p className="kg-count" data-testid="countdown">
@@ -296,7 +373,7 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
             <div>
               <p className="kg-strong">{ev.date ? longDate(ev.date) : 'Date to come'}</p>
               {ev.time && <p>{clockTime(ev.time)}</p>}
-              {ev.date && <CalendarButtons item={mainItem} ics={code && !preview ? icsUrl(code, 'main') : ''} />}
+              {ev.date && <div className="kg-btns"><CalendarButtons item={mainItem} ics={icsFor('main')} /></div>}
             </div>
           </div>
           {place && (
@@ -306,7 +383,7 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
                 {ev.venueName && <p className="kg-strong">{ev.venueName}</p>}
                 {ev.address && <p>{ev.address}</p>}
                 <div className="kg-btns">
-                  <a className="kg-btn kg-btn--soft" href={mapsUrl(ev.venueName, ev.address)} target="_blank" rel="noopener noreferrer"><Icon name="map" /> Open in Maps</a>
+                  <a className="kg-btn kg-btn--soft" href={mapHref} target="_blank" rel="noopener noreferrer"><Icon name="map" /> Get directions</a>
                 </div>
               </div>
             </div>
@@ -324,18 +401,18 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
                 const venue = s ? s.venueName : ev.venueName;
                 const address = s ? s.address : ev.address;
                 const item: CalItem = s
-                  ? { uid: `${ev.id}-${s.id}`, title: `${s.title}: ${ev.title}`, date: s.date || ev.date, time: s.time, timezone: ev.timezone, location: [s.venueName, s.address].filter(Boolean).join(', '), details: [s.notes, `Invitation: ${link}`].filter(Boolean).join('\n'), hours: 3 }
+                  ? { uid: `${ev.id}-${s.id}`, title: `${s.title} · ${wTitle}`, date: s.date || ev.date, time: s.time, timezone: ev.timezone, location: [s.venueName, s.address].filter(Boolean).join(', '), details: [s.notes, `Your invitation: ${link}`].filter(Boolean).join('\n'), hours: 3, url: link }
                   : mainItem;
                 return (
                   <li key={t.key} className={`kg-step${t.main ? ' kg-step--main' : ''}`} data-testid="timeline-item">
                     <span className="kg-dot" aria-hidden="true" />
                     <p className="kg-when">{t.date ? shortDate(t.date) : 'Date to come'}{t.time ? ` · ${clockTime(t.time)}` : ''}</p>
                     <h3 className="kg-step-title">{title}</h3>
-                    {(venue || address) && <p>{[venue, address].filter(Boolean).join(', ')}</p>}
+                    {(venue || address) && <p><a className="kg-addr" href={mapsUrl(venue, address)} target="_blank" rel="noopener noreferrer">{[venue, address].filter(Boolean).join(', ')}</a></p>}
                     {s?.notes && <p className="kg-muted">{s.notes}</p>}
                     <div className="kg-btns">
-                      {t.date && <CalendarButtons item={item} ics={code && !preview ? icsUrl(code, s ? s.id : 'main') : ''} />}
-                      {(venue || address) && <a className="kg-btn kg-btn--soft" href={mapsUrl(venue, address)} target="_blank" rel="noopener noreferrer"><Icon name="map" /> Map</a>}
+                      {t.date && <CalendarButtons item={item} ics={icsFor(s ? s.id : 'main')} />}
+                      {(venue || address) && <a className="kg-btn kg-btn--soft" href={mapsUrl(venue, address)} target="_blank" rel="noopener noreferrer" data-testid="timeline-map"><Icon name="map" /> Get directions</a>}
                     </div>
                   </li>
                 );
@@ -351,6 +428,7 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
             data={data}
             code={code}
             preview={preview}
+            actions={actions}
             onSaved={(g, newCode) => {
               if (newCode) {
                 setCode(newCode);
@@ -363,6 +441,15 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
         </section>
 
         <p className="kg-foot">Made with <a href="/invites">Kenji Invites</a>, free wedding invitations.</p>
+        {wpOn && (
+          <div className="kg-wp-host" aria-hidden="true">
+            <div ref={wpRef} className="kg-wp">
+              <p className="kg-wp-top">{data.guest?.name ? `Dear ${data.guest.name}, you're invited` : "You're invited"}</p>
+              <div className="kg-wp-card"><InvitationCard data={{ ...ev, photoUrl: pUrl }} /></div>
+              <p className="kg-wp-rsvp">RSVP: {link.replace(/^https?:\/\//, '')}</p>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

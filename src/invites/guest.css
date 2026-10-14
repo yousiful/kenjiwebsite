@@ -145,3 +145,23 @@
 .kg--passport { --kg-bg: #e8ebf2; --kg-bg2: #d3d9e7; --kg-on: #1f2f57; --kg-head: #1f2f57; --kg-btn: #1f2f57; --kg-script: 'Great Vibes', cursive; --kg-display: 'Playfair Display', Georgia, serif; --kg-env: #f6f1e6; --kg-env-dark: #e6ddc8; --kg-seal: #1f2f57; }
 .kg--city { --kg-bg: #f1e6e1; --kg-bg2: #e2d2ca; --kg-on: #2e2e31; --kg-head: #2e2e31; --kg-btn: #2e2e31; --kg-script: 'Parisienne', cursive; --kg-display: 'Playfair Display', Georgia, serif; --kg-env: #fbf5f1; --kg-env-dark: #ecdcd4; --kg-seal: #3a3a3d; }
 .kg--renewal { --kg-bg: #f1e9d9; --kg-bg2: #e4d5b8; --kg-on: #463826; --kg-head: #8c6626; --kg-btn: #8c6626; --kg-script: 'Pinyon Script', cursive; --kg-display: 'Cormorant Garamond', Georgia, serif; --kg-env: #fdf8ee; --kg-env-dark: #efe2c8; --kg-seal: #b8913f; }
+
+/* save / calendar / directions: big, plain, one per row on phones */
+.kg-actions { display: grid; grid-template-columns: 1fr; gap: 12px; margin: 22px 0 6px; }
+@media (min-width: 560px) { .kg-actions { grid-template-columns: 1fr 1fr; } .kg-actions .kg-btn--save { grid-column: 1 / -1; } }
+.kg-btn--action { min-height: 62px; font-size: 19px; background: #fff; color: #2b241f; border-color: #a99a8a; width: 100%; }
+.kg-btn--action:hover { border-color: #2b241f; }
+.kg-btn--save { background: var(--kg-btn); border-color: var(--kg-btn); color: var(--kg-btn-ink); }
+.kg-btn--save:hover { filter: brightness(0.92); }
+.kg-save-note, .kg-actions .kg-error { grid-column: 1 / -1; margin: 0 !important; }
+.kg--midnight .kg-actions .kg-save-note, .kg--emerald .kg-actions .kg-save-note, .kg--deco .kg-actions .kg-save-note { color: var(--kg-on); }
+.kg-save-prompt { margin: 6px 0 18px; padding: 16px; border-radius: 14px; background: #f7f1e8; }
+.kg-save-prompt .kg-actions { margin-top: 12px; grid-template-columns: 1fr; }
+.kg-addr { color: inherit; text-decoration: underline dotted; text-underline-offset: 3px; }
+/* the 1080x1920 phone picture, built off screen */
+.kg-wp-host { position: fixed; left: -12000px; top: 0; width: 1080px; height: 1920px; overflow: hidden; pointer-events: none; }
+.kg-wp { width: 1080px; height: 1920px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 44px; background: radial-gradient(120% 80% at 50% 0%, var(--kg-bg) 0%, var(--kg-bg2) 100%); color: var(--kg-on); }
+.kg-wp-top { margin: 0 !important; font-family: var(--kg-script); font-size: 64px; line-height: 1.2; text-align: center; max-width: 960px; }
+.kg-wp-card { width: 880px; box-shadow: 0 30px 60px -28px rgba(0, 0, 0, 0.5); }
+.kg-wp-card .kc-gild { border-image: none !important; border-color: #c3a056 !important; }
+.kg-wp-rsvp { margin: 0 !important; font: 600 34px/1.3 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; letter-spacing: 0.01em; opacity: 0.85; }
