@@ -165,3 +165,16 @@
 .kg-wp-card { width: 880px; box-shadow: 0 30px 60px -28px rgba(0, 0, 0, 0.5); }
 .kg-wp-card .kc-gild { border-image: none !important; border-color: #c3a056 !important; }
 .kg-wp-rsvp { margin: 0 !important; font: 600 34px/1.3 -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; letter-spacing: 0.01em; opacity: 0.85; }
+
+/* lock-screen wallpaper (size set from the phone); card sits in the 33%-82% band */
+.kg-lock { position: relative; background: radial-gradient(120% 70% at 50% 0%, var(--kg-bg) 0%, var(--kg-bg2) 100%); color: var(--kg-on); overflow: hidden; }
+.kg-lock::before { content: ''; position: absolute; inset: 0; opacity: 0.25; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .28 0 0 0 .35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+.kg-lock-area { position: absolute; left: 0; right: 0; top: 33%; height: 52%; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 1.6em; }
+.kg-lock-card { box-shadow: 0 1.2em 2.6em -1.2em rgba(0, 0, 0, 0.55); }
+.kg-lock-card .kc-gild { border-image: none !important; border-color: #c3a056 !important; }
+.kg-lock-line { margin: 0 !important; font-family: var(--kg-display); font-size: 1.2em; letter-spacing: 0.04em; text-align: center; opacity: 0.9; max-width: 92%; text-wrap: balance; }
+/* wallpaper how-to: big, numbered */
+.kg-howto { grid-column: 1 / -1; padding: 16px 18px; border-radius: 14px; background: #fff; color: #2b241f; border: 2px solid var(--kg-btn); }
+.kg-howto-steps { margin: 10px 0 4px; padding-left: 28px; font-size: 20px; line-height: 1.5; }
+.kg-howto-steps li { margin-bottom: 6px; padding-left: 4px; }
+.kg-howto .kg-muted { margin-top: 8px !important; }

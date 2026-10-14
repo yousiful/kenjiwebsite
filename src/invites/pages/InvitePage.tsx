@@ -23,13 +23,35 @@ function CalendarButtons({ item, ics, big = false }: { item: CalItem; ics: strin
   return <>{isAndroidDevice() ? [google, apple] : [apple, google]}</>;
 }
 
-/** Save / calendar / directions: under the card, and again right after a guest says Yes. */
-function GuestActions({ item, ics, mapHref, onSave, saving }: { item: CalItem | null; ics: string; mapHref: string; onSave: () => void; saving: string }) {
+/** Plain, numbered steps for setting a saved picture as the wallpaper, for this phone. */
+function WallpaperHowTo() {
+  const ios = isIOSDevice();
+  const android = isAndroidDevice();
+  const iphone = ['Open the Photos app.', 'Tap the invitation picture.', 'Tap the Share button (the square with an arrow).', 'Tap "Use as Wallpaper", then "Set".'];
+  const androidSteps = ['Open the Gallery or Photos app.', 'Tap the invitation picture.', 'Tap the \u22EE (More) button.', 'Tap "Set as wallpaper", then choose Lock screen.'];
+  const list = (steps: string[]) => <ol className="kg-howto-steps">{steps.map((t) => <li key={t}>{t}</li>)}</ol>;
+  return (
+    <div className="kg-howto" role="status" data-testid="wallpaper-howto" data-platform={ios ? 'ios' : android ? 'android' : 'other'}>
+      <p className="kg-strong">Saved! Now make it your wallpaper:</p>
+      {ios && list(iphone)}
+      {android && list(androidSteps)}
+      {!ios && !android && (<><p className="kg-muted">On an iPhone:</p>{list(iphone)}<p className="kg-muted">On an Android phone:</p>{list(androidSteps)}</>)}
+    </div>
+  );
+}
+
+/** Save / wallpaper / calendar / directions: under the card, and again right after a guest says Yes. */
+function GuestActions({ item, ics, mapHref, onSave, saving, onLock, lock }: { item: CalItem | null; ics: string; mapHref: string; onSave: () => void; saving: string; onLock: () => void; lock: string }) {
   return (
     <div className="kg-actions" data-testid="guest-actions">
       <button type="button" className="kg-btn kg-btn--action kg-btn--save" onClick={onSave} disabled={saving === 'making'} data-testid="save-image">
-        <Icon name="download" /> {saving === 'making' ? 'Making your picture...' : 'Save the invitation to my phone'}
+        <Icon name="download" /> {saving === 'making' ? 'Making your picture...' : saving === 'ready' ? 'Tap again to save the picture' : 'Save the invitation to my phone'}
       </button>
+      <button type="button" className="kg-btn kg-btn--action" onClick={onLock} disabled={lock === 'making'} data-testid="make-wallpaper">
+        <Icon name="photo" /> {lock === 'making' ? 'Making your wallpaper...' : lock === 'ready' ? 'Tap again to save the wallpaper' : 'Make it my phone wallpaper'}
+      </button>
+      {lock === 'done' && <WallpaperHowTo />}
+      {lock === 'error' && <p className="kg-error" role="alert">We couldn't make the wallpaper on this device.</p>}
       {item && <CalendarButtons item={item} ics={ics} big />}
       {mapHref && <a className="kg-btn kg-btn--action" href={mapHref} target="_blank" rel="noopener noreferrer" data-testid="directions"><Icon name="map" /> Get directions</a>}
       {saving === 'done' && <p className="kg-muted kg-save-note" role="status">Done. If a menu opened, choose <strong>Save Image</strong> to keep it in your photos.</p>}
@@ -211,10 +233,14 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
   const [party, setParty] = useState(false);
   const [run, setRun] = useState(0);
   // "Save the invitation to my phone": a 1080x1920 picture made on this device
-  const [saving, setSaving] = useState<'' | 'making' | 'done' | 'error' | 'ready'>('');
-  const [wpOn, setWpOn] = useState(false);
+  type Job = '' | 'making' | 'done' | 'error' | 'ready';
+  const [saving, setSaving] = useState<Job>('');
+  const [lock, setLock] = useState<Job>('');
+  const [stageOn, setStageOn] = useState<'' | 'save' | 'lock'>('');
+  const [lockSize, setLockSize] = useState<[number, number]>([1179, 2556]);
   const wpRef = useRef<HTMLDivElement>(null);
-  const readyFile = useRef<File | null>(null);
+  const lockRef = useRef<HTMLDivElement>(null);
+  const readyFile = useRef<{ save: File | null; lock: File | null }>({ save: null, lock: null });
   const intro = stage !== 'done';
   const play = (opening: PublicEvent['opening']) => {
     setRun((r) => r + 1);
@@ -273,16 +299,17 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
   const icsFor = (sub: string) => (code && !preview ? icsUrl(code, sub, isIOSDevice()) : '');
   const mapHref = place ? mapsUrl(ev.venueName, ev.address) : '';
 
-  const shareFile = async (file: File) => {
+  const shareFile = async (file: File, kind: 'save' | 'lock') => {
+    const set = kind === 'save' ? setSaving : setLock;
     const nav = navigator as Navigator & { canShare?: (d: ShareData) => boolean };
     if (nav.share && nav.canShare?.({ files: [file] })) {
       try {
         await nav.share({ files: [file], title: `${wTitle} invitation` });
-        setSaving('done');
+        set('done');
       } catch (e) {
         // the tap that started this may have expired while the picture was made: ask for one more tap
-        if ((e as Error).name === 'NotAllowedError') { readyFile.current = file; setSaving('ready'); }
-        else setSaving('');
+        if ((e as Error).name === 'NotAllowedError') { readyFile.current[kind] = file; set('ready'); }
+        else set('');
       }
       return;
     }
@@ -293,32 +320,48 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
     a.click();
     a.remove();
     window.setTimeout(() => URL.revokeObjectURL(a.href), 4000);
-    setSaving('done');
+    set('done');
   };
 
-  const saveImage = async () => {
-    if (saving === 'ready' && readyFile.current) { await shareFile(readyFile.current); return; }
-    setSaving('making');
-    setWpOn(true);
+  /** Lock-screen size: this phone's own screen in real pixels when we can tell, else a modern iPhone. */
+  const phoneScreen = (): [number, number] => {
+    const dpr = window.devicePixelRatio || 1;
+    const w = Math.round(window.screen.width * dpr);
+    const h = Math.round(window.screen.height * dpr);
+    const mobile = isIOSDevice() || isAndroidDevice();
+    if (!mobile || w < 720 || h < 1280 || h < w) return [1179, 2556];
+    return w > 1600 ? [1600, Math.round((1600 * h) / w)] : [w, h];
+  };
+
+  const makePicture = async (kind: 'save' | 'lock') => {
+    const set = kind === 'save' ? setSaving : setLock;
+    const ready = readyFile.current[kind];
+    if ((kind === 'save' ? saving : lock) === 'ready' && ready) { await shareFile(ready, kind); return; }
+    set('making');
+    const [W, H] = kind === 'lock' ? phoneScreen() : [1080, 1920];
+    if (kind === 'lock') setLockSize([W, H]);
+    setStageOn(kind);
     await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
-    const stage = wpRef.current;
-    const card = stage?.querySelector<HTMLElement>('.kg-wp-card');
-    if (!stage || !card) { setSaving('error'); setWpOn(false); return; }
-    // the card keeps its proportions; make it as big as fits between the title and the RSVP line
-    card.style.width = '880px';
+    const stage = (kind === 'save' ? wpRef : lockRef).current;
+    const card = stage?.querySelector<HTMLElement>(kind === 'save' ? '.kg-wp-card' : '.kg-lock-card');
+    if (!stage || !card) { set('error'); setStageOn(''); return; }
+    // the card keeps its proportions and is made as big as fits its area
+    const maxW = kind === 'save' ? 880 : Math.round(W * 0.78);
+    const maxH = kind === 'save' ? 1460 : Math.round(H * 0.49);
+    card.style.width = `${maxW}px`;
     const h = card.getBoundingClientRect().height;
-    if (h > 1460) card.style.width = `${Math.floor((880 * 1460) / h)}px`;
+    if (h > maxH) card.style.width = `${Math.floor((maxW * maxH) / h)}px`;
     const { captureNode } = await import('../snapshot');
-    const url = await captureNode(stage, theme, 1080, 1920, 'png');
-    setWpOn(false);
-    if (!url) { setSaving('error'); return; }
+    const url = await captureNode(stage, theme, W, H, 'png');
+    setStageOn('');
+    if (!url) { set('error'); return; }
     const blob = await (await fetch(url)).blob();
-    const name = `${wTitle.replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase()}-invitation.png`;
-    await shareFile(new File([blob], name, { type: 'image/png' }));
+    const base = wTitle.replace(/[^A-Za-z0-9]+/g, '-').replace(/^-|-$/g, '').toLowerCase();
+    await shareFile(new File([blob], `${base}-${kind === 'save' ? 'invitation' : 'wallpaper'}.png`, { type: 'image/png' }), kind);
   };
 
   const actions = (
-    <GuestActions item={ev.date ? mainItem : null} ics={icsFor('main')} mapHref={mapHref} onSave={saveImage} saving={saving} />
+    <GuestActions item={ev.date ? mainItem : null} ics={icsFor('main')} mapHref={mapHref} onSave={() => makePicture('save')} saving={saving} onLock={() => makePicture('lock')} lock={lock} />
   );
 
   const timeline = [
@@ -441,7 +484,18 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
         </section>
 
         <p className="kg-foot">Made with <a href="/invites">Kenji Invites</a>, free wedding invitations.</p>
-        {wpOn && (
+        {stageOn === 'lock' && (
+          <div className="kg-wp-host" aria-hidden="true" style={{ width: lockSize[0], height: lockSize[1] }}>
+            {/* top third stays calm for the lock-screen clock; nothing busy near the bottom buttons */}
+            <div ref={lockRef} className="kg-lock" style={{ width: lockSize[0], height: lockSize[1], fontSize: lockSize[0] / 36 }} data-w={lockSize[0]} data-h={lockSize[1]}>
+              <div className="kg-lock-area">
+                <div className="kg-lock-card"><InvitationCard data={{ ...ev, photoUrl: pUrl, personalMessage: '' }} /></div>
+                <p className="kg-lock-line">{[ev.date ? longDate(ev.date) : '', ev.venueName].filter(Boolean).join(' \u00b7 ')}</p>
+              </div>
+            </div>
+          </div>
+        )}
+        {stageOn === 'save' && (
           <div className="kg-wp-host" aria-hidden="true">
             <div ref={wpRef} className="kg-wp">
               <p className="kg-wp-top">{data.guest?.name ? `Dear ${data.guest.name}, you're invited` : "You're invited"}</p>
