@@ -25,27 +25,83 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "KenjiAI Reviews",
-  "url": "https://kenjiai.com/kenjiai-reviews",
-  "about": {
-    "@type": "SoftwareApplication",
-    "name": "KenjiAI",
-    "url": "https://kenjiai.com",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web",
-    "creator": {
-      "@type": "Person",
-      "name": "Yousif Alias",
-      "url": "https://kenjiai.com/about-yousif-alias"
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://kenjiai.com/kenjiai-reviews#webpage",
+      "url": "https://kenjiai.com/kenjiai-reviews",
+      "name": "KenjiAI Reviews | What Business Owners Are Saying",
+      "description": "KenjiAI reviews from business owners using the AI automation platform. Backed by Media Traffics' 13-year track record running paid ad campaigns across Meta, Google, and LinkedIn.",
+      "isPartOf": {
+        "@id": "https://kenjiai.com/#website"
+      },
+      "publisher": {
+        "@id": "https://kenjiai.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "breadcrumb": {
+        "@id": "https://kenjiai.com/kenjiai-reviews#breadcrumb"
+      },
+      "about": {
+        "@type": "SoftwareApplication",
+        "name": "KenjiAI",
+        "url": "https://kenjiai.com",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "creator": {
+          "@type": "Person",
+          "name": "Yousif Alias",
+          "url": "https://kenjiai.com/about-yousif-alias"
+        },
+        "provider": {
+          "@type": "Organization",
+          "name": "Media Traffics LLC",
+          "url": "https://mediatraffics.com",
+          "foundingDate": "2013"
+        }
+      }
     },
-    "provider": {
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://kenjiai.com/kenjiai-reviews#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://kenjiai.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "KenjiAI Reviews",
+          "item": "https://kenjiai.com/kenjiai-reviews"
+        }
+      ]
+    },
+    {
       "@type": "Organization",
-      "name": "Media Traffics LLC",
-      "url": "https://mediatraffics.com",
-      "foundingDate": "2013"
+      "@id": "https://kenjiai.com/#organization",
+      "name": "KenjiAI",
+      "url": "https://kenjiai.com/",
+      "logo": "https://kenjiai.com/kenji-logo.webp",
+      "parentOrganization": {
+        "@type": "Organization",
+        "@id": "https://mediatraffics.com/#organization",
+        "name": "Media Traffics LLC",
+        "url": "https://mediatraffics.com"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://kenjiai.com/#website",
+      "url": "https://kenjiai.com/",
+      "name": "KenjiAI",
+      "publisher": {
+        "@id": "https://kenjiai.com/#organization"
+      }
     }
-  }
+  ]
 }
 </script>
 

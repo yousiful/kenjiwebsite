@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { Calendar, Clock, ArrowLeft, ArrowRight, Share2, Tag, BookOpen, GraduationCap, Star, User } from 'lucide-react';
 import { useAutoFormatting } from '../components/AutoFormattingProvider';
 import { Helmet } from 'react-helmet-async';
+import PageSchema from '../components/PageSchema';
+import { ORG_ID, WEBSITE_ID } from '../lib/schema';
 import { getArticleBySlug, getAllArticles } from '../data/articles';
 
 const BlogPost: React.FC = () => {
@@ -37,6 +39,36 @@ const BlogPost: React.FC = () => {
 
   return (
     <>
+      <PageSchema
+        path={`/blog/${article.slug}`}
+        name={article.title}
+        description={article.excerpt}
+        crumbs={[
+          { name: 'Home', path: '/' },
+          article.isCourse ? { name: 'Academy', path: '/knowledge' } : { name: 'Blog', path: '/blog' },
+          { name: article.title, path: `/blog/${article.slug}` },
+        ]}
+        extra={[
+          {
+            // Courses carry rating/students fields in articles.ts; those are deliberately
+            // not mapped to AggregateRating, there is no verified source for them.
+            '@type': article.isCourse ? 'Article' : 'BlogPosting',
+            '@id': `https://kenjiai.com/blog/${article.slug}#article`,
+            headline: article.title,
+            description: article.excerpt,
+            image: article.image,
+            datePublished: article.date,
+            dateModified: article.date,
+            author: { '@type': 'Organization', name: article.author, url: 'https://kenjiai.com/' },
+            publisher: { '@id': ORG_ID },
+            articleSection: article.category,
+            keywords: article.keywords.join(', '),
+            inLanguage: 'en-US',
+            mainEntityOfPage: { '@id': `https://kenjiai.com/blog/${article.slug}#webpage` },
+            isPartOf: { '@id': WEBSITE_ID },
+          },
+        ]}
+      />
       <Helmet>
         <title>{article.title} | KenjiAI Blog</title>
         <meta name="description" content={article.excerpt} />
@@ -53,31 +85,6 @@ const BlogPost: React.FC = () => {
           <meta key={tag} property="article:tag" content={tag} />
         ))}
         <link rel="canonical" href={`https://kenjiai.com/blog/${article.slug}`} />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            "headline": article.title,
-            "description": article.excerpt,
-            "image": article.image,
-            "author": {
-              "@type": "Organization",
-              "name": article.author
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "KenjiAI",
-              "url": "https://kenjiai.com"
-            },
-            "datePublished": article.date,
-            "dateModified": article.date,
-            "keywords": article.keywords.join(', '),
-            "mainEntityOfPage": {
-              "@type": "WebPage",
-              "@id": `https://kenjiai.com/blog/${article.slug}`
-            }
-          })}
-        </script>
       </Helmet>
       
       <div className="pt-24 pb-16 bg-gray-900 min-h-screen">

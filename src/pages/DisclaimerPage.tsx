@@ -1,10 +1,12 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import PageSchema from '../components/PageSchema';
 import { AlertTriangle, TrendingUp, DollarSign, BarChart, Shield, FileText } from 'lucide-react';
 
 export default function DisclaimerPage() {
   return (
     <>
+      <PageSchema path="/disclaimer" name={"Disclaimer"} description={"Important disclaimers about KenjiAI services, results, and limitations."} />
       <Helmet>
         <title>Disclaimer | KenjiAI</title>
         <meta name="description" content="Important disclaimers about KenjiAI services, results, and limitations." />

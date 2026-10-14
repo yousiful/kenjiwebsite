@@ -1,5 +1,7 @@
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import PageSchema from '../components/PageSchema';
+import { freeWebApp, faqPage } from '../lib/schema';
 import {
   Sparkles,
   Building2,
@@ -103,6 +105,33 @@ const STYLE_OPTIONS = [
   { id: 'high_status', label: 'High-Status & Authority' },
   { id: 'action_punchy', label: 'Action & Outcome-Driven' },
   { id: 'compound', label: 'Compound & Portmanteau' }
+];
+
+const NAME_GEN_SCHEMA = [
+  freeWebApp({
+    path: '/tools/name-generator',
+    name: 'KenjiAI Business & Offer Name Generator',
+    description:
+      'Free tool that generates business names, Grand Slam offer titles, SaaS product names, and lead magnet names with domain checks.',
+  }),
+  faqPage('/tools/name-generator', [
+    {
+      q: 'Can I legally trademark these business and offer names?',
+      a: "Yes, but you should always conduct a formal trademark clearance search on USPTO.gov or your country's trademark database. The more compound, unique, or invented the name (e.g. Kenji, SynapseForge), the easier it is to trademark.",
+    },
+    {
+      q: 'What makes an Alex Hormozi $100M Grand Slam offer name work?',
+      a: 'Alex Hormozi teaches that a Grand Slam offer minimizes time delay and effort while maximizing dream outcome and perceived likelihood. The name states the guaranteed result and timeframe upfront (e.g. "90-Day Inbound Machine").',
+    },
+    {
+      q: 'Is a .com or .ai domain better for my business?',
+      a: 'If you are building an AI, software, or tech product, a .ai domain communicates high tech authority. For local services, home improvement, and traditional agencies, a clean .com remains the gold standard.',
+    },
+    {
+      q: 'Are my generated names saved privately?',
+      a: "Yes! All saved names in your vault are stored locally in your browser's private storage. Nothing is sent to public databases, and you can export your list at any time.",
+    },
+  ]),
 ];
 
 export const NameGeneratorPage: React.FC = () => {
@@ -535,6 +564,7 @@ export const NameGeneratorPage: React.FC = () => {
 
   return (
     <>
+      <PageSchema path="/tools/name-generator" name={"AI Business & $100M Offer Name Generator"} description={"Generate high-converting business names, Alex Hormozi $100M Grand Slam offer titles, SaaS products, and lead magnets with domain checks and conversion psychology. Free from KenjiAI."} extra={NAME_GEN_SCHEMA} />
       <Helmet>
         <title>AI Business & $100M Offer Name Generator | KenjiAI</title>
         <meta

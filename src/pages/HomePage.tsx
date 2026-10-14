@@ -6,6 +6,7 @@ import { ArrowRight, Check, Minus, Phone } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { ReviewsNative } from '../components/ReviewsNative';
 import { ResultsDisclaimer } from '../components/ResultsDisclaimer';
+import { service } from '../lib/schema';
 
 /* Homepage, rebuilt 2026-10-08 per Yousif: ads agency first, software second, results over features,
    no demos and no call center on this page. One argument (same ads, with vs without a system)
@@ -35,14 +36,13 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: 'Media Traffics | KenjiAI',
-  url: 'https://kenjiai.com',
-  description:
-    'Ads agency and follow-up software for business owners. We run your Meta, Google and YouTube ads, and KenjiAI follows up with every lead so attention turns into income.',
-  telephone: '+1-213-344-0705',
-  foundingDate: '2013',
-  areaServed: 'US',
+  ...service({
+    path: '/',
+    name: 'Media Traffics | KenjiAI: Done-For-You Ads and Lead Follow-Up',
+    description:
+      'Ads agency and follow-up software for business owners. We run your Meta, Google and YouTube ads, and KenjiAI follows up with every lead so attention turns into income.',
+    serviceType: ['Paid Advertising Management', 'Lead Follow-Up Automation'],
+  }),
 };
 
 const QuizStart: React.FC<{ idPrefix: string }> = ({ idPrefix }) => {

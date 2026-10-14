@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import PageSchema from '../components/PageSchema';
 import { 
   TrendingUp, 
   Copy, 
@@ -86,6 +87,7 @@ const MissedCallCalculatorPage: React.FC = () => {
 
   return (
     <div className={`min-h-screen ${isEmbed ? 'bg-gray-900 p-4' : 'pt-24 pb-20 px-4 sm:px-6 lg:px-8 text-white'}`}>
+      <PageSchema path="/tools/missed-call-calculator" name={"Missed Call Revenue Loss Calculator"} description={"Calculate how much revenue your business loses to missed calls each month. See instant recovery projections with KenjiAI 24/7 Done-For-You AI Call Centers."} />
       <Helmet>
         <title>Missed Call Revenue Loss Calculator | KenjiAI</title>
         <meta 

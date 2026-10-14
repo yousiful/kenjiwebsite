@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { BookOpen, Brain, GraduationCap, Star, Clock, ArrowRight, Trophy, Users, Award, Flame, CheckCircle, Lock, Zap, Sparkles, ArrowLeft } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import PageSchema from '../components/PageSchema';
 import { getAllArticles } from '../data/articles';
 import EnrollmentNotification from '../components/EnrollmentNotification';
 
@@ -129,6 +130,7 @@ const KnowledgeBasePage: React.FC = () => {
 
   return (
     <>
+      <PageSchema path="/knowledge" name={"KenjiAI Academy: Elite AI & Business Mastery"} description={"Access premium AI automation courses, sales mastery tracks, and the interactive AI knowledge assessment."} type="CollectionPage" />
       <Helmet>
         <title>KenjiAI Academy: Elite AI & Business Mastery</title>
         <meta name="description" content="Access premium AI automation courses, sales mastery tracks, and the interactive AI knowledge assessment." />

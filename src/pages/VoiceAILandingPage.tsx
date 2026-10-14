@@ -7,6 +7,8 @@ import {
   Megaphone, Bot, Calendar, Globe, Lock, Headphones, RefreshCw, Star, Play
 } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import PageSchema from '../components/PageSchema';
+import { service, faqPage } from '../lib/schema';
 import { Link, useNavigate } from 'react-router-dom';
 import { META_CONFIG } from '../config/meta';
 import { ResultsDisclaimer } from '../components/ResultsDisclaimer';
@@ -245,6 +247,27 @@ const faqs = [
 ];
 
 // ─── Main component ───────────────────────────────────────────────────────
+const monthlyOffer = (name: string, price: string) => ({
+  '@type': 'Offer',
+  name,
+  price,
+  priceCurrency: 'USD',
+  url: 'https://kenjiai.com/voice-ai',
+  priceSpecification: { '@type': 'UnitPriceSpecification', price, priceCurrency: 'USD', unitCode: 'MON', unitText: 'month' },
+});
+
+const VOICE_AI_SCHEMA = [
+  service({
+    path: '/voice-ai',
+    name: 'KenjiAI AI Voice Front Desk & AI Caller',
+    description:
+      'An AI voice agent that answers calls 24/7, qualifies leads, and books appointments. Starter is free with call credits at $0.29 per minute; Growth is $99/month; Scale + Ads is $375/month with done-for-you ads.',
+    serviceType: ['AI Voice Agent', 'AI Receptionist'],
+    offers: [monthlyOffer('Starter', '0'), monthlyOffer('Growth', '99'), monthlyOffer('Scale + Ads', '375')],
+  }),
+  faqPage('/voice-ai', faqs),
+];
+
 const VoiceAILandingPage: React.FC = () => {
   const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -268,6 +291,7 @@ const VoiceAILandingPage: React.FC = () => {
 
   return (
     <>
+      <PageSchema path="/voice-ai" name={"AI Voice Front Desk & AI Caller \u2014 Starts Free"} description={"Deploy an AI voice agent that answers calls 24/7, qualifies leads, books appointments, and closes deals \u2014 starting at $0/month. Plans from $0 to $375/mo with done-for-you ads."} extra={VOICE_AI_SCHEMA} />
       <Helmet>
         <script>
           {`

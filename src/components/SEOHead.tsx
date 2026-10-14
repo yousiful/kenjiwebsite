@@ -1,5 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import PageSchema from './PageSchema';
+import type { Crumb } from '../lib/schema';
 
 export interface SEOHeadProps {
   title?: string;
@@ -21,10 +23,16 @@ export interface SEOHeadProps {
     tags?: string[];
   };
   structuredData?: object;
+  /** WebPage subtype for the auto-generated page schema (e.g. CollectionPage). */
+  schemaType?: string;
+  /** Override the auto-generated BreadcrumbList trail. */
+  breadcrumbs?: Crumb[];
 }
 
+const DEFAULT_TITLE = "Done-For-You Inbound & Outbound AI Call Centers | KenjiAI";
+
 const SEOHead: React.FC<SEOHeadProps> = ({
-  title = "Done-For-You Inbound & Outbound AI Call Centers | KenjiAI",
+  title: titleProp,
   description = "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI voice call centers for high-ticket businesses. Sub-500ms inbound answering, 60-second speed-to-lead outbound dialing, and automated database reactivation.",
   keywords = "AI call center, inbound AI receptionist, outbound speed to lead, database reactivation, AI voice agents, business automation CRM, KenjiAI",
   canonical,
@@ -33,8 +41,11 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   ogType = "website",
   noindex = false,
   article,
-  structuredData
+  structuredData,
+  schemaType,
+  breadcrumbs
 }) => {
+  const title = titleProp ?? DEFAULT_TITLE;
   const fullTitle = title.includes('KenjiAI') ? title : `${title} | KenjiAI`;
   // Fallback canonical strips query strings and hash (e.g. ?utm_source=...) so
   // tracked/shared links don't create duplicate canonical URLs.
@@ -48,7 +59,17 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     ? structuredData 
     : JSON.stringify(structuredData);
 
+  // Per-page WebPage + BreadcrumbList. Only for pages that set their own title:
+  // the site-wide DefaultSEO instance passes none, and noindex pages don't need it.
+  const pageName = title.replace(/\s*\|\s*KenjiAI(\s+Blog)?\s*$/, '');
+  const pagePath = canonicalUrl.replace(/^https?:\/\/[^/]+/, '') || '/';
+  const pageSchema = titleProp && !noindex
+    ? <PageSchema path={pagePath} name={pageName} description={description} type={schemaType} crumbs={breadcrumbs} />
+    : null;
+
   return (
+    <>
+    {pageSchema}
     <Helmet>
       {/* Primary Meta Tags */}
       <title>{fullTitle}</title>
@@ -131,6 +152,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
         <script type="application/ld+json">{structuredDataString}</script>
       )}
     </Helmet>
+    </>
   );
 };
 

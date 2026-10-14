@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import PageSchema from '../components/PageSchema';
 import { Calculator, ArrowRight, Copy, Check, Share2, TrendingUp, TrendingDown, Minus } from 'lucide-react';
 
 const money = (n: number) =>
@@ -119,6 +120,7 @@ const ROASCalculatorPage: React.FC = () => {
 
   return (
     <div className={`min-h-screen ${isEmbed ? 'bg-gray-900 p-4' : 'pt-24 pb-20 px-4 sm:px-6 lg:px-8 text-white'}`}>
+      <PageSchema path="/tools/roas-calculator" name={"ROAS Calculator & Break-Even ROAS Calculator"} description={"Free ROAS calculator. Enter ad spend, revenue, order value, and margin to get your ROAS, break-even ROAS, max cost per purchase, and profit after ad spend."} />
       <Helmet>
         <title>ROAS Calculator & Break-Even ROAS Calculator | KenjiAI</title>
         <meta

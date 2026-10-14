@@ -21,61 +21,169 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "KenjiAI Done-For-You Inbound & Outbound AI Call Center",
-  "description": "Enterprise 24/7 autonomous Inbound and Outbound AI call center. Features sub-500ms voice response, speech barge-in, sub-60-second speed-to-lead dialing, database reactivation, and native CRM syncing.",
-  "brand": {
-    "@type": "Brand",
-    "name": "KenjiAI"
-  },
-  "offers": [
+  "@graph": [
     {
-      "@type": "Offer",
-      "name": "Pay-As-You-Go Plan",
-      "price": "199",
-      "priceCurrency": "USD",
-      "priceValidUntil": "2026-12-31",
-      "availability": "https://schema.org/InStock",
-      "url": "https://kenjiai.com/call-center-upgrade/"
+      "@type": "WebPage",
+      "@id": "https://kenjiai.com/call-center-upgrade/#webpage",
+      "url": "https://kenjiai.com/call-center-upgrade/",
+      "name": "Done-For-You AI Call Center | Inbound & Outbound",
+      "description": "Add an Inbound & Outbound AI Call Center to your business. Pay-as-you-go at $199/mo or $399/mo for unlimited AI usage, voice cloning, and ongoing agent training.",
+      "isPartOf": {
+        "@id": "https://kenjiai.com/#website"
+      },
+      "publisher": {
+        "@id": "https://kenjiai.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "breadcrumb": {
+        "@id": "https://kenjiai.com/call-center-upgrade/#breadcrumb"
+      }
     },
     {
-      "@type": "Offer",
-      "name": "Unlimited AI Call Center Plan",
-      "price": "399",
-      "priceCurrency": "USD",
-      "priceValidUntil": "2026-12-31",
-      "availability": "https://schema.org/InStock",
-      "url": "https://kenjiai.com/call-center-upgrade/"
-    }
-  ],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "128"
-  }
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://kenjiai.com/"
+      "@type": "BreadcrumbList",
+      "@id": "https://kenjiai.com/call-center-upgrade/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://kenjiai.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AI Call Center Upgrade",
+          "item": "https://kenjiai.com/call-center-upgrade/"
+        }
+      ]
     },
     {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "AI Call Center Upgrade",
-      "item": "https://kenjiai.com/call-center-upgrade/"
+      "@type": "Service",
+      "@id": "https://kenjiai.com/call-center-upgrade/#service",
+      "name": "KenjiAI Done-For-You Inbound & Outbound AI Call Center",
+      "url": "https://kenjiai.com/call-center-upgrade/",
+      "serviceType": "AI Call Center",
+      "description": "Enterprise 24/7 autonomous Inbound and Outbound AI call center. Features sub-500ms voice response, speech barge-in, sub-60-second speed-to-lead dialing, database reactivation, and native CRM syncing.",
+      "provider": {
+        "@id": "https://kenjiai.com/#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "United States"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Pay-As-You-Go Plan",
+          "price": "199",
+          "priceCurrency": "USD",
+          "url": "https://kenjiai.com/call-center-upgrade/",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "199",
+            "priceCurrency": "USD",
+            "unitCode": "MON",
+            "unitText": "month"
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Unlimited AI Call Center Plan",
+          "price": "399",
+          "priceCurrency": "USD",
+          "url": "https://kenjiai.com/call-center-upgrade/",
+          "availability": "https://schema.org/InStock",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "399",
+            "priceCurrency": "USD",
+            "unitCode": "MON",
+            "unitText": "month"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://kenjiai.com/call-center-upgrade/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Isn't $199-399/mo plus usage a lot for an answering service?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A part-time answering service costs about the same and still puts callers on hold, closes at 5pm, and can't dial a lead back the second they fill out a form. One recovered $7 sale a month already covers the base fee on the metered plan. This isn't priced against \"free,\" it's priced against every lead you're already losing to a call that rang out."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "I already have a receptionist or answering service. Why switch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Keep them for what they're good at. This isn't a replacement for a person, it's coverage for the hours and the leads a person can't get to fast enough, nights, weekends, and the 60-second window after someone submits an ad form. Most clients run it alongside their existing team, not instead of them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it actually sound human, or is it obviously a bot?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The demo video above is the same voice model live on real calls today, not a scripted sample. The Unlimited tier adds voice cloning so it can run in your own brand voice. Most callers don't realize they're talking to AI until you tell them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What if a caller asks something it can't answer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It books the appointment, tags the call, and flags it for a human follow-up instead of guessing. You get the transcript and recording either way, so nothing falls through silently."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast can this actually be live?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most accounts are answering real calls within days of onboarding, not weeks. Existing KenjiAI clients move even faster since your CRM connection already exists."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a contract, or can I cancel anytime?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No long-term contract. You can move between the metered and unlimited tier anytime, and cancel the add-on without touching your core KenjiAI account."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://kenjiai.com/#organization",
+      "name": "KenjiAI",
+      "url": "https://kenjiai.com/",
+      "logo": "https://kenjiai.com/kenji-logo.webp",
+      "parentOrganization": {
+        "@type": "Organization",
+        "@id": "https://mediatraffics.com/#organization",
+        "name": "Media Traffics LLC",
+        "url": "https://mediatraffics.com"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://kenjiai.com/#website",
+      "url": "https://kenjiai.com/",
+      "name": "KenjiAI",
+      "publisher": {
+        "@id": "https://kenjiai.com/#organization"
+      }
     }
   ]
 }
 </script>
+
 <style>
   :root{
     --bg:#000000; --card:#0d0d0d; --card2:#121212; --line:#262626;

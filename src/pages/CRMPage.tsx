@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, TrendingUp, Target, BarChart3, ArrowRight, CheckCircle, Star, Calendar, DollarSign } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import { service } from '../lib/schema';
 
 const CRMPage: React.FC = () => {
   const crmFeatures = [
@@ -60,59 +61,13 @@ const CRMPage: React.FC = () => {
   ];
 
   const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "KenjiAI CRM",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web",
-    "description": "Complete AI-powered CRM solution with automated contact management, sales pipeline tracking, and analytics.",
-    "url": "https://kenjiai.com/crm",
-    "provider": {
-      "@type": "Organization",
-      "name": "KenjiAI",
-      "url": "https://kenjiai.com"
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": "https://kenjiai.com/pricing"
-    },
-    "featureList": [
-      "Contact Management",
-      "Sales Pipeline",
-      "Analytics & Reporting",
-      "Task Automation",
-      "Lead Scoring",
-      "CRM Integrations"
-    ],
-    "mainEntityOfPage": {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How does KenjiAI CRM improve sales performance?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "KenjiAI CRM uses AI to automate data entry, score leads, predict deal outcomes, and send intelligent follow-up reminders, resulting in a 35% faster sales cycle and 40% higher close rate."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does KenjiAI CRM integrate with existing tools?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, KenjiAI CRM integrates with email platforms, calendar apps, social media, accounting software, e-commerce platforms, and hundreds of other tools via native integrations and custom APIs."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How many more qualified leads will I get with KenjiAI CRM?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "KenjiAI CRM's AI-powered lead scoring and routing delivers 250% more qualified leads by automatically identifying and prioritizing your best prospects."
-          }
-        }
-      ]
-    }
+    '@context': 'https://schema.org',
+    ...service({
+      path: '/crm',
+      name: 'KenjiAI CRM',
+      description: 'AI-powered CRM with contact management, sales pipeline tracking, task automation and two-way sync with ServiceTitan, Jobber and GoHighLevel.',
+      serviceType: ['CRM Software', 'Sales Pipeline Automation'],
+    }),
   };
 
   return (

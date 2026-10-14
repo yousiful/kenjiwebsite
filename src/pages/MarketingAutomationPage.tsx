@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Users, TrendingUp, Target, ArrowRight, CheckCircle, Star, Calendar, BarChart3 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import { service } from '../lib/schema';
 
 const MarketingAutomationPage: React.FC = () => {
   const automationFeatures = [
@@ -60,60 +61,13 @@ const MarketingAutomationPage: React.FC = () => {
   ];
 
   const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "KenjiAI Marketing Automation",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web",
-    "description": "AI-powered marketing automation platform with smart email campaigns, social media scheduling, lead nurturing, and analytics.",
-    "url": "https://kenjiai.com/marketing-automation",
-    "provider": {
-      "@type": "Organization",
-      "name": "KenjiAI",
-      "url": "https://kenjiai.com"
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": "https://kenjiai.com/pricing"
-    },
-    "featureList": [
-      "Smart Email Campaigns",
-      "Lead Nurturing Automation",
-      "Social Media Scheduling",
-      "Analytics & Optimization",
-      "A/B Testing",
-      "Behavioral Triggers",
-      "Advanced Segmentation"
-    ],
-    "mainEntityOfPage": {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How does AI improve email marketing open rates?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "KenjiAI optimizes subject lines, send times, and content personalization using AI to improve email open rates over generic, unoptimized campaigns."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can KenjiAI automate my entire marketing funnel?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, KenjiAI Marketing Automation handles your complete funnel from lead capture through email, SMS, and social media to conversion and re-engagement, all automated with AI."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What ROI can I expect from AI marketing automation?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Results vary by business and are not guaranteed. KenjiAI automates lead scoring, nurturing, and campaign management to reduce manual work and help you focus on qualified leads."
-          }
-        }
-      ]
-    }
+    '@context': 'https://schema.org',
+    ...service({
+      path: '/marketing-automation',
+      name: 'KenjiAI Marketing Automation',
+      description: 'Speed-to-lead and marketing automation: outbound dialing on new ad leads, multi-channel SMS and email follow-up, lead nurturing and database reactivation.',
+      serviceType: ['Marketing Automation', 'Speed-to-Lead Follow-Up'],
+    }),
   };
 
   return (

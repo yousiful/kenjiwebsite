@@ -1,10 +1,12 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import PageSchema from '../components/PageSchema';
 import { Shield, Lock, Eye, Database, UserCheck, Globe } from 'lucide-react';
 
 export default function PrivacyPolicyPage() {
   return (
     <>
+      <PageSchema path="/privacy" name={"Privacy Policy"} description={"KenjiAI Privacy Policy - Learn how we collect, use, and protect your personal information."} />
       <Helmet>
         <title>Privacy Policy | KenjiAI</title>
         <meta name="description" content="KenjiAI Privacy Policy - Learn how we collect, use, and protect your personal information." />

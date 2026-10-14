@@ -1,10 +1,12 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import PageSchema from '../components/PageSchema';
 import { FileText, Scale, UserCheck, CreditCard, Ban, AlertCircle } from 'lucide-react';
 
 export default function TermsOfServicePage() {
   return (
     <>
+      <PageSchema path="/terms" name={"Terms of Service"} description={"KenjiAI Terms of Service - Legal terms and conditions for using our AI automation platform."} />
       <Helmet>
         <title>Terms of Service | KenjiAI</title>
         <meta name="description" content="KenjiAI Terms of Service - Legal terms and conditions for using our AI automation platform." />

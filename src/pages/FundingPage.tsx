@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import PageSchema from '../components/PageSchema';
 import { motion } from 'framer-motion';
 import { ArrowRight, TrendingUp, ShieldCheck, Building2, Sparkles, Landmark, Award, Lightbulb, ExternalLink } from 'lucide-react';
 import { govPrograms, grants, fundingIdeas, lastUpdated, type FeedLink } from '../data/fundingFeed';
@@ -163,6 +164,7 @@ const FeedSection: React.FC<{
 const FundingPage: React.FC = () => {
   return (
     <>
+      <PageSchema path="/funding" name={"Funding & Credit Partners"} description={"KenjiAI's trusted funding and credit partners. Access business funding, build business credit, and get funding-ready to grow your business."} />
       <Helmet>
         <title>Funding & Credit Partners | KenjiAI</title>
         <meta

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import SEOHead from '../components/SEOHead';
+import { service, faqPage } from '../lib/schema';
 import {
   Code, Bot, TrendingUp, Zap, CheckCircle, ArrowRight,
   Monitor, DollarSign, Shield, Star, ChevronDown, ChevronUp,
@@ -127,6 +128,24 @@ const FAQS = [
   },
 ];
 
+const SETUP_STRUCTURED_DATA = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    service({
+      path: '/setup',
+      name: 'Done-For-You AI Agent Setup',
+      description:
+        'We install Claude Code, OpenClaw, and custom AI agents on your computer, wired to your business. One-time setup, you own the code.',
+      serviceType: 'AI Agent Installation',
+      offers: [
+        { '@type': 'Offer', name: 'Starter', price: '497', priceCurrency: 'USD', url: 'https://kenjiai.com/setup' },
+        { '@type': 'Offer', name: 'Pro', price: '1497', priceCurrency: 'USD', url: 'https://kenjiai.com/setup' },
+      ],
+    }),
+    faqPage('/setup', FAQS),
+  ],
+};
+
 const TESTIMONIALS = [
   {
     name: 'Derek M.',
@@ -163,6 +182,7 @@ export default function AgentSetupPage() {
         title="Done-For-You AI Agent Setup | KenjiAI"
         description="We install Claude Code, OpenClaw, and custom AI agents on your computer, wired to your business to make money, automate operations, or trade markets. Done for you in 48 hours."
         canonical="https://kenjiai.com/setup"
+        structuredData={SETUP_STRUCTURED_DATA}
       />
 
       <div className="bg-[#0B0E14] text-white min-h-screen font-sans">

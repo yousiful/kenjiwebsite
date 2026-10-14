@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { Helmet } from 'react-helmet-async';
+import PageSchema from '../components/PageSchema';
 import { Music, Copy, Check, Sparkles, ExternalLink, RefreshCw, Mic2, Building2 } from 'lucide-react';
 
 type Mode = 'personal' | 'business';
@@ -212,6 +213,7 @@ const SongPromptGeneratorPage: React.FC = () => {
 
   return (
     <>
+      <PageSchema path="/tools/song-prompt-generator" name={"Free AI Song & Jingle Prompt Generator"} description={"Build a real, producer-grade prompt for Suno, Udio, or Producer.ai, not generic AI slop. Make a personal song with your name, or a commercial jingle/anthem for your business. Free, no signup."} />
       <Helmet>
         <title>Free AI Song & Jingle Prompt Generator | KenjiAI</title>
         <meta name="description" content="Build a real, producer-grade prompt for Suno, Udio, or Producer.ai, not generic AI slop. Make a personal song with your name, or a commercial jingle/anthem for your business. Free, no signup." />

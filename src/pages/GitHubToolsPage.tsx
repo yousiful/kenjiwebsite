@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import PageSchema from '../components/PageSchema';
 import { motion } from 'framer-motion';
 import { Github, ArrowUpRight, Bot, Video, Palette, LineChart, Database, Briefcase } from 'lucide-react';
 
@@ -75,6 +76,7 @@ const CATEGORIES: Category[] = [
 const GitHubToolsPage: React.FC = () => {
   return (
     <>
+      <PageSchema path="/github-tools" name={"Open-Source Tools We Use"} description={"The open-source GitHub projects KenjiAI uses for AI agents, video, design, trading research, and data, with a plain description of each."} type="CollectionPage" />
       <Helmet>
         <title>Open-Source Tools We Use | KenjiAI</title>
         <meta name="description" content="The open-source GitHub projects KenjiAI uses for AI agents, video, design, trading research, and data, with a plain description of each." />

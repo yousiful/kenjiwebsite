@@ -16,15 +16,80 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "name": "AI Call Center Territory Availability Checker",
-  "description": "Interactive diagnostic checking territory availability for KenjiAI's Done-For-You Inbound and Outbound AI Call Center platform.",
-  "url": "https://kenjiai.com/ai-callcenter/",
-  "provider": {
-    "@type": "Organization",
-    "name": "KenjiAI",
-    "url": "https://kenjiai.com"
-  }
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://kenjiai.com/ai-callcenter/#webpage",
+      "url": "https://kenjiai.com/ai-callcenter/",
+      "name": "Never Miss Another Call | AI Call Center",
+      "description": "See the demo, then lock in your city. One exclusive Done-For-You AI Call Center per industry, per city. Sub-500ms inbound answering, 60-second outbound speed-to-lead.",
+      "isPartOf": {
+        "@id": "https://kenjiai.com/#website"
+      },
+      "publisher": {
+        "@id": "https://kenjiai.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "breadcrumb": {
+        "@id": "https://kenjiai.com/ai-callcenter/#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://kenjiai.com/ai-callcenter/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://kenjiai.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "AI Call Center",
+          "item": "https://kenjiai.com/ai-callcenter/"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://kenjiai.com/ai-callcenter/#service",
+      "name": "Done-For-You Inbound & Outbound AI Call Center",
+      "url": "https://kenjiai.com/ai-callcenter/",
+      "description": "One exclusive done-for-you AI call center per industry, per city. Sub-500ms inbound answering and 60-second outbound speed-to-lead.",
+      "serviceType": "AI Call Center",
+      "provider": {
+        "@id": "https://kenjiai.com/#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "United States"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://kenjiai.com/#organization",
+      "name": "KenjiAI",
+      "url": "https://kenjiai.com/",
+      "logo": "https://kenjiai.com/kenji-logo.webp",
+      "parentOrganization": {
+        "@type": "Organization",
+        "@id": "https://mediatraffics.com/#organization",
+        "name": "Media Traffics LLC",
+        "url": "https://mediatraffics.com"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://kenjiai.com/#website",
+      "url": "https://kenjiai.com/",
+      "name": "KenjiAI",
+      "publisher": {
+        "@id": "https://kenjiai.com/#organization"
+      }
+    }
+  ]
 }
 </script>
 

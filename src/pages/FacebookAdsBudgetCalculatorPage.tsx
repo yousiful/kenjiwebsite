@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import PageSchema from '../components/PageSchema';
 import { Wallet, ArrowRight, Copy, Check, Share2, Info } from 'lucide-react';
 
 const DAYS_PER_MONTH = 30.4;
@@ -108,6 +109,7 @@ const FacebookAdsBudgetCalculatorPage: React.FC = () => {
 
   return (
     <div className={`min-h-screen ${isEmbed ? 'bg-gray-900 p-4' : 'pt-24 pb-20 px-4 sm:px-6 lg:px-8 text-white'}`}>
+      <PageSchema path="/tools/facebook-ads-budget-calculator" name={"Facebook Ads Budget Calculator: How Much to Spend"} description={"Free Facebook ads budget calculator. Enter the customers you want, your cost per lead, and close rate to get the daily and monthly Meta ads budget you need."} />
       <Helmet>
         <title>Facebook Ads Budget Calculator: How Much to Spend | KenjiAI</title>
         <meta

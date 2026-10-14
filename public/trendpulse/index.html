@@ -18,10 +18,47 @@
     <meta name="twitter:card" content="summary_large_image" />
 
     <!-- JSON-LD Structured Data -->
-    <script type="application/ld+json">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
+      "@type": "WebPage",
+      "@id": "https://kenjiai.com/trendpulse#webpage",
+      "url": "https://kenjiai.com/trendpulse",
+      "name": "TrendPulse & AdForge | Winning Trends, Offers & Viral Hooks",
+      "description": "Discover winning market trends, architect high-converting offers, and generate viral ad hooks with TrendPulse & AdForge by KenjiAI.",
+      "isPartOf": {
+        "@id": "https://kenjiai.com/#website"
+      },
+      "publisher": {
+        "@id": "https://kenjiai.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "breadcrumb": {
+        "@id": "https://kenjiai.com/trendpulse#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://kenjiai.com/trendpulse#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://kenjiai.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "TrendPulse & AdForge",
+          "item": "https://kenjiai.com/trendpulse"
+        }
+      ]
+    },
+    {
+      "@type": "WebApplication",
       "name": "TrendPulse & AdForge",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "All",
@@ -33,12 +70,36 @@
         "priceCurrency": "USD"
       },
       "provider": {
+        "@id": "https://kenjiai.com/#organization"
+      },
+      "@id": "https://kenjiai.com/trendpulse#app",
+      "isAccessibleForFree": true
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://kenjiai.com/#organization",
+      "name": "KenjiAI",
+      "url": "https://kenjiai.com/",
+      "logo": "https://kenjiai.com/kenji-logo.webp",
+      "parentOrganization": {
         "@type": "Organization",
-        "name": "KenjiAI",
-        "url": "https://kenjiai.com"
+        "@id": "https://mediatraffics.com/#organization",
+        "name": "Media Traffics LLC",
+        "url": "https://mediatraffics.com"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://kenjiai.com/#website",
+      "url": "https://kenjiai.com/",
+      "name": "KenjiAI",
+      "publisher": {
+        "@id": "https://kenjiai.com/#organization"
       }
     }
-    </script>
+  ]
+}
+</script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

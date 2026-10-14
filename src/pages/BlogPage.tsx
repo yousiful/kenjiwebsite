@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Calendar, Clock, ArrowRight, Search, User, Tag } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import PageSchema from '../components/PageSchema';
 import { getAllArticles } from '../data/articles';
 
 const BlogPage: React.FC = () => {
@@ -26,6 +27,7 @@ const BlogPage: React.FC = () => {
 
   return (
     <>
+      <PageSchema path="/blog" name={"Blog: AI Insights, Guides & Industry News"} description={"Read the latest AI automation guides, lead generation strategies, voice agent breakdowns, and industry analysis from the KenjiAI team."} type="CollectionPage" />
       <Helmet>
         <title>Blog: AI Insights, Guides & Industry News | KenjiAI</title>
         <meta name="description" content="Read the latest AI automation guides, lead generation strategies, voice agent breakdowns, and industry analysis from the KenjiAI team." />

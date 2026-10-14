@@ -25,21 +25,85 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "KenjiAI.com vs Kenji.ai: two different companies",
-  "datePublished": "2026-05-29",
-  "dateModified": "2026-05-29",
-  "author": {
-    "@type": "Person",
-    "name": "Yousif Alias",
-    "url": "https://kenjiai.com/about-yousif-alias"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "KenjiAI",
-    "url": "https://kenjiai.com"
-  },
-  "mainEntityOfPage": "https://kenjiai.com/kenjiai-vs-kenji-ai"
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://kenjiai.com/kenjiai-vs-kenji-ai#webpage",
+      "url": "https://kenjiai.com/kenjiai-vs-kenji-ai",
+      "name": "KenjiAI.com vs Kenji.ai: Two Different Companies",
+      "description": "KenjiAI.com vs kenji.ai: Full comparison. KenjiAI is an enterprise B2B AI call center platform, completely unrelated to the third-party kenji.ai Instagram bot.",
+      "isPartOf": {
+        "@id": "https://kenjiai.com/#website"
+      },
+      "publisher": {
+        "@id": "https://kenjiai.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "breadcrumb": {
+        "@id": "https://kenjiai.com/kenjiai-vs-kenji-ai#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://kenjiai.com/kenjiai-vs-kenji-ai#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://kenjiai.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "KenjiAI vs Kenji.ai",
+          "item": "https://kenjiai.com/kenjiai-vs-kenji-ai"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "KenjiAI.com vs Kenji.ai: two different companies",
+      "datePublished": "2026-05-29",
+      "dateModified": "2026-05-29",
+      "author": {
+        "@type": "Person",
+        "@id": "https://kenjiai.com/about-yousif-alias#person",
+        "name": "Yousif Alias",
+        "url": "https://kenjiai.com/about-yousif-alias"
+      },
+      "publisher": {
+        "@id": "https://kenjiai.com/#organization"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://kenjiai.com/kenjiai-vs-kenji-ai#webpage"
+      },
+      "@id": "https://kenjiai.com/kenjiai-vs-kenji-ai#article",
+      "image": "https://kenjiai.com/og-image.png"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://kenjiai.com/#organization",
+      "name": "KenjiAI",
+      "url": "https://kenjiai.com/",
+      "logo": "https://kenjiai.com/kenji-logo.webp",
+      "parentOrganization": {
+        "@type": "Organization",
+        "@id": "https://mediatraffics.com/#organization",
+        "name": "Media Traffics LLC",
+        "url": "https://mediatraffics.com"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://kenjiai.com/#website",
+      "url": "https://kenjiai.com/",
+      "name": "KenjiAI",
+      "publisher": {
+        "@id": "https://kenjiai.com/#organization"
+      }
+    }
+  ]
 }
 </script>
 

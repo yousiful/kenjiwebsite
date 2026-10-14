@@ -3,6 +3,7 @@ import { useParams, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle, TrendingUp, Users, Zap, Brain, Star, Rocket } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import { service } from '../lib/schema';
 import ResultsDisclaimer from '../components/ResultsDisclaimer';
 import niches from '../data/niches';
 
@@ -24,16 +25,12 @@ export default function NicheAdPage() {
 
   const structuredData = {
     '@context': 'https://schema.org',
-    '@type': 'ProfessionalService',
-    name: `KenjiAI — ${niche.name} Paid Ads Agency`,
-    description: niche.metaDescription,
-    provider: {
-      '@type': 'Organization',
-      name: 'KenjiAI',
-      url: 'https://kenjiai.com',
-    },
-    areaServed: 'US',
-    serviceType: [`${niche.name} Paid Advertising`, 'AI Marketing Automation'],
+    ...service({
+      path: `/paid-ads-for/${niche.slug}`,
+      name: `KenjiAI: ${niche.name} Paid Ads Agency`,
+      description: niche.metaDescription,
+      serviceType: [`${niche.name} Paid Advertising`, 'AI Marketing Automation'],
+    }),
   };
 
   return (

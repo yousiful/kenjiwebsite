@@ -15,6 +15,7 @@ import {
   Layers,
 } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import { freeWebApp, faqPage } from '../lib/schema';
 
 interface ICPSegment {
   name?: string;
@@ -212,14 +213,32 @@ const ICPGeneratorPage: React.FC = () => {
 
   const structuredData = {
     '@context': 'https://schema.org',
-    '@type': 'SoftwareApplication',
-    name: 'KenjiAI ICP Generator',
-    applicationCategory: 'BusinessApplication',
-    operatingSystem: 'Web',
-    description:
-      'Free tool that turns what you sell and what you charge into 2 or 3 named buyer segments with real Meta Ads detailed-targeting interests, exclusions, buying triggers, objection counters, and lookalike seeds.',
-    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-    publisher: { '@type': 'Organization', name: 'KenjiAI', url: 'https://kenjiai.com' },
+    '@graph': [
+      freeWebApp({
+        path: '/tools/icp-generator',
+        name: 'KenjiAI ICP Generator',
+        description:
+          'Free tool that turns what you sell and what you charge into 2 or 3 named buyer segments with real Meta Ads detailed-targeting interests, exclusions, buying triggers, objection counters, and lookalike seeds.',
+      }),
+      faqPage('/tools/icp-generator', [
+        {
+          q: 'What is an ICP, and how is it different from a persona?',
+          a: 'A persona is a description. An ICP is a configuration: age range, spending capacity, the interests and behaviors you select, who you exclude, and which list you seed a lookalike from. This tool gives you the second one.',
+        },
+        {
+          q: 'Are the Meta interests guaranteed to exist?',
+          a: 'Treat them as a search list, not a guarantee. Meta adds and retires detailed-targeting categories constantly. Search each term in Ads Manager and take the closest real match, or use it as the seed for a broader interest.',
+        },
+        {
+          q: 'Should I still use Advantage+ audience expansion?',
+          a: 'Yes, once the pixel has real conversion data to learn from. Before that, expansion spends your budget discovering what you already know about your buyer. Start layered, then loosen.',
+        },
+        {
+          q: 'Why does a cheap offer need an affordability signal?',
+          a: 'We ran a $7 front-end offer on broad targeting and a real share of the declines were banks refusing debit and prepaid cards. The click was cheap, the customer could not pay. Cheap still needs some spending signal.',
+        },
+      ]),
+    ],
   };
 
   const bandKey = (result?.price_band || '').toLowerCase().trim();

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import PageSchema from '../../components/PageSchema';
 import InvitationCard, { type CardData } from '../InvitationCard';
 import { loadThemeFonts } from '../format';
 import { getToken } from '../api';
@@ -34,6 +35,7 @@ export default function InvitesLanding() {
 
   return (
     <Page title="Free Invitations with RSVP for Any Celebration | Kenji Invites" noindex={false}>
+      <PageSchema path="/invites" name="Kenji Invites: Free Invitations with RSVP for Any Celebration" description="Make a beautiful invitation for a wedding, birthday, graduation, shower, holiday party or any celebration. Add your photos, send it by text or email, and see who's coming. Free." />
       <Helmet>
         <meta name="description" content="Make a beautiful invitation for a wedding, birthday, graduation, shower, holiday party or any celebration. Add your photos, send it by text or email, and see who's coming. Free." />
         <meta property="og:title" content="Kenji Invites: free invitations with RSVP for any celebration" />

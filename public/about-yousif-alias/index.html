@@ -25,28 +25,92 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Yousif Alias",
-  "url": "https://kenjiai.com/about-yousif-alias",
-  "jobTitle": "Founder",
-  "image": "https://kenjiai.com/og-image.png",
-  "worksFor": [
-    {"@type": "Organization", "name": "KenjiAI", "url": "https://kenjiai.com"},
-    {"@type": "Organization", "name": "Media Traffics", "url": "https://mediatraffics.com"}
-  ],
-  "founderOf": [
-    {"@type": "Organization", "name": "KenjiAI"},
-    {"@type": "Organization", "name": "Media Traffics"}
-  ],
-  "sameAs": [
-    "https://www.linkedin.com/in/yousifalias/",
-    "https://www.facebook.com/yousiful/",
-    "https://www.threads.com/@yousiful",
-    "https://www.instagram.com/yousiful/",
-    "https://creators.spotify.com/pod/show/yousif-alias3",
-    "https://mediatraffics.com/about-yousif-alias"
-  ],
-  "description": "Founder of KenjiAI and Media Traffics. 13 years building and managing paid acquisition systems for small and mid-market businesses across Meta, Google, and LinkedIn."
+  "@graph": [
+    {
+      "@type": "ProfilePage",
+      "@id": "https://kenjiai.com/about-yousif-alias#webpage",
+      "url": "https://kenjiai.com/about-yousif-alias",
+      "name": "About Yousif Alias | Founder of KenjiAI and Media Traffics",
+      "description": "Yousif Alias founded Kenji in 2020 as a CRM and evolved it to KenjiAI in 2022 with native AI models. 13+ years operating performance marketing and AI systems.",
+      "isPartOf": {
+        "@id": "https://kenjiai.com/#website"
+      },
+      "publisher": {
+        "@id": "https://kenjiai.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "breadcrumb": {
+        "@id": "https://kenjiai.com/about-yousif-alias#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://kenjiai.com/about-yousif-alias#person"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://kenjiai.com/about-yousif-alias#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://kenjiai.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About Yousif Alias",
+          "item": "https://kenjiai.com/about-yousif-alias"
+        }
+      ]
+    },
+    {
+      "@type": "Person",
+      "name": "Yousif Alias",
+      "url": "https://kenjiai.com/about-yousif-alias",
+      "jobTitle": "Founder",
+      "worksFor": [
+        {
+          "@id": "https://kenjiai.com/#organization"
+        },
+        {
+          "@id": "https://mediatraffics.com/#organization"
+        }
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/yousifalias/",
+        "https://www.facebook.com/yousiful/",
+        "https://www.threads.com/@yousiful",
+        "https://www.instagram.com/yousiful/",
+        "https://creators.spotify.com/pod/show/yousif-alias3",
+        "https://mediatraffics.com/about-yousif-alias"
+      ],
+      "description": "Founder of KenjiAI and Media Traffics. 13 years building and managing paid acquisition systems for small and mid-market businesses across Meta, Google, and LinkedIn.",
+      "@id": "https://kenjiai.com/about-yousif-alias#person"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://kenjiai.com/#organization",
+      "name": "KenjiAI",
+      "url": "https://kenjiai.com/",
+      "logo": "https://kenjiai.com/kenji-logo.webp",
+      "parentOrganization": {
+        "@type": "Organization",
+        "@id": "https://mediatraffics.com/#organization",
+        "name": "Media Traffics LLC",
+        "url": "https://mediatraffics.com"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://kenjiai.com/#website",
+      "url": "https://kenjiai.com/",
+      "name": "KenjiAI",
+      "publisher": {
+        "@id": "https://kenjiai.com/#organization"
+      }
+    }
+  ]
 }
 </script>
 

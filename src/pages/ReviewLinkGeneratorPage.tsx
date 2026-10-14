@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import PageSchema from '../components/PageSchema';
 import { Star, Copy, Check, ExternalLink, Download, ArrowRight } from 'lucide-react';
 
 const PLACE_ID_FINDER = 'https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder';
@@ -81,6 +82,7 @@ const ReviewLinkGeneratorPage: React.FC = () => {
 
   return (
     <div className="min-h-screen pt-24 pb-20 px-4 sm:px-6 lg:px-8 text-white">
+      <PageSchema path="/tools/google-review-link-generator" name={"Free Google Review Link Generator + QR Code"} description={"Make a direct Google review link and QR code for your business in seconds. Free, no signup. Includes ready-to-send text and email templates to ask customers for reviews."} />
       <Helmet>
         <title>Free Google Review Link Generator + QR Code | KenjiAI</title>
         <meta

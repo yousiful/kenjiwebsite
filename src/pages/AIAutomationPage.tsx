@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Brain, Zap, TrendingUp, Users, ArrowRight, CheckCircle, Star, Rocket } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import { service } from '../lib/schema';
 import { ResultsDisclaimer } from '../components/ResultsDisclaimer';
 
 const AIAutomationPage: React.FC = () => {
@@ -61,28 +62,13 @@ const AIAutomationPage: React.FC = () => {
   ];
 
   const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "KenjiAI Business Automation",
-    "applicationCategory": "BusinessApplication",
-    "operatingSystem": "Web",
-    "description": "Transform your business with AI automation. Automate workflows, customer service, sales processes, and operations.",
-    "url": "https://kenjiai.com/ai-automation",
-    "provider": {
-      "@type": "Organization",
-      "name": "KenjiAI",
-      "url": "https://kenjiai.com"
-    },
-    "offers": {
-      "@type": "Offer",
-      "url": "https://kenjiai.com/pricing"
-    },
-    "featureList": [
-      "Intelligent Workflows",
-      "Smart Decision Making",
-      "Performance Optimization",
-      "Customer Intelligence"
-    ]
+    '@context': 'https://schema.org',
+    ...service({
+      path: '/ai-automation',
+      name: 'KenjiAI Business Automation',
+      description: 'Done-for-you AI automation: 24/7 inbound and outbound AI call centers, CRM pipeline syncing, and automated workflows for customer service, sales and operations.',
+      serviceType: ['AI Business Automation', 'AI Call Center'],
+    }),
   };
 
   return (
