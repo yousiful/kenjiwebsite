@@ -33,6 +33,7 @@ export const internalRoutes = [
   '/modern',
   '/growth-quiz',
   '/workshop',
+  '/special',
   '/call-center-upgrade',
   '/ai-callcenter',
   '/is-kenjiai-legit',

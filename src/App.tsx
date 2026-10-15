@@ -74,6 +74,7 @@ const GrowthQuizPage = lazyRoute(() => import('./pages/GrowthQuizPage'));
 const GrowthQuizBookPage = lazyRoute(() => import('./pages/GrowthQuizPage').then((m) => ({ default: m.GrowthQuizBookPage })));
 const GrowthQuizNextStepPage = lazyRoute(() => import('./pages/GrowthQuizPage').then((m) => ({ default: m.GrowthQuizNextStepPage })));
 const WorkshopPage = lazyRoute(() => import('./pages/WorkshopPage'));
+const SpecialOfferPage = lazyRoute(() => import('./pages/SpecialOfferPage'));
 const MissedCallCalculatorPage = lazyRoute(() => import('./pages/MissedCallCalculatorPage'));
 const SongPromptGeneratorPage = lazyRoute(() => import('./pages/SongPromptGeneratorPage'));
 const ICPGeneratorPage = lazyRoute(() => import('./pages/ICPGeneratorPage'));
@@ -208,7 +209,7 @@ const DefaultSEO: React.FC = () => {
 // Kenji Invites pages carry their own header and hide all site chrome.
 const isInvitesPath = (p: string) => p === '/invites' || p.startsWith('/invites/') || p.startsWith('/i/');
 
-const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/overview-b', '/setup', '/helpful-links', '/github-tools', '/partnerup', '/workshop', '/growth-quiz', '/growth-quiz/book', '/growth-quiz/next-step'];
+const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/overview-b', '/setup', '/helpful-links', '/github-tools', '/partnerup', '/workshop', '/special', '/growth-quiz', '/growth-quiz/book', '/growth-quiz/next-step'];
 
 function ConditionalNavbar() {
   const { pathname } = useLocation();
@@ -329,6 +330,7 @@ function App() {
                       <Route path="/growth-quiz/book" element={<GrowthQuizBookPage />} />
                       <Route path="/growth-quiz/next-step" element={<GrowthQuizNextStepPage />} />
                       <Route path="/workshop" element={<WorkshopPage />} />
+                      <Route path="/special" element={<SpecialOfferPage />} />
                       <Route path="/setup" element={<AgentSetupPage />} />
                       <Route path="/funding" element={<FundingPage />} />
                       <Route path="/invites" element={<InvitesLanding />} />
