@@ -68,6 +68,7 @@ const FundingPage = lazyRoute(() => import('./pages/FundingPage'));
 const PricingV2Page = lazyRoute(() => import('./pages/PricingV2Page'));
 const HelpfulLinksPage = lazyRoute(() => import('./pages/HelpfulLinksPage'));
 const GitHubToolsPage = lazyRoute(() => import('./pages/GitHubToolsPage'));
+const PodcastPage = lazyRoute(() => import('./pages/PodcastPage'));
 const PartnerUpPage = lazyRoute(() => import('./pages/PartnerUpPage'));
 const ModernPage = lazyRoute(() => import('./pages/ModernPage'));
 const GrowthQuizPage = lazyRoute(() => import('./pages/GrowthQuizPage'));
@@ -309,6 +310,7 @@ function App() {
                       <Route path="/knowledge" element={<KnowledgeBasePage />} />
                       <Route path="/ai-education" element={<AIEducationPage />} />
                       <Route path="/blog" element={<BlogPage />} />
+                      <Route path="/podcast" element={<PodcastPage />} />
                       <Route path="/blog/:slug" element={<BlogPost />} />
                       <Route path="/paid-ads-for/:niche" element={<NicheAdPage />} />
                       <Route path="/pricing" element={<ProductSelectionPage />} />

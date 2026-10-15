@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet-async';
 import PageSchema from '../components/PageSchema';
 import { ORG_ID, WEBSITE_ID } from '../lib/schema';
 import { getArticleBySlug, getAllArticles } from '../data/articles';
+import PodcastPlayer from '../components/PodcastPlayer';
 
 const BlogPost: React.FC = () => {
   const { slug } = useParams();
@@ -212,12 +213,22 @@ const BlogPost: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-12"
           >
-            <img
-              src={article.image}
-              alt={article.title}
-              className="w-full h-48 sm:h-64 md:h-80 object-cover rounded-2xl"
-              loading="eager"
-            />
+            {article.podcast ? (
+              <PodcastPlayer
+                number={article.podcast.number}
+                title={article.title}
+                image={article.image}
+                audioUrl={article.podcast.audioUrl}
+                duration={article.podcast.duration}
+              />
+            ) : (
+              <img
+                src={article.image}
+                alt={article.title}
+                className="w-full h-48 sm:h-64 md:h-80 object-cover rounded-2xl"
+                loading="eager"
+              />
+            )}
           </motion.div>
 
           {/* Article Content */}

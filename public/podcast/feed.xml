@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:podcast="https://podcastindex.org/namespace/1.0">
+  <channel>
+    <title>The KenjiAI Podcast</title>
+    <link>https://kenjiai.com/podcast</link>
+    <atom:link href="https://kenjiai.com/podcast/feed.xml" rel="self" type="application/rss+xml"/>
+    <description>Yousif Alias runs Media Traffics and KenjiAI. Since 2016 his team has run ads, funnels and AI call centers for business owners. These episodes come from his real Zoom trainings, webinars and team calls, cut down to the useful parts: how to get leads that actually pay, how to close on the call, and how to use AI without losing the human side of sales.</description>
+    <itunes:summary>Yousif Alias runs Media Traffics and KenjiAI. Since 2016 his team has run ads, funnels and AI call centers for business owners. These episodes come from his real Zoom trainings, webinars and team calls, cut down to the useful parts: how to get leads that actually pay, how to close on the call, and how to use AI without losing the human side of sales.</itunes:summary>
+    <itunes:subtitle>Ads, sales and AI for business owners, from real Zoom trainings.</itunes:subtitle>
+    <language>en-us</language>
+    <copyright>Copyright 2026 Media Traffics</copyright>
+    <lastBuildDate>Thu, 15 Oct 2026 16:41:02 -0500</lastBuildDate>
+    <itunes:author>Yousif Alias</itunes:author>
+    <itunes:owner><itunes:name>Media Traffics</itunes:name><itunes:email>support@mediatraffics.com</itunes:email></itunes:owner>
+    <itunes:image href="https://kenjiai.com/podcast/cover.jpg"/>
+    <image><url>https://kenjiai.com/podcast/cover.jpg</url><title>The KenjiAI Podcast</title><link>https://kenjiai.com/podcast</link></image>
+    <itunes:category text="Business"><itunes:category text="Marketing"/></itunes:category>
+    <itunes:category text="Business"><itunes:category text="Entrepreneurship"/></itunes:category>
+    <itunes:explicit>true</itunes:explicit>
+    <itunes:type>episodic</itunes:type>
+    <podcast:locked>no</podcast:locked>
+    <item>
+      <title>&quot;I Don&#x27;t Have the Budget&quot;: What That Objection Really Means</title>
+      <description>A coaching call with a client&#x27;s sales team after a lost deal. Yousif breaks down why every objection means the prospect doesn&#x27;t see the value yet, how to acknowledge it, assume the sale and reframe around the money they&#x27;re missing, and why he records every sales call.
+
+Full write-up: https://kenjiai.com/blog/podcast-dont-have-the-budget-objection</description>
+      <itunes:summary>A coaching call with a client&#x27;s sales team after a lost deal. Yousif breaks down why every objection means the prospect doesn&#x27;t see the value yet, how to acknowledge it, assume the sale and reframe around the money they&#x27;re missing, and why he records every sales call.
+
+Full write-up: https://kenjiai.com/blog/podcast-dont-have-the-budget-objection</itunes:summary>
+      <link>https://kenjiai.com/blog/podcast-dont-have-the-budget-objection</link>
+      <guid isPermaLink="false">kenjiai-podcast-podcast-dont-have-the-budget-objection</guid>
+      <pubDate>Thu, 15 Oct 2026 09:02:00 -0500</pubDate>
+      <enclosure url="https://kenjiai-podcast.netlify.app/episodes/podcast-dont-have-the-budget-objection.mp3" length="14411872" type="audio/mpeg"/>
+      <itunes:duration>0:19:55</itunes:duration>
+      <itunes:episode>3</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>true</itunes:explicit>
+      <itunes:image href="https://kenjiai.com/podcast/podcast-dont-have-the-budget-objection.jpg"/>
+    </item>
+    <item>
+      <title>Stop Buying Leads: Make Them Pay to Become a Lead</title>
+      <description>From Yousif&#x27;s Saturday webinar. Why free lead magnets attract people who never buy, how a small paid offer plus a community turns leads into customers who pay attention, how the subscription can cover the ad spend, and how an AI call center follows up with every lead.
+
+Full write-up: https://kenjiai.com/blog/podcast-paid-lead-magnet-funnel</description>
+      <itunes:summary>From Yousif&#x27;s Saturday webinar. Why free lead magnets attract people who never buy, how a small paid offer plus a community turns leads into customers who pay attention, how the subscription can cover the ad spend, and how an AI call center follows up with every lead.
+
+Full write-up: https://kenjiai.com/blog/podcast-paid-lead-magnet-funnel</itunes:summary>
+      <link>https://kenjiai.com/blog/podcast-paid-lead-magnet-funnel</link>
+      <guid isPermaLink="false">kenjiai-podcast-podcast-paid-lead-magnet-funnel</guid>
+      <pubDate>Thu, 15 Oct 2026 09:01:00 -0500</pubDate>
+      <enclosure url="https://kenjiai-podcast.netlify.app/episodes/podcast-paid-lead-magnet-funnel.mp3" length="18514573" type="audio/mpeg"/>
+      <itunes:duration>0:25:36</itunes:duration>
+      <itunes:episode>2</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>true</itunes:explicit>
+      <itunes:image href="https://kenjiai.com/podcast/podcast-paid-lead-magnet-funnel.jpg"/>
+    </item>
+    <item>
+      <title>Close for Survival: The Sales Training I Give My Team</title>
+      <description>The full sales training Yousif runs for his closers and setters. Why it&#x27;s never the leads, why selling is a numbers game, why you sell the outcome and not the tech, and how to drop a prospect&#x27;s guard by being willing to walk away.
+
+Full write-up: https://kenjiai.com/blog/podcast-close-for-survival-sales-training</description>
+      <itunes:summary>The full sales training Yousif runs for his closers and setters. Why it&#x27;s never the leads, why selling is a numbers game, why you sell the outcome and not the tech, and how to drop a prospect&#x27;s guard by being willing to walk away.
+
+Full write-up: https://kenjiai.com/blog/podcast-close-for-survival-sales-training</itunes:summary>
+      <link>https://kenjiai.com/blog/podcast-close-for-survival-sales-training</link>
+      <guid isPermaLink="false">kenjiai-podcast-podcast-close-for-survival-sales-training</guid>
+      <pubDate>Thu, 15 Oct 2026 09:00:00 -0500</pubDate>
+      <enclosure url="https://kenjiai-podcast.netlify.app/episodes/podcast-close-for-survival-sales-training.mp3" length="13101157" type="audio/mpeg"/>
+      <itunes:duration>0:18:06</itunes:duration>
+      <itunes:episode>1</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>true</itunes:explicit>
+      <itunes:image href="https://kenjiai.com/podcast/podcast-close-for-survival-sales-training.jpg"/>
+    </item>
+  </channel>
+</rss>

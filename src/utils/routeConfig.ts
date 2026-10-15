@@ -13,6 +13,7 @@ export const internalRoutes = [
   '/knowledge',
   '/ai-education',
   '/blog',
+  '/podcast',
   '/paid-ads-for',
   '/investors',
   '/pricing',

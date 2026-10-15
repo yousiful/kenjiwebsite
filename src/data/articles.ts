@@ -1,3 +1,21 @@
+import podcastEpisodes from './podcastEpisodes.json';
+
+export interface PodcastEpisode {
+  slug: string;
+  number: number;
+  title: string;
+  summary: string;
+  date: string;
+  duration: number;
+  keywords: string[];
+  audioUrl: string;
+  image: string;
+  content: string;
+}
+
+export const getPodcastEpisodes = (): PodcastEpisode[] =>
+  [...(podcastEpisodes as PodcastEpisode[])].sort((a, b) => b.number - a.number);
+
 export interface Article {
   slug: string;
   title: string;
@@ -19,6 +37,8 @@ export interface Article {
   instructor?: string;
   skills?: string[];
   isCourse?: boolean;
+  // Podcast episodes (src/data/podcastEpisodes.json, written by ~/podcast/publish.py)
+  podcast?: { number: number; audioUrl: string; duration: number };
 }
 
 export const articles: Record<string, Article> = {
@@ -1803,6 +1823,24 @@ export const articles: Record<string, Article> = {
   }
 };
 
+// Every podcast episode gets its own write-up in the blog, with the audio player on top.
+for (const ep of podcastEpisodes as PodcastEpisode[]) {
+  articles[ep.slug] = {
+    slug: ep.slug,
+    title: `${ep.title} (Podcast Ep. ${ep.number})`,
+    excerpt: ep.summary,
+    category: 'Podcast',
+    date: ep.date,
+    author: 'Yousif Alias',
+    readTime: `${Math.round(ep.duration / 60)} min listen`,
+    tags: ['Podcast', 'KenjiAI Podcast'],
+    keywords: ep.keywords,
+    image: ep.image,
+    content: ep.content,
+    podcast: { number: ep.number, audioUrl: ep.audioUrl, duration: ep.duration },
+  };
+}
+
 /**
  * Evergreen Blog System
  * Dynamically shifts article dates so content always appears recent.
@@ -1837,7 +1875,7 @@ export function getArticleBySlug(slug: string): Article | undefined {
     ...article,
     date: getEvergreenDate(
       blogIndex >= 0 ? blogIndex : 0, 
-      !!article.isCourse, 
+      !!article.isCourse || !!article.podcast, 
       article.date
     )
   };
@@ -1855,7 +1893,7 @@ export function getAllArticles(): Article[] {
   return sorted.map(article => {
     const evergreenDate = getEvergreenDate(
       blogIndex, 
-      !!article.isCourse, 
+      !!article.isCourse || !!article.podcast, 
       article.date
     );
     
