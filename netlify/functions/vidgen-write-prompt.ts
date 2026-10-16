@@ -1,0 +1,152 @@
+import { json, fail, readJson, sameOrigin, str } from './_vidgen/common';
+import { underHourlyLimit } from './_vidgen/db';
+import { withUser } from './_vidgen/guard';
+import { goalById, MODELS, AD_PLACEMENTS, type GoalId, type ModelId } from '../../src/vidgen/models';
+
+/**
+ * Kenji Studio prompt writer. The person answers 2-4 plain questions; this turns the
+ * answers into a model-ready, shot-by-shot video prompt. Free (no credits), 30 an hour
+ * per person. OpenRouter: anthropic/claude-sonnet-5.5, falling back to claude-haiku-5.5.
+ * Env: OPENROUTER_API_KEY.
+ */
+
+const PER_HOUR = 30;
+const PRIMARY = 'anthropic/claude-sonnet-5.5';
+const FALLBACK = 'anthropic/claude-haiku-5.5';
+
+const BASE_RULES = `You write prompts for AI video models (Kling, Seedance, Wan). The person gave plain answers; you turn them into one prompt the model can shoot.
+
+Every prompt covers, in this order, in plain concrete words:
+1. Subject: who or what is on screen, with 2-3 specific visual details (age, clothing, materials, colors).
+2. Action: what physically happens, one clear beat at a time. Use present tense verbs.
+3. Camera: shot size, angle and one camera move (slow push-in, handheld follow, orbit, static locked-off, crane down).
+4. Lighting and setting: time of day, light source, a few environment details.
+5. Style: the look (photoreal commercial, 35mm film, clean 3D animation, documentary handheld) and the color palette.
+6. On-screen text: video models garble lettering, so do not ask for readable text, logos or captions inside the shot. If text matters, say "leave clean space in the upper third for a caption added later".
+
+Hard rules:
+- Describe only what a camera can see and hear. No abstract marketing words like "innovative", "seamless", "game-changing", "unlock", "elevate".
+- No real celebrities, no real brand logos, no real public figures, nothing sexual, nothing violent toward real people.
+- No em dashes. Write plain sentences.
+- The main prompt is at most 900 characters.`;
+
+const GOAL_RULES: Record<GoalId, string> = {
+  ad: `This is a paid social ad. The first 2 seconds are the hook: open on the most surprising or relatable moment (the problem in action or the result), never on a logo or a slow establishing shot. Then show the product in use and the result. End on a clean, steady product or result shot that suits a call to action added later. Keep the pace quick.`,
+  vsl: `This is b-roll for a video sales letter. It backs up the point being spoken over it, so it must show that point literally and emotionally. Grounded, believable, real-world footage of everyday business owners or customers. No text, no hype. Calm, purposeful camera.`,
+  course: `This is a visual for a lesson. It should make the idea easier to understand: show the concept as a concrete physical metaphor or a clear demonstration. Simple composition, one idea per shot, steady camera, nothing distracting in the background.`,
+  walkthrough: `This animates a screenshot or product photo the person uploaded (it becomes the first frame). Keep the interface or product exactly as it is: no new buttons, no changed text, no warping. Describe a smooth, slow camera move toward the part they want to show off, soft depth of field, subtle light sweep. Nothing on screen should morph.`,
+  story: `This is a film scene. Think like a director: a strong opening image, one clear dramatic beat, and a final frame worth holding on. Specify the genre's visual language (lens, color grade, pacing).`,
+  genjutsu: `This guides a video-to-video edit of the person's own clip. Say what to keep (motion, camera, framing) and what should change. Keep it under 300 characters.`,
+};
+
+const SHAPE = `Return ONLY valid JSON, no markdown fences, no commentary:
+{"prompt": "the full single-take prompt", "shots": [{"prompt": "shot 1, at most 400 characters", "duration": 3}]}
+"shots" is a 2-4 shot version of the same video for models that support multi-shot. Shot durations are whole seconds and must add up to exactly the total length given. If the video should be one continuous take, return "shots": [].`;
+
+async function callModel(model: string, system: string, user: string, timeoutMs: number): Promise<string> {
+  const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+      'Content-Type': 'application/json',
+      'HTTP-Referer': 'https://kenjiai.com/video-generation',
+      'X-Title': 'Kenji Studio',
+    },
+    signal: AbortSignal.timeout(timeoutMs),
+    body: JSON.stringify({
+      model,
+      messages: [{ role: 'system', content: system }, { role: 'user', content: user }],
+      temperature: 0.7,
+      max_tokens: 1200,
+    }),
+  });
+  const data = (await res.json().catch(() => ({}))) as { choices?: { message?: { content?: string } }[] };
+  if (!res.ok) throw new Error(`openrouter ${res.status}`);
+  return data?.choices?.[0]?.message?.content || '';
+}
+
+const noDashes = (s: string) => s.replace(/\s*[—–]\s*/g, ', ');
+
+/** Parses the model's JSON defensively and forces shot durations to add up to the total. */
+export function parseWriterOutput(raw: string, total: number): { prompt: string; shots: { prompt: string; duration: number }[] } | null {
+  const cleaned = raw.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/i, '').trim();
+  const start = cleaned.indexOf('{');
+  const end = cleaned.lastIndexOf('}');
+  if (start < 0 || end <= start) return null;
+  let v: { prompt?: unknown; shots?: unknown };
+  try {
+    v = JSON.parse(cleaned.slice(start, end + 1));
+  } catch {
+    return null;
+  }
+  const prompt = noDashes(str(v.prompt, 2500));
+  if (prompt.length < 20) return null;
+  let shots = Array.isArray(v.shots)
+    ? (v.shots as { prompt?: unknown; duration?: unknown }[])
+        .map((s) => ({ prompt: noDashes(str(s?.prompt, 512)), duration: Math.max(1, Math.round(Number(s?.duration) || 0)) }))
+        .filter((s) => s.prompt.length >= 10)
+        .slice(0, 4)
+    : [];
+  if (shots.length < 2 || !total) shots = [];
+  if (shots.length) {
+    const sum = shots.reduce((a, s) => a + s.duration, 0);
+    if (sum !== total) {
+      // rescale, then put the rounding difference on the last shot
+      shots = shots.map((s) => ({ ...s, duration: Math.max(1, Math.round((s.duration * total) / sum)) }));
+      const diff = total - shots.reduce((a, s) => a + s.duration, 0);
+      shots[shots.length - 1].duration += diff;
+      if (shots.some((s) => s.duration < 1 || s.duration > 15)) shots = [];
+    }
+  }
+  return { prompt, shots };
+}
+
+export default async (req: Request): Promise<Response> => {
+  if (req.method !== 'POST') return fail(405, 'Method not allowed');
+  if (!sameOrigin(req)) return fail(403, 'Please use the Kenji Studio page.');
+  if (!process.env.OPENROUTER_API_KEY) return fail(503, 'The prompt writer is not connected yet. You can type your own prompt for now.', { notConnected: 'writer' });
+  const ctx = await withUser(req);
+  if (ctx instanceof Response) return ctx;
+  const { db, user } = ctx;
+
+  const body = (await readJson(req)) || {};
+  const goal = goalById(String(body.goal || ''));
+  if (!goal) return fail(400, 'Pick what you want to make first.');
+  const answersIn = (body.answers && typeof body.answers === 'object' ? body.answers : {}) as Record<string, unknown>;
+  const answers = goal.questions
+    .map((q) => ({ q: q.label, a: str(answersIn[q.id], 400) }))
+    .filter((x) => x.a);
+  const required = goal.questions.filter((q) => !q.optional);
+  if (answers.length < Math.min(2, required.length)) return fail(400, 'Answer the questions first so we know what to make.');
+
+  const model = (String(body.model || '') in MODELS ? String(body.model) : goal.model) as ModelId;
+  const total = Math.max(0, Math.min(30, Math.round(Number(body.duration) || goal.duration)));
+  const hasImage = !!body.hasImage;
+  const placement = goal.id === 'ad' ? str(answersIn.placement, 80) : '';
+  const aspect = (placement && AD_PLACEMENTS[placement]) || str(body.aspect, 8) || goal.aspect;
+
+  if (!(await underHourlyLimit(db, String(user.id), 'write', PER_HOUR))) {
+    return fail(429, 'You have written a lot of prompts this hour. Take a short break and try again.');
+  }
+
+  const system = `${BASE_RULES}\n\n${GOAL_RULES[goal.id]}\n\n${SHAPE}`;
+  const userMsg = [
+    `Kind of video: ${goal.title}`,
+    `Total length: ${total ? `${total} seconds` : 'follows the uploaded video'}`,
+    `Frame: ${aspect}`,
+    `Video model: ${MODELS[model].label}`,
+    hasImage ? 'The person uploaded an image that will be the first frame. Describe motion that starts from that image, do not redescribe it in a way that changes it.' : '',
+    '',
+    ...answers.map((x) => `${x.q}\n${x.a}`),
+  ].filter((l) => l !== null).join('\n');
+
+  for (const [m, t] of [[PRIMARY, 14000], [FALLBACK, 9000]] as const) {
+    try {
+      const out = parseWriterOutput(await callModel(m, system, userMsg, t), total);
+      if (out) return json(200, out);
+    } catch (e) {
+      console.warn('vidgen-write-prompt', m, e instanceof Error ? e.message : e);
+    }
+  }
+  return fail(502, 'The prompt writer is busy. Please try again in a moment.');
+};

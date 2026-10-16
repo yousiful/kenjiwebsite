@@ -97,6 +97,11 @@ const InvitesWizard = lazyRoute(() => import('./invites/pages/InvitesWizard'));
 const InvitesEvent = lazyRoute(() => import('./invites/pages/InvitesEvent'));
 const InvitePreviewRoute = lazyRoute(() => import('./invites/pages/InvitePreviewRoute'));
 const InviteRoute = lazyRoute(() => import('./invites/pages/InviteRoute'));
+// Kenji Studio (AI video generation), its own header/footer like Kenji Invites.
+const VidgenHome = lazyRoute(() => import('./vidgen/pages/VidgenHome'));
+const VidgenLibrary = lazyRoute(() => import('./vidgen/pages/VidgenLibrary'));
+const VidgenBilling = lazyRoute(() => import('./vidgen/pages/VidgenBilling'));
+const VidgenTerms = lazyRoute(() => import('./vidgen/pages/VidgenTerms'));
 
 const RouteFallback: React.FC = () => (
   <div
@@ -207,8 +212,8 @@ const DefaultSEO: React.FC = () => {
   return <SEOHead canonical={canonical} />;
 };
 
-// Kenji Invites pages carry their own header and hide all site chrome.
-const isInvitesPath = (p: string) => p === '/invites' || p.startsWith('/invites/') || p.startsWith('/i/');
+// Kenji Invites and Kenji Studio pages carry their own header and hide all site chrome.
+const isInvitesPath = (p: string) => p === '/invites' || p.startsWith('/invites/') || p.startsWith('/i/') || p === '/video-generation' || p.startsWith('/video-generation/');
 
 const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/overview-b', '/setup', '/helpful-links', '/github-tools', '/partnerup', '/workshop', '/special', '/growth-quiz', '/growth-quiz/book', '/growth-quiz/next-step'];
 
@@ -346,6 +351,10 @@ function App() {
                       <Route path="/invites/e/:id/edit" element={<InvitesWizard />} />
                       <Route path="/invites/e/:id/preview" element={<InvitePreviewRoute />} />
                       <Route path="/i/:code" element={<InviteRoute />} />
+                      <Route path="/video-generation" element={<VidgenHome />} />
+                      <Route path="/video-generation/library" element={<VidgenLibrary />} />
+                      <Route path="/video-generation/billing" element={<VidgenBilling />} />
+                      <Route path="/video-generation/terms" element={<VidgenTerms />} />
                       <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                     </Suspense>

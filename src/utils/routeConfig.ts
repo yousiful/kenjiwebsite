@@ -55,7 +55,8 @@ export const internalRoutes = [
   '/book',
   '/book2',
   '/invites',
-  '/i'
+  '/i',
+  '/video-generation'
 ] as const;
 
 export const externalRoutes = {
