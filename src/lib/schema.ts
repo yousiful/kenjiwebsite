@@ -171,3 +171,43 @@ export function service(input: {
   if (input.offers?.length) node.offers = input.offers;
   return node;
 }
+
+export const PODCAST_SERIES_ID = `${SITE_URL}/podcast#series`;
+
+export function podcastSeries(description: string) {
+  return {
+    '@type': 'PodcastSeries',
+    '@id': PODCAST_SERIES_ID,
+    name: 'The KenjiAI Podcast',
+    url: `${SITE_URL}/podcast`,
+    description,
+    image: `${SITE_URL}/podcast/cover.jpg`,
+    webFeed: `${SITE_URL}/podcast/feed.xml`,
+    inLanguage: 'en-US',
+    author: { '@type': 'Person', name: 'Yousif Alias' },
+    publisher: orgRef,
+  };
+}
+
+export function podcastEpisode(ep: {
+  slug: string; number: number; title: string; summary: string; date: string;
+  duration: number; audioUrl: string; image: string; transcriptUrl?: string;
+}) {
+  const url = `${SITE_URL}/blog/${ep.slug}`;
+  return {
+    '@type': 'PodcastEpisode',
+    '@id': `${url}#episode`,
+    url,
+    name: ep.title,
+    episodeNumber: ep.number,
+    description: ep.summary,
+    datePublished: ep.date,
+    timeRequired: `PT${Math.floor(ep.duration / 60)}M${ep.duration % 60}S`,
+    image: ep.image,
+    inLanguage: 'en-US',
+    author: { '@type': 'Person', name: 'Yousif Alias' },
+    partOfSeries: { '@id': PODCAST_SERIES_ID, '@type': 'PodcastSeries', name: 'The KenjiAI Podcast', url: `${SITE_URL}/podcast` },
+    associatedMedia: { '@type': 'MediaObject', contentUrl: ep.audioUrl, encodingFormat: 'audio/mpeg' },
+    ...(ep.transcriptUrl ? { transcript: ep.transcriptUrl } : {}),
+  };
+}

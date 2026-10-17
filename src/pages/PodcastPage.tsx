@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { Rss, ArrowRight } from 'lucide-react';
 import PageSchema from '../components/PageSchema';
 import { getPodcastEpisodes } from '../data/articles';
+import { podcastSeries, podcastEpisode } from '../lib/schema';
 import { PODCAST_LINKS, PODCAST_FEED } from '../components/PodcastPlayer';
 
 const DESCRIPTION =
@@ -13,7 +14,13 @@ const PodcastPage: React.FC = () => {
   const episodes = getPodcastEpisodes();
   return (
     <>
-      <PageSchema path="/podcast" name="The KenjiAI Podcast" description={DESCRIPTION} type="CollectionPage" />
+      <PageSchema
+        path="/podcast"
+        name="The KenjiAI Podcast"
+        description={DESCRIPTION}
+        type="CollectionPage"
+        extra={[podcastSeries(DESCRIPTION), ...episodes.map((ep) => podcastEpisode(ep))]}
+      />
       <Helmet>
         <title>The KenjiAI Podcast with Yousif Alias | KenjiAI</title>
         <meta name="description" content={DESCRIPTION} />

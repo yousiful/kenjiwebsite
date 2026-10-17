@@ -43,7 +43,11 @@ const AppWithTracking = () => {
 };
 
 const rootEl = document.getElementById('root')!;
-const isPrerendered = rootEl.hasChildNodes() && rootEl.children.length > 0;
+// Static SEO pages (scripts/podcast_static.mjs) are plain HTML, not a React render: replace, don't hydrate.
+const isPrerendered = rootEl.children.length > 0 && !rootEl.querySelector('[data-static-seo]');
+
+// The React page emits its own JSON-LD through Helmet; drop the static copy so it isn't doubled.
+document.querySelectorAll('script[data-static-seo]').forEach((el) => el.remove());
 
 if (isPrerendered) {
   hydrateRoot(rootEl, <AppWithTracking />);

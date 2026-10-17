@@ -11,6 +11,8 @@ export interface PodcastEpisode {
   audioUrl: string;
   image: string;
   content: string;
+  transcriptUrl?: string;
+  transcript?: { t: string; text: string }[];
 }
 
 export const getPodcastEpisodes = (): PodcastEpisode[] =>
@@ -38,7 +40,7 @@ export interface Article {
   skills?: string[];
   isCourse?: boolean;
   // Podcast episodes (src/data/podcastEpisodes.json, written by ~/podcast/publish.py)
-  podcast?: { number: number; audioUrl: string; duration: number };
+  podcast?: { number: number; audioUrl: string; duration: number; transcriptUrl?: string; transcript?: { t: string; text: string }[] };
 }
 
 export const articles: Record<string, Article> = {
@@ -1837,7 +1839,7 @@ for (const ep of podcastEpisodes as PodcastEpisode[]) {
     keywords: ep.keywords,
     image: ep.image,
     content: ep.content,
-    podcast: { number: ep.number, audioUrl: ep.audioUrl, duration: ep.duration },
+    podcast: { number: ep.number, audioUrl: ep.audioUrl, duration: ep.duration, transcriptUrl: ep.transcriptUrl, transcript: ep.transcript },
   };
 }
 

@@ -5,7 +5,7 @@ import { Calendar, Clock, ArrowLeft, ArrowRight, Share2, Tag, BookOpen, Graduati
 import { useAutoFormatting } from '../components/AutoFormattingProvider';
 import { Helmet } from 'react-helmet-async';
 import PageSchema from '../components/PageSchema';
-import { ORG_ID, WEBSITE_ID } from '../lib/schema';
+import { ORG_ID, WEBSITE_ID, podcastEpisode } from '../lib/schema';
 import { getArticleBySlug, getAllArticles } from '../data/articles';
 import PodcastPlayer from '../components/PodcastPlayer';
 
@@ -68,6 +68,19 @@ const BlogPost: React.FC = () => {
             mainEntityOfPage: { '@id': `https://kenjiai.com/blog/${article.slug}#webpage` },
             isPartOf: { '@id': WEBSITE_ID },
           },
+          ...(article.podcast
+            ? [podcastEpisode({
+                slug: article.slug,
+                number: article.podcast.number,
+                title: article.title.replace(/ \(Podcast Ep\. \d+\)$/, ''),
+                summary: article.excerpt,
+                date: article.date,
+                duration: article.podcast.duration,
+                audioUrl: article.podcast.audioUrl,
+                image: article.image,
+                transcriptUrl: article.podcast.transcriptUrl,
+              })]
+            : []),
         ]}
       />
       <Helmet>
@@ -239,6 +252,27 @@ const BlogPost: React.FC = () => {
             className="prose prose-lg prose-invert max-w-none mb-16 blog-content-styles"
             dangerouslySetInnerHTML={{ __html: article.content }}
           />
+
+          {article.podcast?.transcript?.length ? (
+            <details className="mb-16 rounded-2xl border border-gray-800 bg-gray-900/60 group">
+              <summary className="cursor-pointer select-none px-6 py-5 text-white font-semibold flex items-center justify-between">
+                <span>Full episode transcript</span>
+                <span className="text-sm text-gray-400 group-open:hidden">Show</span>
+                <span className="text-sm text-gray-400 hidden group-open:inline">Hide</span>
+              </summary>
+              <div className="px-6 pb-6 space-y-4">
+                <p className="text-xs text-gray-500">
+                  Machine transcript of the episode audio, lightly cleaned. <a href={article.podcast.transcriptUrl} className="text-cyan-400 hover:underline">Plain text version</a>
+                </p>
+                {article.podcast.transcript.map((para) => (
+                  <p key={para.t} className="text-gray-300 leading-relaxed text-[15px]">
+                    <span className="text-cyan-400 font-mono text-xs mr-2">{para.t}</span>
+                    {para.text}
+                  </p>
+                ))}
+              </div>
+            </details>
+          ) : null}
 
           {/* Share */}
           <motion.div

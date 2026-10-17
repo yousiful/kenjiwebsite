@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/podcast_static.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "seo:audit": "node scripts/seo_audit.cjs",
