@@ -124,4 +124,27 @@ export function siteUrl(context?: Context): string {
   return u.replace(/\/+$/, '');
 }
 
+/** HMAC of the client IP (Netlify sets x-nf-client-connection-ip). The raw IP is never stored. */
+export function ipHash(req: Request, context?: Context): string {
+  const ip = context?.ip || req.headers.get('x-nf-client-connection-ip') || (req.headers.get('x-forwarded-for') || '').split(',')[0].trim() || 'unknown';
+  return hmacWith(sessionSecret() || 'vidgen-ip', 'ip:' + ip).slice(0, 32);
+}
+
+/** Same-site relative path inside the studio only (used for the OAuth "next" target). Anything else becomes /video-generation. */
+export function safeNext(v: string | null | undefined): string {
+  const fallback = '/video-generation';
+  if (!v || typeof v !== 'string' || v.length > 200) return fallback;
+  // eslint-disable-next-line no-control-regex
+  if (!v.startsWith('/') || v.startsWith('//') || v.includes('\\') || /[\u0000-\u001f]/.test(v)) return fallback;
+  try {
+    const u = new URL(v, SITE);
+    if (u.origin !== SITE) return fallback;
+    if (!/^\/video-generation(\/(library|billing|terms))?$/.test(u.pathname)) return fallback;
+    if (!/^(\?[a-z0-9=&_-]*)?$/i.test(u.search)) return fallback;
+    return u.pathname + u.search;
+  } catch {
+    return fallback;
+  }
+}
+
 export const isUuid = (v: unknown): v is string => typeof v === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(v);

@@ -1,16 +1,18 @@
-import { json, fail, readJson, sameOrigin, str } from './_vidgen/common';
-import { underHourlyLimit } from './_vidgen/db';
-import { withUser } from './_vidgen/guard';
+import type { Context } from '@netlify/functions';
+import { json, fail, ipHash, notConnected, readJson, readSession, sameOrigin, str } from './_vidgen/common';
+import { getUser, readyDb, underHourlyIpLimit, underHourlyLimit, type Db } from './_vidgen/db';
 import { goalById, MODELS, AD_PLACEMENTS, type GoalId, type ModelId } from '../../src/vidgen/models';
 
 /**
  * Kenji Studio prompt writer. The person answers 2-4 plain questions; this turns the
- * answers into a model-ready, shot-by-shot video prompt. Free (no credits), 30 an hour
- * per person. OpenRouter: anthropic/claude-sonnet-5.5, falling back to claude-haiku-5.5.
+ * answers into a model-ready, shot-by-shot video prompt. Free (no credits). Works signed
+ * out so people can try before signing in: 8 an hour per (hashed) IP signed out, 30 an
+ * hour per person signed in. OpenRouter: anthropic/claude-sonnet-5.5, falling back to claude-haiku-5.5.
  * Env: OPENROUTER_API_KEY.
  */
 
 const PER_HOUR = 30;
+const ANON_PER_HOUR = 8;
 const PRIMARY = 'anthropic/claude-sonnet-5.5';
 const FALLBACK = 'anthropic/claude-haiku-5.5';
 
@@ -101,13 +103,20 @@ export function parseWriterOutput(raw: string, total: number): { prompt: string;
   return { prompt, shots };
 }
 
-export default async (req: Request): Promise<Response> => {
+export default async (req: Request, context: Context): Promise<Response> => {
   if (req.method !== 'POST') return fail(405, 'Method not allowed');
   if (!sameOrigin(req)) return fail(403, 'Please use the Kenji Studio page.');
   if (!process.env.OPENROUTER_API_KEY) return fail(503, 'The prompt writer is not connected yet. You can type your own prompt for now.', { notConnected: 'writer' });
-  const ctx = await withUser(req);
-  if (ctx instanceof Response) return ctx;
-  const { db, user } = ctx;
+  let db: Db | null;
+  try {
+    db = await readyDb();
+  } catch (e) {
+    console.error('vidgen-write-prompt db', e);
+    return fail(503, 'The prompt writer is busy. Please try again in a minute.');
+  }
+  if (!db) return notConnected('database');
+  const s = readSession(req);
+  const user = s ? await getUser(db, s.uid) : null;
 
   const body = (await readJson(req)) || {};
   const goal = goalById(String(body.goal || ''));
@@ -125,8 +134,13 @@ export default async (req: Request): Promise<Response> => {
   const placement = goal.id === 'ad' ? str(answersIn.placement, 80) : '';
   const aspect = (placement && AD_PLACEMENTS[placement]) || str(body.aspect, 8) || goal.aspect;
 
-  if (!(await underHourlyLimit(db, String(user.id), 'write', PER_HOUR))) {
-    return fail(429, 'You have written a lot of prompts this hour. Take a short break and try again.');
+  const allowed = user
+    ? await underHourlyLimit(db, String(user.id), 'write', PER_HOUR)
+    : await underHourlyIpLimit(db, ipHash(req, context), 'write', ANON_PER_HOUR);
+  if (!allowed) {
+    return fail(429, user
+      ? 'You have written a lot of prompts this hour. Take a short break and try again.'
+      : 'You have tried a lot of prompts this hour. Sign in to keep going, or try again in a bit.', { signIn: !user });
   }
 
   const system = `${BASE_RULES}\n\n${GOAL_RULES[goal.id]}\n\n${SHAPE}`;

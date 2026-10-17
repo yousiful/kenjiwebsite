@@ -1,10 +1,11 @@
 import { createHash, randomBytes } from 'node:crypto';
-import { SITE, STATE_COOKIE, cookie, sessionSecret, sign } from './_vidgen/common';
+import { SITE, STATE_COOKIE, cookie, safeNext, sessionSecret, sign } from './_vidgen/common';
 
 /**
  * Kenji Studio sign-in, step 1: redirect to Google (OAuth 2.0 authorization code flow
  * with PKCE). A signed, 10-minute HttpOnly cookie carries the state, the PKCE verifier,
- * the redirect URI and where to send the person afterwards.
+ * the redirect URI and where to send the person afterwards (?next=, a same-site
+ * /video-generation path only, so it can never become an open redirect).
  * Env: GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, VIDGEN_SESSION_SECRET.
  */
 
@@ -17,9 +18,6 @@ export function callbackUrl(origin: string): string {
   return origin + CALLBACK_PATH;
 }
 
-export const safeReturn = (v: string | null) =>
-  v && /^\/video-generation(\/[a-z-]*)?(\?[a-z0-9=&_-]*)?$/i.test(v) ? v : '/video-generation';
-
 export default async (req: Request): Promise<Response> => {
   const url = new URL(req.url);
   const secret = sessionSecret();
@@ -30,7 +28,7 @@ export default async (req: Request): Promise<Response> => {
   const state = randomBytes(24).toString('base64url');
   const verifier = randomBytes(48).toString('base64url');
   const challenge = createHash('sha256').update(verifier).digest('base64url');
-  const payload = { s: state, v: verifier, ru: redirectUri, r: safeReturn(url.searchParams.get('return')), e: Math.floor(Date.now() / 1000) + 600 };
+  const payload = { s: state, v: verifier, ru: redirectUri, r: safeNext(url.searchParams.get('next') || url.searchParams.get('return')), e: Math.floor(Date.now() / 1000) + 600 };
 
   const google = new URL('https://accounts.google.com/o/oauth2/v2/auth');
   google.search = new URLSearchParams({

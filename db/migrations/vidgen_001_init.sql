@@ -76,6 +76,15 @@ CREATE TABLE IF NOT EXISTS vg_usage (
 );
 CREATE INDEX IF NOT EXISTS vg_usage_lookup ON vg_usage (user_id, kind, created_at);
 
+-- Rate limiting for signed-out visitors (prompt writer). Only an HMAC of the IP is stored.
+CREATE TABLE IF NOT EXISTS vg_ip_usage (
+  id bigserial PRIMARY KEY,
+  ip_hash text NOT NULL,
+  kind text NOT NULL,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS vg_ip_usage_lookup ON vg_ip_usage (ip_hash, kind, created_at);
+
 -- Webhook dedupe (Higgsfield request_id + status, Stripe event id).
 CREATE TABLE IF NOT EXISTS vg_webhook_events (
   source text NOT NULL,

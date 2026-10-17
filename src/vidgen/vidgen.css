@@ -208,3 +208,4 @@
   .vg-progress > span, .vg-btn, .vg-option { transition: none; }
 }
 .vg-field > label.vg-switch { display: inline-flex; font-weight: 400; font-size: 15px; color: var(--mist); margin-bottom: 0; }
+.vg-plans { border-top: 1px solid var(--hair); padding-top: 32px; }

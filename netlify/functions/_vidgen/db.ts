@@ -94,6 +94,14 @@ CREATE TABLE IF NOT EXISTS vg_usage (
 );
 CREATE INDEX IF NOT EXISTS vg_usage_lookup ON vg_usage (user_id, kind, created_at);
 
+CREATE TABLE IF NOT EXISTS vg_ip_usage (
+  id bigserial PRIMARY KEY,
+  ip_hash text NOT NULL,
+  kind text NOT NULL,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS vg_ip_usage_lookup ON vg_ip_usage (ip_hash, kind, created_at);
+
 CREATE TABLE IF NOT EXISTS vg_webhook_events (
   source text NOT NULL,
   event_id text NOT NULL,
@@ -276,6 +284,17 @@ export async function underHourlyLimit(db: Db, uid: string, kind: string, limit:
   );
   if (Number(rows[0]?.n || 0) >= limit) return false;
   await db.q(`INSERT INTO vg_usage (user_id, kind) VALUES ($1, $2)`, [uid, kind]);
+  return true;
+}
+
+/** Same as underHourlyLimit for signed-out visitors, keyed by a hashed IP. */
+export async function underHourlyIpLimit(db: Db, ipHash: string, kind: string, limit: number): Promise<boolean> {
+  const rows = await db.q(
+    `SELECT count(*)::int AS n FROM vg_ip_usage WHERE ip_hash = $1 AND kind = $2 AND created_at > now() - interval '1 hour'`,
+    [ipHash, kind],
+  );
+  if (Number(rows[0]?.n || 0) >= limit) return false;
+  await db.q(`INSERT INTO vg_ip_usage (ip_hash, kind) VALUES ($1, $2)`, [ipHash, kind]);
   return true;
 }
 

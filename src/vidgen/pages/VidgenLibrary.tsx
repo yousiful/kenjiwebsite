@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Shell, NeedsSignIn, useMe } from '../ui';
+import { Shell, NeedsSignIn, useMe, hasActivePlan } from '../ui';
+import PlanPanel from '../PlanPanel';
 import { api, downloadVideo, type GenItem } from '../api';
 
 const STATUS_TEXT: Record<string, string> = {
@@ -52,7 +53,7 @@ function Item({ g, onCancel }: { g: GenItem; onCancel: (id: string) => void }) {
 }
 
 function Library() {
-  const { setBalance } = useMe();
+  const { me, setBalance } = useMe();
   const [items, setItems] = useState<GenItem[] | null>(null);
   const [error, setError] = useState('');
   const timer = useRef<number>();
@@ -102,6 +103,11 @@ function Library() {
         <ul className="vg-lib" style={{ listStyle: 'none', padding: 0 }}>
           {items.map((g) => <Item key={g.id} g={g} onCancel={cancel} />)}
         </ul>
+      )}
+      {items && items.some((i) => i.ready) && !hasActivePlan(me) && (
+        <div style={{ marginTop: 64 }}>
+          <PlanPanel title="Pick a plan to keep making them" lead={`You have ${me?.user?.balance ?? 0} credits left. Plans add fresh credits every month.`} />
+        </div>
       )}
     </main>
   );

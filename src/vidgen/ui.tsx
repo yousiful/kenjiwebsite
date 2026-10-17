@@ -29,8 +29,14 @@ function MeProvider({ children }: { children: ReactNode }) {
   return <MeContext.Provider value={{ me, loading, error, refresh, setBalance }}>{children}</MeContext.Provider>;
 }
 
-export function signInHref(ret = '/video-generation') {
-  return `${SIGN_IN}?return=${encodeURIComponent(ret)}`;
+export function signInHref(next = '/video-generation') {
+  return `${SIGN_IN}?next=${encodeURIComponent(next)}`;
+}
+
+/** True when the person pays for a plan right now. */
+export function hasActivePlan(me: Me | null): boolean {
+  const u = me?.user;
+  return !!u && !!u.plan && ['active', 'trialing', 'past_due'].includes(u.subStatus);
 }
 
 function Header() {
@@ -60,7 +66,12 @@ function Header() {
             <button type="button" className="vg-btn vg-btn--text" onClick={signOut}>Sign out</button>
           </>
         ) : (
-          <a className="vg-btn vg-btn--quiet" href={signInHref(pathname)}>Sign in</a>
+          <>
+            <nav className="vg-nav" aria-label="Kenji Studio">
+              <a href="/video-generation#pricing">Plans</a>
+            </nav>
+            <a className="vg-btn vg-btn--quiet" href={signInHref(pathname)}>Sign in</a>
+          </>
         )}
       </div>
     </header>

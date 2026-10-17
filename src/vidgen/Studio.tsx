@@ -1,11 +1,13 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import {
-  GOALS, MODELS, VIDEO_MODEL_IDS, ASPECTS, ASPECT_LABEL, AD_PLACEMENTS, goalById,
+  GOALS, MODELS, VIDEO_MODEL_IDS, ASPECTS, ASPECT_LABEL, AD_PLACEMENTS, TRIAL_CREDITS, goalById, approxCredits,
   type Aspect, type GenInput, type Goal, type GoalId, type ModelId, type Shot,
 } from './models';
 import { api, uploadFile, ApiError, type GenItem, type Preset } from './api';
-import { useMe } from './ui';
+import { useMe, signInHref, hasActivePlan } from './ui';
+import { saveDraft, readDraft, readDraftImage, clearDraft } from './draft';
+import PlanPanel from './PlanPanel';
 
 const IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
 const MAX_IMAGE = 20 * 1024 * 1024;
@@ -16,7 +18,8 @@ const GJ_MODES: { id: ModelId; label: string; hint: string }[] = [
   { id: 'gj-swap', label: 'Object swap', hint: 'Swap one thing in the video for the object in your picture.' },
 ];
 
-interface Upload { url: string; preview: string; name: string }
+/** url is empty while the picture only lives in this browser (signed out); it is uploaded at sign-in/generate time. */
+interface Upload { url: string; preview: string; name: string; file?: File }
 
 function nearest(list: number[], v: number) {
   return list.reduce((a, b) => (Math.abs(b - v) < Math.abs(a - v) ? b : a), list[0]);
@@ -32,11 +35,23 @@ function videoSeconds(file: File): Promise<number> {
   });
 }
 
+const SIGNIN_MSG: Record<string, string> = {
+  unavailable: 'Sign-in is not switched on yet. We are finishing setup, please check back soon.',
+  cancelled: 'Sign-in was cancelled. You can try again any time.',
+  expired: 'That sign-in link expired. Please try again.',
+  failed: 'Google sign-in did not go through. Please try again.',
+};
+
 export default function Studio() {
   const { me, setBalance } = useMe();
   const navigate = useNavigate();
-  const user = me!.user!;
-  const genConnected = me!.setup.generation;
+  const [params, setParams] = useSearchParams();
+  const user = me?.user || null;
+  const signedIn = !!user;
+  const balance = user?.balance ?? 0;
+  const genConnected = !!me?.setup.generation;
+  const exactPricing = signedIn && genConnected;
+  const signinIssue = SIGNIN_MSG[params.get('signin') || ''];
 
   const [goalId, setGoalId] = useState<GoalId | null>(null);
   const goal = goalId ? goalById(goalId)! : null;
@@ -62,17 +77,23 @@ export default function Studio() {
   const [presets, setPresets] = useState<Preset[] | null>(null);
   const [presetId, setPresetId] = useState('');
 
-  const [cost, setCost] = useState<{ credits?: number; loading: boolean; error?: string; off?: boolean }>({ loading: false });
+  const [cost, setCost] = useState<{ credits?: number; loading: boolean; error?: string; off?: boolean; approx?: boolean }>({ loading: false });
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   const [made, setMade] = useState<GenItem | null>(null);
+  const [autoGo, setAutoGo] = useState(false);
+  const plansRef = useRef<HTMLDivElement>(null);
   const topRef = useRef<HTMLElement>(null);
 
   const spec = MODELS[model];
   const isGj = goal?.id === 'genjutsu';
 
   const pickGoal = (g: Goal) => {
-    if (g.studioOnly && !user.genjutsu) { navigate('/video-generation/billing'); return; }
+    if (g.studioOnly && !user?.genjutsu) {
+      if (signedIn) navigate('/video-generation/billing');
+      else document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' });
+      return;
+    }
     setGoalId(g.id);
     setAnswers({});
     setImage(null); setVideo(null); setRefs([]);
@@ -120,7 +141,7 @@ export default function Studio() {
     }
     return {
       goal: goal.id, model, prompt: prompt.trim(), duration, aspect, sound,
-      imageUrl: image?.url, shots: shotsActive ? shots : undefined,
+      imageUrl: image?.url || undefined, shots: shotsActive ? shots : undefined,
     };
   }, [goal, isGj, model, answers.note, video, refs, presetId, prompt, duration, aspect, sound, image, shotsActive, shots]);
 
@@ -132,7 +153,12 @@ export default function Studio() {
   const inputKey = JSON.stringify(input);
   useEffect(() => {
     if (!ready || !input) { setCost({ loading: false }); return; }
-    if (!genConnected) { setCost({ loading: false, off: true }); return; }
+    if (!exactPricing) {
+      // signed out (or generation not connected yet): published per-second price, shown as "about"
+      const approx = approxCredits(model, totalSeconds);
+      setCost({ loading: false, credits: approx ?? undefined, approx: true, off: signedIn && !genConnected });
+      return;
+    }
     setCost((c) => ({ ...c, loading: true, error: undefined }));
     const t = setTimeout(() => {
       api.estimate(input)
@@ -141,7 +167,7 @@ export default function Studio() {
     }, 600);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [inputKey, ready, genConnected]);
+  }, [inputKey, ready, exactPricing, totalSeconds]);
 
   const required = goal ? goal.questions.filter((q) => !q.optional && q.kind === 'text') : [];
   const answered = required.every((q) => (answers[q.id] || '').trim().length >= 3);
@@ -168,6 +194,11 @@ export default function Studio() {
     setError('');
     if (!IMAGE_TYPES.includes(file.type)) { setError('Please use a JPG, PNG or WebP picture.'); return; }
     if (file.size > MAX_IMAGE) { setError('That picture is over 20 MB. Please use a smaller one.'); return; }
+    if (target === 'image' && !exactPricing) {
+      // signed out: keep the picture in this browser; it is uploaded after sign-in
+      setImage({ url: '', preview: URL.createObjectURL(file), name: file.name, file });
+      return;
+    }
     if (!genConnected) { setError('Uploads open once generation is connected.'); return; }
     setUploading({ pct: 0, what: file.name });
     try {
@@ -201,16 +232,39 @@ export default function Studio() {
     }
   };
 
+  const goToPlans = () => plansRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  /** Signed out: keep everything in this browser, then sign in and come back to ?resume=1. */
+  const signInToGenerate = async () => {
+    if (!goal) return;
+    setBusy(true);
+    await saveDraft(
+      { goal: goal.id, answers, prompt, shots, useShots, model, duration, aspect, sound, hasImage: !!image?.file, imageName: image?.name, autoGenerate: true },
+      image?.file || null,
+    );
+    window.location.href = signInHref('/video-generation?resume=1');
+  };
+
   const generate = async () => {
     if (!input || !ready) return;
     setBusy(true); setError('');
     try {
-      const r = await api.generate(input, cost.credits);
+      let send = input;
+      if (image && !image.url && image.file) {
+        // picked before sign-in: upload it now
+        setUploading({ pct: 0, what: image.name });
+        const url = await uploadFile(image.file, 'image', (pct) => setUploading({ pct, what: image.name }));
+        setImage({ ...image, url });
+        setUploading(null);
+        send = { ...input, imageUrl: url };
+      }
+      const r = await api.generate(send, cost.approx ? undefined : cost.credits);
       setBalance(r.balance);
       setMade(r.item);
       requestAnimationFrame(() => topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
     } catch (e) {
       const err = e as ApiError;
+      setUploading(null);
       setError(err.message);
       if (typeof err.data.credits === 'number') setCost({ loading: false, credits: err.data.credits as number });
     } finally {
@@ -218,21 +272,109 @@ export default function Studio() {
     }
   };
 
-  const enough = cost.credits === undefined || user.balance >= cost.credits;
+  // Back from Google sign-in with ?resume=1: restore the draft, then generate once the exact price is in.
+  const resumed = useRef(false);
+  useEffect(() => {
+    if (resumed.current || !signedIn || params.get('resume') !== '1') return;
+    resumed.current = true;
+    const d = readDraft();
+    const next = new URLSearchParams(params);
+    next.delete('resume');
+    setParams(next, { replace: true });
+    if (!d || !goalById(d.goal)) return;
+    const g = goalById(d.goal)!;
+    if (g.studioOnly && !user?.genjutsu) return;
+    setGoalId(d.goal);
+    setAnswers(d.answers || {});
+    setPrompt(d.prompt || '');
+    setShots(d.shots || []);
+    setUseShots(!!d.useShots);
+    setModel(d.model);
+    setDuration(d.duration);
+    setAspect(d.aspect);
+    setSound(d.sound !== false);
+    setMade(null);
+    (async () => {
+      if (d.hasImage) {
+        const file = await readDraftImage();
+        if (file) setImage({ url: '', preview: URL.createObjectURL(file), name: d.imageName || file.name, file });
+      }
+      await clearDraft();
+      if (d.autoGenerate) setAutoGo(true);
+    })();
+  }, [signedIn, params, setParams, user?.genjutsu]);
+
+  const enough = cost.credits === undefined || balance >= cost.credits;
+
+  // auto-submit a restored draft: only with an exact price that the balance covers, otherwise leave it one tap away
+  useEffect(() => {
+    if (!autoGo || !ready || cost.loading || busy) return;
+    if (cost.credits === undefined && !cost.error && !cost.off) return; // price still on its way
+    setAutoGo(false);
+    if (!cost.approx && cost.credits !== undefined && enough && !cost.error) generate();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoGo, ready, cost, busy, enough]);
+
+  // result view: watch the new video until it is done
+  useEffect(() => {
+    if (!made || made.ready || made.error) return;
+    const t = window.setTimeout(async () => {
+      try {
+        const r = await api.list();
+        const cur = r.items.find((x) => x.id === made.id);
+        setMade(cur ? cur : { ...made });
+        setBalance(r.balance);
+      } catch {
+        setMade({ ...made }); // try again on the next tick
+      }
+    }, 6000);
+    return () => window.clearTimeout(t);
+  }, [made, setBalance]);
 
   if (made) {
+    const done = made.ready && !!made.mediaUrl;
     return (
       <main className="vg-wrap vg-narrow vg-hero vg-reveal" ref={topRef}>
-        <p className="vg-label">On its way</p>
-        <h1 className="vg-title">We are making your video</h1>
-        <p className="vg-lead">
-          Most videos take a few minutes. {made.credits} credits are on hold for it; if it does not render, they come straight back. It will show up in your library when it is done.
-        </p>
-        <div className="vg-row">
-          <Link className="vg-btn vg-btn--primary" to="/video-generation/library">Open my library</Link>
-          <button type="button" className="vg-btn vg-btn--quiet" onClick={() => { setMade(null); }}>Make a version with changes</button>
-          <button type="button" className="vg-btn vg-btn--text" onClick={() => { setMade(null); setGoalId(null); }}>Start something new</button>
-        </div>
+        {done ? (
+          <>
+            <p className="vg-label">Done</p>
+            <h1 className="vg-title">Your video is ready</h1>
+            <div className="vg-frame" data-aspect={made.aspect || '16:9'} style={{ marginTop: 20 }}>
+              <video src={made.mediaUrl!} controls playsInline preload="metadata" aria-label={made.title} />
+            </div>
+            <div className="vg-row">
+              <Link className="vg-btn vg-btn--quiet" to="/video-generation/library">Download it from your library</Link>
+              <button type="button" className="vg-btn vg-btn--text" onClick={() => { setMade(null); setGoalId(null); }}>Make another</button>
+            </div>
+          </>
+        ) : made.error ? (
+          <>
+            <p className="vg-label">No video this time</p>
+            <h1 className="vg-title">{made.error}</h1>
+            <div className="vg-row">
+              <button type="button" className="vg-btn vg-btn--primary" onClick={() => setMade(null)}>Change it and try again</button>
+            </div>
+          </>
+        ) : (
+          <>
+            <p className="vg-label">On its way</p>
+            <h1 className="vg-title">We are making your video</h1>
+            <p className="vg-lead">
+              Most videos take a few minutes. You can wait here or leave, it will be in your library either way. {made.credits} credits are on hold, and if it does not render they come straight back.
+            </p>
+            <div className="vg-progress" aria-hidden="true"><span style={{ width: made.status === 'in_progress' ? '60%' : '20%' }} /></div>
+            <p className="vg-meta" role="status" style={{ marginTop: 8 }}>{made.status === 'in_progress' ? 'Rendering...' : 'Waiting for a free slot...'}</p>
+            <div className="vg-row">
+              <Link className="vg-btn vg-btn--quiet" to="/video-generation/library">Open my library</Link>
+              <button type="button" className="vg-btn vg-btn--text" onClick={() => { setMade(null); }}>Make a version with changes</button>
+            </div>
+          </>
+        )}
+        {done && !hasActivePlan(me) && (
+          <div style={{ marginTop: 48 }}>
+            <PlanPanel title="Your video is ready. Pick a plan to keep making them" lead={`You have ${balance} credits left. Plans add fresh credits every month.`} />
+          </div>
+        )}
       </main>
     );
   }
@@ -242,13 +384,18 @@ export default function Studio() {
       {!goal && (
         <section className="vg-hero vg-reveal">
           <h1 className="vg-display" style={{ maxWidth: '18ch' }}>What are you making today?</h1>
-          <p className="vg-lead">Pick one. We ask a few questions and write the prompt for you.</p>
-          {!genConnected && (
+          <p className="vg-lead">
+            {signedIn
+              ? 'Pick one. We ask a few questions and write the prompt for you.'
+              : `Try it free, no card. Pick one, answer a few questions, and we write the prompt. Sign in when you press Generate. Your first video is free (${TRIAL_CREDITS} credits).`}
+          </p>
+          {signinIssue && <p className="vg-note" role="status">{signinIssue}</p>}
+          {signedIn && !genConnected && (
             <p className="vg-note" role="status">Generation is not connected yet. You can look around and try the prompt writer; generating opens soon.</p>
           )}
           <div className="vg-options" role="list">
             {GOALS.map((g, i) => {
-              const locked = g.studioOnly && !user.genjutsu;
+              const locked = g.studioOnly && !user?.genjutsu;
               return (
                 <button
                   key={g.id}
@@ -498,32 +645,53 @@ export default function Studio() {
                 <hr className="vg-rule" />
                 <p className="vg-label" style={{ margin: 0 }}>Price</p>
                 <p className="vg-cost" aria-live="polite">
-                  {cost.loading ? '...' : cost.credits !== undefined ? <>{cost.credits}<small>credits</small></> : <>-</>}
+                  {cost.loading ? '...' : cost.credits !== undefined ? <>{cost.approx ? <small style={{ marginLeft: 0, marginRight: 6 }}>about</small> : null}{cost.credits}<small>credits</small></> : <>-</>}
                 </p>
-                <p className="vg-meta">You have {user.balance.toLocaleString()} credits.</p>
+                {signedIn
+                  ? <p className="vg-meta">You have {balance.toLocaleString()} credits.</p>
+                  : <p className="vg-meta">Your first video is free: new accounts get {TRIAL_CREDITS} credits. No card.</p>}
                 {!ready && <p className="vg-meta" style={{ marginTop: 8 }}>{isGj ? 'Add your video and pictures to see the price.' : 'Write the prompt to see the price.'}</p>}
                 {cost.off && <p className="vg-note" role="status">Generation is not connected yet. We are finishing setup, please check back soon.</p>}
                 {cost.error && !cost.off && <p className="vg-error" role="alert">{cost.error}</p>}
-                {!enough && (
-                  <p className="vg-note">
-                    You need {cost.credits! - user.balance} more credits. <Link to="/video-generation/billing">Get credits</Link>
-                  </p>
+                {signedIn && !enough && (
+                  <p className="vg-note">This one needs {cost.credits} credits and you have {balance}.</p>
                 )}
                 {error && <p className="vg-error" role="alert">{error}</p>}
                 <div className="vg-row" style={{ marginTop: 18 }}>
-                  <button
-                    type="button"
-                    className="vg-btn vg-btn--primary vg-btn--block"
-                    onClick={generate}
-                    disabled={!ready || busy || cost.loading || cost.credits === undefined || !enough || !!uploading}
-                  >
-                    {busy ? 'Starting...' : cost.credits !== undefined ? `Generate for ${cost.credits} credits` : 'Generate'}
-                  </button>
+                  {!signedIn ? (
+                    <button type="button" className="vg-btn vg-btn--primary vg-btn--block" onClick={signInToGenerate} disabled={!ready || busy}>
+                      {busy ? 'Opening Google...' : 'Sign in with Google to get your video'}
+                    </button>
+                  ) : !enough ? (
+                    <button type="button" className="vg-btn vg-btn--primary vg-btn--block" onClick={goToPlans}>
+                      {hasActivePlan(me) ? 'Get more credits to generate' : 'Pick a plan to generate'}
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      className="vg-btn vg-btn--primary vg-btn--block"
+                      onClick={generate}
+                      disabled={!ready || busy || cost.loading || cost.credits === undefined || !!uploading || !!cost.off}
+                    >
+                      {busy ? 'Starting...' : cost.credits !== undefined ? `Generate for ${cost.credits} credits` : 'Generate'}
+                    </button>
+                  )}
                 </div>
-                <p className="vg-meta" style={{ marginTop: 12 }}>If a video fails or gets blocked, your credits come back.</p>
+                <p className="vg-meta" style={{ marginTop: 12 }}>
+                  {signedIn ? 'If a video fails or gets blocked, your credits come back.' : 'Your first one is free. We keep your answers and prompt while you sign in.'}
+                </p>
               </div>
             </aside>
           </div>
+          {signedIn && !enough && (
+            <div ref={plansRef} style={{ marginTop: 56 }}>
+              {hasActivePlan(me) ? (
+                <p className="vg-note">You are short on credits this month. <Link to="/video-generation/billing">Add credits or switch plans</Link>.</p>
+              ) : (
+                <PlanPanel title="Pick a plan to keep making videos" lead={`This video needs ${cost.credits} credits and you have ${balance}. Plans add fresh credits every month.`} />
+              )}
+            </div>
+          )}
         </div>
       )}
     </main>

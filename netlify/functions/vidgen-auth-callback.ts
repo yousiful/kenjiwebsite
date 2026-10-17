@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-import { STATE_COOKIE, cookie, makeSessionCookie, readCookie, safeEqual, sessionSecret, unsign } from './_vidgen/common';
+import { STATE_COOKIE, cookie, makeSessionCookie, readCookie, safeEqual, safeNext, sessionSecret, unsign } from './_vidgen/common';
 import { readyDb, upsertUser } from './_vidgen/db';
 
 /**
@@ -7,7 +7,7 @@ import { readyDb, upsertUser } from './_vidgen/db';
  * Registered redirect URI: https://kenjiai.com/.netlify/functions/vidgen-auth-callback
  * We check the signed state cookie, exchange the code (with the PKCE verifier) server-side,
  * read the verified profile from Google's userinfo endpoint, create or update the user
- * (20 trial credits once), then set the signed session cookie.
+ * (trial credits once per Google account), then set the signed session cookie.
  */
 
 const back = (path: string, cookies: string[] = []) => {
@@ -61,7 +61,7 @@ export default async (req: Request): Promise<Response> => {
       { sub: String(info.sub), email: String(info.email).slice(0, 200), name: String(info.name || '').slice(0, 120), picture: String(info.picture || '').slice(0, 500) },
       randomUUID(),
     );
-    return back(st.r || '/video-generation', [clearState, makeSessionCookie(id, secret)]);
+    return back(safeNext(st.r), [clearState, makeSessionCookie(id, secret)]);
   } catch (e) {
     console.error('vidgen oauth callback', e);
     return back('/video-generation?signin=failed', [clearState]);

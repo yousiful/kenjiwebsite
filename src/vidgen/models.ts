@@ -18,7 +18,7 @@
  */
 
 export const CREDITS_PER_USD = 25; // 1 credit ~ $0.04 of Higgsfield cost
-export const TRIAL_CREDITS = 20;
+export const TRIAL_CREDITS = 30; // must cover the default first video of every non-Studio goal (tested)
 export const MAX_RUNNING_PER_USER = 2;
 
 export type Aspect = '9:16' | '1:1' | '16:9';
@@ -132,7 +132,7 @@ export const GOALS: Goal[] = [
   },
   {
     id: 'vsl', title: 'VSL scene', blurb: 'B-roll and scenes that back up what you say in your sales video.',
-    model: 'seedance-2', duration: 8, aspect: '16:9', media: 'none',
+    model: 'seedance-2', duration: 5, aspect: '16:9', media: 'none',
     questions: [
       { id: 'point', label: 'What point is this scene backing up?', placeholder: 'Most local businesses miss half their calls', kind: 'text' },
       { id: 'show', label: 'What should we see?', placeholder: 'A shop owner watching missed calls stack up on his phone at night', kind: 'text' },
@@ -197,6 +197,24 @@ export function creditsFromUsd(usd: string | number): number {
   if (!Number.isFinite(n) || n < 0) throw new Error('bad usd estimate');
   const micros = Math.round(n * 1_000_000);
   return Math.max(1, Math.ceil((micros * CREDITS_PER_USD) / 1_000_000));
+}
+
+/**
+ * Published Higgsfield list prices in USD per output second (2026-10). Used to show an
+ * "about N credits" price before sign-in; signed-in prices come from POST /estimate.
+ */
+export const PUBLISHED_USD_PER_SEC: Partial<Record<ModelId, number>> = {
+  'kling-3-pro': 0.084,
+  'kling-25-turbo': 0.042,
+  'wan-3': 0.05,
+  'seedance-2': 0.141,
+};
+
+/** Approximate credits from the published per-second price, or null when it depends on an upload (Genjutsu). */
+export function approxCredits(model: ModelId, seconds: number): number | null {
+  const rate = PUBLISHED_USD_PER_SEC[model];
+  if (!rate || !seconds) return null;
+  return creditsFromUsd(Math.round(rate * seconds * 1_000_000) / 1_000_000);
 }
 
 // ---------- request building (validated, used server-side) ----------
