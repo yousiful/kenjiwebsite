@@ -3,14 +3,15 @@ import { Play, Star } from 'lucide-react';
 import { useResumableVideo } from '../hooks/useResumableVideo';
 import { pickVslVariant, useVslDropoff } from '../hooks/useVslDropoff';
 
-// Yousif, 2026-10-08: swapped to "I Tested 300 MARKETING Systems and Found What Really Works"
-// (youtu.be/Dy_AVOXgS7s, 3:18), self-hosted so the watch-time tracking below keeps working.
-// Poster is the video's own YouTube thumbnail. The previous VSL was /webinar1/webinar-1.mp4.
+// Yousif, 2026-10-17: swapped to "New Offer Overview" (8:09), where he walks through the $7-$27
+// low-ticket front end + order bump + OTO that pays for the ads and generates leads.
+// Poster is its "ad pays for itself" frame. Previous VSLs: /videos/pricing-vsl-300.mp4 (10/08),
+// /webinar1/webinar-1.mp4 (10/06).
 // A/B test: each visitor is assigned one version and keeps it (localStorage). Add a version here
 // to put it in the rotation; ?vsl=<id> forces one for checking. Results: kenjiai.com/funnel-stats/
 // ("Video drop-off" section), from the vsl_v_<id> and vsl_t<seconds> steps sent below.
 const VARIANTS: { id: string; src: string; poster: string }[] = [
-  { id: 'a', src: '/videos/pricing-vsl-300.mp4', poster: '/videos/pricing-vsl-300-poster.jpg' },
+  { id: 'lt', src: '/videos/pricing-vsl-lowticket.mp4', poster: '/videos/pricing-vsl-lowticket-poster.jpg' },
 ];
 
 export function PricingVSL() {
