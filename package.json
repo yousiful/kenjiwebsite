@@ -20,8 +20,8 @@
     "syndicate:audit": "node scripts/syndication_agent.cjs audit"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.2.0",
     "@netlify/blobs": "^10.7.9",
-    "@netlify/neon": "^0.1.2",
     "@stripe/stripe-js": "^2.4.0",
     "@supabase/supabase-js": "^2.97.0",
     "framer-motion": "^10.16.16",

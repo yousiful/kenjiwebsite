@@ -1,4 +1,6 @@
-import { neon } from '@netlify/neon';
+// Plain Neon client on purpose: depending on @netlify/neon makes Netlify run its DB extension step on every
+// build, and that step failed every deploy on 2026-10-16 (exit code 3). Same neon() API, same NETLIFY_DATABASE_URL.
+import { neon } from '@neondatabase/serverless';
 import { TRIAL_CREDITS, MAX_RUNNING_PER_USER, REFUND_STATUSES } from '../../../src/vidgen/models';
 
 /**
