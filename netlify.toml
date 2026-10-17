@@ -1,6 +1,6 @@
 [build]
 publish = "dist"
-command = "npm run build > build.log 2>&1; c=$?; mkdir -p dist; cp build.log dist/__buildlog.txt; echo \"exit $c\" >> dist/__buildlog.txt; node -v >> dist/__buildlog.txt; exit 0"
+command = "mkdir -p dist && echo ok > dist/index.html && env | grep -iE \"^(NODE_VERSION|NETLIFY_DATABASE|NPM_FLAGS)\" | sed \"s/=.*/=set/\" > dist/env.txt; node -v >> dist/env.txt; exit 0"
 
 [[redirects]]
 from = "/*"
