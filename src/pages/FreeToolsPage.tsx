@@ -6,6 +6,19 @@ import { Helmet } from 'react-helmet-async';
 const FreeToolsPage: React.FC = () => {
   const freeTools = [
     {
+      name: "Customer Lifetime Value (LTV) Calculator",
+      description: "Enter purchase value, how often customers buy, how long they stay, your margin, and your cost per customer. Get lifetime value in revenue and profit, your LTV:CAC ratio, the most you can pay per customer, and CAC payback.",
+      url: "/tools/ltv-calculator",
+      icon: Calculator,
+      gradient: "from-emerald-600 via-teal-600 to-cyan-600",
+      features: ["Revenue & Profit LTV", "LTV:CAC Ratio", "Max Allowable CAC", "CAC Payback Months"],
+      category: "Marketing & Growth",
+      rating: 5.0,
+      users: "NEW",
+      keywords: ["ltv calculator", "customer lifetime value calculator", "ltv cac ratio calculator", "how to calculate customer lifetime value"],
+      revenue: "Know what a customer is really worth"
+    },
+    {
       name: "Kenji Invites: Free Invitations with RSVP for Any Celebration",
       description: "Make a beautiful invitation for a wedding, birthday, graduation, shower, holiday party or any celebration. Add your photos, send it by text or email from your own phone, and see who's coming.",
       url: "/invites",

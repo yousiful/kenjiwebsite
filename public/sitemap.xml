@@ -153,6 +153,13 @@
     <mobile:mobile/>
   </url>
   <url>
+    <loc>https://kenjiai.com/tools/ltv-calculator</loc>
+    <lastmod>2026-10-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <mobile:mobile/>
+  </url>
+  <url>
     <loc>https://kenjiai.com/github-tools</loc>
     <lastmod>2026-10-13T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
