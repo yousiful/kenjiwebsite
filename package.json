@@ -20,6 +20,7 @@
     "syndicate:audit": "node scripts/syndication_agent.cjs audit"
   },
   "dependencies": {
+    "@higgsfield/client": "^0.2.6",
     "@neondatabase/serverless": "^1.2.0",
     "@netlify/blobs": "^10.7.9",
     "@stripe/stripe-js": "^2.4.0",
