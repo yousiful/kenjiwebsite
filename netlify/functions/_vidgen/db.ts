@@ -1,7 +1,6 @@
 // Plain Neon client on purpose: depending on @netlify/neon makes Netlify run its DB extension step on every
 // build, and that step failed every deploy on 2026-10-16 (exit code 3). Same neon() API, same NETLIFY_DATABASE_URL.
 import { neon } from '@neondatabase/serverless';
-import { getConnectionString } from '@netlify/database';
 import { TRIAL_CREDITS, MAX_RUNNING_PER_USER, REFUND_STATUSES } from '../../../src/vidgen/models';
 
 /**
@@ -127,17 +126,8 @@ const SCHEMA_LOCK = 7302001;
 const DISPATCH_LOCK = 7302002;
 export { DISPATCH_LOCK };
 
-/** Netlify Database (managed Postgres, provisioned on deploy). The legacy Neon extension's NETLIFY_DATABASE_URL stopped authenticating 2026-10-20. */
-function netlifyDatabaseUrl(): string | undefined {
-  try {
-    return getConnectionString();
-  } catch {
-    return undefined;
-  }
-}
-
 export function neonDb(url?: string): Db | null {
-  const conn = url || netlifyDatabaseUrl() || process.env.NETLIFY_DATABASE_URL;
+  const conn = url || process.env.NETLIFY_DATABASE_URL;
   if (!conn) return null;
   const sql = neon(conn);
   return {
