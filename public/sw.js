@@ -1,4 +1,5 @@
-const CACHE_NAME = 'kenjiai-v6-2026';
+// v7: real 404s replaced the SPA catch-all; drop anything cached under the old rules.
+const CACHE_NAME = 'kenjiai-v7-2026'; // keep in sync with CURRENT_CACHE in index.html
 const OFFLINE_URL = '/offline.html';
 
 const PRECACHE_URLS = [

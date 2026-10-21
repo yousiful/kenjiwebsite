@@ -43,6 +43,8 @@ const Navbar: React.FC = () => {
     { name: "Home", href: "/", external: false },
     { name: "Solutions", href: "/ai-automation", hasDropdown: true, dropdownType: "solutions", external: false },
     { name: "Academy", href: "/knowledge", external: false },
+    { name: "Blog", href: "/blog", external: false },
+    { name: "Podcast", href: "/podcast", external: false },
     { name: "Pricing", href: "/pricing", external: false }
   ];
 
@@ -74,7 +76,7 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8" role="menubar">
+          <div className="hidden lg:flex items-center lg:space-x-5 xl:space-x-8" role="menubar">
             {navItems.map((item) => (
               <div key={item.name} className="relative" role="none">
                 {item.hasDropdown ? (
@@ -235,7 +237,7 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* CTA Buttons */}
-          <div className="hidden md:flex items-center gap-3" role="none">
+          <div className="hidden lg:flex items-center gap-3 whitespace-nowrap" role="none">
             {/* Login Button */}
             <motion.a
               href="https://app.kenjiai.com"
@@ -297,7 +299,7 @@ const Navbar: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden text-white hover:text-cyan-400 transition-colors mobile-hover focus-ring touch-target p-2 -mr-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
+            className="lg:hidden text-white hover:text-cyan-400 transition-colors mobile-hover focus-ring touch-target p-2 -mr-2 min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-expanded={isOpen}
             aria-label={isOpen ? "Close menu" : "Open menu"}
             aria-controls="mobile-menu"
@@ -322,7 +324,7 @@ const Navbar: React.FC = () => {
                 transition: { duration: 0.2, ease: "easeInOut" }
               }}
               transition={{ duration: 0.3, ease: "easeOut" }}
-              className="md:hidden mt-2 rounded-b-xl overflow-hidden"
+              className="lg:hidden mt-2 rounded-b-xl overflow-hidden"
               style={{ background: '#0a0f1a', borderTop: '1px solid rgba(0,255,255,0.15)', boxShadow: '0 10px 40px rgba(0,255,255,0.08)' }}
             >
               <motion.div

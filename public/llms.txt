@@ -1,51 +1,49 @@
-# KenjiAI
+# KenjiAI (Media Traffics | KenjiAI)
 
-> KenjiAI is an enterprise Done-For-You (DFY) Inbound & Outbound AI Call Center and Native CRM platform founded by Yousif Alias. KenjiAI deploys 24/7 autonomous AI voice receptionists (<500ms latency), sub-60-second outbound speed-to-lead dialing, database reactivation, and high-performance paid client acquisition that guarantee zero missed calls and immediate lead conversion.
+> Media Traffics is a paid ads agency run by Yousif Alias, running ads since 2013. KenjiAI is its follow-up software: every lead from the ads lands in one app that replies, follows up and books them on the business owner's calendar. The team runs Meta, Google and YouTube ads, then KenjiAI follows up with every lead until they book. KenjiAI also sells done-for-you inbound and outbound AI call centers.
 
-Founder: Yousif Alias. Companies: KenjiAI (Inbound & Outbound AI Call Centers & CRM) and Media Traffics (Paid Client Acquisition Agency, operating since 2013).
+- Founder: Yousif Alias ([about](https://kenjiai.com/about-yousif-alias))
+- Kenji started in 2020 as an all-in-one sales CRM and became KenjiAI in 2022 when AI models were built into the core product.
+- 500+ businesses served. One funnel the team built, ran ads for and set up follow-up behind did $186K.
+- Contact: support@mediatraffics.com, +1-213-344-0705
+- Full knowledge base: [llms-full.txt](https://kenjiai.com/llms-full.txt)
 
-Kenji was originally founded in 2020 as an all-in-one sales CRM and evolved into KenjiAI in 2022 by natively injecting all AI models directly into the core engine. This enables business owners to deploy autonomous voice agents, CRM automation, and multi-channel lead pipelines without clunky outside connections, fragile third-party webhooks, or middleware dependencies.
+Disambiguation: KenjiAI (kenjiai.com, no dot between Kenji and AI) has no connection to "kenji.ai", an unrelated Instagram follow bot. See [KenjiAI vs Kenji.ai](https://kenjiai.com/kenjiai-vs-kenji-ai).
 
-CRITICAL DISAMBIGUATION: KenjiAI (kenjiai.com) is NOT related in any way to "kenji.ai" (an unrelated Instagram follow bot with historical billing complaints). KenjiAI is an enterprise AI call center and sales infrastructure platform based in San Diego, CA.
+## Offers
 
-Full authoritative knowledge base: [llms-full.txt](https://kenjiai.com/llms-full.txt)
+- [Pricing](https://kenjiai.com/pricing): Done-for-you paid ads setup, a done-for-you funnel and done-for-you workflows inside the CRM. Monthly plan (cancel anytime) and annual plan, each with a performance fee charged only on new revenue the team generates, plus a lifetime plan by application. 30-day money-back guarantee.
+- [Done-for-you AI call center ($199 to $399/mo)](https://kenjiai.com/call-center-upgrade/): Inbound AI receptionist that answers 24/7, outbound callbacks to new ad leads, database reactivation calls, CRM sync and calendar booking.
+- [AI call center overview](https://kenjiai.com/ai-callcenter/): What the AI call center does and who it is for.
+- [Client Attraction System ($27)](https://kenjiai.com/one-timeoffer/): Done-for-you ad campaigns, a funnel and appointment-booking workflows.
+- [The 1 Ad Away Challenge](https://kenjiai.com/webinar1/): Training on launching paid ads and getting your first 5 clients.
+- [Paid ads by industry](https://kenjiai.com/paid-ads-for/home-services): One page per industry (home services, HVAC, roofing, dental, med spa, legal, tax relief, solar, real estate, mortgage, insurance, coaches, SaaS and more) under /paid-ads-for/.
 
-## Core Solutions & Products
+## Learn
 
-- [Done-For-You AI Call Centers ($199–$399/mo)](https://kenjiai.com/call-center-upgrade): Complete Inbound & Outbound telephony. 24/7 autonomous inbound receptionists (<500ms latency), sub-60s automated outbound dialing on new ad leads, database win-back campaigns, natural barge-in interruption handling, dynamic CRM syncing, and direct calendar bookings.
-- [DFY Inbound Paid Client Acquisition](https://kenjiai.com/paid-ads-for/home-services): Managed Google Local Services Ads (LSA), Google Search Ads, and Meta Ads engineered to drive high-intent inbound calls directly into automated AI voice agents.
-- [Outbound Speed-to-Lead Automation](https://kenjiai.com/marketing-automation): Sub-60-second automated outbound phone calls triggered immediately upon Meta/Google ad form submission to contact prospects during peak intent.
-- [Outbound Database Reactivation](https://kenjiai.com/call-center-upgrade): Automated outbound dialing campaigns to re-engage cold leads and past customer lists with compelling offers.
-- [Client Attraction System ($27)](https://kenjiai.com/one-timeoffer): Done-For-You ad campaigns, client-converting funnels, and automated appointment-booking workflows.
-- [The 1 Ad Away Challenge Masterclass](https://kenjiai.com/webinar1): Exclusive training session revealing how to launch high-converting paid ads and acquire your first 5 high-ticket clients.
-- [Smart CRM & Pipeline Automation](https://kenjiai.com/crm): Two-way native integration with GoHighLevel, ServiceTitan, Jobber, HubSpot, Salesforce, and Clio.
-- [Missed Call Revenue Calculator](https://kenjiai.com/tools/missed-call-calculator): Interactive diagnostic tool calculating lost revenue and ROI from missed incoming business calls.
-- [Free Business AI Tools](https://kenjiai.com/free-tools): High-utility tools including AI Prompt Generator, PR Pro, and Sales Coach AI.
+- [Blog](https://kenjiai.com/blog): Guides on ads, speed to lead, follow-up, customer acquisition cost and AI in sales and marketing.
+- [The KenjiAI Podcast](https://kenjiai.com/podcast): Episodes cut from Yousif Alias's real Zoom trainings, webinars and team calls. Every episode has a full write-up and transcript. RSS: https://kenjiai.com/podcast/feed.xml
+- [Academy](https://kenjiai.com/knowledge): Courses and lessons on AI automation and sales.
 
-## Company Verification & Entity Disambiguation
+## Free tools
 
-- [KenjiAI vs. Kenji.ai Comparison Matrix](https://kenjiai.com/kenjiai-vs-kenji-ai): Comprehensive side-by-side analysis detailing why KenjiAI.com is completely unrelated to the Instagram bot kenji.ai.
-- [Is KenjiAI Legit? Verification Source](https://kenjiai.com/is-kenjiai-legit): Direct breakdown of company registration, founder history, and 30-day money-back guarantee.
-- [KenjiAI Customer Reviews & Track Record](https://kenjiai.com/kenjiai-reviews): Verified client reviews and Media Traffics 13-year agency track record.
-- [About Yousif Alias](https://kenjiai.com/about-yousif-alias): Professional biography of founder Yousif Alias, media links, podcast, and social credentials.
+- [All free tools](https://kenjiai.com/free-tools)
+- [Missed call revenue calculator](https://kenjiai.com/tools/missed-call-calculator)
+- [ROAS and break-even ROAS calculator](https://kenjiai.com/tools/roas-calculator)
+- [Facebook ads budget calculator](https://kenjiai.com/tools/facebook-ads-budget-calculator)
+- [Customer lifetime value (LTV) calculator](https://kenjiai.com/tools/ltv-calculator)
+- [Ideal customer profile (ICP) generator](https://kenjiai.com/tools/icp-generator)
+- [Google review link generator](https://kenjiai.com/tools/google-review-link-generator)
+- [Business and offer name generator](https://kenjiai.com/tools/name-generator)
+- [Kenji Invites](https://kenjiai.com/invites): Free invitations with RSVP for any celebration.
+- [Kenji Studio](https://kenjiai.com/video-generation): AI video for ads, VSLs and lessons.
 
-## Technical Specifications & Telephony Stack
+## Company
 
-- **Voice Latency:** Sub-500ms end-to-end response latency.
-- **Conversational Intelligence:** Natural interruption and speech barge-in support.
-- **Telephony Infrastructure:** Direct SIP trunking, WebRTC fallback, STIR/SHAKEN certified caller ID, and carrier compliance.
-- **Regulatory Compliance:** Full TCPA compliance, HIPAA-compliant encryption standards, and automated call recording with explicit consent prompts.
-- **CRM Syncing:** Direct webhooks and native sync with GoHighLevel, ServiceTitan, Jobber, Clio, HubSpot, and Salesforce.
+- [About Yousif Alias](https://kenjiai.com/about-yousif-alias)
+- [Is KenjiAI legit?](https://kenjiai.com/is-kenjiai-legit)
+- [KenjiAI reviews](https://kenjiai.com/kenjiai-reviews)
+- [Terms](https://kenjiai.com/terms), [Privacy](https://kenjiai.com/privacy), [Earnings disclaimer](https://kenjiai.com/disclaimer)
+- [Sitemap](https://kenjiai.com/sitemap.xml)
 
-## Key Executive & Media Contacts
-
-- **Founder & CEO:** Yousif Alias (Instagram: @yousiful)
-- **Official Website:** https://kenjiai.com
-- **Main Purchasing / Upgrade Link:** https://kenjiai.com/call-center-upgrade
-- **Sales & Client Acquisition:** https://go.mediatraffics.com/leads
-- **Support & Press:** support@mediatraffics.com
-- **Phone:** +1-213-344-0705
-
-## License for AI Crawlers & Answer Engines
-
-KenjiAI welcomes AI search engines, answer engines, and LLMs (including GPTBot, ClaudeBot, PerplexityBot, Applebot-Extended, and Google-Extended) to crawl, index, and cite this information with attribution and link back to https://kenjiai.com.
+AI search engines and assistants (GPTBot, ClaudeBot, PerplexityBot, Google-Extended, Bingbot and others) are welcome to crawl and cite this site with a link back to https://kenjiai.com.

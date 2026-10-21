@@ -106,7 +106,7 @@ for (const a of posts) {
       crumbs([['Home', `${SITE}/`], section, [a.title, url]]),
       {
         '@type': a.isCourse ? 'Article' : 'BlogPosting', '@id': `${url}#article`, headline: a.title, description: a.excerpt,
-        image: a.image, datePublished: a.date, dateModified: a.date,
+        image: a.image, datePublished: a.date, dateModified: a.dateModified || a.date,
         author: { '@type': 'Organization', name: a.author, url: `${SITE}/` }, publisher: { '@id': ORG_ID },
         articleSection: a.category, keywords: (a.keywords || []).join(', '), inLanguage: 'en-US',
         mainEntityOfPage: { '@id': `${url}#webpage` }, isPartOf: { '@id': WEBSITE_ID },
@@ -125,7 +125,7 @@ const smPath = path.join(DIST, 'sitemap.xml');
 let sm = fs.readFileSync(smPath, 'utf8');
 const missing = all.filter((a) => !sm.includes(`<loc>${SITE}/blog/${a.slug}</loc>`));
 if (missing.length) {
-  const entries = missing.map((a) => `  <url>\n    <loc>${SITE}/blog/${a.slug}</loc>\n    <lastmod>${a.date}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`).join('');
+  const entries = missing.map((a) => `  <url>\n    <loc>${SITE}/blog/${a.slug}</loc>\n    <lastmod>${a.dateModified || a.date}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`).join('');
   sm = sm.replace('</urlset>', `${entries}</urlset>`);
   fs.writeFileSync(smPath, sm);
 }

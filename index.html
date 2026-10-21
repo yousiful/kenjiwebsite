@@ -10,11 +10,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <meta name="trustpilot-one-time-domain-verification-id" content="3b6baaaa-e3e1-4c96-a5ca-35a4d0323e01"/>
-    <meta name="google-site-verification" content="google-site-verification-kenjiai" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0" />
     <meta http-equiv="Pragma" content="no-cache" />
@@ -273,7 +272,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       #root {
         min-height: 100vh;
       }
+      /* Per-route static HTML (scripts/spa_routes.mjs) is for crawlers that don't run
+         JS. With JS on it is hidden until React replaces it, so visitors never see a
+         flash of the plain version. If the app fails to start it is shown again. */
+      html.js [data-static-seo="route"] { visibility: hidden; }
     </style>
+    <script>
+      document.documentElement.classList.add('js');
+      setTimeout(function () { if (document.querySelector('[data-static-seo="route"]')) document.documentElement.classList.remove('js'); }, 10000);
+    </script>
   <!-- ChatGPT Ads Pixel -->
 <script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"RZQxy3bXYAY7RArDCZc6dN",debug:true});</script>
 <!-- Meta Pixel (async, non-blocking) -->
@@ -331,7 +338,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           try {
             if ('caches' in window) {
               const cacheNames = await caches.keys();
-              const CURRENT_CACHE = 'kenjiai-v5-2025';
+              const CURRENT_CACHE = 'kenjiai-v7-2026'; // keep in sync with CACHE_NAME in public/sw.js
               const hasOldCaches = cacheNames.some(name =>
                 name.includes('kenjiai') && name !== CURRENT_CACHE
               );

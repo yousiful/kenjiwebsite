@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion, useReducedMotion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Check, Minus, Phone } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
 import { ReviewsNative } from '../components/ReviewsNative';
@@ -30,6 +30,14 @@ const ROLES: { value: string; label: string }[] = [
   { value: 'agency', label: 'I run a marketing agency' },
   { value: 'launching', label: 'I’m about to launch a business' },
   { value: 'browsing', label: 'I’m just looking around' },
+];
+
+// Hand-picked so the homepage doesn't have to bundle all of articles.ts (it is the LCP route).
+const LEARN: { title: string; href: string }[] = [
+  { title: 'Speed to Lead: Why Your Leads Go Cold Before You Ever Call Them Back', href: '/blog/speed-to-lead-why-leads-go-cold' },
+  { title: 'Self-Liquidating Offers: How a Low-Priced Front End Can Cover Your Ad Spend', href: '/blog/self-liquidating-offers-ad-spend-pays-for-itself' },
+  { title: 'What Counts as a Good Customer Acquisition Cost in 2026?', href: '/blog/good-customer-acquisition-cost-2026' },
+  { title: 'All podcast episodes', href: '/podcast' },
 ];
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -278,6 +286,33 @@ const HomePage: React.FC = () => {
               </a>
               .
             </p>
+          </div>
+        </section>
+
+        {/* ---------- Read or listen first ---------- */}
+        <section className="px-5 sm:px-8 py-16 sm:py-20 border-t border-white/10" aria-labelledby="learn-h2">
+          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[1fr_1.4fr] gap-10 md:gap-16">
+            <div>
+              <h2 id="learn-h2" className="display text-[28px] sm:text-[36px] leading-[1.05] font-extrabold">
+                Rather read or listen first?
+              </h2>
+              <p className="mt-4 text-[17px] text-[#C9D2DE] max-w-[46ch]">
+                How we run ads, follow up with leads and use AI, written up on the{' '}
+                <Link to="/blog" className="text-[#F3EEE6] font-semibold underline decoration-white/30 hover:decoration-[#5EEAD4]">blog</Link>{' '}
+                and recorded on{' '}
+                <Link to="/podcast" className="text-[#F3EEE6] font-semibold underline decoration-white/30 hover:decoration-[#5EEAD4]">the KenjiAI Podcast</Link>.
+              </p>
+            </div>
+            <ul className="divide-y divide-white/10 border-y border-white/10">
+              {LEARN.map((l) => (
+                <li key={l.href}>
+                  <Link to={l.href} className="group flex items-center justify-between gap-4 py-4">
+                    <span className="text-[16px] sm:text-[17px] font-medium text-[#F3EEE6] [@media(hover:hover)]:group-hover:text-[#5EEAD4]">{l.title}</span>
+                    <ArrowRight className="w-4 h-4 shrink-0 text-[#A9B4C4]" aria-hidden="true" />
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 

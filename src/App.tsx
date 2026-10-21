@@ -19,7 +19,8 @@ import { SiteTracker } from './components/SiteTracker';
 import { ConsentBanner } from './components/ConsentBanner';
 import ResultsDisclaimer from './components/ResultsDisclaimer';
 
-import SEOHead from './components/SEOHead';
+import SEOHead, { DEFAULT_TITLE, DEFAULT_DESCRIPTION } from './components/SEOHead';
+import { Helmet } from 'react-helmet-async';
 
 // HomePage stays eager — it is the LCP route.
 import HomePage from './pages/HomePage';
@@ -175,7 +176,32 @@ const STATIC_SHELL_HEAD_TAGS = [
   'meta[name="robots"]:not([data-rh])',
   'meta[property^="og:"]:not([data-rh])',
   'meta[property^="twitter:"]:not([data-rh])',
+  // Extra tags the per-route static HTML (scripts/spa_routes.mjs) can carry.
+  'meta[name="title"]:not([data-rh])',
+  'meta[name="keywords"]:not([data-rh])',
+  'meta[name^="twitter:"]:not([data-rh])',
+  'meta[property^="article:"]:not([data-rh])',
 ].join(',');
+
+/**
+ * Pages that set only <title> and a meta description through a bare <Helmet>
+ * (pricing, privacy, terms, funding, knowledge, voice-ai, ...) inherit DefaultSEO's
+ * og:/twitter: title and description, which are the homepage's. Link previews then
+ * show the homepage for those URLs. After every helmet flush, any social tag still
+ * holding the site default is pointed at the page's own title and description.
+ */
+const syncSocialTags = () => {
+  const title = document.title;
+  const desc = document.querySelector('meta[name="description"]')?.getAttribute('content');
+  const swap = (selector: string, fallback: string, value: string | null | undefined) => {
+    if (!value || value === fallback) return;
+    document.head.querySelectorAll(selector).forEach((m) => {
+      if (m.getAttribute('content') === fallback) m.setAttribute('content', value);
+    });
+  };
+  swap('meta[property="og:title"],meta[property="twitter:title"],meta[name="title"]', DEFAULT_TITLE, title);
+  swap('meta[property="og:description"],meta[property="twitter:description"]', DEFAULT_DESCRIPTION, desc);
+};
 
 /**
  * Site-wide head defaults, owned by react-helmet-async, plus the shell cleanup
@@ -210,7 +236,12 @@ const DefaultSEO: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
-  return <SEOHead canonical={canonical} />;
+  return (
+    <>
+      <SEOHead canonical={canonical} />
+      <Helmet onChangeClientState={syncSocialTags} />
+    </>
+  );
 };
 
 // Kenji Invites and Kenji Studio pages carry their own header and hide all site chrome.

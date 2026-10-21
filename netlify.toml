@@ -2,10 +2,8 @@
 publish = "dist"
 command = "npm run build"
 
-[[redirects]]
-from = "/*"
-to = "/index.html"
-status = 200
+# No SPA catch-all: real routes get their own HTML at build time and every other
+# URL gets public/404.html with a real 404 status. See scripts/spa_routes.mjs.
 
 [[headers]]
 for = "/*"

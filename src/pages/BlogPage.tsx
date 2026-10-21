@@ -103,7 +103,7 @@ const BlogPage: React.FC = () => {
                           {featured.category}
                         </span>
                         <span className="text-gray-500 text-xs flex items-center gap-1">
-                          <Calendar className="w-3 h-3" /> {new Date(featured.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                          <Calendar className="w-3 h-3" /> {new Date(featured.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}
                         </span>
                       </div>
                       <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors leading-tight">
@@ -157,7 +157,7 @@ const BlogPage: React.FC = () => {
                       </div>
                       <div className="p-5">
                         <div className="flex items-center gap-3 text-[11px] text-gray-500 mb-3">
-                          <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {new Date(article.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                          <span className="flex items-center gap-1"><Calendar className="w-3 h-3" /> {new Date(article.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })}</span>
                           <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {article.readTime}</span>
                         </div>
                         <h3 className="text-lg font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors line-clamp-2 leading-snug">

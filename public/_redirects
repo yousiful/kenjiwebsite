@@ -1,11 +1,12 @@
-# Reputation defense pages — static HTML, bypass SPA fallback
-/is-kenjiai-legit          /is-kenjiai-legit/index.html        200
+# Reputation defense pages — static HTML. The no-slash URL is the canonical, so it is
+# force-rewritten (200!); without the ! Netlify 301s it to the slash URL first.
+/is-kenjiai-legit          /is-kenjiai-legit/index.html        200!
 /is-kenjiai-legit/         /is-kenjiai-legit/index.html        200
-/kenjiai-vs-kenji-ai       /kenjiai-vs-kenji-ai/index.html     200
+/kenjiai-vs-kenji-ai       /kenjiai-vs-kenji-ai/index.html     200!
 /kenjiai-vs-kenji-ai/      /kenjiai-vs-kenji-ai/index.html     200
-/kenjiai-reviews           /kenjiai-reviews/index.html         200
+/kenjiai-reviews           /kenjiai-reviews/index.html         200!
 /kenjiai-reviews/          /kenjiai-reviews/index.html         200
-/about-yousif-alias        /about-yousif-alias/index.html      200
+/about-yousif-alias        /about-yousif-alias/index.html      200!
 /about-yousif-alias/       /about-yousif-alias/index.html      200
 
 # AI Call Center Upgrade — static HTML, bypass SPA fallback
@@ -37,12 +38,19 @@
 /overview-b/                /webinar1/vsl2/watch/index.html     200
 
 # TrendPulse & AdForge - Standalone Direct-Response Command Center & Ad Spy
-/trendpulse                /trendpulse/index.html              200
+# (canonical is the no-slash URL, so force-rewrite it like the reputation pages)
+/trendpulse                /trendpulse/index.html              200!
 /trendpulse/               /trendpulse/index.html              200
 /trendpulse/*              /trendpulse/:splat                  200
 
 # Kenji Invites guest invitations: small standalone page (invite.html), no site chrome
 /i/*                       /invite.html                        200
 
-# Catchall (SPA) stays last
-/* /index.html 200
+# Old URL used as the privacy link on Meta lead forms
+/privacy-policy            /privacy                            301
+/privacy-policy/           /privacy                            301
+
+# No catch-all here on purpose. Every real SPA route gets its own HTML file at
+# build time (scripts/spa_routes.mjs), which also appends the 301s for <Navigate>
+# routes and RedirectSystem's map plus scoped rewrites for dynamic routes such as
+# /invites/e/:id. Anything else falls through to public/404.html with HTTP 404.

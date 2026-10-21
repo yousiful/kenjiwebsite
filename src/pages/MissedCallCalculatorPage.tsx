@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import PageSchema from '../components/PageSchema';
+import { faqPage } from '../lib/schema';
 import { 
   TrendingUp, 
   Copy, 
@@ -30,6 +31,26 @@ const INDUSTRY_PRESETS: IndustryPreset[] = [
   { id: 'legal', name: 'Personal Injury Law', calls: 180, missedRate: 35, ticketSize: 15000, closeRate: 15 },
   { id: 'lending', name: 'Commercial Lending', calls: 220, missedRate: 24, ticketSize: 8500, closeRate: 18 },
   { id: 'custom', name: 'Custom Business', calls: 350, missedRate: 27, ticketSize: 3000, closeRate: 22 }
+];
+
+// Shown in the FAQ section and mirrored in the FAQPage schema, so the two always match.
+const FAQS: { q: string; a: string }[] = [
+  {
+    q: "Why do missed calls cost high-ticket businesses so much?",
+    a: "In high-ticket verticals (roofing, water restoration, medical spas, legal, lending), customers have urgent needs. If their call is unanswered or sent to voicemail, 85% hang up immediately and call the next Google or Meta ad result.",
+  },
+  {
+    q: "How fast does KenjiAI answer inbound calls?",
+    a: "KenjiAI voice agents respond in sub-500 milliseconds, identical to a human conversational reflex. Our ultra-low latency infrastructure handles simultaneous spikes with zero busy signals or hold queues.",
+  },
+  {
+    q: "Can KenjiAI integrate directly with my CRM?",
+    a: "Yes. KenjiAI natively syncs call recordings, live transcripts, qualification tags, and appointment bookings into GoHighLevel, HubSpot, Salesforce, ServiceTitan, Jobber, and custom webhooks.",
+  },
+  {
+    q: "What is the difference between an answering service and KenjiAI?",
+    a: "Traditional answering services cost thousands per month, place callers on hold, read rigid scripts, and take hours to deliver messages. KenjiAI qualifies the lead, quotes standard pricing, and books appointments on your calendar instantly.",
+  },
 ];
 
 const MissedCallCalculatorPage: React.FC = () => {
@@ -87,7 +108,7 @@ const MissedCallCalculatorPage: React.FC = () => {
 
   return (
     <div className={`min-h-screen ${isEmbed ? 'bg-gray-900 p-4' : 'pt-24 pb-20 px-4 sm:px-6 lg:px-8 text-white'}`}>
-      <PageSchema path="/tools/missed-call-calculator" name={"Missed Call Revenue Loss Calculator"} description={"Calculate how much revenue your business loses to missed calls each month. See instant recovery projections with KenjiAI 24/7 Done-For-You AI Call Centers."} />
+      <PageSchema path="/tools/missed-call-calculator" name={"Missed Call Revenue Loss Calculator"} description={"Calculate how much revenue your business loses to missed calls each month. See instant recovery projections with KenjiAI 24/7 Done-For-You AI Call Centers."} extra={[faqPage('/tools/missed-call-calculator', FAQS)]} />
       <Helmet>
         <title>Missed Call Revenue Loss Calculator | KenjiAI</title>
         <meta 
@@ -394,30 +415,12 @@ const MissedCallCalculatorPage: React.FC = () => {
           <div className="mt-16 border-t border-gray-800 pt-12">
             <h3 className="text-2xl font-bold text-white mb-6">Frequently Asked Questions</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
-              <div className="bg-gray-800/40 border border-gray-800 rounded-xl p-5">
-                <h4 className="font-semibold text-white mb-2">Why do missed calls cost high-ticket businesses so much?</h4>
-                <p className="text-gray-400 leading-relaxed">
-                  In high-ticket verticals (roofing, water restoration, medical spas, legal, lending), customers have urgent needs. If their call is unanswered or sent to voicemail, 85% hang up immediately and call the next Google or Meta ad result.
-                </p>
-              </div>
-              <div className="bg-gray-800/40 border border-gray-800 rounded-xl p-5">
-                <h4 className="font-semibold text-white mb-2">How fast does KenjiAI answer inbound calls?</h4>
-                <p className="text-gray-400 leading-relaxed">
-                  KenjiAI voice agents respond in sub-500 milliseconds, identical to a human conversational reflex. Our ultra-low latency infrastructure handles simultaneous spikes with zero busy signals or hold queues.
-                </p>
-              </div>
-              <div className="bg-gray-800/40 border border-gray-800 rounded-xl p-5">
-                <h4 className="font-semibold text-white mb-2">Can KenjiAI integrate directly with my CRM?</h4>
-                <p className="text-gray-400 leading-relaxed">
-                  Yes. KenjiAI natively syncs call recordings, live transcripts, qualification tags, and appointment bookings into GoHighLevel, HubSpot, Salesforce, ServiceTitan, Jobber, and custom webhooks.
-                </p>
-              </div>
-              <div className="bg-gray-800/40 border border-gray-800 rounded-xl p-5">
-                <h4 className="font-semibold text-white mb-2">What is the difference between an answering service and KenjiAI?</h4>
-                <p className="text-gray-400 leading-relaxed">
-                  Traditional answering services cost thousands per month, place callers on hold, read rigid scripts, and take hours to deliver messages. KenjiAI qualifies the lead, quotes standard pricing, and books appointments on your calendar instantly.
-                </p>
-              </div>
+              {FAQS.map((f) => (
+                <div key={f.q} className="bg-gray-800/40 border border-gray-800 rounded-xl p-5">
+                  <h4 className="font-semibold text-white mb-2">{f.q}</h4>
+                  <p className="text-gray-400 leading-relaxed">{f.a}</p>
+                </div>
+              ))}
             </div>
           </div>
         )}

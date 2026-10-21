@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
+import NotFoundPage from '../components/NotFoundPage';
 import { motion } from 'framer-motion';
 import { Calendar, Clock, ArrowLeft, ArrowRight, Share2, Tag, BookOpen, GraduationCap, Star, User } from 'lucide-react';
 import { useAutoFormatting } from '../components/AutoFormattingProvider';
@@ -11,18 +12,11 @@ import PodcastPlayer from '../components/PodcastPlayer';
 
 const BlogPost: React.FC = () => {
   const { slug } = useParams();
-  const navigate = useNavigate();
   const { fixFormatting } = useAutoFormatting();
 
   const article = slug ? getArticleBySlug(slug) : undefined;
   const allArticles = getAllArticles();
 
-  // Redirect if no article found
-  useEffect(() => {
-    if (!slug || !article) {
-      navigate('/knowledge', { replace: true });
-    }
-  }, [slug, article, navigate]);
 
   // Auto-fix formatting issues on load
   useEffect(() => {
@@ -31,7 +25,8 @@ const BlogPost: React.FC = () => {
     return () => clearTimeout(timer);
   }, [fixFormatting]);
 
-  if (!article) return null;
+  // Unknown slug: show the real 404 page (the server also returns HTTP 404 for it).
+  if (!article) return <NotFoundPage />;
 
   // Get related articles (same category or just other articles)
   const relatedArticles = allArticles
@@ -59,7 +54,7 @@ const BlogPost: React.FC = () => {
             description: article.excerpt,
             image: article.image,
             datePublished: article.date,
-            dateModified: article.date,
+            dateModified: article.dateModified || article.date,
             author: { '@type': 'Organization', name: article.author, url: 'https://kenjiai.com/' },
             publisher: { '@id': ORG_ID },
             articleSection: article.category,
@@ -93,6 +88,7 @@ const BlogPost: React.FC = () => {
         <meta property="og:image" content={article.image} />
         <meta property="og:type" content="article" />
         <meta property="article:published_time" content={article.date} />
+        <meta property="article:modified_time" content={article.dateModified || article.date} />
         <meta property="article:author" content={article.author} />
         <meta property="article:section" content={article.category} />
         {article.tags.map(tag => (
@@ -153,7 +149,7 @@ const BlogPost: React.FC = () => {
               </span>
               <span className="text-gray-400 text-sm flex items-center gap-1.5">
                 <Calendar className="w-3.5 h-3.5" />
-                {new Date(article.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                {new Date(article.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}
               </span>
             </div>
 

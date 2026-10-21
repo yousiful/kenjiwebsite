@@ -24,6 +24,8 @@ export interface Article {
   excerpt: string;
   category: string;
   date: string;
+  /** Only set when the content was meaningfully updated after `date`. */
+  dateModified?: string;
   author: string;
   readTime: string;
   tags: string[];
@@ -1844,65 +1846,17 @@ for (const ep of podcastEpisodes as PodcastEpisode[]) {
 }
 
 /**
- * Evergreen Blog System
- * Dynamically shifts article dates so content always appears recent.
- * The newest article shows as "today", the second as "2 days ago", etc.
- * Courses keep their original dates.
+ * Article dates are the real publish dates from each entry's `date` field.
+ * (The old "evergreen" system rewrote every date relative to today, which
+ * changed datePublished in the schema on every build and every visit.)
+ * Set `dateModified` on an entry only when its content actually changes.
  */
-function getEvergreenDate(index: number, isCourse: boolean, originalDate: string): string {
-  if (isCourse) return originalDate;
-  
-  const today = new Date();
-  // Spread articles across the last 30 days
-  // First article = today, second = 2 days ago, third = 4 days ago, etc.
-  const daysAgo = index * 2;
-  const evergreenDate = new Date(today);
-  evergreenDate.setDate(today.getDate() - daysAgo);
-  
-  return evergreenDate.toISOString().split('T')[0];
-}
+const byDateDesc = (a: Article, b: Article) => new Date(b.date).getTime() - new Date(a.date).getTime();
 
 export function getArticleBySlug(slug: string): Article | undefined {
-  const article = articles[slug];
-  if (!article) return undefined;
-  
-  // Apply evergreen date
-  const sorted = Object.values(articles)
-    .filter(a => !a.isCourse)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  
-  const blogIndex = sorted.findIndex(a => a.slug === slug);
-  
-  return {
-    ...article,
-    date: getEvergreenDate(
-      blogIndex >= 0 ? blogIndex : 0, 
-      !!article.isCourse || !!article.podcast, 
-      article.date
-    )
-  };
+  return articles[slug];
 }
 
 export function getAllArticles(): Article[] {
-  // Sort by original static dates first to maintain relative ordering
-  const sorted = Object.values(articles).sort((a, b) =>
-    new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
-  
-  // Track blog article index separately (courses keep original dates)
-  let blogIndex = 0;
-  
-  return sorted.map(article => {
-    const evergreenDate = getEvergreenDate(
-      blogIndex, 
-      !!article.isCourse || !!article.podcast, 
-      article.date
-    );
-    
-    if (!article.isCourse) {
-      blogIndex++;
-    }
-    
-    return { ...article, date: evergreenDate };
-  });
+  return Object.values(articles).sort(byDateDesc);
 }

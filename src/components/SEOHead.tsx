@@ -29,11 +29,12 @@ export interface SEOHeadProps {
   breadcrumbs?: Crumb[];
 }
 
-const DEFAULT_TITLE = "Done-For-You Inbound & Outbound AI Call Centers | KenjiAI";
+export const DEFAULT_TITLE = "Done-For-You Inbound & Outbound AI Call Centers | KenjiAI";
+export const DEFAULT_DESCRIPTION = "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI voice call centers for high-ticket businesses. Sub-500ms inbound answering, 60-second speed-to-lead outbound dialing, and automated database reactivation.";
 
 const SEOHead: React.FC<SEOHeadProps> = ({
   title: titleProp,
-  description = "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI voice call centers for high-ticket businesses. Sub-500ms inbound answering, 60-second speed-to-lead outbound dialing, and automated database reactivation.",
+  description = DEFAULT_DESCRIPTION,
   keywords = "AI call center, inbound AI receptionist, outbound speed to lead, database reactivation, AI voice agents, business automation CRM, KenjiAI",
   canonical,
   canonicalUrl: canonicalUrlProp,
