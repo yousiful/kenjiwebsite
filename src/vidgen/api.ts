@@ -1,4 +1,4 @@
-import type { GenInput, GoalId, ModelId, PlanId, Shot } from './models';
+import type { Aspect, GenInput, GoalId, ModelId, PlanId, Shot } from './models';
 
 const API = '/.netlify/functions/vidgen-api';
 const WRITE = '/.netlify/functions/vidgen-write-prompt';
@@ -53,6 +53,9 @@ export const api = {
   cancel: (id: string) => post<{ ok: true; balance: number }>(`${API}?op=cancel`, { id }),
   writePrompt: (body: { goal: GoalId; answers: Record<string, string>; model: ModelId; duration: number; aspect: string; hasImage: boolean }) =>
     post<{ prompt: string; shots: Shot[] }>(WRITE, body),
+  /** One sentence in; the writer picks the kind of video and the frame. */
+  writeIdea: (body: { idea: string; hasImage: boolean }) =>
+    post<{ prompt: string; shots: Shot[]; goal: GoalId; aspect: Aspect }>(WRITE, body),
   checkout: (body: { plan?: PlanId; topup?: boolean }) => post<{ url: string }>(`${BILLING}?op=checkout`, body),
   portal: () => post<{ url: string }>(`${BILLING}?op=portal`, {}),
 };

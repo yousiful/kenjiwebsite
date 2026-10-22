@@ -18,7 +18,7 @@ export default function VidgenHome() {
   return (
     <Shell
       title="Kenji Studio: AI Video for Ads, VSLs and Lessons | KenjiAI"
-      description="Try it free, no card. Pick what you are making, answer a few plain questions, and Kenji Studio writes the prompt and renders the video. Your first video is free."
+      description="Try it free, no card. Describe the video in one sentence and Kenji Studio picks the size, writes the prompt and renders it. Your first video is free."
       index
     >
       <Body />

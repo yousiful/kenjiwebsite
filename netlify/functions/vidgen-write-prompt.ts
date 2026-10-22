@@ -1,11 +1,12 @@
 import type { Context } from '@netlify/functions';
 import { json, fail, ipHash, notConnected, readJson, readSession, sameOrigin, str } from './_vidgen/common';
 import { getUser, readyDb, underHourlyIpLimit, underHourlyLimit, type Db } from './_vidgen/db';
-import { goalById, MODELS, AD_PLACEMENTS, type GoalId, type ModelId } from '../../src/vidgen/models';
+import { goalById, MODELS, AD_PLACEMENTS, ASPECTS, type Aspect, type GoalId, type ModelId } from '../../src/vidgen/models';
 
 /**
- * Kenji Studio prompt writer. The person answers 2-4 plain questions; this turns the
- * answers into a model-ready, shot-by-shot video prompt. Free (no credits). Works signed
+ * Kenji Studio prompt writer. Either the person types one sentence ({ idea }) and the writer
+ * picks the kind of video and frame, or they answer 2-4 plain questions for a kind they chose.
+ * Both come back as a model-ready, shot-by-shot video prompt. Free (no credits). Works signed
  * out so people can try before signing in: 8 an hour per (hashed) IP signed out, 30 an
  * hour per person signed in. OpenRouter: anthropic/claude-sonnet-5.5, falling back to claude-haiku-5.5.
  * Env: OPENROUTER_API_KEY.
@@ -59,7 +60,7 @@ async function callModel(model: string, system: string, user: string, timeoutMs:
       model,
       messages: [{ role: 'system', content: system }, { role: 'user', content: user }],
       temperature: 0.7,
-      max_tokens: 1200,
+      max_tokens: 2000,
     }),
   });
   const data = (await res.json().catch(() => ({}))) as { choices?: { message?: { content?: string } }[] };
@@ -103,6 +104,45 @@ export function parseWriterOutput(raw: string, total: number): { prompt: string;
   return { prompt, shots };
 }
 
+/** One-box mode: the person types one sentence, the writer picks the kind of video and the frame. */
+const IDEA_GOALS: GoalId[] = ['ad', 'vsl', 'course', 'story'];
+const IDEA_GOALS_WITH_IMAGE: GoalId[] = ['ad', 'walkthrough'];
+
+export function ideaSystem(allowed: GoalId[]): string {
+  const kinds = allowed
+    .map((id) => {
+      const g = goalById(id)!;
+      return `"${id}" (${g.title}, ${g.duration} seconds): ${g.blurb}\n${GOAL_RULES[id]}`;
+    })
+    .join('\n\n');
+  return `${BASE_RULES}
+
+The person described the video in their own words. First decide which kind of video it is, then follow that kind's rules. If it is unclear, pick "ad" when they mention selling, a product, a service or an offer; otherwise pick the closest fit.
+
+Kinds:
+${kinds}
+
+Pick the frame: "9:16" for Reels, Stories, TikTok, Shorts or anything phone-first (the default for ads), "1:1" for a square feed post, "16:9" for YouTube, a website, a VSL, a course or a film scene. Follow what they say if they name a platform.
+
+Return ONLY valid JSON, no markdown fences, no commentary:
+{"goal": "one of the kind ids above", "aspect": "9:16 | 1:1 | 16:9", "prompt": "the full single-take prompt", "shots": [{"prompt": "shot 1, at most 400 characters", "duration": 3}]}
+"shots" is a 2-4 shot version of the same video for models that support multi-shot. Shot durations are whole seconds and must add up to exactly the length of the kind you picked. If the video should be one continuous take, return "shots": [].`;
+}
+
+/** Reads the goal and frame the writer picked, falling back to safe defaults. */
+export function parseIdeaChoice(raw: string, allowed: GoalId[]): { goal: GoalId; aspect: Aspect } {
+  let v: { goal?: unknown; aspect?: unknown } = {};
+  try {
+    const c = raw.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/i, '').trim();
+    v = JSON.parse(c.slice(c.indexOf('{'), c.lastIndexOf('}') + 1));
+  } catch {
+    /* defaults below */
+  }
+  const goal = allowed.includes(v.goal as GoalId) ? (v.goal as GoalId) : allowed[0];
+  const aspect = ASPECTS.includes(v.aspect as Aspect) ? (v.aspect as Aspect) : goalById(goal)!.aspect;
+  return { goal, aspect };
+}
+
 export default async (req: Request, context: Context): Promise<Response> => {
   if (req.method !== 'POST') return fail(405, 'Method not allowed');
   if (!sameOrigin(req)) return fail(403, 'Please use the Kenji Studio page.');
@@ -119,6 +159,38 @@ export default async (req: Request, context: Context): Promise<Response> => {
   const user = s ? await getUser(db, s.uid) : null;
 
   const body = (await readJson(req)) || {};
+
+  const allowed = user
+    ? await underHourlyLimit(db, String(user.id), 'write', PER_HOUR)
+    : await underHourlyIpLimit(db, ipHash(req, context), 'write', ANON_PER_HOUR);
+  if (!allowed) {
+    return fail(429, user
+      ? 'You have written a lot of prompts this hour. Take a short break and try again.'
+      : 'You have tried a lot of prompts this hour. Sign in to keep going, or try again in a bit.', { signIn: !user });
+  }
+
+  if (typeof body.idea === 'string') {
+    const idea = str(body.idea, 600);
+    if (idea.length < 3) return fail(400, 'Tell us in a few words what video you want.');
+    const hasImage = !!body.hasImage;
+    const kinds = hasImage ? IDEA_GOALS_WITH_IMAGE : IDEA_GOALS;
+    const userMsg = [
+      hasImage ? 'The person added a picture that will be the first frame. Describe motion that starts from that picture, do not redescribe it in a way that changes it.' : '',
+      `What they want:\n${idea}`,
+    ].filter(Boolean).join('\n\n');
+    for (const [m, t] of [[PRIMARY, 16000], [FALLBACK, 10000]] as const) {
+      try {
+        const raw = await callModel(m, ideaSystem(kinds), userMsg, t);
+        const pick = parseIdeaChoice(raw, kinds);
+        const out = parseWriterOutput(raw, goalById(pick.goal)!.duration);
+        if (out) return json(200, { ...out, ...pick });
+      } catch (e) {
+        console.warn('vidgen-write-prompt idea', m, e instanceof Error ? e.message : e);
+      }
+    }
+    return fail(502, 'The prompt writer is busy. Please try again in a moment.');
+  }
+
   const goal = goalById(String(body.goal || ''));
   if (!goal) return fail(400, 'Pick what you want to make first.');
   const answersIn = (body.answers && typeof body.answers === 'object' ? body.answers : {}) as Record<string, unknown>;
@@ -133,15 +205,6 @@ export default async (req: Request, context: Context): Promise<Response> => {
   const hasImage = !!body.hasImage;
   const placement = goal.id === 'ad' ? str(answersIn.placement, 80) : '';
   const aspect = (placement && AD_PLACEMENTS[placement]) || str(body.aspect, 8) || goal.aspect;
-
-  const allowed = user
-    ? await underHourlyLimit(db, String(user.id), 'write', PER_HOUR)
-    : await underHourlyIpLimit(db, ipHash(req, context), 'write', ANON_PER_HOUR);
-  if (!allowed) {
-    return fail(429, user
-      ? 'You have written a lot of prompts this hour. Take a short break and try again.'
-      : 'You have tried a lot of prompts this hour. Sign in to keep going, or try again in a bit.', { signIn: !user });
-  }
 
   const system = `${BASE_RULES}\n\n${GOAL_RULES[goal.id]}\n\n${SHAPE}`;
   const userMsg = [

@@ -17,6 +17,8 @@ export interface Draft {
   savedAt: number;
   goal: GoalId;
   answers: Record<string, string>;
+  /** Set when the visitor used the one-box idea instead of the questions. */
+  idea?: string;
   prompt: string;
   shots: Shot[];
   useShots: boolean;

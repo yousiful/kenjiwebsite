@@ -73,6 +73,9 @@ export default function Studio() {
   const [useShots, setUseShots] = useState(false);
   const [writing, setWriting] = useState(false);
   const [writerNote, setWriterNote] = useState('');
+  const [idea, setIdea] = useState('');
+  const [ideaMode, setIdeaMode] = useState(false);
+  const [ideaError, setIdeaError] = useState('');
 
   const [presets, setPresets] = useState<Preset[] | null>(null);
   const [presetId, setPresetId] = useState('');
@@ -95,6 +98,7 @@ export default function Studio() {
       return;
     }
     setGoalId(g.id);
+    setIdeaMode(false);
     setAnswers({});
     setImage(null); setVideo(null); setRefs([]);
     setModel(g.model); setDuration(g.duration || 5); setAspect(g.aspect); setSound(true);
@@ -189,6 +193,32 @@ export default function Studio() {
     }
   };
 
+  /** One box: the writer picks the kind of video, frame and length, and writes the prompt. */
+  const makeFromIdea = async () => {
+    const text = idea.trim();
+    if (text.length < 3) return;
+    setWriting(true); setIdeaError(''); setWriterNote(''); setError('');
+    try {
+      const r = await api.writeIdea({ idea: text, hasImage: !!image });
+      const g = goalById(r.goal);
+      if (!g) throw new ApiError('Something went wrong. Please try again.', 500);
+      setGoalId(g.id);
+      setIdeaMode(true);
+      setAnswers({});
+      setModel(g.model); setDuration(g.duration || 5); setAspect(r.aspect || g.aspect); setSound(true);
+      setPrompt(r.prompt);
+      setShots(r.shots || []);
+      setUseShots(g.id === 'story' && (r.shots || []).length >= 2 && !!MODELS[g.model].multiShot);
+      setPresetId(''); setMade(null); setAdvanced(false);
+      requestAnimationFrame(() => topRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+    } catch (e) {
+      const err = e as ApiError;
+      setIdeaError(err.notConnected ? 'The prompt writer is not connected yet. Pick a video type below and type your own prompt for now.' : err.message);
+    } finally {
+      setWriting(false);
+    }
+  };
+
   const onImage = async (file: File | undefined, target: 'image' | 'ref') => {
     if (!file) return;
     setError('');
@@ -239,7 +269,7 @@ export default function Studio() {
     if (!goal) return;
     setBusy(true);
     await saveDraft(
-      { goal: goal.id, answers, prompt, shots, useShots, model, duration, aspect, sound, hasImage: !!image?.file, imageName: image?.name, autoGenerate: true },
+      { goal: goal.id, answers, idea: ideaMode ? idea : undefined, prompt, shots, useShots, model, duration, aspect, sound, hasImage: !!image?.file, imageName: image?.name, autoGenerate: true },
       image?.file || null,
     );
     window.location.href = signInHref('/video-generation?resume=1');
@@ -286,6 +316,8 @@ export default function Studio() {
     if (g.studioOnly && !user?.genjutsu) return;
     setGoalId(d.goal);
     setAnswers(d.answers || {});
+    setIdea(d.idea || '');
+    setIdeaMode(!!d.idea);
     setPrompt(d.prompt || '');
     setShots(d.shots || []);
     setUseShots(!!d.useShots);
@@ -383,16 +415,50 @@ export default function Studio() {
     <main className="vg-wrap" ref={topRef}>
       {!goal && (
         <section className="vg-hero vg-reveal">
-          <h1 className="vg-display" style={{ maxWidth: '18ch' }}>What are you making today?</h1>
+          <h1 className="vg-display" style={{ maxWidth: '18ch' }}>What video do you want?</h1>
           <p className="vg-lead">
             {signedIn
-              ? 'Pick one. We ask a few questions and write the prompt for you.'
-              : `Try it free, no card. Pick one, answer a few questions, and we write the prompt. Sign in when you press Generate. Your first video is free (${TRIAL_CREDITS} credits).`}
+              ? 'Say it in one sentence. We pick the right size, length and model, and write the prompt.'
+              : `Say it in one sentence. We pick the size, length and model and write the prompt. Sign in when you press Generate. Your first video is free (${TRIAL_CREDITS} credits), no card.`}
           </p>
           {signinIssue && <p className="vg-note" role="status">{signinIssue}</p>}
           {signedIn && !genConnected && (
             <p className="vg-note" role="status">Generation is not connected yet. You can look around and try the prompt writer; generating opens soon.</p>
           )}
+
+          <form className="vg-field" onSubmit={(e) => { e.preventDefault(); makeFromIdea(); }}>
+            <label htmlFor="vg-idea" className="vg-visually-hidden">Describe your video</label>
+            <textarea
+              id="vg-idea"
+              className="vg-textarea vg-textarea--short"
+              value={idea}
+              maxLength={600}
+              placeholder="A 9:16 ad for my $49 teeth whitening kit, aimed at busy moms"
+              onChange={(e) => setIdea(e.target.value)}
+              onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); makeFromIdea(); } }}
+            />
+            <div className="vg-row">
+              <button type="submit" className="vg-btn vg-btn--primary" disabled={writing || idea.trim().length < 3}>
+                {writing ? 'Writing your video...' : 'Make my video'}
+              </button>
+              <label className="vg-btn vg-btn--quiet" htmlFor="vg-idea-image">
+                {image ? 'Change photo' : 'Add a photo (optional)'}
+              </label>
+              <input id="vg-idea-image" className="vg-visually-hidden" type="file" accept="image/jpeg,image/png,image/webp" onChange={(e) => { onImage(e.target.files?.[0], 'image'); e.target.value = ''; }} disabled={!!uploading} />
+            </div>
+            {image && (
+              <div className="vg-thumbs">
+                <img className="vg-thumb" src={image.preview} alt={`Your photo: ${image.name}`} />
+                <span className="vg-meta">This becomes the first frame.</span>
+                <button type="button" className="vg-btn vg-btn--text" onClick={() => setImage(null)}>Remove</button>
+              </div>
+            )}
+            {uploading && <p className="vg-meta" role="status">Uploading {uploading.what}... {uploading.pct}%</p>}
+            {ideaError && <p className="vg-error" role="alert">{ideaError}</p>}
+            {error && <p className="vg-error" role="alert">{error}</p>}
+          </form>
+
+          <p className="vg-label" style={{ marginTop: 40 }}>Or pick a type and we will ask a few questions</p>
           <div className="vg-options" role="list">
             {GOALS.map((g, i) => {
               const locked = g.studioOnly && !user?.genjutsu;
@@ -425,7 +491,7 @@ export default function Studio() {
       {goal && (
         <div className="vg-reveal">
           <div className="vg-back">
-            <button type="button" className="vg-btn vg-btn--text" onClick={() => setGoalId(null)}>Back to all video types</button>
+            <button type="button" className="vg-btn vg-btn--text" onClick={() => { setGoalId(null); setIdeaMode(false); }}>Start over</button>
           </div>
           <div className="vg-split" style={{ marginTop: 16 }}>
             <section aria-labelledby="vg-goal-title">
@@ -510,7 +576,20 @@ export default function Studio() {
                 </div>
               )}
 
-              {goal.questions.map((q) => (
+              {ideaMode && (
+                <div className="vg-field">
+                  <label htmlFor="vg-idea-again">Your idea</label>
+                  <input id="vg-idea-again" className="vg-input" value={idea} maxLength={600} onChange={(e) => setIdea(e.target.value)} />
+                  <div className="vg-row">
+                    <button type="button" className="vg-btn vg-btn--quiet" onClick={makeFromIdea} disabled={writing || idea.trim().length < 3}>
+                      {writing ? 'Writing...' : 'Write it again'}
+                    </button>
+                  </div>
+                  {ideaError && <p className="vg-error" role="alert">{ideaError}</p>}
+                </div>
+              )}
+
+              {!ideaMode && goal.questions.map((q) => (
                 <div className="vg-field" key={q.id}>
                   {q.kind === 'text' ? (
                     <>
@@ -539,12 +618,12 @@ export default function Studio() {
 
               {!isGj && (
                 <>
-                  <div className="vg-row">
+                  {!ideaMode && <div className="vg-row">
                     <button type="button" className={prompt ? 'vg-btn vg-btn--quiet' : 'vg-btn vg-btn--primary'} onClick={write} disabled={writing || !answered}>
                       {writing ? 'Writing your prompt...' : prompt ? 'Write it again' : 'Write my prompt'}
                     </button>
                     {!answered && <span className="vg-meta">Answer the questions above first.</span>}
-                  </div>
+                  </div>}
                   {writerNote && <p className="vg-note" role="status">{writerNote}</p>}
 
                   {(prompt || writerNote) && (
