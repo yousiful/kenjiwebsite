@@ -5,11 +5,14 @@ import { Check, Crown } from 'lucide-react';
 const CHECKOUT_URL = 'https://freedom.kenjiai.com/finishhere';
 const CALL_URL = 'https://go.mediatraffics.com/leads';
 
-// Yousif, 2026-10-03: plans include only these three deliverables. AI call center and closer placement are paid add-ons.
+// Yousif, 2026-10-22: list more of what they get (AI agents, best ads, pre-tested campaigns, $25 credit). Ads are still setup only.
 const MONTHLY_FEATURES = [
-  'Paid ads set up and launched for you (setup only, no ongoing management)',
+  'Pre-tested ad campaigns, already proven on other businesses, set up and launched for you (setup only, no ongoing management)',
+  'Ad creatives modeled on our best-performing ads',
+  'AI agents that text and call every new lead within minutes, day and night',
   'Done-for-you funnel',
   'Done-for-you workflows inside your CRM',
+  '$25 in AI credit included',
 ];
 
 const YEARLY_FEATURES = [
@@ -117,7 +120,7 @@ export function PricingNew() {
       {/* Add-ons + call, one quiet line each */}
       <div className="max-w-3xl mx-auto mt-10 text-center space-y-3">
         <p className="text-gray-400 text-sm">
-          <span className="text-white font-semibold">Add-ons:</span> AI Agent Call Center · Closer Placement. Ask on your onboarding call.
+          <span className="text-white font-semibold">Add-on:</span> Closer Placement. Ask on your onboarding call.
         </p>
         <p className="text-gray-400 text-sm">
           Not sure yet?{' '}

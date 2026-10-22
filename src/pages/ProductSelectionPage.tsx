@@ -13,7 +13,7 @@ const PRICING_SCHEMA = [
     path: '/pricing',
     name: 'KenjiAI Done-For-You Ads Setup, Funnel and Workflows',
     description:
-      'Done-for-you paid ads setup, funnel, and workflows on an all-in-one CRM. AI agent call center and closer placement available as add-ons.',
+      'Pre-tested ad campaigns set up for you, AI agents that follow up with every lead, a done-for-you funnel and workflows on an all-in-one CRM, plus $25 in AI credit. Closer placement available as an add-on.',
     serviceType: ['Paid Advertising Management', 'Funnel Building', 'Marketing Automation'],
     offers: [
       {
