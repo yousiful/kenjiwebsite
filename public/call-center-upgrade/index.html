@@ -260,7 +260,28 @@
     <p class="sub">Answers every inbound call on Ring 1 and automatically calls new ad leads within 60 seconds. Qualifies, books, and follows up 24/7. No hold music, no voicemail, no lost sales.</p>
   </div>
   <div class="video-wrap wrap">
-    <video src="/videos/kenjiai-ai-callcenter-30s.mp4" poster="/videos/kenjiai-ai-callcenter-30s-poster.jpg" controls playsinline preload="metadata" title="AI Call Center demo"></video>
+    <div class="vp" style="position:relative">
+      <video id="vp-video" src="/videos/kenjiai-ai-callcenter-30s.mp4" poster="/videos/kenjiai-ai-callcenter-30s-poster.jpg" playsinline preload="metadata" title="AI Call Center demo"></video>
+      <!-- Same Loom-style preview as the React VideoPreview component: play button + 1.5x time saved pill -->
+      <button type="button" id="vp-btn" aria-label="Play the AI Call Center demo" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.2);border:0;cursor:pointer;padding:0">
+        <span style="display:flex;align-items:center;justify-content:center;width:22%;min-width:72px;max-width:180px;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.95);box-shadow:0 0 0 10px rgba(255,255,255,.25),0 12px 40px -8px rgba(0,0,0,.6)">
+          <svg viewBox="0 0 24 24" style="width:42%;height:42%;margin-left:8%;fill:#111827" aria-hidden="true"><path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5Z"/></svg>
+        </span>
+        <span style="position:absolute;bottom:5%;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;border-radius:18px;background:rgba(28,28,30,.9);color:#fff;padding:8px 18px;white-space:nowrap;font-weight:700;font-variant-numeric:tabular-nums">
+          <span style="font-size:clamp(16px,2.6vw,28px)">&#9201; 1.5&times;</span>
+          <span id="vp-time" style="display:none;margin-top:4px;font-size:clamp(14px,2.2vw,24px);background:rgba(255,255,255,.06);border-radius:12px;padding:2px 12px"><s id="vp-full" style="opacity:.45"></s> &#9889; <span id="vp-fast"></span></span>
+        </span>
+      </button>
+    </div>
+    <script>
+    (function(){
+      var v=document.getElementById('vp-video'),b=document.getElementById('vp-btn');
+      function f(t){t=Math.max(1,Math.round(t));var m=Math.floor(t/60),r=t%60;return m?(r?m+' min '+r+' sec':m+' min'):r+' sec';}
+      function d(){if(!isFinite(v.duration))return;document.getElementById('vp-full').textContent=f(v.duration);document.getElementById('vp-fast').textContent=f(v.duration/1.5);document.getElementById('vp-time').style.display='inline-block';}
+      v.addEventListener('loadedmetadata',d);d();
+      b.addEventListener('click',function(){b.remove();v.controls=true;v.defaultPlaybackRate=1.5;v.playbackRate=1.5;v.muted=false;v.play().catch(function(){});});
+    })();
+    </script>
   </div>
 </header>
 

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { Play, Star } from 'lucide-react';
+import { Star } from 'lucide-react';
+import { VideoPreview } from './VideoPreview';
 import { useResumableVideo } from '../hooks/useResumableVideo';
 import { pickVslVariant, useVslDropoff } from '../hooks/useVslDropoff';
 
@@ -16,7 +17,6 @@ const VARIANTS: { id: string; src: string; poster: string }[] = [
 
 export function PricingVSL() {
   const videoElRef = useRef<HTMLVideoElement>(null);
-  const [started, setStarted] = useState(false);
   const [variant] = useState(() => pickVslVariant(VARIANTS, 'kenji-pricing-vsl'));
 
   useResumableVideo(videoElRef, `kenjiai-video-progress:/pricing:${variant.id}`);
@@ -63,13 +63,6 @@ export function PricingVSL() {
     };
   }, []);
 
-  const start = () => {
-    const el = videoElRef.current;
-    if (!el) return;
-    setStarted(true);
-    el.muted = false;
-    el.play().catch(() => {});
-  };
 
   return (
     <section className="px-4 pt-14 sm:pt-20 pb-6">
@@ -83,28 +76,7 @@ export function PricingVSL() {
       </div>
 
       <div className="relative max-w-5xl mx-auto aspect-video bg-black rounded-2xl overflow-hidden border border-white/10 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.9)]">
-        <video
-          ref={videoElRef}
-          src={variant.src}
-          poster={variant.poster}
-          preload="metadata"
-          playsInline
-          controls={started}
-          className="w-full h-full object-cover"
-        />
-        {!started && (
-          <button
-            type="button"
-            onClick={start}
-            aria-label="Play the walkthrough video"
-            className="group absolute inset-0 flex items-center justify-center bg-black/25 hover:bg-black/15 transition-colors focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-[#10A37F]"
-          >
-            <span className="flex items-center gap-3 rounded-full bg-white text-gray-950 pl-5 pr-6 py-3.5 font-bold text-base sm:text-lg shadow-[0_10px_30px_-8px_rgba(0,0,0,0.6)] transition-transform duration-200 ease-out group-hover:scale-[1.03]">
-              <Play className="w-5 h-5 fill-current" />
-              Watch the walkthrough
-            </span>
-          </button>
-        )}
+        <VideoPreview videoRef={videoElRef} src={variant.src} poster={variant.poster} label="Play the walkthrough video" />
       </div>
 
       <div className="max-w-5xl mx-auto mt-6 flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-3 text-sm sm:text-base text-gray-300">

@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Check, Loader2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { BOOK_VSLS, BOOK_VSL_KEY, pickVslVariant, useVslDropoff } from '../hooks/useVslDropoff';
+import { VideoPreview } from '../components/VideoPreview';
 
 /* Growth quiz: one question per screen, then contact details, then the server decides where
    they go. Qualified -> /growth-quiz/book (calendar). Not yet -> /growth-quiz/next-step ($7 offer). */
@@ -415,7 +416,7 @@ export const GrowthQuizBookPage: React.FC = () => {
           It’s a 15-minute call with our team. Watch this first, it’s under 2 minutes.
         </p>
         <div className="mt-7 aspect-video rounded-3xl overflow-hidden bg-black border border-white/10">
-          <video ref={videoRef} src={vsl.src} poster={vsl.poster} controls playsInline preload="metadata" className="w-full h-full" />
+          <VideoPreview videoRef={videoRef} src={vsl.src} poster={vsl.poster} />
         </div>
         <p className="mt-8 text-[18px] leading-relaxed text-[#C9D2DE]">Here’s what we’ll cover on the call:</p>
         <ul className="mt-5 space-y-3 text-[17px]">

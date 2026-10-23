@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { CheckCircle2, XCircle, ChevronDown, ChevronUp } from 'lucide-react';
 import { Reviews } from '../components/Reviews';
+import { VideoPreview } from '../components/VideoPreview';
 import { BOOK_VSLS, BOOK_VSL_KEY, pickVslVariant, useVslDropoff } from '../hooks/useVslDropoff';
 
 // Yousif 2026-10-10: both booking VSLs rotate here for a drop-off test (see BOOK_VSLS).
@@ -175,15 +176,7 @@ export const BookVSLPage: React.FC<BookVSLPageProps> = ({ variant }) => {
       <section className="px-4 pb-8" ref={videoRef}>
         <div className="max-w-4xl mx-auto">
           <div className="aspect-video w-full rounded-xl overflow-hidden border border-white/10 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.8)] bg-black">
-            <video
-              ref={videoElRef}
-              className="w-full h-full"
-              src={vsl.src}
-              poster={vsl.poster}
-              controls
-              playsInline
-              preload="metadata"
-            />
+            <VideoPreview videoRef={videoElRef} src={vsl.src} poster={vsl.poster} />
           </div>
           <div className="mt-6 flex justify-center">
             <button
