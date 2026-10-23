@@ -368,293 +368,319 @@ export const articles: Record<string, Article> = {
   'automate-follow-ups-never-lose-lead': {
     slug: 'automate-follow-ups-never-lose-lead',
     title: 'How to Automate Follow-Ups So No Lead Falls Through the Cracks',
-    excerpt: 'Most businesses lose 50% of their leads because nobody follows up fast enough. Here\'s how to fix that.',
+    excerpt: "Most leads are lost to slow or missing follow-up, not to price. Here is the follow-up sequence we build for local businesses, what each step does, and what the research says about timing.",
     category: 'Lead Management',
     date: '2026-04-10',
+    dateModified: '2026-10-23',
     author: 'KenjiAI Team',
     readTime: '7 min read',
-    tags: ['Lead Management', 'Automation'],
-    keywords: ['automate follow ups', 'lead automation'],
+    tags: ['Lead Management', 'Automation', 'Speed to Lead'],
+    keywords: ['automate follow ups', 'lead follow up automation', 'lead follow up sequence', 'how fast to follow up with a lead', 'missed lead follow up'],
     image: 'https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800',
     content: `
       <div class="blog-article-content space-y-8">
         <section>
-          <h2 class="text-3xl font-bold text-white mb-4 italic uppercase tracking-tighter">The Leaky Bucket: Why Lead Follow-Up is Your Biggest Revenue Hole</h2>
+          <h2 class="text-3xl font-bold text-white mb-4">Most Leads Die in the Follow-Up</h2>
           <p class="text-gray-300 leading-relaxed">
-            Data from the Harvard Business Review shows that companies that try to contact potential customers within an hour of receiving a query are <strong>7x more likely</strong> to have meaningful conversations with those key decision-makers. Yet, most businesses take 24-48 hours to respond. By then, the lead is cold, the dopamine from the initial inquiry has faded, and your competitor has already booked the call. 
+            When a business tells us their leads are bad, we usually look at the follow-up before we look at the ads. Most of the time the lead filled out a form, got one call that went to voicemail, and never heard from anyone again.
           </p>
-          <p class="text-gray-300 leading-relaxed">
-            In 2026, the "Gold Standard" has shifted from 1 hour to 1 minute. If you aren't responding while the lead is still looking at your website, you are losing money. 
+          <p class="text-gray-300 leading-relaxed mt-4">
+            The research on this is old and still holds up. A Harvard Business Review audit of 2,241 US companies found that only 37% responded to a web lead within an hour, and 23% never responded at all. Firms that responded within an hour were nearly 7 times more likely to qualify the lead than firms that waited longer (<a href="https://hbr.org/2011/03/the-short-life-of-online-sales-leads" class="text-cyan-400 hover:underline" target="_blank" rel="noopener">HBR, "The Short Life of Online Sales Leads"</a>). Research sponsored by InsideSales with Dr. James Oldroyd put it even tighter: the odds of reaching a lead were about 100 times higher when the first call came within 5 minutes instead of 30.
           </p>
         </section>
 
-        <section class="bg-cyan-900/10 border-2 border-cyan-500/20 p-8 rounded-3xl my-12">
-          <h3 class="text-2xl font-bold text-cyan-400 mb-6 uppercase">The 5-Minute Rule: The Statistics of Failure</h3>
-          <p class="text-gray-300 mb-8 font-medium">If you don't respond within 5 minutes, your chances of qualifying the lead decrease by 400%. Here is how the KenjiAI automation stack eliminates this bottleneck:</p>
-          <ul class="space-y-6">
-            <li class="flex gap-4">
-              <span class="text-cyan-400 font-bold">01.</span>
-              <span><strong>Instant SMS "Touch":</strong> The second a form is submitted, the lead receives a personalized SMS that feels 100% human. "Hey [Name], saw your request. Are you free for a quick 2-min chat now?"</span>
-            </li>
-            <li class="flex gap-4">
-              <span class="text-cyan-400 font-bold">02.</span>
-              <span><strong>AI Sentiment Filtering:</strong> Our agents read the lead's intent. If they are "just browsing," they go to a long-term nurture. If they have a "problem right now," the agent prioritizes them for an immediate callback.</span>
-            </li>
-            <li class="flex gap-4">
-              <span class="text-cyan-400 font-bold">03.</span>
-              <span><strong>Automated Calendar Injection:</strong> We don't ask "when are you free?" We provide a single-click booking link that syncs with your team's real-time availability.</span>
-            </li>
+        <section class="bg-gray-900 border-l-4 border-cyan-500 p-8 rounded-r-3xl my-10">
+          <h3 class="text-cyan-400 font-bold mb-3 uppercase text-sm">The Rule We Build Around</h3>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            The first touch goes out in under a minute, every time, including nights and weekends. A person should never have to remember to start the follow-up. The system starts it and the person picks up from there.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">The Sequence We Set Up</h2>
+          <p class="text-gray-300 leading-relaxed">This is the follow-up we build into a client's CRM before we spend a dollar on their ads:</p>
+          <ul class="list-disc list-inside space-y-3 text-gray-300 mt-4">
+            <li><strong>Minute 0:</strong> a text that uses their first name and references what they asked for. Short, no links, ends with a question so they reply.</li>
+            <li><strong>Minute 1:</strong> an <a href="/voice-agents" class="text-cyan-400 hover:underline">AI voice agent</a> calls them, answers basic questions, and books the appointment on your calendar during the call.</li>
+            <li><strong>Minute 5:</strong> an email with the same booking link, for people who prefer email.</li>
+            <li><strong>Day 1 and Day 2:</strong> one more call attempt and one more text if there is still no answer.</li>
+            <li><strong>Day 4 to Day 14:</strong> a few short value messages: a real result, an answer to a common question, a reminder of the offer.</li>
+            <li><strong>Day 30 onward:</strong> the lead moves to a monthly check-in list instead of being deleted. People who were not ready last month often are now.</li>
           </ul>
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold text-white mb-4">Implementing the Omnichannel Follow-Up Swarm</h2>
-          <p class="text-gray-300 leading-relaxed mb-6">
-            True automation isn't just one email. It's an omnichannel swarm. At KenjiAI, we build workflows that hit the lead on Email, SMS, and LinkedIn simultaneously. The goal is to be omnipresent without being annoying. By using <strong>Conditional Logic</strong>, the system stops the swarm the second the lead responds, handing the conversation over to a human or an advanced AI agent.
-          </p>
-          <div class="p-6 bg-gray-900 border border-white/5 rounded-2xl mb-8">
-            <h4 class="text-cyan-400 font-bold mb-3 text-sm italic uppercase">Pro Framework: The 7-Touch Sequence</h4>
-            <p class="text-gray-400 text-xs leading-relaxed">Day 1: SMS (Min 1), Email (Min 5), Phone Call (Min 10). Day 2: Value-add Email. Day 3: LinkedIn Connection. Day 5: Personalized Video Loom. Day 7: The "Break-up" email. This sequence converts 45% higher than a standard welcome email.</p>
-          </div>
+          <h2 class="text-2xl font-bold text-white mb-4">Route Leads by What They Told You</h2>
           <p class="text-gray-300 leading-relaxed">
-            The difference between a $1M business and a $10M business is often just <strong>Lead Discipline</strong>. By removing the dependency on human speed, you ensure that every single lead is maximized for ROI.
+            Fast follow-up only pays off if it goes to the right people. If your form asks a qualifying question, use the answer. In our own Meta lead form, 44 of 120 leads (37%) picked the answer that said they were still setting up and not ready to work with us. Before we fixed the workflow, those people got the same calls as everyone else, and some of them booked meetings they were never going to buy from.
+          </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            The fix is one if/else step. Leads who say they qualify get the full call-and-book sequence. Leads who say they do not get a lower-priced offer or a nurture sequence, and your team's calendar stays open for buyers. We wrote more about this in <a href="/blog/stop-paying-for-leads-that-never-buy" class="text-cyan-400 hover:underline">how to stop paying for leads that never buy</a>.
           </p>
         </section>
 
-        <section class="border-t border-white/10 pt-12">
-          <h2 class="text-2xl font-bold text-white mb-6">Conclusion: Automation is the Only Way to Scale</h2>
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Where to Start if You Have Nothing Set Up</h2>
           <p class="text-gray-300 leading-relaxed">
-            You cannot hire your way out of a lead-speed problem. High-cost employees shouldn't be chasing cold leads; they should be closing warm ones. Let KenjiAI build the infrastructure that turns your traffic into a predictable, automated revenue stream.
+            Start with the minute-zero text and the missed-call text back. Those two steps cover the leads you are losing right now. Add the AI call and the longer sequence once those are running. Our <a href="/help" class="text-cyan-400 hover:underline">help center</a> walks through setting up workflows step by step, and the <a href="/tools/missed-call-calculator" class="text-cyan-400 hover:underline">missed call calculator</a> shows roughly what slow follow-up is costing you each month.
           </p>
+        </section>
+
+        <section class="border-t border-white/10 pt-8">
+          <p class="text-gray-400 text-sm">Want this built for you? See how our done-for-you setup works at <a href="/pricing" class="text-cyan-400 hover:underline">kenjiai.com/pricing</a>, or hear how we run it on the <a href="/podcast" class="text-cyan-400 hover:underline">KenjiAI Podcast</a>.</p>
         </section>
       </div>
     `
   },
   'ai-voice-agents-what-they-cost-are-they-worth-it': {
     slug: 'ai-voice-agents-what-they-cost-are-they-worth-it',
-    title: 'AI Voice Agents: What They Are, What They Cost, and Whether They\'re Worth It',
-    excerpt: 'AI voice agents can answer your phone, qualify leads, and book appointments 24/7.',
+    title: "AI Voice Agents: What They Are, What They Cost, and Whether They're Worth It",
+    excerpt: "AI voice agents answer calls, call new leads back and book appointments around the clock. Here is what they actually cost per minute in 2026, the costs people forget, and how to tell if one pays for itself.",
     category: 'AI Voice',
     date: '2026-04-08',
+    dateModified: '2026-10-23',
     author: 'KenjiAI Team',
-    readTime: '9 min read',
-    tags: ['AI Voice', 'Technology'],
-    keywords: ['AI voice agents', 'AI phone answering'],
+    readTime: '8 min read',
+    tags: ['AI Voice', 'AI Agents', 'Pricing'],
+    keywords: ['AI voice agents', 'AI voice agent cost', 'AI phone answering cost per minute', 'AI receptionist pricing', 'is an AI voice agent worth it'],
     image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
     content: `
       <div class="blog-article-content space-y-8">
         <section>
-          <h2 class="text-3xl font-bold text-white mb-4 italic uppercase tracking-tighter">The Truth About AI Voice Agents in 2026</h2>
+          <h2 class="text-3xl font-bold text-white mb-4">What an AI Voice Agent Does</h2>
           <p class="text-gray-300 leading-relaxed">
-            AI Voice Agents have moved past the "uncanny valley." With latency dropping below 300ms, they are now indistinguishable from human SDRs on the phone. But the question remains for most business owners: <strong>What do they actually cost, and what is the real ROI?</strong> 
+            An AI voice agent is software that talks on the phone. It answers inbound calls, calls new leads back, asks your qualifying questions, and books appointments on your calendar. A phone tree makes people press buttons. A voice agent holds a normal conversation and can handle "how much does it cost" or "can you come Saturday" without a script that breaks.
           </p>
-          <p class="text-gray-300 leading-relaxed">
-            Unlike traditional IVR systems ("Press 1 for Sales"), an AI Voice Agent leverages Large Language Models (LLMs) to understand context, handle objections, and navigate complex human emotions in real-time.
+          <p class="text-gray-300 leading-relaxed mt-4">
+            For most local businesses the value comes from two jobs: answering the calls nobody is free to pick up, and calling form leads back inside a minute.
           </p>
-        </section>
-
-        <section class="my-12">
-          <h3 class="text-2xl font-bold text-white mb-6 uppercase tracking-tight">Market Pricing Models: Usage vs. Enterprise</h3>
-          <p class="text-gray-300 leading-relaxed mb-8">
-            Most providers have shifted to a usage-based model. This democratic approach allows small businesses to compete with enterprise giants. Here is a breakdown of the current market rates:
-          </p>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="p-8 bg-gray-900 border-2 border-white/5 rounded-3xl hover:border-cyan-500/30 transition-all">
-              <div class="text-cyan-400 font-black mb-3 uppercase text-xs tracking-widest">Small Batch</div>
-              <div class="text-3xl font-bold text-white mb-4">$0.18/min</div>
-              <p class="text-gray-500 text-xs leading-relaxed">Standard NLP, 800ms latency. Best for appointment reminders and basic FAQs.</p>
-            </div>
-            <div class="p-8 bg-cyan-950/20 border-2 border-cyan-500/30 rounded-3xl hover:border-cyan-500/50 transition-all">
-              <div class="text-cyan-400 font-black mb-3 uppercase text-xs tracking-widest">Pro Tier</div>
-              <div class="text-3xl font-bold text-white mb-4">$0.42/min</div>
-              <p class="text-gray-300 text-sm leading-relaxed">Ultra-low latency (250ms), human-like inflection, deep CRM integration, and objection handling.</p>
-            </div>
-            <div class="p-8 bg-gray-900 border-2 border-white/5 rounded-3xl hover:border-cyan-500/30 transition-all">
-              <div class="text-cyan-400 font-black mb-3 uppercase text-xs tracking-widest">Enterprise</div>
-              <div class="text-3xl font-bold text-white mb-4">Custom</div>
-              <p class="text-gray-500 text-xs leading-relaxed">Proprietary model training on your brand's voice, whitelabeling, and unlimited concurrency.</p>
-            </div>
-          </div>
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold text-white mb-4">Hidden Costs: Implementation & Training</h2>
-          <p class="text-gray-300 leading-relaxed mb-6">
-            While the per-minute cost is low, the success of an AI voice agent depends on the <strong>Prompt Engineering</strong> and <strong>Knowledge Base Integration</strong>. If your agent doesn't have access to your live inventory or your calendar, it's just a fancy chatbot on the phone. Professional implementation by KenjiAI ensures your agent knows your business as well as your top salesperson.
+          <h2 class="text-2xl font-bold text-white mb-4">What They Cost Per Minute in 2026</h2>
+          <p class="text-gray-300 leading-relaxed">
+            The big voice platforms advertise low headline rates, and the real bill is higher once you add the parts the headline leaves out. Vapi advertises about $0.05 a minute, but that covers the platform only. Independent comparisons put the all-in cost, after the language model, voice, transcription and phone line, at roughly $0.13 to $0.31 a minute. Retell lists from about $0.07 a minute and lands around $0.23 with a current model. Bland is quoted between $0.09 and $0.14 a minute (<a href="https://www.morphllm.com/best-ai-voice-agent-platforms" class="text-cyan-400 hover:underline" target="_blank" rel="noopener">platform comparison</a>). Prices move often, so check each vendor's current page.
           </p>
-          <div class="bg-gray-900 border-l-4 border-cyan-500 p-8 rounded-r-3xl my-10">
-            <h4 class="text-cyan-400 font-bold mb-3 uppercase text-sm">ROI Calculation Case Study:</h4>
-            <p class="text-gray-300 text-sm leading-relaxed">
-              A real estate firm receiving 500 inquiries a month previously missed 40% of calls after-hours. By deploying a KenjiAI Voice Agent ($400/mo total cost), they qualified 18 additional leads in the first month, resulting in 2 closed deals worth $24,000 in commission. <strong>ROI: 6,000%</strong>.
-            </p>
-          </div>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            A useful planning number is 10 to 30 cents a minute. A business with 300 calls a month averaging 3 minutes uses about 900 minutes, which comes to roughly $90 to $270 a month in usage.
+          </p>
         </section>
 
-        <section class="border-t border-white/10 pt-12">
-          <h2 class="text-2xl font-bold text-white mb-6 uppercase tracking-tighter">The Future: From Reactive to Proactive</h2>
+        <section class="bg-gray-900 border-l-4 border-cyan-500 p-8 rounded-r-3xl my-10">
+          <h3 class="text-cyan-400 font-bold mb-3 uppercase text-sm">The Costs People Forget</h3>
+          <ul class="list-disc list-inside space-y-2 text-gray-300 text-sm">
+            <li><strong>Setup:</strong> writing the prompt, loading your services and prices, and connecting the calendar. A badly set up agent books the wrong jobs.</li>
+            <li><strong>Phone numbers and texting:</strong> the line itself, plus carrier registration if the agent also sends texts.</li>
+            <li><strong>Someone reviewing calls:</strong> for the first few weeks a person should read call summaries and fix what the agent gets wrong.</li>
+            <li><strong>Compliance:</strong> outbound AI calls need the lead's prior consent. The FCC confirmed in February 2024 that AI voices count as "artificial" voices under the TCPA. More on that in <a href="/blog/can-ai-agents-call-your-leads-fcc-rules" class="text-cyan-400 hover:underline">our guide to the FCC rules</a>.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">How to Tell if It Pays for Itself</h2>
           <p class="text-gray-300 leading-relaxed">
-            The next generation of voice agents will be proactive. They won't just wait for a call; they will monitor lead behavior on your site and call the lead the second they view your pricing page. This "Just-in-Time" engagement is the future of luxury sales and high-ticket service industries.
+            Invoca analyzed more than 70 million calls for its 2026 benchmarks and found that only 56% of callers reach a person (<a href="https://www.invoca.com/reports/the-invoca-lead-conversion-benchmarks-report-2026" class="text-cyan-400 hover:underline" target="_blank" rel="noopener">Invoca, 2026</a>). Start from your own numbers instead of a vendor's case study:
           </p>
+          <ol class="list-decimal list-inside space-y-2 text-gray-300 mt-4">
+            <li>How many calls and form leads a month go unanswered or wait more than an hour?</li>
+            <li>What share of answered leads usually turn into a job?</li>
+            <li>What is one job worth to you?</li>
+          </ol>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            If you miss 60 calls a month, close 20% of the calls you do answer, and an average job is worth $400, those missed calls are worth about $4,800 a month in jobs. A voice agent that saves even a quarter of them pays for itself many times over. If you miss five calls a month, you may not need one yet. The <a href="/tools/missed-call-calculator" class="text-cyan-400 hover:underline">missed call calculator</a> runs this math for you.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Build It Yourself or Have It Built</h2>
+          <p class="text-gray-300 leading-relaxed">
+            If you are technical and have time, the platforms above let you build your own. Most owners we work with would rather have it set up, tested and connected to their CRM so it works from day one. That is what our <a href="/call-center-upgrade" class="text-cyan-400 hover:underline">AI Call Center</a> does. Setup guides for connecting phone numbers and calendars are in the <a href="/help" class="text-cyan-400 hover:underline">KenjiAI help center</a>.
+          </p>
+        </section>
+
+        <section class="border-t border-white/10 pt-8">
+          <p class="text-gray-400 text-sm">See plans for done-for-you AI agents and ads at <a href="/pricing" class="text-cyan-400 hover:underline">kenjiai.com/pricing</a>.</p>
         </section>
       </div>
     `
   },
   'signs-you-need-crm-losing-money': {
     slug: 'signs-you-need-crm-losing-money',
-    title: '5 Signs You\'re Losing Money Without a CRM',
-    excerpt: 'If you\'re still tracking leads in spreadsheets, you\'re leaving money on the table.',
+    title: "5 Signs You're Losing Money Without a CRM",
+    excerpt: "If leads live in a spreadsheet, an inbox and your head, some of them are slipping away. Five signs it is time for a CRM, and what to set up first so it pays off quickly.",
     category: 'CRM',
     date: '2026-04-05',
+    dateModified: '2026-10-23',
     author: 'KenjiAI Team',
     readTime: '6 min read',
-    tags: ['CRM', 'Business Ops'],
-    keywords: ['do I need a CRM', 'CRM benefits'],
+    tags: ['CRM', 'Business Ops', 'Lead Management'],
+    keywords: ['do I need a CRM', 'CRM benefits small business', 'signs you need a CRM', 'CRM ROI', 'spreadsheet vs CRM'],
     image: 'https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=800',
     content: `
       <div class="blog-article-content space-y-8">
         <section>
-          <h2 class="text-3xl font-bold text-white mb-4 italic uppercase tracking-tighter">Spreadsheets are Where Lead Data Goes to Die</h2>
+          <h2 class="text-3xl font-bold text-white mb-4">Spreadsheets Track Leads. They Don't Follow Up.</h2>
           <p class="text-gray-300 leading-relaxed">
-            Many small to mid-sized businesses think they "aren't big enough" for a CRM (Customer Relationship Management) system. They rely on Excel, Google Sheets, or worse—their email inbox. This is a fatal mistake that costs the average business <strong>$15,000 per employee</strong> annually in lost productivity and missed opportunities. 
+            A lot of owners think they are too small for a CRM (customer relationship management software). So leads end up in a spreadsheet, a text thread, a stack of voicemails and somebody's memory. That works until you get busy, which is exactly when you can least afford to drop leads.
           </p>
-          <p class="text-gray-300 leading-relaxed">
-            A spreadsheet is a static log of the past. A CRM is a dynamic engine for the future.
+          <p class="text-gray-300 leading-relaxed mt-4">
+            The best-known number on CRM payback comes from Nucleus Research, which found an average return of $8.71 for every dollar spent on CRM in its 2014 analysis of deployments (<a href="https://nucleusresearch.com/research/single/crm-pays-back-8-71-for-every-dollar-spent/" class="text-cyan-400 hover:underline" target="_blank" rel="noopener">Nucleus Research</a>). It is an older study and an average across bigger companies, so treat it as a direction, not a promise. For a local business, the return mostly comes from leads that stop slipping away.
           </p>
-        </section>
-
-        <section class="bg-yellow-900/10 border-2 border-yellow-500/20 p-8 rounded-3xl my-12">
-          <h3 class="text-2xl font-bold text-yellow-500 mb-6 uppercase italic">The Red Flags: Are You Bleeding Cash?</h3>
-          <ul class="space-y-6 text-gray-300">
-            <li class="flex gap-4 p-4 bg-gray-900/50 rounded-2xl border border-white/5">
-              <span class="text-2xl">🚩</span>
-              <div>
-                <span class="block font-bold text-white mb-1">"I forgot to call that lead back."</span>
-                <p class="text-xs text-gray-500 italic">Without automated reminders and pipeline stages, 30% of leads never get a second touch.</p>
-              </div>
-            </li>
-            <li class="flex gap-4 p-4 bg-gray-900/50 rounded-2xl border border-white/5">
-              <span class="text-2xl">🚩</span>
-              <div>
-                <span class="block font-bold text-white mb-1">"Which email did we send them last week?"</span>
-                <p class="text-xs text-gray-500 italic">No central communication history leads to redundant work and a poor customer experience.</p>
-              </div>
-            </li>
-            <li class="flex gap-4 p-4 bg-gray-900/50 rounded-2xl border border-white/5">
-              <span class="text-2xl">🚩</span>
-              <div>
-                <span class="block font-bold text-white mb-1">"I'm not sure what my sales forecast is for next month."</span>
-                <p class="text-xs text-gray-500 italic">Spreadsheets can't provide real-time reporting on conversion rates or weighted pipeline value.</p>
-              </div>
-            </li>
-          </ul>
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold text-white mb-4 uppercase tracking-tight">The CRM as your Central Intelligence Organism</h2>
-          <p class="text-gray-300 leading-relaxed mb-6">
-            A modern CRM like GoHighLevel or Salesforce isn't just a database; it is the <strong>operating system of your business</strong>. By centralizing your data, you enable AI to read your history and predict which leads are most likely to close. 
+          <h2 class="text-2xl font-bold text-white mb-4">The Five Signs</h2>
+          <ol class="list-decimal list-inside space-y-4 text-gray-300">
+            <li><strong>"I forgot to call them back."</strong> If follow-up depends on someone remembering, it will get missed on busy days. A CRM starts the follow-up the moment the lead arrives.</li>
+            <li><strong>You can't say where your last 10 customers came from.</strong> Without source tracking, you can't tell which ads pay and which ones burn money.</li>
+            <li><strong>Two people called the same lead, or nobody did.</strong> Without one shared record, your team steps on each other or assumes someone else handled it.</li>
+            <li><strong>Missed calls just sit there.</strong> Invoca's 2026 benchmarks found only 56% of callers reach a person (<a href="https://www.invoca.com/reports/the-invoca-lead-conversion-benchmarks-report-2026" class="text-cyan-400 hover:underline" target="_blank" rel="noopener">Invoca</a>). A CRM can text every missed caller back automatically.</li>
+            <li><strong>Old customers never hear from you.</strong> Past customers are the cheapest people to sell to again, and a spreadsheet will never send them a reminder.</li>
+          </ol>
+        </section>
+
+        <section class="bg-gray-900 border-l-4 border-cyan-500 p-8 rounded-r-3xl my-10">
+          <h3 class="text-cyan-400 font-bold mb-3 uppercase text-sm">What to Set Up First</h3>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            Skip the 50-step build. Start with four things: every lead source feeding into one pipeline, an instant text when a lead arrives, a missed-call text back, and appointment reminders. Those four cover most of the money a typical local business is losing. Reviews and reactivation come next.
           </p>
-          <div class="p-6 bg-gray-900 border border-white/5 rounded-2xl mb-8">
-            <h4 class="text-yellow-500 font-bold mb-3 uppercase text-xs tracking-widest">Industry Insight: The CRM Multiplier</h4>
-            <p class="text-gray-400 text-sm leading-relaxed italic">"For every $1 spent on CRM implementation, the average return is $8.71. That is an 871% ROI simply by organizing your data."</p>
-          </div>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Picking One</h2>
           <p class="text-gray-300 leading-relaxed">
-            Without a CRM, you are essentially driving blind at 100mph. KenjiAI specializes in building custom CRM architectures that integrate with your ads, your website, and your sales team, ensuring no dollar is ever left on the table.
+            The right CRM is the one your team will actually open. For local businesses that means the phone, texting, calendar and pipeline live in one place, with an app for when you're on a job. The <a href="/crm" class="text-cyan-400 hover:underline">KenjiAI CRM</a> is built that way, and our <a href="/help" class="text-cyan-400 hover:underline">help center</a> covers setup step by step. We also wrote up <a href="/blog/crm-automations-every-local-business-needs" class="text-cyan-400 hover:underline">the five automations every local business should turn on first</a>.
           </p>
+        </section>
+
+        <section class="border-t border-white/10 pt-8">
+          <p class="text-gray-400 text-sm">Want the CRM, follow-up and ads set up for you? See <a href="/pricing" class="text-cyan-400 hover:underline">kenjiai.com/pricing</a>.</p>
         </section>
       </div>
     `
   },
   'get-more-google-reviews-autopilot': {
     slug: 'get-more-google-reviews-autopilot',
-    title: 'How to Get More Google Reviews on Autopilot',
-    excerpt: 'Google reviews are the #1 factor in local search rankings. How to get them automatically.',
+    title: 'How to Get More Google Reviews on Autopilot (Without Breaking Google’s Rules)',
+    excerpt: "Customers now expect recent reviews, a 4.5 star average and replies from the owner. Here is how to ask every customer automatically, what the 2026 data says, and the review tactic that can get all your reviews deleted.",
     category: 'Reputation',
     date: '2026-04-01',
+    dateModified: '2026-10-23',
     author: 'KenjiAI Team',
-    readTime: '5 min read',
-    tags: ['Google Reviews', 'SEO'],
+    readTime: '6 min read',
+    tags: ['Google Reviews', 'Local SEO', 'Reputation'],
+    keywords: ['get more google reviews', 'automate google reviews', 'review request text', 'review gating google policy', 'how many google reviews do I need'],
     image: 'https://images.pexels.com/photos/6863183/pexels-photo-6863183.jpeg?auto=compress&cs=tinysrgb&w=800',
     content: `
-      <div class="blog-article-content space-y-6">
+      <div class="blog-article-content space-y-8">
         <section>
-          <h2 class="text-3xl font-bold text-white mb-4">Winning the Local Search Game with Reviews</h2>
+          <h2 class="text-3xl font-bold text-white mb-4">What Customers Look At in 2026</h2>
           <p class="text-gray-300 leading-relaxed">
-            88% of consumers trust online reviews as much as personal recommendations. In the eyes of Google, reviews are a proxy for <strong>Trust and Authority</strong>. If you aren't actively collecting 5-star reviews, you are invisible.
+            BrightLocal's 2026 Local Consumer Review Survey of 1,002 US adults found that 97% of people read reviews for local businesses, and 41% always read them, up from 29% a year earlier (<a href="https://www.brightlocal.com/research/local-consumer-review-survey/" class="text-cyan-400 hover:underline" target="_blank" rel="noopener">BrightLocal, 2026</a>). The same survey shows the bar going up:
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-gray-300 mt-4">
+            <li>31% will only use a business rated 4.5 stars or higher, up from 17% in 2025.</li>
+            <li>47% won't use a business with fewer than 20 reviews.</li>
+            <li>74% care about reviews from the last three months.</li>
+            <li>80% are more likely to use a business that replies to all of its reviews, and 50% are put off by generic, templated replies.</li>
+          </ul>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            Recent reviews matter as much as total count. A business with 200 reviews and nothing new since last year looks closed.
           </p>
         </section>
 
-        <section class="my-10">
-          <h3 class="text-2xl font-bold text-white mb-4">The "Review Loop" Automation</h3>
-          <p class="text-gray-300 leading-relaxed mb-6">
-            You shouldn't have to ask for reviews manually. We implement a three-step loop:
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">The Automatic Review Request</h2>
+          <ol class="list-decimal list-inside space-y-3 text-gray-300">
+            <li><strong>Trigger:</strong> the job is marked complete or the invoice is paid.</li>
+            <li><strong>Ask:</strong> a short text a few hours later with your direct Google review link. Use their first name and mention the job. Make your link with our free <a href="/tools/google-review-link-generator" class="text-cyan-400 hover:underline">Google review link generator</a>.</li>
+            <li><strong>One reminder:</strong> if they haven't left a review in three days, send one follow-up. Then stop.</li>
+            <li><strong>Reply:</strong> respond to every review, good and bad, in your own words.</li>
+          </ol>
+        </section>
+
+        <section class="bg-gray-900 border-l-4 border-red-500 p-8 rounded-r-3xl my-10">
+          <h3 class="text-red-400 font-bold mb-3 uppercase text-sm">Don't Filter Who Gets Asked</h3>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            A lot of review tools send unhappy customers to a private form and only happy customers to Google. That is called review gating, and Google's policy bans it. Businesses may not "discourage or prohibit negative reviews, or selectively solicit positive reviews from customers" (<a href="https://support.google.com/contributionpolicy/answer/7400114" class="text-cyan-400 hover:underline" target="_blank" rel="noopener">Google contribution policy</a>). Google also bans offering discounts or freebies for reviews. Since October 2024, the FTC's rule on consumer reviews (16 CFR Part 465) also bans incentives tied to positive reviews and suppressing reviews based on sentiment. Ask every customer the same way.
           </p>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="p-6 bg-gray-900 border border-white/5 rounded-2xl text-center">
-              <div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-400">1</div>
-              <h5 class="text-white font-bold mb-2 text-sm">The Trigger</h5>
-              <p class="text-gray-500 text-xs">Customer payment or service completion.</p>
-            </div>
-            <div class="p-6 bg-gray-900 border border-white/5 rounded-2xl text-center">
-              <div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-400">2</div>
-              <h5 class="text-white font-bold mb-2 text-sm">The Ask</h5>
-              <p class="text-gray-500 text-xs">Automated SMS/Email with a direct Google link.</p>
-            </div>
-            <div class="p-6 bg-gray-900 border border-white/5 rounded-2xl text-center">
-              <div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-400">3</div>
-              <h5 class="text-white font-bold mb-2 text-sm">The Filter</h5>
-              <p class="text-gray-500 text-xs">Internal feedback for < 4 stars, public reviews for 5 stars.</p>
-            </div>
-          </div>
         </section>
 
         <section>
-          <h2 class="text-2xl font-bold text-white mb-4">SEO impact of Velocity</h2>
+          <h2 class="text-2xl font-bold text-white mb-4">Handling Unhappy Customers</h2>
           <p class="text-gray-300 leading-relaxed">
-            Google doesn't just look at the total number of reviews; it looks at <strong>Review Velocity</strong> (how often you get them). A steady drip of automated reviews is 10x more powerful than a one-time "review blast."
+            You can still catch problems early without gating. Have someone call or text every customer after the job to check in, separate from the review request. Fix what's wrong. A customer whose problem you solved often leaves a better review than one who never had a problem.
           </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            Setup steps for review request workflows are in the <a href="/help" class="text-cyan-400 hover:underline">KenjiAI help center</a>.
+          </p>
+        </section>
+
+        <section class="border-t border-white/10 pt-8">
+          <p class="text-gray-400 text-sm">See the other automations we turn on for every client in <a href="/blog/crm-automations-every-local-business-needs" class="text-cyan-400 hover:underline">5 CRM automations every local business needs</a>.</p>
         </section>
       </div>
     `,
-    keywords: ['get more reviews']
+    keywords: ['get more google reviews', 'automate google reviews', 'review request text', 'review gating google policy', 'how many google reviews do I need']
   },
   'what-marketing-automation-actually-does': {
     slug: 'what-marketing-automation-actually-does',
     title: 'What Does a Marketing Automation Platform Actually Do?',
-    excerpt: 'Marketing automation sounds complicated but it\'s really not.',
+    excerpt: "Marketing automation is a set of if-this-then-that rules that follow up with people so you don't have to. Here is what it does day to day for a local business, with real examples.",
     category: 'Marketing',
     date: '2026-03-28',
+    dateModified: '2026-10-23',
     author: 'KenjiAI Team',
-    readTime: '8 min read',
-    tags: ['Marketing Automation', 'Email', 'ROI'],
-    keywords: ['what is marketing automation'],
+    readTime: '6 min read',
+    tags: ['Marketing Automation', 'CRM', 'Follow-Up'],
+    keywords: ['what is marketing automation', 'marketing automation examples', 'marketing automation for small business', 'what does marketing automation do'],
     image: 'https://images.pexels.com/photos/7688460/pexels-photo-7688460.jpeg?auto=compress&cs=tinysrgb&w=800',
     content: `
-      <div class="blog-article-content space-y-6">
+      <div class="blog-article-content space-y-8">
         <section>
-          <h2 class="text-3xl font-bold text-white mb-4">Demystifying Marketing Automation</h2>
+          <h2 class="text-3xl font-bold text-white mb-4">The Plain Definition</h2>
           <p class="text-gray-300 leading-relaxed">
-            The term "Marketing Automation" is thrown around as a buzzword, but at its core, it is simply <strong>Systematizing Your Customer Journey</strong>. It is the bridge between a stranger seeing your ad and that same person becoming a repeat buyer.
+            Marketing automation is software that sends the right message when something happens, without a person pressing send. Every automation has three parts: a trigger (a form is filled out, a call is missed, a job is finished), an action (send a text, make a call, add a tag), and sometimes a condition (only if they said yes to a question).
+          </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            That's all it is. The value comes from which triggers you pick and how fast the actions fire.
           </p>
         </section>
 
-        <section class="bg-purple-500/5 border border-purple-500/20 p-8 rounded-3xl my-10">
-          <h3 class="text-2xl font-bold text-purple-400 mb-4">The Three Core Components:</h3>
-          <ul class="space-y-4 text-gray-300">
-            <li><strong>1. Identification:</strong> Tracking what your leads do on your site.</li>
-            <li><strong>2. Segmentation:</strong> Sorting leads into "buckets" based on their interest.</li>
-            <li><strong>3. Action:</strong> Sending the right message at the exact moment they are most likely to convert.</li>
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">What It Does Day to Day</h2>
+          <ul class="list-disc list-inside space-y-3 text-gray-300">
+            <li><strong>New lead:</strong> texts and calls them inside a minute, then books them on your calendar.</li>
+            <li><strong>Missed call:</strong> texts the caller back so they don't call your competitor next.</li>
+            <li><strong>Booked appointment:</strong> sends reminders the day before and the hour before to cut no-shows.</li>
+            <li><strong>Finished job:</strong> asks for a Google review and follows up once.</li>
+            <li><strong>Quiet customer:</strong> checks in after 60 or 90 days with a reason to come back.</li>
+            <li><strong>Lead who said they're not ready:</strong> moves them to a slower nurture track instead of having your team chase them.</li>
           </ul>
         </section>
 
+        <section class="bg-gray-900 border-l-4 border-cyan-500 p-8 rounded-r-3xl my-10">
+          <h3 class="text-cyan-400 font-bold mb-3 uppercase text-sm">Why Speed Is the Whole Point</h3>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            Harvard Business Review found that firms responding to a web lead within an hour were nearly 7 times more likely to qualify it than firms that waited longer, and 23% of the 2,241 companies studied never responded at all (<a href="https://hbr.org/2011/03/the-short-life-of-online-sales-leads" class="text-cyan-400 hover:underline" target="_blank" rel="noopener">HBR</a>). Automation removes the wait.
+          </p>
+        </section>
+
         <section>
-          <h2 class="text-2xl font-bold text-white mb-4">Why Most Small Businesses Fail at Automation</h2>
-          <p class="text-gray-300 leading-relaxed mb-6">
-            The mistake isn't lack of tools; it's <strong>Complexity Paralysis</strong>. They try to build a 50-step sequence on day one. High-growth firms start with the "Big Three": A welcome sequence, an abandoned cart/checkout recovery, and a post-purchase nurture. 
-          </p>
+          <h2 class="text-2xl font-bold text-white mb-4">Where Small Businesses Go Wrong</h2>
           <p class="text-gray-300 leading-relaxed">
-            Let the robots handle the repetition so your humans can handle the relationships.
+            The usual mistake is building too much on day one. A 40-step sequence nobody tested sends the wrong text to the wrong person at 2am. Start with three: new lead follow-up, missed call text back, and appointment reminders. Get those running clean, then add reviews and reactivation.
           </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            The second mistake is automating with no qualifying question. If everyone gets the same calls, your team spends the week on people who were never going to buy. Ask one question on your form and route on the answer.
+          </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            See the <a href="/marketing-automation" class="text-cyan-400 hover:underline">marketing automation</a> we set up for clients, or follow the workflow guides in the <a href="/help" class="text-cyan-400 hover:underline">KenjiAI help center</a> to build your own.
+          </p>
+        </section>
+
+        <section class="border-t border-white/10 pt-8">
+          <p class="text-gray-400 text-sm">Next read: <a href="/blog/crm-automations-every-local-business-needs" class="text-cyan-400 hover:underline">5 CRM automations every local business needs</a>.</p>
         </section>
       </div>
     `
@@ -1113,42 +1139,55 @@ export const articles: Record<string, Article> = {
   'ai-ad-automation-cost': {
     slug: 'ai-ad-automation-cost',
     title: 'How Much Does AI Ad Automation Actually Cost?',
-    excerpt: 'A real breakdown of what AI-driven ad management costs in 2026, from self-serve tools to done-for-you performance-based pricing, and how to tell which model fits your budget.',
+    excerpt: 'A real breakdown of what AI-driven ad management costs in 2026, from self-serve tools to done-for-you performance-based pricing, with current Facebook lead cost benchmarks so you can check the math.',
     category: 'AI Marketing',
     date: '2026-08-19',
+    dateModified: '2026-10-23',
     author: 'KenjiAI Team',
-    readTime: '5 min read',
+    readTime: '6 min read',
     tags: ['AI Marketing', 'Paid Ads', 'Pricing'],
-    keywords: ['AI ad automation cost', 'AI ads pricing', 'automated ad management cost', 'how much does AI marketing cost'],
+    keywords: ['AI ad automation cost', 'AI ads pricing', 'automated ad management cost', 'how much does AI marketing cost', 'facebook ads management cost'],
     image: 'https://images.pexels.com/photos/97080/pexels-photo-97080.jpeg?auto=compress&cs=tinysrgb&w=800',
     content: `
       <div class="blog-article-content space-y-8">
         <section>
-          <h2 class="text-3xl font-bold text-white mb-4">There are three real pricing models, not one</h2>
+          <h2 class="text-3xl font-bold text-white mb-4">There Are Three Pricing Models</h2>
           <p class="text-gray-300 leading-relaxed">
-            Most people asking this question get quoted a single number and assume that is the market. It is not. AI ad automation is sold three genuinely different ways, and the right one depends on how much ad spend you actually run, not how big your business is.
+            Most people asking this get quoted one number and assume that's the market. AI ad automation is sold three different ways, and the right one depends on how much you spend on ads and how much time you have, not how big your business is.
           </p>
+          <ol class="list-decimal list-inside space-y-3 text-gray-300 mt-4">
+            <li><strong>Self-serve software, usually $50 to $500 a month.</strong> The tool automates tasks like bid changes, rules and reports. You still run the account and make the calls.</li>
+            <li><strong>A flat monthly retainer, commonly $1,500 to $5,000 a month.</strong> A person plus AI tools behind them. They get paid whether your account performs or not.</li>
+            <li><strong>Performance-based pricing.</strong> Part or all of the fee is tied to results, such as a percentage of new revenue. The vendor earns more only when you do. We explain how to judge these deals in <a href="/blog/performance-based-marketing-how-it-works" class="text-cyan-400 hover:underline">performance-based marketing, explained</a>.</li>
+          </ol>
         </section>
 
-        <section>
-          <h2 class="text-2xl font-bold text-white mb-4">The three models</h2>
-          <p class="text-gray-300 leading-relaxed mb-4">1. Self-serve software, usually 50 to 500 dollars a month. You run the account, the tool automates specific tasks like bid adjustments or reporting. Cheapest option, but you still need to know what you are doing.</p>
-          <p class="text-gray-300 leading-relaxed mb-4">2. Flat monthly retainer with a human plus AI tooling behind it, commonly 1,500 to 5,000 dollars a month depending on ad spend managed. You are paying for both the software and someone accountable for results.</p>
-          <p class="text-gray-300 leading-relaxed">3. Performance basis, a percentage of ad spend or a flat fee tied to results, often 10 to 15 percent of spend on top of what you already pay the ad platform. This is the model where the vendor only wins if your account performs, which changes the incentive completely compared to a flat retainer that gets paid whether your ads work or not.</p>
-        </section>
-
-        <div class="p-6 bg-gray-900 border-2 border-cyan-500/10 rounded-2xl my-8">
-          <h5 class="text-cyan-400 font-black mb-2 uppercase tracking-widest text-xs">The question that actually matters</h5>
+        <section class="bg-gray-900 border-l-4 border-cyan-500 p-8 rounded-r-3xl my-10">
+          <h3 class="text-cyan-400 font-bold mb-3 uppercase text-sm">Check Your Lead Costs Against the Benchmark</h3>
           <p class="text-gray-300 text-sm leading-relaxed">
-            Before comparing prices, ask what happens to the vendor if your account underperforms. A flat retainer gets paid either way. A performance basis model does not. That single difference matters more than the sticker price. This is the structure behind our own <a href="/overview" class="text-cyan-400 hover:underline">performance-basis offer</a> at KenjiAI.
+            WordStream by LocaliQ puts the average Facebook leads campaign at $27.39 per lead with an 8.54% conversion rate in its latest benchmarks. Industry matters a lot: dentists averaged $61.56 per lead, home and home improvement $42.95, and real estate $13.74 (<a href="https://localiq.com/blog/facebook-advertising-benchmarks/" class="text-cyan-400 hover:underline" target="_blank" rel="noopener">LocaliQ</a>). If whoever runs your ads can't tell you your cost per lead and how it compares, that's the first problem to fix, whatever you pay them.
           </p>
-        </div>
+        </section>
 
         <section>
-          <h2 class="text-2xl font-bold text-white mb-4">A rough rule of thumb</h2>
+          <h2 class="text-2xl font-bold text-white mb-4">The Question That Matters More Than Price</h2>
           <p class="text-gray-300 leading-relaxed">
-            If you are spending under 3,000 dollars a month on ads, self-serve tooling usually makes more sense than paying a percentage. Above that, the time saved and the accountability of a performance-based partner usually outweighs the cost, as long as the guarantee is specific and in writing, not just implied.
+            Before comparing prices, ask what happens to the vendor if your account underperforms. A flat retainer gets paid either way. A performance deal does not. Then ask how they measure results: platform-reported conversions overcount, so the number that counts is paying customers in your CRM.
           </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            Also ask what happens after the lead comes in. Cheap leads that nobody calls back for two days are expensive leads. Ad management without fast follow-up usually looks like an ad problem when it's really a follow-up problem.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">A Rough Rule of Thumb</h2>
+          <p class="text-gray-300 leading-relaxed">
+            If you spend under $3,000 a month on ads and like doing it yourself, self-serve tools usually make more sense. Above that, or if you don't have the hours, a done-for-you partner tends to pay off, as long as the terms are specific and in writing. Use the <a href="/tools/facebook-ads-budget-calculator" class="text-cyan-400 hover:underline">Facebook ads budget calculator</a> to see what your target cost per customer allows.
+          </p>
+        </section>
+
+        <section class="border-t border-white/10 pt-8">
+          <p class="text-gray-400 text-sm">See our done-for-you plans at <a href="/pricing" class="text-cyan-400 hover:underline">kenjiai.com/pricing</a>, or hear how we run accounts on the <a href="/podcast" class="text-cyan-400 hover:underline">KenjiAI Podcast</a>.</p>
         </section>
       </div>
     `
@@ -1821,6 +1860,391 @@ export const articles: Record<string, Article> = {
 
         <section class="border-t border-white/10 pt-8">
           <p class="text-gray-400 text-sm">See a business-grade version of what Muse just proved consumers want at <a href="/call-center-upgrade" class="text-cyan-400 hover:underline">kenjiai.com/call-center-upgrade</a>.</p>
+        </section>
+      </div>
+    `
+  },
+  'can-ai-agents-call-your-leads-fcc-rules': {
+    slug: 'can-ai-agents-call-your-leads-fcc-rules',
+    title: 'Can an AI Agent Legally Call Your Leads? What the FCC Ruling Means for Your Business',
+    excerpt: 'In February 2024 the FCC ruled that AI-generated voices count as "artificial" voices under the TCPA. Here is what that means for AI agents calling your leads, and how to word your lead form so your calls are covered.',
+    category: 'AI Voice',
+    date: '2026-10-23',
+    author: 'KenjiAI Team',
+    readTime: '6 min read',
+    tags: ['AI Voice', 'Compliance', 'Lead Forms'],
+    keywords: ['AI voice agent TCPA', 'are AI calls legal', 'FCC AI voice ruling', 'AI calling leads consent', 'lead form consent language'],
+    image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
+    content: `
+      <div class="blog-article-content space-y-8">
+        <section>
+          <h2 class="text-3xl font-bold text-white mb-4">The Short Answer</h2>
+          <p class="text-gray-300 leading-relaxed">
+            Yes, an AI agent can call your leads, as long as those leads gave you prior express consent to be called that way. On February 8, 2024, the FCC unanimously adopted a Declaratory Ruling that AI-generated voices are "artificial" voices under the Telephone Consumer Protection Act (TCPA). That means the same consent rules that apply to prerecorded calls apply to AI voice calls (<a href="https://www.akingump.com/en/insights/ai-law-and-regulation-tracker/fcc-issues-declaratory-ruling-on-ai-generated-voice-robocalls" class="text-cyan-400 hover:underline" target="_blank" rel="noopener">Akin Gump summary</a>, <a href="https://www.mayerbrown.com/en/insights/publications/2024/02/fcc-declares-authority-and-intent-to-regulate-ai-generated-calls-under-the-tcpa" class="text-cyan-400 hover:underline" target="_blank" rel="noopener">Mayer Brown</a>).
+          </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            The ruling did not ban AI calls. It confirmed that existing TCPA rules cover them. Headlines that said "AI robocalls are now illegal" left out the part about consent.
+          </p>
+        </section>
+
+        <section class="bg-gray-900 border-l-4 border-cyan-500 p-8 rounded-r-3xl my-10">
+          <h3 class="text-cyan-400 font-bold mb-3 uppercase text-sm">Not Legal Advice</h3>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            This is how we set things up for our own business and our clients. TCPA rules, state laws and penalties vary, so have a lawyer review your consent wording, especially if you call in states with their own telemarketing laws.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Where Consent Comes From</h2>
+          <p class="text-gray-300 leading-relaxed">
+            For most local businesses, consent comes from the lead form. When someone fills out your form or Facebook lead ad, the fine print under the submit button is what says they agreed to be contacted. Three things we check on every client's form:
+          </p>
+          <ul class="list-disc list-inside space-y-3 text-gray-300 mt-4">
+            <li><strong>Your business is named.</strong> A common problem we find is consent text copied from a template that still names a different company. That consent covers them, not you.</li>
+            <li><strong>The channels are listed.</strong> Phone calls, text messages and email, including automated or AI technology.</li>
+            <li><strong>Consent is not a condition of purchase,</strong> and texts include STOP and HELP instructions.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Calls That Need More Care</h2>
+          <ul class="list-disc list-inside space-y-3 text-gray-300">
+            <li><strong>Old lists:</strong> people who gave consent years ago, or to a different business, are a risk. Don't load a bought list into an AI dialer.</li>
+            <li><strong>People who opt out:</strong> when someone says stop, the system has to tag them and stop every channel, not only the one they replied on.</li>
+            <li><strong>Inbound calls:</strong> an AI agent answering a call someone made to you is a different situation from calling out. Inbound answering carries far less consent risk.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">How We Run It</h2>
+          <p class="text-gray-300 leading-relaxed">
+            Our <a href="/voice-agents" class="text-cyan-400 hover:underline">AI voice agents</a> call only leads who filled out a form with consent language naming the business. Every opt-out is tagged and honored across calls and texts, and every call is logged with a summary in the CRM. If you want to check your own setup, start with the fine print on your form, then read <a href="/blog/ai-voice-agents-what-they-cost-are-they-worth-it" class="text-cyan-400 hover:underline">what AI voice agents cost</a>.
+          </p>
+        </section>
+
+        <section class="border-t border-white/10 pt-8">
+          <p class="text-gray-400 text-sm">See the done-for-you AI Call Center at <a href="/call-center-upgrade" class="text-cyan-400 hover:underline">kenjiai.com/call-center-upgrade</a>. Setup guides are in the <a href="/help" class="text-cyan-400 hover:underline">help center</a>.</p>
+        </section>
+      </div>
+    `
+  },
+  'facebook-lead-ads-cost-2026': {
+    slug: 'facebook-lead-ads-cost-2026',
+    title: 'What Do Facebook Lead Ads Cost in 2026? Benchmarks by Industry',
+    excerpt: 'The average Facebook leads campaign costs $27.39 per lead, but dentists pay more than four times what real estate agents pay. Current benchmarks, and why the cheapest lead is often the most expensive one.',
+    category: 'Paid Ads',
+    date: '2026-10-23',
+    author: 'KenjiAI Team',
+    readTime: '6 min read',
+    tags: ['Facebook Ads', 'Lead Generation', 'Benchmarks'],
+    keywords: ['facebook lead ads cost', 'facebook cost per lead 2026', 'average cost per lead facebook', 'meta lead ads benchmark', 'cost per lead by industry'],
+    image: 'https://images.pexels.com/photos/905163/pexels-photo-905163.jpeg?auto=compress&cs=tinysrgb&w=800',
+    content: `
+      <div class="blog-article-content space-y-8">
+        <section>
+          <h2 class="text-3xl font-bold text-white mb-4">The Current Benchmarks</h2>
+          <p class="text-gray-300 leading-relaxed">
+            WordStream by LocaliQ's latest Facebook benchmarks put the average leads campaign at <strong>$27.39 per lead</strong>, down slightly from $27.66 the year before, with an average conversion rate of 8.54%, up from 7.72% (<a href="https://localiq.com/blog/facebook-advertising-benchmarks/" class="text-cyan-400 hover:underline" target="_blank" rel="noopener">LocaliQ, updated September 2026</a>).
+          </p>
+          <div class="overflow-x-auto mt-6">
+            <table class="w-full text-left text-gray-300 text-sm">
+              <thead><tr class="border-b border-white/10"><th class="py-2 pr-4 text-white">Industry</th><th class="py-2 pr-4 text-white">Avg. cost per lead</th><th class="py-2 text-white">Avg. conversion rate</th></tr></thead>
+              <tbody>
+                <tr class="border-b border-white/5"><td class="py-2 pr-4">Dentists and dental services</td><td class="py-2 pr-4">$61.56</td><td class="py-2">6.07%</td></tr>
+                <tr class="border-b border-white/5"><td class="py-2 pr-4">Home and home improvement</td><td class="py-2 pr-4">$42.95</td><td class="py-2">5.32%</td></tr>
+                <tr class="border-b border-white/5"><td class="py-2 pr-4">Automotive (for sale)</td><td class="py-2 pr-4">$35.52</td><td class="py-2">4.15%</td></tr>
+                <tr class="border-b border-white/5"><td class="py-2 pr-4">Health and fitness</td><td class="py-2 pr-4">$27.11</td><td class="py-2">7.98%</td></tr>
+                <tr><td class="py-2 pr-4">Real estate</td><td class="py-2 pr-4">$13.74</td><td class="py-2">9.95%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-gray-400 text-sm mt-3">Source: WordStream by LocaliQ Facebook ads benchmarks. Your numbers depend on your offer, area and creative.</p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Cost Per Lead Is the Wrong Finish Line</h2>
+          <p class="text-gray-300 leading-relaxed">
+            A $6 lead that never answers the phone costs more than a $40 lead that books. Lead ads make it easy to submit, because Facebook fills in the name, email and phone for you. That brings volume, and it also brings people who tapped through without reading.
+          </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            We see it in our own account. Our main lead form asks whether the business is ready to take on a marketing partner. Out of 120 leads, 44 (37%) picked the answer that said they weren't. Those leads cost the same to get as the good ones, so the real cost of a qualified lead was higher than the cost per lead in Ads Manager.
+          </p>
+        </section>
+
+        <section class="bg-gray-900 border-l-4 border-cyan-500 p-8 rounded-r-3xl my-10">
+          <h3 class="text-cyan-400 font-bold mb-3 uppercase text-sm">Track This Number Instead</h3>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            Divide your ad spend by the number of leads who actually booked, then by the number who paid. Cost per booked call and cost per customer tell you whether the ads work. Our <a href="/tools/ltv-calculator" class="text-cyan-400 hover:underline">LTV calculator</a> shows how much you can afford to pay for a customer.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Three Ways to Lower the Real Cost</h2>
+          <ol class="list-decimal list-inside space-y-3 text-gray-300">
+            <li><strong>Add one qualifying question,</strong> and route leads who say they aren't a fit away from your sales calendar. We cover the setup in <a href="/blog/stop-paying-for-leads-that-never-buy" class="text-cyan-400 hover:underline">how to stop paying for leads that never buy</a>.</li>
+            <li><strong>Call back in under a minute.</strong> Lead quality drops fast while a lead waits. See <a href="/blog/speed-to-lead-why-leads-go-cold" class="text-cyan-400 hover:underline">why leads go cold</a>.</li>
+            <li><strong>Lower the budget on ad sets with no booked calls.</strong> In our own account, a low-ticket campaign's cost per sale dropped after we cut its daily budget. Meta spends the first dollars of a budget on the people most likely to act.</li>
+          </ol>
+        </section>
+
+        <section class="border-t border-white/10 pt-8">
+          <p class="text-gray-400 text-sm">Want us to run your lead ads and follow-up? See <a href="/pricing" class="text-cyan-400 hover:underline">kenjiai.com/pricing</a>, or plan your spend with the <a href="/tools/facebook-ads-budget-calculator" class="text-cyan-400 hover:underline">Facebook ads budget calculator</a>.</p>
+        </section>
+      </div>
+    `
+  },
+  'stop-paying-for-leads-that-never-buy': {
+    slug: 'stop-paying-for-leads-that-never-buy',
+    title: 'How to Stop Paying for Leads That Will Never Buy',
+    excerpt: '37% of the leads on our own Facebook form told us they were not ready, and our team still called every one of them. Here is the one-question filter and the routing rule that fixed it.',
+    category: 'Lead Management',
+    date: '2026-10-23',
+    author: 'KenjiAI Team',
+    readTime: '5 min read',
+    tags: ['Lead Quality', 'Facebook Lead Ads', 'CRM Automation'],
+    keywords: ['bad leads facebook', 'improve lead quality facebook lead ads', 'qualifying questions lead form', 'filter unqualified leads', 'junk leads'],
+    image: 'https://images.pexels.com/photos/6476589/pexels-photo-6476589.jpeg?auto=compress&cs=tinysrgb&w=800',
+    content: `
+      <div class="blog-article-content space-y-8">
+        <section>
+          <h2 class="text-3xl font-bold text-white mb-4">The Lead Told Us. We Called Anyway.</h2>
+          <p class="text-gray-300 leading-relaxed">
+            We recently looked back at a lead who booked a call with us, no-showed, booked again two months later, and turned out to have no budget. When we pulled his original form answers, he had picked "No, still setting up" on our qualifying question. The form did its job. Nothing after the form used the answer.
+          </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            So we counted. Out of 120 leads on that form, 44 (37%) picked the not-ready answer. Every one of them went into the same AI calls, setter calls and booking reminders as the leads who said yes.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Step 1: Ask One Question That Sorts People</h2>
+          <p class="text-gray-300 leading-relaxed">
+            One good multiple-choice question beats five vague ones, because every extra field cuts how many people finish. The question should split buyers from browsers in a way people answer honestly. Examples:
+          </p>
+          <ul class="list-disc list-inside space-y-2 text-gray-300 mt-4">
+            <li>"Are you in a position to take on a marketing partner?" Yes, we have proven sales / No, still setting up.</li>
+            <li>"How much can you put toward ads each month?" Under $1,000 / $1,000 to $3,000 / Over $3,000.</li>
+            <li>"When do you need this done?" This week / This month / Just researching.</li>
+          </ul>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            Meta also offers a "Higher intent" form type that adds a review screen before people submit. It usually brings fewer leads that are more deliberate. Test it against your current form on cost per booked call, not cost per lead.
+          </p>
+        </section>
+
+        <section class="bg-gray-900 border-l-4 border-cyan-500 p-8 rounded-r-3xl my-10">
+          <h3 class="text-cyan-400 font-bold mb-3 uppercase text-sm">Step 2: Route on the Answer</h3>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            In your CRM workflow, add an if/else step right after the form trigger. If the answer is the not-ready one, tag the lead, send them a lower-priced offer or a nurture sequence, and end the workflow there. No sales calls, no booking texts. Everyone else goes into your normal call-and-book sequence.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Step 3: Don't Throw the Not-Ready Leads Away</h2>
+          <p class="text-gray-300 leading-relaxed">
+            "Not ready" doesn't mean never. Those people raised their hand for a reason. A low-priced starter offer, a training or a monthly check-in keeps them warm until their business is ready, and costs your sales team nothing. Some of them will come back as buyers later.
+          </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            The workflow steps for if/else routing are in the <a href="/help" class="text-cyan-400 hover:underline">KenjiAI help center</a>. For what these leads cost in the first place, see <a href="/blog/facebook-lead-ads-cost-2026" class="text-cyan-400 hover:underline">Facebook lead ads cost benchmarks for 2026</a>. If you're not sure whether your own business is ready for paid ads, the <a href="/growth-quiz" class="text-cyan-400 hover:underline">growth quiz</a> takes two minutes.
+          </p>
+        </section>
+
+        <section class="border-t border-white/10 pt-8">
+          <p class="text-gray-400 text-sm">We set up the forms, routing and follow-up for clients. See <a href="/pricing" class="text-cyan-400 hover:underline">kenjiai.com/pricing</a>.</p>
+        </section>
+      </div>
+    `
+  },
+  'missed-calls-cost-local-business': {
+    slug: 'missed-calls-cost-local-business',
+    title: 'How Many Calls Is Your Business Missing? What 70 Million Calls Show',
+    excerpt: "Invoca's 2026 benchmarks found only 56% of callers reach a person. Here is how to work out what missed calls cost your business, and the three fixes in order of cost.",
+    category: 'AI Voice',
+    date: '2026-10-23',
+    author: 'KenjiAI Team',
+    readTime: '5 min read',
+    tags: ['Missed Calls', 'AI Voice', 'Local Business'],
+    keywords: ['missed calls cost small business', 'missed call statistics 2026', 'missed call text back', 'how many calls do businesses miss', 'after hours call answering'],
+    image: 'https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=800',
+    content: `
+      <div class="blog-article-content space-y-8">
+        <section>
+          <h2 class="text-3xl font-bold text-white mb-4">Almost Half of Callers Don't Reach a Person</h2>
+          <p class="text-gray-300 leading-relaxed">
+            Invoca analyzed more than 70 million calls and 600 million minutes of conversation across 10 industries for its 2026 Lead Conversion Benchmarks. Only 56% of callers spoke with a person. For calls longer than 30 seconds, the answer rate was 71% (<a href="https://www.invoca.com/reports/the-invoca-lead-conversion-benchmarks-report-2026" class="text-cyan-400 hover:underline" target="_blank" rel="noopener">Invoca, July 2026</a>).
+          </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            The same report found that 42% of phone leads convert on the call. Phone leads are some of the best leads you get, and nearly half of them hit voicemail.
+          </p>
+        </section>
+
+        <section class="bg-gray-900 border-l-4 border-cyan-500 p-8 rounded-r-3xl my-10">
+          <h3 class="text-cyan-400 font-bold mb-3 uppercase text-sm">Be Careful With Missed-Call Stats Online</h3>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            You'll see claims like "62% of calls go unanswered" and "85% of callers who reach voicemail never call back." The 62% figure traces to a 2016 study of 85 businesses, and most callback numbers come from vendors selling answering services. Invoca's data is the largest sample we've found, so it's the one we use.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Work Out Your Own Number</h2>
+          <p class="text-gray-300 leading-relaxed">
+            Pull last month's call log and count calls that weren't answered and weren't returned within an hour. Then multiply:
+          </p>
+          <p class="text-gray-300 leading-relaxed mt-4 font-mono text-sm bg-gray-900 p-4 rounded-xl">
+            missed calls × share that would have booked × average job value
+          </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            40 missed calls × 25% × $500 is $5,000 a month walking to whoever answered first. The <a href="/tools/missed-call-calculator" class="text-cyan-400 hover:underline">missed call calculator</a> does this for you.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Three Fixes, Cheapest First</h2>
+          <ol class="list-decimal list-inside space-y-3 text-gray-300">
+            <li><strong>Missed-call text back.</strong> Every missed call gets a text within seconds: "Sorry we missed you, what can we help with?" It costs almost nothing and saves a lot of callers who would otherwise dial the next business.</li>
+            <li><strong>Call routing.</strong> Ring two phones at once during business hours so the call doesn't depend on one person being free.</li>
+            <li><strong>An AI voice agent.</strong> Answers every call, day or night, answers common questions and books the job. See <a href="/blog/ai-voice-agents-what-they-cost-are-they-worth-it" class="text-cyan-400 hover:underline">what AI voice agents cost</a>.</li>
+          </ol>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            Setup guides for missed-call text back and call routing are in the <a href="/help" class="text-cyan-400 hover:underline">KenjiAI help center</a>.
+          </p>
+        </section>
+
+        <section class="border-t border-white/10 pt-8">
+          <p class="text-gray-400 text-sm">See the done-for-you AI Call Center at <a href="/call-center-upgrade" class="text-cyan-400 hover:underline">kenjiai.com/call-center-upgrade</a>.</p>
+        </section>
+      </div>
+    `
+  },
+  'crm-automations-every-local-business-needs': {
+    slug: 'crm-automations-every-local-business-needs',
+    title: '5 CRM Automations Every Local Business Should Turn On First',
+    excerpt: 'Before you build anything fancy, turn on these five: instant lead follow-up, missed-call text back, appointment reminders, review requests and past-customer check-ins. What each one does and how to set it up.',
+    category: 'CRM',
+    date: '2026-10-23',
+    author: 'KenjiAI Team',
+    readTime: '6 min read',
+    tags: ['CRM', 'Marketing Automation', 'Local Business'],
+    keywords: ['CRM automations', 'CRM workflows for small business', 'best CRM automations', 'local business automation', 'appointment reminder automation'],
+    image: 'https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=800',
+    content: `
+      <div class="blog-article-content space-y-8">
+        <section>
+          <p class="text-gray-300 leading-relaxed">
+            These are the five workflows we turn on for every client before we run a single ad. Each one fixes a specific place where local businesses lose money. Step-by-step setup for each is in the <a href="/help" class="text-cyan-400 hover:underline">KenjiAI help center</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">1. Instant Lead Follow-Up</h2>
+          <p class="text-gray-300 leading-relaxed">
+            <strong>Trigger:</strong> a form, lead ad or chat comes in. <strong>Action:</strong> a text within a minute, then a call, then an email with a booking link. Harvard Business Review found firms that responded within an hour were nearly 7 times more likely to qualify a lead than firms that waited longer (<a href="https://hbr.org/2011/03/the-short-life-of-online-sales-leads" class="text-cyan-400 hover:underline" target="_blank" rel="noopener">HBR</a>). Add one if/else on your qualifying question so not-ready leads get a nurture track instead of sales calls.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">2. Missed-Call Text Back</h2>
+          <p class="text-gray-300 leading-relaxed">
+            <strong>Trigger:</strong> a call goes unanswered. <strong>Action:</strong> a text in seconds asking how you can help. Invoca's 2026 benchmarks found only 56% of callers reach a person (<a href="https://www.invoca.com/reports/the-invoca-lead-conversion-benchmarks-report-2026" class="text-cyan-400 hover:underline" target="_blank" rel="noopener">Invoca</a>), so this one catches the most money for the least effort. More in <a href="/blog/missed-calls-cost-local-business" class="text-cyan-400 hover:underline">what missed calls cost</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">3. Appointment Reminders</h2>
+          <p class="text-gray-300 leading-relaxed">
+            <strong>Trigger:</strong> an appointment is booked. <strong>Action:</strong> a confirmation right away, a reminder the day before that asks them to reply YES, and a text 15 minutes before with the address or meeting link. If they don't confirm, someone calls. No-shows waste a slot you could have sold.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">4. Review Requests</h2>
+          <p class="text-gray-300 leading-relaxed">
+            <strong>Trigger:</strong> the job is complete or the invoice is paid. <strong>Action:</strong> a text with your Google review link and one reminder. BrightLocal's 2026 survey found 74% of consumers care about reviews from the last three months, so a steady flow beats a one-time push (<a href="https://www.brightlocal.com/research/local-consumer-review-survey/" class="text-cyan-400 hover:underline" target="_blank" rel="noopener">BrightLocal</a>). Ask every customer, not only the happy ones. Google bans filtering who gets asked. Details in <a href="/blog/get-more-google-reviews-autopilot" class="text-cyan-400 hover:underline">how to get more Google reviews on autopilot</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">5. Past-Customer Check-Ins</h2>
+          <p class="text-gray-300 leading-relaxed">
+            <strong>Trigger:</strong> 60, 90 or 180 days since the last job, depending on your business. <strong>Action:</strong> a short, personal text with a real reason to come back, like seasonal service, a maintenance reminder or a referral ask. Past customers already trust you, so they cost far less to win back than a new lead from an ad.
+          </p>
+        </section>
+
+        <section class="bg-gray-900 border-l-4 border-cyan-500 p-8 rounded-r-3xl my-10">
+          <h3 class="text-cyan-400 font-bold mb-3 uppercase text-sm">Test Before You Trust It</h3>
+          <p class="text-gray-300 text-sm leading-relaxed">
+            Run every workflow on your own phone number first. Check the timing, the wording and what happens when you reply. A broken automation that texts customers at 2am does more damage than no automation.
+          </p>
+        </section>
+
+        <section class="border-t border-white/10 pt-8">
+          <p class="text-gray-400 text-sm">Want these built and tested for you? See the <a href="/crm" class="text-cyan-400 hover:underline">KenjiAI CRM</a> and <a href="/pricing" class="text-cyan-400 hover:underline">done-for-you plans</a>.</p>
+        </section>
+      </div>
+    `
+  },
+  'performance-based-marketing-how-it-works': {
+    slug: 'performance-based-marketing-how-it-works',
+    title: 'Performance-Based Marketing: How Pay-for-Results Pricing Works and What to Ask Before You Sign',
+    excerpt: 'Performance-based marketing ties what you pay to results instead of hours. How the common pricing models work, where they go wrong, and the questions to ask any agency before you sign.',
+    category: 'AI Marketing',
+    date: '2026-10-23',
+    author: 'Yousif Alias',
+    readTime: '6 min read',
+    tags: ['Performance Marketing', 'Pricing', 'Agencies'],
+    keywords: ['performance based marketing', 'pay for performance marketing agency', 'performance based advertising pricing', 'pay per result marketing', 'performance marketing agency fees'],
+    image: 'https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=800',
+    content: `
+      <div class="blog-article-content space-y-8">
+        <section>
+          <h2 class="text-3xl font-bold text-white mb-4">What It Means</h2>
+          <p class="text-gray-300 leading-relaxed">
+            In performance-based marketing, some or all of what you pay depends on results. The idea is simple: if the agency only does well when you do, you both want the same thing. A flat retainer gets paid whether your phone rings or not.
+          </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            I've run ads for over 12 years. Across our clients we've generated more than $3.35M in revenue, worked with over 500 businesses, and had a single funnel bring in $186K. Most of the arguments I've seen between business owners and agencies started with a pricing model that rewarded the agency for something other than sales.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">The Common Models</h2>
+          <ul class="list-disc list-inside space-y-3 text-gray-300">
+            <li><strong>Pay per lead:</strong> you pay a set price for each lead. Simple, but it rewards volume, and junk leads cost the same as good ones.</li>
+            <li><strong>Pay per appointment:</strong> you pay for booked calls. Better, but watch for no-shows and unqualified bookings.</li>
+            <li><strong>Revenue share:</strong> a percentage of new revenue the marketing brings in, often with a smaller monthly base. This one ties most closely to what you care about.</li>
+            <li><strong>Hybrid:</strong> a monthly fee for the setup and tools, plus a percentage only on new revenue. This is how we price at KenjiAI, because the base covers real work and the percentage keeps us focused on sales.</li>
+          </ul>
+        </section>
+
+        <section class="bg-gray-900 border-l-4 border-cyan-500 p-8 rounded-r-3xl my-10">
+          <h3 class="text-cyan-400 font-bold mb-3 uppercase text-sm">Five Questions to Ask Before You Sign</h3>
+          <ol class="list-decimal list-inside space-y-2 text-gray-300 text-sm">
+            <li>What exactly counts as a result, and who decides?</li>
+            <li>How is it tracked? Your CRM and payments, or the ad platform's numbers?</li>
+            <li>Do I own the ad account, the pixel and the leads if we stop working together?</li>
+            <li>What happens to my ad spend if results don't show up in the first 30 to 60 days?</li>
+            <li>Who follows up with the leads, and how fast?</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Where These Deals Go Wrong</h2>
+          <p class="text-gray-300 leading-relaxed">
+            Most performance deals fail on tracking. If nobody agreed on how a sale gets attributed, you'll argue about every invoice. Put it in writing: the lead source tag in the CRM, the date range, and which sales count as new.
+          </p>
+          <p class="text-gray-300 leading-relaxed mt-4">
+            The other failure is follow-up. An agency can deliver great leads and still look bad if nobody calls them back. That's why we set up the CRM follow-up and <a href="/voice-agents" class="text-cyan-400 hover:underline">AI agents</a> before we launch ads. See <a href="/blog/crm-automations-every-local-business-needs" class="text-cyan-400 hover:underline">the five automations we turn on first</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold text-white mb-4">Is It Right for You?</h2>
+          <p class="text-gray-300 leading-relaxed">
+            Performance pricing works best when you already have an offer that sells and a way to track sales. If you're still setting up, start with the basics first. The <a href="/growth-quiz" class="text-cyan-400 hover:underline">growth quiz</a> tells you which side of that line you're on in about two minutes. You can also hear how we work with clients on the <a href="/podcast" class="text-cyan-400 hover:underline">KenjiAI Podcast</a>.
+          </p>
+        </section>
+
+        <section class="border-t border-white/10 pt-8">
+          <p class="text-gray-400 text-sm">See how our performance-based plans work at <a href="/pricing" class="text-cyan-400 hover:underline">kenjiai.com/pricing</a>.</p>
         </section>
       </div>
     `
