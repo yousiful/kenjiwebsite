@@ -19,12 +19,12 @@ const PRICING_SCHEMA = [
       {
         '@type': 'Offer',
         name: 'Monthly',
-        price: '297',
+        price: '375',
         priceCurrency: 'USD',
         url: 'https://kenjiai.com/pricing',
         availability: 'https://schema.org/InStock',
         description: '10% performance fee on new revenue generated. Cancel anytime.',
-        priceSpecification: { '@type': 'UnitPriceSpecification', price: '297', priceCurrency: 'USD', unitCode: 'MON', unitText: 'month' },
+        priceSpecification: { '@type': 'UnitPriceSpecification', price: '375', priceCurrency: 'USD', unitCode: 'MON', unitText: 'month' },
       },
       {
         '@type': 'Offer',
@@ -43,10 +43,10 @@ const PRICING_SCHEMA = [
 const ProductSelectionPage: React.FC = () => {
   return (
     <>
-      <PageSchema path="/pricing" name="KenjiAI Pricing" description="KenjiAI pricing: done-for-you paid ads setup, funnel, and workflows. Monthly $297, annual $249.90/mo, lifetime custom. Performance-based fees, cancel anytime." extra={PRICING_SCHEMA} />
+      <PageSchema path="/pricing" name="KenjiAI Pricing" description="KenjiAI pricing: done-for-you paid ads setup, funnel, and workflows. Monthly $375, annual $249.90/mo, lifetime custom. Performance-based fees, cancel anytime." extra={PRICING_SCHEMA} />
       <Helmet>
         <title>KenjiAI Pricing | Done-For-You Ads Setup, Funnels and Workflows</title>
-        <meta name="description" content="KenjiAI pricing: done-for-you paid ads setup, funnel, and workflows. Monthly $297, annual $249.90/mo, lifetime custom. Performance-based fees, cancel anytime." />
+        <meta name="description" content="KenjiAI pricing: done-for-you paid ads setup, funnel, and workflows. Monthly $375, annual $249.90/mo, lifetime custom. Performance-based fees, cancel anytime." />
         <link rel="canonical" href="https://kenjiai.com/pricing" />
       </Helmet>
 

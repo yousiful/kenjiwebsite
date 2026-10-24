@@ -84,7 +84,7 @@ export function PricingNew() {
           <h3 className="text-xl font-bold text-white mb-1">Annual</h3>
           <p className="text-gray-400 text-sm mb-5">Lowest monthly cost.</p>
           <div className="text-3xl font-black text-[#10A37F] tabular-nums mb-1">$249.90<span className="text-lg font-semibold">/mo</span></div>
-          <p className="text-gray-400 text-xs mb-6">Billed $2,998.80/yr · 5% fee only on new revenue we generate</p>
+          <p className="text-gray-400 text-xs mb-6">Billed $2,998.80/yr, saves $1,501 vs monthly · 5% fee only on new revenue we generate</p>
           {planButton('yearly', 'Get Started')}
           <div className="mt-6 flex-1"><FeatureList items={YEARLY_FEATURES} checkClass="text-[#10A37F]" /></div>
         </div>
@@ -93,7 +93,7 @@ export function PricingNew() {
         <div className="bg-gray-900/60 border border-gray-800 rounded-2xl p-6 sm:p-7 flex flex-col">
           <h3 className="text-xl font-bold text-white mb-1">Monthly</h3>
           <p className="text-gray-400 text-sm mb-5">Cancel anytime.</p>
-          <div className="text-3xl font-black text-white tabular-nums mb-1">$297<span className="text-lg font-semibold">/mo</span></div>
+          <div className="text-3xl font-black text-white tabular-nums mb-1">$375<span className="text-lg font-semibold">/mo</span></div>
           <p className="text-gray-400 text-xs mb-6">10% fee only on new revenue we generate</p>
           {planButton('monthly', 'Get Started')}
           <div className="mt-6 flex-1"><FeatureList items={MONTHLY_FEATURES} checkClass="text-gray-400" /></div>
