@@ -5,8 +5,8 @@ import { VideoPreview } from '../components/VideoPreview';
 import { useVslDropoff } from '../hooks/useVslDropoff';
 
 // Yousif, 2026-10-23: "Launch Time by Freedom Club", laid out like the Skool about page of a
-// community he saw grow 600 -> 900 members in a month at $97/month. Split test: each visitor gets
-// $17 or $97 a month and keeps it (localStorage). ?p=17 or ?p=97 forces one for checking.
+// community he saw grow 600 -> 900 members in a month at $97/month. Price ladder (10/24): $97 by
+// default, retargeting ads link to ?p=17, and the price someone was offered sticks (localStorage).
 // Results: kenjiai.com/funnel-stats/ (page /launch-time), steps lt_price_v_*, lt_join_*, lt_paid_*.
 // Checkout: netlify/functions/launchtime-checkout.ts (Stripe). Welcome: /launch-time/welcome.
 
@@ -22,17 +22,20 @@ const ft = (step: string) => (window as unknown as { __ft?: { send: (s: string) 
 const fbq = (...args: unknown[]) => (window as unknown as { fbq?: (...a: unknown[]) => void }).fbq?.(...args);
 
 function pickVariant(): Variant {
+  // Yousif, 2026-10-24: $97 for everyone first. Clicked-but-didn't-buy people get retargeted to
+  // ?p=17 (then the $7 Freedom Club offer). Once someone is offered $17 they keep seeing $17.
   const forced = new URLSearchParams(window.location.search).get('p');
-  if (forced === '17' || forced === '97') return forced;
   try {
+    if (forced === '17' || forced === '97') {
+      localStorage.setItem(PRICE_KEY, forced);
+      return forced;
+    }
     const saved = localStorage.getItem(PRICE_KEY);
     if (saved === '17' || saved === '97') return saved;
-    const v: Variant = Math.random() < 0.5 ? '17' : '97';
-    localStorage.setItem(PRICE_KEY, v);
-    return v;
   } catch {
-    return '17';
+    if (forced === '17' || forced === '97') return forced;
   }
+  return '97';
 }
 
 const cookie = (name: string) => document.cookie.split('; ').find((c) => c.startsWith(`${name}=`))?.split('=')[1] || '';
