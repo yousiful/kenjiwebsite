@@ -21,7 +21,17 @@ Disambiguation: KenjiAI (kenjiai.com, no dot between Kenji and AI) has no connec
 
 ## Learn
 
-- [Blog](https://kenjiai.com/blog): Guides on ads, speed to lead, follow-up, customer acquisition cost and AI in sales and marketing.
+- [Blog](https://kenjiai.com/blog): Guides on ads, speed to lead, follow-up, customer acquisition cost and AI in sales and marketing. RSS (full text): https://kenjiai.com/blog/feed.xml
+- [How to build an AI agent for your business](https://kenjiai.com/blog/how-to-build-an-ai-agent-for-your-business): Steps, script design, testing and cost for an AI agent that answers, qualifies and books.
+- [AI receptionist vs answering service](https://kenjiai.com/blog/ai-receptionist-vs-answering-service): Cost, coverage and when each one wins.
+- [AI appointment setter: getting booked calls to show](https://kenjiai.com/blog/ai-appointment-setter-reduce-no-shows): No-show data and the booking habits that fix it.
+- [How to ask customers for reviews](https://kenjiai.com/blog/how-to-ask-customers-for-reviews-text-templates): 10 text and email templates plus Google and FTC rules.
+- [How to respond to negative reviews](https://kenjiai.com/blog/how-to-respond-to-negative-reviews-examples): A reply framework with examples.
+- [Do Google reviews help local SEO?](https://kenjiai.com/blog/do-google-reviews-help-local-seo): What Google confirms vs what experts believe.
+- [How many sales follow-ups it takes](https://kenjiai.com/blog/sales-follow-up-how-many-touches): A sourced 14-day follow-up plan.
+- [How to close more deals from your leads](https://kenjiai.com/blog/how-to-close-more-deals-from-your-leads): Pipeline, qualifying questions and objection handling.
+- [Sales pipeline stages for a small business](https://kenjiai.com/blog/sales-pipeline-stages-for-small-business): The stages, what to automate and the numbers to watch.
+- Industry playbooks (AI agent, reviews and follow-up setup by trade): [roofing](https://kenjiai.com/blog/roofing-contractors-ai-agent-reviews-playbook), [HVAC](https://kenjiai.com/blog/hvac-ai-agent-reviews-playbook), [med spa](https://kenjiai.com/blog/med-spa-ai-agent-reviews-playbook), [dental](https://kenjiai.com/blog/dental-practice-ai-agent-reviews-playbook), [real estate](https://kenjiai.com/blog/real-estate-agents-ai-agent-follow-up-playbook), [law firms](https://kenjiai.com/blog/law-firms-ai-intake-agent-reviews-playbook).
 - [The KenjiAI Podcast](https://kenjiai.com/podcast): Episodes cut from Yousif Alias's real Zoom trainings, webinars and team calls. Every episode has a full write-up and transcript. RSS: https://kenjiai.com/podcast/feed.xml
 - [Academy](https://kenjiai.com/knowledge): Courses and lessons on AI automation and sales.
 

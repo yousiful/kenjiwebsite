@@ -107,16 +107,21 @@ for (const a of posts) {
       {
         '@type': a.isCourse ? 'Article' : 'BlogPosting', '@id': `${url}#article`, headline: a.title, description: a.excerpt,
         image: a.image, datePublished: a.date, dateModified: a.dateModified || a.date,
-        author: { '@type': 'Organization', name: a.author, url: `${SITE}/` }, publisher: { '@id': ORG_ID },
+        author: a.author === 'Yousif Alias' ? { '@type': 'Person', name: a.author, url: `${SITE}/`, worksFor: { '@id': ORG_ID } } : { '@type': 'Organization', name: a.author, url: `${SITE}/` }, publisher: { '@id': ORG_ID },
         articleSection: a.category, keywords: (a.keywords || []).join(', '), inLanguage: 'en-US',
         mainEntityOfPage: { '@id': `${url}#webpage` }, isPartOf: { '@id': WEBSITE_ID },
       },
+      ...(a.faq?.length ? [{
+        '@type': 'FAQPage', '@id': `${url}#faq`,
+        mainEntity: a.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+      }] : []),
     ],
     body: `<nav class="flex items-center gap-2 text-xs text-gray-500 mb-8 uppercase tracking-widest font-bold"><a href="/">Home</a><span>/</span><a href="${section[1].replace(SITE, '')}">${section[0]}</a></nav>
 <h1 class="text-3xl md:text-5xl font-bold text-white mb-6">${esc(a.title)}</h1>
 <p class="text-gray-400 mb-6">${esc(a.author)} · ${esc(a.readTime)}</p>
 <img src="${esc(a.image)}" alt="${esc(a.title)}" class="w-full rounded-2xl mb-10" />
-<article class="prose prose-lg prose-invert max-w-none mb-16 blog-content-styles">${a.content || ''}</article>`,
+<article class="prose prose-lg prose-invert max-w-none mb-16 blog-content-styles">${a.content || ''}</article>${a.faq?.length ? `
+<section class="mb-16"><h2 class="text-2xl font-bold text-white mb-6">Frequently asked questions</h2>${a.faq.map((f) => `<div class="mb-4"><h3 class="text-lg font-bold text-white mb-2">${esc(f.q)}</h3><p class="text-gray-300 leading-relaxed">${esc(f.a)}</p></div>`).join('')}</section>` : ''}`,
   }));
 }
 
@@ -129,5 +134,39 @@ if (missing.length) {
   sm = sm.replace('</urlset>', `${entries}</urlset>`);
   fs.writeFileSync(smPath, sm);
 }
+
+// RSS 2.0 feed with full article HTML, for feed readers, news aggregators and journalists.
+// Served at /blog/feed.xml and /feed.xml (same file).
+const cdata = (t) => `<![CDATA[${String(t).replace(/]]>/g, ']]]]><![CDATA[>')}]]>`;
+const rfc822 = (d) => new Date(`${d}T12:00:00Z`).toUTCString();
+const feedPosts = blogList.filter((a) => !a.podcast).slice(0, 50);
+const feedXml = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<channel>
+  <title>KenjiAI Blog</title>
+  <link>${SITE}/blog</link>
+  <atom:link href="${SITE}/blog/feed.xml" rel="self" type="application/rss+xml" />
+  <description>${esc(BLOG_DESC)}</description>
+  <language>en-us</language>
+  <copyright>Media Traffics | KenjiAI. Quotes welcome with a link to the source article.</copyright>
+  <managingEditor>support@mediatraffics.com (Yousif Alias)</managingEditor>
+  <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+  <image><url>${SITE}/og-image.png</url><title>KenjiAI Blog</title><link>${SITE}/blog</link></image>
+${feedPosts.map((a) => `  <item>
+    <title>${esc(a.title)}</title>
+    <link>${SITE}/blog/${a.slug}</link>
+    <guid isPermaLink="true">${SITE}/blog/${a.slug}</guid>
+    <pubDate>${rfc822(a.date)}</pubDate>
+    <dc:creator>${esc(a.author)}</dc:creator>
+    <category>${esc(a.category)}</category>
+    <description>${esc(a.excerpt)}</description>
+    <enclosure url="${esc(a.image)}" type="image/jpeg" length="0" />
+    <content:encoded>${cdata(`<img src="${a.image}" alt="" />${a.content || ''}${a.faq?.length ? `<h2>Frequently asked questions</h2>${a.faq.map((f) => `<h3>${esc(f.q)}</h3><p>${esc(f.a)}</p>`).join('')}` : ''}<p>Originally published at <a href="${SITE}/blog/${a.slug}">${SITE}/blog/${a.slug}</a>.</p>`)}</content:encoded>
+  </item>`).join('\n')}
+</channel>
+</rss>
+`;
+write('blog/feed.xml', feedXml);
+write('feed.xml', feedXml);
 
 console.log(`blog_static: wrote blog.html + ${posts.length} article pages; sitemap gaps filled: ${missing.map((a) => a.slug).join(', ') || 'none'}`);

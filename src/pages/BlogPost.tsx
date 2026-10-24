@@ -55,7 +55,9 @@ const BlogPost: React.FC = () => {
             image: article.image,
             datePublished: article.date,
             dateModified: article.dateModified || article.date,
-            author: { '@type': 'Organization', name: article.author, url: 'https://kenjiai.com/' },
+            author: article.author === 'Yousif Alias'
+              ? { '@type': 'Person', name: 'Yousif Alias', url: 'https://kenjiai.com/', worksFor: { '@id': ORG_ID } }
+              : { '@type': 'Organization', name: article.author, url: 'https://kenjiai.com/' },
             publisher: { '@id': ORG_ID },
             articleSection: article.category,
             keywords: article.keywords.join(', '),
@@ -63,6 +65,13 @@ const BlogPost: React.FC = () => {
             mainEntityOfPage: { '@id': `https://kenjiai.com/blog/${article.slug}#webpage` },
             isPartOf: { '@id': WEBSITE_ID },
           },
+          ...(article.faq?.length
+            ? [{
+                '@type': 'FAQPage',
+                '@id': `https://kenjiai.com/blog/${article.slug}#faq`,
+                mainEntity: article.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+              }]
+            : []),
           ...(article.podcast
             ? [podcastEpisode({
                 slug: article.slug,
@@ -248,6 +257,20 @@ const BlogPost: React.FC = () => {
             className="prose prose-lg prose-invert max-w-none mb-16 blog-content-styles"
             dangerouslySetInnerHTML={{ __html: article.content }}
           />
+
+          {article.faq?.length ? (
+            <section className="mb-16" aria-labelledby="article-faq">
+              <h2 id="article-faq" className="text-2xl font-bold text-white mb-6">Frequently asked questions</h2>
+              <div className="space-y-4">
+                {article.faq.map((f) => (
+                  <div key={f.q} className="rounded-2xl border border-gray-800 bg-gray-900/60 p-6">
+                    <h3 className="text-lg font-bold text-white mb-2">{f.q}</h3>
+                    <p className="text-gray-300 leading-relaxed">{f.a}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          ) : null}
 
           {article.podcast?.transcript?.length ? (
             <details className="mb-16 rounded-2xl border border-gray-800 bg-gray-900/60 group">
