@@ -30,3 +30,6 @@ dist-ssr
 # Stray data exports / scratch files (never belong in this repo)
 pmf_*.json
 *_screenshot.png
+scripts/help_import/.help_cache/
+scripts/help_import/.help_img_cache/
+scripts/help_import/__pycache__/

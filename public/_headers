@@ -59,3 +59,13 @@
 /podcast/feed.xml
   Content-Type: application/rss+xml; charset=utf-8
   Access-Control-Allow-Origin: *
+
+# Help center pages copy the platform docs; keep them out of search results for now.
+/help
+  X-Robots-Tag: noindex, follow
+
+/help/*
+  X-Robots-Tag: noindex, follow
+
+/help-data/*
+  X-Robots-Tag: noindex

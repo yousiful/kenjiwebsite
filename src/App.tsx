@@ -68,6 +68,9 @@ const AgentSetupPage = lazyRoute(() => import('./pages/AgentSetupPage'));
 const FundingPage = lazyRoute(() => import('./pages/FundingPage'));
 const PricingV2Page = lazyRoute(() => import('./pages/PricingV2Page'));
 const HelpfulLinksPage = lazyRoute(() => import('./pages/HelpfulLinksPage'));
+const HelpHomePage = lazyRoute(() => import('./pages/help/HelpHomePage'));
+const HelpCategoryPage = lazyRoute(() => import('./pages/help/HelpCategoryPage'));
+const HelpArticlePage = lazyRoute(() => import('./pages/help/HelpArticlePage'));
 const GitHubToolsPage = lazyRoute(() => import('./pages/GitHubToolsPage'));
 const PodcastPage = lazyRoute(() => import('./pages/PodcastPage'));
 const PartnerUpPage = lazyRoute(() => import('./pages/PartnerUpPage'));
@@ -348,6 +351,9 @@ function App() {
                       <Route path="/marketing-automation" element={<MarketingAutomationPage />} />
                       <Route path="/crm" element={<CRMPage />} />
                       <Route path="/knowledge" element={<KnowledgeBasePage />} />
+                      <Route path="/help" element={<HelpHomePage />} />
+                      <Route path="/help/article/:slug" element={<HelpArticlePage />} />
+                      <Route path="/help/:category" element={<HelpCategoryPage />} />
                       <Route path="/ai-education" element={<AIEducationPage />} />
                       <Route path="/blog" element={<BlogPage />} />
                       <Route path="/podcast" element={<PodcastPage />} />

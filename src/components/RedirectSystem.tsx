@@ -14,7 +14,6 @@ const RedirectSystem: React.FC = () => {
     '/customer': '/crm',
     '/about': '/',
     '/contact': '/',
-    '/help': 'https://support.kenjiai.com/',
     '/support': 'https://support.kenjiai.com/',
     '/login': 'https://app.kenjiai.com',
     '/signup': '/pricing',
