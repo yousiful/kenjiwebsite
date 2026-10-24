@@ -172,6 +172,7 @@ export default function WebinarVSLPage() {
               tabIndex={-1}
               onContextMenu={(e) => e.preventDefault()}
               title="KenjiAI Overview"
+              poster="/overview/overview-thumb.jpg"
             />
 
             {/* Custom controls: mute + fullscreen only, no seek/scrub bar.
@@ -194,30 +195,25 @@ export default function WebinarVSLPage() {
               </button>
             </div>
 
-            {/* Zoom-style waiting room. A real click lets sound play immediately. */}
+            {/* Yousif, 2026-10-24: real thumbnail (face, one promise, the length) instead of the dark
+                "waiting room", which lost 140 of 151 visitors between 10s and 30s. A click starts it with sound. */}
             {!videoJoined && (
-              <div className="absolute inset-0 z-40 flex flex-col items-center justify-center gap-3 text-center px-6 bg-gradient-to-b from-[#0b1220] via-[#111827] to-[#0b1220]">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center text-2xl shadow-[0_0_0_4px_rgba(37,99,235,0.25)]">
-                  🎥
-                </div>
-                <div className="flex items-center gap-2 text-blue-300 text-[11px] font-extrabold uppercase tracking-widest">
-                  Waiting Room
-                  <span className="flex gap-0.5">
-                    <span className="w-1 h-1 rounded-full bg-blue-300 animate-pulse" />
-                    <span className="w-1 h-1 rounded-full bg-blue-300 animate-pulse [animation-delay:0.2s]" />
-                    <span className="w-1 h-1 rounded-full bg-blue-300 animate-pulse [animation-delay:0.4s]" />
-                  </span>
-                </div>
-                <h2 className="text-white font-black text-lg sm:text-xl max-w-xs">You're invited to join this training</h2>
-                <p className="text-gray-400 text-sm max-w-xs">Click below to enter. Sound turns on automatically.</p>
-                <button
-                  onClick={handleJoin}
-                  className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-emerald-950 font-black text-sm px-7 py-3.5 rounded-xl shadow-[0_10px_30px_rgba(16,185,129,0.35)] transition-transform active:scale-95"
-                >
-                  ▶ Join Webinar
-                </button>
-                <p className="text-gray-600 text-[11px]">This session is limited to registered attendees</p>
-              </div>
+              <button
+                type="button"
+                onClick={handleJoin}
+                aria-label="Play the 8-minute training"
+                className="group absolute inset-0 z-40 block w-full h-full focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-white/70"
+              >
+                <picture>
+                  <source srcSet="/overview/overview-thumb.webp" type="image/webp" />
+                  <img src="/overview/overview-thumb.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+                </picture>
+                <span className="absolute left-[60%] top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-[13%] min-w-[52px] max-w-[120px] aspect-square rounded-full bg-white/95 ring-[6px] sm:ring-[10px] ring-white/25 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.6)] transition-transform duration-200 ease-out group-hover:scale-105">
+                  <svg viewBox="0 0 24 24" className="w-[42%] h-[42%] ml-[8%] fill-gray-900" aria-hidden="true">
+                    <path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5Z" />
+                  </svg>
+                </span>
+              </button>
             )}
 
             {/* Watch Again once the video finishes. */}
