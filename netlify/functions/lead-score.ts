@@ -1,5 +1,6 @@
 import type { Handler, HandlerEvent } from '@netlify/functions';
-import { cleanAnswers, isQualified, labelOf, scoreAnswers, visibleQuestions } from '../../src/data/leadScore';
+import { cleanAnswers, fmtMoney, funnelModel, isQualified, labelOf, scoreAnswers, visibleQuestions } from '../../src/data/leadScore';
+import type { Funnel } from '../../src/data/leadScore';
 
 /**
  * kenjiai.com/lead-score -> scores the quiz, saves the lead in GoHighLevel, emails them their results.
@@ -26,7 +27,7 @@ const json = (statusCode: number, body: unknown) => ({
 
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]!));
 
-function resultsEmail(first: string, score: number, grade: string, leaks: ReturnType<typeof scoreAnswers>['leaks'], qualified: boolean) {
+function resultsEmail(first: string, score: number, grade: string, leaks: ReturnType<typeof scoreAnswers>['leaks'], qualified: boolean, funnel: Funnel) {
   const top = leaks.slice(0, 3);
   const items = top.length
     ? top.map((l) => `<li style="margin:0 0 14px"><b>${esc(l.title)}</b><br>${esc(l.why)}<br><span style="color:#0f766e">Fix: ${esc(l.fix)}</span></li>`).join('')
@@ -36,9 +37,12 @@ function resultsEmail(first: string, score: number, grade: string, leaks: Return
     : `<p>If you want to fix these yourself, our $7 Ad Optimization Community shows you how we run ads, follow-up and sales for our clients. <a href="${LOW_TICKET_URL}">Join here</a>.</p>`;
   return `<div style="font-family:Arial,sans-serif;font-size:15px;line-height:1.55;color:#222;max-width:560px">
 <p>Hi ${esc(first)},</p>
-<p>Here are your Lead Leak Score results.</p>
+<p>Here are your Find the Leak results.</p>
 <p style="font-size:22px;margin:18px 0"><b>${score}/100</b> &middot; ${esc(grade)}</p>
-<p>The biggest leaks we found:</p>
+<p><b>Your funnel, ${esc(funnel.basis)}</b> (a rough model from your answers):</p>
+<p>${funnel.stages.map((st) => `${esc(st.label)}: ${Math.round(st.n)}${st.leak ? ` <span style="color:#c2410c">(${esc(st.leak)})</span>` : ''}`).join('<br>')}</p>
+${funnel.slipping >= 100 ? `<p>That's roughly <b>${fmtMoney(funnel.slipping)}${funnel.perMonth ? ' a month' : ''}</b> slipping through with your current follow-up.</p>` : ''}
+<p>What to fix, in order:</p>
 <ol style="padding-left:20px">${items}</ol>
 ${next}
 <p>Yousif Alias<br>KenjiAI</p></div>`;
@@ -72,7 +76,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
     const r = await fetch(`${GHL_BASE}/contacts/upsert`, {
       method: 'POST', headers,
       body: JSON.stringify({
-        locationId, firstName, email, phone, source: 'kenjiai.com/lead-score',
+        locationId, firstName, email, phone, source: 'kenjiai.com/findtheleak',
         tags: ['lead leak quiz', qualified ? 'quiz qualified' : 'quiz not qualified'],
       }),
     });
@@ -91,7 +95,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
   const utm = body.utm && typeof body.utm === 'object' ? body.utm : {};
   const secs = Math.max(0, Math.min(36000, Math.round(Number(body.seconds) || 0)));
   const note = [
-    `Lead Leak Score quiz (kenjiai.com/lead-score): ${score}/100, ${grade}. ${qualified ? 'QUALIFIED, sent to booking' : 'NOT QUALIFIED, shown the $7 offer'}.`,
+    `Find the Leak quiz (kenjiai.com/findtheleak): ${score}/100, ${grade}. ${qualified ? 'QUALIFIED, sent to booking' : 'NOT QUALIFIED, shown the $7 offer'}.`,
     `Time on quiz: ${Math.floor(secs / 60)}m ${secs % 60}s`,
     `Biggest leaks: ${leaks.slice(0, 3).map((l) => l.title).join('; ') || 'none'}`,
     '',
@@ -110,7 +114,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
         method: 'POST', headers,
         body: JSON.stringify({
           type: 'Email', conversationId, contactId, fromName: 'Yousif | KenjiAI', from: 'support@mediatraffics.com', to: email,
-          subject: `Your Lead Leak Score: ${score}/100`, html: resultsEmail(firstName, score, grade, leaks, qualified),
+          subject: `Where your funnel is leaking (${score}/100)`, html: resultsEmail(firstName, score, grade, leaks, qualified, funnelModel(answers)),
         }),
       });
     }

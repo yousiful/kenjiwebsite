@@ -255,5 +255,50 @@ export function scoreAnswers(a: Answers): { score: number; leaks: Leak[]; grade:
 }
 
 export function labelOf(qid: string, v: string) {
-  return QUESTIONS.find((q) => q.id === qid)?.options.find((o) => o.value === v)?.label || v;
+  return QUESTIONS.find((q) => q.id === qid)?.options.find((o) => o.value === v)?.label || v || '';
 }
+
+/* ---------- their funnel, in their numbers (results-page diagram, Yousif 2026-10-25) ----------
+   A rough model, not a measurement: every rate below comes from one of their answers, and the page says so.
+   "Fixed" keeps the same leads and close rate and only assumes 5-minute follow-up and every call answered. */
+
+export type FunnelStage = { id: string; label: string; sub: string; n: number; leak?: string };
+export type Funnel = { perMonth: boolean; stages: FunnelStage[]; monthly: number; fixedMonthly: number; slipping: number; basis: string };
+
+const SPEND_MID: Record<string, number> = { under_500: 300, '500_2k': 1200, '2k_5k': 3500, '5k_15k': 9000, '15k_plus': 20000 };
+const REACH: Record<string, number> = { '5min': 0.9, hour: 0.75, sameday: 0.6, nextday: 0.45, unsure: 0.55 };
+const PICKUP: Record<string, number> = { answered: 1, vm: 0.85, callback: 0.9, lost: 0.75 };
+const CLOSE: Record<string, number> = { '0_2': 0.2, '3_4': 0.35, '5_6': 0.55, '7_plus': 0.75 };
+const money = (n: number) => '$' + Math.round(n).toLocaleString('en-US');
+
+export function funnelModel(a: Answers): Funnel {
+  const paidPath = paid(a);
+  const cpl = CPL_MID[a.cpl] || 50;
+  const leads = paidPath ? Math.max(1, Math.round((SPEND_MID[a.spend] || 1200) / cpl)) : 100;
+  const reach = REACH[a.speed] ?? 0.6, pick = PICKUP[a.calls] ?? 0.9, close = CLOSE[a.close] ?? 0.35;
+  const deal = DEAL_MID[a.deal] || 1200;
+  const reached = Math.round(leads * reach);
+  const talked = Math.round(reached * pick);
+  const customers = Math.max(0, Math.round(talked * close * 10) / 10);
+  const fixedCustomers = leads * Math.max(reach, 0.9) * 1 * close;
+  const monthly = customers * deal, fixedMonthly = fixedCustomers * deal;
+  const lostSlow = leads - reached, lostCalls = reached - talked, lostClose = Math.round(talked - customers);
+  const stages: FunnelStage[] = [
+    { id: 'leads', label: paidPath ? 'New leads' : 'People who reach out', n: leads,
+      sub: paidPath ? `About ${money(SPEND_MID[a.spend] || 1200)}/mo in ads at ${a.cpl === 'unknown' ? 'an assumed $50' : `about ${money(cpl)}`} a lead` : 'Say 100 people call, text or fill out a form' },
+    { id: 'reached', label: 'Heard back while still interested', n: reached,
+      sub: `Based on reaching out ${({ '5min': 'within 5 minutes', hour: 'within the hour', sameday: 'the same day', nextday: 'the next day or later', unsure: 'at no set speed' } as Record<string, string>)[a.speed] || 'when you can'}`,
+      leak: lostSlow > 0 && a.speed !== '5min' ? `${lostSlow} went cold waiting` : undefined },
+    { id: 'talked', label: 'Got a real conversation', n: talked,
+      sub: 'After missed calls and voicemail',
+      leak: lostCalls > 0 ? `${lostCalls} lost to missed calls` : undefined },
+    { id: 'customers', label: 'Became customers', n: customers,
+      sub: a.close ? `Your close rate: ${labelOf('close', a.close).toLowerCase()} out of 10` : 'Based on your close rate',
+      leak: CLOSE[a.close] !== undefined && CLOSE[a.close] < 0.5 ? `${lostClose} talked but didn’t buy` : undefined },
+  ];
+  return {
+    perMonth: paidPath, stages, monthly, fixedMonthly, slipping: Math.max(0, fixedMonthly - monthly),
+    basis: paidPath ? 'each month' : 'for every 100 people who reach out',
+  };
+}
+export const fmtMoney = money;

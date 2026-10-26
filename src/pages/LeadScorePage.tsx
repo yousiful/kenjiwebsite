@@ -3,9 +3,10 @@ import { AnimatePresence, animate, motion } from 'framer-motion';
 import { ArrowLeft, ArrowRight, Check, Loader2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Shell, ensurePixel, track } from './GrowthQuizPage';
-import { Answers, isQualified, scoreAnswers, visibleQuestions } from '../data/leadScore';
+import { Answers, funnelModel, isQualified, scoreAnswers, visibleQuestions } from '../data/leadScore';
+import { LeakFunnel } from '../components/LeakFunnel';
 
-/* Lead Leak Score (Yousif 2026-10-25): a longer, branched version of /growth-quiz that pays people back
+/* Find the Leak, kenjiai.com/findtheleak (was /lead-score; Yousif 2026-10-25): a longer, branched version of /growth-quiz that pays people back
    with a personal score. Tested for 3 weeks against the Perf Base instant lead form on lead quality
    (bookings and closes, not cost per lead). Qualified -> /growth-quiz/book, everyone else -> $7 offer. */
 
@@ -76,6 +77,7 @@ const LeadScorePage: React.FC = () => {
   const total = path.length;
   const q = step >= 0 && step < total ? path[step] : null;
   const local = useMemo(() => scoreAnswers(answers), [answers]);
+  const funnel = useMemo(() => funnelModel(answers), [answers]);
 
   useEffect(() => { ensurePixel(); return () => { if (advanceTimer.current) window.clearTimeout(advanceTimer.current); }; }, []);
 
@@ -105,7 +107,7 @@ const LeadScorePage: React.FC = () => {
     return () => window.removeEventListener('keydown', onKey);
   }, [q, step, choose, go]);
 
-  const start = () => { startedAt.current = Date.now(); track('QuizStarted', false, { content_name: 'lead-score' }); go(0); };
+  const start = () => { startedAt.current = Date.now(); track('QuizStarted', false, { content_name: 'findtheleak' }); go(0); };
 
   const submit = async () => {
     if (busy || !lead.first_name.trim() || !lead.email.trim() || !lead.phone.trim()) return;
@@ -125,8 +127,8 @@ const LeadScorePage: React.FC = () => {
       sessionStorage.setItem(LEAD_KEY, JSON.stringify(lead));
       if (res.qualified) sessionStorage.setItem(QUALIFIED_KEY, 'pending'); else sessionStorage.removeItem(QUALIFIED_KEY);
     } catch { /* private mode */ }
-    track('Lead', true, { content_name: 'lead-score', qualified: res.qualified, score: res.score, revenue_tier: answers.revenue }, { email: lead.email, phone: lead.phone });
-    track(res.qualified ? 'QualifiedLead' : 'UnqualifiedLead', false, { content_name: 'lead-score' });
+    track('Lead', true, { content_name: 'findtheleak', qualified: res.qualified, score: res.score, revenue_tier: answers.revenue }, { email: lead.email, phone: lead.phone });
+    track(res.qualified ? 'QualifiedLead' : 'UnqualifiedLead', false, { content_name: 'findtheleak' });
     setResult(res);
     setBusy(false);
     setDir(1); setStep(total + 1);
@@ -137,7 +139,7 @@ const LeadScorePage: React.FC = () => {
   const inQuiz = step >= 0 && step <= total;
 
   return (
-    <Shell title="Lead Leak Score | KenjiAI" description="Find out where your business is losing leads and customers, with a personal score and the fixes that matter most." wide={step > total}>
+    <Shell title="Find the Leak | KenjiAI" description="3 minutes to find out where your funnel and marketing are leaking, with your own numbers and the fixes that matter most." wide={step > total}>
       {inQuiz && (
         <div className="mt-8 sm:mt-12" aria-hidden="true">
           <div className="h-1.5 rounded-full bg-white/10 overflow-hidden">
@@ -157,15 +159,15 @@ const LeadScorePage: React.FC = () => {
       <AnimatePresence mode="wait" custom={dir} initial={false}>
         {step === -1 && (
           <motion.section key="intro" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }} transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }} className="pt-16 sm:pt-24">
-            <p className="text-[15px] font-semibold tracking-wide text-[#5EEAD4]">LEAD LEAK SCORE</p>
+            <p className="text-[15px] font-semibold tracking-wide text-[#5EEAD4]">FIND THE LEAK</p>
             <h1 className="mt-3 display text-[40px] sm:text-[56px] leading-[1.02] font-extrabold text-balance">
               Where is your business losing customers?
             </h1>
             <p className="mt-5 text-[18px] sm:text-[20px] leading-relaxed text-[#C9D2DE] max-w-[38ch]">
-              About 3 minutes. Answer honestly and you’ll get a score out of 100, the three biggest leaks between your ads and your bank account, and what to fix first.
+              3 minutes to find out where your funnel and marketing are leaking. You’ll see your own funnel with the numbers, where customers slip out, what it’s costing you, and what to fix first.
             </p>
             <button type="button" onClick={start} className="mt-9 inline-flex items-center gap-2.5 rounded-2xl bg-[#5EEAD4] text-[#06221E] font-bold text-[18px] px-7 py-4 shadow-[0_14px_34px_-14px_rgba(94,234,212,0.7)] hover:bg-[#7FF0DF] transition-colors">
-              Get my score <ArrowRight className="w-5 h-5" aria-hidden="true" />
+              Find my leaks <ArrowRight className="w-5 h-5" aria-hidden="true" />
             </button>
             <p className="mt-8 text-[15px] text-[#A9B4C4]">Built from what we see running ads and follow-up for 500+ businesses since 2013.</p>
           </motion.section>
@@ -238,7 +240,7 @@ const LeadScorePage: React.FC = () => {
 
         {step === total + 1 && result && (
           <motion.section key="results" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }} className="pt-10 sm:pt-14">
-            <p className="text-[15px] font-semibold tracking-wide text-[#5EEAD4]">YOUR LEAD LEAK SCORE</p>
+            <p className="text-[15px] font-semibold tracking-wide text-[#5EEAD4]">YOUR LEAK SCORE</p>
             <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-7 sm:gap-10">
               <ScoreRing score={result.score} />
               <div>
@@ -247,13 +249,16 @@ const LeadScorePage: React.FC = () => {
                 </h1>
                 <p className="mt-3 text-[17px] leading-relaxed text-[#C9D2DE] max-w-[40ch]">
                   {local.leaks.length
-                    ? 'Here’s where customers are slipping away, biggest first. A copy is on its way to your inbox.'
+                    ? 'Below is your funnel and where customers are slipping out. A copy is on its way to your inbox.'
                     : 'No big leaks showed up. Your next gains come from putting more budget behind what already works.'}
                 </p>
               </div>
             </div>
 
-            <ol className="mt-10 space-y-4">
+            <LeakFunnel funnel={funnel} />
+
+            {local.leaks.length > 0 && <h2 className="mt-12 display text-[28px] sm:text-[34px] leading-tight font-extrabold">What to fix, in order</h2>}
+            <ol className="mt-6 space-y-4">
               {local.leaks.slice(0, 3).map((l, i) => (
                 <li key={l.id} className="rounded-3xl border border-white/12 bg-white/[0.04] p-5 sm:p-6">
                   <div className="flex items-start gap-4">
@@ -268,11 +273,6 @@ const LeadScorePage: React.FC = () => {
               ))}
             </ol>
 
-            {local.yearlyPerCustomer > 0 && local.leaks.length > 0 && (
-              <p className="mt-8 text-[18px] leading-relaxed text-[#C9D2DE]">
-                At your numbers, closing just one more customer a month is worth about <span className="font-bold text-white">${local.yearlyPerCustomer.toLocaleString()} a year</span>.
-              </p>
-            )}
 
             {result.qualified ? (
               <div className="mt-10 rounded-3xl border border-[#5EEAD4]/40 bg-[#5EEAD4]/[0.07] p-6 sm:p-8">
@@ -294,7 +294,7 @@ const LeadScorePage: React.FC = () => {
                   Our done-for-you work is built for businesses past $10K a month with a budget to grow. Until then, the Ad Optimization Community shows you how we run ads, follow-up and sales for our clients, so you can fix these leaks on your own.
                 </p>
                 <a
-                  href={LOW_TICKET_URL} onClick={() => track('LowTicketClick', false, { content_name: 'lead-score' })}
+                  href={LOW_TICKET_URL} onClick={() => track('LowTicketClick', false, { content_name: 'findtheleak' })}
                   className="mt-7 w-full inline-flex items-center justify-center gap-2.5 rounded-2xl bg-[#5EEAD4] text-[#06221E] font-bold text-[18px] px-7 py-4 hover:bg-[#7FF0DF] transition-colors"
                 >
                   Join for $7 <ArrowRight className="w-5 h-5" aria-hidden="true" />
