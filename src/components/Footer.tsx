@@ -8,12 +8,20 @@ const Footer: React.FC = () => {
   const { pathname } = useLocation();
   const showCtaBand = pathname !== '/';
 
+  // Only profiles whose exact URL was confirmed live (2026-10-26).
+  const socialLinks = [
+    { name: 'YouTube', href: 'https://www.youtube.com/@Yousiful' },
+    { name: 'Instagram', href: 'https://www.instagram.com/kenjiai.com_/' },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/company/media-traffics/' },
+    { name: 'Pinterest', href: 'https://www.pinterest.com/mediatrafficsinc/' },
+  ];
+
   const navLinks = {
     solutions: [
-      { name: 'Buy DFY AI Call Center', href: 'https://kenjiai.com/call-center-upgrade', external: true },
-      { name: 'AI Call Center Checker', href: '/ai-callcenter' },
+      { name: 'Buy DFY AI Call Center', href: 'https://kenjiai.com/call-center-upgrade/', external: true },
+      { name: 'AI Call Center Checker', href: '/ai-callcenter/', external: true },
       { name: 'AI Voice Agents', href: '/voice-agents' },
-      { name: 'Client Attraction System', href: '/one-timeoffer' },
+      { name: 'Client Attraction System', href: '/one-timeoffer/', external: true },
       { name: 'Marketing Automation', href: '/marketing-automation' },
       { name: 'Smart CRM Pipelines', href: '/crm' },
       { name: 'Free AI Growth Tools', href: '/free-tools' },
@@ -33,12 +41,12 @@ const Footer: React.FC = () => {
       { name: 'Pricing & Guarantee', href: '/pricing' },
       { name: 'Blog', href: '/blog' },
       { name: 'The KenjiAI Podcast', href: '/podcast' },
-      { name: 'Is KenjiAI Legit?', href: '/is-kenjiai-legit' },
-      { name: 'Customer Reviews', href: '/kenjiai-reviews' },
-      { name: 'KenjiAI vs Kenji.ai', href: '/kenjiai-vs-kenji-ai' },
+      { name: 'Is KenjiAI Legit?', href: '/is-kenjiai-legit', external: true },
+      { name: 'Customer Reviews', href: '/kenjiai-reviews', external: true },
+      { name: 'KenjiAI vs Kenji.ai', href: '/kenjiai-vs-kenji-ai', external: true },
       { name: 'Funding & Credit', href: '/funding' },
       { name: 'Knowledge Base', href: '/knowledge' },
-      { name: 'AI Education Academy', href: '/ai-education' },
+      { name: 'AI Education Academy', href: 'https://startlearning.kenjiai.com/', external: true },
       { name: 'Become a Partner', href: 'https://closers.kenjiai.com/', external: true },
     ],
     legal: [
@@ -170,8 +178,7 @@ const Footer: React.FC = () => {
                     {link.external ? (
                       <a
                         href={link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                         className="text-gray-500 hover:text-blue-400 text-sm transition-colors duration-200"
                       >
                         {link.name}
@@ -208,6 +215,16 @@ const Footer: React.FC = () => {
                   <a href="tel:+12133440705" className="text-gray-500 hover:text-blue-400 text-xs transition-colors">
                     (213) 344-0705
                   </a>
+                </li>
+                <li className="pt-1">
+                  <span className="block text-gray-400 text-xs font-semibold mb-1.5">Follow us</span>
+                  <span className="flex flex-wrap gap-x-3 gap-y-1">
+                    {socialLinks.map((s) => (
+                      <a key={s.href} href={s.href} target="_blank" rel="noopener noreferrer me" className="text-gray-500 hover:text-blue-400 text-xs transition-colors">
+                        {s.name}
+                      </a>
+                    ))}
+                  </span>
                 </li>
               </ul>
             </div>

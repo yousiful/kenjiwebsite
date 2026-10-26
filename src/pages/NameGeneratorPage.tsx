@@ -455,7 +455,7 @@ export const NameGeneratorPage: React.FC = () => {
         tagline: `How to replace 5 full-time staff with AI Voice Agents, CRM automations, and smart bots.`,
         psychology: 'Future-pacing and massive cost reduction triggers immediate executive urgency.',
         formula: 'Autonomous Future + Industry Model + Architecture Blueprint',
-        adHook: `Download the 2026 blueprint for running a 90% margin business powered by Kenji AI.`,
+        adHook: `Download the 2026 blueprint for running a 90% margin business powered by KenjiAI.`,
         domainName: `agencyblueprint.ai`
       });
     }
@@ -825,14 +825,14 @@ export const NameGeneratorPage: React.FC = () => {
                         Next Step After Naming:
                       </h4>
                       <p className="text-xs text-gray-400 mt-1 leading-relaxed">
-                        Ready to make this offer print money? Deploy a 24/7 AI Voice Receptionist from Kenji AI that answers every inbound call in under 1 second.
+                        Once the name is set, make sure every call it brings in gets answered. A KenjiAI voice receptionist picks up 24/7 and books the caller on your calendar.
                       </p>
-                      <Link
-                        to="/call-center-upgrade"
+                      <a
+                        href="/call-center-upgrade/"
                         className="inline-flex items-center gap-1.5 text-xs text-cyan-400 hover:text-cyan-300 font-semibold mt-2.5 transition-colors"
                       >
-                        Explore Kenji AI Call Center Upgrade <ArrowRight className="w-3.5 h-3.5" />
-                      </Link>
+                        See the KenjiAI AI Call Center <ArrowRight className="w-3.5 h-3.5" />
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -1074,10 +1074,10 @@ export const NameGeneratorPage: React.FC = () => {
                   <Zap className="w-5 h-5" />
                 </div>
                 <h3 className="text-base font-bold text-white mb-2">
-                  Connected to Kenji AI Scale Engine
+                  Backed by KenjiAI follow-up
                 </h3>
                 <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
-                  A name is only as good as the machine fulfilling it. Pair your offer with Kenji AI 24/7 Voice Agents, automated SMS booking sequences, and automated lead qualification to close deals on autopilot.
+                  The name gets attention. KenjiAI voice agents, SMS booking and lead qualification then work every lead it brings in.
                 </p>
               </div>
             </div>
@@ -1087,28 +1087,28 @@ export const NameGeneratorPage: React.FC = () => {
           <div className="mt-16 bg-gradient-to-r from-blue-900/30 via-cyan-900/20 to-emerald-900/30 border border-cyan-500/30 rounded-3xl p-8 sm:p-10 text-center relative overflow-hidden">
             <div className="relative z-10 max-w-3xl mx-auto">
               <span className="text-xs uppercase tracking-widest text-cyan-400 font-bold mb-3 block font-mono">
-                Launch & Scale with Kenji AI
+                Launch with KenjiAI
               </span>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white mb-4">
-                Have Your Winning Name? Now Build The System That Sells It.
+                Have your name? Now build the system that sells it.
               </h2>
               <p className="text-sm sm:text-base text-gray-300 mb-8 leading-relaxed">
-                Connect your new brand to Kenji AI's complete inbound automation stack: 24/7 Voice Agents answering under 1 second, automated CRM pipeline, and done-for-you lead generation campaigns.
+                Connect your new brand to KenjiAI: voice agents that answer 24/7, a CRM pipeline that follows up for you, and done-for-you ad campaigns.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Link
-                  to="/call-center-upgrade"
+                <a
+                  href="/call-center-upgrade/"
                   className="bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-bold px-6 py-3 rounded-xl shadow-lg transition-all"
                 >
                   Upgrade to AI Call Center
-                </Link>
-                <Link
-                  to="/trendpulse"
+                </a>
+                <a
+                  href="/trendpulse"
                   className="bg-gray-800 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-xl border border-gray-700 transition-all flex items-center gap-2"
                 >
                   <Flame className="w-4 h-4 text-amber-400" />
                   <span>Build Ad Hooks on TrendPulse</span>
-                </Link>
+                </a>
                 <Link
                   to="/tools/icp-generator"
                   className="bg-gray-800 hover:bg-gray-700 text-white font-semibold px-6 py-3 rounded-xl border border-gray-700 transition-all flex items-center gap-2"

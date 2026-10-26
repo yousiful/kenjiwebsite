@@ -389,7 +389,7 @@ export const CallSimulator: React.FC = () => {
               )}
 
               <a
-                href="https://kenjiai.com/call-center-upgrade"
+                href="https://kenjiai.com/call-center-upgrade/"
                 className="w-full sm:flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold transition-all shadow-lg shadow-emerald-600/20"
               >
                 Deploy Inbound &amp; Outbound Call Center ($199–$399/mo)

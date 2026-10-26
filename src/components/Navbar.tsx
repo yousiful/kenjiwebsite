@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
   ];
 
   const solutions = [
-    { name: "AI Call Center (DFY)", href: "https://kenjiai.com/call-center-upgrade", description: "Answers & books calls 24/7", external: true },
+    { name: "AI Call Center (DFY)", href: "https://kenjiai.com/call-center-upgrade/", description: "Answers & books calls 24/7", external: true },
     { name: "AI Automation", href: "/ai-automation", description: "Complete business automation", external: false },
     { name: "Voice Agents", href: "/voice-agents", description: "AI that handles calls 24/7", external: false },
     { name: "Voice AI", href: "/voice-ai", description: "AI voice agents starting at $10/month", external: false },

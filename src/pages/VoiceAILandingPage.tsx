@@ -283,7 +283,7 @@ const VoiceAILandingPage: React.FC = () => {
     if (!plan) return;
     // Scale + Ads is a done-for-you call center offer — send clicks to /call-center-upgrade
     if (planId === 'scale') {
-      window.location.href = 'https://kenjiai.com/call-center-upgrade';
+      window.location.href = 'https://kenjiai.com/call-center-upgrade/';
       return;
     }
     window.open(plan.link, '_blank');
