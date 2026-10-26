@@ -166,10 +166,6 @@ export default function DashboardPage() {
     return () => { isMounted = false; };
   }, [unlocked, refreshKey]);
 
-  if (!unlocked) {
-    return <DashboardLock onUnlock={() => setUnlocked(true)} />;
-  }
-
   const cutoff = useMemo(() => getDateRange(dateRange), [dateRange]);
 
   // ─── Filtered Data ──────────────────────────────────────────────
@@ -304,6 +300,11 @@ export default function DashboardPage() {
   const maxPageViews = pageRankings.length > 0 ? pageRankings[0].views : 1;
 
   const deviceIcons: Record<string, any> = { mobile: Smartphone, tablet: Tablet, desktop: Monitor };
+
+  // Lock check sits after every hook so the hook order never changes between renders.
+  if (!unlocked) {
+    return <DashboardLock onUnlock={() => setUnlocked(true)} />;
+  }
 
   return (
     <>

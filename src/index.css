@@ -1220,3 +1220,41 @@ img[loading="lazy"] {
   100% { transform: translateY(100vh); }
 }
 
+
+/* Auto formatting: replaces the inline styles AutoFormattingProvider used to write
+   from a MutationObserver (see that file). */
+:is(.course-content, .prose) :is(h1, h2, h3, h4, h5, h6, p, li, span, a),
+.blog-content p {
+  max-width: 100%;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+:is(.course-content, .prose) img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+}
+:is(.course-content, .prose) :is(pre, code) {
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-width: 100%;
+  overflow-x: auto;
+}
+table {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  overflow-x: auto;
+}
+@media (max-width: 767px) {
+  .grid { gap: 1rem !important; }
+  :is(.course-content, .curriculum-section, .projects-grid, .takeaways) .grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+  .course-card { height: auto !important; }
+}
+
+/* Reserve the viewport for the routed page while its lazy chunk loads, so the
+   footer does not paint at the top and then jump down (Lighthouse CLS was 1.0). */
+#main-content { min-height: 100vh; }

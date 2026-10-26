@@ -94,6 +94,8 @@ const BlogPage: React.FC = () => {
                       <img 
                         src={featured.image} 
                         alt={featured.title}
+                        width={800}
+                        height={450}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
                     </div>
@@ -147,6 +149,10 @@ const BlogPage: React.FC = () => {
                         <img 
                           src={article.image} 
                           alt={article.title}
+                          loading="lazy"
+                          decoding="async"
+                          width={800}
+                          height={450}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
                         <div className="absolute top-3 left-3">

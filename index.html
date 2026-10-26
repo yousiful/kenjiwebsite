@@ -1,11 +1,15 @@
 <!doctype html>
 <html lang="en">
   <head>
-<!-- Google Tag Manager -->
+<!-- Tracking loader: every pixel below defines its queue stub right away (so no
+     event is lost) but fetches its library only after the page has loaded, so the
+     ~500KB of third-party script never competes with the first paint. -->
+<script>window.__afterLoad=function(f){if(document.readyState==='complete')setTimeout(f,0);else window.addEventListener('load',function(){setTimeout(f,0)})};</script>
+<!-- Google Tag Manager (library deferred to window load) -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+new Date().getTime(),event:'gtm.js'});w.__afterLoad(function(){var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);});
 })(window,document,'script','dataLayer','GTM-NQSQ7Q4W');</script>
 <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
@@ -23,7 +27,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- Performance optimizations -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://huoemgfrilnfwcrduczc.supabase.co">
     <link rel="dns-prefetch" href="https://js.stripe.com">
     <link rel="dns-prefetch" href="https://app.kenjiai.com">
     <link rel="dns-prefetch" href="https://images.pexels.com">
@@ -104,10 +107,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
          submit into a CRM contact, which would fill the CRM with hosts' and guests' forms. -->
     <script>
       if (!/^\/(invites|i)(\/|$)/.test(location.pathname)) {
-        var t = document.createElement('script');
-        t.src = 'https://safeclick.kenjiai.com/js/external-tracking.js';
-        t.setAttribute('data-tracking-id', 'tk_76d68546c8534d479179b49a1784584c');
-        document.head.appendChild(t);
+        window.__afterLoad(function () {
+          var t = document.createElement('script');
+          t.async = true;
+          t.src = 'https://safeclick.kenjiai.com/js/external-tracking.js';
+          t.setAttribute('data-tracking-id', 'tk_76d68546c8534d479179b49a1784584c');
+          document.head.appendChild(t);
+        });
       }
     </script>
 
@@ -170,6 +176,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "image": { "@id": "https://kenjiai.com/#logo" },
           "description": "Kenji was founded in 2020 as an all-in-one CRM and became KenjiAI in 2022 by building AI models directly into the core engine. Powered by Media Traffics LLC, KenjiAI runs done-for-you paid ads, funnels, follow-up automation and AI call centers for business owners.",
           "foundingDate": "2020",
+          "sameAs": ["https://www.instagram.com/kenjiai.com_/"],
           "founder": {
             "@type": "Person",
             "@id": "https://kenjiai.com/about-yousif-alias#person",
@@ -181,7 +188,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               "https://www.instagram.com/yousiful/",
               "https://www.facebook.com/yousiful/",
               "https://www.threads.com/@yousiful",
-              "https://creators.spotify.com/pod/show/yousif-alias3"
+              "https://creators.spotify.com/pod/show/yousif-alias3",
+              "https://www.youtube.com/@Yousiful"
             ]
           },
           "parentOrganization": {
@@ -198,7 +206,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             },
             "sameAs": [
               "https://www.trustpilot.com/review/mediatraffics.com",
-              "https://www.bbb.org/us/ca/san-diego/profile/advertising/media-traffics-1126-1000055953"
+              "https://www.bbb.org/us/ca/san-diego/profile/advertising/media-traffics-1126-1000055953",
+              "https://www.linkedin.com/company/media-traffics/",
+              "https://www.pinterest.com/mediatrafficsinc/"
             ]
           },
           "knowsAbout": [
@@ -283,9 +293,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       setTimeout(function () { if (document.querySelector('[data-static-seo="route"]')) document.documentElement.classList.remove('js'); }, 10000);
     </script>
   <!-- ChatGPT Ads Pixel -->
-<script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"RZQxy3bXYAY7RArDCZc6dN",debug:true});</script>
-<!-- Meta Pixel (async, non-blocking) -->
-<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','2406747486323295');fbq('track','PageView');</script>
+<script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;w.__afterLoad(function(){var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)})}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"RZQxy3bXYAY7RArDCZc6dN"});</script>
+<!-- Meta Pixel (queue stub now, library after window load) -->
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];f.__afterLoad(function(){t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)})}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','2406747486323295');fbq('track','PageView');</script>
 </head>
   <body>
 <!-- Google Tag Manager (noscript) -->
