@@ -71,13 +71,17 @@ export const handler: Handler = async (event: HandlerEvent) => {
   if (!token) return json(200, { ...result, saved: false });
   const headers = { Authorization: `Bearer ${token}`, Version: GHL_VERSION, 'Content-Type': 'application/json', Accept: 'application/json' };
 
+  const utm = body.utm && typeof body.utm === 'object' ? body.utm : {};
+  // Old leads sent here by email get their own tag so they stay out of the quiz vs instant form ad test.
+  const fromEmail = String(utm.utm_source || '').toLowerCase() === 'email';
+
   let contactId: string | null = null;
   try {
     const r = await fetch(`${GHL_BASE}/contacts/upsert`, {
       method: 'POST', headers,
       body: JSON.stringify({
         locationId, firstName, email, phone, source: 'kenjiai.com/findtheleak',
-        tags: ['lead leak quiz', qualified ? 'quiz qualified' : 'quiz not qualified'],
+        tags: [fromEmail ? 'lead leak quiz email' : 'lead leak quiz', qualified ? 'quiz qualified' : 'quiz not qualified'],
       }),
     });
     const data: any = await r.json().catch(() => ({}));
@@ -92,7 +96,6 @@ export const handler: Handler = async (event: HandlerEvent) => {
   }
   if (!contactId) return json(200, { ...result, saved: false });
 
-  const utm = body.utm && typeof body.utm === 'object' ? body.utm : {};
   const secs = Math.max(0, Math.min(36000, Math.round(Number(body.seconds) || 0)));
   const note = [
     `Find the Leak quiz (kenjiai.com/findtheleak): ${score}/100, ${grade}. ${qualified ? 'QUALIFIED, sent to booking' : 'NOT QUALIFIED, shown the $7 offer'}.`,
