@@ -9,7 +9,7 @@
     <itunes:subtitle>Ads, sales and AI for business owners, from real Zoom trainings.</itunes:subtitle>
     <language>en-us</language>
     <copyright>Copyright 2026 Media Traffics</copyright>
-    <lastBuildDate>Fri, 23 Oct 2026 12:48:54 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 26 Oct 2026 00:03:40 -0500</lastBuildDate>
     <itunes:author>Yousif Alias</itunes:author>
     <itunes:owner><itunes:name>Media Traffics</itunes:name><itunes:email>support@mediatraffics.com</itunes:email></itunes:owner>
     <itunes:image href="https://kenjiai.com/podcast/cover.jpg"/>
@@ -20,6 +20,27 @@
     <itunes:type>episodic</itunes:type>
     <podcast:locked>no</podcast:locked>
     <podcast:guid>2b100036-7495-588c-babf-47d53e8d30ea</podcast:guid>
+    <item>
+      <title>Sales Fixes Everything: Train Your AI, Then Pick Up the Phone</title>
+      <itunes:title>Sales Fixes Everything: Train Your AI, Then Pick Up the Phone</itunes:title>
+      <description>From a Saturday webinar. Yousif explains why an AI agent you set up and forget will fail and how he reviews every call it books to rewrite its prompt, why you always pay for clients with either money or time, why buyers of a business care about clients and recurring revenue more than leads, and why a sales focus beats content, funnels and likes.
+
+Full write-up: https://kenjiai.com/blog/podcast-sales-fixes-everything</description>
+      <itunes:summary>From a Saturday webinar. Yousif explains why an AI agent you set up and forget will fail and how he reviews every call it books to rewrite its prompt, why you always pay for clients with either money or time, why buyers of a business care about clients and recurring revenue more than leads, and why a sales focus beats content, funnels and likes.
+
+Full write-up: https://kenjiai.com/blog/podcast-sales-fixes-everything</itunes:summary>
+      <content:encoded><![CDATA[<p>From a Saturday webinar. Yousif explains why an AI agent you set up and forget will fail and how he reviews every call it books to rewrite its prompt, why you always pay for clients with either money or time, why buyers of a business care about clients and recurring revenue more than leads, and why a sales focus beats content, funnels and likes.</p><p>In this episode:</p><ul><li>An AI agent you set and forget will fail</li><li>You pay with money or with time</li><li>Why breaking even on ads can still be a win</li><li>Sales comes first</li></ul><p>Full write-up and transcript: <a href="https://kenjiai.com/blog/podcast-sales-fixes-everything">https://kenjiai.com/blog/podcast-sales-fixes-everything</a></p><p>More from Yousif Alias and KenjiAI: <a href="https://kenjiai.com">kenjiai.com</a></p>]]></content:encoded>
+      <link>https://kenjiai.com/blog/podcast-sales-fixes-everything</link>
+      <guid isPermaLink="false">kenjiai-podcast-podcast-sales-fixes-everything</guid>
+      <pubDate>Sun, 25 Oct 2026 09:00:00 -0500</pubDate>
+      <enclosure url="https://kenjiai-podcast.netlify.app/episodes/podcast-sales-fixes-everything.mp3" length="4440247" type="audio/mpeg"/>
+      <itunes:duration>0:06:05</itunes:duration>
+      <itunes:episode>7</itunes:episode>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:explicit>true</itunes:explicit>
+      <itunes:image href="https://kenjiai.com/podcast/podcast-sales-fixes-everything.jpg"/>
+      <podcast:transcript url="https://kenjiai.com/podcast/podcast-sales-fixes-everything.txt" type="text/plain" language="en"/>
+    </item>
     <item>
       <title>The Two Things That Close High Ticket Deals Online</title>
       <itunes:title>The Two Things That Close High Ticket Deals Online</itunes:title>

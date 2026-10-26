@@ -512,5 +512,58 @@
         "text": "How many people you spoke with? How many people did you convince to buy? Everything else is secondary. Everything else does not matter in the game of sales. Other than these three metrics, okay? So texting, emailing, that doesn't play any part of you guys being successful at a salesperson or not. That's how many dials you've made, how many people you spoke with, and how many people you closed. Whether it's an appointment or a deal, you get paid either way, right? A closed deal is a closed deal. Because if you can close the appointment, we're halfway there. We're actually 80% there, because we just need to hop in, show them the results, and that's it, okay?"
       }
     ]
+  },
+  {
+    "slug": "podcast-sales-fixes-everything",
+    "number": 7,
+    "title": "Sales Fixes Everything: Train Your AI, Then Pick Up the Phone",
+    "summary": "From a Saturday webinar. Yousif explains why an AI agent you set up and forget will fail and how he reviews every call it books to rewrite its prompt, why you always pay for clients with either money or time, why buyers of a business care about clients and recurring revenue more than leads, and why a sales focus beats content, funnels and likes.",
+    "date": "2026-10-25",
+    "duration": 365,
+    "keywords": [
+      "AI voice agent training",
+      "AI appointment setter",
+      "sales focus for business owners",
+      "business valuation recurring revenue",
+      "lead follow up"
+    ],
+    "audioUrl": "https://kenjiai-podcast.netlify.app/episodes/podcast-sales-fixes-everything.mp3",
+    "image": "https://kenjiai.com/podcast/podcast-sales-fixes-everything.jpg",
+    "content": "<div class=\"blog-article-content space-y-8\">\n  <section>\n    <p class=\"text-gray-300 leading-relaxed\">\n      Six minutes from a Saturday webinar Yousif Alias ran for business owners. He covers how he trains his AI agent after every booked call, why you always pay for clients with money or with time, what a buyer looks at when they value your company, and why sales comes before content, funnels and likes.\n    </p>\n  </section>\n\n  <section class=\"bg-gray-900 border-l-4 border-cyan-500 p-8 rounded-r-3xl my-10\">\n    <h3 class=\"text-cyan-400 font-bold mb-3 uppercase text-sm\">The short version</h3>\n    <ul class=\"space-y-3 text-gray-300 leading-relaxed\">\n      <li><strong>1. Train the agent like a new hire.</strong> Listen to the calls it books, write notes, and rewrite the prompt.</li>\n      <li><strong>2. Pick how you pay.</strong> Every client costs you money or time. Yousif chose money.</li>\n      <li><strong>3. Clients are what make a company worth something.</strong> Buyers ask about clients, monthly recurring revenue and profit, not your lead list.</li>\n      <li><strong>4. Sell first.</strong> Talk to customers. Everything else comes second.</li>\n    </ul>\n  </section>\n\n  <section>\n    <h2 class=\"text-2xl font-bold text-white mb-4\">An AI agent you set and forget will fail</h2>\n    <p class=\"text-gray-300 leading-relaxed\">\n      Yousif listens to every call his AI agent books. He writes notes on each one, puts them on a single page, and hands that page to Claude with a plain request: give me a better prompt so the agent can handle a price objection, or give me a prompt so the agent confirms the call and the person actually shows up.\n    </p>\n    <p class=\"text-gray-300 leading-relaxed mt-4\">\n      His rule is to treat the agent the way you would treat a new employee. You train a person, you teach them how you do things, and they get better. An agent won't teach itself. You go back into the prompt and make the edits.\n    </p>\n  </section>\n\n  <section>\n    <h2 class=\"text-2xl font-bold text-white mb-4\">You pay with money or with time</h2>\n    <p class=\"text-gray-300 leading-relaxed\">\n      Getting clients always costs something. Yousif paid with his time for years and decided to stop, because paying for clients is simpler and faster. Compare how many business owners you would have to cold call to land one client with what a small ad budget brings in.\n    </p>\n    <p class=\"text-gray-300 leading-relaxed mt-4\">\n      His point is that some people spend money to save time and others spend huge amounts of time to save money, then reach the end of the month with nothing to pay the bills.\n    </p>\n  </section>\n\n  <section>\n    <h2 class=\"text-2xl font-bold text-white mb-4\">Why breaking even on ads can still be a win</h2>\n    <p class=\"text-gray-300 leading-relaxed\">\n      If you spend 10,000 on marketing and make 10,000 back, you still added clients, and clients are what raise the value of your company. When someone wants to buy a business, they don't ask about your leads. They ask how many clients you have, your monthly and annual recurring revenue, and your profit and loss.\n    </p>\n  </section>\n\n  <section>\n    <h2 class=\"text-2xl font-bold text-white mb-4\">Sales comes first</h2>\n    <p class=\"text-gray-300 leading-relaxed\">\n      While everyone argues about which AI model to use, Yousif's advice is to go make sales: talk to customers and have personal conversations with them. He shares that his team once ran the wrong ad for nine months with a broken booking link and didn't notice, because they were busy calling leads and still closing deals.\n    </p>\n    <p class=\"text-gray-300 leading-relaxed mt-4\">\n      He has also noticed that when he spends time posting and editing content, sales dip. Conversations with people come first, and the numbers, likes and views are noise.\n    </p>\n  </section>\n</div>\n",
+    "transcriptUrl": "https://kenjiai.com/podcast/podcast-sales-fixes-everything.txt",
+    "transcript": [
+      {
+        "t": "00:00",
+        "text": "Now, you know, the thing is, just like you're testing your ads, just like you're testing different scripts and stuff, you have to keep testing your agent. Call after call, you gotta test what your agent is saying to prospects and you gotta go back in there and tweak the prompt. You know, like I listened to every call that my agent books and I take notes and I put all the notes in one page so that way I can give it to my Claude and be like, hey, Claude, fix my AI agent. Give me a better prompt so my AI agent can overcome price objection. Give me a prompt that my AI agent can confirm the call."
+      },
+      {
+        "t": "00:45",
+        "text": "So when it books a call, it creates like anticipation. Hey, can't wait for you to see the system, blah, blah, blah. So that way they show up. So that's the thing that about it is like, you can train it. Like if you build an AI and let it be, like it's gonna suck. But if you build it and improve it, just like a real employee, like you nurture the employee, you train them, you teach them certain ways of doing things You gotta treat the AI the same way you would treat a human because this has a brain and human has a brain, right? And so you can't expect it to just self-learn automatically."
+      },
+      {
+        "t": "01:26",
+        "text": "You gotta teach it. You gotta go back into the prompt and add the edits that you need to it. And at the end of the day, we're going to be paying somehow. We're either going to be paying with money or with our time. How do you want to pay? If you want success, if you want clients, you want to make money, you got to either pay with money or time. Okay, personally, I've paid with time for a long time and I have decided not to anymore. Because paying to get clients is a lot simpler, it's a lot easier, it's a lot faster than paying with time."
+      },
+      {
+        "t": "02:18",
+        "text": "How many business owners are you going to call to get one client on a cold call basis than if you would just spend 100 bucks and get like 10 people to sign up on an app? See, people pay money to save time, and other people spend a lot of time, a lot of time to save money. And then at the end of the month, they got nothing to pay the bills. Okay, so the mindset shift for me here was everything. Like, I'd rather pay to save time than pay with my time to save money. even if you're breaking even, let's say you spent 10 ,000 on marketing, you made 10 ,000, right?"
+      },
+      {
+        "t": "03:09",
+        "text": "Your company value going up, you have more clients, your company if you sell it, now it's worth something, right? We can save money and all that stuff all we want, but if no clients are coming in to increase our company's value, what's the point? Yeah, we're getting by, we're making a load of it, we're paying the bills, but if our company's value is not going up, what's the point? We can't exit. You know, because when you're building a business, you also got to think about your exit, and your exit requires clients. When people want to come buy your company, they don't care about, you know, your leads or what you bought, they care about your clients."
+      },
+      {
+        "t": "03:50",
+        "text": "How many clients do you have? What's your MRR? What's your monthly recurring revenue? What's your AAR? What's your annual recurring revenue, right? Where's your profit and loss, right? Sales rules everything. Sales fix everything. Everything. Not your latest commercial, your latest video that you made on AI, not your latest PDF document that Clock Code gave you, sales. Okay, when everybody is worried about, oh, the AI model, oh, the AI this, the AI that, make some sales. Talk to customers. Talk to them about their daughter who just went to college. Have that personal conversation with them. Okay, that's what makes or breaks the business. Okay, making sales is what makes or breaks the business."
+      },
+      {
+        "t": "04:49",
+        "text": "Not your content, not your video, not your funnel. I was running the wrong ad for nine months. The booking link was broken. People were not able to book an appointment, but we were so locked in on calling our leads and contacting them that we didn't even notice. We were making money regardless, and our funnel was broken. Imagine, imagine you're focused so much on sales. You're making sales and the ads are not even set up correctly, right? And to some people that could be crazy, that could be like, oh man, like how did we do that? For me, it's just funny because when you're so focused on sales, nothing else matter."
+      },
+      {
+        "t": "05:30",
+        "text": "You could have the wrong campaign. You could have the shittiest leads. You're still making money because you're focused on sales. The longer I go without posting on social media, the more sales we make. Every time I get into posting and getting into creating and editing content, our sales take a hit, okay? So just take that lesson from me. Always focus on sales. Focus on conversations with people. Everything else is secondary. Everything else is noise."
+      }
+    ]
   }
 ]
