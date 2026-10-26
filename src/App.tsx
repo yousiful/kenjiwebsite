@@ -144,6 +144,9 @@ const VisitorTracker: React.FC = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    // Supabase isn't configured on Netlify, so without this guard every page
+    // view POSTed to "undefined/functions/v1/track-visitor" and logged a 404.
+    if (!SUPABASE_URL || !SUPABASE_ANON_KEY) return;
     const url = `${SUPABASE_URL}/functions/v1/track-visitor`;
     fetch(url, {
       method: "POST",
