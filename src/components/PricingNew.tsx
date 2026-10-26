@@ -7,7 +7,7 @@ const CALL_URL = 'https://go.mediatraffics.com/leads';
 
 // Yousif, 2026-10-22: list more of what they get (AI agents, best ads, pre-tested campaigns, $25 credit). Ads are still setup only.
 const MONTHLY_FEATURES = [
-  'Pre-tested ad campaigns, already proven on other businesses, set up and launched for you (setup only, no ongoing management)',
+  'Pre-tested ad campaigns, already proven on other businesses, set up and launched for you',
   'Ad creatives modeled on our best-performing ads',
   'AI agents that text and call every new lead within minutes, day and night',
   'Done-for-you funnel',
