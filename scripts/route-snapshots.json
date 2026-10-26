@@ -2250,11 +2250,11 @@
      },
      {
       "property": "twitter:description",
-      "content": "Free AI tools for business: prompt generator, PR outreach, sales coach, and investor connect. No signup, free forever, from the team behind KenjiAI."
+      "content": "Free tools for business owners: ROAS, LTV, Facebook ads budget and missed call calculators, an ICP generator, a Google review link generator and more. No signup needed."
      },
      {
       "name": "description",
-      "content": "Free AI tools for business: prompt generator, PR outreach, sales coach, and investor connect. No signup, free forever, from the team behind KenjiAI."
+      "content": "Free tools for business owners: ROAS, LTV, Facebook ads budget and missed call calculators, an ICP generator, a Google review link generator and more. No signup needed."
      },
      {
       "name": "keywords",
@@ -2266,7 +2266,7 @@
      },
      {
       "property": "og:description",
-      "content": "Free AI tools for business: prompt generator, PR outreach, sales coach, and missed call ROI calculator."
+      "content": "Free calculators and AI tools for ads, follow-up and reviews: ROAS, LTV, ad budget, missed calls, ICP and review links. No signup needed."
      },
      {
       "name": "twitter:card",
@@ -2275,7 +2275,7 @@
     ],
     "canonical": "https://kenjiai.com/free-tools",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@type\":\"CollectionPage\",\"name\":\"Free AI Tools by KenjiAI\",\"description\":\"A collection of free AI tools built by the KenjiAI team. No signup required, 100% free forever.\",\"url\":\"https://kenjiai.com/free-tools\",\"mainEntity\":{\"@type\":\"ItemList\",\"name\":\"Free AI Tools\",\"itemListElement\":[{\"@type\":\"SoftwareApplication\",\"position\":1,\"name\":\"Customer Lifetime Value (LTV) Calculator\",\"description\":\"Enter purchase value, how often customers buy, how long they stay, your margin, and your cost per customer. Get lifetime value in revenue and profit, your LTV:CAC ratio, the most you can pay per customer, and CAC payback.\",\"url\":\"/tools/ltv-calculator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":2,\"name\":\"Kenji Invites: Free Invitations with RSVP for Any Celebration\",\"description\":\"Make a beautiful invitation for a wedding, birthday, graduation, shower, holiday party or any celebration. Add your photos, send it by text or email from your own phone, and see who's coming.\",\"url\":\"/invites\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":3,\"name\":\"Facebook Ads Budget Calculator\",\"description\":\"Enter the customers you want each month, your cost per lead, and your close rate. Get the daily and monthly Meta ads budget you need, cost per customer, and whether you have enough volume to exit the learning phase.\",\"url\":\"/tools/facebook-ads-budget-calculator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":4,\"name\":\"ROAS & Break-Even Calculator\",\"description\":\"Enter ad spend, revenue, order value, and margin. Get your ROAS, the break-even ROAS your margins require, the most you can pay per customer, and real profit after ad spend.\",\"url\":\"/tools/roas-calculator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":5,\"name\":\"Google Review Link Generator\",\"description\":\"Make a direct link to your Google review box plus a printable QR code, with ready-to-send text and email templates for asking customers.\",\"url\":\"/tools/google-review-link-generator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":6,\"name\":\"AI Business & $100M Offer Name Generator\",\"description\":\"Generate viral business names, Alex Hormozi $100M Grand Slam offer titles, SaaS products, and lead magnets with domain checks, ad hooks, and conversion psychology.\",\"url\":\"/tools/name-generator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":7,\"name\":\"TrendPulse & AdForge - Viral Trends, $100M Offers & Ad Hooks\",\"description\":\"Real-time trend radar, buyer intent miner, Alex Hormozi $100M Grand Slam Offer architect, and 6-vector psychological ad angle and viral UGC hook generator.\",\"url\":\"/trendpulse\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":8,\"name\":\"ICP Generator - Ideal Customer Profile For Ad Targeting\",\"description\":\"Describe what you sell and what you charge. Get 2 or 3 named buyer segments with real Meta Ads detailed-targeting interests, exclusions, buying triggers, objection counters, and lookalike seeds you can configure a campaign from today.\",\"url\":\"/tools/icp-generator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":9,\"name\":\"Missed Call Revenue Loss Calculator\",\"description\":\"Interactive diagnostic tool for high-ticket businesses to calculate pipeline revenue lost to unanswered calls and discover ROI on 24/7 AI call answering agents.\",\"url\":\"/tools/missed-call-calculator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":10,\"name\":\"Song & Jingle Prompt Generator\",\"description\":\"Build a real, producer-grade prompt for Suno, Udio, or Producer.ai, not generic AI slop. Make a personal song with your name in it, or a commercial jingle/anthem for your business.\",\"url\":\"/tools/song-prompt-generator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":11,\"name\":\"AI Prompt Generator\",\"description\":\"Generate perfect AI prompts for any use case with our intelligent prompt engineering tool. Create optimized prompts for ChatGPT, Claude, GPT-4, and other AI models. Free forever, no signup required.\",\"url\":\"https://prompt.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":12,\"name\":\"PR Pro - Free AI PR Tool\",\"description\":\"AI-powered PR campaigns that get you noticed by the right people and media outlets. Generate press releases, media lists, and outreach templates. Free AI PR automation tool.\",\"url\":\"https://prpro.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":13,\"name\":\"Sales Coach AI - Free Sales Training\",\"description\":\"Your personal AI sales trainer that helps close more deals with data-driven insights, objection handling, and performance optimization. Free AI sales coaching and training.\",\"url\":\"https://salescoach.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":14,\"name\":\"Investor Connect - Free Startup Tool\",\"description\":\"Connect with investors and manage funding opportunities with AI-powered matching, pitch deck optimization, and due diligence preparation. Free startup and investor tools.\",\"url\":\"https://investors.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":15,\"name\":\"AI Dispute Resolution\",\"description\":\"Resolve disputes efficiently with AI-powered mediation, conflict analysis, and resolution strategies. Free AI dispute management and resolution tool for businesses.\",\"url\":\"https://dispute.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":16,\"name\":\"Live Webinar Platform\",\"description\":\"Host engaging live webinars with AI-powered audience insights, automated follow-ups, and conversion tracking. Free webinar hosting and automation tool.\",\"url\":\"https://webinar.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":17,\"name\":\"AI Business Planner\",\"description\":\"Create comprehensive business plans with AI-powered financial projections, market analysis, and growth strategies. Free AI business planning tool for entrepreneurs.\",\"url\":\"https://plan.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":18,\"name\":\"The Closer - AI Agent Prompt Builder\",\"description\":\"Build elite AI sales agent prompts that close deals on autopilot. Engineer battle-tested prompts for voice agents, chat bots, and outbound automation. The only free tool that turns your AI into a top-performing closer.\",\"url\":\"https://agentprompt.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}]},\"breadcrumb\":{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Free AI Tools\",\"item\":\"https://kenjiai.com/free-tools\"}]}}"
+     "{\"@context\":\"https://schema.org\",\"@type\":\"CollectionPage\",\"name\":\"Free AI Tools by KenjiAI\",\"description\":\"A collection of free AI tools built by the KenjiAI team. No signup required, 100% free forever.\",\"url\":\"https://kenjiai.com/free-tools\",\"mainEntity\":{\"@type\":\"ItemList\",\"name\":\"Free AI Tools\",\"itemListElement\":[{\"@type\":\"SoftwareApplication\",\"position\":1,\"name\":\"Customer Lifetime Value (LTV) Calculator\",\"description\":\"Enter purchase value, how often customers buy, how long they stay, your margin, and your cost per customer. Get lifetime value in revenue and profit, your LTV:CAC ratio, the most you can pay per customer, and CAC payback.\",\"url\":\"https://kenjiai.com/tools/ltv-calculator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":2,\"name\":\"Kenji Invites: Free Invitations with RSVP for Any Celebration\",\"description\":\"Make a beautiful invitation for a wedding, birthday, graduation, shower, holiday party or any celebration. Add your photos, send it by text or email from your own phone, and see who's coming.\",\"url\":\"https://kenjiai.com/invites\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":3,\"name\":\"Facebook Ads Budget Calculator\",\"description\":\"Enter the customers you want each month, your cost per lead, and your close rate. Get the daily and monthly Meta ads budget you need, cost per customer, and whether you have enough volume to exit the learning phase.\",\"url\":\"https://kenjiai.com/tools/facebook-ads-budget-calculator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":4,\"name\":\"ROAS & Break-Even Calculator\",\"description\":\"Enter ad spend, revenue, order value, and margin. Get your ROAS, the break-even ROAS your margins require, the most you can pay per customer, and real profit after ad spend.\",\"url\":\"https://kenjiai.com/tools/roas-calculator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":5,\"name\":\"Google Review Link Generator\",\"description\":\"Make a direct link to your Google review box plus a printable QR code, with ready-to-send text and email templates for asking customers.\",\"url\":\"https://kenjiai.com/tools/google-review-link-generator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":6,\"name\":\"AI Business & $100M Offer Name Generator\",\"description\":\"Generate viral business names, Alex Hormozi $100M Grand Slam offer titles, SaaS products, and lead magnets with domain checks, ad hooks, and conversion psychology.\",\"url\":\"https://kenjiai.com/tools/name-generator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":7,\"name\":\"TrendPulse & AdForge - Viral Trends, $100M Offers & Ad Hooks\",\"description\":\"Real-time trend radar, buyer intent miner, Alex Hormozi $100M Grand Slam Offer architect, and 6-vector psychological ad angle and viral UGC hook generator.\",\"url\":\"https://kenjiai.com/trendpulse\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":8,\"name\":\"ICP Generator - Ideal Customer Profile For Ad Targeting\",\"description\":\"Describe what you sell and what you charge. Get 2 or 3 named buyer segments with real Meta Ads detailed-targeting interests, exclusions, buying triggers, objection counters, and lookalike seeds you can configure a campaign from today.\",\"url\":\"https://kenjiai.com/tools/icp-generator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":9,\"name\":\"Missed Call Revenue Loss Calculator\",\"description\":\"Interactive diagnostic tool for high-ticket businesses to calculate pipeline revenue lost to unanswered calls and discover ROI on 24/7 AI call answering agents.\",\"url\":\"https://kenjiai.com/tools/missed-call-calculator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":10,\"name\":\"Song & Jingle Prompt Generator\",\"description\":\"Build a real, producer-grade prompt for Suno, Udio, or Producer.ai, not generic AI slop. Make a personal song with your name in it, or a commercial jingle/anthem for your business.\",\"url\":\"https://kenjiai.com/tools/song-prompt-generator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":11,\"name\":\"AI Prompt Generator\",\"description\":\"Generate perfect AI prompts for any use case with our intelligent prompt engineering tool. Create optimized prompts for ChatGPT, Claude, GPT-4, and other AI models. Free forever, no signup required.\",\"url\":\"https://prompt.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":12,\"name\":\"PR Pro - Free AI PR Tool\",\"description\":\"AI-powered PR campaigns that get you noticed by the right people and media outlets. Generate press releases, media lists, and outreach templates. Free AI PR automation tool.\",\"url\":\"https://prpro.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":13,\"name\":\"Sales Coach AI - Free Sales Training\",\"description\":\"Your personal AI sales trainer that helps close more deals with data-driven insights, objection handling, and performance optimization. Free AI sales coaching and training.\",\"url\":\"https://salescoach.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":14,\"name\":\"Investor Connect - Free Startup Tool\",\"description\":\"Connect with investors and manage funding opportunities with AI-powered matching, pitch deck optimization, and due diligence preparation. Free startup and investor tools.\",\"url\":\"https://investors.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":15,\"name\":\"AI Dispute Resolution\",\"description\":\"Resolve disputes efficiently with AI-powered mediation, conflict analysis, and resolution strategies. Free AI dispute management and resolution tool for businesses.\",\"url\":\"https://dispute.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":16,\"name\":\"Live Webinar Platform\",\"description\":\"Host engaging live webinars with AI-powered audience insights, automated follow-ups, and conversion tracking. Free webinar hosting and automation tool.\",\"url\":\"https://webinar.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":17,\"name\":\"AI Business Planner\",\"description\":\"Create comprehensive business plans with AI-powered financial projections, market analysis, and growth strategies. Free AI business planning tool for entrepreneurs.\",\"url\":\"https://plan.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}]},\"breadcrumb\":{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Free AI Tools\",\"item\":\"https://kenjiai.com/free-tools\"}]}}"
     ]
    },
    "blocks": [
@@ -2285,19 +2285,15 @@
     },
     {
      "tag": "p",
-     "text": "Access powerful AI tools built for prompt engineering, PR, sales, and business planning - completely free. No signup required, no credit card needed, no time limits."
-    },
-    {
-     "tag": "h2",
-     "text": "🛠️ Free AI Tools"
+     "text": "Calculators and AI tools for ads, follow-up, reviews, sales and planning. Use them as much as you like. No signup and no credit card."
     },
     {
      "tag": "h3",
-     "text": "100% Free Forever"
+     "text": "Free to Use"
     },
     {
      "tag": "p",
-     "text": "No hidden costs, no credit card required, no time limits - start using them immediately"
+     "text": "No credit card and no signup. Open a tool and use it."
     },
     {
      "tag": "h3",
@@ -2305,7 +2301,7 @@
     },
     {
      "tag": "p",
-     "text": "Start using each tool immediately - no lengthy setup or learning curve required"
+     "text": "Each tool runs in your browser with nothing to install."
     },
     {
      "tag": "h3",
@@ -2464,14 +2460,6 @@
      "text": "Create comprehensive business plans with AI-powered financial projections, market analysis, and growth strategies. Free AI business planning tool for entrepreneurs."
     },
     {
-     "tag": "h3",
-     "text": "The Closer - AI Agent Prompt Builder"
-    },
-    {
-     "tag": "p",
-     "text": "Build elite AI sales agent prompts that close deals on autopilot. Engineer battle-tested prompts for voice agents, chat bots, and outbound automation. The only free tool that turns your AI into a top-performing closer."
-    },
-    {
      "tag": "h2",
      "text": "Why Choose KenjiAI's Free Tools?"
     },
@@ -2481,7 +2469,7 @@
     },
     {
      "tag": "p",
-     "text": "Unlike generic AI tools, ours are built for specific business tasks: prompts, PR, sales scripts, funding docs, and more."
+     "text": "Each tool does one business job: ad math, targeting, review requests, prompts, PR, sales scripts and planning."
     },
     {
      "tag": "h3",
@@ -2539,43 +2527,43 @@
    "links": [
     {
      "href": "/tools/ltv-calculator",
-     "text": "Launch Interactive Tool"
+     "text": "Open the tool"
     },
     {
      "href": "/invites",
-     "text": "Launch Interactive Tool"
+     "text": "Open the tool"
     },
     {
      "href": "/tools/facebook-ads-budget-calculator",
-     "text": "Launch Interactive Tool"
+     "text": "Open the tool"
     },
     {
      "href": "/tools/roas-calculator",
-     "text": "Launch Interactive Tool"
+     "text": "Open the tool"
     },
     {
      "href": "/tools/google-review-link-generator",
-     "text": "Launch Interactive Tool"
+     "text": "Open the tool"
     },
     {
      "href": "/tools/name-generator",
-     "text": "Launch Interactive Tool"
+     "text": "Open the tool"
     },
     {
      "href": "/trendpulse",
-     "text": "Launch Interactive Tool"
+     "text": "Open the tool"
     },
     {
      "href": "/tools/icp-generator",
-     "text": "Launch Interactive Tool"
+     "text": "Open the tool"
     },
     {
      "href": "/tools/missed-call-calculator",
-     "text": "Launch Interactive Tool"
+     "text": "Open the tool"
     },
     {
      "href": "/tools/song-prompt-generator",
-     "text": "Launch Interactive Tool"
+     "text": "Open the tool"
     },
     {
      "href": "/pricing",
@@ -16665,7 +16653,7 @@
   },
   "/tools/icp-generator": {
    "head": {
-    "title": "Free ICP Generator: Build Your Ideal Customer Profile For Ad Targeting | KenjiAI",
+    "title": "Free ICP Generator: Ideal Customer Profile for Ads | KenjiAI",
     "metas": [
      {
       "name": "viewport",
@@ -16792,7 +16780,7 @@
      },
      {
       "name": "title",
-      "content": "Free ICP Generator: Build Your Ideal Customer Profile For Ad Targeting | KenjiAI"
+      "content": "Free ICP Generator: Ideal Customer Profile for Ads | KenjiAI"
      },
      {
       "name": "description",
@@ -16804,7 +16792,7 @@
      },
      {
       "property": "og:title",
-      "content": "Free ICP Generator: Build Your Ideal Customer Profile For Ad Targeting | KenjiAI"
+      "content": "Free ICP Generator: Ideal Customer Profile for Ads | KenjiAI"
      },
      {
       "property": "og:description",
@@ -16812,7 +16800,7 @@
      },
      {
       "property": "twitter:title",
-      "content": "Free ICP Generator: Build Your Ideal Customer Profile For Ad Targeting | KenjiAI"
+      "content": "Free ICP Generator: Ideal Customer Profile for Ads | KenjiAI"
      },
      {
       "property": "twitter:description",
@@ -16821,7 +16809,7 @@
     ],
     "canonical": "https://kenjiai.com/tools/icp-generator",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/tools/icp-generator#webpage\",\"url\":\"https://kenjiai.com/tools/icp-generator\",\"name\":\"Free ICP Generator: Build Your Ideal Customer Profile For Ad Targeting\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"Describe what you sell and what you charge. Get 2 or 3 named buyer segments with real Meta Ads interests, exclusions, buying triggers, objection counters, and lookalike seeds you can configure a campaign from today. Free, no signup.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/tools/icp-generator#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/tools/icp-generator#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Free Tools\",\"item\":\"https://kenjiai.com/free-tools\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Free ICP Generator: Build Your Ideal Customer Profile For Ad Targeting\",\"item\":\"https://kenjiai.com/tools/icp-generator\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/tools/icp-generator#webpage\",\"url\":\"https://kenjiai.com/tools/icp-generator\",\"name\":\"Free ICP Generator: Ideal Customer Profile for Ads\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"Describe what you sell and what you charge. Get 2 or 3 named buyer segments with real Meta Ads interests, exclusions, buying triggers, objection counters, and lookalike seeds you can configure a campaign from today. Free, no signup.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/tools/icp-generator#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/tools/icp-generator#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Free Tools\",\"item\":\"https://kenjiai.com/free-tools\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Free ICP Generator: Ideal Customer Profile for Ads\",\"item\":\"https://kenjiai.com/tools/icp-generator\"}]}]}",
      "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebApplication\",\"@id\":\"https://kenjiai.com/tools/icp-generator#app\",\"name\":\"KenjiAI ICP Generator\",\"url\":\"https://kenjiai.com/tools/icp-generator\",\"description\":\"Free tool that turns what you sell and what you charge into 2 or 3 named buyer segments with real Meta Ads detailed-targeting interests, exclusions, buying triggers, objection counters, and lookalike seeds.\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"browserRequirements\":\"Requires JavaScript\",\"isAccessibleForFree\":true,\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"}},{\"@type\":\"FAQPage\",\"@id\":\"https://kenjiai.com/tools/icp-generator#faq\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"What is an ICP, and how is it different from a persona?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"A persona is a description. An ICP is a configuration: age range, spending capacity, the interests and behaviors you select, who you exclude, and which list you seed a lookalike from. This tool gives you the second one.\"}},{\"@type\":\"Question\",\"name\":\"Are the Meta interests guaranteed to exist?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Treat them as a search list, not a guarantee. Meta adds and retires detailed-targeting categories constantly. Search each term in Ads Manager and take the closest real match, or use it as the seed for a broader interest.\"}},{\"@type\":\"Question\",\"name\":\"Should I still use Advantage+ audience expansion?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes, once the pixel has real conversion data to learn from. Before that, expansion spends your budget discovering what you already know about your buyer. Start layered, then loosen.\"}},{\"@type\":\"Question\",\"name\":\"Why does a cheap offer need an affordability signal?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"We ran a $7 front-end offer on broad targeting and a real share of the declines were banks refusing debit and prepaid cards. The click was cheap, the customer could not pay. Cheap still needs some spending signal.\"}}]}]}"
     ]
    },
@@ -17537,7 +17525,7 @@
     },
     {
      "tag": "p",
-     "text": "Ready to make this offer print money? Deploy a 24/7 AI Voice Receptionist from Kenji AI that answers every inbound call in under 1 second."
+     "text": "Once the name is set, make sure every call it brings in gets answered. A KenjiAI voice receptionist picks up 24/7 and books the caller on your calendar."
     },
     {
      "tag": "h3",
@@ -17645,19 +17633,19 @@
     },
     {
      "tag": "h3",
-     "text": "Connected to Kenji AI Scale Engine"
+     "text": "Backed by KenjiAI follow-up"
     },
     {
      "tag": "p",
-     "text": "A name is only as good as the machine fulfilling it. Pair your offer with Kenji AI 24/7 Voice Agents, automated SMS booking sequences, and automated lead qualification to close deals on autopilot."
+     "text": "The name gets attention. KenjiAI voice agents, SMS booking and lead qualification then work every lead it brings in."
     },
     {
      "tag": "h2",
-     "text": "Have Your Winning Name? Now Build The System That Sells It."
+     "text": "Have your name? Now build the system that sells it."
     },
     {
      "tag": "p",
-     "text": "Connect your new brand to Kenji AI's complete inbound automation stack: 24/7 Voice Agents answering under 1 second, automated CRM pipeline, and done-for-you lead generation campaigns."
+     "text": "Connect your new brand to KenjiAI: voice agents that answer 24/7, a CRM pipeline that follows up for you, and done-for-you ad campaigns."
     },
     {
      "tag": "h3",
@@ -17702,8 +17690,8 @@
      "text": "Back to Free AI Growth Tools"
     },
     {
-     "href": "/call-center-upgrade",
-     "text": "Explore Kenji AI Call Center Upgrade"
+     "href": "/call-center-upgrade/",
+     "text": "See the KenjiAI AI Call Center"
     },
     {
      "href": "/trendpulse",
