@@ -246,7 +246,7 @@ const ICPGeneratorPage: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="Free ICP Generator: Build Your Ideal Customer Profile For Ad Targeting | KenjiAI"
+        title="Free ICP Generator: Ideal Customer Profile for Ads | KenjiAI"
         description="Describe what you sell and what you charge. Get 2 or 3 named buyer segments with real Meta Ads interests, exclusions, buying triggers, objection counters, and lookalike seeds you can configure a campaign from today. Free, no signup."
         keywords="ICP generator, ideal customer profile generator, ad targeting tool, Meta Ads audience builder, Facebook ads interest targeting, lookalike audience seed, free ICP tool, customer avatar generator, ad audience research"
         canonical="https://kenjiai.com/tools/icp-generator"

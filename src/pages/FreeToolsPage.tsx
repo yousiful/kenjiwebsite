@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, Search, TrendingUp, AlertCircle, PhoneCall, Flame, Music, Target, Building2, Calculator, Wallet, Heart } from 'lucide-react';
+import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, TrendingUp, AlertCircle, PhoneCall, Flame, Music, Target, Building2, Calculator, Wallet, Heart } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 const FreeToolsPage: React.FC = () => {
@@ -13,8 +13,6 @@ const FreeToolsPage: React.FC = () => {
       gradient: "from-emerald-600 via-teal-600 to-cyan-600",
       features: ["Revenue & Profit LTV", "LTV:CAC Ratio", "Max Allowable CAC", "CAC Payback Months"],
       category: "Marketing & Growth",
-      rating: 5.0,
-      users: "NEW",
       keywords: ["ltv calculator", "customer lifetime value calculator", "ltv cac ratio calculator", "how to calculate customer lifetime value"],
       revenue: "Know what a customer is really worth"
     },
@@ -26,8 +24,6 @@ const FreeToolsPage: React.FC = () => {
       gradient: "from-rose-500 via-pink-500 to-amber-400",
       features: ["36 Designs for Every Occasion", "Up to 8 Photos, Arranged for You", "Text & Email From Your Phone", "RSVP Tracking"],
       category: "Free App",
-      rating: 5.0,
-      users: "NEW",
       keywords: ["free wedding invitations", "online wedding invitation with RSVP", "digital wedding invitation", "wedding RSVP tracker"],
       revenue: "Free for families, no catch"
     },
@@ -39,8 +35,6 @@ const FreeToolsPage: React.FC = () => {
       gradient: "from-blue-600 via-indigo-600 to-violet-600",
       features: ["Daily & Monthly Budget", "Leads Needed", "Cost Per Customer", "Learning Phase Check"],
       category: "Paid Ads",
-      rating: 5.0,
-      users: "NEW",
       keywords: ["facebook ads budget calculator", "how much to spend on facebook ads", "meta ads budget", "facebook ad cost calculator"],
       revenue: "Know the exact daily budget to set"
     },
@@ -52,8 +46,6 @@ const FreeToolsPage: React.FC = () => {
       gradient: "from-emerald-600 via-teal-600 to-blue-600",
       features: ["ROAS & Break-Even ROAS", "Max Cost Per Customer", "Profit After Ad Spend", "Embeddable"],
       category: "Paid Ads",
-      rating: 5.0,
-      users: "NEW",
       keywords: ["ROAS calculator", "break even ROAS calculator", "return on ad spend", "ad profit calculator", "CPA calculator"],
       revenue: "Know if your ads actually make money"
     },
@@ -65,8 +57,6 @@ const FreeToolsPage: React.FC = () => {
       gradient: "from-amber-500 via-orange-500 to-rose-500",
       features: ["Direct Review Link", "Printable QR Code", "Text & Email Templates", "No Signup"],
       category: "Local Business",
-      rating: 5.0,
-      users: "NEW",
       keywords: ["google review link generator", "google review QR code", "get more google reviews", "review request template"],
       revenue: "Collect more reviews with one link"
     },
@@ -78,8 +68,6 @@ const FreeToolsPage: React.FC = () => {
       gradient: "from-cyan-600 via-blue-600 to-emerald-500",
       features: ["Alex Hormozi M.A.G.I.C. Framework", "Live Domain (.com / .ai) Checks", "Conversion Psychology", "Ad Hook Generator", "Saved Vault & Export"],
       category: "Marketing & Growth",
-      rating: 5.0,
-      users: "NEW",
       keywords: ["business name generator", "offer name generator", "$100M offers", "brand names", "SaaS names", "Alex Hormozi", "company name generator"],
       revenue: "Create high-converting names that command premium pricing"
     },
@@ -91,8 +79,6 @@ const FreeToolsPage: React.FC = () => {
       gradient: "from-purple-600 via-indigo-600 to-pink-500",
       features: ["Live Trend Radar", "$100M Offer Architect", "6 Psychological Ad Angles", "Viral UGC Hook Vault", "Free Forever"],
       category: "Marketing & Growth",
-      rating: 5.0,
-      users: "NEW",
       keywords: ["trend analyzer", "viral ad hooks", "$100M offers", "marketing angles", "direct response copy", "google trends tool"],
       revenue: "Discover winning trends and deploy offers in 60s"
     },
@@ -104,8 +90,6 @@ const FreeToolsPage: React.FC = () => {
       gradient: "from-blue-600 via-indigo-600 to-emerald-500",
       features: ["2-3 Named Buyer Segments", "Real Meta Targeting Terms", "Exclusions & Lookalike Seeds", "Affordability Check"],
       category: "Paid Ads",
-      rating: 5.0,
-      users: "NEW",
       keywords: ["ICP generator", "ideal customer profile", "ad targeting tool", "Meta ads audience builder", "customer avatar generator", "lookalike audience"],
       revenue: "Stop paying for clicks that cannot buy"
     },
@@ -117,8 +101,6 @@ const FreeToolsPage: React.FC = () => {
       gradient: "from-blue-600 via-indigo-600 to-emerald-500",
       features: ["Instant ROI Model", "Industry Benchmarks", "Embeddable Widget", "Free Forever"],
       category: "Diagnostics",
-      rating: 5.0,
-      users: "15K+",
       keywords: ["missed call calculator", "call center ROI", "inbound lead loss", "AI receptionist calculator", "business revenue recovery"],
       revenue: "Calculate exact annual revenue bleed"
     },
@@ -130,8 +112,6 @@ const FreeToolsPage: React.FC = () => {
       gradient: "from-purple-500 to-pink-600",
       features: ["Genre-Specific Production Notes", "Real Song Structure", "Custom Hook Lines", "Personal or Commercial Jingle"],
       category: "AI Tools",
-      rating: 5.0,
-      users: "NEW",
       keywords: ["AI song generator", "Suno prompt generator", "Udio prompt", "jingle maker", "AI music prompt", "commercial jingle generator"],
       revenue: "Producer-grade prompts in seconds"
     },
@@ -143,8 +123,6 @@ const FreeToolsPage: React.FC = () => {
       gradient: "from-purple-500 to-pink-600",
       features: ["Smart Templates", "Prompt Optimization", "Multi-Model Support", "Export Options"],
       category: "AI Tools",
-      rating: 4.9,
-      users: "50K+",
       keywords: ["prompt generator", "AI prompts", "ChatGPT prompts", "GPT-4 prompts", "Claude prompts", "prompt engineering"],
       revenue: "Ready-to-use prompt templates"
     },
@@ -156,8 +134,6 @@ const FreeToolsPage: React.FC = () => {
       gradient: "from-pink-500 to-purple-600",
       features: ["Media Outreach", "Press Releases", "Brand Monitoring", "Campaign Analytics"],
       category: "Marketing",
-      rating: 4.8,
-      users: "25K+",
       keywords: ["free PR tool", "AI PR", "press release generator", "media outreach", "PR automation", "public relations AI"],
       revenue: "Ready-to-send press releases"
     },
@@ -169,8 +145,6 @@ const FreeToolsPage: React.FC = () => {
       gradient: "from-blue-500 to-cyan-600",
       features: ["Script Generation", "Objection Handling", "Performance Analytics", "Training Modules"],
       category: "Sales",
-      rating: 4.9,
-      users: "35K+",
       keywords: ["free sales coach", "AI sales training", "sales automation", "sales scripts", "objection handling", "sales AI"],
       revenue: "Objection-handling scripts included"
     },
@@ -182,8 +156,6 @@ const FreeToolsPage: React.FC = () => {
       gradient: "from-green-500 to-emerald-600",
       features: ["Pitch Deck Builder", "Investor Matching", "Due Diligence", "Funding Tracker"],
       category: "Business",
-      rating: 4.7,
-      users: "15K+",
       keywords: ["free investor tools", "startup tools", "pitch deck generator", "investor matching", "funding tools", "startup AI"],
       revenue: "Pitch deck builder included"
     },
@@ -195,8 +167,6 @@ const FreeToolsPage: React.FC = () => {
       gradient: "from-red-500 to-orange-600",
       features: ["Dispute Analysis", "Resolution Strategies", "Mediation Support", "Documentation"],
       category: "Business",
-      rating: 4.8,
-      users: "12K+",
       keywords: ["dispute resolution", "AI mediation", "conflict management", "business disputes", "resolution tool", "AI arbitration"],
       revenue: "AI-drafted resolution strategies"
     },
@@ -208,8 +178,6 @@ const FreeToolsPage: React.FC = () => {
       gradient: "from-blue-500 to-purple-600",
       features: ["Live Streaming", "Audience Analytics", "Auto Follow-ups", "Registration Tools"],
       category: "Marketing",
-      rating: 4.9,
-      users: "30K+",
       keywords: ["free webinar platform", "live webinars", "webinar hosting", "online events", "virtual events", "webinar automation"],
       revenue: "Built-in audience analytics"
     },
@@ -221,36 +189,21 @@ const FreeToolsPage: React.FC = () => {
       gradient: "from-green-500 to-teal-600",
       features: ["Financial Projections", "Market Analysis", "Growth Strategies", "Investor-Ready Plans"],
       category: "Business",
-      rating: 4.8,
-      users: "20K+",
       keywords: ["business plan generator", "AI business planning", "financial projections", "market analysis", "startup planning", "business strategy"],
       revenue: "Investor-ready financial projections"
-    },
-    {
-      name: "The Closer - AI Agent Prompt Builder",
-      description: "Build elite AI sales agent prompts that close deals on autopilot. Engineer battle-tested prompts for voice agents, chat bots, and outbound automation. The only free tool that turns your AI into a top-performing closer.",
-      url: "https://agentprompt.kenjiai.com",
-      icon: Search,
-      gradient: "from-amber-500 to-orange-600",
-      features: ["Agent Prompt Engineering", "Sales Script Builder", "Objection Sequences", "Multi-Channel Templates"],
-      category: "Sales",
-      rating: 4.9,
-      users: "18K+",
-      keywords: ["AI agent prompts", "sales agent builder", "AI closer", "agent prompt engineering", "sales automation prompts", "AI sales scripts"],
-      revenue: "Multi-channel prompt templates"
     }
   ];
 
   const benefits = [
     {
       icon: Gift,
-      title: "100% Free Forever",
-      description: "No hidden costs, no credit card required, no time limits - start using them immediately"
+      title: "Free to Use",
+      description: "No credit card and no signup. Open a tool and use it."
     },
     {
       icon: Zap,
       title: "No Setup Required",
-      description: "Start using each tool immediately - no lengthy setup or learning curve required"
+      description: "Each tool runs in your browser with nothing to install."
     },
     {
       icon: Star,
@@ -278,7 +231,7 @@ const FreeToolsPage: React.FC = () => {
         "position": index + 1,
         "name": tool.name,
         "description": tool.description,
-        "url": tool.url,
+        "url": tool.url.startsWith('/') ? `https://kenjiai.com${tool.url}` : tool.url,
         "applicationCategory": "BusinessApplication",
         "offers": {
           "@type": "Offer",
@@ -310,12 +263,12 @@ const FreeToolsPage: React.FC = () => {
     <>
       <Helmet>
         <title>Free AI Tools for Business | KenjiAI</title>
-        <meta name="description" content="Free AI tools for business: prompt generator, PR outreach, sales coach, and investor connect. No signup, free forever, from the team behind KenjiAI." />
+        <meta name="description" content="Free tools for business owners: ROAS, LTV, Facebook ads budget and missed call calculators, an ICP generator, a Google review link generator and more. No signup needed." />
         <meta name="keywords" content="free AI tools, AI prompt generator, free PR tools, AI sales coach, free startup tools, ChatGPT prompts, GPT-4 prompts, AI business tools, free marketing tools, AI automation tools, prompt engineering, free AI software, business automation, AI productivity tools, free AI apps" />
         <link rel="canonical" href="https://kenjiai.com/free-tools" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Free AI Tools for Business | KenjiAI" />
-        <meta property="og:description" content="Free AI tools for business: prompt generator, PR outreach, sales coach, and missed call ROI calculator." />
+        <meta property="og:description" content="Free calculators and AI tools for ads, follow-up and reviews: ROAS, LTV, ad budget, missed calls, ICP and review links. No signup needed." />
         <meta property="og:url" content="https://kenjiai.com/free-tools" />
         <meta property="og:image" content="https://kenjiai.com/og-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -352,31 +305,14 @@ const FreeToolsPage: React.FC = () => {
             </h1>
 
             <p className="text-xl text-gray-400 max-w-4xl mx-auto leading-relaxed mb-8">
-              Access powerful AI tools built for prompt engineering, PR, sales, and business planning -
-              completely free. No signup required, no credit card needed, no time limits.
+              Calculators and AI tools for ads, follow-up, reviews, sales and planning. Use them as
+              much as you like. No signup and no credit card.
             </p>
-
-            {/* Free Tools Section */}
-            <div className="bg-gray-800/30 border border-gray-700 rounded-2xl p-6 mb-8 max-w-4xl mx-auto">
-              <h2 className="text-lg font-semibold text-white mb-4">🛠️ Free AI Tools</h2>
-              <div className="flex flex-wrap gap-2 justify-center">
-                {[
-                  "AI Prompt Generator", "ChatGPT Prompts", "GPT-4 Prompts", "Free PR Tools",
-                  "AI Sales Coach", "Startup Tools", "AI Marketing", "Business Automation",
-                  "Prompt Engineering", "AI Content Creation", "Free AI Software", "AI Productivity",
-                  "Business Automation Tools", "Free Business Tools", "AI Sales Tools", "AI Planning Tools"
-                ].map((keyword, index) => (
-                  <span key={index} className="bg-green-500/20 text-green-400 px-3 py-1 rounded-lg text-sm">
-                    {keyword}
-                  </span>
-                ))}
-              </div>
-            </div>
 
             {/* Stats */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mb-12">
               <div className="text-center">
-                <div className="text-3xl font-bold text-green-400">8</div>
+                <div className="text-3xl font-bold text-green-400">{freeTools.length}</div>
                 <div className="text-gray-400 text-sm">Free Tools</div>
               </div>
               <div className="text-center">
@@ -385,7 +321,7 @@ const FreeToolsPage: React.FC = () => {
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-purple-400">100%</div>
-                <div className="text-gray-400 text-sm">Free Forever</div>
+                <div className="text-gray-400 text-sm">Free to Use</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-bold text-pink-400">0s</div>
@@ -460,13 +396,6 @@ const FreeToolsPage: React.FC = () => {
                             <span className="text-xs text-green-400 font-semibold bg-green-400/10 px-2 py-1 rounded">
                               {tool.category}
                             </span>
-                            <div className="flex items-center text-yellow-400 text-sm">
-                              <Star className="w-4 h-4 mr-1 fill-current" />
-                              {tool.rating}
-                            </div>
-                            <div className="text-gray-400 text-sm">
-                              {tool.users} users
-                            </div>
                           </div>
                         </div>
                       </div>
@@ -478,7 +407,7 @@ const FreeToolsPage: React.FC = () => {
 
                       {/* Revenue Impact */}
                       <div className="bg-green-500/20 border border-green-400/30 rounded-xl p-3 mb-4">
-                        <div className="text-green-400 font-semibold text-sm">💰 Revenue Impact</div>
+                        <div className="text-green-400 font-semibold text-sm">What you get</div>
                         <div className="text-green-300 text-sm">{tool.revenue}</div>
                       </div>
 
@@ -492,18 +421,6 @@ const FreeToolsPage: React.FC = () => {
                         ))}
                       </div>
 
-                      {/* Keywords for SEO */}
-                      <div className="mb-4">
-                        <div className="text-xs text-gray-500 mb-2">Popular searches:</div>
-                        <div className="flex flex-wrap gap-1">
-                          {tool.keywords.slice(0, 3).map((keyword, idx) => (
-                            <span key={idx} className="text-xs bg-gray-700/50 text-gray-400 px-2 py-1 rounded">
-                              {keyword}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-
                       {/* CTA */}
                       <motion.a
                         href={tool.url}
@@ -515,7 +432,7 @@ const FreeToolsPage: React.FC = () => {
                         className={`inline-flex items-center gap-2 bg-gradient-to-r ${tool.gradient} text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:shadow-lg`}
                       >
                         <Sparkles className="w-5 h-5" />
-                        {tool.url.startsWith('/') ? 'Launch Interactive Tool' : 'Start Making Money Free'}
+                        {tool.url.startsWith('/') ? 'Open the tool' : 'Open the tool (new tab)'}
                         {tool.url.startsWith('/') ? <ArrowRight className="w-4 h-4" /> : <ExternalLink className="w-4 h-4" />}
                       </motion.a>
                     </div>
@@ -541,8 +458,8 @@ const FreeToolsPage: React.FC = () => {
                 <div>
                   <h3 className="text-xl font-bold text-green-400 mb-3">🛠️ Built For Business</h3>
                   <p className="text-gray-400 text-sm leading-relaxed">
-                    Unlike generic AI tools, ours are built for specific business tasks: prompts, PR,
-                    sales scripts, funding docs, and more.
+                    Each tool does one business job: ad math, targeting, review requests, prompts, PR,
+                    sales scripts and planning.
                   </p>
                 </div>
 
@@ -612,8 +529,8 @@ const FreeToolsPage: React.FC = () => {
                 <div className="text-gray-400">Tools Replaced</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-purple-400 mb-2">$375</div>
-                <div className="text-gray-400">Per Month</div>
+                <div className="text-3xl font-bold text-purple-400 mb-2">30-day</div>
+                <div className="text-gray-400">Money-back guarantee</div>
               </div>
             </div>
 

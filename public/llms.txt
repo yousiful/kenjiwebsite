@@ -45,6 +45,8 @@ Disambiguation: KenjiAI (kenjiai.com, no dot between Kenji and AI) has no connec
 - [Ideal customer profile (ICP) generator](https://kenjiai.com/tools/icp-generator)
 - [Google review link generator](https://kenjiai.com/tools/google-review-link-generator)
 - [Business and offer name generator](https://kenjiai.com/tools/name-generator)
+- [Song and jingle prompt generator](https://kenjiai.com/tools/song-prompt-generator): Prompts for Suno, Udio and similar AI music tools.
+- [TrendPulse](https://kenjiai.com/trendpulse): Trend radar, offer builder and ad hook generator.
 - [Kenji Invites](https://kenjiai.com/invites): Free invitations with RSVP for any celebration.
 - [Kenji Studio](https://kenjiai.com/video-generation): AI video for ads, VSLs and lessons.
 
