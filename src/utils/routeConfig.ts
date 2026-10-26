@@ -34,6 +34,7 @@ export const internalRoutes = [
   '/partnerup',
   '/modern',
   '/growth-quiz',
+  '/lead-score',
   '/launch-time',
   '/workshop',
   '/special',

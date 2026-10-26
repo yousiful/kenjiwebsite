@@ -78,6 +78,7 @@ const ModernPage = lazyRoute(() => import('./pages/ModernPage'));
 const GrowthQuizPage = lazyRoute(() => import('./pages/GrowthQuizPage'));
 const GrowthQuizBookPage = lazyRoute(() => import('./pages/GrowthQuizPage').then((m) => ({ default: m.GrowthQuizBookPage })));
 const GrowthQuizNextStepPage = lazyRoute(() => import('./pages/GrowthQuizPage').then((m) => ({ default: m.GrowthQuizNextStepPage })));
+const LeadScorePage = lazyRoute(() => import('./pages/LeadScorePage'));
 const LaunchTimePage = lazyRoute(() => import('./pages/LaunchTimePage'));
 const LaunchTimeWelcomePage = lazyRoute(() => import('./pages/LaunchTimePage').then((m) => ({ default: m.LaunchTimeWelcomePage })));
 const WorkshopPage = lazyRoute(() => import('./pages/WorkshopPage'));
@@ -252,7 +253,7 @@ const DefaultSEO: React.FC = () => {
 // Kenji Invites and Kenji Studio pages carry their own header and hide all site chrome.
 const isInvitesPath = (p: string) => p === '/invites' || p.startsWith('/invites/') || p.startsWith('/i/') || p === '/video-generation' || p.startsWith('/video-generation/');
 
-const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/overview-b', '/setup', '/helpful-links', '/github-tools', '/partnerup', '/workshop', '/special', '/growth-quiz', '/growth-quiz/book', '/growth-quiz/next-step', '/launch-time', '/launch-time/welcome'];
+const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/overview-b', '/setup', '/helpful-links', '/github-tools', '/partnerup', '/workshop', '/special', '/growth-quiz', '/growth-quiz/book', '/growth-quiz/next-step', '/lead-score', '/launch-time', '/launch-time/welcome'];
 
 function ConditionalNavbar() {
   const { pathname } = useLocation();
@@ -377,6 +378,7 @@ function App() {
                       <Route path="/growth-quiz" element={<GrowthQuizPage />} />
                       <Route path="/growth-quiz/book" element={<GrowthQuizBookPage />} />
                       <Route path="/growth-quiz/next-step" element={<GrowthQuizNextStepPage />} />
+                      <Route path="/lead-score" element={<LeadScorePage />} />
                       <Route path="/launch-time" element={<LaunchTimePage />} />
                       <Route path="/launch-time/welcome" element={<LaunchTimeWelcomePage />} />
                       <Route path="/workshop" element={<WorkshopPage />} />

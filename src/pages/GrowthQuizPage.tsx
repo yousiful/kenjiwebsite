@@ -97,7 +97,7 @@ const qualifiedLocally = (a: Record<string, string>) => Object.entries(DISQUALIF
 const PIXEL_ID = '2406747486323295';
 type Fbq = ((...args: unknown[]) => void) & { callMethod?: (...a: unknown[]) => void; queue?: unknown[]; push?: unknown; loaded?: boolean; version?: string };
 type FbqWindow = Window & { fbq?: Fbq; _fbq?: Fbq };
-function ensurePixel() {
+export function ensurePixel() {
   const w = window as FbqWindow;
   if (w.fbq) return;
   const n: Fbq = function (...args: unknown[]) { if (n.callMethod) n.callMethod(...args); else n.queue!.push(args); } as Fbq;
@@ -112,7 +112,7 @@ function ensurePixel() {
 const cookie = (name: string) => document.cookie.split('; ').find((c) => c.startsWith(name + '='))?.split('=')[1];
 
 /** Browser pixel + server-side CAPI with a shared event_id, so Meta counts it once even when the browser blocks the pixel. */
-function track(event: string, standard: boolean, params: Record<string, unknown> = {}, user?: { email?: string; phone?: string }, capi = standard) {
+export function track(event: string, standard: boolean, params: Record<string, unknown> = {}, user?: { email?: string; phone?: string }, capi = standard) {
   ensurePixel();
   const w = window as FbqWindow;
   const eventID = `gq-${event}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
@@ -142,7 +142,7 @@ const QUALIFIED_KEY = 'kenji-growth-quiz-qualified';
 
 /* ---------- shared shell ---------- */
 
-const Shell: React.FC<{ title: string; description: string; children: React.ReactNode; wide?: boolean }> = ({ title, description, children, wide }) => (
+export const Shell: React.FC<{ title: string; description: string; children: React.ReactNode; wide?: boolean }> = ({ title, description, children, wide }) => (
   <>
     <Helmet>
       <title>{title}</title>
