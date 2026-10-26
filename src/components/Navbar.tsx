@@ -42,9 +42,7 @@ const Navbar: React.FC = () => {
   const navItems = [
     { name: "Home", href: "/", external: false },
     { name: "Solutions", href: "/ai-automation", hasDropdown: true, dropdownType: "solutions", external: false },
-    { name: "Academy", href: "/knowledge", external: false },
     { name: "Blog", href: "/blog", external: false },
-    { name: "Podcast", href: "/podcast", external: false },
     { name: "Pricing", href: "/pricing", external: false }
   ];
 

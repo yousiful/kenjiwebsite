@@ -33,7 +33,6 @@ const Footer: React.FC = () => {
       { name: 'Pricing & Guarantee', href: '/pricing' },
       { name: 'Blog', href: '/blog' },
       { name: 'The KenjiAI Podcast', href: '/podcast' },
-      { name: 'About Yousif Alias', href: '/about-yousif-alias' },
       { name: 'Is KenjiAI Legit?', href: '/is-kenjiai-legit' },
       { name: 'Customer Reviews', href: '/kenjiai-reviews' },
       { name: 'KenjiAI vs Kenji.ai', href: '/kenjiai-vs-kenji-ai' },
