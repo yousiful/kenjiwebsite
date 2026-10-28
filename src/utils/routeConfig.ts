@@ -22,6 +22,7 @@ export const internalRoutes = [
   '/success',
   '/privacy',
   '/data-deletion',
+  '/agency',
   '/disclaimer',
   '/terms',
   '/not-found',

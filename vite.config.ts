@@ -25,6 +25,7 @@ const STATIC_ROUTES = [
   '/pricing',
   '/privacy',
   '/data-deletion',
+  '/agency',
   '/setup',
   '/terms',
   '/tools',
