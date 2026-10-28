@@ -57,6 +57,7 @@ const VoiceAILandingPage = lazyRoute(() => import('./pages/VoiceAILandingPage'))
 const MarketingAutomationPage = lazyRoute(() => import('./pages/MarketingAutomationPage'));
 const CRMPage = lazyRoute(() => import('./pages/CRMPage'));
 const PrivacyPolicyPage = lazyRoute(() => import('./pages/PrivacyPolicyPage'));
+const DataDeletionPage = lazyRoute(() => import('./pages/DataDeletionPage'));
 const DisclaimerPage = lazyRoute(() => import('./pages/DisclaimerPage'));
 const TermsOfServicePage = lazyRoute(() => import('./pages/TermsOfServicePage'));
 const DashboardPage = lazyRoute(() => import('./pages/DashboardPage'));
@@ -371,6 +372,7 @@ function App() {
                       <Route path="/book2" element={<Book2Page />} />
                       <Route path="/success" element={<SuccessPage />} />
                       <Route path="/privacy" element={<PrivacyPolicyPage />} />
+                      <Route path="/data-deletion" element={<DataDeletionPage />} />
                       <Route path="/disclaimer" element={<DisclaimerPage />} />
                       <Route path="/terms" element={<TermsOfServicePage />} />
                       <Route path="/dashboard" element={<DashboardPage />} />
