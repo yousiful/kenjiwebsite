@@ -21,6 +21,7 @@ export const internalRoutes = [
   '/pricing2',
   '/success',
   '/privacy',
+  '/data-deletion',
   '/disclaimer',
   '/terms',
   '/not-found',
