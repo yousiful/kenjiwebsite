@@ -84,7 +84,7 @@ export function ExplainerVideo() {
               <video
                 ref={videoElRef}
                 className="absolute inset-0 w-full h-full object-contain bg-black"
-                src="/webinar1/webinar-1.mp4"
+                src="/overview/get-paid-running-ads.mp4"
                 autoPlay
                 muted
                 playsInline
