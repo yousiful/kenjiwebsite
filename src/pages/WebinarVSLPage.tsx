@@ -4,12 +4,10 @@ import { motion } from 'framer-motion';
 import { Maximize2, Volume2, VolumeX } from 'lucide-react';
 import { useResumableVideo } from '../hooks/useResumableVideo';
 
-// Fixed real-content timestamp (webinar-1.mp4): the point where the video starts
-// walking through the actual pricing options (golden membership one-time payment
-// vs. the performance plan), right before testimonials start at ~312s. Was
-// previously a 95%-of-duration threshold -- moved to match real video content
-// 2026-09-10 per Yousif's request. Re-time this if the VSL is ever replaced.
-const OPTIONS_REVEAL_SECONDS = 252;
+// Video: "How to Get Paid for Running Ads" (3:09, a YouTube outlier, self-hosted so
+// viewers can't click through to YouTube). Pricing unlocks at 1:53, where Yousif starts
+// on the one-time setup vs. performance-basis options. Re-time this if the video changes.
+const OPTIONS_REVEAL_SECONDS = 113;
 
 export default function WebinarVSLPage() {
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -20,7 +18,7 @@ export default function WebinarVSLPage() {
   const videoRef = useRef<HTMLDivElement>(null);
   const videoElRef = useRef<HTMLVideoElement>(null);
 
-  useResumableVideo(videoElRef, 'kenjiai-video-progress:/overview');
+  useResumableVideo(videoElRef, 'kenjiai-video-progress:/overview:get-paid');
 
   // Watch-time tracking, matches the pattern already running on /overview-b
   // and the webinar1 pages: fires milestone events into GTM, Meta Pixel, and
@@ -165,14 +163,14 @@ export default function WebinarVSLPage() {
             <video
               ref={videoElRef}
               className="absolute inset-0 w-full h-full object-contain bg-black"
-              src="/webinar1/webinar-1.mp4"
+              src="/overview/get-paid-running-ads.mp4"
               muted
               playsInline
               disablePictureInPicture
               tabIndex={-1}
               onContextMenu={(e) => e.preventDefault()}
               title="KenjiAI Overview"
-              poster="/overview/overview-thumb.jpg"
+              poster="/overview/get-paid-thumb.jpg"
             />
 
             {/* Custom controls: mute + fullscreen only, no seek/scrub bar.
@@ -201,14 +199,14 @@ export default function WebinarVSLPage() {
               <button
                 type="button"
                 onClick={handleJoin}
-                aria-label="Play the 8-minute training"
+                aria-label="Play the 3-minute video"
                 className="group absolute inset-0 z-40 block w-full h-full focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-inset focus-visible:ring-white/70"
               >
                 <picture>
-                  <source srcSet="/overview/overview-thumb.webp" type="image/webp" />
-                  <img src="/overview/overview-thumb.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
+                  <source srcSet="/overview/get-paid-thumb.webp" type="image/webp" />
+                  <img src="/overview/get-paid-thumb.jpg" alt="" className="absolute inset-0 w-full h-full object-cover" />
                 </picture>
-                <span className="absolute left-[60%] top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-[13%] min-w-[52px] max-w-[120px] aspect-square rounded-full bg-white/95 ring-[6px] sm:ring-[10px] ring-white/25 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.6)] transition-transform duration-200 ease-out group-hover:scale-105">
+                <span className="absolute left-[65%] top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-[9%] min-w-[44px] max-w-[96px] aspect-square rounded-full bg-white/95 ring-[6px] sm:ring-[10px] ring-white/25 shadow-[0_12px_40px_-8px_rgba(0,0,0,0.6)] transition-transform duration-200 ease-out group-hover:scale-105">
                   <svg viewBox="0 0 24 24" className="w-[42%] h-[42%] ml-[8%] fill-gray-900" aria-hidden="true">
                     <path d="M7 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L8.5 3.64A1 1 0 0 0 7 4.5Z" />
                   </svg>
@@ -236,7 +234,7 @@ export default function WebinarVSLPage() {
               Executive Briefing
             </span>
             <h1 className="text-lg sm:text-xl font-bold tracking-tight">
-              How To Automate Leads &amp; Scale Without More Work
+              How to Get Paid for Running Ads
             </h1>
           </div>
           <div className="flex items-center gap-3 bg-blue-500/10 border border-blue-500/30 px-4 py-2 rounded-full shrink-0">
@@ -250,7 +248,7 @@ export default function WebinarVSLPage() {
         {/* ── TITLE (mobile only, below video) ── */}
         <div className="sm:hidden px-4 pt-3 pb-1">
           <p className="text-base font-bold leading-snug text-white">
-            How To Automate Leads &amp; Scale Without More Work
+            How to Get Paid for Running Ads
           </p>
         </div>
 
