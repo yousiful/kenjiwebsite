@@ -251,7 +251,9 @@ const OnboardingPage: React.FC = () => {
           <div className="mt-2 flex gap-1.5" role="progressbar" aria-valuemin={0} aria-valuemax={STEPS.length} aria-valuenow={step + 1}>
             {STEPS.map((x, n) => (
               <button key={x.id} type="button" aria-label={`Go to step ${n + 1}: ${x.title}`} onClick={() => setStep(n)}
-                className={`h-1.5 flex-1 rounded-full transition ${completed.includes(x.id) ? 'bg-[#5EEAD4]' : n === step ? 'bg-white/60' : 'bg-white/15'}`} />
+                style={{ minHeight: 0 }} className="flex-1 py-2 -my-2">
+                <span className={`block h-1.5 rounded-full transition ${completed.includes(x.id) ? 'bg-[#5EEAD4]' : n === step ? 'bg-white/60' : 'bg-white/15'}`} />
+              </button>
             ))}
           </div>
 
