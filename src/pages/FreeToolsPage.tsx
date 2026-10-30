@@ -149,17 +149,6 @@ const FreeToolsPage: React.FC = () => {
       revenue: "Objection-handling scripts included"
     },
     {
-      name: "Investor Connect - Free Startup Tool",
-      description: "Connect with investors and manage funding opportunities with AI-powered matching, pitch deck optimization, and due diligence preparation. Free startup and investor tools.",
-      url: "https://investors.kenjiai.com/",
-      icon: Users,
-      gradient: "from-green-500 to-emerald-600",
-      features: ["Pitch Deck Builder", "Investor Matching", "Due Diligence", "Funding Tracker"],
-      category: "Business",
-      keywords: ["free investor tools", "startup tools", "pitch deck generator", "investor matching", "funding tools", "startup AI"],
-      revenue: "Pitch deck builder included"
-    },
-    {
       name: "AI Dispute Resolution",
       description: "Resolve disputes efficiently with AI-powered mediation, conflict analysis, and resolution strategies. Free AI dispute management and resolution tool for businesses.",
       url: "https://dispute.kenjiai.com",

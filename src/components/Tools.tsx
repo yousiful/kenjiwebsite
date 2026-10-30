@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Zap, Users, Megaphone, Brain } from 'lucide-react';
+import { ExternalLink, Zap, Megaphone, Brain } from 'lucide-react';
 
 const Tools: React.FC = () => {
   const tools = [
@@ -27,14 +27,6 @@ const Tools: React.FC = () => {
       icon: Zap,
       gradient: "from-blue-500 to-cyan-600",
       features: ["Script Generation", "Objection Handling", "Performance Analytics"]
-    },
-    {
-      name: "Investor Portal",
-      description: "Connect with investors and manage funding opportunities",
-      url: "https://investors.kenjiai.com/",
-      icon: Users,
-      gradient: "from-green-500 to-emerald-600",
-      features: ["Pitch Decks", "Investor Matching", "Due Diligence"]
     }
   ];
 

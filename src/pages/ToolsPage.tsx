@@ -46,15 +46,6 @@ const ToolsPage: React.FC = () => {
       category: "Sales"
     },
     {
-      name: "Investor Portal",
-      description: "Connect with investors and manage funding opportunities with AI-powered matching",
-      url: "https://investors.kenjiai.com/",
-      icon: Users,
-      gradient: "from-green-500 to-emerald-600",
-      features: ["Pitch Decks", "Investor Matching", "Due Diligence"],
-      category: "Business"
-    },
-    {
       name: "AI Content Creator",
       description: "Generate high-converting content for blogs, social media, and marketing campaigns",
       url: "https://app.kenjiai.com",
