@@ -49,7 +49,7 @@ export default function Studio() {
   const user = me?.user || null;
   const signedIn = !!user;
   const balance = user?.balance ?? 0;
-  const genConnected = !!me?.setup.generation;
+  const genConnected = !!me?.setup?.generation;
   const exactPricing = signedIn && genConnected;
   const signinIssue = SIGNIN_MSG[params.get('signin') || ''];
 

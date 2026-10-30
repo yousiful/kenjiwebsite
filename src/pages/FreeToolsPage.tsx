@@ -226,19 +226,28 @@ const FreeToolsPage: React.FC = () => {
     "mainEntity": {
       "@type": "ItemList",
       "name": "Free AI Tools",
-      "itemListElement": freeTools.map((tool, index) => ({
-        "@type": "SoftwareApplication",
-        "position": index + 1,
-        "name": tool.name,
-        "description": tool.description,
-        "url": tool.url.startsWith('/') ? `https://kenjiai.com${tool.url}` : tool.url,
-        "applicationCategory": "BusinessApplication",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        }
-      }))
+      "numberOfItems": freeTools.length,
+      "itemListElement": freeTools.map((tool, index) => {
+        const url = tool.url.startsWith('/') ? `https://kenjiai.com${tool.url}` : tool.url;
+        return {
+          "@type": "ListItem",
+          "position": index + 1,
+          "url": url,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": tool.name,
+            "description": tool.description,
+            "url": url,
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Any",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          }
+        };
+      })
     },
     "breadcrumb": {
       "@type": "BreadcrumbList",

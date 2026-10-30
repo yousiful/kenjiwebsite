@@ -1,7 +1,7 @@
 import { PLANS, PLAN_IDS, TOPUP, TRIAL_CREDITS } from './models';
 import { signInHref } from './ui';
 
-const FAQ: [string, string][] = [
+export const FAQ: [string, string][] = [
   ['Is it really free to try?', `Yes. Pick what you are making, answer the questions and read the prompt we write, all without signing in. When you press Generate, sign in with Google and your first video is on us: new accounts get ${TRIAL_CREDITS} free credits, enough for the first video of any type except Genjutsu. No card needed.`],
   ['Do I need to know how to write prompts?', 'No. You answer a few plain questions, like what you sell and where the ad will run. Our writer turns that into a shot-by-shot prompt. You can read it and change any word before you generate.'],
   ['What does a video cost?', 'Every video shows its exact price in credits before you press Generate. Longer clips and heavier models cost more. If a video fails or the content filter blocks it, the credits go straight back to your balance.'],

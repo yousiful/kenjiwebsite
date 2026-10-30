@@ -182,6 +182,7 @@ export const NameGeneratorPage: React.FC = () => {
     const cleanNiche = niche.trim() || 'Business';
     const cleanAvatar = avatar.trim() || 'Clients';
     const cleanOutcome = outcome.trim() || 'Transformative Results';
+    const cleanPricePoint = pricePoint.trim() || 'six figures';
 
     const items: GeneratedNameItem[] = [];
 
@@ -495,6 +496,31 @@ export const NameGeneratorPage: React.FC = () => {
     generateNames();
   }, [generateNames]);
 
+  // "Generate New Variations": fresh AI-written names for these inputs, falling
+  // back to the template set if the generator is unreachable.
+  const [genNote, setGenNote] = useState('');
+  const generateAiNames = async () => {
+    setIsGenerating(true);
+    setGenNote('');
+    try {
+      const res = await fetch('/.netlify/functions/generate-names', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ mode, niche, avatar, outcome, seed, pricePoint, exclude: results.map((r) => r.name) }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { items?: Omit<GeneratedNameItem, 'id'>[]; error?: string };
+      if (!res.ok || !Array.isArray(data.items) || !data.items.length) throw new Error(data.error || 'failed');
+      const stamp = Date.now();
+      setResults(data.items.map((it, i) => ({ ...it, id: `ai-${stamp}-${i}` })));
+      setActiveTab('generated');
+    } catch {
+      setGenNote('The AI generator is busy right now, so these are the template names. Try again in a minute.');
+      generateNames();
+      return;
+    }
+    setIsGenerating(false);
+  };
+
   const toggleFavorite = (item: GeneratedNameItem) => {
     setFavorites((prev) => {
       const exists = prev.some((f) => f.id === item.id || f.name === item.name);
@@ -807,13 +833,14 @@ export const NameGeneratorPage: React.FC = () => {
                 <div className="mt-7">
                   <button
                     type="button"
-                    onClick={generateNames}
+                    onClick={generateAiNames}
                     disabled={isGenerating}
                     className="w-full group flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 via-blue-600 to-emerald-500 hover:from-cyan-400 hover:to-emerald-400 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/35 transition-all duration-200 transform active:scale-[0.99]"
                   >
                     <RefreshCw className={`w-4 h-4 ${isGenerating ? 'animate-spin' : 'group-hover:rotate-180 transition-transform duration-500'}`} />
-                    <span>Generate New Variations</span>
+                    <span>{isGenerating ? 'Writing new names...' : 'Generate New Variations'}</span>
                   </button>
+                  {genNote && <p className="mt-2 text-xs text-amber-300" role="status">{genNote}</p>}
                 </div>
 
                 {/* Kenji Ecosystem Cross-link box */}

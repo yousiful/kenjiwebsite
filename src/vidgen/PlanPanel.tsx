@@ -8,7 +8,7 @@ export default function PlanPanel({ title, lead }: { title: string; lead: string
   const { me } = useMe();
   const [busy, setBusy] = useState<PlanId | ''>('');
   const [error, setError] = useState('');
-  const billingOn = !!me?.setup.billing;
+  const billingOn = !!me?.setup?.billing;
 
   const pick = async (id: PlanId) => {
     setBusy(id); setError('');

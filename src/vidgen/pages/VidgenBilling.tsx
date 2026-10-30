@@ -9,7 +9,7 @@ const ACTIVE = ['active', 'trialing', 'past_due'];
 function Billing() {
   const { me } = useMe();
   const user = me!.user!;
-  const billingOn = me!.setup.billing;
+  const billingOn = !!me?.setup?.billing;
   const [params] = useSearchParams();
   const [busy, setBusy] = useState('');
   const [error, setError] = useState('');

@@ -1,9 +1,33 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { Helmet } from 'react-helmet-async';
 import PageSchema from '../components/PageSchema';
+import { faqPage } from '../lib/schema';
 import { Music, Copy, Check, Sparkles, ExternalLink, RefreshCw, Mic2, Building2 } from 'lucide-react';
 
 type Mode = 'personal' | 'business';
+
+const SONG_FAQS = [
+  {
+    q: 'Which AI music tools does this prompt work with?',
+    a: 'Suno, Udio and Producer.ai. The prompt has a style line, a tagged song structure and a starting hook. In a tool with separate boxes, paste the STYLE part into the style box and the rest into the lyrics or prompt box.',
+  },
+  {
+    q: 'Is the song prompt generator free?',
+    a: 'Yes. No signup, no email, and nothing is stored. You build the prompt in your browser and copy it out.',
+  },
+  {
+    q: 'Can I make a jingle for my business with it?',
+    a: 'Yes. Switch to the business jingle mode, add your business name and what you do, and pick a mood. You get a short, repeatable hook built around the brand name, which works for ads, hold music and social videos.',
+  },
+  {
+    q: 'Why does my AI song sound generic?',
+    a: 'Most people type one line like "make a song about my name". The model fills the gaps with the most average choices. Giving it a BPM range, real instruments, a mix direction and a tagged structure gives it something specific to follow.',
+  },
+  {
+    q: 'Can I use an artist as a reference?',
+    a: 'Yes. Type it in the style reference box and it goes into the style line. Some AI music tools filter artist names, so if yours rejects the prompt, swap the name for a description of the sound: the era, the vocal type and the main instruments.',
+  },
+];
 
 interface GenreProfile {
   label: string;
@@ -203,12 +227,16 @@ const SongPromptGeneratorPage: React.FC = () => {
 
   const structuredData = {
     '@context': 'https://schema.org',
+    '@graph': [{
     '@type': 'SoftwareApplication',
+    url: 'https://kenjiai.com/tools/song-prompt-generator',
     name: 'Song & Jingle Prompt Generator',
     applicationCategory: 'MultimediaApplication',
     operatingSystem: 'Any',
     description: 'Free tool that builds a producer-grade AI music prompt for Suno, Udio, or Producer.ai, for a personal song with your name or a commercial jingle for your business.',
     offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    publisher: { '@id': 'https://kenjiai.com/#organization' },
+    }, faqPage('/tools/song-prompt-generator', SONG_FAQS)],
   };
 
   return (
@@ -379,21 +407,51 @@ const SongPromptGeneratorPage: React.FC = () => {
             <h2 className="text-2xl font-bold text-white mb-4 text-center">Why this doesn't sound like AI slop</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm text-gray-400">
               <div>
-                <div className="text-purple-400 font-bold mb-2">Real production language</div>
-                Actual instrumentation, BPM range, and mix direction per genre, not "upbeat song," the same kind of
-                brief a real producer would work from.
+                <h3 className="text-purple-400 font-bold mb-2 text-sm">Real production language</h3>
+                <p>Actual instrumentation, BPM range, and mix direction per genre, not "upbeat song," the same kind of
+                brief a real producer would work from.</p>
               </div>
               <div>
-                <div className="text-purple-400 font-bold mb-2">A real song structure</div>
-                Intro, verses, chorus, bridge, outro, tagged the way Suno and Udio actually read structure, instead
-                of one long undifferentiated block of text.
+                <h3 className="text-purple-400 font-bold mb-2 text-sm">A real song structure</h3>
+                <p>Intro, verses, chorus, bridge, outro, tagged the way Suno and Udio actually read structure, instead
+                of one long undifferentiated block of text.</p>
               </div>
               <div>
-                <div className="text-purple-400 font-bold mb-2">A hook that means something</div>
-                A real starting lyric built around your name or your brand, not a name awkwardly bolted onto a
-                generic line.
+                <h3 className="text-purple-400 font-bold mb-2 text-sm">A hook that means something</h3>
+                <p>A real starting lyric built around your name or your brand, not a name awkwardly bolted onto a
+                generic line.</p>
               </div>
             </div>
+          </div>
+
+          <div className="mt-12">
+            <h2 className="text-2xl font-bold text-white mb-6">How to use your prompt</h2>
+            <ol className="list-decimal pl-5 space-y-2 text-sm text-gray-400">
+              <li>Pick a personal song or a business jingle, then fill in the name, genre and mood.</li>
+              <li>Copy the prompt. In Suno, Udio or Producer.ai, paste the STYLE part into the style box.</li>
+              <li>Paste the structure and the hook direction into the lyrics or prompt box, then generate two or three takes and keep the best one.</li>
+              <li>Not happy with the hook? Press New hook idea for a different opening line and run it again.</li>
+            </ol>
+          </div>
+
+          <div className="mt-12">
+            <h2 className="text-2xl font-bold text-white mb-6">Song prompt questions people ask</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 text-sm">
+              {SONG_FAQS.map((f) => (
+                <div key={f.q} className="bg-gray-800/40 border border-gray-800 rounded-xl p-5">
+                  <h3 className="font-semibold text-white mb-2">{f.q}</h3>
+                  <p className="text-gray-400 leading-relaxed">{f.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-12 text-center text-sm text-gray-400">
+            <p>
+              More free tools: <a href="/tools/name-generator" className="text-purple-300 underline">business name generator</a>,{' '}
+              <a href="/tools/google-review-link-generator" className="text-purple-300 underline">Google review link generator</a> and{' '}
+              <a href="/free-tools" className="text-purple-300 underline">all free tools</a>.
+            </p>
           </div>
         </div>
       </div>

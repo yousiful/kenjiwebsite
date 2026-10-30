@@ -15,14 +15,14 @@ import type { Handler, HandlerEvent } from '@netlify/functions';
  * tool exists to stop that happening again, for us and for anyone else.
  *
  * Same LLM pattern as generate-closer-preview.ts: OpenRouter ->
- * anthropic/claude-haiku-4.5, JSON-only system prompt, capped tokens,
+ * anthropic/claude-haiku-5.5 (reasoning off), JSON-only system prompt, capped tokens,
  * abort-controller timeout, defensive parse.
  *
  * Netlify env var needed: OPENROUTER_API_KEY
  */
 
 const OPENROUTER_KEY = process.env.OPENROUTER_API_KEY || '';
-const MODEL = 'anthropic/claude-haiku-4.5';
+const MODEL = 'anthropic/claude-haiku-5.5';
 
 const json = (statusCode: number, body: unknown) => ({
   statusCode,
@@ -135,6 +135,8 @@ Rules:
         ],
         temperature: 0.6,
         max_tokens: 2200,
+        // Haiku 5.5 thinks by default; hidden reasoning would eat max_tokens.
+        reasoning: { enabled: false },
       }),
     });
     clearTimeout(timeout);
