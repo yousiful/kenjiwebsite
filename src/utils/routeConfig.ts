@@ -39,6 +39,8 @@ export const internalRoutes = [
   '/growth-quiz',
   '/lead-score',
   '/findtheleak',
+  '/onboarding',
+  '/futureyou',
   '/launch-time',
   '/workshop',
   '/special',
