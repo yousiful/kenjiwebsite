@@ -78,6 +78,21 @@ export default function WebinarVSLPage() {
   }, []);
 
 
+  // Watch-along achievement toasts (public/vsl-achievements.js, shared with the static VSL pages)
+  useEffect(() => {
+    const attach = () => {
+      const ka = (window as unknown as { KenjiAchievements?: { attach: (v: HTMLVideoElement, o: object) => void } }).KenjiAchievements;
+      if (ka && videoElRef.current) ka.attach(videoElRef.current, { optionsSelector: '#vsl-options', page: 'overview' });
+    };
+    const existing = document.getElementById('ka-script');
+    if (existing) { attach(); return; }
+    const s = document.createElement('script');
+    s.id = 'ka-script';
+    s.src = '/vsl-achievements.js';
+    s.onload = attach;
+    document.body.appendChild(s);
+  }, []);
+
   useEffect(() => {
     const handler = () => setIsFullscreen(!!document.fullscreenElement);
     document.addEventListener('fullscreenchange', handler);
@@ -255,6 +270,7 @@ export default function WebinarVSLPage() {
         {/* ── CTA SECTION (locked until the training finishes) ── */}
         {pricingUnlocked ? (
           <motion.div
+            id="vsl-options"
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
