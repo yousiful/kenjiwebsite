@@ -58,6 +58,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
       rec.utm_campaign = pv.utm_campaign || '';
       rec.utm_content = pv.utm_content || '';
       rec.device = pv.device || '';
+      rec.ref = pv.ref || '';
       rec.page = pv.page || '/';
       rec.version = pv.version || 'before-versioning';
     }),

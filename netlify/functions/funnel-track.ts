@@ -31,6 +31,7 @@ interface IncomingEvent {
   utm_campaign?: string;
   utm_content?: string;
   device?: string;
+  ref?: string;
   page?: string;
   version?: string;
 }
@@ -43,6 +44,7 @@ export interface SessionRecord {
   utm_campaign: string;
   utm_content: string;
   device: string;
+  ref?: string;
   page: string;
   version: string;
 }
@@ -54,6 +56,7 @@ export interface EventBlob {
   utm_campaign?: string;
   utm_content?: string;
   device?: string;
+  ref?: string;
   page?: string;
   version?: string;
 }
@@ -100,6 +103,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
       utm_campaign: clip(payload.utm_campaign),
       utm_content: clip(payload.utm_content),
       device: payload.device === 'mobile' ? 'mobile' : 'desktop',
+      ref: clip(payload.ref, 60).toLowerCase().replace(/[^a-z0-9.-]/g, ''),
       page: clip(payload.page, 60),
       version: clip(payload.version, 40),
     });

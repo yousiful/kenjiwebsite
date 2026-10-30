@@ -10,13 +10,16 @@
   var version = bundle ? (bundle.getAttribute('src').match(/index-([\w-]+)\.js/) || [])[1] || 'unknown' : 'unknown';
   var params = new URLSearchParams(location.search);
   var sid, sent, timers = [], io;
+  var refHost = '';
+  try { refHost = document.referrer ? new URL(document.referrer).hostname : ''; } catch (e) { /* ignore */ }
+  if (refHost === location.hostname) refHost = '';
 
   function send(step, extra) {
     if (sent[step]) return;
     sent[step] = 1;
     var body = { funnel: 'kenjiai', sid: sid, step: step, page: location.pathname.slice(0, 60), version: version,
       utm_source: params.get('utm_source') || '', utm_campaign: params.get('utm_campaign') || '', utm_content: params.get('utm_content') || '',
-      device: innerWidth < 768 ? 'mobile' : 'desktop' };
+      device: innerWidth < 768 ? 'mobile' : 'desktop', ref: refHost };
     for (var k in extra || {}) body[k] = extra[k];
     var s = JSON.stringify(body);
     try { if (navigator.sendBeacon && navigator.sendBeacon(ENDPOINT, s)) return; } catch (e) { /* fall through */ }
