@@ -365,12 +365,68 @@
     <mobile:mobile/>
   </url>
 
-  <!-- Funding & Credit Partners -->
+  <!-- Funding Finder (kenjiai.com/funding + landing pages; lastmod is refreshed at build by scripts/funding_static.mjs) -->
   <url>
     <loc>https://kenjiai.com/funding</loc>
-    <lastmod>2026-06-10T10:00:00+00:00</lastmod>
+    <lastmod>2026-10-30T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
+    <mobile:mobile/>
+  </url>
+  <url>
+    <loc>https://kenjiai.com/funding/small-business-grants</loc>
+    <lastmod>2026-10-30T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+  <url>
+    <loc>https://kenjiai.com/funding/grants-for-women</loc>
+    <lastmod>2026-10-30T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+  <url>
+    <loc>https://kenjiai.com/funding/startup-funding</loc>
+    <lastmod>2026-10-30T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+  <url>
+    <loc>https://kenjiai.com/funding/revenue-based-financing</loc>
+    <lastmod>2026-10-30T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+  <url>
+    <loc>https://kenjiai.com/funding/sba-loans</loc>
+    <lastmod>2026-10-30T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+  <url>
+    <loc>https://kenjiai.com/funding/ai-startup-funding</loc>
+    <lastmod>2026-10-30T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+  <url>
+    <loc>https://kenjiai.com/funding/small-business-grants-california</loc>
+    <lastmod>2026-10-30T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <mobile:mobile/>
+  </url>
+  <url>
+    <loc>https://kenjiai.com/funding/small-business-grants-texas</loc>
+    <lastmod>2026-10-30T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
     <mobile:mobile/>
   </url>
 

@@ -8,6 +8,8 @@
 //
 //   - every <Route path="..."> in src/App.tsx
 //   - /paid-ads-for/:niche expanded from src/data/niches.ts
+//   - /funding and /funding/<slug> are NOT listed here: funding_static.mjs writes them
+//     from public/funding-data.json so their raw HTML never goes stale
 //   - /blog/:slug is NOT listed here: blog_static.mjs / podcast_static.mjs write one
 //     file per real article, so unknown slugs 404 on their own
 //   - <Navigate> routes and RedirectSystem's redirectMap become server 301s
@@ -90,6 +92,7 @@ export async function getRoutes() {
       continue;
     }
     if (r.path === '/blog/:slug' || r.path === '/blog' || r.path === '/podcast') { skipped.push(`${r.path} (blog_static/podcast_static)`); continue; }
+    if (r.path === '/funding' || r.path.startsWith('/funding/')) { skipped.push(`${r.path} (funding_static)`); continue; }
     if (r.path.includes(':')) {
       const prefix = r.path.slice(0, r.path.indexOf(':'));
       if (owned.has(prefix.replace(/\/+$/, '')) || [...owned].some((o) => o.endsWith('/*') && prefix.startsWith(o.slice(0, -1)))) {

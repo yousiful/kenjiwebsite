@@ -1,9 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Zap, Megaphone, Brain } from 'lucide-react';
+import { ExternalLink, Zap, Megaphone, Brain, Landmark } from 'lucide-react';
 
 const Tools: React.FC = () => {
   const tools = [
+    {
+      name: "Funding Finder",
+      description: "Grants, loans and investors open right now, with deadlines and official links",
+      url: "/funding",
+      icon: Landmark,
+      gradient: "from-blue-600 to-emerald-500",
+      features: ["Live Federal Grants", "SBA Loans & RBF", "Accelerators & Angels"]
+    },
     {
       name: "Prompt Generator",
       description: "Generate perfect AI prompts for any use case with intelligent optimization",

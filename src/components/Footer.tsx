@@ -26,6 +26,7 @@ const Footer: React.FC = () => {
       { name: 'Smart CRM Pipelines', href: '/crm' },
       { name: 'Free AI Growth Tools', href: '/free-tools' },
       { name: 'Free Invitations with RSVP', href: '/invites' },
+      { name: 'Funding Finder: Grants & Loans', href: '/funding' },
       { name: 'Missed Call Calculator', href: '/tools/missed-call-calculator' },
     ],
     industries: [
@@ -45,7 +46,7 @@ const Footer: React.FC = () => {
       { name: 'Is KenjiAI Legit?', href: '/is-kenjiai-legit', external: true },
       { name: 'Customer Reviews', href: '/kenjiai-reviews', external: true },
       { name: 'KenjiAI vs Kenji.ai', href: '/kenjiai-vs-kenji-ai', external: true },
-      { name: 'Funding & Credit', href: '/funding' },
+      { name: 'Funding & Credit Partners', href: '/funding-partners' },
       { name: 'Knowledge Base', href: '/knowledge' },
       { name: 'AI Education Academy', href: 'https://startlearning.kenjiai.com/', external: true },
       { name: 'Become a Partner', href: 'https://closers.kenjiai.com/', external: true },

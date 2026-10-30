@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/podcast_static.mjs && node scripts/blog_static.mjs && node scripts/spa_routes.mjs",
+    "build": "vite build && node scripts/podcast_static.mjs && node scripts/blog_static.mjs && node scripts/funding_static.mjs && node scripts/spa_routes.mjs",
     "seo:snapshot": "node scripts/snapshot_routes.mjs",
     "lint": "eslint .",
     "preview": "vite preview",

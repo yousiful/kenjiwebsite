@@ -68,6 +68,9 @@ const BlogPage = lazyRoute(() => import('./pages/BlogPage'));
 const NicheAdPage = lazyRoute(() => import('./pages/NicheAdPage'));
 const AgentSetupPage = lazyRoute(() => import('./pages/AgentSetupPage'));
 const FundingPage = lazyRoute(() => import('./pages/FundingPage'));
+// Funding Finder (/funding + landing pages in src/funding/topics.ts, prerendered by scripts/funding_static.mjs).
+const FundingFinderPage = lazyRoute(() => import('./funding/FundingFinder'));
+const FundingTopicPage = lazyRoute(() => import('./funding/FundingTopicPage')) as unknown as React.ComponentType<{ slug: string }>;
 const PricingV2Page = lazyRoute(() => import('./pages/PricingV2Page'));
 const HelpfulLinksPage = lazyRoute(() => import('./pages/HelpfulLinksPage'));
 const HelpHomePage = lazyRoute(() => import('./pages/help/HelpHomePage'));
@@ -401,7 +404,16 @@ function App() {
                       <Route path="/workshop" element={<WorkshopPage />} />
                       <Route path="/special" element={<SpecialOfferPage />} />
                       <Route path="/setup" element={<AgentSetupPage />} />
-                      <Route path="/funding" element={<FundingPage />} />
+                      <Route path="/funding" element={<FundingFinderPage />} />
+                      <Route path="/funding/small-business-grants" element={<FundingTopicPage slug="small-business-grants" />} />
+                      <Route path="/funding/grants-for-women" element={<FundingTopicPage slug="grants-for-women" />} />
+                      <Route path="/funding/startup-funding" element={<FundingTopicPage slug="startup-funding" />} />
+                      <Route path="/funding/revenue-based-financing" element={<FundingTopicPage slug="revenue-based-financing" />} />
+                      <Route path="/funding/sba-loans" element={<FundingTopicPage slug="sba-loans" />} />
+                      <Route path="/funding/ai-startup-funding" element={<FundingTopicPage slug="ai-startup-funding" />} />
+                      <Route path="/funding/small-business-grants-california" element={<FundingTopicPage slug="small-business-grants-california" />} />
+                      <Route path="/funding/small-business-grants-texas" element={<FundingTopicPage slug="small-business-grants-texas" />} />
+                      <Route path="/funding-partners" element={<FundingPage />} />
                       <Route path="/invites" element={<InvitesLanding />} />
                       <Route path="/invites/wedding-invitations" element={<InvitesTopic slug="wedding-invitations" />} />
                       <Route path="/invites/birthday-invitations" element={<InvitesTopic slug="birthday-invitations" />} />

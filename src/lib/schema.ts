@@ -36,6 +36,7 @@ const SEGMENT_LABELS: Record<string, string> = {
   disclaimer: 'Disclaimer',
   blog: 'Blog',
   invites: 'Kenji Invites',
+  funding: 'Funding Finder',
 };
 
 /** Parent paths that have no page of their own get pointed at the real hub.

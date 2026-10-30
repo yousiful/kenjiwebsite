@@ -104,9 +104,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="phone" content="+1-213-344-0705" />
 
     <!-- GHL Tracking. Not loaded on the Kenji Invites app: GHL turns every form
-         submit into a CRM contact, which would fill the CRM with hosts' and guests' forms. -->
+         submit into a CRM contact, which would fill the CRM with hosts' and guests' forms.
+         Not loaded on the Funding Finder (/funding) either: its alerts form already
+         upserts the contact through netlify/functions/funding-alerts.ts. -->
     <script>
-      if (!/^\/(invites|i)(\/|$)/.test(location.pathname)) {
+      if (!/^\/(invites|i|funding)(\/|$)/.test(location.pathname)) {
         window.__afterLoad(function () {
           var t = document.createElement('script');
           t.async = true;

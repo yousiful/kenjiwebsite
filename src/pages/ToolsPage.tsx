@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
-import { ExternalLink, Zap, Users, Megaphone, MessageSquare, Brain, Code, BarChart3, Globe, Palette, ArrowRight, Sparkles } from 'lucide-react';
+import { ExternalLink, Zap, Users, Megaphone, MessageSquare, Brain, Code, BarChart3, Globe, Palette, ArrowRight, Sparkles, Landmark } from 'lucide-react';
 
 const ToolsPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
@@ -15,6 +15,16 @@ const ToolsPage: React.FC = () => {
       icon: Sparkles,
       gradient: "from-cyan-500 to-blue-600",
       features: ["$100M Hormozi Framework", "Live Domain Checks", "Ad Hooks & Vault"],
+      category: "Business",
+      insideKenjiAI: true
+    },
+    {
+      name: "Funding Finder",
+      description: "Grants, SBA loans, revenue-based financing, accelerators and angel networks that are open right now, each with its deadline and official link. Checked every week.",
+      url: "/funding",
+      icon: Landmark,
+      gradient: "from-blue-600 to-emerald-500",
+      features: ["Live Federal Grants", "Hand-Checked Programs", "Weekly Match Email"],
       category: "Business",
       insideKenjiAI: true
     },

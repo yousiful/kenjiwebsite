@@ -28,6 +28,17 @@ const FreeToolsPage: React.FC = () => {
       revenue: "Free for families, no catch"
     },
     {
+      name: "Funding Finder: Grants, Loans and Investors Open Now",
+      description: "Every grant, SBA loan, revenue-based financing offer, accelerator, angel network and competition we can confirm is open for US small businesses and founders, with the deadline, official link and last-verified date. Refreshed every week.",
+      url: "/funding",
+      icon: Building2,
+      gradient: "from-blue-600 via-emerald-600 to-teal-500",
+      features: ["Grants.gov + SBIR Data", "Hand-Checked Programs", "Filters by State & Stage", "Weekly Match Email"],
+      category: "Business Funding",
+      keywords: ["small business grants", "startup funding", "sba loans", "grants for women", "minority business grants", "revenue based financing"],
+      revenue: "Free, every listing links to the official site"
+    },
+    {
       name: "Facebook Ads Budget Calculator",
       description: "Enter the customers you want each month, your cost per lead, and your close rate. Get the daily and monthly Meta ads budget you need, cost per customer, and whether you have enough volume to exit the learning phase.",
       url: "/tools/facebook-ads-budget-calculator",

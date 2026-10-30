@@ -2275,7 +2275,7 @@
     ],
     "canonical": "https://kenjiai.com/free-tools",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@type\":\"CollectionPage\",\"name\":\"Free AI Tools by KenjiAI\",\"description\":\"A collection of free AI tools built by the KenjiAI team. No signup required, 100% free forever.\",\"url\":\"https://kenjiai.com/free-tools\",\"mainEntity\":{\"@type\":\"ItemList\",\"name\":\"Free AI Tools\",\"numberOfItems\":15,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"url\":\"https://kenjiai.com/tools/ltv-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Customer Lifetime Value (LTV) Calculator\",\"description\":\"Enter purchase value, how often customers buy, how long they stay, your margin, and your cost per customer. Get lifetime value in revenue and profit, your LTV:CAC ratio, the most you can pay per customer, and CAC payback.\",\"url\":\"https://kenjiai.com/tools/ltv-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":2,\"url\":\"https://kenjiai.com/invites\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Kenji Invites: Free Invitations with RSVP for Any Celebration\",\"description\":\"Make a beautiful invitation for a wedding, birthday, graduation, shower, holiday party or any celebration. Add your photos, send it by text or email from your own phone, and see who's coming.\",\"url\":\"https://kenjiai.com/invites\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":3,\"url\":\"https://kenjiai.com/tools/facebook-ads-budget-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Facebook Ads Budget Calculator\",\"description\":\"Enter the customers you want each month, your cost per lead, and your close rate. Get the daily and monthly Meta ads budget you need, cost per customer, and whether you have enough volume to exit the learning phase.\",\"url\":\"https://kenjiai.com/tools/facebook-ads-budget-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":4,\"url\":\"https://kenjiai.com/tools/roas-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"ROAS & Break-Even Calculator\",\"description\":\"Enter ad spend, revenue, order value, and margin. Get your ROAS, the break-even ROAS your margins require, the most you can pay per customer, and real profit after ad spend.\",\"url\":\"https://kenjiai.com/tools/roas-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":5,\"url\":\"https://kenjiai.com/tools/google-review-link-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Google Review Link Generator\",\"description\":\"Make a direct link to your Google review box plus a printable QR code, with ready-to-send text and email templates for asking customers.\",\"url\":\"https://kenjiai.com/tools/google-review-link-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":6,\"url\":\"https://kenjiai.com/tools/name-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Business & $100M Offer Name Generator\",\"description\":\"Generate viral business names, Alex Hormozi $100M Grand Slam offer titles, SaaS products, and lead magnets with domain checks, ad hooks, and conversion psychology.\",\"url\":\"https://kenjiai.com/tools/name-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":7,\"url\":\"https://kenjiai.com/trendpulse\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"TrendPulse & AdForge - Viral Trends, $100M Offers & Ad Hooks\",\"description\":\"Real-time trend radar, buyer intent miner, Alex Hormozi $100M Grand Slam Offer architect, and 6-vector psychological ad angle and viral UGC hook generator.\",\"url\":\"https://kenjiai.com/trendpulse\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":8,\"url\":\"https://kenjiai.com/tools/icp-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"ICP Generator - Ideal Customer Profile For Ad Targeting\",\"description\":\"Describe what you sell and what you charge. Get 2 or 3 named buyer segments with real Meta Ads detailed-targeting interests, exclusions, buying triggers, objection counters, and lookalike seeds you can configure a campaign from today.\",\"url\":\"https://kenjiai.com/tools/icp-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":9,\"url\":\"https://kenjiai.com/tools/missed-call-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Missed Call Revenue Loss Calculator\",\"description\":\"Interactive diagnostic tool for high-ticket businesses to calculate pipeline revenue lost to unanswered calls and discover ROI on 24/7 AI call answering agents.\",\"url\":\"https://kenjiai.com/tools/missed-call-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":10,\"url\":\"https://kenjiai.com/tools/song-prompt-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Song & Jingle Prompt Generator\",\"description\":\"Build a real, producer-grade prompt for Suno, Udio, or Producer.ai, not generic AI slop. Make a personal song with your name in it, or a commercial jingle/anthem for your business.\",\"url\":\"https://kenjiai.com/tools/song-prompt-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":11,\"url\":\"https://prompt.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Prompt Generator\",\"description\":\"Generate perfect AI prompts for any use case with our intelligent prompt engineering tool. Create optimized prompts for ChatGPT, Claude, GPT-4, and other AI models. Free forever, no signup required.\",\"url\":\"https://prompt.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":12,\"url\":\"https://prpro.kenjiai.com/\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"PR Pro - Free AI PR Tool\",\"description\":\"AI-powered PR campaigns that get you noticed by the right people and media outlets. Generate press releases, media lists, and outreach templates. Free AI PR automation tool.\",\"url\":\"https://prpro.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":13,\"url\":\"https://salescoach.kenjiai.com/\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Sales Coach AI - Free Sales Training\",\"description\":\"Your personal AI sales trainer that helps close more deals with data-driven insights, objection handling, and performance optimization. Free AI sales coaching and training.\",\"url\":\"https://salescoach.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":14,\"url\":\"https://dispute.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Dispute Resolution\",\"description\":\"Resolve disputes efficiently with AI-powered mediation, conflict analysis, and resolution strategies. Free AI dispute management and resolution tool for businesses.\",\"url\":\"https://dispute.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":15,\"url\":\"https://webinar.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Live Webinar Platform\",\"description\":\"Host engaging live webinars with AI-powered audience insights, automated follow-ups, and conversion tracking. Free webinar hosting and automation tool.\",\"url\":\"https://webinar.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}}]},\"breadcrumb\":{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Free AI Tools\",\"item\":\"https://kenjiai.com/free-tools\"}]}}"
+     "{\"@context\":\"https://schema.org\",\"@type\":\"CollectionPage\",\"name\":\"Free AI Tools by KenjiAI\",\"description\":\"A collection of free AI tools built by the KenjiAI team. No signup required, 100% free forever.\",\"url\":\"https://kenjiai.com/free-tools\",\"mainEntity\":{\"@type\":\"ItemList\",\"name\":\"Free AI Tools\",\"numberOfItems\":16,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"url\":\"https://kenjiai.com/tools/ltv-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Customer Lifetime Value (LTV) Calculator\",\"description\":\"Enter purchase value, how often customers buy, how long they stay, your margin, and your cost per customer. Get lifetime value in revenue and profit, your LTV:CAC ratio, the most you can pay per customer, and CAC payback.\",\"url\":\"https://kenjiai.com/tools/ltv-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":2,\"url\":\"https://kenjiai.com/invites\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Kenji Invites: Free Invitations with RSVP for Any Celebration\",\"description\":\"Make a beautiful invitation for a wedding, birthday, graduation, shower, holiday party or any celebration. Add your photos, send it by text or email from your own phone, and see who's coming.\",\"url\":\"https://kenjiai.com/invites\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":3,\"url\":\"https://kenjiai.com/funding\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Funding Finder: Grants, Loans and Investors Open Now\",\"description\":\"Every grant, SBA loan, revenue-based financing offer, accelerator, angel network and competition we can confirm is open for US small businesses and founders, with the deadline, official link and last-verified date. Refreshed every week.\",\"url\":\"https://kenjiai.com/funding\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":4,\"url\":\"https://kenjiai.com/tools/facebook-ads-budget-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Facebook Ads Budget Calculator\",\"description\":\"Enter the customers you want each month, your cost per lead, and your close rate. Get the daily and monthly Meta ads budget you need, cost per customer, and whether you have enough volume to exit the learning phase.\",\"url\":\"https://kenjiai.com/tools/facebook-ads-budget-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":5,\"url\":\"https://kenjiai.com/tools/roas-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"ROAS & Break-Even Calculator\",\"description\":\"Enter ad spend, revenue, order value, and margin. Get your ROAS, the break-even ROAS your margins require, the most you can pay per customer, and real profit after ad spend.\",\"url\":\"https://kenjiai.com/tools/roas-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":6,\"url\":\"https://kenjiai.com/tools/google-review-link-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Google Review Link Generator\",\"description\":\"Make a direct link to your Google review box plus a printable QR code, with ready-to-send text and email templates for asking customers.\",\"url\":\"https://kenjiai.com/tools/google-review-link-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":7,\"url\":\"https://kenjiai.com/tools/name-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Business & $100M Offer Name Generator\",\"description\":\"Generate viral business names, Alex Hormozi $100M Grand Slam offer titles, SaaS products, and lead magnets with domain checks, ad hooks, and conversion psychology.\",\"url\":\"https://kenjiai.com/tools/name-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":8,\"url\":\"https://kenjiai.com/trendpulse\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"TrendPulse & AdForge - Viral Trends, $100M Offers & Ad Hooks\",\"description\":\"Real-time trend radar, buyer intent miner, Alex Hormozi $100M Grand Slam Offer architect, and 6-vector psychological ad angle and viral UGC hook generator.\",\"url\":\"https://kenjiai.com/trendpulse\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":9,\"url\":\"https://kenjiai.com/tools/icp-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"ICP Generator - Ideal Customer Profile For Ad Targeting\",\"description\":\"Describe what you sell and what you charge. Get 2 or 3 named buyer segments with real Meta Ads detailed-targeting interests, exclusions, buying triggers, objection counters, and lookalike seeds you can configure a campaign from today.\",\"url\":\"https://kenjiai.com/tools/icp-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":10,\"url\":\"https://kenjiai.com/tools/missed-call-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Missed Call Revenue Loss Calculator\",\"description\":\"Interactive diagnostic tool for high-ticket businesses to calculate pipeline revenue lost to unanswered calls and discover ROI on 24/7 AI call answering agents.\",\"url\":\"https://kenjiai.com/tools/missed-call-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":11,\"url\":\"https://kenjiai.com/tools/song-prompt-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Song & Jingle Prompt Generator\",\"description\":\"Build a real, producer-grade prompt for Suno, Udio, or Producer.ai, not generic AI slop. Make a personal song with your name in it, or a commercial jingle/anthem for your business.\",\"url\":\"https://kenjiai.com/tools/song-prompt-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":12,\"url\":\"https://prompt.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Prompt Generator\",\"description\":\"Generate perfect AI prompts for any use case with our intelligent prompt engineering tool. Create optimized prompts for ChatGPT, Claude, GPT-4, and other AI models. Free forever, no signup required.\",\"url\":\"https://prompt.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":13,\"url\":\"https://prpro.kenjiai.com/\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"PR Pro - Free AI PR Tool\",\"description\":\"AI-powered PR campaigns that get you noticed by the right people and media outlets. Generate press releases, media lists, and outreach templates. Free AI PR automation tool.\",\"url\":\"https://prpro.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":14,\"url\":\"https://salescoach.kenjiai.com/\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Sales Coach AI - Free Sales Training\",\"description\":\"Your personal AI sales trainer that helps close more deals with data-driven insights, objection handling, and performance optimization. Free AI sales coaching and training.\",\"url\":\"https://salescoach.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":15,\"url\":\"https://dispute.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Dispute Resolution\",\"description\":\"Resolve disputes efficiently with AI-powered mediation, conflict analysis, and resolution strategies. Free AI dispute management and resolution tool for businesses.\",\"url\":\"https://dispute.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":16,\"url\":\"https://webinar.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Live Webinar Platform\",\"description\":\"Host engaging live webinars with AI-powered audience insights, automated follow-ups, and conversion tracking. Free webinar hosting and automation tool.\",\"url\":\"https://webinar.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}}]},\"breadcrumb\":{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Free AI Tools\",\"item\":\"https://kenjiai.com/free-tools\"}]}}"
     ]
    },
    "blocks": [
@@ -2338,6 +2338,14 @@
     {
      "tag": "p",
      "text": "Make a beautiful invitation for a wedding, birthday, graduation, shower, holiday party or any celebration. Add your photos, send it by text or email from your own phone, and see who's coming."
+    },
+    {
+     "tag": "h3",
+     "text": "Funding Finder: Grants, Loans and Investors Open Now"
+    },
+    {
+     "tag": "p",
+     "text": "Every grant, SBA loan, revenue-based financing offer, accelerator, angel network and competition we can confirm is open for US small businesses and founders, with the deadline, official link and last-verified date. Refreshed every week."
     },
     {
      "tag": "h3",
@@ -2515,6 +2523,10 @@
     },
     {
      "href": "/invites",
+     "text": "Open the tool"
+    },
+    {
+     "href": "/funding",
      "text": "Open the tool"
     },
     {
@@ -2995,6 +3007,332 @@
     }
    ],
    "links": []
+  },
+  "/funding-partners": {
+   "head": {
+    "title": "Funding & Credit Partners | KenjiAI",
+    "metas": [
+     {
+      "name": "viewport",
+      "content": "width=device-width, initial-scale=1.0"
+     },
+     {
+      "name": "theme-color",
+      "content": "#3B82F6"
+     },
+     {
+      "name": "title",
+      "content": "Funding & Credit Partners | KenjiAI"
+     },
+     {
+      "name": "keywords",
+      "content": "AI call center, inbound AI receptionist, outbound speed to lead, database reactivation, AI voice agents, business automation CRM, KenjiAI"
+     },
+     {
+      "name": "robots",
+      "content": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+     },
+     {
+      "name": "language",
+      "content": "English"
+     },
+     {
+      "name": "author",
+      "content": "KenjiAI"
+     },
+     {
+      "name": "publisher",
+      "content": "KenjiAI"
+     },
+     {
+      "name": "copyright",
+      "content": "KenjiAI"
+     },
+     {
+      "name": "revisit-after",
+      "content": "1 days"
+     },
+     {
+      "name": "distribution",
+      "content": "global"
+     },
+     {
+      "name": "rating",
+      "content": "general"
+     },
+     {
+      "property": "og:type",
+      "content": "website"
+     },
+     {
+      "property": "og:url",
+      "content": "https://kenjiai.com/funding-partners"
+     },
+     {
+      "property": "og:title",
+      "content": "Funding & Credit Partners | KenjiAI"
+     },
+     {
+      "property": "og:description",
+      "content": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation."
+     },
+     {
+      "property": "og:image",
+      "content": "https://kenjiai.com/og-image.png"
+     },
+     {
+      "property": "og:image:width",
+      "content": "1200"
+     },
+     {
+      "property": "og:image:height",
+      "content": "630"
+     },
+     {
+      "property": "og:image:alt",
+      "content": "KenjiAI - AI Business Automation Platform with Voice Agents, Smart CRM, and Free AI Tools"
+     },
+     {
+      "property": "og:site_name",
+      "content": "KenjiAI"
+     },
+     {
+      "property": "og:locale",
+      "content": "en_US"
+     },
+     {
+      "name": "format-detection",
+      "content": "telephone=yes"
+     },
+     {
+      "name": "HandheldFriendly",
+      "content": "true"
+     },
+     {
+      "content": "ie=edge"
+     },
+     {
+      "property": "twitter:card",
+      "content": "summary_large_image"
+     },
+     {
+      "property": "twitter:url",
+      "content": "https://kenjiai.com/funding-partners"
+     },
+     {
+      "property": "twitter:title",
+      "content": "Funding & Credit Partners | KenjiAI"
+     },
+     {
+      "property": "twitter:description",
+      "content": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation."
+     },
+     {
+      "property": "twitter:image",
+      "content": "https://kenjiai.com/og-image.png"
+     },
+     {
+      "property": "twitter:image:alt",
+      "content": "KenjiAI - AI Business Automation Platform"
+     },
+     {
+      "property": "twitter:creator",
+      "content": "@KenjiAI"
+     },
+     {
+      "property": "twitter:site",
+      "content": "@KenjiAI"
+     },
+     {
+      "name": "twitter:label1",
+      "content": "Built for"
+     },
+     {
+      "name": "twitter:data1",
+      "content": "Business Owners & Entrepreneurs"
+     },
+     {
+      "name": "twitter:label2",
+      "content": "Pricing"
+     },
+     {
+      "name": "twitter:data2",
+      "content": "Performance-Based"
+     },
+     {
+      "name": "description",
+      "content": "KenjiAI's trusted funding and credit partners. Access business funding, build business credit, and get funding-ready to grow your business."
+     }
+    ],
+    "canonical": "https://kenjiai.com/funding-partners",
+    "jsonld": [
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/funding-partners#webpage\",\"url\":\"https://kenjiai.com/funding-partners\",\"name\":\"Funding & Credit Partners\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI's trusted funding and credit partners. Access business funding, build business credit, and get funding-ready to grow your business.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/funding-partners#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/funding-partners#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Funding & Credit Partners\",\"item\":\"https://kenjiai.com/funding-partners\"}]}]}"
+    ]
+   },
+   "blocks": [
+    {
+     "tag": "h1",
+     "text": "Funding & Credit to Grow Your Business"
+    },
+    {
+     "tag": "p",
+     "text": "We've partnered with vetted funding and credit experts to help you access capital, build business credit, and get funding-ready, so you can invest in what moves your business forward."
+    },
+    {
+     "tag": "h3",
+     "text": "Vetted partners"
+    },
+    {
+     "tag": "p",
+     "text": "We only point you to funding and credit partners we trust to do right by our clients."
+    },
+    {
+     "tag": "h3",
+     "text": "Capital to grow"
+    },
+    {
+     "tag": "p",
+     "text": "Access the funding you need to invest in marketing, AI, and the systems that scale your business."
+    },
+    {
+     "tag": "h3",
+     "text": "Get funding-ready"
+    },
+    {
+     "tag": "p",
+     "text": "Build business credit and clean up your profile so you qualify for better terms down the road."
+    },
+    {
+     "tag": "p",
+     "text": "PARTNER 01"
+    },
+    {
+     "tag": "h2",
+     "text": "Thrive Point Financial Group"
+    },
+    {
+     "tag": "p",
+     "text": "Your financial command center"
+    },
+    {
+     "tag": "p",
+     "text": "Get real clarity on your credit, debt, and funding readiness. Thrive Club gives entrepreneurs the dashboards and tools to understand their numbers and prepare for future funding opportunities."
+    },
+    {
+     "tag": "h3",
+     "text": "Thrive Club Membership"
+    },
+    {
+     "tag": "p",
+     "text": "A financial health dashboard with a credit simulator, debt strategy planning, loan comparison tools, and funding-readiness resources, plus an entrepreneur community."
+    },
+    {
+     "tag": "li",
+     "text": "✓ Credit simulator & optimization tools"
+    },
+    {
+     "tag": "li",
+     "text": "✓ Debt payoff & loan comparison planning"
+    },
+    {
+     "tag": "li",
+     "text": "✓ Month-to-month, cancel anytime"
+    },
+    {
+     "tag": "p",
+     "text": "PARTNER 02"
+    },
+    {
+     "tag": "h2",
+     "text": "Victor Jonas Consulting LLC"
+    },
+    {
+     "tag": "p",
+     "text": "Get funded in 90 days — no money down, bad credit OK"
+    },
+    {
+     "tag": "p",
+     "text": "A proven, step-by-step system that has helped people get funded in as little as 90 days, even with no money up front, bad credit, and no bank statements. You get insider knowledge and direct coach access to secure capital, build business credit, and protect your personal credit."
+    },
+    {
+     "tag": "h3",
+     "text": "Bolt Funding"
+    },
+    {
+     "tag": "p",
+     "text": "Tailored financing for businesses at any stage, with fast lender matching across lines of credit, term loans, startup funding, and SBA loans."
+    },
+    {
+     "tag": "li",
+     "text": "✓ Lines of credit $5K–$500K (1–3 days)"
+    },
+    {
+     "tag": "li",
+     "text": "✓ Term loans $5K–$2M • Startup funding $5K–$150K"
+    },
+    {
+     "tag": "li",
+     "text": "✓ SBA loans up to $2M"
+    },
+    {
+     "tag": "h3",
+     "text": "Business Credit Academy"
+    },
+    {
+     "tag": "p",
+     "text": "Step-by-step guidance to make your business bankable, building tradelines, accurate database listings, and access to 3,000+ credit vendors."
+    },
+    {
+     "tag": "li",
+     "text": "✓ Build business credit the right way"
+    },
+    {
+     "tag": "li",
+     "text": "✓ Establish vendor tradelines"
+    },
+    {
+     "tag": "li",
+     "text": "✓ Access 3,000+ credit vendors"
+    },
+    {
+     "tag": "h3",
+     "text": "Freedom Wealth"
+    },
+    {
+     "tag": "p",
+     "text": "Credit profile monitoring and identity verification so you always know where your personal credit stands as you grow."
+    },
+    {
+     "tag": "li",
+     "text": "✓ Ongoing credit profile monitoring"
+    },
+    {
+     "tag": "li",
+     "text": "✓ Identity verification"
+    },
+    {
+     "tag": "li",
+     "text": "✓ Available in English & Spanish"
+    },
+    {
+     "tag": "h2",
+     "text": "Looking for grants, SBA loans or investors?"
+    },
+    {
+     "tag": "p",
+     "text": "The free KenjiAI Funding Finder lists every grant, loan, accelerator and investor we can confirm is open right now, with deadlines and official links, checked every week."
+    },
+    {
+     "tag": "p",
+     "text": "KenjiAI partners with independent funding and credit providers. These partners are not owned or operated by KenjiAI, and KenjiAI may receive referral compensation. Funding, credit approval, and results are determined solely by the provider and are never guaranteed. Review each partner's terms before enrolling."
+    }
+   ],
+   "links": [
+    {
+     "href": "/funding",
+     "text": "Open the Funding Finder"
+    }
+   ]
   },
   "/github-tools": {
    "head": {

@@ -2,11 +2,11 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import PageSchema from '../components/PageSchema';
 import { motion } from 'framer-motion';
-import { ArrowRight, TrendingUp, ShieldCheck, Building2, Sparkles, Landmark, Award, Lightbulb, ExternalLink } from 'lucide-react';
-import { govPrograms, grants, fundingIdeas, lastUpdated, type FeedLink } from '../data/fundingFeed';
+import { Link } from 'react-router-dom';
+import { ArrowRight, TrendingUp, ShieldCheck, Building2, Sparkles } from 'lucide-react';
 
 /**
- * Funding & Credit Partners page.
+ * Funding & Credit Partners page (/funding-partners). /funding is the Funding Finder.
  *
  * Data-driven: to add a new partner, append to the PARTNERS array below.
  * Each partner can list one or more offers. No other code changes needed.
@@ -112,66 +112,17 @@ const VALUE_PROPS = [
   },
 ];
 
-const FeedSection: React.FC<{
-  icon: React.ComponentType<{ className?: string }>;
-  eyebrow: string;
-  title: string;
-  subtitle: string;
-  items: FeedLink[];
-}> = ({ icon: Icon, eyebrow, title, subtitle, items }) => (
-  <motion.section
-    initial={{ opacity: 0, y: 24 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5 }}
-  >
-    <div className="mb-8">
-      <div className="inline-flex items-center gap-2 mb-3">
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-green-500 flex items-center justify-center">
-          <Icon className="w-5 h-5 text-white" />
-        </div>
-        <span className="text-blue-400 text-sm font-semibold tracking-widest uppercase">{eyebrow}</span>
-      </div>
-      <h2 className="text-3xl sm:text-4xl font-black text-white mb-2 leading-tight">{title}</h2>
-      <p className="text-gray-300 max-w-3xl leading-relaxed">{subtitle}</p>
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      {items.map((item) => (
-        <a
-          key={item.title}
-          href={item.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group flex flex-col bg-gray-900/60 backdrop-blur-sm border border-gray-800 hover:border-blue-500/50 rounded-2xl p-6 transition-all duration-300"
-        >
-          {item.tag && (
-            <span className="self-start text-xs font-semibold text-green-300 bg-green-500/10 border border-green-500/30 rounded-full px-3 py-1 mb-3">
-              {item.tag}
-            </span>
-          )}
-          <h3 className="text-lg font-bold text-white mb-2 flex items-center gap-2">
-            {item.title}
-            <ExternalLink className="w-3.5 h-3.5 text-gray-500 group-hover:text-blue-400 transition-colors" />
-          </h3>
-          <p className="text-gray-400 text-sm leading-relaxed">{item.description}</p>
-        </a>
-      ))}
-    </div>
-  </motion.section>
-);
-
 const FundingPage: React.FC = () => {
   return (
     <>
-      <PageSchema path="/funding" name={"Funding & Credit Partners"} description={"KenjiAI's trusted funding and credit partners. Access business funding, build business credit, and get funding-ready to grow your business."} />
+      <PageSchema path="/funding-partners" name={"Funding & Credit Partners"} description={"KenjiAI's trusted funding and credit partners. Access business funding, build business credit, and get funding-ready to grow your business."} />
       <Helmet>
         <title>Funding & Credit Partners | KenjiAI</title>
         <meta
           name="description"
           content="KenjiAI's trusted funding and credit partners. Access business funding, build business credit, and get funding-ready to grow your business."
         />
-        <link rel="canonical" href="https://kenjiai.com/funding" />
+        <link rel="canonical" href="https://kenjiai.com/funding-partners" />
       </Helmet>
 
       <div className="min-h-screen" style={{ backgroundColor: '#0B0E14' }}>
@@ -282,40 +233,13 @@ const FundingPage: React.FC = () => {
               ))}
             </div>
 
-            {/* Government programs, grants, daily funding ideas */}
-            <div className="mt-20 space-y-16">
-              <FeedSection
-                icon={Landmark}
-                eyebrow="Government Programs"
-                title="Government Funding Programs"
-                subtitle="Federal loan and financing programs every business owner should know, from SBA loans to non-dilutive R&D funding."
-                items={govPrograms}
-              />
-
-              <FeedSection
-                icon={Award}
-                eyebrow="Grants"
-                title="Grants & Free Capital"
-                subtitle="Money you don't pay back. We keep an eye on federal, state, and niche grant opportunities worth applying for."
-                items={grants}
-              />
-
-              <div>
-                <div className="flex flex-wrap items-center gap-3 mb-2">
-                  <span className="inline-flex items-center gap-2 text-xs font-semibold text-green-300 bg-green-500/10 border border-green-500/30 rounded-full px-3 py-1">
-                    <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                    Updated daily
-                  </span>
-                  <span className="text-gray-500 text-xs">Last updated {lastUpdated}</span>
-                </div>
-                <FeedSection
-                  icon={Lightbulb}
-                  eyebrow="Funding Ideas"
-                  title="Business Funding Ideas"
-                  subtitle="Fresh, actionable ways to fund and grow your business, refreshed regularly so you always have a current playbook."
-                  items={fundingIdeas}
-                />
-              </div>
+            {/* Pointer to the Funding Finder (grants, loans, investors, checked weekly) */}
+            <div className="mt-20 max-w-3xl mx-auto text-center bg-gray-900/60 border border-gray-800 rounded-2xl p-7">
+              <h2 className="text-2xl font-black text-white mb-2">Looking for grants, SBA loans or investors?</h2>
+              <p className="text-gray-300 mb-5">The free KenjiAI Funding Finder lists every grant, loan, accelerator and investor we can confirm is open right now, with deadlines and official links, checked every week.</p>
+              <Link to="/funding" className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-sm text-white" style={{ background: 'linear-gradient(135deg, #3B82F6, #10B981)' }}>
+                Open the Funding Finder <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
 
             {/* Disclaimer */}
