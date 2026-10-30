@@ -2162,18 +2162,6 @@
       "content": "general"
      },
      {
-      "property": "og:type",
-      "content": "website"
-     },
-     {
-      "property": "og:url",
-      "content": "https://kenjiai.com/free-tools"
-     },
-     {
-      "property": "og:image",
-      "content": "https://kenjiai.com/og-image.png"
-     },
-     {
       "property": "og:image:width",
       "content": "1200"
      },
@@ -2217,6 +2205,10 @@
       "content": "Free AI Tools for Business | KenjiAI"
      },
      {
+      "property": "twitter:description",
+      "content": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation."
+     },
+     {
       "property": "twitter:image",
       "content": "https://kenjiai.com/og-image.png"
      },
@@ -2249,16 +2241,16 @@
       "content": "Performance-Based"
      },
      {
-      "property": "twitter:description",
-      "content": "Free tools for business owners: ROAS, LTV, Facebook ads budget and missed call calculators, an ICP generator, a Google review link generator and more. No signup needed."
-     },
-     {
       "name": "description",
       "content": "Free tools for business owners: ROAS, LTV, Facebook ads budget and missed call calculators, an ICP generator, a Google review link generator and more. No signup needed."
      },
      {
       "name": "keywords",
       "content": "free AI tools, AI prompt generator, free PR tools, AI sales coach, free startup tools, ChatGPT prompts, GPT-4 prompts, AI business tools, free marketing tools, AI automation tools, prompt engineering, free AI software, business automation, AI productivity tools, free AI apps"
+     },
+     {
+      "property": "og:type",
+      "content": "website"
      },
      {
       "property": "og:title",
@@ -2269,13 +2261,21 @@
       "content": "Free calculators and AI tools for ads, follow-up and reviews: ROAS, LTV, ad budget, missed calls, ICP and review links. No signup needed."
      },
      {
+      "property": "og:url",
+      "content": "https://kenjiai.com/free-tools"
+     },
+     {
+      "property": "og:image",
+      "content": "https://kenjiai.com/og-image.png"
+     },
+     {
       "name": "twitter:card",
       "content": "summary_large_image"
      }
     ],
     "canonical": "https://kenjiai.com/free-tools",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@type\":\"CollectionPage\",\"name\":\"Free AI Tools by KenjiAI\",\"description\":\"A collection of free AI tools built by the KenjiAI team. No signup required, 100% free forever.\",\"url\":\"https://kenjiai.com/free-tools\",\"mainEntity\":{\"@type\":\"ItemList\",\"name\":\"Free AI Tools\",\"itemListElement\":[{\"@type\":\"SoftwareApplication\",\"position\":1,\"name\":\"Customer Lifetime Value (LTV) Calculator\",\"description\":\"Enter purchase value, how often customers buy, how long they stay, your margin, and your cost per customer. Get lifetime value in revenue and profit, your LTV:CAC ratio, the most you can pay per customer, and CAC payback.\",\"url\":\"https://kenjiai.com/tools/ltv-calculator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":2,\"name\":\"Kenji Invites: Free Invitations with RSVP for Any Celebration\",\"description\":\"Make a beautiful invitation for a wedding, birthday, graduation, shower, holiday party or any celebration. Add your photos, send it by text or email from your own phone, and see who's coming.\",\"url\":\"https://kenjiai.com/invites\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":3,\"name\":\"Facebook Ads Budget Calculator\",\"description\":\"Enter the customers you want each month, your cost per lead, and your close rate. Get the daily and monthly Meta ads budget you need, cost per customer, and whether you have enough volume to exit the learning phase.\",\"url\":\"https://kenjiai.com/tools/facebook-ads-budget-calculator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":4,\"name\":\"ROAS & Break-Even Calculator\",\"description\":\"Enter ad spend, revenue, order value, and margin. Get your ROAS, the break-even ROAS your margins require, the most you can pay per customer, and real profit after ad spend.\",\"url\":\"https://kenjiai.com/tools/roas-calculator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":5,\"name\":\"Google Review Link Generator\",\"description\":\"Make a direct link to your Google review box plus a printable QR code, with ready-to-send text and email templates for asking customers.\",\"url\":\"https://kenjiai.com/tools/google-review-link-generator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":6,\"name\":\"AI Business & $100M Offer Name Generator\",\"description\":\"Generate viral business names, Alex Hormozi $100M Grand Slam offer titles, SaaS products, and lead magnets with domain checks, ad hooks, and conversion psychology.\",\"url\":\"https://kenjiai.com/tools/name-generator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":7,\"name\":\"TrendPulse & AdForge - Viral Trends, $100M Offers & Ad Hooks\",\"description\":\"Real-time trend radar, buyer intent miner, Alex Hormozi $100M Grand Slam Offer architect, and 6-vector psychological ad angle and viral UGC hook generator.\",\"url\":\"https://kenjiai.com/trendpulse\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":8,\"name\":\"ICP Generator - Ideal Customer Profile For Ad Targeting\",\"description\":\"Describe what you sell and what you charge. Get 2 or 3 named buyer segments with real Meta Ads detailed-targeting interests, exclusions, buying triggers, objection counters, and lookalike seeds you can configure a campaign from today.\",\"url\":\"https://kenjiai.com/tools/icp-generator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":9,\"name\":\"Missed Call Revenue Loss Calculator\",\"description\":\"Interactive diagnostic tool for high-ticket businesses to calculate pipeline revenue lost to unanswered calls and discover ROI on 24/7 AI call answering agents.\",\"url\":\"https://kenjiai.com/tools/missed-call-calculator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":10,\"name\":\"Song & Jingle Prompt Generator\",\"description\":\"Build a real, producer-grade prompt for Suno, Udio, or Producer.ai, not generic AI slop. Make a personal song with your name in it, or a commercial jingle/anthem for your business.\",\"url\":\"https://kenjiai.com/tools/song-prompt-generator\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":11,\"name\":\"AI Prompt Generator\",\"description\":\"Generate perfect AI prompts for any use case with our intelligent prompt engineering tool. Create optimized prompts for ChatGPT, Claude, GPT-4, and other AI models. Free forever, no signup required.\",\"url\":\"https://prompt.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":12,\"name\":\"PR Pro - Free AI PR Tool\",\"description\":\"AI-powered PR campaigns that get you noticed by the right people and media outlets. Generate press releases, media lists, and outreach templates. Free AI PR automation tool.\",\"url\":\"https://prpro.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":13,\"name\":\"Sales Coach AI - Free Sales Training\",\"description\":\"Your personal AI sales trainer that helps close more deals with data-driven insights, objection handling, and performance optimization. Free AI sales coaching and training.\",\"url\":\"https://salescoach.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":14,\"name\":\"Investor Connect - Free Startup Tool\",\"description\":\"Connect with investors and manage funding opportunities with AI-powered matching, pitch deck optimization, and due diligence preparation. Free startup and investor tools.\",\"url\":\"https://investors.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":15,\"name\":\"AI Dispute Resolution\",\"description\":\"Resolve disputes efficiently with AI-powered mediation, conflict analysis, and resolution strategies. Free AI dispute management and resolution tool for businesses.\",\"url\":\"https://dispute.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":16,\"name\":\"Live Webinar Platform\",\"description\":\"Host engaging live webinars with AI-powered audience insights, automated follow-ups, and conversion tracking. Free webinar hosting and automation tool.\",\"url\":\"https://webinar.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}},{\"@type\":\"SoftwareApplication\",\"position\":17,\"name\":\"AI Business Planner\",\"description\":\"Create comprehensive business plans with AI-powered financial projections, market analysis, and growth strategies. Free AI business planning tool for entrepreneurs.\",\"url\":\"https://plan.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}]},\"breadcrumb\":{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Free AI Tools\",\"item\":\"https://kenjiai.com/free-tools\"}]}}"
+     "{\"@context\":\"https://schema.org\",\"@type\":\"CollectionPage\",\"name\":\"Free AI Tools by KenjiAI\",\"description\":\"A collection of free AI tools built by the KenjiAI team. No signup required, 100% free forever.\",\"url\":\"https://kenjiai.com/free-tools\",\"mainEntity\":{\"@type\":\"ItemList\",\"name\":\"Free AI Tools\",\"numberOfItems\":17,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"url\":\"https://kenjiai.com/tools/ltv-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Customer Lifetime Value (LTV) Calculator\",\"description\":\"Enter purchase value, how often customers buy, how long they stay, your margin, and your cost per customer. Get lifetime value in revenue and profit, your LTV:CAC ratio, the most you can pay per customer, and CAC payback.\",\"url\":\"https://kenjiai.com/tools/ltv-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":2,\"url\":\"https://kenjiai.com/invites\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Kenji Invites: Free Invitations with RSVP for Any Celebration\",\"description\":\"Make a beautiful invitation for a wedding, birthday, graduation, shower, holiday party or any celebration. Add your photos, send it by text or email from your own phone, and see who's coming.\",\"url\":\"https://kenjiai.com/invites\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":3,\"url\":\"https://kenjiai.com/tools/facebook-ads-budget-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Facebook Ads Budget Calculator\",\"description\":\"Enter the customers you want each month, your cost per lead, and your close rate. Get the daily and monthly Meta ads budget you need, cost per customer, and whether you have enough volume to exit the learning phase.\",\"url\":\"https://kenjiai.com/tools/facebook-ads-budget-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":4,\"url\":\"https://kenjiai.com/tools/roas-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"ROAS & Break-Even Calculator\",\"description\":\"Enter ad spend, revenue, order value, and margin. Get your ROAS, the break-even ROAS your margins require, the most you can pay per customer, and real profit after ad spend.\",\"url\":\"https://kenjiai.com/tools/roas-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":5,\"url\":\"https://kenjiai.com/tools/google-review-link-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Google Review Link Generator\",\"description\":\"Make a direct link to your Google review box plus a printable QR code, with ready-to-send text and email templates for asking customers.\",\"url\":\"https://kenjiai.com/tools/google-review-link-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":6,\"url\":\"https://kenjiai.com/tools/name-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Business & $100M Offer Name Generator\",\"description\":\"Generate viral business names, Alex Hormozi $100M Grand Slam offer titles, SaaS products, and lead magnets with domain checks, ad hooks, and conversion psychology.\",\"url\":\"https://kenjiai.com/tools/name-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":7,\"url\":\"https://kenjiai.com/trendpulse\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"TrendPulse & AdForge - Viral Trends, $100M Offers & Ad Hooks\",\"description\":\"Real-time trend radar, buyer intent miner, Alex Hormozi $100M Grand Slam Offer architect, and 6-vector psychological ad angle and viral UGC hook generator.\",\"url\":\"https://kenjiai.com/trendpulse\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":8,\"url\":\"https://kenjiai.com/tools/icp-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"ICP Generator - Ideal Customer Profile For Ad Targeting\",\"description\":\"Describe what you sell and what you charge. Get 2 or 3 named buyer segments with real Meta Ads detailed-targeting interests, exclusions, buying triggers, objection counters, and lookalike seeds you can configure a campaign from today.\",\"url\":\"https://kenjiai.com/tools/icp-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":9,\"url\":\"https://kenjiai.com/tools/missed-call-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Missed Call Revenue Loss Calculator\",\"description\":\"Interactive diagnostic tool for high-ticket businesses to calculate pipeline revenue lost to unanswered calls and discover ROI on 24/7 AI call answering agents.\",\"url\":\"https://kenjiai.com/tools/missed-call-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":10,\"url\":\"https://kenjiai.com/tools/song-prompt-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Song & Jingle Prompt Generator\",\"description\":\"Build a real, producer-grade prompt for Suno, Udio, or Producer.ai, not generic AI slop. Make a personal song with your name in it, or a commercial jingle/anthem for your business.\",\"url\":\"https://kenjiai.com/tools/song-prompt-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":11,\"url\":\"https://prompt.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Prompt Generator\",\"description\":\"Generate perfect AI prompts for any use case with our intelligent prompt engineering tool. Create optimized prompts for ChatGPT, Claude, GPT-4, and other AI models. Free forever, no signup required.\",\"url\":\"https://prompt.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":12,\"url\":\"https://prpro.kenjiai.com/\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"PR Pro - Free AI PR Tool\",\"description\":\"AI-powered PR campaigns that get you noticed by the right people and media outlets. Generate press releases, media lists, and outreach templates. Free AI PR automation tool.\",\"url\":\"https://prpro.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":13,\"url\":\"https://salescoach.kenjiai.com/\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Sales Coach AI - Free Sales Training\",\"description\":\"Your personal AI sales trainer that helps close more deals with data-driven insights, objection handling, and performance optimization. Free AI sales coaching and training.\",\"url\":\"https://salescoach.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":14,\"url\":\"https://investors.kenjiai.com/\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Investor Connect - Free Startup Tool\",\"description\":\"Connect with investors and manage funding opportunities with AI-powered matching, pitch deck optimization, and due diligence preparation. Free startup and investor tools.\",\"url\":\"https://investors.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":15,\"url\":\"https://dispute.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Dispute Resolution\",\"description\":\"Resolve disputes efficiently with AI-powered mediation, conflict analysis, and resolution strategies. Free AI dispute management and resolution tool for businesses.\",\"url\":\"https://dispute.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":16,\"url\":\"https://webinar.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Live Webinar Platform\",\"description\":\"Host engaging live webinars with AI-powered audience insights, automated follow-ups, and conversion tracking. Free webinar hosting and automation tool.\",\"url\":\"https://webinar.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":17,\"url\":\"https://plan.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Business Planner\",\"description\":\"Create comprehensive business plans with AI-powered financial projections, market analysis, and growth strategies. Free AI business planning tool for entrepreneurs.\",\"url\":\"https://plan.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}}]},\"breadcrumb\":{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Free AI Tools\",\"item\":\"https://kenjiai.com/free-tools\"}]}}"
     ]
    },
    "blocks": [
@@ -27964,14 +27964,6 @@
       "content": "general"
      },
      {
-      "property": "og:type",
-      "content": "website"
-     },
-     {
-      "property": "og:url",
-      "content": "https://kenjiai.com/tools/name-generator"
-     },
-     {
       "property": "og:image",
       "content": "https://kenjiai.com/og-image.png"
      },
@@ -28019,6 +28011,10 @@
       "content": "AI Business & $100M Offer Name Generator | KenjiAI"
      },
      {
+      "property": "twitter:description",
+      "content": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation."
+     },
+     {
       "property": "twitter:image",
       "content": "https://kenjiai.com/og-image.png"
      },
@@ -28051,10 +28047,6 @@
       "content": "Performance-Based"
      },
      {
-      "property": "twitter:description",
-      "content": "Generate high-converting business names, Alex Hormozi $100M Grand Slam offer titles, SaaS products, and lead magnets with domain checks and conversion psychology. Free from KenjiAI."
-     },
-     {
       "name": "description",
       "content": "Generate high-converting business names, Alex Hormozi $100M Grand Slam offer titles, SaaS products, and lead magnets with domain checks and conversion psychology. Free from KenjiAI."
      },
@@ -28065,6 +28057,14 @@
      {
       "property": "og:description",
       "content": "Craft irresistible brand and offer names using the Alex Hormozi M.A.G.I.C. framework, AI positioning, and domain suggestions."
+     },
+     {
+      "property": "og:url",
+      "content": "https://kenjiai.com/tools/name-generator"
+     },
+     {
+      "property": "og:type",
+      "content": "website"
      }
     ],
     "canonical": "https://kenjiai.com/tools/name-generator",
@@ -28548,14 +28548,6 @@
       "content": "general"
      },
      {
-      "property": "og:type",
-      "content": "website"
-     },
-     {
-      "property": "og:url",
-      "content": "https://kenjiai.com/tools/song-prompt-generator"
-     },
-     {
       "property": "og:image",
       "content": "https://kenjiai.com/og-image.png"
      },
@@ -28603,6 +28595,10 @@
       "content": "Free AI Song & Jingle Prompt Generator | KenjiAI"
      },
      {
+      "property": "twitter:description",
+      "content": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation."
+     },
+     {
       "property": "twitter:image",
       "content": "https://kenjiai.com/og-image.png"
      },
@@ -28635,12 +28631,12 @@
       "content": "Performance-Based"
      },
      {
-      "property": "twitter:description",
+      "name": "description",
       "content": "Build a real, producer-grade prompt for Suno, Udio, or Producer.ai, not generic AI slop. Make a personal song with your name, or a commercial jingle/anthem for your business. Free, no signup."
      },
      {
-      "name": "description",
-      "content": "Build a real, producer-grade prompt for Suno, Udio, or Producer.ai, not generic AI slop. Make a personal song with your name, or a commercial jingle/anthem for your business. Free, no signup."
+      "property": "og:type",
+      "content": "website"
      },
      {
       "property": "og:title",
@@ -28649,12 +28645,16 @@
      {
       "property": "og:description",
       "content": "Build a producer-grade AI music prompt for Suno, Udio, or Producer.ai in seconds. Personal songs or commercial jingles, free forever."
+     },
+     {
+      "property": "og:url",
+      "content": "https://kenjiai.com/tools/song-prompt-generator"
      }
     ],
     "canonical": "https://kenjiai.com/tools/song-prompt-generator",
     "jsonld": [
      "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/tools/song-prompt-generator#webpage\",\"url\":\"https://kenjiai.com/tools/song-prompt-generator\",\"name\":\"Free AI Song & Jingle Prompt Generator\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"Build a real, producer-grade prompt for Suno, Udio, or Producer.ai, not generic AI slop. Make a personal song with your name, or a commercial jingle/anthem for your business. Free, no signup.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/tools/song-prompt-generator#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/tools/song-prompt-generator#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Free Tools\",\"item\":\"https://kenjiai.com/free-tools\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Free AI Song & Jingle Prompt Generator\",\"item\":\"https://kenjiai.com/tools/song-prompt-generator\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"SoftwareApplication\",\"name\":\"Song & Jingle Prompt Generator\",\"applicationCategory\":\"MultimediaApplication\",\"operatingSystem\":\"Any\",\"description\":\"Free tool that builds a producer-grade AI music prompt for Suno, Udio, or Producer.ai, for a personal song with your name or a commercial jingle for your business.\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"SoftwareApplication\",\"url\":\"https://kenjiai.com/tools/song-prompt-generator\",\"name\":\"Song & Jingle Prompt Generator\",\"applicationCategory\":\"MultimediaApplication\",\"operatingSystem\":\"Any\",\"description\":\"Free tool that builds a producer-grade AI music prompt for Suno, Udio, or Producer.ai, for a personal song with your name or a commercial jingle for your business.\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"}},{\"@type\":\"FAQPage\",\"@id\":\"https://kenjiai.com/tools/song-prompt-generator#faq\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"Which AI music tools does this prompt work with?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Suno, Udio and Producer.ai. The prompt has a style line, a tagged song structure and a starting hook. In a tool with separate boxes, paste the STYLE part into the style box and the rest into the lyrics or prompt box.\"}},{\"@type\":\"Question\",\"name\":\"Is the song prompt generator free?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes. No signup, no email, and nothing is stored. You build the prompt in your browser and copy it out.\"}},{\"@type\":\"Question\",\"name\":\"Can I make a jingle for my business with it?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes. Switch to the business jingle mode, add your business name and what you do, and pick a mood. You get a short, repeatable hook built around the brand name, which works for ads, hold music and social videos.\"}},{\"@type\":\"Question\",\"name\":\"Why does my AI song sound generic?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Most people type one line like \\\"make a song about my name\\\". The model fills the gaps with the most average choices. Giving it a BPM range, real instruments, a mix direction and a tagged structure gives it something specific to follow.\"}},{\"@type\":\"Question\",\"name\":\"Can I use an artist as a reference?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes. Type it in the style reference box and it goes into the style line. Some AI music tools filter artist names, so if yours rejects the prompt, swap the name for a description of the sound: the era, the vocal type and the main instruments.\"}}]}]}"
     ]
    },
    "blocks": [
@@ -28673,9 +28673,114 @@
     {
      "tag": "h2",
      "text": "Why this doesn't sound like AI slop"
+    },
+    {
+     "tag": "h3",
+     "text": "Real production language"
+    },
+    {
+     "tag": "p",
+     "text": "Actual instrumentation, BPM range, and mix direction per genre, not \"upbeat song,\" the same kind of brief a real producer would work from."
+    },
+    {
+     "tag": "h3",
+     "text": "A real song structure"
+    },
+    {
+     "tag": "p",
+     "text": "Intro, verses, chorus, bridge, outro, tagged the way Suno and Udio actually read structure, instead of one long undifferentiated block of text."
+    },
+    {
+     "tag": "h3",
+     "text": "A hook that means something"
+    },
+    {
+     "tag": "p",
+     "text": "A real starting lyric built around your name or your brand, not a name awkwardly bolted onto a generic line."
+    },
+    {
+     "tag": "h2",
+     "text": "How to use your prompt"
+    },
+    {
+     "tag": "li",
+     "text": "Pick a personal song or a business jingle, then fill in the name, genre and mood."
+    },
+    {
+     "tag": "li",
+     "text": "Copy the prompt. In Suno, Udio or Producer.ai, paste the STYLE part into the style box."
+    },
+    {
+     "tag": "li",
+     "text": "Paste the structure and the hook direction into the lyrics or prompt box, then generate two or three takes and keep the best one."
+    },
+    {
+     "tag": "li",
+     "text": "Not happy with the hook? Press New hook idea for a different opening line and run it again."
+    },
+    {
+     "tag": "h2",
+     "text": "Song prompt questions people ask"
+    },
+    {
+     "tag": "h3",
+     "text": "Which AI music tools does this prompt work with?"
+    },
+    {
+     "tag": "p",
+     "text": "Suno, Udio and Producer.ai. The prompt has a style line, a tagged song structure and a starting hook. In a tool with separate boxes, paste the STYLE part into the style box and the rest into the lyrics or prompt box."
+    },
+    {
+     "tag": "h3",
+     "text": "Is the song prompt generator free?"
+    },
+    {
+     "tag": "p",
+     "text": "Yes. No signup, no email, and nothing is stored. You build the prompt in your browser and copy it out."
+    },
+    {
+     "tag": "h3",
+     "text": "Can I make a jingle for my business with it?"
+    },
+    {
+     "tag": "p",
+     "text": "Yes. Switch to the business jingle mode, add your business name and what you do, and pick a mood. You get a short, repeatable hook built around the brand name, which works for ads, hold music and social videos."
+    },
+    {
+     "tag": "h3",
+     "text": "Why does my AI song sound generic?"
+    },
+    {
+     "tag": "p",
+     "text": "Most people type one line like \"make a song about my name\". The model fills the gaps with the most average choices. Giving it a BPM range, real instruments, a mix direction and a tagged structure gives it something specific to follow."
+    },
+    {
+     "tag": "h3",
+     "text": "Can I use an artist as a reference?"
+    },
+    {
+     "tag": "p",
+     "text": "Yes. Type it in the style reference box and it goes into the style line. Some AI music tools filter artist names, so if yours rejects the prompt, swap the name for a description of the sound: the era, the vocal type and the main instruments."
+    },
+    {
+     "tag": "p",
+     "text": "More free tools: business name generator, Google review link generator and all free tools."
     }
    ],
-   "links": []
+   "links": [
+    {
+     "href": "/tools/name-generator",
+     "text": "business name generator"
+    },
+    {
+     "href": "/tools/google-review-link-generator",
+     "text": "Google review link generator"
+    },
+    {
+     "href": "/free-tools",
+     "text": "all free tools"
+    }
+   ]
   },
   "/video-generation": {
    "head": {
@@ -28688,6 +28793,10 @@
      {
       "name": "theme-color",
       "content": "#3B82F6"
+     },
+     {
+      "name": "title",
+      "content": "Kenji Studio: AI Video for Ads, VSLs and Lessons | KenjiAI"
      },
      {
       "name": "keywords",
@@ -28734,6 +28843,14 @@
       "content": "https://kenjiai.com/video-generation"
      },
      {
+      "property": "og:title",
+      "content": "Kenji Studio: AI Video for Ads, VSLs and Lessons | KenjiAI"
+     },
+     {
+      "property": "og:description",
+      "content": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation."
+     },
+     {
       "property": "og:image",
       "content": "https://kenjiai.com/og-image.png"
      },
@@ -28777,6 +28894,14 @@
       "content": "https://kenjiai.com/video-generation"
      },
      {
+      "property": "twitter:title",
+      "content": "Kenji Studio: AI Video for Ads, VSLs and Lessons | KenjiAI"
+     },
+     {
+      "property": "twitter:description",
+      "content": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation."
+     },
+     {
       "property": "twitter:image",
       "content": "https://kenjiai.com/og-image.png"
      },
@@ -28811,42 +28936,125 @@
      {
       "name": "description",
       "content": "Try it free, no card. Describe the video in one sentence and Kenji Studio picks the size, writes the prompt and renders it. Your first video is free."
-     },
-     {
-      "name": "title",
-      "content": "Kenji Studio: AI Video for Ads, VSLs and Lessons | KenjiAI"
-     },
-     {
-      "property": "og:title",
-      "content": "Kenji Studio: AI Video for Ads, VSLs and Lessons | KenjiAI"
-     },
-     {
-      "property": "og:description",
-      "content": "Try it free, no card. Describe the video in one sentence and Kenji Studio picks the size, writes the prompt and renders it. Your first video is free."
-     },
-     {
-      "property": "twitter:title",
-      "content": "Kenji Studio: AI Video for Ads, VSLs and Lessons | KenjiAI"
-     },
-     {
-      "property": "twitter:description",
-      "content": "Try it free, no card. Describe the video in one sentence and Kenji Studio picks the size, writes the prompt and renders it. Your first video is free."
      }
     ],
     "canonical": "https://kenjiai.com/video-generation",
-    "jsonld": []
+    "jsonld": [
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/video-generation#webpage\",\"url\":\"https://kenjiai.com/video-generation\",\"name\":\"Kenji Studio: AI Video for Ads, VSLs and Lessons\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"Try it free, no card. Describe the video in one sentence and Kenji Studio picks the size, writes the prompt and renders it. Your first video is free.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/video-generation#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/video-generation#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Kenji Studio: AI Video for Ads, VSLs and Lessons\",\"item\":\"https://kenjiai.com/video-generation\"}]},{\"@type\":\"WebApplication\",\"@id\":\"https://kenjiai.com/video-generation#app\",\"name\":\"Kenji Studio\",\"url\":\"https://kenjiai.com/video-generation\",\"description\":\"AI video generator for ads, VSL b-roll, course visuals and product walkthroughs. Describe the video in one sentence and it writes the prompt and renders it.\",\"applicationCategory\":\"MultimediaApplication\",\"operatingSystem\":\"Any\",\"browserRequirements\":\"Requires JavaScript\",\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"offers\":[{\"@type\":\"Offer\",\"name\":\"Free trial video\",\"price\":\"0\",\"priceCurrency\":\"USD\"},{\"@type\":\"Offer\",\"name\":\"Starter plan, 300 credits a month\",\"price\":\"29\",\"priceCurrency\":\"USD\"},{\"@type\":\"Offer\",\"name\":\"Creator plan, 900 credits a month\",\"price\":\"79\",\"priceCurrency\":\"USD\"},{\"@type\":\"Offer\",\"name\":\"Studio plan, 2500 credits a month\",\"price\":\"199\",\"priceCurrency\":\"USD\"}]},{\"@type\":\"FAQPage\",\"@id\":\"https://kenjiai.com/video-generation#faq\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"Is it really free to try?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes. Pick what you are making, answer the questions and read the prompt we write, all without signing in. When you press Generate, sign in with Google and your first video is on us: new accounts get 30 free credits, enough for the first video of any type except Genjutsu. No card needed.\"}},{\"@type\":\"Question\",\"name\":\"Do I need to know how to write prompts?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"No. You answer a few plain questions, like what you sell and where the ad will run. Our writer turns that into a shot-by-shot prompt. You can read it and change any word before you generate.\"}},{\"@type\":\"Question\",\"name\":\"What does a video cost?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Every video shows its exact price in credits before you press Generate. Longer clips and heavier models cost more. If a video fails or the content filter blocks it, the credits go straight back to your balance.\"}},{\"@type\":\"Question\",\"name\":\"Who owns the videos?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"You do. Use them in ads, sales videos, courses or anywhere else, as long as you follow the studio terms of use.\"}},{\"@type\":\"Question\",\"name\":\"Can I run these as Facebook, Instagram or TikTok ads?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes. Tall, square and wide formats are built in. Some platforms ask you to label AI-generated video, so check their rules when you post.\"}},{\"@type\":\"Question\",\"name\":\"What is Genjutsu?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Genjutsu edits a video you already have: give it a new look, move a new character with your own motion, or swap one object for another. It comes with the Studio plan and works on clips 4 to 30 seconds long.\"}},{\"@type\":\"Question\",\"name\":\"Where do my videos go?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Every finished video is saved to your library, where you can watch it again and download it.\"}},{\"@type\":\"Question\",\"name\":\"Can I cancel?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes, any time from your Plan page. Unused credits roll over month to month while your plan is active and end when the plan ends.\"}}]}]}"
+    ]
    },
    "blocks": [
     {
      "tag": "h1",
-     "text": "Oops! Something went wrong"
+     "text": "What video do you want?"
     },
     {
      "tag": "p",
-     "text": "We're sorry, but something unexpected happened. Please try refreshing the page or return home."
+     "text": "Say it in one sentence. We pick the size, length and model and write the prompt. Sign in when you press Generate. Your first video is free (30 credits), no card."
+    },
+    {
+     "tag": "p",
+     "text": "Or pick a type and we will ask a few questions"
+    },
+    {
+     "tag": "h2",
+     "text": "How it works"
+    },
+    {
+     "tag": "h3",
+     "text": "Pick what you are making"
+    },
+    {
+     "tag": "p",
+     "text": "An ad, a VSL scene, a lesson visual, a product walkthrough or a film scene. Studio plans can also edit their own footage."
+    },
+    {
+     "tag": "h3",
+     "text": "Answer a few questions"
+    },
+    {
+     "tag": "p",
+     "text": "What you sell, who it is for, where it will run. Our writer turns your answers into a prompt you can read and change."
+    },
+    {
+     "tag": "h3",
+     "text": "Sign in and generate"
+    },
+    {
+     "tag": "p",
+     "text": "Press Generate, sign in with Google, and your first video is free. It lands in your library, ready to download."
+    },
+    {
+     "tag": "h2",
+     "text": "Plans"
+    },
+    {
+     "tag": "p",
+     "text": "Try it free, no card. Your first video is on us (30 free credits). After that, plans give you fresh credits every month and unused credits roll over while your plan is active."
+    },
+    {
+     "tag": "p",
+     "text": "Need more in a busy month? Subscribers can add 250 credits for $25."
+    },
+    {
+     "tag": "h2",
+     "text": "Questions"
+    },
+    {
+     "tag": "summary",
+     "text": "Is it really free to try?"
+    },
+    {
+     "tag": "summary",
+     "text": "Do I need to know how to write prompts?"
+    },
+    {
+     "tag": "summary",
+     "text": "What does a video cost?"
+    },
+    {
+     "tag": "summary",
+     "text": "Who owns the videos?"
+    },
+    {
+     "tag": "summary",
+     "text": "Can I run these as Facebook, Instagram or TikTok ads?"
+    },
+    {
+     "tag": "summary",
+     "text": "What is Genjutsu?"
+    },
+    {
+     "tag": "summary",
+     "text": "Where do my videos go?"
+    },
+    {
+     "tag": "summary",
+     "text": "Can I cancel?"
     }
    ],
-   "links": []
+   "links": [
+    {
+     "href": "/video-generation",
+     "text": "K Kenji Studio"
+    },
+    {
+     "href": "/.netlify/functions/vidgen-auth-start",
+     "text": "Sign in"
+    },
+    {
+     "href": "/video-generation/terms",
+     "text": "Studio terms of use"
+    },
+    {
+     "href": "/terms",
+     "text": "Terms of service"
+    },
+    {
+     "href": "/privacy",
+     "text": "Privacy policy"
+    }
+   ]
   },
   "/video-generation/billing": {
    "head": {
