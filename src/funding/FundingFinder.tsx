@@ -8,7 +8,7 @@ import SEOHead from '../components/SEOHead';
 import { freeWebApp, faqPage } from '../lib/schema';
 import {
   AMOUNT_BANDS, AUDIENCE_LABEL, EMPTY_FILTERS, INDUSTRIES, SOURCE_LABEL, STAGE_LABEL, STATES, STATE_NAME, TYPE_LABEL, TYPE_NOTE, TYPE_ORDER,
-  amountLine, countBy, deadlineLine, matches, money, niceDate, sortItems, statesLine,
+  amountLine, countBy, localToday, notExpired, deadlineLine, matches, money, niceDate, sortItems, statesLine,
   type Filters, type Fund, type FundType, type FundingData, type Opportunity, type SortKey,
 } from './logic';
 import { FUNDING_FAQ, FUNDING_TOPICS, topicLinkText, type FundingTopic } from './topics';
@@ -132,8 +132,9 @@ export function FinderView({ topic }: { topic?: FundingTopic }) {
   useEffect(() => { setF(preset); setShown(PAGE); setMatchNote(''); }, [preset]);
   useEffect(() => { loadData().then(setData).catch(() => setErr(true)); }, []);
 
-  const today = data?.asOf || new Date().toISOString().slice(0, 10);
-  const items = data?.items || [];
+  // The data is refreshed weekly; use the visitor's real date so anything that closed since then drops off.
+  const today = useMemo(() => localToday(), []);
+  const items = useMemo(() => (data?.items || []).filter((o) => notExpired(o, today)), [data, today]);
   const filtered = useMemo(
     // A landing page's own test (e.g. "limited to Texas") applies until the visitor changes a filter.
     () => sortItems(items.filter((o) => matches(o, f, today) && (!topic?.only || f !== preset || topic.only(o))), sort, f.state),

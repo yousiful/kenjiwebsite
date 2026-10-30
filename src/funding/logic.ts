@@ -147,6 +147,12 @@ export interface Filters {
 export const EMPTY_FILTERS: Filters = { q: '', types: [], amount: '', industry: '', state: '', stage: '', soon: false, noRepay: false, audience: '' };
 
 const DAY = 864e5;
+/** Today as YYYY-MM-DD in the visitor's own time zone. */
+export const localToday = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+
+/** Still open on this date: no deadline, or a deadline today or later. */
+export const notExpired = (o: Opportunity, today: string) => !o.deadline || o.deadline >= today;
+
 export const daysLeft = (deadline: string, today: string) => Math.round((Date.parse(deadline) - Date.parse(today)) / DAY);
 
 export function matches(o: Opportunity, f: Filters, today: string): boolean {
@@ -163,7 +169,8 @@ export function matches(o: Opportunity, f: Filters, today: string): boolean {
     const band = AMOUNT_BANDS.find((b) => b.id === f.amount);
     if (band) {
       const hi = o.amountMax ?? o.amountMin;
-      const lo = o.amountMin ?? o.amountMax;
+      // "Up to $X" programs span 0..X, so they show under every band up to X.
+      const lo = o.amountMin ?? 0;
       if (hi == null || lo == null) return false;
       if (hi < band.min || lo >= band.max) return false;
     }
@@ -208,8 +215,10 @@ export function amountLine(o: Opportunity): string {
 
 export const niceDate = (iso: string) => new Date(`${iso}T12:00:00Z`).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 
-export function deadlineLine(o: Opportunity, today: string): string {
+/** relative=false prints only the date (prerendered HTML, which is read on later days too). */
+export function deadlineLine(o: Opportunity, today: string, relative = true): string {
   if (o.deadline) {
+    if (!relative) return o.estimated ? `Estimated due ${niceDate(o.deadline)} (forecast)` : `Due ${niceDate(o.deadline)}`;
     const d = daysLeft(o.deadline, today);
     const when = d <= 0 ? 'today' : d === 1 ? 'tomorrow' : `in ${d} days`;
     return o.estimated ? `Estimated due ${niceDate(o.deadline)} (forecast)` : `Due ${niceDate(o.deadline)}, ${when}`;

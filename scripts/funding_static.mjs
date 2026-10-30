@@ -41,7 +41,7 @@ const crumbs = (items) => ({ '@type': 'BreadcrumbList', itemListElement: items.m
 function render({ url, title, description, graph, body }) {
   const set = (html, re, tag) => {
     if (!re.test(html)) throw new Error(`funding_static: index.html no longer has ${re}`);
-    return html.replace(re, tag);
+    return html.replace(re, () => tag);
   };
   let html = shell;
   html = set(html, /<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`);
@@ -53,7 +53,9 @@ function render({ url, title, description, graph, body }) {
     ['twitter:description', description], ['twitter:image', OG_IMAGE], ['twitter:image:alt', title]]) {
     html = set(html, new RegExp(`<meta property="${prop}"[^>]*>`), `<meta property="${prop}" content="${esc(val)}" />`);
   }
-  html = html.replace('</head>', `<script type="application/ld+json" data-static-seo>${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c')}</script>\n</head>`);
+  // Function replacers everywhere: a "$&" or "$'" inside federal text must not be read as a pattern.
+  const ld = `<script type="application/ld+json" data-static-seo>${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c')}</script>\n</head>`;
+  html = html.replace('</head>', () => ld);
   html = set(html, /<div id="root"><\/div>/, `<div id="root"><div data-static-seo="route" class="pt-24 pb-16 bg-gray-900 min-h-screen"><div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-gray-300 leading-relaxed">${body}</div></div></div>`);
   return html;
 }
@@ -68,7 +70,7 @@ const nav = `<nav aria-label="Site" class="text-sm text-gray-500 mb-6"><a href="
 
 const item = (o) => `<article class="mb-6"><h3 class="text-white text-lg font-bold"><a href="${esc(o.url)}" rel="noopener">${esc(o.title)}</a></h3>
 <p><strong>${esc(L.TYPE_LABEL[o.type])}</strong> (${esc(L.TYPE_NOTE[o.type].toLowerCase())}) · ${esc(o.provider)}${o.number ? ` · ${esc(o.number)}` : ''}</p>
-<p>Amount: ${esc(L.amountLine(o))} · ${esc(L.deadlineLine(o, today))} · ${esc(L.statesLine(o))}</p>
+<p>Amount: ${esc(L.amountLine(o))} · ${esc(L.deadlineLine(o, today, false))} · ${esc(L.statesLine(o))}</p>
 <p>Who qualifies: ${esc(o.who)}</p>${o.summary ? `\n<p>${esc(o.summary)}</p>` : ''}
 <p>Source: ${esc(L.SOURCE_LABEL[o.src])} · Last verified ${esc(L.niceDate(o.verified))} · <a href="${esc(o.url)}" rel="noopener">Apply on the official site</a></p></article>`;
 
