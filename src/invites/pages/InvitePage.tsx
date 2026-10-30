@@ -10,6 +10,7 @@ import { MusicBox } from '../music';
 import { Icon } from '../icons';
 import { buildIcs, googleCalendarUrl, cleanPhone, isEmail, eventWording, typeOf, type CalItem } from '../shared';
 import { THEME_FONTS, clockTime, countdownText, daysToGo, isAndroidDevice, isIOSDevice, loadThemeFonts, longDate, mapsUrl, shortDate } from '../format';
+import { makeYourOwnHref } from '../seo/typePages';
 import '../guest.css';
 
 interface Data { event: PublicEvent; guest: GuestView | null; open: boolean; canChange: boolean; openSeats?: number }
@@ -133,6 +134,11 @@ function Rsvp({ data, code, preview, onSaved, actions }: { data: Data; code: str
             <button type="button" className="kg-btn kg-btn--soft" onClick={() => { setEditing(true); setJustSaved(false); }}>Change my answer</button>
           </>
         ) : <p className="kg-muted">The celebration has passed, so answers are closed.</p>}
+        {!preview && (
+          <p className="kg-muted kg-own" data-testid="rsvp-make-own">
+            Planning a celebration of your own? This invitation was made free with Kenji Invites. <a href={makeYourOwnHref(typeOf(ev))}>Make yours</a>.
+          </p>
+        )}
       </div>
     );
   }
@@ -570,7 +576,7 @@ export default function InvitePage({ code: initialCode = '', previewEvent }: { c
           {data.open && !data.guest && <p className="kg-muted" style={{ marginTop: 16 }}>After you reply, you'll get your own link so you can change your answer later.</p>}
         </section>
 
-        <p className="kg-foot">Made with <a href="/invites">Kenji Invites</a>, {type === 'wedding' ? 'free wedding invitations' : 'free invitations for every celebration'}.</p>
+        <p className="kg-foot" data-testid="guest-foot">Made free with Kenji Invites. Have something of your own to celebrate? <a href={preview ? '/invites' : makeYourOwnHref(type)}>Make your invitation</a>, it's free.</p>
         {stageOn === 'lock' && (
           <div className="kg-wp-host" aria-hidden="true" style={{ width: lockSize[0], height: lockSize[1] }}>
             <LockWallpaper ref={lockRef} ev={ev} photos={photos} width={lockSize[0]} height={lockSize[1]} />

@@ -7,6 +7,8 @@ import { loadThemeFonts } from '../format';
 import { getToken } from '../api';
 import { EVENT_TYPES, TYPES } from '../shared';
 import { Page } from '../ui';
+import { TYPE_PAGE } from '../seo/typePages';
+import '../seo/seo.css';
 
 const SAMPLE = {
   date: '2027-06-12', time: '16:30', venueName: 'The Rose Garden', address: 'Charleston, South Carolina', personalMessage: '', accent: '',
@@ -75,9 +77,10 @@ export default function InvitesLanding() {
         <section className="kv-wrap" aria-labelledby="kv-kinds" style={{ paddingBottom: 0 }}>
           <h2 id="kv-kinds" style={{ marginBottom: 16 }}>For every celebration</h2>
           <ul className="kv-kinds">
-            {EVENT_TYPES.filter((t) => t !== 'custom').map((t) => <li key={t}>{TYPES[t].label}</li>)}
-            <li>Anything else</li>
+            {EVENT_TYPES.filter((t) => t !== 'custom').map((t) => <li key={t}><Link to={`/invites/${TYPE_PAGE[t]}`}>{TYPES[t].label}</Link></li>)}
+            <li><Link to="/invites/templates">Anything else</Link></li>
           </ul>
+          <p className="kv-muted" style={{ marginTop: 16, fontSize: 17 }}>Tap one for wording ideas, when to send it, and designs. Or browse <Link to="/invites/templates">all 36 designs</Link>, see how the <Link to="/invites/rsvp-website">free RSVP website</Link> works, or why people use it as an <Link to="/invites/evite-alternative">Evite alternative</Link>.</p>
         </section>
 
         <section className="kv-wrap" aria-labelledby="kv-how">

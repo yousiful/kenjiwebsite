@@ -110,6 +110,11 @@ const InvitesWizard = lazyRoute(() => import('./invites/pages/InvitesWizard'));
 const InvitesEvent = lazyRoute(() => import('./invites/pages/InvitesEvent'));
 const InvitePreviewRoute = lazyRoute(() => import('./invites/pages/InvitePreviewRoute'));
 const InviteRoute = lazyRoute(() => import('./invites/pages/InviteRoute'));
+// Kenji Invites landing pages, one per kind of celebration (content in src/invites/seo/topics.ts).
+// Listed one by one so scripts/route_list.mjs prerenders each as its own static page.
+const InvitesTopic = lazyRoute(() => import('./invites/pages/InvitesTopic')) as unknown as React.ComponentType<{ slug: string }>;
+const InvitesTemplates = lazyRoute(() => import('./invites/pages/InvitesTemplates'));
+const InvitesGuide = lazyRoute(() => import('./invites/pages/InvitesGuide')) as unknown as React.ComponentType<{ slug: string }>;
 // Kenji Studio (AI video generation), its own header/footer like Kenji Invites.
 const VidgenHome = lazyRoute(() => import('./vidgen/pages/VidgenHome'));
 const VidgenLibrary = lazyRoute(() => import('./vidgen/pages/VidgenLibrary'));
@@ -398,6 +403,23 @@ function App() {
                       <Route path="/setup" element={<AgentSetupPage />} />
                       <Route path="/funding" element={<FundingPage />} />
                       <Route path="/invites" element={<InvitesLanding />} />
+                      <Route path="/invites/wedding-invitations" element={<InvitesTopic slug="wedding-invitations" />} />
+                      <Route path="/invites/birthday-invitations" element={<InvitesTopic slug="birthday-invitations" />} />
+                      <Route path="/invites/baby-shower-invitations" element={<InvitesTopic slug="baby-shower-invitations" />} />
+                      <Route path="/invites/bridal-shower-invitations" element={<InvitesTopic slug="bridal-shower-invitations" />} />
+                      <Route path="/invites/graduation-invitations" element={<InvitesTopic slug="graduation-invitations" />} />
+                      <Route path="/invites/engagement-party-invitations" element={<InvitesTopic slug="engagement-party-invitations" />} />
+                      <Route path="/invites/anniversary-invitations" element={<InvitesTopic slug="anniversary-invitations" />} />
+                      <Route path="/invites/quinceanera-invitations" element={<InvitesTopic slug="quinceanera-invitations" />} />
+                      <Route path="/invites/bar-mitzvah-invitations" element={<InvitesTopic slug="bar-mitzvah-invitations" />} />
+                      <Route path="/invites/retirement-party-invitations" element={<InvitesTopic slug="retirement-party-invitations" />} />
+                      <Route path="/invites/housewarming-invitations" element={<InvitesTopic slug="housewarming-invitations" />} />
+                      <Route path="/invites/holiday-party-invitations" element={<InvitesTopic slug="holiday-party-invitations" />} />
+                      <Route path="/invites/business-event-invitations" element={<InvitesTopic slug="business-event-invitations" />} />
+                      <Route path="/invites/family-reunion-invitations" element={<InvitesTopic slug="family-reunion-invitations" />} />
+                      <Route path="/invites/templates" element={<InvitesTemplates />} />
+                      <Route path="/invites/rsvp-website" element={<InvitesGuide slug="rsvp-website" />} />
+                      <Route path="/invites/evite-alternative" element={<InvitesGuide slug="evite-alternative" />} />
                       <Route path="/invites/login" element={<Navigate to="/invites/dashboard" replace />} />
                       <Route path="/invites/manage" element={<InvitesManage />} />
                       <Route path="/invites/find" element={<InvitesFind />} />

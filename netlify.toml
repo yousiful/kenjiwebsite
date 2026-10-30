@@ -31,6 +31,12 @@ Pragma = "no-cache"
 Expires = "0"
 
 [[headers]]
+for = "/i/*"
+
+[headers.values]
+X-Robots-Tag = "noindex, nofollow"
+
+[[headers]]
 for = "/sw.js"
 
 [headers.values]

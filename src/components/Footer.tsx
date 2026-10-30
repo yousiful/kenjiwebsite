@@ -25,6 +25,7 @@ const Footer: React.FC = () => {
       { name: 'Marketing Automation', href: '/marketing-automation' },
       { name: 'Smart CRM Pipelines', href: '/crm' },
       { name: 'Free AI Growth Tools', href: '/free-tools' },
+      { name: 'Free Invitations with RSVP', href: '/invites' },
       { name: 'Missed Call Calculator', href: '/tools/missed-call-calculator' },
     ],
     industries: [

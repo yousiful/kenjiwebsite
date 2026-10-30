@@ -88,7 +88,16 @@ export default function InvitesWizard() {
   const navigate = useNavigate();
   const step = Math.min(STEP_COUNT, Math.max(1, Number(params.get('step')) || 1));
 
-  const [ev, setEv] = useState<HostEvent>(blankEvent);
+  // /invites/new?type=birthday&theme=cake (from the landing pages): start on that kind of
+  // celebration and design. Anything unknown is ignored, so plain /invites/new is unchanged.
+  const [ev, setEv] = useState<HostEvent>(() => {
+    const b = blankEvent();
+    const t = params.get('type') as EventType | null;
+    if (id || !t || !EVENT_TYPES.includes(t)) return b;
+    const th = params.get('theme') as ThemeId | null;
+    const designs = t === 'wedding' ? [...THEME_IDS] : DESIGNS_FOR[t];
+    return { ...b, type: t, theme: th && designs.includes(th) ? th : t === 'wedding' ? 'ivory' : defaultTheme(t) };
+  });
   const [guests, setGuests] = useState<Guest[]>([]);
   const [loaded, setLoaded] = useState(!id);
   const [save, setSave] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');

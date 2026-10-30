@@ -1,0 +1,53 @@
+/* Kenji Invites landing pages (/invites/<topic>, /invites/templates, guides). Uses the .kv tokens from app.css. */
+.ks-sec { padding-top: 8px; padding-bottom: 40px; }
+.ks-intro { margin-top: 10px !important; max-width: 62ch; }
+.ks-crumbs { font-size: 16px; color: var(--kv-soft); margin-bottom: 14px; }
+.ks-crumbs a { color: var(--kv-soft); }
+
+.ks-wordings { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 22px; }
+@media (min-width: 760px) { .ks-wordings { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.ks-wording { margin: 0; background: var(--kv-surface); border: 1px solid var(--kv-line); border-radius: var(--kv-radius); padding: 20px 20px 18px; display: flex; flex-direction: column; gap: 12px; }
+.ks-wording figcaption { font-size: 15px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--kv-primary); }
+.ks-wording p { font-family: var(--kv-serif); font-size: 20px; line-height: 1.5; text-align: center; flex: 1; }
+.ks-copy { align-self: center; min-height: 44px !important; font-size: 16px !important; }
+
+.ks-two { display: grid; grid-template-columns: 1fr; gap: 32px; }
+@media (min-width: 860px) { .ks-two { grid-template-columns: 1fr 1fr; gap: 48px; } }
+.ks-timing { margin: 18px 0 0; }
+.ks-timing > div { padding: 12px 0; border-bottom: 1px solid var(--kv-line); }
+.ks-timing dt { font-weight: 700; }
+.ks-timing dd { margin: 2px 0 0; color: var(--kv-soft); }
+.ks-list { margin: 18px 0 0; padding-left: 22px; }
+.ks-list li { margin: 8px 0; }
+
+.ks-designs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 22px; }
+@media (min-width: 760px) { .ks-designs { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; } }
+.ks-design { display: flex; flex-direction: column; gap: 10px; align-items: stretch; text-align: center; }
+.ks-design .kc-paper { box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12); }
+.ks-design-name { font-weight: 650; font-size: 17px; }
+.ks-design-for { font-size: 15px; color: var(--kv-soft); margin-top: -6px !important; }
+.ks-design .kv-btn { min-height: 48px; font-size: 16px; padding: 0 12px; }
+
+.ks-tips { display: grid; grid-template-columns: 1fr; gap: 22px; margin-top: 22px; }
+@media (min-width: 860px) { .ks-tips { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 40px; } }
+.ks-tips h3 { margin-bottom: 6px; font-size: 21px; }
+
+.ks-free { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 10px; max-width: 900px; }
+@media (min-width: 760px) { .ks-free { grid-template-columns: 1fr 1fr; } }
+.ks-free li { background: var(--kv-surface); border: 1px solid var(--kv-line); border-radius: 12px; padding: 14px 16px; }
+
+.ks-related { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: 1fr; gap: 10px; }
+@media (min-width: 700px) { .ks-related { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.ks-related a { display: block; padding: 14px 16px; border: 2px solid var(--kv-line); border-radius: 12px; background: var(--kv-surface); font-weight: 650; text-decoration: none; }
+.ks-related a:hover { border-color: var(--kv-primary); }
+.kv-kinds a { color: var(--kv-ink); text-decoration: none; }
+
+.ks-table-wrap { overflow-x: auto; margin-top: 20px; -webkit-overflow-scrolling: touch; }
+.ks-table { border-collapse: collapse; width: 100%; font-size: 16px; background: var(--kv-surface); }
+.ks-table th, .ks-table td { border: 1px solid var(--kv-line); padding: 10px 12px; text-align: left; vertical-align: top; }
+.ks-table th { background: var(--kv-sunk); }
+.ks-prose { max-width: 70ch; }
+.ks-prose p { margin-top: 14px !important; }
+.ks-prose h3 { margin-top: 26px; }
+.ks-group { margin-top: 34px; }
+.ks-group h2 { margin-bottom: 4px; }

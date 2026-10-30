@@ -73,6 +73,8 @@ export default async (req: Request, context: Context) => {
   headers.delete('etag');
   headers.delete('content-encoding');
   headers.set('cache-control', 'no-cache, max-age=0, must-revalidate');
+  // private invitations: keep them out of search results whatever the HTML says
+  if (url.pathname.startsWith('/i/')) headers.set('x-robots-tag', 'noindex, nofollow');
   return new Response(html, { status: res.status, headers });
 };
 
