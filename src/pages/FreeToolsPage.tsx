@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, TrendingUp, AlertCircle, PhoneCall, Flame, Music, Target, Building2, Calculator, Wallet, Heart } from 'lucide-react';
+import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, AlertCircle, PhoneCall, Flame, Music, Target, Building2, Calculator, Wallet, Heart } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 const FreeToolsPage: React.FC = () => {
@@ -180,17 +180,6 @@ const FreeToolsPage: React.FC = () => {
       category: "Marketing",
       keywords: ["free webinar platform", "live webinars", "webinar hosting", "online events", "virtual events", "webinar automation"],
       revenue: "Built-in audience analytics"
-    },
-    {
-      name: "AI Business Planner",
-      description: "Create comprehensive business plans with AI-powered financial projections, market analysis, and growth strategies. Free AI business planning tool for entrepreneurs.",
-      url: "https://plan.kenjiai.com",
-      icon: TrendingUp,
-      gradient: "from-green-500 to-teal-600",
-      features: ["Financial Projections", "Market Analysis", "Growth Strategies", "Investor-Ready Plans"],
-      category: "Business",
-      keywords: ["business plan generator", "AI business planning", "financial projections", "market analysis", "startup planning", "business strategy"],
-      revenue: "Investor-ready financial projections"
     }
   ];
 
