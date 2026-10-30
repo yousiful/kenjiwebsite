@@ -85,6 +85,7 @@ const GrowthQuizBookPage = lazyRoute(() => import('./pages/GrowthQuizPage').then
 const GrowthQuizNextStepPage = lazyRoute(() => import('./pages/GrowthQuizPage').then((m) => ({ default: m.GrowthQuizNextStepPage })));
 const LeadScorePage = lazyRoute(() => import('./pages/LeadScorePage'));
 const FutureSelfPage = lazyRoute(() => import('./pages/FutureSelfPage'));
+const OnboardingPage = lazyRoute(() => import('./pages/OnboardingPage'));
 // /lead-score was the first name (10/25); quiz ads already in review link there, so keep the query string.
 const LeadScoreRedirect = () => <Navigate to={`/findtheleak${window.location.search}`} replace />;
 const LaunchTimePage = lazyRoute(() => import('./pages/LaunchTimePage'));
@@ -269,7 +270,7 @@ const DefaultSEO: React.FC = () => {
 // Kenji Invites and Kenji Studio pages carry their own header and hide all site chrome.
 const isInvitesPath = (p: string) => p === '/invites' || p.startsWith('/invites/') || p.startsWith('/i/') || p === '/video-generation' || p.startsWith('/video-generation/');
 
-const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/overview-b', '/setup', '/helpful-links', '/github-tools', '/partnerup', '/workshop', '/special', '/growth-quiz', '/growth-quiz/book', '/growth-quiz/next-step', '/findtheleak', '/lead-score', '/futureyou', '/launch-time', '/launch-time/welcome'];
+const NAVBAR_HIDDEN_ROUTES: string[] = ['/dashboard', '/overview', '/overview-b', '/setup', '/helpful-links', '/github-tools', '/partnerup', '/workshop', '/special', '/growth-quiz', '/growth-quiz/book', '/growth-quiz/next-step', '/findtheleak', '/lead-score', '/futureyou', '/onboarding', '/launch-time', '/launch-time/welcome'];
 
 function ConditionalNavbar() {
   const { pathname } = useLocation();
@@ -398,6 +399,7 @@ function App() {
                       <Route path="/growth-quiz/next-step" element={<GrowthQuizNextStepPage />} />
                       <Route path="/findtheleak" element={<LeadScorePage />} />
                       <Route path="/futureyou" element={<FutureSelfPage />} />
+                      <Route path="/onboarding" element={<OnboardingPage />} />
                       <Route path="/lead-score" element={<LeadScoreRedirect />} />
                       <Route path="/launch-time" element={<LaunchTimePage />} />
                       <Route path="/launch-time/welcome" element={<LaunchTimeWelcomePage />} />
