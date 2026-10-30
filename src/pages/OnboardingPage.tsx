@@ -4,7 +4,9 @@ import { Shell } from './GrowthQuizPage';
 
 /* Client onboarding, kenjiai.com/onboarding (Yousif 2026-10-30): a short intake, then one step at a time to give
    Media Traffics access to their Meta ads (support@mediatraffics.com as a person, plus partner access once
-   MT_BUSINESS_ID is set). Each step has a looping click-path demo and a Mark complete button.
+   MT_BUSINESS_ID is set), then a Meta app + system user token so KenjiAI can manage the ads beside the team.
+   Each step has a looping click-path demo and a Mark complete button. The token is checked and stored encrypted
+   by the function (never kept in localStorage).
    Progress stays in this browser (localStorage). Saves to GHL via netlify/functions/onboarding.ts. */
 
 const STORE = 'kenji-onboarding';
@@ -71,6 +73,51 @@ const STEPS: Step[] = [
     path: ['Users › Partners', 'Add', 'Give a partner access', `Business ID ${MT_BUSINESS_ID}`, 'Ad account › Manage campaigns', 'Save changes'],
   } as Step] : []),
   {
+    id: 'app',
+    title: 'Make a free Meta app',
+    why: 'Meta only hands out a system user key through an app you own. It stays in your business, needs no review, and costs nothing. You never publish it.',
+    link: { href: 'https://developers.facebook.com/apps/creation/', label: 'Open Meta for Developers' },
+    how: [
+      <>Open Meta for Developers and log in with the same Facebook account. If it asks, click <b>Get started</b> and verify your account (one time).</>,
+      <>Click <b>Create app</b>.</>,
+      <>Name it after your business, for example <b>"Smith Roofing Ads"</b>, and add your email. Click <b>Next</b>.</>,
+      <>For use case, pick <b>Other</b>, click <b>Next</b>, then pick app type <b>Business</b>.</>,
+      <>Under <b>Business portfolio</b>, pick your business (the one from step 1). Click <b>Create app</b> and enter your Facebook password if asked.</>,
+      <>That's it. Leave the app in <b>Development</b> mode. You don't need to add products or submit anything.</>,
+    ],
+    path: ['My Apps', 'Create app', 'Name + email', 'Other › Business', 'Pick your portfolio', 'Create app'],
+  },
+  {
+    id: 'systemuser',
+    title: 'Add a Media Traffics system user',
+    why: "A system user is a login for software, not a person. It's how KenjiAI watches and adjusts your ads around the clock next to our team. It only sees what you give it, and you can delete it any time.",
+    link: { href: 'https://business.facebook.com/settings/system-users', label: 'Open System users' },
+    how: [
+      <>In Business Settings, go to <b>Users</b> then <b>System users</b> and click <b>Add</b>. (Accept the terms if Meta asks.)</>,
+      <>Name it <CopyChip text="Media Traffics" />, set the role to <b>Employee</b>, and click <b>Create system user</b>.</>,
+      <>With it selected, click <b>Assign assets</b> (or <b>Add assets</b>).</>,
+      <>Pick <b>Ad accounts</b>, check your ad account, and turn on <b>Full control</b> (Manage ad account).</>,
+      <>Do the same for <b>Pages</b> (your Facebook page) and <b>Datasets</b> or <b>Pixels</b> (your pixel, if you have one). Click <b>Assign</b>.</>,
+      <>Now go to <b>Accounts</b> then <b>Apps</b>, click the app you just made, click <b>Assign people</b>, pick <b>Media Traffics</b>, turn on <b>Full control</b> (Manage app), and click <b>Assign</b>.</>,
+    ],
+    path: ['Users › System users', 'Add › "Media Traffics"', 'Role: Employee', 'Assign assets', 'Ad account + Page + Pixel › Full control', 'Accounts › Apps › Assign people'],
+  },
+  {
+    id: 'token',
+    title: 'Send us the system user token',
+    why: "The token is the key KenjiAI uses to read your results and manage your ads beside our team. Paste it here only. It's checked with Meta and sent to us encrypted. We'll never ask for it by text or email.",
+    link: { href: 'https://business.facebook.com/settings/system-users', label: 'Open System users' },
+    how: [
+      <>In <b>Users</b> then <b>System users</b>, click <b>Media Traffics</b>, then <b>Generate new token</b>.</>,
+      <>Pick the app you made in the earlier step.</>,
+      <>Set <b>Token expiration</b> to <b>Never</b>. Otherwise it stops working in 60 days.</>,
+      <>Check these permissions (skip any you don't see): <span className="font-mono text-[13px] text-white/80">{['ads_management', 'ads_read', 'business_management', 'pages_show_list', 'pages_read_engagement', 'pages_manage_ads', 'leads_retrieval', 'read_insights'].join(', ')}</span>.</>,
+      <>Click <b>Generate token</b> and copy it. It starts with <b>EAA</b>. Meta shows it once, so paste it below right away.</>,
+      <>Click <b>Check and send</b>. You'll see which ad accounts and pages we can now reach.</>,
+    ],
+    path: ['System users › Media Traffics', 'Generate new token', 'Pick your app', 'Expiration: Never', 'Check permissions', 'Copy token (EAA…)'],
+  },
+  {
     id: 'adaccount',
     title: 'Send us your ad account ID',
     why: 'So we know which account to open first, especially if you have more than one.',
@@ -78,25 +125,52 @@ const STEPS: Step[] = [
     how: [
       'Open Ads Manager.',
       <>Look at the top left, under your account name, or in the web address after <b>act=</b>. It's a long number.</>,
-      'Paste it in the box below, along with your Facebook page name.',
+      'Paste it in the box below, along with your Facebook page name. If you sent the token, we filled these in for you.',
     ],
     path: ['Ads Manager', 'Account name (top left)', 'Copy the number'],
   },
-  {
-    id: 'app',
-    title: 'Developer app (only if we ask)',
-    optional: true,
-    why: 'Most clients skip this. We only need it for custom reporting or tracking set ups, and we will tell you on your kickoff call.',
-    link: { href: 'https://developers.facebook.com/apps', label: 'Open Meta for Developers' },
-    how: [
-      <>Go to Meta for Developers, click <b>My Apps</b> then <b>Create app</b>.</>,
-      <>Pick <b>Other</b>, then app type <b>Business</b>.</>,
-      <>Name it after your business (for example "Your Business Ads"), add your email, and connect your <b>business portfolio</b>.</>,
-      <>Once it's made, go to <b>App roles</b> then <b>Roles</b>, click <b>Add people</b>, and add us as <b>Developer</b>. We'll send you the name to search on your call.</>,
-    ],
-    path: ['My Apps', 'Create app', 'Other › Business', 'Name + portfolio', 'App roles › Add people'],
-  },
 ];
+
+type TokenInfo = { user: { name: string }; ads: { id: string; name: string; active: boolean }[]; pages: { name: string }[]; missing: string[] };
+
+/* The token is posted once and never kept in this browser. Only the check result is remembered. */
+const TokenBox: React.FC<{ onOk: (info: TokenInfo) => void; sent: TokenInfo | null; post: (body: object) => Promise<Response> }> = ({ onOk, sent, post }) => {
+  const [token, setToken] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [err, setErr] = useState('');
+  const check = async () => {
+    setErr(''); setBusy(true);
+    try {
+      const r = await post({ stage: 'token', token });
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok || !d.ok) setErr(d.error || "Something went wrong. Try again, or tell us and we'll do it on a call.");
+      else { setToken(''); onOk(d.info); }
+    } catch { setErr('No connection. Check your internet and try again.'); }
+    setBusy(false);
+  };
+  return (
+    <div className="mt-6 rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+      {sent && (
+        <div className="mb-5 rounded-xl border border-[#5EEAD4]/40 bg-[#5EEAD4]/10 p-4 text-[14px] leading-relaxed">
+          <p className="font-semibold text-white flex items-center gap-2"><Check className="w-4 h-4 text-[#5EEAD4]" /> Got it. Your token works and is on its way to us.</p>
+          <p className="mt-2 text-[#A9B4C4]">Ad accounts: {sent.ads.map((a) => a.name || a.id).join(', ')}</p>
+          <p className="text-[#A9B4C4]">Pages: {sent.pages.map((p) => p.name).join(', ') || 'none yet. Assign your page to the system user if you want us running page ads.'}</p>
+          {sent.missing.length > 0 && <p className="mt-2 text-[#FCD34D]">Missing permissions: {sent.missing.join(', ')}. That's fine for now. If we need one, we'll ask you to make a new token with it checked.</p>}
+        </div>
+      )}
+      <label className="block">
+        <span className="block text-[15px] font-semibold">{sent ? 'Send a new token (only if we asked)' : 'System user token'}</span>
+        <input type="password" autoComplete="off" spellCheck={false} value={token} onChange={(e) => setToken(e.target.value)} placeholder="EAA..."
+          className="mt-2 w-full rounded-xl bg-white/[0.06] border border-white/10 px-4 py-3 text-[15px] font-mono outline-none focus:border-[#5EEAD4] placeholder:text-white/30" />
+      </label>
+      {err && <p className="mt-3 text-[14px] text-[#FCA5A5]">{err}</p>}
+      <button type="button" onClick={check} disabled={busy || token.trim().length < 20}
+        className="mt-4 inline-flex items-center gap-2 rounded-xl border border-[#5EEAD4] px-5 py-3 text-[15px] font-semibold disabled:opacity-40">
+        {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : 'Check and send'}
+      </button>
+    </div>
+  );
+};
 
 /* Looping click-path demo: the pointer walks down the path one click at a time. */
 const ClickPath: React.FC<{ path: string[] }> = ({ path }) => {
@@ -155,7 +229,7 @@ const Choice: React.FC<{ value: string; options: string[]; onChange: (v: string)
   </div>
 );
 
-type Saved = { form: Form; started: boolean; step: number; completed: string[]; adAccountId: string; pageName: string; finished: boolean };
+type Saved = { form: Form; started: boolean; step: number; completed: string[]; adAccountId: string; pageName: string; finished: boolean; tokenInfo?: TokenInfo | null };
 const load = (): Saved | null => { try { return JSON.parse(localStorage.getItem(STORE) || 'null'); } catch { return null; } };
 
 const OnboardingPage: React.FC = () => {
@@ -167,22 +241,23 @@ const OnboardingPage: React.FC = () => {
   const [adAccountId, setAdAccountId] = useState(saved?.adAccountId || '');
   const [pageName, setPageName] = useState(saved?.pageName || '');
   const [finished, setFinished] = useState(saved?.finished || false);
+  const [tokenInfo, setTokenInfo] = useState<TokenInfo | null>(saved?.tokenInfo || null);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState('');
 
   useEffect(() => {
-    try { localStorage.setItem(STORE, JSON.stringify({ form, started, step, completed, adAccountId, pageName, finished })); } catch { /* private mode */ }
-  }, [form, started, step, completed, adAccountId, pageName, finished]);
+    try { localStorage.setItem(STORE, JSON.stringify({ form, started, step, completed, adAccountId, pageName, finished, tokenInfo })); } catch { /* private mode */ }
+  }, [form, started, step, completed, adAccountId, pageName, finished, tokenInfo]);
   useEffect(() => { window.scrollTo({ top: 0, behavior: 'smooth' }); }, [step, started, finished]);
 
   const set = (k: keyof Form) => (v: string) => setForm((f) => ({ ...f, [k]: v }));
-  const post = (body: object) => fetch('/.netlify/functions/onboarding', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  const post = (body: object) => fetch('/.netlify/functions/onboarding', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ form, ...body }) });
 
   const start = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.firstName || !form.email || !form.business || !form.ads) { setErr('Fill in the starred fields and pick yes or no on ads.'); return; }
     setErr(''); setBusy(true);
-    try { const r = await post({ stage: 'start', form }); if (!r.ok) throw new Error(); } catch { /* still let them continue, we follow up by email */ }
+    try { const r = await post({ stage: 'start' }); if (!r.ok) throw new Error(); } catch { /* still let them continue, we follow up by email */ }
     setBusy(false);
     if (form.ads === 'no') { setFinished(true); setStarted(true); return; }
     setStarted(true); setStep(0);
@@ -190,7 +265,7 @@ const OnboardingPage: React.FC = () => {
 
   const finish = async (list: string[]) => {
     setBusy(true);
-    try { await post({ stage: 'done', form, completed: list, adAccountId, pageName }); } catch { /* ignore */ }
+    try { await post({ stage: 'done', completed: list, adAccountId, pageName, tokenSent: !!tokenInfo }); } catch { /* ignore */ }
     setBusy(false); setFinished(true);
   };
 
@@ -199,7 +274,8 @@ const OnboardingPage: React.FC = () => {
   const required = STEPS.filter((x) => !x.optional);
   const doneCount = required.filter((x) => completed.includes(x.id)).length;
   const markAndNext = () => {
-    const list = completed.includes(s.id) ? completed : [...completed, s.id];
+    const skip = s.id === 'token' && !tokenInfo;
+    const list = skip || completed.includes(s.id) ? completed : [...completed, s.id];
     setCompleted(list);
     if (step < STEPS.length - 1) setStep(step + 1); else finish(list);
   };
@@ -210,7 +286,7 @@ const OnboardingPage: React.FC = () => {
         <section className="pt-10 sm:pt-14">
           <p className="text-[13px] uppercase tracking-[0.14em] text-[#5EEAD4] font-semibold">Welcome aboard</p>
           <h1 className="display text-[34px] sm:text-[44px] font-extrabold leading-[1.05] mt-3">Let's get you set up.</h1>
-          <p className="text-[#A9B4C4] text-[16px] mt-4 max-w-[58ch]">About 10 minutes. First a few questions about your business, then we walk you through giving our team access to your ads, one click at a time.</p>
+          <p className="text-[#A9B4C4] text-[16px] mt-4 max-w-[58ch]">About 15 minutes. First a few questions about your business, then we walk you through giving our team access to your ads, one click at a time.</p>
           <form onSubmit={start} className="mt-8 space-y-5 rounded-3xl border border-white/10 bg-white/[0.03] p-5 sm:p-7">
             <div className="grid sm:grid-cols-2 gap-5">
               <Input label="First name" value={form.firstName} onChange={set('firstName')} required />
@@ -281,6 +357,14 @@ const OnboardingPage: React.FC = () => {
             </a>
           )}
 
+          {s.id === 'token' && (
+            <TokenBox post={post} sent={tokenInfo} onOk={(info) => {
+              setTokenInfo(info);
+              if (!adAccountId && info.ads[0]) setAdAccountId(info.ads[0].id);
+              if (!pageName && info.pages[0]) setPageName(info.pages[0].name);
+            }} />
+          )}
+
           {s.id === 'adaccount' && (
             <div className="mt-6 grid sm:grid-cols-2 gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-5">
               <Input label="Ad account ID" value={adAccountId} onChange={setAdAccountId} placeholder="1234567890123456" />
@@ -291,7 +375,7 @@ const OnboardingPage: React.FC = () => {
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <button type="button" onClick={markAndNext} disabled={busy}
               className="inline-flex items-center gap-2 rounded-xl px-6 py-3.5 font-bold text-[#0B0E14]" style={{ background: ACCENT }}>
-              {busy ? <Loader2 className="w-5 h-5 animate-spin" /> : <><Check className="w-5 h-5" /> {isDone ? 'Done, next step' : s.optional ? 'Done (or skip), finish' : 'Mark complete'}</>}
+              {busy ? <Loader2 className="w-5 h-5 animate-spin" /> : <><Check className="w-5 h-5" /> {s.id === 'token' && !tokenInfo ? "Skip for now, we'll do it on a call" : isDone ? 'Done, next step' : s.optional ? 'Done (or skip), finish' : 'Mark complete'}</>}
             </button>
             {step > 0 && (
               <button type="button" onClick={() => setStep(step - 1)} className="inline-flex items-center gap-2 rounded-xl px-4 py-3.5 text-[15px] text-white/70 hover:text-white">
