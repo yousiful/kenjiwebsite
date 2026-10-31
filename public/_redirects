@@ -54,3 +54,6 @@
 # build time (scripts/spa_routes.mjs), which also appends the 301s for <Navigate>
 # routes and RedirectSystem's map plus scoped rewrites for dynamic routes such as
 # /invites/e/:id. Anything else falls through to public/404.html with HTTP 404.
+
+# Partner page removed 2026-10-30
+/funding-partners          /funding                            301!

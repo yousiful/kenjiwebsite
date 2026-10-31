@@ -46,7 +46,6 @@ const Footer: React.FC = () => {
       { name: 'Is KenjiAI Legit?', href: '/is-kenjiai-legit', external: true },
       { name: 'Customer Reviews', href: '/kenjiai-reviews', external: true },
       { name: 'KenjiAI vs Kenji.ai', href: '/kenjiai-vs-kenji-ai', external: true },
-      { name: 'Funding & Credit Partners', href: '/funding-partners' },
       { name: 'Knowledge Base', href: '/knowledge' },
       { name: 'AI Education Academy', href: 'https://startlearning.kenjiai.com/', external: true },
       { name: 'Become a Partner', href: 'https://closers.kenjiai.com/', external: true },

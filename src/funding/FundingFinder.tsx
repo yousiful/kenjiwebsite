@@ -370,7 +370,7 @@ export function FinderView({ topic }: { topic?: FundingTopic }) {
               <Building2 className="w-4 h-4 mt-0.5 shrink-0" />
               <span>
                 Sources: Grants.gov, SBIR.gov, the SEC Form D data set and each program's official page. KenjiAI takes no fee from any program listed here. Always confirm the rules on the official site before you apply.
-                {' '}Looking for help building business credit? See our <Link to="/funding-partners" className="text-blue-300 hover:text-blue-200">funding and credit partners</Link>. More <Link to="/free-tools" className="text-blue-300 hover:text-blue-200">free tools</Link> from KenjiAI.
+                {' '}More <Link to="/free-tools" className="text-blue-300 hover:text-blue-200">free tools</Link> from KenjiAI.
               </span>
             </p>
             {data && <p className="text-xs text-gray-600 mt-2 inline-flex items-center gap-1"><CalendarClock className="w-3.5 h-3.5" /> Data refreshed {niceDate(data.asOf)}. Next refresh Monday morning.</p>}

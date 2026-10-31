@@ -87,7 +87,7 @@ const listLd = (url, name, list) => ({
   itemListElement: list.slice(0, 30).map((o, i) => ({ '@type': 'ListItem', position: i + 1, name: o.title, url: o.url })),
 });
 const guides = (current) => `<h2 class="text-white text-xl font-bold mt-12 mb-3">Funding guides</h2><ul>${T.FUNDING_TOPICS.filter((t) => t.slug !== current).map((t) => `<li><a href="/funding/${t.slug}">${esc(t.linkText)}</a></li>`).join('')}${current ? '<li><a href="/funding">All funding in the Finder</a></li>' : ''}</ul>
-<p class="mt-8 text-sm">Sources: Grants.gov, SBIR.gov, the SEC Form D data set and each program's official page. KenjiAI takes no fee from any program listed here. Data refreshed ${esc(L.niceDate(today))}; the refresh runs every Monday. See also our <a href="/funding-partners">funding and credit partners</a> and other <a href="/free-tools">free tools</a>.</p>`;
+<p class="mt-8 text-sm">Sources: Grants.gov, SBIR.gov, the SEC Form D data set and each program's official page. KenjiAI takes no fee from any program listed here. Data refreshed ${esc(L.niceDate(today))}; the refresh runs every Monday. See also our other <a href="/free-tools">free tools</a>.</p>`;
 
 const items = data.items;
 const counts = L.countBy(items);

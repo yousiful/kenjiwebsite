@@ -67,7 +67,6 @@ const WebinarVSLPageB = lazyRoute(() => import('./pages/WebinarVSLPageB'));
 const BlogPage = lazyRoute(() => import('./pages/BlogPage'));
 const NicheAdPage = lazyRoute(() => import('./pages/NicheAdPage'));
 const AgentSetupPage = lazyRoute(() => import('./pages/AgentSetupPage'));
-const FundingPage = lazyRoute(() => import('./pages/FundingPage'));
 // Funding Finder (/funding + landing pages in src/funding/topics.ts, prerendered by scripts/funding_static.mjs).
 const FundingFinderPage = lazyRoute(() => import('./funding/FundingFinder'));
 const FundingTopicPage = lazyRoute(() => import('./funding/FundingTopicPage')) as unknown as React.ComponentType<{ slug: string }>;
@@ -415,7 +414,7 @@ function App() {
                       <Route path="/funding/ai-startup-funding" element={<FundingTopicPage slug="ai-startup-funding" />} />
                       <Route path="/funding/small-business-grants-california" element={<FundingTopicPage slug="small-business-grants-california" />} />
                       <Route path="/funding/small-business-grants-texas" element={<FundingTopicPage slug="small-business-grants-texas" />} />
-                      <Route path="/funding-partners" element={<FundingPage />} />
+                      <Route path="/funding-partners" element={<Navigate to="/funding" replace />} />
                       <Route path="/invites" element={<InvitesLanding />} />
                       <Route path="/invites/wedding-invitations" element={<InvitesTopic slug="wedding-invitations" />} />
                       <Route path="/invites/birthday-invitations" element={<InvitesTopic slug="birthday-invitations" />} />

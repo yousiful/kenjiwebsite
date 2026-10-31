@@ -29,7 +29,6 @@ export const internalRoutes = [
   '/overview',
   '/overview-b',
   '/funding',
-  '/funding-partners',
   '/dashboard',
   '/setup',
   '/helpful-links',
