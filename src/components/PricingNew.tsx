@@ -47,19 +47,31 @@ export function PricingNew() {
     window.location.href = CHECKOUT_URL;
   };
 
+  // Yousif, 2026-11-01: every plan also offers a call during the holiday promo, bookings count as much as buys.
   const planButton = (planName: string, label: string) => (
-    <button
-      onClick={() => handlePlanClick(planName)}
-      disabled={isLoading === planName}
-      className="w-full py-3.5 rounded-xl font-bold text-base bg-[#10A37F] text-white hover:bg-[#0E906F] transition-colors disabled:opacity-80 disabled:cursor-wait"
-    >
-      {isLoading === planName ? 'Redirecting...' : label}
-    </button>
+    <>
+      <button
+        onClick={() => handlePlanClick(planName)}
+        disabled={isLoading === planName}
+        className="w-full py-3.5 rounded-xl font-bold text-base bg-[#10A37F] text-white hover:bg-[#0E906F] transition-colors disabled:opacity-80 disabled:cursor-wait"
+      >
+        {isLoading === planName ? 'Redirecting...' : label}
+      </button>
+      <a
+        href={CALL_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-3 text-center text-sm text-gray-300 underline underline-offset-2 hover:text-emerald-400"
+      >
+        Book a free call first
+      </a>
+    </>
   );
 
   return (
     <div id="plans" className="scroll-mt-20 py-16 sm:py-20 px-4" style={{ backgroundColor: '#0B0E14' }}>
-      {/* Yousif, 2026-10-06: no "discount" or holiday wording. Plain prices, one calm enrollment line. */}
+      {/* Yousif, 2026-10-06: no "discount" or holiday wording. 2026-11-01: holiday ads now run here, so one calm
+          offer line with his real GHL coupon KENJ4LFE ($76 off x 3 months). Remove after Nov 30. */}
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -71,7 +83,9 @@ export function PricingNew() {
           Simple pricing. <span className="text-emerald-400">Done for you.</span>
         </h2>
         <p className="text-lg text-gray-300 [text-wrap:balance]">
-          Open enrollment for the next 5 businesses. We only take 5 businesses a month on a performance basis.
+          Holiday offer through November 30: use code{' '}
+          <span className="font-mono font-bold text-emerald-400">KENJ4LFE</span> at checkout for $76 off each of
+          your first 3 months on the Monthly plan.
         </p>
       </motion.div>
 
@@ -94,6 +108,7 @@ export function PricingNew() {
           <h3 className="text-xl font-bold text-white mb-1">Monthly</h3>
           <p className="text-gray-400 text-sm mb-5">Cancel anytime.</p>
           <div className="text-3xl font-black text-white tabular-nums mb-1">$375<span className="text-lg font-semibold">/mo</span></div>
+          <p className="text-emerald-400 text-sm font-semibold mb-1">$299/mo for your first 3 months with code KENJ4LFE</p>
           <p className="text-gray-400 text-xs mb-6">10% fee only on new revenue we generate</p>
           {planButton('monthly', 'Get Started')}
           <div className="mt-6 flex-1"><FeatureList items={MONTHLY_FEATURES} checkClass="text-gray-400" /></div>
