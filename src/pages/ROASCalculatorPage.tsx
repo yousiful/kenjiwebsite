@@ -116,6 +116,10 @@ const ROASCalculatorPage: React.FC = () => {
       q: 'Is ROAS the same as ROI?',
       a: 'No. ROAS only looks at revenue against ad spend. ROI subtracts all your costs, including product, labor, and software. A campaign can show a 3.0 ROAS and still lose money.',
     },
+    {
+      q: 'Should refunds count when I work out ROAS?',
+      a: 'Yes. Take refunds and chargebacks out of revenue before you divide by ad spend. A 3.0 ROAS with a 15% refund rate is really about 2.55, and that gap is often the difference between a profitable campaign and one that loses money.',
+    },
   ];
 
   return (

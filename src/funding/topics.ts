@@ -30,8 +30,8 @@ const grantish: FundType[] = ['grant', 'competition'];
 export const FUNDING_TOPICS: FundingTopic[] = [
   {
     slug: 'small-business-grants',
-    title: 'Small Business Grants Open Now, Checked Weekly | KenjiAI Funding Finder',
-    description: 'Every small business grant we can confirm is open right now: federal grants from Grants.gov, SBIR awards and private grants, each with its deadline, amount and official link. Updated every week.',
+    title: 'Small Business Grants Open Now, Checked Weekly | KenjiAI',
+    description: 'Every small business grant we can confirm is open now: federal grants, SBIR awards and private grants, each with its deadline, amount and official link.',
     h1: 'Small business grants that are open right now',
     lead: 'Grants are money you do not pay back. Below is every grant we could confirm on its official page: private and corporate grants first, then federal SBIR awards, then federal grants on Grants.gov that list small or for-profit businesses as eligible. Expired ones drop off on their own.',
     linkText: 'Small business grants',
@@ -67,8 +67,8 @@ export const FUNDING_TOPICS: FundingTopic[] = [
   },
   {
     slug: 'grants-for-women',
-    title: 'Grants for Women-Owned Businesses, Open Now | KenjiAI Funding Finder',
-    description: 'Grants and funding built for women-owned businesses, checked on each official page with its deadline, amount and who qualifies. Plus open grants any small business can apply for.',
+    title: 'Grants for Women-Owned Businesses, Open Now | KenjiAI',
+    description: 'Grants and funding for women-owned businesses, checked on each official page with its deadline, amount and who qualifies, plus grants open to any business.',
     h1: 'Grants for women-owned businesses',
     lead: 'These programs are built for women founders or require majority women ownership. Each one is checked on its official page. Below them are open grants and competitions any small business can apply for, because women-owned businesses qualify for those too.',
     linkText: 'Grants for women',
@@ -96,8 +96,8 @@ export const FUNDING_TOPICS: FundingTopic[] = [
   },
   {
     slug: 'startup-funding',
-    title: 'Startup Funding Open Now: Accelerators, Angels, Grants | KenjiAI Funding Finder',
-    description: 'Startup funding you can apply for right now: accelerator deadlines, angel networks that take applications, SBIR and NSF grants, pitch competitions and new venture funds from SEC filings.',
+    title: 'Startup Funding Open Now: Accelerators and Grants | KenjiAI',
+    description: 'Startup funding you can apply for now: accelerator deadlines, angel networks, SBIR and NSF grants, pitch competitions and new venture funds from SEC filings.',
     h1: 'Startup funding you can apply for right now',
     lead: 'Funding for founders at the idea or early stage, sorted by what it costs you. Grants and competitions cost nothing, accelerators and angels take equity, and venture funds from fresh SEC filings show who is raising money to invest this quarter.',
     linkText: 'Startup funding',
@@ -126,8 +126,8 @@ export const FUNDING_TOPICS: FundingTopic[] = [
   },
   {
     slug: 'revenue-based-financing',
-    title: 'Revenue-Based Financing Companies for Small Business | KenjiAI Funding Finder',
-    description: 'Revenue-based financing providers that fund US businesses today, with funding ranges and requirements taken from each provider\'s own site. How RBF works, what it costs and when it makes sense.',
+    title: 'Revenue-Based Financing for Small Business | KenjiAI',
+    description: 'Revenue-based financing providers that fund US businesses today, with ranges and requirements from each provider\'s site, plus how RBF works and what it costs.',
     h1: 'Revenue-based financing companies',
     lead: 'Revenue-based financing gives you cash now and takes a share of your future revenue until a set amount is repaid. You keep ownership, but it is not free money. Each provider below was checked on its own site.',
     linkText: 'Revenue-based financing',
@@ -155,8 +155,8 @@ export const FUNDING_TOPICS: FundingTopic[] = [
   },
   {
     slug: 'sba-loans',
-    title: 'SBA Loans Explained: 7(a), 504, Microloans and SSBCI | KenjiAI Funding Finder',
-    description: 'The main SBA loan programs and state SSBCI programs, with maximum amounts taken from SBA.gov and Treasury, plus state lenders. Loans are repaid, and this page says so plainly.',
+    title: 'SBA Loans Explained: 7(a), 504, Microloans, SSBCI | KenjiAI',
+    description: 'The main SBA loan programs and state SSBCI programs, with maximum amounts from SBA.gov and Treasury, plus state lenders. Loans are repaid, and we say so.',
     h1: 'SBA loans and other small business loans',
     lead: 'The SBA does not lend most of this money itself. It guarantees part of a loan made by a bank, credit union or nonprofit lender, which makes lenders more willing to say yes. These are loans and must be repaid. Program limits below come from SBA.gov and Treasury.',
     linkText: 'SBA loans',
@@ -184,8 +184,8 @@ export const FUNDING_TOPICS: FundingTopic[] = [
   },
   {
     slug: 'ai-startup-funding',
-    title: 'AI Startup Funding: Accelerators, SBIR and NSF Grants | KenjiAI Funding Finder',
-    description: 'Funding open to AI startups right now: accelerator deadlines, NSF America\'s Seed Fund and SBIR topics, technology grants on Grants.gov and new venture funds, each with its official link.',
+    title: 'AI Startup Funding: Accelerators, SBIR, NSF Grants | KenjiAI',
+    description: 'Funding open to AI startups now: accelerator deadlines, NSF America\'s Seed Fund, SBIR topics, technology grants and new venture funds, each with its link.',
     h1: 'AI startup funding open right now',
     lead: 'Funding that AI and software founders can apply for today. Non-dilutive options come first: NSF\'s Seed Fund and SBIR topics for technical R&D, then accelerators and investors who back early AI companies.',
     linkText: 'AI startup funding',
@@ -214,8 +214,8 @@ export const FUNDING_TOPICS: FundingTopic[] = [
   },
   {
     slug: 'small-business-grants-california',
-    title: 'California Small Business Grants and Funding, Open Now | KenjiAI Funding Finder',
-    description: 'California small business grants, state and local loan programs, angel networks and venture funds that filed with the SEC from California, each with its deadline and official link.',
+    title: 'California Small Business Grants, Open Now | KenjiAI',
+    description: 'California small business grants, state and local loan programs, angel networks and California venture funds from SEC filings, each with its deadline.',
     h1: 'California small business grants and funding',
     lead: 'Programs run by California, its cities and California-based lenders and investors, checked on their official pages. Venture funds that filed a new Form D from California are listed below them. Nationwide grants are open to California businesses too.',
     linkText: 'California',
@@ -240,8 +240,8 @@ export const FUNDING_TOPICS: FundingTopic[] = [
   },
   {
     slug: 'small-business-grants-texas',
-    title: 'Texas Small Business Grants and Funding, Open Now | KenjiAI Funding Finder',
-    description: 'Texas small business grants, state and local loan programs, Texas lenders, angel networks and venture funds that filed with the SEC from Texas, each with its deadline and official link.',
+    title: 'Texas Small Business Grants, Open Now | KenjiAI',
+    description: 'Texas small business grants, state and local loan programs, Texas lenders, angel networks and Texas venture funds from SEC filings, each with its deadline.',
     h1: 'Texas small business grants and funding',
     lead: 'Programs run by Texas, its cities and Texas-based lenders and investors, checked on their official pages. Venture funds that filed a new Form D from Texas are listed below them. Nationwide grants are open to Texas businesses too.',
     linkText: 'Texas',

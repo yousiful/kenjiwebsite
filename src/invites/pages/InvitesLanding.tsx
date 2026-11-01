@@ -36,16 +36,16 @@ export default function InvitesLanding() {
   const start = '/invites/new';
 
   return (
-    <Page title="Free Invitations with RSVP for Any Celebration | Kenji Invites" noindex={false}>
-      <PageSchema path="/invites" name="Kenji Invites: Free Invitations with RSVP for Any Celebration" description="Make a beautiful invitation for a wedding, birthday, graduation, shower, holiday party or any celebration. Add your photos, send it by text or email, and see who's coming. Free." />
+    <Page title="Free Invitations with RSVP for Any Event | Kenji Invites" noindex={false}>
+      <PageSchema path="/invites" name="Kenji Invites: Free Invitations with RSVP for Any Celebration" description="Make a beautiful invitation for a wedding, birthday, shower, graduation or any celebration. Add your photos, send it by text or email, and see who's coming." />
       <Helmet>
-        <meta name="description" content="Make a beautiful invitation for a wedding, birthday, graduation, shower, holiday party or any celebration. Add your photos, send it by text or email, and see who's coming. Free." />
+        <meta name="description" content="Make a beautiful invitation for a wedding, birthday, shower, graduation or any celebration. Add your photos, send it by text or email, and see who's coming." />
         <meta property="og:title" content="Kenji Invites: free invitations with RSVP for any celebration" />
-        <meta property="og:description" content="Make a beautiful invitation for a wedding, birthday, graduation, shower, holiday party or any celebration. Add your photos, send it by text or email, and see who's coming. Free." />
+        <meta property="og:description" content="Make a beautiful invitation for a wedding, birthday, shower, graduation or any celebration. Add your photos, send it by text or email, and see who's coming." />
         <script type="application/ld+json">{JSON.stringify({
           '@context': 'https://schema.org', '@type': 'WebApplication', name: 'Kenji Invites', url: 'https://kenjiai.com/invites',
           applicationCategory: 'LifestyleApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
-          description: "Make a beautiful invitation for a wedding, birthday, graduation, shower, holiday party or any celebration. Add your photos, send it by text or email, and see who's coming. Free.",
+          description: "Make a beautiful invitation for a wedding, birthday, shower, graduation or any celebration. Add your photos, send it by text or email, and see who's coming.",
         })}</script>
         <script type="application/ld+json">{JSON.stringify({
           '@context': 'https://schema.org', '@type': 'FAQPage',

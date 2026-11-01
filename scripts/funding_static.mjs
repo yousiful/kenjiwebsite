@@ -97,8 +97,8 @@ const E = L.EMPTY_FILTERS;
 // ---------- /funding ----------
 {
   const url = `${SITE}/funding`;
-  const title = 'Funding Finder: Grants, Loans and Investors Open Now | KenjiAI';
-  const description = 'Free directory of every funding opportunity a US small business or founder can apply for right now: grants, SBA loans, revenue-based financing, accelerators, angels and competitions. Each with its deadline, official link and last-verified date.';
+  const title = 'Funding Finder: Grants, Loans and Investors | KenjiAI';
+  const description = 'Free directory of funding a US small business or founder can apply for now: grants, SBA loans, revenue-based financing, accelerators and angels, with deadlines.';
   const sorted = L.sortItems(items, 'best');
   const curated = sorted.filter((o) => o.src === 'curated');
   const sbir = sorted.filter((o) => o.src === 'sbir');

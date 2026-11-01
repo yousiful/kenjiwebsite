@@ -104,8 +104,8 @@ const HomePage: React.FC = () => {
   return (
     <>
       <SEOHead
-        title="Ads That Get Seen, Follow-Up That Gets Paid | Media Traffics + KenjiAI"
-        description="We're an ads agency first. We run your Meta, Google and YouTube ads, then KenjiAI follows up with every lead until they book. The system behind a 5x return on ad spend for our clients."
+        title="Ads That Get Seen, Follow-Up That Gets Paid | KenjiAI"
+        description="We run your Meta, Google and YouTube ads, then KenjiAI follows up with every lead until they book. The system behind a 5x return on ad spend for our clients."
         keywords="facebook ads agency, done for you ads, lead follow up software, KenjiAI, Media Traffics, ads for small business"
         structuredData={structuredData}
       />

@@ -46,6 +46,9 @@ const server = http.createServer((req, res) => {
 await new Promise((r) => server.listen(PORT, r));
 
 const extract = () => {
+  // FAQ answers sit in closed <details>, which are display:none until opened. Open
+  // them so the answers reach the static HTML, not just the questions.
+  document.querySelectorAll('details').forEach((d) => { d.open = true; });
   const head = {
     title: document.title,
     metas: [...document.head.querySelectorAll('meta[data-rh]')].map((m) => ({

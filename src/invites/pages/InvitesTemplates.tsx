@@ -12,8 +12,8 @@ import { TOPICS, topicForType } from '../seo/topics';
 import { Faq, FreeList, MoreLinks, SAMPLE_BASE, startHref } from './InvitesTopic';
 import '../seo/seo.css';
 
-const TITLE = 'Free Online Invitation Templates with RSVP: 36 Designs | Kenji Invites';
-const DESC = 'Browse 36 free invitation templates for weddings, birthdays, baby showers, graduations, holiday parties and more. Pick one, add your photos and send it with RSVP tracking. No ads, no sign-up.';
+const TITLE = '36 Free Invitation Templates with RSVP | Kenji Invites';
+const DESC = 'Browse 36 free invitation templates for weddings, birthdays, showers, graduations and holiday parties. Add your photos and send with RSVP. No ads, no sign-up.';
 
 const WEDDING_DESIGNS = DESIGNS_FOR.wedding;
 const PARTY_DESIGNS = THEME_IDS.filter((t) => !WEDDING_DESIGNS.includes(t));
@@ -66,6 +66,7 @@ export default function InvitesTemplates() {
         type="CollectionPage"
         crumbs={[{ name: 'Home', path: '/' }, { name: 'Kenji Invites', path: '/invites' }, { name: 'Invitation templates', path: '/invites/templates' }]}
         extra={[
+          { '@type': 'WebApplication', name: 'Kenji Invites', url: 'https://kenjiai.com/invites/templates', applicationCategory: 'LifestyleApplication', operatingSystem: 'Any', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
           { '@type': 'FAQPage', mainEntity: FAQ.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
           { '@type': 'ItemList', name: 'Kenji Invites designs', numberOfItems: THEME_IDS.length, itemListElement: THEME_IDS.map((t, i) => ({ '@type': 'ListItem', position: i + 1, name: THEMES[t].name })) },
         ]}

@@ -125,12 +125,12 @@ const LTVCalculatorPage: React.FC = () => {
 
   return (
     <div className={`min-h-screen ${isEmbed ? 'bg-gray-900 p-4' : 'pt-24 pb-20 px-4 sm:px-6 lg:px-8 text-white'}`}>
-      <PageSchema path="/tools/ltv-calculator" name={"Customer Lifetime Value (LTV) Calculator"} description={"Free customer lifetime value calculator. Enter purchase value, frequency, lifespan, margin, and acquisition cost to get LTV, your LTV:CAC ratio, max allowable CAC, and payback period."} />
+      <PageSchema path="/tools/ltv-calculator" name={"Customer Lifetime Value (LTV) Calculator"} description={"Free customer lifetime value calculator. Enter order value, frequency, lifespan, margin and acquisition cost to get LTV, LTV:CAC, max CAC and payback period."} />
       <Helmet>
-        <title>Customer Lifetime Value (LTV) Calculator with LTV:CAC | KenjiAI</title>
+        <title>Customer Lifetime Value (LTV) Calculator | KenjiAI</title>
         <meta
           name="description"
-          content="Free customer lifetime value calculator. Enter purchase value, frequency, lifespan, margin, and acquisition cost to get LTV, your LTV:CAC ratio, max allowable CAC, and payback period."
+          content="Free customer lifetime value calculator. Enter order value, frequency, lifespan, margin and acquisition cost to get LTV, LTV:CAC, max CAC and payback period."
         />
         <link rel="canonical" href="https://kenjiai.com/tools/ltv-calculator" />
         <meta property="og:title" content="Customer Lifetime Value (LTV) Calculator | KenjiAI" />

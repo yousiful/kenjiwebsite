@@ -23,8 +23,8 @@ export interface Guide {
 export const GUIDES: Guide[] = [
   {
     slug: 'rsvp-website',
-    title: 'Free RSVP Website and RSVP Tracker for Any Event | Kenji Invites',
-    description: 'Make a free RSVP page for a wedding, party or event. Each guest gets their own link, replies are capped at the seats you give them, and every answer lands on one guest list you can download. No ads, no guest sign-up.',
+    title: 'Free RSVP Website and RSVP Tracker | Kenji Invites',
+    description: 'Make a free RSVP page for a wedding, party or event. Each guest gets their own link, replies stay within their seats, and every answer lands on one list.',
     h1: 'A free RSVP website for any event',
     crumb: 'RSVP website',
     lead: 'Make the invitation, add your guests, and send each one their own RSVP link by text or email. They tap Yes or No and say how many are coming. You see every answer on one list.',
@@ -83,7 +83,7 @@ export const GUIDES: Guide[] = [
   {
     slug: 'evite-alternative',
     title: 'A Free Evite Alternative with No Ads | Kenji Invites',
-    description: 'Looking for an Evite alternative that is free with no ads? Kenji Invites has 36 designs, up to 8 photos, RSVP with seat limits, and guests never need an account. Here is how it compares.',
+    description: 'Looking for a free Evite alternative with no ads? Kenji Invites has 36 designs, up to 8 photos, RSVP with seat limits, and guests never need an account.',
     h1: 'A free Evite alternative, with no ads',
     crumb: 'Evite alternative',
     lead: 'Kenji Invites is a free online invitation with RSVP for any celebration. No ads on what your guests see, no paid design tiers, and guests reply without an account.',

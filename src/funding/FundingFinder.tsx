@@ -155,8 +155,8 @@ export function FinderView({ topic }: { topic?: FundingTopic }) {
   const changed = JSON.stringify(f) !== JSON.stringify(EMPTY_FILTERS);
 
   const path = topic ? `/funding/${topic.slug}` : '/funding';
-  const title = topic?.title || 'Funding Finder: Grants, Loans and Investors Open Now | KenjiAI';
-  const description = topic?.description || 'Free directory of every funding opportunity a US small business or founder can apply for right now: grants, SBA loans, revenue-based financing, accelerators, angels and competitions. Each with its deadline, official link and last-verified date.';
+  const title = topic?.title || 'Funding Finder: Grants, Loans and Investors | KenjiAI';
+  const description = topic?.description || 'Free directory of funding a US small business or founder can apply for now: grants, SBA loans, revenue-based financing, accelerators and angels, with deadlines.';
   const faq = [...(topic?.faq || []), ...FUNDING_FAQ];
   const top = filtered.slice(0, 20);
   const structuredData = {

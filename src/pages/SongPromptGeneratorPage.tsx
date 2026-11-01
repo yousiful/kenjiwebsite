@@ -241,10 +241,10 @@ const SongPromptGeneratorPage: React.FC = () => {
 
   return (
     <>
-      <PageSchema path="/tools/song-prompt-generator" name={"Free AI Song & Jingle Prompt Generator"} description={"Build a real, producer-grade prompt for Suno, Udio, or Producer.ai, not generic AI slop. Make a personal song with your name, or a commercial jingle/anthem for your business. Free, no signup."} />
+      <PageSchema path="/tools/song-prompt-generator" name={"Free AI Song & Jingle Prompt Generator"} description={"Build a producer-grade prompt for Suno, Udio or Producer.ai. Make a personal song with your name or a jingle for your business. Free, no signup, no account."} />
       <Helmet>
         <title>Free AI Song & Jingle Prompt Generator | KenjiAI</title>
-        <meta name="description" content="Build a real, producer-grade prompt for Suno, Udio, or Producer.ai, not generic AI slop. Make a personal song with your name, or a commercial jingle/anthem for your business. Free, no signup." />
+        <meta name="description" content="Build a producer-grade prompt for Suno, Udio or Producer.ai. Make a personal song with your name or a jingle for your business. Free, no signup, no account." />
         <link rel="canonical" href="https://kenjiai.com/tools/song-prompt-generator" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Free AI Song & Jingle Prompt Generator | KenjiAI" />

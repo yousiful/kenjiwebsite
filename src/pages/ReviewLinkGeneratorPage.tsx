@@ -78,16 +78,20 @@ const ReviewLinkGeneratorPage: React.FC = () => {
       q: 'Can I offer a discount for reviews?',
       a: "No. Google's policy bans paying or rewarding customers for reviews, and it can get reviews removed. Asking every customer, not only the happy ones, keeps you within the rules.",
     },
+    {
+      q: 'What should I do after a customer leaves a review?',
+      a: 'Reply to it, good or bad, within a day or two. Thank happy customers by name and mention the job. For an unhappy one, apologize, keep it short and offer to fix it offline. Future customers read your replies as closely as the reviews.',
+    },
   ];
 
   return (
     <div className="min-h-screen pt-24 pb-20 px-4 sm:px-6 lg:px-8 text-white">
-      <PageSchema path="/tools/google-review-link-generator" name={"Free Google Review Link Generator + QR Code"} description={"Make a direct Google review link and QR code for your business in seconds. Free, no signup. Includes ready-to-send text and email templates to ask customers for reviews."} />
+      <PageSchema path="/tools/google-review-link-generator" name={"Free Google Review Link Generator + QR Code"} description={"Make a direct Google review link and QR code for your business in seconds. Free, no signup, with ready-to-send text and email templates to ask for reviews."} />
       <Helmet>
         <title>Free Google Review Link Generator + QR Code | KenjiAI</title>
         <meta
           name="description"
-          content="Make a direct Google review link and QR code for your business in seconds. Free, no signup. Includes ready-to-send text and email templates to ask customers for reviews."
+          content="Make a direct Google review link and QR code for your business in seconds. Free, no signup, with ready-to-send text and email templates to ask for reviews."
         />
         <link rel="canonical" href="https://kenjiai.com/tools/google-review-link-generator" />
         <meta property="og:title" content="Free Google Review Link Generator | KenjiAI" />

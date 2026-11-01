@@ -45,7 +45,7 @@ const ProductSelectionPage: React.FC = () => {
     <>
       <PageSchema path="/pricing" name="KenjiAI Pricing" description="KenjiAI pricing: done-for-you paid ads setup, funnel, and workflows. Monthly $375, annual $249.90/mo, lifetime custom. Performance-based fees, cancel anytime." extra={PRICING_SCHEMA} />
       <Helmet>
-        <title>KenjiAI Pricing | Done-For-You Ads Setup, Funnels and Workflows</title>
+        <title>KenjiAI Pricing: Done-For-You Ads, Funnels and Workflows</title>
         <meta name="description" content="KenjiAI pricing: done-for-you paid ads setup, funnel, and workflows. Monthly $375, annual $249.90/mo, lifetime custom. Performance-based fees, cancel anytime." />
         <link rel="canonical" href="https://kenjiai.com/pricing" />
       </Helmet>

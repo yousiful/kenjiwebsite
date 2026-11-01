@@ -92,12 +92,14 @@ ${blogList.map((a) => `<article class="mb-8"><h2 class="text-white text-xl font-
 }));
 
 // /blog/<slug> for each non-podcast article
+// Same rule as src/pages/BlogPost.tsx: keep the brand suffix only while the title fits ~60 chars.
+const blogTitle = (t) => [`${t} | KenjiAI Blog`, `${t} | KenjiAI`].find((x) => x.length <= 60) || t;
 for (const a of posts) {
   const url = `${SITE}/blog/${a.slug}`;
   const section = a.isCourse ? ['Academy', `${SITE}/knowledge`] : ['Blog', `${SITE}/blog`];
   write(`blog/${a.slug}.html`, render({
     url,
-    title: `${a.title} | KenjiAI Blog`,
+    title: blogTitle(a.title),
     description: a.excerpt,
     image: a.image,
     ogType: 'article',

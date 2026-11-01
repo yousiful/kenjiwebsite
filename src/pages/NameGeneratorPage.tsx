@@ -590,12 +590,12 @@ export const NameGeneratorPage: React.FC = () => {
 
   return (
     <>
-      <PageSchema path="/tools/name-generator" name={"AI Business & $100M Offer Name Generator"} description={"Generate high-converting business names, Alex Hormozi $100M Grand Slam offer titles, SaaS products, and lead magnets with domain checks and conversion psychology. Free from KenjiAI."} extra={NAME_GEN_SCHEMA} />
+      <PageSchema path="/tools/name-generator" name={"AI Business & $100M Offer Name Generator"} description={"Generate business names, Alex Hormozi style $100M offer names, product names and lead magnet titles, with domain ideas for each one. Free from KenjiAI."} extra={NAME_GEN_SCHEMA} />
       <Helmet>
         <title>AI Business & $100M Offer Name Generator | KenjiAI</title>
         <meta
           name="description"
-          content="Generate high-converting business names, Alex Hormozi $100M Grand Slam offer titles, SaaS products, and lead magnets with domain checks and conversion psychology. Free from KenjiAI."
+          content="Generate business names, Alex Hormozi style $100M offer names, product names and lead magnet titles, with domain ideas for each one. Free from KenjiAI."
         />
         <link rel="canonical" href="https://kenjiai.com/tools/name-generator" />
         <meta property="og:title" content="AI Business & $100M Offer Name Generator | KenjiAI" />

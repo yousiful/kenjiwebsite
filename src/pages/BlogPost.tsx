@@ -88,7 +88,7 @@ const BlogPost: React.FC = () => {
         ]}
       />
       <Helmet>
-        <title>{article.title} | KenjiAI Blog</title>
+        <title>{[`${article.title} | KenjiAI Blog`, `${article.title} | KenjiAI`].find((x) => x.length <= 60) || article.title}</title>
         <meta name="description" content={article.excerpt} />
         <meta name="keywords" content={article.keywords.join(', ')} />
         <meta name="author" content={article.author} />
