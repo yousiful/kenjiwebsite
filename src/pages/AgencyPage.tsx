@@ -98,10 +98,10 @@ export default function AgencyPage() {
 
   return (
     <>
-      <PageSchema path="/agency" name="Build Your Own Life Insurance Agency" description="Get licensed and build your own life insurance agency with Yousif Alias. Sign up and book a Zoom to see how it works." />
+      <PageSchema path="/agency" name="Build Your Own Life Insurance Agency" description="Get licensed and build your own life insurance agency with Yousif Alias. Start part time, grow a team, and book a Zoom to see how it all works." />
       <Helmet>
         <title>Build Your Own Life Insurance Agency | KenjiAI</title>
-        <meta name="description" content="Get licensed and build your own life insurance agency with Yousif Alias. Sign up and book a Zoom to see how it works." />
+        <meta name="description" content="Get licensed and build your own life insurance agency with Yousif Alias. Start part time, grow a team, and book a Zoom to see how it all works." />
         <link rel="canonical" href="https://kenjiai.com/agency" />
       </Helmet>
 
@@ -139,10 +139,24 @@ export default function AgencyPage() {
                 ].map(({ icon: Icon, t, d }) => (
                   <div key={t} className="rounded-2xl bg-gray-800 border border-gray-700 p-5">
                     <Icon className="w-6 h-6 text-emerald-400 mb-2" />
-                    <div className="text-white font-semibold">{t}</div>
-                    <div className="text-sm text-gray-400 mt-1">{d}</div>
+                    <h3 className="text-white font-semibold">{t}</h3>
+                    <p className="text-sm text-gray-400 mt-1">{d}</p>
                   </div>
                 ))}
+              </section>
+
+              <section className="rounded-2xl bg-gray-800 border border-gray-700 p-6 md:p-8 mb-10">
+                <h2 className="text-2xl font-bold text-white mb-4">How joining works</h2>
+                <ol className="list-decimal list-inside space-y-3 text-gray-300">
+                  <li>Fill out the short form below. It takes about two minutes and asks for your name, contact details, home address and where you are with your license.</li>
+                  <li>Pick a time for a Zoom with Yousif. If you’re licensed, we go over your license, your states and getting you contracted. If you’re not, we map out the licensing steps for your state.</li>
+                  <li>After the call you get the official secure application from the carrier. That’s the only place your Social Security number and date of birth go.</li>
+                  <li>Once you’re contracted, you start helping families in your area get covered, with training from Yousif and the KenjiAI marketing system behind you.</li>
+                </ol>
+                <h2 className="text-2xl font-bold text-white mt-8 mb-3">Who this is for</h2>
+                <p className="text-gray-300">
+                  People who want to help families protect their income and their kids, and who are willing to get a state life insurance license and put in steady time each week. You can keep your current job while you start. You don’t need a sales background, just a willingness to learn and to follow up with the people who asked for help.
+                </p>
               </section>
 
               <form onSubmit={submit} className="rounded-2xl bg-gray-800 border border-gray-700 p-6 md:p-8 space-y-8">

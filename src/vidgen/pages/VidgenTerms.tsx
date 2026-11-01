@@ -1,9 +1,16 @@
 import { Link } from 'react-router-dom';
 import { Shell } from '../ui';
+import PageSchema from '../../components/PageSchema';
 
 export default function VidgenTerms() {
   return (
     <Shell title="Kenji Studio terms of use | KenjiAI" description="The rules for making AI video with Kenji Studio: what is allowed, who owns the videos, and how AI-generated content is labeled." index>
+      <PageSchema
+        path="/video-generation/terms"
+        name="Kenji Studio terms of use"
+        description="The rules for making AI video with Kenji Studio: what is allowed, who owns the videos, and how AI-generated content is labeled."
+        crumbs={[{ name: 'Home', path: '/' }, { name: 'Kenji Studio', path: '/video-generation' }, { name: 'Terms of use', path: '/video-generation/terms' }]}
+      />
       <main className="vg-wrap vg-narrow">
         <section className="vg-hero" style={{ paddingBottom: 0 }}>
           <h1 className="vg-h2">Kenji Studio terms of use</h1>

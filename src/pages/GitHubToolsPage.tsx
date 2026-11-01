@@ -129,9 +129,9 @@ const GitHubToolsPage: React.FC = () => {
                     >
                       <Github className="flex-shrink-0 w-5 h-5 text-gray-500 mt-0.5" />
                       <div className="flex-1 min-w-0">
-                        <div className="text-white font-semibold text-sm leading-tight break-words">{repo.name}</div>
+                        <h3 className="text-white font-semibold text-sm leading-tight break-words">{repo.name}</h3>
                         <div className="text-gray-500 text-xs mt-0.5">by {repo.owner}</div>
-                        <div className="text-gray-400 text-xs sm:text-sm leading-snug mt-2">{repo.description}</div>
+                        <p className="text-gray-400 text-xs sm:text-sm leading-snug mt-2">{repo.description}</p>
                       </div>
                       <ArrowUpRight className="flex-shrink-0 w-4 h-4 text-gray-600 group-hover:text-white transition-colors duration-300" />
                     </a>

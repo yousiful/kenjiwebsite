@@ -74,7 +74,7 @@ const MarketingAutomationPage: React.FC = () => {
     <>
       <SEOHead
         title="AI Marketing & Speed-to-Lead Automation | KenjiAI"
-        description="Automate your pipeline with KenjiAI. Instant sub-60-second outbound dialing on ad leads, multi-channel SMS & email follow-up, and automated database reactivation."
+        description="Automate your pipeline with KenjiAI: sub-60-second outbound calls on new ad leads, SMS and email follow-up, and automated database reactivation."
         keywords="speed to lead automation, outbound AI calling, marketing automation, lead nurturing, database reactivation, automated ad callbacks, KenjiAI"
         canonical="https://kenjiai.com/marketing-automation"
         structuredData={structuredData}
@@ -140,6 +140,20 @@ const MarketingAutomationPage: React.FC = () => {
               <ArrowRight className="w-6 h-6" />
             </motion.a>
           </motion.div>
+
+          {/* How speed-to-lead works */}
+          <section className="mb-20 max-w-4xl mx-auto bg-gray-800/50 border border-gray-700 rounded-2xl p-8">
+            <h2 className="text-3xl font-bold text-white mb-6 text-center">How speed-to-lead follow-up works</h2>
+            <ol className="list-decimal list-inside space-y-3 text-gray-300 leading-relaxed">
+              <li>A lead fills out your Facebook, Google or landing page form.</li>
+              <li>KenjiAI calls them back in under 60 seconds, while they still remember filling it out.</li>
+              <li>If they don&apos;t pick up, they get a text and an email, and the follow-up keeps going on a schedule until they book or ask to stop.</li>
+              <li>Older leads sitting in your database get a reactivation campaign, so people who went quiet hear from you again.</li>
+            </ol>
+            <p className="text-gray-400 mt-6 leading-relaxed">
+              Every call, text and email lands in the same CRM, so you can see where each lead stands and step in yourself at any point.
+            </p>
+          </section>
 
           {/* Automation Features */}
           <motion.div

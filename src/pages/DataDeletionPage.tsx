@@ -6,10 +6,10 @@ import { Trash2, Mail, Facebook, Clock } from 'lucide-react';
 export default function DataDeletionPage() {
   return (
     <>
-      <PageSchema path="/data-deletion" name={"Data Deletion Instructions"} description={"How to ask KenjiAI to delete the data we hold about you, including data received through Facebook and Instagram."} />
+      <PageSchema path="/data-deletion" name={"Data Deletion Instructions"} description={"How to ask KenjiAI to delete the data we hold about you, including data from Facebook and Instagram lead forms, and how long the deletion takes."} />
       <Helmet>
         <title>Data Deletion Instructions | KenjiAI</title>
-        <meta name="description" content="How to ask KenjiAI to delete the data we hold about you, including data received through Facebook and Instagram." />
+        <meta name="description" content="How to ask KenjiAI to delete the data we hold about you, including data from Facebook and Instagram lead forms, and how long the deletion takes." />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://kenjiai.com/data-deletion" />
       </Helmet>
@@ -21,12 +21,19 @@ export default function DataDeletionPage() {
             <h1 className="text-4xl md:text-5xl font-bold text-white">Data Deletion Instructions</h1>
           </div>
 
-          <p className="text-center text-gray-400 mb-8">Last Updated: October 28, 2026</p>
+          <p className="text-center text-gray-400 mb-8">Last Updated: November 1, 2026</p>
 
           <div className="bg-gray-800 border border-gray-700 rounded-2xl p-8 space-y-8">
             <section>
               <p className="text-gray-300 leading-relaxed">
                 KenjiAI (operated by Media Traffics LLC) uses Facebook and Instagram apps to publish posts, run ads and receive lead form submissions for us and our clients. You can ask us to delete any data we hold about you at any time.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="text-2xl font-bold text-white mb-4">What data we may hold about you</h2>
+              <p className="text-gray-300 leading-relaxed">
+                If you filled out one of our forms, answered one of our ads, booked a call or messaged us, we may hold your name, email address and phone number, the answers you gave on the form, and the messages we exchanged. If a Facebook or Instagram lead form sent us your details, we hold what that form collected.
               </p>
             </section>
 

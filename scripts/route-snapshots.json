@@ -430,6 +430,10 @@
       "content": "Build Your Own Life Insurance Agency | KenjiAI"
      },
      {
+      "property": "og:description",
+      "content": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation."
+     },
+     {
       "property": "og:image",
       "content": "https://kenjiai.com/og-image.png"
      },
@@ -477,6 +481,10 @@
       "content": "Build Your Own Life Insurance Agency | KenjiAI"
      },
      {
+      "property": "twitter:description",
+      "content": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation."
+     },
+     {
       "property": "twitter:image",
       "content": "https://kenjiai.com/og-image.png"
      },
@@ -509,21 +517,13 @@
       "content": "Performance-Based"
      },
      {
-      "property": "og:description",
-      "content": "Get licensed and build your own life insurance agency with Yousif Alias. Sign up and book a Zoom to see how it works."
-     },
-     {
-      "property": "twitter:description",
-      "content": "Get licensed and build your own life insurance agency with Yousif Alias. Sign up and book a Zoom to see how it works."
-     },
-     {
       "name": "description",
-      "content": "Get licensed and build your own life insurance agency with Yousif Alias. Sign up and book a Zoom to see how it works."
+      "content": "Get licensed and build your own life insurance agency with Yousif Alias. Start part time, grow a team, and book a Zoom to see how it all works."
      }
     ],
     "canonical": "https://kenjiai.com/agency",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/agency#webpage\",\"url\":\"https://kenjiai.com/agency\",\"name\":\"Build Your Own Life Insurance Agency\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"Get licensed and build your own life insurance agency with Yousif Alias. Sign up and book a Zoom to see how it works.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/agency#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/agency#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Build Your Own Life Insurance Agency\",\"item\":\"https://kenjiai.com/agency\"}]}]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/agency#webpage\",\"url\":\"https://kenjiai.com/agency\",\"name\":\"Build Your Own Life Insurance Agency\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"Get licensed and build your own life insurance agency with Yousif Alias. Start part time, grow a team, and book a Zoom to see how it all works.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/agency#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/agency#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Build Your Own Life Insurance Agency\",\"item\":\"https://kenjiai.com/agency\"}]}]}"
     ]
    },
    "blocks": [
@@ -538,6 +538,58 @@
     {
      "tag": "p",
      "text": "Most families are underinsured or have no coverage at all. Get licensed, help families in your area get protected, and build a team of your own, with Yousif and the KenjiAI marketing system behind you."
+    },
+    {
+     "tag": "h3",
+     "text": "No experience needed"
+    },
+    {
+     "tag": "p",
+     "text": "You do need a state license. We walk you through it step by step."
+    },
+    {
+     "tag": "h3",
+     "text": "Build your own team"
+    },
+    {
+     "tag": "p",
+     "text": "Bring on and train your own agents as you grow."
+    },
+    {
+     "tag": "h3",
+     "text": "Start part time"
+    },
+    {
+     "tag": "p",
+     "text": "Work from your phone and laptop, on your schedule."
+    },
+    {
+     "tag": "h2",
+     "text": "How joining works"
+    },
+    {
+     "tag": "li",
+     "text": "Fill out the short form below. It takes about two minutes and asks for your name, contact details, home address and where you are with your license."
+    },
+    {
+     "tag": "li",
+     "text": "Pick a time for a Zoom with Yousif. If you’re licensed, we go over your license, your states and getting you contracted. If you’re not, we map out the licensing steps for your state."
+    },
+    {
+     "tag": "li",
+     "text": "After the call you get the official secure application from the carrier. That’s the only place your Social Security number and date of birth go."
+    },
+    {
+     "tag": "li",
+     "text": "Once you’re contracted, you start helping families in your area get covered, with training from Yousif and the KenjiAI marketing system behind you."
+    },
+    {
+     "tag": "h2",
+     "text": "Who this is for"
+    },
+    {
+     "tag": "p",
+     "text": "People who want to help families protect their income and their kids, and who are willing to get a state life insurance license and put in steady time each week. You can keep your current job while you start. You don’t need a sales background, just a willingness to learn and to follow up with the people who asked for help."
     }
    ],
    "links": [
@@ -1867,6 +1919,10 @@
       "content": "Data Deletion Instructions | KenjiAI"
      },
      {
+      "property": "og:description",
+      "content": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation."
+     },
+     {
       "property": "og:image",
       "content": "https://kenjiai.com/og-image.png"
      },
@@ -1914,6 +1970,10 @@
       "content": "Data Deletion Instructions | KenjiAI"
      },
      {
+      "property": "twitter:description",
+      "content": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation."
+     },
+     {
       "property": "twitter:image",
       "content": "https://kenjiai.com/og-image.png"
      },
@@ -1946,16 +2006,8 @@
       "content": "Performance-Based"
      },
      {
-      "property": "og:description",
-      "content": "How to ask KenjiAI to delete the data we hold about you, including data received through Facebook and Instagram."
-     },
-     {
-      "property": "twitter:description",
-      "content": "How to ask KenjiAI to delete the data we hold about you, including data received through Facebook and Instagram."
-     },
-     {
       "name": "description",
-      "content": "How to ask KenjiAI to delete the data we hold about you, including data received through Facebook and Instagram."
+      "content": "How to ask KenjiAI to delete the data we hold about you, including data from Facebook and Instagram lead forms, and how long the deletion takes."
      },
      {
       "name": "robots",
@@ -1964,7 +2016,7 @@
     ],
     "canonical": "https://kenjiai.com/data-deletion",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/data-deletion#webpage\",\"url\":\"https://kenjiai.com/data-deletion\",\"name\":\"Data Deletion Instructions\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"How to ask KenjiAI to delete the data we hold about you, including data received through Facebook and Instagram.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/data-deletion#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/data-deletion#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Data Deletion Instructions\",\"item\":\"https://kenjiai.com/data-deletion\"}]}]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/data-deletion#webpage\",\"url\":\"https://kenjiai.com/data-deletion\",\"name\":\"Data Deletion Instructions\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"How to ask KenjiAI to delete the data we hold about you, including data from Facebook and Instagram lead forms, and how long the deletion takes.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/data-deletion#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/data-deletion#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Data Deletion Instructions\",\"item\":\"https://kenjiai.com/data-deletion\"}]}]}"
     ]
    },
    "blocks": [
@@ -1974,11 +2026,19 @@
     },
     {
      "tag": "p",
-     "text": "Last Updated: October 28, 2026"
+     "text": "Last Updated: November 1, 2026"
     },
     {
      "tag": "p",
      "text": "KenjiAI (operated by Media Traffics LLC) uses Facebook and Instagram apps to publish posts, run ads and receive lead form submissions for us and our clients. You can ask us to delete any data we hold about you at any time."
+    },
+    {
+     "tag": "h2",
+     "text": "What data we may hold about you"
+    },
+    {
+     "tag": "p",
+     "text": "If you filled out one of our forms, answered one of our ads, booked a call or messaged us, we may hold your name, email address and phone number, the answers you gave on the form, and the messages we exchanged. If a Facebook or Instagram lead form sent us your details, we hold what that form collected."
     },
     {
      "tag": "h2",
@@ -3414,8 +3474,8 @@
       "content": "website"
      },
      {
-      "property": "og:url",
-      "content": "https://kenjiai.com/github-tools"
+      "property": "og:description",
+      "content": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation."
      },
      {
       "property": "og:image",
@@ -3465,6 +3525,10 @@
       "content": "Open-Source Tools We Use | KenjiAI"
      },
      {
+      "property": "twitter:description",
+      "content": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation."
+     },
+     {
       "property": "twitter:image",
       "content": "https://kenjiai.com/og-image.png"
      },
@@ -3497,20 +3561,16 @@
       "content": "Performance-Based"
      },
      {
-      "property": "og:description",
-      "content": "The open-source GitHub projects KenjiAI uses for AI agents, video, design, trading research, and data, with a plain description of each."
-     },
-     {
-      "property": "twitter:description",
-      "content": "The open-source GitHub projects KenjiAI uses for AI agents, video, design, trading research, and data, with a plain description of each."
-     },
-     {
       "name": "description",
       "content": "The open-source GitHub projects KenjiAI uses for AI agents, video, design, trading research, and data, with a plain description of each."
      },
      {
       "property": "og:title",
       "content": "Open-Source Tools We Use | KenjiAI"
+     },
+     {
+      "property": "og:url",
+      "content": "https://kenjiai.com/github-tools"
      }
     ],
     "canonical": "https://kenjiai.com/github-tools",
@@ -3532,24 +3592,192 @@
      "text": "AI agents and Claude Code"
     },
     {
+     "tag": "h3",
+     "text": "oh-my-claudecode"
+    },
+    {
+     "tag": "p",
+     "text": "Multi-agent orchestration layer for Claude Code with specialized agents, skills, and workflows."
+    },
+    {
+     "tag": "h3",
+     "text": "superpowers"
+    },
+    {
+     "tag": "p",
+     "text": "A full software development method for coding agents, built on composable skills."
+    },
+    {
+     "tag": "h3",
+     "text": "Claude-Code-Agent-Monitor"
+    },
+    {
+     "tag": "p",
+     "text": "Real-time dashboard for Claude Code sessions, tool usage, and subagents, wired in through Claude Code hooks."
+    },
+    {
+     "tag": "h3",
+     "text": "awesome-claude-plugins"
+    },
+    {
+     "tag": "p",
+     "text": "A ranked list of the top Claude Code plugin repositories."
+    },
+    {
      "tag": "h2",
      "text": "Video and content"
+    },
+    {
+     "tag": "h3",
+     "text": "remotion"
+    },
+    {
+     "tag": "p",
+     "text": "Make videos programmatically with React."
+    },
+    {
+     "tag": "h3",
+     "text": "faster-whisper"
+    },
+    {
+     "tag": "p",
+     "text": "Fast speech-to-text transcription, a reimplementation of OpenAI Whisper."
+    },
+    {
+     "tag": "h3",
+     "text": "claude-code-video-toolkit"
+    },
+    {
+     "tag": "p",
+     "text": "Tell Claude Code what video you want and it writes the script, makes the voiceover, music, and visuals, and renders the MP4."
+    },
+    {
+     "tag": "h3",
+     "text": "buttercut"
+    },
+    {
+     "tag": "p",
+     "text": "Claude analyzes your footage and builds rough cuts for Final Cut, Premiere, and Resolve."
+    },
+    {
+     "tag": "h3",
+     "text": "video-editor-for-claude-code"
+    },
+    {
+     "tag": "p",
+     "text": "Cuts the \"thinking\" pauses out of Claude Code screen recordings automatically."
+    },
+    {
+     "tag": "h3",
+     "text": "hyperframes-student-kit"
+    },
+    {
+     "tag": "p",
+     "text": "Motion-graphics video projects built in plain HTML and GSAP that you can study and rebuild."
+    },
+    {
+     "tag": "h3",
+     "text": "Recordly"
+    },
+    {
+     "tag": "p",
+     "text": "Open-source screen recorder and editor for walkthroughs, demos, and product videos."
     },
     {
      "tag": "h2",
      "text": "Images and design"
     },
     {
+     "tag": "h3",
+     "text": "impeccable"
+    },
+    {
+     "tag": "p",
+     "text": "Design guidance for AI coding agents so frontends stop looking like the same template."
+    },
+    {
+     "tag": "h3",
+     "text": "Open-Generative-AI"
+    },
+    {
+     "tag": "p",
+     "text": "Open-source app for generating AI images and videos across 200+ models."
+    },
+    {
      "tag": "h2",
      "text": "Trading"
+    },
+    {
+     "tag": "h3",
+     "text": "TradingAgents"
+    },
+    {
+     "tag": "p",
+     "text": "Multi-agent LLM framework for financial trading research."
+    },
+    {
+     "tag": "h3",
+     "text": "claude-trading-skills"
+    },
+    {
+     "tag": "p",
+     "text": "Claude skills for market review, risk management, trade planning, and journaling."
+    },
+    {
+     "tag": "h3",
+     "text": "kalshi-ai-trading-bot"
+    },
+    {
+     "tag": "p",
+     "text": "Kalshi trading bot where several AI models have to agree before it enters a trade."
     },
     {
      "tag": "h2",
      "text": "Data and APIs"
     },
     {
+     "tag": "h3",
+     "text": "public-apis"
+    },
+    {
+     "tag": "p",
+     "text": "Community-curated list of free public APIs."
+    },
+    {
+     "tag": "h3",
+     "text": "awesome-free-llm-apis"
+    },
+    {
+     "tag": "p",
+     "text": "LLM APIs with permanent free tiers for text inference."
+    },
+    {
+     "tag": "h3",
+     "text": "awesome-freellm-apis"
+    },
+    {
+     "tag": "p",
+     "text": "Machine-readable directory of free LLM APIs with rate limits and setup snippets."
+    },
+    {
+     "tag": "h3",
+     "text": "HomeHarvest"
+    },
+    {
+     "tag": "p",
+     "text": "Python library that scrapes real estate listings into clean data."
+    },
+    {
      "tag": "h2",
      "text": "Business and CRM"
+    },
+    {
+     "tag": "h3",
+     "text": "crm"
+    },
+    {
+     "tag": "p",
+     "text": "Agentic-first CRM where AI does the research and record keeping."
     },
     {
      "tag": "p",
@@ -17520,6 +17748,18 @@
       "content": "#3B82F6"
      },
      {
+      "name": "title",
+      "content": "AI Marketing & Speed-to-Lead Automation | KenjiAI"
+     },
+     {
+      "name": "description",
+      "content": "Automate your pipeline with KenjiAI: sub-60-second outbound calls on new ad leads, SMS and email follow-up, and automated database reactivation."
+     },
+     {
+      "name": "keywords",
+      "content": "speed to lead automation, outbound AI calling, marketing automation, lead nurturing, database reactivation, automated ad callbacks, KenjiAI"
+     },
+     {
       "name": "robots",
       "content": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
      },
@@ -17558,6 +17798,14 @@
      {
       "property": "og:url",
       "content": "https://kenjiai.com/marketing-automation"
+     },
+     {
+      "property": "og:title",
+      "content": "AI Marketing & Speed-to-Lead Automation | KenjiAI"
+     },
+     {
+      "property": "og:description",
+      "content": "Automate your pipeline with KenjiAI: sub-60-second outbound calls on new ad leads, SMS and email follow-up, and automated database reactivation."
      },
      {
       "property": "og:image",
@@ -17603,6 +17851,14 @@
       "content": "https://kenjiai.com/marketing-automation"
      },
      {
+      "property": "twitter:title",
+      "content": "AI Marketing & Speed-to-Lead Automation | KenjiAI"
+     },
+     {
+      "property": "twitter:description",
+      "content": "Automate your pipeline with KenjiAI: sub-60-second outbound calls on new ad leads, SMS and email follow-up, and automated database reactivation."
+     },
+     {
       "property": "twitter:image",
       "content": "https://kenjiai.com/og-image.png"
      },
@@ -17633,39 +17889,11 @@
      {
       "name": "twitter:data2",
       "content": "Performance-Based"
-     },
-     {
-      "name": "title",
-      "content": "AI Marketing & Speed-to-Lead Automation | KenjiAI"
-     },
-     {
-      "name": "description",
-      "content": "Automate your pipeline with KenjiAI. Instant sub-60-second outbound dialing on ad leads, multi-channel SMS & email follow-up, and automated database reactivation."
-     },
-     {
-      "name": "keywords",
-      "content": "speed to lead automation, outbound AI calling, marketing automation, lead nurturing, database reactivation, automated ad callbacks, KenjiAI"
-     },
-     {
-      "property": "og:title",
-      "content": "AI Marketing & Speed-to-Lead Automation | KenjiAI"
-     },
-     {
-      "property": "og:description",
-      "content": "Automate your pipeline with KenjiAI. Instant sub-60-second outbound dialing on ad leads, multi-channel SMS & email follow-up, and automated database reactivation."
-     },
-     {
-      "property": "twitter:title",
-      "content": "AI Marketing & Speed-to-Lead Automation | KenjiAI"
-     },
-     {
-      "property": "twitter:description",
-      "content": "Automate your pipeline with KenjiAI. Instant sub-60-second outbound dialing on ad leads, multi-channel SMS & email follow-up, and automated database reactivation."
      }
     ],
     "canonical": "https://kenjiai.com/marketing-automation",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/marketing-automation#webpage\",\"url\":\"https://kenjiai.com/marketing-automation\",\"name\":\"AI Marketing & Speed-to-Lead Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"Automate your pipeline with KenjiAI. Instant sub-60-second outbound dialing on ad leads, multi-channel SMS & email follow-up, and automated database reactivation.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/marketing-automation#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/marketing-automation#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"AI Marketing & Speed-to-Lead Automation\",\"item\":\"https://kenjiai.com/marketing-automation\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/marketing-automation#webpage\",\"url\":\"https://kenjiai.com/marketing-automation\",\"name\":\"AI Marketing & Speed-to-Lead Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"Automate your pipeline with KenjiAI: sub-60-second outbound calls on new ad leads, SMS and email follow-up, and automated database reactivation.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/marketing-automation#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/marketing-automation#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"AI Marketing & Speed-to-Lead Automation\",\"item\":\"https://kenjiai.com/marketing-automation\"}]}]}",
      "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/marketing-automation#service\",\"name\":\"KenjiAI Marketing Automation\",\"url\":\"https://kenjiai.com/marketing-automation\",\"description\":\"Speed-to-lead and marketing automation: outbound dialing on new ad leads, multi-channel SMS and email follow-up, lead nurturing and database reactivation.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Marketing Automation\",\"Speed-to-Lead Follow-Up\"]}"
     ]
    },
@@ -17677,6 +17905,30 @@
     {
      "tag": "p",
      "text": "Stop sending generic emails. Start with AI-powered marketing automation that personalizes every touchpoint, optimizes performance, and drives real results."
+    },
+    {
+     "tag": "h2",
+     "text": "How speed-to-lead follow-up works"
+    },
+    {
+     "tag": "li",
+     "text": "A lead fills out your Facebook, Google or landing page form."
+    },
+    {
+     "tag": "li",
+     "text": "KenjiAI calls them back in under 60 seconds, while they still remember filling it out."
+    },
+    {
+     "tag": "li",
+     "text": "If they don't pick up, they get a text and an email, and the follow-up keeps going on a schedule until they book or ask to stop."
+    },
+    {
+     "tag": "li",
+     "text": "Older leads sitting in your database get a reactivation campaign, so people who went quiet hear from you again."
+    },
+    {
+     "tag": "p",
+     "text": "Every call, text and email lands in the same CRM, so you can see where each lead stands and step in yourself at any point."
     },
     {
      "tag": "h2",
@@ -31108,6 +31360,10 @@
       "content": "Kenji Studio terms of use | KenjiAI"
      },
      {
+      "property": "og:description",
+      "content": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation."
+     },
+     {
       "property": "og:image",
       "content": "https://kenjiai.com/og-image.png"
      },
@@ -31155,6 +31411,10 @@
       "content": "Kenji Studio terms of use | KenjiAI"
      },
      {
+      "property": "twitter:description",
+      "content": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation."
+     },
+     {
       "property": "twitter:image",
       "content": "https://kenjiai.com/og-image.png"
      },
@@ -31187,20 +31447,14 @@
       "content": "Performance-Based"
      },
      {
-      "property": "og:description",
-      "content": "The rules for making AI video with Kenji Studio: what is allowed, who owns the videos, and how AI-generated content is labeled."
-     },
-     {
-      "property": "twitter:description",
-      "content": "The rules for making AI video with Kenji Studio: what is allowed, who owns the videos, and how AI-generated content is labeled."
-     },
-     {
       "name": "description",
       "content": "The rules for making AI video with Kenji Studio: what is allowed, who owns the videos, and how AI-generated content is labeled."
      }
     ],
     "canonical": "https://kenjiai.com/video-generation/terms",
-    "jsonld": []
+    "jsonld": [
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/video-generation/terms#webpage\",\"url\":\"https://kenjiai.com/video-generation/terms\",\"name\":\"Kenji Studio terms of use\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"The rules for making AI video with Kenji Studio: what is allowed, who owns the videos, and how AI-generated content is labeled.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/video-generation/terms#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/video-generation/terms#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Kenji Studio\",\"item\":\"https://kenjiai.com/video-generation\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Terms of use\",\"item\":\"https://kenjiai.com/video-generation/terms\"}]}]}"
+    ]
    },
    "blocks": [
     {

@@ -168,6 +168,7 @@ All free, no signup unless noted. Hub: [All free tools](https://kenjiai.com/free
 - [PodcastReach Pro](https://prpro.kenjiai.com/): Find podcasts to guest on by topic, with host names and how recently each show published.
 - [AI Sales Coach](https://salescoach.kenjiai.com/): Practice sales calls with a role-play prospect and get feedback and call scripts.
 - [Chargeback response builder](https://dispute.kenjiai.com/): Build a chargeback dispute letter PDF from the transaction details and reason code.
+- [1 Ad Away Challenge live training](https://webinar.kenjiai.com/): A free live two-day training on pairing AI with a simple ad strategy to bring in qualified inbound leads.
 
 ### Funding Finder
 
