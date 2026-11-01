@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, Crown } from 'lucide-react';
+import { PRICING_VSL_KEY } from './PricingVSL';
 
 const CHECKOUT_URL = 'https://freedom.kenjiai.com/finishhere';
 const CALL_URL = 'https://go.mediatraffics.com/leads';
@@ -42,9 +43,17 @@ function FeatureList({ items, checkClass }: { items: string[]; checkClass: strin
 export function PricingNew() {
   const [isLoading, setIsLoading] = useState<string | null>(null);
 
+  // Tag checkout and call links with the visitor's /pricing video so buys and bookings can be split by video.
+  const withVsl = (url: string) => {
+    let id: string | null = null;
+    try { id = localStorage.getItem(PRICING_VSL_KEY); } catch { /* storage blocked */ }
+    return id ? `${url}?vsl=${id}` : url;
+  };
+  const [callHref] = useState(() => withVsl(CALL_URL));
+
   const handlePlanClick = (planName: string) => {
     setIsLoading(planName);
-    window.location.href = CHECKOUT_URL;
+    window.location.href = withVsl(CHECKOUT_URL);
   };
 
   // Yousif, 2026-11-01: every plan also offers a call during the holiday promo, bookings count as much as buys.
@@ -58,7 +67,7 @@ export function PricingNew() {
         {isLoading === planName ? 'Redirecting...' : label}
       </button>
       <a
-        href={CALL_URL}
+        href={callHref}
         target="_blank"
         rel="noopener noreferrer"
         className="mt-3 text-center text-sm text-gray-300 underline underline-offset-2 hover:text-emerald-400"
@@ -121,7 +130,7 @@ export function PricingNew() {
           <div className="text-3xl font-black text-white mb-1">Custom</div>
           <p className="text-gray-400 text-xs mb-6">By application, revealed on your call</p>
           <a
-            href={CALL_URL}
+            href={callHref}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full py-3.5 rounded-xl font-bold text-base text-center bg-amber-500 hover:bg-amber-400 text-gray-950 transition-colors"
@@ -139,7 +148,7 @@ export function PricingNew() {
         </p>
         <p className="text-gray-400 text-sm">
           Not sure yet?{' '}
-          <a href={CALL_URL} target="_blank" rel="noopener noreferrer" className="text-white underline underline-offset-2 hover:text-emerald-400">
+          <a href={callHref} target="_blank" rel="noopener noreferrer" className="text-white underline underline-offset-2 hover:text-emerald-400">
             Book a free call
           </a>
         </p>

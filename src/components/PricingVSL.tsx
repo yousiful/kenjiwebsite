@@ -11,13 +11,17 @@ import { pickVslVariant, useVslDropoff } from '../hooks/useVslDropoff';
 // A/B test: each visitor is assigned one version and keeps it (localStorage). Add a version here
 // to put it in the rotation; ?vsl=<id> forces one for checking. Results: kenjiai.com/funnel-stats/
 // ("Video drop-off" section), from the vsl_v_<id> and vsl_t<seconds> steps sent below.
+// Yousif, 2026-11-01: split test the 8-min 'lt' walkthrough against the 3-min "How to Get Paid for Running
+// Ads" from /overview ('gp3'). Watching = vsl_t steps per variant; buying = checkouts carry ?vsl=<id> (PricingNew).
+export const PRICING_VSL_KEY = 'kenji-pricing-vsl';
 const VARIANTS: { id: string; src: string; poster: string }[] = [
   { id: 'lt', src: '/videos/pricing-vsl-lowticket.mp4', poster: '/videos/pricing-vsl-lowticket-poster.jpg' },
+  { id: 'gp3', src: '/overview/get-paid-running-ads.mp4', poster: '/overview/get-paid-thumb.jpg' },
 ];
 
 export function PricingVSL() {
   const videoElRef = useRef<HTMLVideoElement>(null);
-  const [variant] = useState(() => pickVslVariant(VARIANTS, 'kenji-pricing-vsl'));
+  const [variant] = useState(() => pickVslVariant(VARIANTS, PRICING_VSL_KEY));
 
   useResumableVideo(videoElRef, `kenjiai-video-progress:/pricing:${variant.id}`);
 
