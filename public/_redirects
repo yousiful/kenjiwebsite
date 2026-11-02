@@ -1,6 +1,8 @@
 # Reputation defense pages — static HTML. The no-slash URL is the canonical, so it is
 # force-rewritten (200!); without the ! Netlify 301s it to the slash URL first.
 /is-kenjiai-legit          /is-kenjiai-legit/index.html        200!
+/audit                     /audit/index.html                   200!
+/audit/                    /audit/index.html                   200
 /is-kenjiai-legit/         /is-kenjiai-legit/index.html        200
 /kenjiai-vs-kenji-ai       /kenjiai-vs-kenji-ai/index.html     200!
 /kenjiai-vs-kenji-ai/      /kenjiai-vs-kenji-ai/index.html     200

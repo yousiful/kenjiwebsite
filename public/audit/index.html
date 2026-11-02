@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Client Growth Audit | KenjiAI</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700&family=Public+Sans:wght@400;600&display=swap">
+<style>
+/* Sales call deck for the KenjiAI team. One 16:9 stage scaled to the window, a control bar
+   for the rep, and a lead panel that saves the prospect to GHL (netlify/functions/sales-audit.ts). */
+:root {
+  --ink: #12182B;
+  --ink-2: #1B2340;
+  --line: #2E3754;
+  --paper: #F6F5F1;
+  --muted: #B9C2D6;
+  --orange: #F28C28;
+  --blue: #6E95FF;
+  --green: #4ADE80;
+  --red: #F87171;
+  --display: 'Rubik', 'Trebuchet MS', Arial, sans-serif;
+  --body: 'Public Sans', 'Segoe UI', Arial, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  background: #0B0F1C; color: var(--paper); font-family: var(--body);
+  display: flex; flex-direction: column; overflow: hidden;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 12px;
+  gap: 10px;
+}
+#viewport { flex: 1; min-height: 0; position: relative; }
+#stage {
+  position: absolute; left: 50%; top: 50%; width: 1600px; height: 900px;
+  transform-origin: center; background: var(--ink); border-radius: 18px; overflow: hidden;
+}
+.slide { position: absolute; inset: 0; padding: 96px 110px; display: flex; flex-direction: column; gap: 44px; }
+.slide[hidden] { display: none !important; }
+.eyebrow { font-size: 24px; font-weight: 600; letter-spacing: 4px; text-transform: uppercase; color: var(--orange); margin: 0; }
+h1, h2 { font-family: var(--display); font-weight: 700; margin: 0; text-wrap: balance; line-height: 1.05; }
+h1 { font-size: 112px; }
+h2 { font-size: 64px; }
+h3 { font-family: var(--display); font-weight: 500; font-size: 38px; margin: 0; }
+p { margin: 0; }
+.sub { font-size: 30px; color: var(--muted); line-height: 1.4; }
+.big { font-family: var(--display); font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
+
+.field {
+  font: inherit; color: inherit; background: transparent; border: none;
+  border-bottom: 3px dashed var(--line); outline: none; padding: 0 4px; width: 100%;
+}
+.field::placeholder { color: #4A5577; }
+.field:focus { border-bottom-color: var(--blue); }
+#bizName { font-size: 44px; color: var(--muted); max-width: 900px; }
+
+.cover { justify-content: center; }
+.row { display: flex; gap: 28px; }
+.panel { flex: 1; background: var(--ink-2); border: 1px solid var(--line); border-radius: 20px; padding: 36px 40px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.panel label { font-size: 26px; color: var(--muted); }
+.money-in { display: flex; align-items: baseline; gap: 6px; font-family: var(--display); font-weight: 700; font-size: 104px; }
+.money-in .field { font-size: 104px; font-variant-numeric: tabular-nums; }
+.result { background: var(--paper); color: var(--ink); border-radius: 20px; padding: 34px 44px; display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
+.result p { font-size: 34px; flex: 1; min-width: 0; }
+.result .big { font-size: 76px; color: #C2610B; }
+.result .yr { font-size: 26px; color: #4A5568; }
+
+.steps { display: flex; align-items: stretch; gap: 20px; }
+.step { flex: 1; background: var(--ink-2); border: 1px solid var(--line); border-radius: 20px; padding: 40px; display: flex; flex-direction: column; gap: 18px; }
+.step .n { font-family: var(--display); font-weight: 700; font-size: 64px; color: var(--blue); line-height: 1; }
+.step p { font-size: 28px; color: var(--muted); line-height: 1.4; }
+.step.you { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.step.you .n { color: #C2610B; }
+.step.you p { color: #4A5568; }
+.arrow { align-self: center; width: 0; height: 0; border-top: 18px solid transparent; border-bottom: 18px solid transparent; border-left: 26px solid var(--orange); }
+
+.proof { display: flex; align-items: center; gap: 56px; }
+.proof .big { font-size: 128px; }
+.proof .sub { font-size: 28px; }
+.stats { display: flex; gap: 40px; border-top: 2px solid var(--line); padding-top: 36px; }
+.stats p { flex: 1; font-size: 30px; color: var(--muted); }
+.stats b { color: var(--paper); font-family: var(--display); font-size: 44px; display: block; }
+
+.list { display: flex; flex-direction: column; gap: 20px; }
+.item { display: flex; gap: 32px; align-items: center; background: var(--ink-2); border: 1px solid var(--line); border-radius: 20px; padding: 32px 40px; }
+.dot { width: 22px; height: 22px; border-radius: 50%; background: var(--blue); flex: none; }
+.item p { font-size: 28px; color: var(--muted); margin-top: 6px; }
+
+.close { justify-content: center; gap: 36px; }
+.close .worth { font-size: 46px; }
+.close .worth .big { font-size: 96px; color: var(--orange); display: inline-block; }
+.next { display: flex; gap: 24px; }
+.next div { flex: 1; border-top: 3px solid var(--blue); padding-top: 18px; font-size: 28px; color: var(--muted); line-height: 1.4; }
+.next b { color: var(--paper); display: block; font-size: 30px; }
+
+.checks { display: flex; flex-direction: column; gap: 16px; }
+.check { display: flex; align-items: center; gap: 32px; background: var(--ink-2); border: 1px solid var(--line); border-radius: 18px; padding: 22px 32px; }
+.check p { flex: 1; font-size: 32px; min-width: 0; }
+.yn { display: flex; gap: 12px; }
+.yn button { font: 600 28px var(--body); color: var(--muted); background: transparent; border: 2px solid var(--line); border-radius: 999px; padding: 10px 30px; cursor: pointer; }
+.yn button[aria-pressed="true"][data-a="1"] { background: var(--paper); border-color: var(--paper); color: var(--ink); }
+.yn button[aria-pressed="true"][data-a="0"] { background: var(--orange); border-color: var(--orange); color: var(--ink); }
+.yn button:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.leaks { font-family: var(--display); font-weight: 700; font-size: 44px; color: var(--orange); }
+
+#bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 14px; color: #8C96B0; }
+#bar button, #lead button { font: 600 14px var(--body); color: var(--paper); background: #1B2340; border: 1px solid #2E3754; border-radius: 8px; padding: 8px 14px; cursor: pointer; }
+#bar button:hover, #lead button:hover { border-color: var(--blue); }
+#bar button:focus-visible, #lead button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+#bar #toggleLead { border-color: var(--orange); }
+#count { font-variant-numeric: tabular-nums; min-width: 48px; text-align: center; }
+#bar .spacer { flex: 1; }
+#leadDot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #4A5577; margin-right: 6px; vertical-align: middle; }
+#leadDot.saved { background: var(--green); }
+#notes { background: #1B2340; border: 1px solid #2E3754; border-radius: 10px; padding: 12px 16px; font-size: 15px; line-height: 1.5; color: var(--muted); max-height: 22vh; overflow: auto; }
+
+#lead { background: #1B2340; border: 1px solid #2E3754; border-radius: 10px; padding: 12px 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; align-items: end; }
+#lead[hidden] { display: none; }
+#lead label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #8C96B0; }
+#lead input, #lead select { font: 15px var(--body); color: var(--paper); background: #12182B; border: 1px solid #2E3754; border-radius: 8px; padding: 8px 10px; width: 100%; }
+#lead input:focus, #lead select:focus { outline: 2px solid var(--blue); outline-offset: 0; }
+#lead .actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; grid-column: 1 / -1; }
+#lead #saveLead { background: var(--orange); border-color: var(--orange); color: var(--ink); }
+#leadMsg { font-size: 14px; color: var(--muted); }
+#leadMsg.ok { color: var(--green); }
+#leadMsg.err { color: var(--red); }
+@media (prefers-reduced-motion: no-preference) { .slide { animation: in .25s ease-out; } @keyframes in { from { opacity: .4; } to { opacity: 1; } } }
+</style>
+</head>
+<body>
+
+<div id="viewport">
+  <div id="stage">
+
+    <section class="slide cover" data-notes="Open with no screen share. Do 10 minutes of discovery first: clients a month now, the goal, what one client is worth, how long they've been stuck, and what happens if nothing changes in 6 months. Type their business name here. Open the Lead panel (L) and save their name, phone and email early so the lead is in GHL even if the call drops.">
+      <p class="eyebrow">KenjiAI · Client Growth Audit</p>
+      <h1>Let’s find where<br>your clients are slipping</h1>
+      <p class="sub" style="max-width:1000px">We’ll look at your numbers together, find the leaks, and show you what it takes to close the gap. If we’re not a fit, you still leave with the audit.</p>
+      <input id="bizName" class="field" type="text" placeholder="Type the business name" aria-label="Business name" autocomplete="off">
+    </section>
+
+    <section class="slide" hidden data-notes="Type their three numbers while they watch. The gap fills in by itself. Say it in one sentence: 'You're at 2 and need 6. That's 4 clients, about $X a month on the table.' Then ask: 'If we closed that gap, what would that change for you?' Let them answer.">
+      <p class="eyebrow">Audit, step 1 · Your numbers</p>
+      <h2>Where you are and where you want to be</h2>
+      <div class="row">
+        <div class="panel">
+          <label for="now">Clients a month now</label>
+          <div class="money-in"><input id="now" class="field" type="text" inputmode="numeric" placeholder="0" autocomplete="off"></div>
+        </div>
+        <div class="panel">
+          <label for="goal">Clients a month you want</label>
+          <div class="money-in"><input id="goal" class="field" type="text" inputmode="numeric" placeholder="0" autocomplete="off"></div>
+        </div>
+        <div class="panel">
+          <label for="value">What one client is worth</label>
+          <div class="money-in">$<input id="value" class="field" type="text" inputmode="numeric" placeholder="0" autocomplete="off"></div>
+        </div>
+      </div>
+      <div class="result">
+        <p>The gap: <b id="gapCount">0 more clients</b> a month</p>
+        <div>
+          <p class="big"><span class="gapMonth">$0</span> / month</p>
+          <p class="yr"><span class="gapYear">$0</span> a year</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" hidden data-notes="Ask each question and click their answer. Don't sell here, just audit. Every 'No' is a leak; you'll point back to them on the next slide. If they score 4 of 4, ask: 'Then what's stopping you from hitting your goal?' and listen.">
+      <p class="eyebrow">Audit, step 2 · Where leads slip</p>
+      <h2>Four checks</h2>
+      <div class="checks">
+        <div class="check"><p>Do you have ads running that already bring in buyers?</p><div class="yn" data-q="0"><button type="button" data-a="1">Yes</button><button type="button" data-a="0">No</button></div></div>
+        <div class="check"><p>Does every new lead hear from you within 5 minutes?</p><div class="yn" data-q="1"><button type="button" data-a="1">Yes</button><button type="button" data-a="0">No</button></div></div>
+        <div class="check"><p>Do leads who reach out at night or on weekends get answered?</p><div class="yn" data-q="2"><button type="button" data-a="1">Yes</button><button type="button" data-a="0">No</button></div></div>
+        <div class="check"><p>Do leads get booked on your calendar without you chasing them?</p><div class="yn" data-q="3"><button type="button" data-a="1">Yes</button><button type="button" data-a="0">No</button></div></div>
+      </div>
+      <p class="leaks"><span id="leakCount">0</span> leaks found</p>
+    </section>
+
+    <section class="slide" hidden data-notes="Three steps only. No feature list. 'Steps 1 and 2 are on us. Step 3 is you, and you're already good at it.' Don't explain the $7 community on this call; that's for onboarding after they pay.">
+      <p class="eyebrow">Audit, step 3 · The fix</p>
+      <h2>How we close the gap</h2>
+      <div class="steps">
+        <div class="step"><span class="n">1</span><h3>Ads bring buyers</h3><p>We run ads we’ve already tested, built around your offer.</p></div>
+        <span class="arrow" aria-hidden="true"></span>
+        <div class="step"><span class="n">2</span><h3>AI books them</h3><p>Our AI calls and texts every lead, day or night, and puts them on your calendar.</p></div>
+        <span class="arrow" aria-hidden="true"></span>
+        <div class="step you"><span class="n">3</span><h3>You close</h3><p>You show up to booked calls with people who asked to talk to you.</p></div>
+      </div>
+    </section>
+
+    <section class="slide" hidden data-notes="Use only these numbers. Never say the tint client's name or business. If they asked 'is this a scam?': 'Good, you should ask. Here's what one client spent and what they made.'">
+      <h2>A local business like yours</h2>
+      <div class="proof">
+        <div><p class="sub">A window tint shop spent</p><p class="big">$3,128</p><p class="sub">on Meta ads</p></div>
+        <span class="arrow" aria-hidden="true"></span>
+        <div><p class="sub">and closed</p><p class="big" style="color:var(--orange)">$20,190</p><p class="sub">6 deals from 184 leads, in about 3 months</p></div>
+      </div>
+      <div class="stats">
+        <p><b>$3.35M</b>generated for clients</p>
+        <p><b>500+</b>clients served</p>
+        <p><b>$186K</b>from one funnel</p>
+      </div>
+    </section>
+
+    <section class="slide" hidden data-notes="Three things, not twelve. Tie each one back to their gap. If they ask about something else, answer in one sentence and come back.">
+      <h2>What you get</h2>
+      <div class="list">
+        <div class="item"><span class="dot"></span><div><h3>Pre-tested ad campaigns</h3><p>Built around your offer, so you skip months of guessing.</p></div></div>
+        <div class="item"><span class="dot"></span><div><h3>AI agents that call, text and book</h3><p>Every lead gets followed up, even at 10 PM on a Sunday.</p></div></div>
+        <div class="item"><span class="dot"></span><div><h3>The whole system in one place</h3><p>Your funnel, CRM, calendar and follow-up, set up for you.</p></div></div>
+      </div>
+    </section>
+
+    <section class="slide close" hidden data-notes="Price is said out loud, not shown. Point at their number, give the investment, then: 'How would you like to get started, debit or credit?' Stop talking. Stall: acknowledge, isolate (money, timing, or whether it'll work), reframe with their numbers, ask again. Still no: book a follow-up within 48 hours with every decision maker. Never end with 'text me'. Before you hang up, press Save in the Lead panel so the audit numbers land on their GHL contact.">
+      <p class="eyebrow">Audit result</p>
+      <p class="worth"><span id="closeName">Your business</span> is leaving<br><span class="big gapMonth">$0</span> a month on the table, with <span class="leakWord">0 leaks</span> to fix.</p>
+      <div class="next">
+        <div><b>Today</b>We set up your account.</div>
+        <div><b>Next</b>We build and test your ads.</div>
+        <div><b>Then</b>Your AI starts booking your calendar.</div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<div id="bar">
+  <button id="prev" type="button" aria-label="Previous slide">‹ Back</button>
+  <span id="count">1 / 7</span>
+  <button id="next" type="button" aria-label="Next slide">Next ›</button>
+  <span class="spacer"></span>
+  <button id="toggleLead" type="button"><span id="leadDot"></span>Lead (L)</button>
+  <button id="toggleNotes" type="button">Show notes (N)</button>
+  <button id="full" type="button">Full screen (F)</button>
+  <button id="clear" type="button">New call (clear)</button>
+</div>
+<div id="notes" hidden></div>
+
+<form id="lead" hidden autocomplete="off">
+  <label>First name<input id="lFirst" required></label>
+  <label>Last name<input id="lLast"></label>
+  <label>Phone<input id="lPhone" type="tel" inputmode="tel"></label>
+  <label>Email<input id="lEmail" type="email"></label>
+  <label>Business<input id="lBiz"></label>
+  <label>Rep
+    <select id="lRep">
+      <option value="">Pick your name</option>
+      <option>Yousif</option>
+      <option>Sumit</option>
+      <option>Chris</option>
+      <option value="other">Someone else</option>
+    </select>
+  </label>
+  <div class="actions">
+    <button id="saveLead" type="submit">Save to GHL</button>
+    <span id="leadMsg">Saves the contact with tag "sales audit" plus the audit numbers as a note. Save again at the end to add the final numbers.</span>
+  </div>
+</form>
+
+<script>
+(() => {
+  const stage = document.getElementById('stage');
+  const viewport = document.getElementById('viewport');
+  const slides = [...document.querySelectorAll('.slide')];
+  const notes = document.getElementById('notes');
+  const lead = document.getElementById('lead');
+  const count = document.getElementById('count');
+  const $ = id => document.getElementById(id);
+  let i = 0;
+
+  // Team link: kenjiai.com/audit?team=CODE&rep=Name. Both are remembered on this computer.
+  const store = {
+    get: k => { try { return localStorage.getItem(k) || ''; } catch (e) { return ''; } },
+    set: (k, v) => { try { localStorage.setItem(k, v); } catch (e) {} },
+  };
+  const qs = new URLSearchParams(location.search);
+  if (qs.get('team')) store.set('auditTeam', qs.get('team'));
+  if (qs.get('rep')) store.set('auditRep', qs.get('rep'));
+  const team = store.get('auditTeam');
+  const savedRep = store.get('auditRep');
+  if (savedRep) {
+    const match = [...$('lRep').options].find(o => o.text.toLowerCase() === savedRep.toLowerCase());
+    if (match) $('lRep').value = match.value;
+    else { const o = new Option(savedRep, savedRep); $('lRep').add(o); $('lRep').value = savedRep; }
+  }
+  $('lRep').addEventListener('change', () => store.set('auditRep', $('lRep').value === 'other' ? '' : $('lRep').value));
+
+  function fit() {
+    const s = Math.min(viewport.clientWidth / 1600, viewport.clientHeight / 900);
+    stage.style.transform = `translate(-50%, -50%) scale(${s})`;
+  }
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((el, k) => { el.hidden = k !== i; });
+    count.textContent = `${i + 1} / ${slides.length}`;
+    notes.textContent = slides[i].dataset.notes || '';
+  }
+
+  const num = id => {
+    const v = parseFloat(String($(id).value).replace(/[^0-9.]/g, ''));
+    return isFinite(v) ? v : 0;
+  };
+  const usd = v => '$' + Math.round(v).toLocaleString('en-US');
+  const answers = {};
+  function calc() {
+    const gap = Math.max(0, num('goal') - num('now'));
+    const month = gap * num('value');
+    $('gapCount').textContent = `${gap.toLocaleString('en-US')} more client${gap === 1 ? '' : 's'}`;
+    document.querySelectorAll('.gapMonth').forEach(el => { el.textContent = usd(month); });
+    document.querySelectorAll('.gapYear').forEach(el => { el.textContent = usd(month * 12); });
+    const leaks = Object.values(answers).filter(a => a === '0').length;
+    $('leakCount').textContent = leaks;
+    document.querySelectorAll('.leakWord').forEach(el => { el.textContent = `${leaks} leak${leaks === 1 ? '' : 's'}`; });
+    const name = $('bizName').value.trim();
+    $('closeName').textContent = name || 'Your business';
+    return { now: num('now'), goal: num('goal'), value: num('value'), gapMonth: month, leaks };
+  }
+
+  document.querySelectorAll('.yn').forEach(group => {
+    group.querySelectorAll('button').forEach(b => {
+      b.setAttribute('aria-pressed', 'false');
+      b.addEventListener('click', () => {
+        answers[group.dataset.q] = b.dataset.a;
+        group.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+        calc();
+      });
+    });
+  });
+  document.querySelectorAll('.field').forEach(f => f.addEventListener('input', calc));
+  // The business name on the cover and in the lead panel stay in sync.
+  $('bizName').addEventListener('input', () => { $('lBiz').value = $('bizName').value; });
+  $('lBiz').addEventListener('input', () => { $('bizName').value = $('lBiz').value; calc(); });
+
+  const msg = (text, cls) => { $('leadMsg').textContent = text; $('leadMsg').className = cls || ''; };
+  lead.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (!team) { msg('Open the deck from your team link (it has ?team= in it) to save leads.', 'err'); return; }
+    const a = calc();
+    const checks = [...document.querySelectorAll('.check')].map((c, k) => `${c.querySelector('p').textContent} ${answers[k] === '1' ? 'Yes' : answers[k] === '0' ? 'No (leak)' : 'not asked'}`);
+    const btn = $('saveLead'); btn.disabled = true; msg('Saving...');
+    try {
+      const r = await fetch('/.netlify/functions/sales-audit', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          team, rep: $('lRep').value === 'other' ? '' : $('lRep').value,
+          firstName: $('lFirst').value, lastName: $('lLast').value, phone: $('lPhone').value,
+          email: $('lEmail').value, business: $('lBiz').value, audit: { ...a, checks },
+        }),
+      });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(j.error || 'Could not save. Try again.');
+      $('leadDot').classList.add('saved');
+      btn.textContent = 'Save again (adds a new note)';
+      msg(`Saved at ${new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}${j.existed ? '. They were already in GHL, so only the tag and note were added.' : '. New contact created in GHL.'}`, 'ok');
+    } catch (err) {
+      msg(err.message, 'err');
+    } finally { btn.disabled = false; }
+  });
+
+  $('prev').onclick = () => show(i - 1);
+  $('next').onclick = () => show(i + 1);
+  const toggleNotes = () => {
+    notes.hidden = !notes.hidden;
+    $('toggleNotes').textContent = notes.hidden ? 'Show notes (N)' : 'Hide notes (N)';
+    fit();
+  };
+  const toggleLead = () => {
+    lead.hidden = !lead.hidden;
+    if (!lead.hidden && !$('lFirst').value) $('lFirst').focus();
+    fit();
+  };
+  $('toggleNotes').onclick = toggleNotes;
+  $('toggleLead').onclick = toggleLead;
+  const fullscreen = () => {
+    try {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen().catch(() => {});
+    } catch (e) {}
+  };
+  $('full').onclick = fullscreen;
+  $('clear').onclick = () => {
+    document.querySelectorAll('.field, #lead input').forEach(f => { f.value = ''; });
+    Object.keys(answers).forEach(k => delete answers[k]);
+    document.querySelectorAll('.yn button').forEach(b => b.setAttribute('aria-pressed', 'false'));
+    $('leadDot').classList.remove('saved');
+    $('saveLead').textContent = 'Save to GHL';
+    msg('Saves the contact with tag "sales audit" plus the audit numbers as a note. Save again at the end to add the final numbers.');
+    calc(); show(0);
+  };
+  document.addEventListener('keydown', e => {
+    if (e.target.matches('input, select')) { if (e.key === 'Escape') e.target.blur(); if (e.key === 'Enter' && e.target.classList.contains('field')) e.target.blur(); return; }
+    if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); show(i + 1); }
+    else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); show(i - 1); }
+    else if (e.key === 'n' || e.key === 'N') toggleNotes();
+    else if (e.key === 'l' || e.key === 'L') toggleLead();
+    else if (e.key === 'f' || e.key === 'F') fullscreen();
+  });
+  window.addEventListener('resize', fit);
+  document.addEventListener('fullscreenchange', fit);
+  show(0); calc(); fit();
+})();
+</script>
+</body>
+</html>
