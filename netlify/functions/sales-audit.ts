@@ -10,6 +10,9 @@ import type { Handler, HandlerEvent } from '@netlify/functions';
  * Either way the audit numbers go on the contact as a note. Tags: "sales audit" and
  * "audit rep <name>". No workflow enrollment.
  *
+ * The deck opens on a "Create audit" form, so every audit starts by saving the client
+ * (stage "start", no note). Reaching the last slide saves the numbers as a note.
+ *
  * Only the team can post: the deck link carries ?team=<AUDIT_TEAM_CODE>.
  * Netlify env vars: GHL_PIT (shared with the other ghl-*.ts functions), AUDIT_TEAM_CODE.
  */
@@ -62,10 +65,16 @@ export const handler: Handler = async (event: HandlerEvent) => {
 
   const locationId = process.env.GHL_LOCATION_ID || DEFAULT_LOCATION_ID;
   const tags = ['sales audit', ...(rep ? [`audit rep ${rep}`] : [])];
+  // stage "start": the rep just created the audit, so save the contact without a note.
+  // Later saves pass back the contactId from the first one.
+  const stage = s(p.stage, 10);
+  const knownId = s(p.contactId, 40).replace(/[^A-Za-z0-9]/g, '');
   try {
-    let id = (await find(token, locationId, 'email', email)) || (await find(token, locationId, 'phone', phone));
-    const existed = !!id;
-    if (id) {
+    let id = knownId || (await find(token, locationId, 'email', email)) || (await find(token, locationId, 'phone', phone));
+    const existed = !!id && !knownId;
+    if (knownId) {
+      // Same audit, already saved.
+    } else if (id) {
       await ghl(`/contacts/${id}/tags`, token, 'POST', { tags });
     } else {
       const made = await ghl('/contacts/', token, 'POST', {
@@ -75,6 +84,8 @@ export const handler: Handler = async (event: HandlerEvent) => {
       id = made.data?.contact?.id;
       if (!id) return json(502, { error: 'GHL did not save the contact. Try again.' });
     }
+
+    if (stage === 'start') return json(200, { ok: true, existed, contactId: id });
 
     const a = p.audit || {};
     const checks: string[] = Array.isArray(a.checks) ? a.checks.slice(0, 4).map((c: unknown) => s(c, 160)) : [];
@@ -86,7 +97,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
       ...checks,
     ].filter(Boolean);
     await ghl(`/contacts/${id}/notes`, token, 'POST', { body: lines.join('\n') });
-    return json(200, { ok: true, existed });
+    return json(200, { ok: true, existed, contactId: id });
   } catch (e) {
     console.error('sales-audit: failed', String(e));
     return json(502, { error: 'Could not reach GHL. Try again.' });

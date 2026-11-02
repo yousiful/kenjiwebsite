@@ -129,15 +129,52 @@ p { margin: 0; }
 #leadMsg { font-size: 14px; color: var(--muted); }
 #leadMsg.ok { color: var(--green); }
 #leadMsg.err { color: var(--red); }
+/* "Create audit" screen: the rep saves the client to GHL before the deck opens. */
+body.setup #viewport, body.setup #bar, body.setup #notes, body.setup #lead { display: none !important; }
+#setup { display: none; flex: 1; align-items: center; justify-content: center; overflow: auto; }
+body.setup #setup { display: flex; }
+#setup .card { width: 100%; max-width: 640px; background: var(--ink); border: 1px solid var(--line); border-radius: 18px; padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+#setup h1 { font-size: 34px; grid-column: 1 / -1; }
+#setup .intro { grid-column: 1 / -1; color: var(--muted); font-size: 15px; line-height: 1.5; margin-bottom: 4px; }
+#setup label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--muted); }
+#setup label.wide { grid-column: 1 / -1; }
+#setup input, #setup select { font: 16px var(--body); color: var(--paper); background: #0B0F1C; border: 1px solid var(--line); border-radius: 10px; padding: 11px 12px; width: 100%; }
+#setup input:focus, #setup select:focus { outline: 2px solid var(--blue); outline-offset: 0; }
+#setup button { grid-column: 1 / -1; font: 600 17px var(--body); color: var(--ink); background: var(--orange); border: 0; border-radius: 10px; padding: 14px; cursor: pointer; margin-top: 6px; }
+#setup button:disabled { opacity: .6; cursor: wait; }
+#setupMsg { grid-column: 1 / -1; font-size: 14px; color: var(--red); min-height: 1em; }
+@media (max-width: 560px) { #setup .card { grid-template-columns: 1fr; padding: 22px; } }
 @media (prefers-reduced-motion: no-preference) { .slide { animation: in .25s ease-out; } @keyframes in { from { opacity: .4; } to { opacity: 1; } } }
 </style>
 </head>
-<body>
+<body class="setup">
+
+<div id="setup">
+  <form class="card" id="setupForm" autocomplete="off" novalidate>
+    <h1>Create an audit</h1>
+    <p class="intro">Add the client's details first. They're saved to GHL as soon as you create the audit, tagged "sales audit" and your name. Their numbers are added when you reach the last slide.</p>
+    <label>First name<input id="sFirst" required></label>
+    <label>Last name<input id="sLast"></label>
+    <label>Phone<input id="sPhone" type="tel" inputmode="tel"></label>
+    <label>Email<input id="sEmail" type="email"></label>
+    <label class="wide">Business name<input id="sBiz" required></label>
+    <label class="wide">Your name
+      <select id="sRep" required>
+        <option value="">Pick your name</option>
+        <option>Yousif</option>
+        <option>Sumit</option>
+        <option>Chris</option>
+      </select>
+    </label>
+    <p id="setupMsg" role="alert"></p>
+    <button id="createAudit" type="submit">Create audit and save to GHL</button>
+  </form>
+</div>
 
 <div id="viewport">
   <div id="stage">
 
-    <section class="slide cover" data-notes="Open with no screen share. Do 10 minutes of discovery first: clients a month now, the goal, what one client is worth, how long they've been stuck, and what happens if nothing changes in 6 months. Type their business name here. Open the Lead panel (L) and save their name, phone and email early so the lead is in GHL even if the call drops.">
+    <section class="slide cover" data-notes="Open with no screen share. Do 10 minutes of discovery first: clients a month now, the goal, what one client is worth, how long they've been stuck, and what happens if nothing changes in 6 months. Type their business name here. The client is already saved in GHL from the Create audit screen.">
       <p class="eyebrow">KenjiAI · Client Growth Audit</p>
       <h1>Let’s find where<br>your clients are slipping</h1>
       <p class="sub" style="max-width:1000px">We’ll look at your numbers together, find the leaks, and show you what it takes to close the gap. If we’re not a fit, you still leave with the audit.</p>
@@ -217,7 +254,7 @@ p { margin: 0; }
       </div>
     </section>
 
-    <section class="slide close" hidden data-notes="Price is said out loud, not shown. Point at their number, give the investment, then: 'How would you like to get started, debit or credit?' Stop talking. Stall: acknowledge, isolate (money, timing, or whether it'll work), reframe with their numbers, ask again. Still no: book a follow-up within 48 hours with every decision maker. Never end with 'text me'. Before you hang up, press Save in the Lead panel so the audit numbers land on their GHL contact.">
+    <section class="slide close" hidden data-notes="Price is said out loud, not shown. Point at their number, give the investment, then: 'How would you like to get started, debit or credit?' Stop talking. Stall: acknowledge, isolate (money, timing, or whether it'll work), reframe with their numbers, ask again. Still no: book a follow-up within 48 hours with every decision maker. Never end with 'text me'. Their numbers save to GHL on their own when you open this slide. If you go back and change anything, open the Lead panel (L) and save again.">
       <p class="eyebrow">Audit result</p>
       <p class="worth"><span id="closeName">Your business</span> is leaving<br><span class="big gapMonth">$0</span> a month on the table, with <span class="leakWord">0 leaks</span> to fix.</p>
       <div class="next">
@@ -254,12 +291,11 @@ p { margin: 0; }
       <option>Yousif</option>
       <option>Sumit</option>
       <option>Chris</option>
-      <option value="other">Someone else</option>
     </select>
   </label>
   <div class="actions">
-    <button id="saveLead" type="submit">Save to GHL</button>
-    <span id="leadMsg">Saves the contact with tag "sales audit" plus the audit numbers as a note. Save again at the end to add the final numbers.</span>
+    <button id="saveLead" type="submit">Save numbers to GHL now</button>
+    <span id="leadMsg"></span>
   </div>
 </form>
 
@@ -285,11 +321,19 @@ p { margin: 0; }
   const team = store.get('auditTeam');
   const savedRep = store.get('auditRep');
   if (savedRep) {
-    const match = [...$('lRep').options].find(o => o.text.toLowerCase() === savedRep.toLowerCase());
-    if (match) $('lRep').value = match.value;
-    else { const o = new Option(savedRep, savedRep); $('lRep').add(o); $('lRep').value = savedRep; }
+    ['sRep', 'lRep'].forEach(id => {
+      const sel = $(id);
+      const match = [...sel.options].find(o => o.text.toLowerCase() === savedRep.toLowerCase());
+      if (match) sel.value = match.value;
+      else { sel.add(new Option(savedRep, savedRep)); sel.value = savedRep; }
+    });
   }
-  $('lRep').addEventListener('change', () => store.set('auditRep', $('lRep').value === 'other' ? '' : $('lRep').value));
+  ['sRep', 'lRep'].forEach(id => $(id).addEventListener('change', () => {
+    store.set('auditRep', $(id).value);
+    $('sRep').value = $('lRep').value = $(id).value;
+  }));
+  let contactId = null;
+  let lastSaved = '';
 
   function fit() {
     const s = Math.min(viewport.clientWidth / 1600, viewport.clientHeight / 900);
@@ -300,6 +344,8 @@ p { margin: 0; }
     slides.forEach((el, k) => { el.hidden = k !== i; });
     count.textContent = `${i + 1} / ${slides.length}`;
     notes.textContent = slides[i].dataset.notes || '';
+    // Last slide: the audit numbers go to the client's GHL contact on their own.
+    if (i === slides.length - 1 && contactId) save('final', true);
   }
 
   const num = id => {
@@ -338,29 +384,63 @@ p { margin: 0; }
   $('lBiz').addEventListener('input', () => { $('bizName').value = $('lBiz').value; calc(); });
 
   const msg = (text, cls) => { $('leadMsg').textContent = text; $('leadMsg').className = cls || ''; };
-  lead.addEventListener('submit', async e => {
-    e.preventDefault();
-    if (!team) { msg('Open the deck from your team link (it has ?team= in it) to save leads.', 'err'); return; }
+  const time = () => new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+
+  async function post(body) {
+    const r = await fetch('/.netlify/functions/sales-audit', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ team, ...body }),
+    });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(j.error || 'Could not save. Try again.');
+    return j;
+  }
+  const client = () => ({
+    rep: $('lRep').value, firstName: $('lFirst').value, lastName: $('lLast').value,
+    phone: $('lPhone').value, email: $('lEmail').value, business: $('lBiz').value,
+  });
+
+  // Adds the audit numbers to the client's contact as a note. quiet: auto-save on the last
+  // slide, which skips if nothing changed since the last save.
+  async function save(stage, quiet) {
     const a = calc();
     const checks = [...document.querySelectorAll('.check')].map((c, k) => `${c.querySelector('p').textContent} ${answers[k] === '1' ? 'Yes' : answers[k] === '0' ? 'No (leak)' : 'not asked'}`);
-    const btn = $('saveLead'); btn.disabled = true; msg('Saving...');
+    const snap = JSON.stringify([a, checks]);
+    if (quiet && snap === lastSaved) return;
+    const btn = $('saveLead'); btn.disabled = true; msg('Saving the audit numbers to GHL...');
     try {
-      const r = await fetch('/.netlify/functions/sales-audit', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          team, rep: $('lRep').value === 'other' ? '' : $('lRep').value,
-          firstName: $('lFirst').value, lastName: $('lLast').value, phone: $('lPhone').value,
-          email: $('lEmail').value, business: $('lBiz').value, audit: { ...a, checks },
-        }),
-      });
-      const j = await r.json().catch(() => ({}));
-      if (!r.ok) throw new Error(j.error || 'Could not save. Try again.');
+      const j = await post({ ...client(), stage, contactId, audit: { ...a, checks } });
+      contactId = j.contactId || contactId; lastSaved = snap;
       $('leadDot').classList.add('saved');
-      btn.textContent = 'Save again (adds a new note)';
-      msg(`Saved at ${new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })}${j.existed ? '. They were already in GHL, so only the tag and note were added.' : '. New contact created in GHL.'}`, 'ok');
+      msg(`Audit numbers saved to GHL at ${time()}.`, 'ok');
     } catch (err) {
       msg(err.message, 'err');
+      if (quiet && lead.hidden) toggleLead();
     } finally { btn.disabled = false; }
+  }
+  lead.addEventListener('submit', e => { e.preventDefault(); save('final', false); });
+
+  $('setupForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const sm = $('setupMsg');
+    const f = { firstName: $('sFirst').value.trim(), lastName: $('sLast').value.trim(), phone: $('sPhone').value.trim(), email: $('sEmail').value.trim(), business: $('sBiz').value.trim(), rep: $('sRep').value };
+    if (!team) { sm.textContent = 'Open the deck from your team link (it has ?team= in it) so it can save to GHL.'; return; }
+    if (!f.firstName || !f.business) { sm.textContent = 'Add the client\'s first name and business name.'; return; }
+    if (!f.email && f.phone.replace(/\D/g, '').length < 10) { sm.textContent = 'Add an email or a full phone number.'; return; }
+    if (!f.rep) { sm.textContent = 'Pick your name.'; return; }
+    sm.textContent = ''; $('createAudit').disabled = true; $('createAudit').textContent = 'Saving to GHL...';
+    try {
+      const j = await post({ ...f, stage: 'start' });
+      contactId = j.contactId;
+      $('lFirst').value = f.firstName; $('lLast').value = f.lastName; $('lPhone').value = f.phone;
+      $('lEmail').value = f.email; $('lBiz').value = $('bizName').value = f.business; $('lRep').value = f.rep;
+      $('leadDot').classList.add('saved');
+      msg(j.existed ? `${f.firstName} was already in GHL, so the "sales audit" tag was added. The numbers save when you reach the last slide.` : `${f.firstName} saved to GHL at ${time()}. The numbers save when you reach the last slide.`, 'ok');
+      document.body.classList.remove('setup');
+      calc(); show(0); fit();
+    } catch (err) {
+      sm.textContent = err.message;
+    } finally { $('createAudit').disabled = false; $('createAudit').textContent = 'Create audit and save to GHL'; }
   });
 
   $('prev').onclick = () => show(i - 1);
@@ -385,15 +465,17 @@ p { margin: 0; }
   };
   $('full').onclick = fullscreen;
   $('clear').onclick = () => {
-    document.querySelectorAll('.field, #lead input').forEach(f => { f.value = ''; });
+    document.querySelectorAll('.field, #lead input, #setup input').forEach(f => { f.value = ''; });
     Object.keys(answers).forEach(k => delete answers[k]);
     document.querySelectorAll('.yn button').forEach(b => b.setAttribute('aria-pressed', 'false'));
-    $('leadDot').classList.remove('saved');
-    $('saveLead').textContent = 'Save to GHL';
-    msg('Saves the contact with tag "sales audit" plus the audit numbers as a note. Save again at the end to add the final numbers.');
+    contactId = null; lastSaved = '';
+    $('leadDot').classList.remove('saved'); msg('');
+    if (!lead.hidden) toggleLead();
     calc(); show(0);
+    document.body.classList.add('setup'); $('sFirst').focus();
   };
   document.addEventListener('keydown', e => {
+    if (document.body.classList.contains('setup')) return;
     if (e.target.matches('input, select')) { if (e.key === 'Escape') e.target.blur(); if (e.key === 'Enter' && e.target.classList.contains('field')) e.target.blur(); return; }
     if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); show(i + 1); }
     else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); show(i - 1); }
@@ -404,6 +486,7 @@ p { margin: 0; }
   window.addEventListener('resize', fit);
   document.addEventListener('fullscreenchange', fit);
   show(0); calc(); fit();
+  $('sFirst').focus();
 })();
 </script>
 </body>
