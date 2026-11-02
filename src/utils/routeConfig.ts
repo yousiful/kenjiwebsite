@@ -58,6 +58,7 @@ export const internalRoutes = [
   '/tools/google-review-link-generator',
   '/tools/facebook-ads-budget-calculator',
   '/tools/ltv-calculator',
+  '/tools/utm-builder',
   '/tools/name-generator',
   '/tools/business-name-generator',
   '/trendpulse',

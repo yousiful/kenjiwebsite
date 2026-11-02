@@ -51,6 +51,7 @@ All free, no signup unless noted. Hub: [All free tools](https://kenjiai.com/free
 - [ROAS and break-even ROAS calculator](https://kenjiai.com/tools/roas-calculator): ROAS, break-even ROAS, the most you can pay per purchase and profit after ad spend.
 - [Facebook ads budget calculator](https://kenjiai.com/tools/facebook-ads-budget-calculator): The daily and monthly Meta ads budget needed to hit a lead or sales goal.
 - [Customer lifetime value (LTV) calculator](https://kenjiai.com/tools/ltv-calculator): LTV, LTV:CAC ratio, maximum allowable acquisition cost and payback period.
+- [UTM builder](https://kenjiai.com/tools/utm-builder): UTM tracking links for Facebook, Instagram, Google Ads, email and text, with copy, a QR code and Meta Ads dynamic parameters.
 - [Ideal customer profile (ICP) generator](https://kenjiai.com/tools/icp-generator): Buyer segments with Meta Ads interests, exclusions, triggers and lookalike seeds.
 - [Google review link generator](https://kenjiai.com/tools/google-review-link-generator): A direct Google review link, a printable QR code and text and email templates to ask for reviews.
 - [Business and offer name generator](https://kenjiai.com/tools/name-generator): Business names, $100M-style offer names, product names and lead magnet titles with domain ideas.

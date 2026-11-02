@@ -6,6 +6,17 @@ import { Helmet } from 'react-helmet-async';
 const FreeToolsPage: React.FC = () => {
   const freeTools = [
     {
+      name: "UTM Builder: UTM Link Generator with QR Code",
+      description: "Paste your page, pick Facebook, Instagram, Google Ads, email or text, name the campaign, and copy a clean UTM tracking link. Includes a downloadable QR code and Meta Ads dynamic parameters.",
+      url: "/tools/utm-builder",
+      icon: Target,
+      gradient: "from-blue-600 via-indigo-600 to-violet-600",
+      features: ["Channel Presets", "One-Click Copy", "QR Code Download", "Meta Dynamic Parameters"],
+      category: "Marketing & Growth",
+      keywords: ["utm builder", "utm generator", "utm link builder", "campaign url builder"],
+      revenue: "Know which ad brought the customer"
+    },
+    {
       name: "Customer Lifetime Value (LTV) Calculator",
       description: "Enter purchase value, how often customers buy, how long they stay, your margin, and your cost per customer. Get lifetime value in revenue and profit, your LTV:CAC ratio, the most you can pay per customer, and CAC payback.",
       url: "/tools/ltv-calculator",

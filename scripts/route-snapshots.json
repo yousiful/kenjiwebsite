@@ -30605,6 +30605,253 @@
     }
    ]
   },
+  "/tools/utm-builder": {
+   "head": {
+    "title": "Free UTM Builder: UTM Link Generator with QR Code | KenjiAI",
+    "metas": [
+     {
+      "name": "viewport",
+      "content": "width=device-width, initial-scale=1.0"
+     },
+     {
+      "name": "theme-color",
+      "content": "#3B82F6"
+     },
+     {
+      "name": "title",
+      "content": "Free UTM Builder: UTM Link Generator with QR Code | KenjiAI"
+     },
+     {
+      "name": "keywords",
+      "content": "AI call center, inbound AI receptionist, outbound speed to lead, database reactivation, AI voice agents, business automation CRM, KenjiAI"
+     },
+     {
+      "name": "robots",
+      "content": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+     },
+     {
+      "name": "language",
+      "content": "English"
+     },
+     {
+      "name": "author",
+      "content": "KenjiAI"
+     },
+     {
+      "name": "publisher",
+      "content": "KenjiAI"
+     },
+     {
+      "name": "copyright",
+      "content": "KenjiAI"
+     },
+     {
+      "name": "revisit-after",
+      "content": "1 days"
+     },
+     {
+      "name": "distribution",
+      "content": "global"
+     },
+     {
+      "name": "rating",
+      "content": "general"
+     },
+     {
+      "property": "og:type",
+      "content": "website"
+     },
+     {
+      "property": "og:image",
+      "content": "https://kenjiai.com/og-image.png"
+     },
+     {
+      "property": "og:image:width",
+      "content": "1200"
+     },
+     {
+      "property": "og:image:height",
+      "content": "630"
+     },
+     {
+      "property": "og:image:alt",
+      "content": "KenjiAI - AI Business Automation Platform with Voice Agents, Smart CRM, and Free AI Tools"
+     },
+     {
+      "property": "og:site_name",
+      "content": "KenjiAI"
+     },
+     {
+      "property": "og:locale",
+      "content": "en_US"
+     },
+     {
+      "name": "format-detection",
+      "content": "telephone=yes"
+     },
+     {
+      "name": "HandheldFriendly",
+      "content": "true"
+     },
+     {
+      "content": "ie=edge"
+     },
+     {
+      "property": "twitter:card",
+      "content": "summary_large_image"
+     },
+     {
+      "property": "twitter:url",
+      "content": "https://kenjiai.com/tools/utm-builder"
+     },
+     {
+      "property": "twitter:title",
+      "content": "Free UTM Builder: UTM Link Generator with QR Code | KenjiAI"
+     },
+     {
+      "property": "twitter:description",
+      "content": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation."
+     },
+     {
+      "property": "twitter:image",
+      "content": "https://kenjiai.com/og-image.png"
+     },
+     {
+      "property": "twitter:image:alt",
+      "content": "KenjiAI - AI Business Automation Platform"
+     },
+     {
+      "property": "twitter:creator",
+      "content": "@KenjiAI"
+     },
+     {
+      "property": "twitter:site",
+      "content": "@KenjiAI"
+     },
+     {
+      "name": "twitter:label1",
+      "content": "Built for"
+     },
+     {
+      "name": "twitter:data1",
+      "content": "Business Owners & Entrepreneurs"
+     },
+     {
+      "name": "twitter:label2",
+      "content": "Pricing"
+     },
+     {
+      "name": "twitter:data2",
+      "content": "Performance-Based"
+     },
+     {
+      "name": "description",
+      "content": "Build UTM tracking links for Facebook, Instagram, Google Ads, email and text in seconds. Free UTM generator with presets, one-click copy and a QR code."
+     },
+     {
+      "property": "og:title",
+      "content": "Free UTM Builder & Link Generator | KenjiAI"
+     },
+     {
+      "property": "og:description",
+      "content": "Tag every ad, email and text with UTM links so you know which one brought the customer. Presets, copy and QR code included."
+     },
+     {
+      "property": "og:url",
+      "content": "https://kenjiai.com/tools/utm-builder"
+     }
+    ],
+    "canonical": "https://kenjiai.com/tools/utm-builder",
+    "jsonld": [
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/tools/utm-builder#webpage\",\"url\":\"https://kenjiai.com/tools/utm-builder\",\"name\":\"Free UTM Builder: UTM Link Generator with QR Code\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"Build UTM tracking links for Facebook, Instagram, Google Ads, email and text in seconds. Free UTM generator with presets, one-click copy and a QR code.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/tools/utm-builder#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/tools/utm-builder#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Free Tools\",\"item\":\"https://kenjiai.com/free-tools\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Free UTM Builder: UTM Link Generator with QR Code\",\"item\":\"https://kenjiai.com/tools/utm-builder\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"SoftwareApplication\",\"name\":\"KenjiAI UTM Builder\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Web\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"KenjiAI\",\"url\":\"https://kenjiai.com\"}},{\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"What is a UTM link?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"A normal link with a few tags added to the end (utm_source, utm_medium, utm_campaign and so on). When someone clicks it, Google Analytics reads the tags and records exactly where that visitor came from.\"}},{\"@type\":\"Question\",\"name\":\"Which UTM parameters are required?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Source, medium and campaign. Source is the site or list the click came from (facebook, newsletter). Medium is the type of traffic (paid_social, email, cpc). Campaign is your name for the promotion. Term and content are optional and help you compare keywords or ad versions.\"}},{\"@type\":\"Question\",\"name\":\"Why should UTM tags be lowercase?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Google Analytics treats \\\"Facebook\\\" and \\\"facebook\\\" as two different sources, which splits your numbers. Keeping everything lowercase with underscores instead of spaces keeps reports clean. The tidy option above does this for you.\"}},{\"@type\":\"Question\",\"name\":\"Do I need UTM tags on Google Ads?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"If your Google Ads account is linked to Google Analytics with auto-tagging on, Google already tracks those clicks with the gclid parameter. UTM tags still help when you send the traffic to a CRM or a tool that does not read gclid.\"}},{\"@type\":\"Question\",\"name\":\"Should I use UTM links on my own website?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"No. Tagging links between pages of your own site restarts the visit and overwrites where the person really came from. Use UTM links only on links that point to your site from somewhere else: ads, emails, texts, social posts, QR codes.\"}},{\"@type\":\"Question\",\"name\":\"How do I track a flyer or printed sign?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Build a link with source set to the place (flyer, truck_wrap, yard_sign) and medium set to print, then download the QR code above and put it on the piece. Every scan shows up in Analytics under that source.\"}}]}]}"
+    ]
+   },
+   "blocks": [
+    {
+     "tag": "h1",
+     "text": "UTM Builder"
+    },
+    {
+     "tag": "p",
+     "text": "Tag the links in your ads, emails and texts so Google Analytics tells you which one brought the customer. Pick a preset, name the campaign, copy the link."
+    },
+    {
+     "tag": "p",
+     "text": "Enter the page address to see your link."
+    },
+    {
+     "tag": "p",
+     "text": "Paste this into the URL parameters box in Ads Manager (under Tracking). Meta swaps in each campaign, ad set and ad name for you."
+    },
+    {
+     "tag": "p",
+     "text": "utm_source={{site_source_name}}&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_term={{adset.name}}&utm_content={{ad.name}}"
+    },
+    {
+     "tag": "p",
+     "text": "Once the tags are in, you can see which ads bring leads. If you want a second set of eyes on what the numbers say, we can help."
+    },
+    {
+     "tag": "h2",
+     "text": "UTM questions people ask"
+    },
+    {
+     "tag": "h3",
+     "text": "What is a UTM link?"
+    },
+    {
+     "tag": "p",
+     "text": "A normal link with a few tags added to the end (utm_source, utm_medium, utm_campaign and so on). When someone clicks it, Google Analytics reads the tags and records exactly where that visitor came from."
+    },
+    {
+     "tag": "h3",
+     "text": "Which UTM parameters are required?"
+    },
+    {
+     "tag": "p",
+     "text": "Source, medium and campaign. Source is the site or list the click came from (facebook, newsletter). Medium is the type of traffic (paid_social, email, cpc). Campaign is your name for the promotion. Term and content are optional and help you compare keywords or ad versions."
+    },
+    {
+     "tag": "h3",
+     "text": "Why should UTM tags be lowercase?"
+    },
+    {
+     "tag": "p",
+     "text": "Google Analytics treats \"Facebook\" and \"facebook\" as two different sources, which splits your numbers. Keeping everything lowercase with underscores instead of spaces keeps reports clean. The tidy option above does this for you."
+    },
+    {
+     "tag": "h3",
+     "text": "Do I need UTM tags on Google Ads?"
+    },
+    {
+     "tag": "p",
+     "text": "If your Google Ads account is linked to Google Analytics with auto-tagging on, Google already tracks those clicks with the gclid parameter. UTM tags still help when you send the traffic to a CRM or a tool that does not read gclid."
+    },
+    {
+     "tag": "h3",
+     "text": "Should I use UTM links on my own website?"
+    },
+    {
+     "tag": "p",
+     "text": "No. Tagging links between pages of your own site restarts the visit and overwrites where the person really came from. Use UTM links only on links that point to your site from somewhere else: ads, emails, texts, social posts, QR codes."
+    },
+    {
+     "tag": "h3",
+     "text": "How do I track a flyer or printed sign?"
+    },
+    {
+     "tag": "p",
+     "text": "Build a link with source set to the place (flyer, truck_wrap, yard_sign) and medium set to print, then download the QR code above and put it on the piece. Every scan shows up in Analytics under that source."
+    }
+   ],
+   "links": [
+    {
+     "href": "/growth-quiz",
+     "text": "Take the 60-second growth quiz"
+    }
+   ]
+  },
   "/video-generation": {
    "head": {
     "title": "Kenji Studio: AI Video for Ads, VSLs and Lessons | KenjiAI",
