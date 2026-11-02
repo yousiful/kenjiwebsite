@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, Check, Loader2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Shell, ensurePixel, track } from './GrowthQuizPage';
 import { Answers, funnelModel, isQualified, scoreAnswers, visibleQuestions } from '../data/leadScore';
-import { LeakFunnel } from '../components/LeakFunnel';
+import { HeroLeakFunnel, LeakFunnel } from '../components/LeakFunnel';
 
 /* Find the Leak, kenjiai.com/findtheleak (was /lead-score; Yousif 2026-10-25): a longer, branched version of /growth-quiz that pays people back
    with a personal score. Tested for 3 weeks against the Perf Base instant lead form on lead quality
@@ -167,6 +167,16 @@ const LeadScorePage: React.FC = () => {
               3 minutes to find out where your funnel and marketing are leaking. You’ll see your own funnel with the numbers, where customers slip out, what it’s costing you, and what to fix first.
             </p>
             <button type="button" onClick={start} className="mt-9 inline-flex items-center gap-2.5 rounded-2xl bg-[#5EEAD4] text-[#06221E] font-bold text-[18px] px-7 py-4 shadow-[0_14px_34px_-14px_rgba(94,234,212,0.7)] hover:bg-[#7FF0DF] transition-colors">
+              Find my leaks <ArrowRight className="w-5 h-5" aria-hidden="true" />
+            </button>
+            <p className="mt-4 text-[14px] text-[#A9B4C4]">Free. About 3 minutes. Your results show up right away.</p>
+            <div className="mt-10">
+              <HeroLeakFunnel />
+            </div>
+            <p className="mt-8 text-[17px] sm:text-[18px] leading-relaxed text-[#C9D2DE]">
+              Most businesses don’t need more leads. They need to stop losing the ones they already paid for. The quiz shows you which of these is costing you the most.
+            </p>
+            <button type="button" onClick={start} className="mt-6 inline-flex items-center gap-2.5 rounded-2xl bg-[#5EEAD4] text-[#06221E] font-bold text-[18px] px-7 py-4 shadow-[0_14px_34px_-14px_rgba(94,234,212,0.7)] hover:bg-[#7FF0DF] transition-colors">
               Find my leaks <ArrowRight className="w-5 h-5" aria-hidden="true" />
             </button>
             <p className="mt-8 text-[15px] text-[#A9B4C4]">Built from what we see running ads and follow-up for 500+ businesses since 2013.</p>
