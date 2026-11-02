@@ -9,7 +9,7 @@ import type { Handler, HandlerEvent } from '@netlify/functions';
  * finds the GHL contact by email (then phone). New contact: created with the details.
  * Existing contact: only tags are added, so a typo never overwrites a real record.
  * Either way the audit numbers go on the contact as a note. Tags: "sales audit",
- * "audit rep <name>", and "sales audit emailed" when the roadmap email goes out.
+ * "audit rep <name>", and "sales audit emailed" once the roadmap email is accepted by GHL.
  * No workflow enrollment.
  *
  * sendEmail: the prospect asked for their audit on the call, so the audit and the
@@ -115,7 +115,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
   const checks: string[] = Array.isArray(a.checks) ? a.checks.slice(0, 4).map((c: unknown) => s(c, 160)) : [];
 
   const locationId = process.env.GHL_LOCATION_ID || DEFAULT_LOCATION_ID;
-  const tags = ['sales audit', ...(rep ? [`audit rep ${rep}`] : []), ...(sendEmail ? ['sales audit emailed'] : [])];
+  const tags = ['sales audit', ...(rep ? [`audit rep ${rep}`] : [])];
   try {
     let id = (await find(token, locationId, 'email', email)) || (await find(token, locationId, 'phone', phone));
     const existed = !!id;
@@ -141,6 +141,8 @@ export const handler: Handler = async (event: HandlerEvent) => {
         html: auditEmail({ firstName, business, rep }, audit),
       });
       emailed = sent.ok;
+      if (emailed) await ghl(`/contacts/${id}/tags`, token, 'POST', { tags: ['sales audit emailed'] });
+      else console.error('sales-audit: email not sent', JSON.stringify(sent.data).slice(0, 200));
     }
 
     const lines = [
