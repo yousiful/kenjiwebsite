@@ -12477,6 +12477,10 @@
       "content": "Free Housewarming Invitations with RSVP | Kenji Invites"
      },
      {
+      "property": "twitter:description",
+      "content": "Make a free housewarming invitation with RSVP. Add a photo of the new place, directions and parking notes, and see who is coming. No ads, no guest sign-up."
+     },
+     {
       "property": "twitter:image",
       "content": "https://kenjiai.com/og-image.png"
      },
@@ -12509,10 +12513,6 @@
       "content": "Performance-Based"
      },
      {
-      "property": "twitter:description",
-      "content": "Make a free housewarming invitation with RSVP. Add a photo of the new place, directions and parking notes, and see who is coming. No ads, no guest sign-up."
-     },
-     {
       "name": "description",
       "content": "Make a free housewarming invitation with RSVP. Add a photo of the new place, directions and parking notes, and see who is coming. No ads, no guest sign-up."
      },
@@ -12531,7 +12531,7 @@
     ],
     "canonical": "https://kenjiai.com/invites/housewarming-invitations",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/invites/housewarming-invitations#webpage\",\"url\":\"https://kenjiai.com/invites/housewarming-invitations\",\"name\":\"Free housewarming invitations\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"Make a free housewarming invitation with RSVP. Add a photo of the new place, directions and parking notes, and see who is coming. No ads, no guest sign-up.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/invites/housewarming-invitations#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/invites/housewarming-invitations#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Kenji Invites\",\"item\":\"https://kenjiai.com/invites\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Housewarming invitations\",\"item\":\"https://kenjiai.com/invites/housewarming-invitations\"}]},{\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"Do I need to send a gift list?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"No. Most housewarmings are casual. If people ask, a line like \\\"just bring yourselves\\\" or \\\"a plant for the garden\\\" is plenty.\"}},{\"@type\":\"Question\",\"name\":\"Is it free?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes. No ads, no guest accounts.\"}},{\"@type\":\"Question\",\"name\":\"Do my guests need an account or an app?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"No. Each guest gets a link. It opens in the browser on any phone or computer, and they answer with one tap.\"}},{\"@type\":\"Question\",\"name\":\"Who can see my guest list?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Only you, and any co-host you add. Guests see the invitation and their own answer, never anyone else on the list.\"}}]},{\"@type\":\"WebApplication\",\"name\":\"Kenji Invites: Housewarming invitations\",\"url\":\"https://kenjiai.com/invites/housewarming-invitations\",\"applicationCategory\":\"LifestyleApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/invites/housewarming-invitations#webpage\",\"url\":\"https://kenjiai.com/invites/housewarming-invitations\",\"name\":\"Free housewarming invitations\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"Make a free housewarming invitation with RSVP. Add a photo of the new place, directions and parking notes, and see who is coming. No ads, no guest sign-up.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/invites/housewarming-invitations#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/invites/housewarming-invitations#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Kenji Invites\",\"item\":\"https://kenjiai.com/invites\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Housewarming invitations\",\"item\":\"https://kenjiai.com/invites/housewarming-invitations\"}]},{\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"Do I need to send a gift list?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"No. Most housewarmings are casual. If people ask, a line like \\\"just bring yourselves\\\" or \\\"a plant for the garden\\\" is plenty.\"}},{\"@type\":\"Question\",\"name\":\"How long after moving should we have a housewarming?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Most people have it within the first few months. You don't need every room finished. Clear the boxes out of the rooms guests will see and that is enough.\"}},{\"@type\":\"Question\",\"name\":\"Should I invite my new neighbors?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"It is a nice way to meet them, and it helps if the party gets loud. A printed note with the QR code in their mailbox works well, since you may not have their numbers yet.\"}},{\"@type\":\"Question\",\"name\":\"Can guests bring their kids or a plus one?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"You decide. When you add a guest you choose how many seats they get, and their reply can't go over it. Say \\\"kids welcome\\\" or \\\"adults only\\\" in the notes so it is clear.\"}},{\"@type\":\"Question\",\"name\":\"Is it free?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes. No ads, no guest accounts.\"}},{\"@type\":\"Question\",\"name\":\"Do my guests need an account or an app?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"No. Each guest gets a link. It opens in the browser on any phone or computer, and they answer with one tap.\"}},{\"@type\":\"Question\",\"name\":\"Who can see my guest list?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Only you, and any co-host you add. Guests see the invitation and their own answer, never anyone else on the list.\"}}]},{\"@type\":\"WebApplication\",\"name\":\"Kenji Invites: Housewarming invitations\",\"url\":\"https://kenjiai.com/invites/housewarming-invitations\",\"applicationCategory\":\"LifestyleApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}]}"
     ]
    },
    "blocks": [
@@ -12612,8 +12612,48 @@
      "text": "New keys, new place, come see it! Housewarming at the Garcias' Sunday, May 9 at 1 PM"
     },
     {
+     "tag": "figcaption",
+     "text": "FIRST APARTMENT"
+    },
+    {
+     "tag": "p",
+     "text": "It's small, it's ours, and the couch finally fits. Come see the new apartment Friday, March 12, 7 PM Apartment 4B, buzz Garcia"
+    },
+    {
+     "tag": "figcaption",
+     "text": "BACKYARD BARBECUE"
+    },
+    {
+     "tag": "p",
+     "text": "New house, same people. Burgers on the grill and a tour of the place Saturday, June 19 from 1 PM Kids and dogs welcome, the yard is fenced"
+    },
+    {
+     "tag": "figcaption",
+     "text": "NO GIFTS"
+    },
+    {
+     "tag": "p",
+     "text": "We're home! Join us for an easy afternoon at the new place Sunday, October 3, 2 to 5 PM Please, no gifts. Just bring yourselves."
+    },
+    {
+     "tag": "figcaption",
+     "text": "NEIGHBORS"
+    },
+    {
+     "tag": "p",
+     "text": "Hi neighbors, we just moved in at number 14! Come say hello over coffee and cake Saturday, April 3, 10 AM to noon Scan the code to let us know you're coming"
+    },
+    {
      "tag": "h2",
      "text": "When to send it"
+    },
+    {
+     "tag": "dt",
+     "text": "When to have it"
+    },
+    {
+     "tag": "dd",
+     "text": "Anywhere from a few weeks to a few months after the move. Wait until the boxes are gone, not until every room is finished"
     },
     {
      "tag": "dt",
@@ -12625,11 +12665,19 @@
     },
     {
      "tag": "dt",
+     "text": "Holiday season or a long drive for guests"
+    },
+    {
+     "tag": "dd",
+     "text": "4 weeks before"
+    },
+    {
+     "tag": "dt",
      "text": "RSVP by date"
     },
     {
      "tag": "dd",
-     "text": "A few days before"
+     "text": "A few days before, so you know how much food to buy"
     },
     {
      "tag": "h2",
@@ -12650,6 +12698,14 @@
     {
      "tag": "li",
      "text": "Food and drinks, or \"bring a dish\""
+    },
+    {
+     "tag": "li",
+     "text": "Whether kids and dogs are welcome"
+    },
+    {
+     "tag": "li",
+     "text": "Which door to use and which buzzer to press, for an apartment"
     },
     {
      "tag": "li",
@@ -12698,6 +12754,30 @@
     {
      "tag": "p",
      "text": "Print the QR code and put it on a note in their mailbox. They scan it and reply on their phone."
+    },
+    {
+     "tag": "h3",
+     "text": "Make it an open house"
+    },
+    {
+     "tag": "p",
+     "text": "A three or four hour window lets people drop in when it suits them, and you never have the whole guest list in the kitchen at once. Put the start and end time on the invitation so nobody worries about leaving early."
+    },
+    {
+     "tag": "h3",
+     "text": "Use the reply notes for food"
+    },
+    {
+     "tag": "p",
+     "text": "Ask guests to say what they are bringing in their RSVP note. You see it next to their name on the guest list, so you don't end up with four bags of chips and no dessert."
+    },
+    {
+     "tag": "h3",
+     "text": "Put a photo of the front door on it"
+    },
+    {
+     "tag": "p",
+     "text": "A new address is hard to find the first time. A picture of the house, or the building entrance, saves you a few \"which one is yours?\" texts."
     },
     {
      "tag": "h2",
@@ -12766,6 +12846,30 @@
     {
      "tag": "p",
      "text": "No. Most housewarmings are casual. If people ask, a line like \"just bring yourselves\" or \"a plant for the garden\" is plenty."
+    },
+    {
+     "tag": "summary",
+     "text": "How long after moving should we have a housewarming?"
+    },
+    {
+     "tag": "p",
+     "text": "Most people have it within the first few months. You don't need every room finished. Clear the boxes out of the rooms guests will see and that is enough."
+    },
+    {
+     "tag": "summary",
+     "text": "Should I invite my new neighbors?"
+    },
+    {
+     "tag": "p",
+     "text": "It is a nice way to meet them, and it helps if the party gets loud. A printed note with the QR code in their mailbox works well, since you may not have their numbers yet."
+    },
+    {
+     "tag": "summary",
+     "text": "Can guests bring their kids or a plus one?"
+    },
+    {
+     "tag": "p",
+     "text": "You decide. When you add a guest you choose how many seats they get, and their reply can't go over it. Say \"kids welcome\" or \"adults only\" in the notes so it is clear."
     },
     {
      "tag": "summary",

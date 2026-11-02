@@ -2631,8 +2631,8 @@ export const articles: Record<string, Article> = {
   },
   'free-online-invitations-with-rsvp-how-to': {
     slug: 'free-online-invitations-with-rsvp-how-to',
-    title: 'How to Send Free Online Invitations with RSVP (and Actually Get Answers Back)',
-    excerpt: 'A practical guide to digital invitations for weddings, birthdays, showers and holiday parties: when to send, what to write, how to stop plus-one surprises, and how to get replies from guests who never answer.',
+    title: 'How to Send Free Online Invitations with RSVP',
+    excerpt: 'When to send, what to write, how to stop plus-one surprises, and how to get replies from guests who never answer. For weddings, birthdays, showers and parties.',
     category: 'Productivity & Growth',
     date: '2026-10-30',
     author: 'Yousif Alias',
