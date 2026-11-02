@@ -10,7 +10,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700&family=Public+Sans:wght@400;600&display=swap">
 <style>
 /* Sales call deck for the KenjiAI team. One 16:9 stage scaled to the window, a control bar
-   for the rep, and a lead panel that saves the prospect to GHL (netlify/functions/sales-audit.ts). */
+   for the rep. The last slide takes the prospect's details, saves them to GHL and emails
+   the audit and roadmap if asked (netlify/functions/sales-audit.ts). */
 :root {
   --ink: #12182B;
   --ink-2: #1B2340;
@@ -109,72 +110,37 @@ p { margin: 0; }
 .leaks { font-family: var(--display); font-weight: 700; font-size: 44px; color: var(--orange); }
 
 #bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-size: 14px; color: #8C96B0; }
-#bar button, #lead button { font: 600 14px var(--body); color: var(--paper); background: #1B2340; border: 1px solid #2E3754; border-radius: 8px; padding: 8px 14px; cursor: pointer; }
-#bar button:hover, #lead button:hover { border-color: var(--blue); }
-#bar button:focus-visible, #lead button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
-#bar #toggleLead { border-color: var(--orange); }
+#bar button { font: 600 14px var(--body); color: var(--paper); background: #1B2340; border: 1px solid #2E3754; border-radius: 8px; padding: 8px 14px; cursor: pointer; }
+#bar button:hover { border-color: var(--blue); }
+#bar button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 #count { font-variant-numeric: tabular-nums; min-width: 48px; text-align: center; }
 #bar .spacer { flex: 1; }
-#leadDot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #4A5577; margin-right: 6px; vertical-align: middle; }
-#leadDot.saved { background: var(--green); }
+#bar label.rep { display: flex; align-items: center; gap: 6px; }
+#bar select { font: 600 14px var(--body); color: var(--paper); background: #1B2340; border: 1px solid #2E3754; border-radius: 8px; padding: 7px 10px; }
+.send form { display: flex; flex-direction: column; gap: 36px; }
+.send-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 34px 48px; }
+.send-grid label { display: flex; flex-direction: column; gap: 10px; font-size: 24px; color: var(--muted); }
+.send-grid .field { font-size: 46px; font-family: var(--display); font-weight: 500; }
+.send-row { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; }
+.toggle { display: flex; align-items: center; gap: 16px; font-size: 28px; color: var(--muted); cursor: pointer; flex: 1; }
+.toggle input { width: 34px; height: 34px; accent-color: var(--orange); }
+#sendAudit { font: 700 32px var(--display); color: var(--ink); background: var(--orange); border: 0; border-radius: 16px; padding: 24px 48px; cursor: pointer; }
+#sendAudit:disabled { opacity: .6; cursor: wait; }
+#sendAudit:focus-visible { outline: 4px solid var(--blue); outline-offset: 4px; }
+.send-msg { font-size: 28px; min-height: 34px; color: var(--muted); }
+.send-msg.ok { color: var(--green); }
+.send-msg.err { color: var(--red); }
 #notes { background: #1B2340; border: 1px solid #2E3754; border-radius: 10px; padding: 12px 16px; font-size: 15px; line-height: 1.5; color: var(--muted); max-height: 22vh; overflow: auto; }
 
-#lead { background: #1B2340; border: 1px solid #2E3754; border-radius: 10px; padding: 12px 16px; display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; align-items: end; }
-#lead[hidden] { display: none; }
-#lead label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: #8C96B0; }
-#lead input, #lead select { font: 15px var(--body); color: var(--paper); background: #12182B; border: 1px solid #2E3754; border-radius: 8px; padding: 8px 10px; width: 100%; }
-#lead input:focus, #lead select:focus { outline: 2px solid var(--blue); outline-offset: 0; }
-#lead .actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; grid-column: 1 / -1; }
-#lead #saveLead { background: var(--orange); border-color: var(--orange); color: var(--ink); }
-#leadMsg { font-size: 14px; color: var(--muted); }
-#leadMsg.ok { color: var(--green); }
-#leadMsg.err { color: var(--red); }
-/* "Create audit" screen: the rep saves the client to GHL before the deck opens. */
-body.setup #viewport, body.setup #bar, body.setup #notes, body.setup #lead { display: none !important; }
-#setup { display: none; flex: 1; align-items: center; justify-content: center; overflow: auto; }
-body.setup #setup { display: flex; }
-#setup .card { width: 100%; max-width: 640px; background: var(--ink); border: 1px solid var(--line); border-radius: 18px; padding: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-#setup h1 { font-size: 34px; grid-column: 1 / -1; }
-#setup .intro { grid-column: 1 / -1; color: var(--muted); font-size: 15px; line-height: 1.5; margin-bottom: 4px; }
-#setup label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--muted); }
-#setup label.wide { grid-column: 1 / -1; }
-#setup input, #setup select { font: 16px var(--body); color: var(--paper); background: #0B0F1C; border: 1px solid var(--line); border-radius: 10px; padding: 11px 12px; width: 100%; }
-#setup input:focus, #setup select:focus { outline: 2px solid var(--blue); outline-offset: 0; }
-#setup button { grid-column: 1 / -1; font: 600 17px var(--body); color: var(--ink); background: var(--orange); border: 0; border-radius: 10px; padding: 14px; cursor: pointer; margin-top: 6px; }
-#setup button:disabled { opacity: .6; cursor: wait; }
-#setupMsg { grid-column: 1 / -1; font-size: 14px; color: var(--red); min-height: 1em; }
-@media (max-width: 560px) { #setup .card { grid-template-columns: 1fr; padding: 22px; } }
 @media (prefers-reduced-motion: no-preference) { .slide { animation: in .25s ease-out; } @keyframes in { from { opacity: .4; } to { opacity: 1; } } }
 </style>
 </head>
-<body class="setup">
-
-<div id="setup">
-  <form class="card" id="setupForm" autocomplete="off" novalidate>
-    <h1>Create an audit</h1>
-    <p class="intro">Add the client's details first. They're saved to GHL as soon as you create the audit, tagged "sales audit" and your name. Their numbers are added when you reach the last slide.</p>
-    <label>First name<input id="sFirst" required></label>
-    <label>Last name<input id="sLast"></label>
-    <label>Phone<input id="sPhone" type="tel" inputmode="tel"></label>
-    <label>Email<input id="sEmail" type="email"></label>
-    <label class="wide">Business name<input id="sBiz" required></label>
-    <label class="wide">Your name
-      <select id="sRep" required>
-        <option value="">Pick your name</option>
-        <option>Yousif</option>
-        <option>Sumit</option>
-        <option>Chris</option>
-      </select>
-    </label>
-    <p id="setupMsg" role="alert"></p>
-    <button id="createAudit" type="submit">Create audit and save to GHL</button>
-  </form>
-</div>
+<body>
 
 <div id="viewport">
   <div id="stage">
 
-    <section class="slide cover" data-notes="Open with no screen share. Do 10 minutes of discovery first: clients a month now, the goal, what one client is worth, how long they've been stuck, and what happens if nothing changes in 6 months. Type their business name here. The client is already saved in GHL from the Create audit screen.">
+    <section class="slide cover" data-notes="Open with no screen share. Do 10 minutes of discovery first: clients a month now, the goal, what one client is worth, how long they've been stuck, and what happens if nothing changes in 6 months. Type their business name here.">
       <p class="eyebrow">KenjiAI · Client Growth Audit</p>
       <h1>Let’s find where<br>your clients are slipping</h1>
       <p class="sub" style="max-width:1000px">We’ll look at your numbers together, find the leaks, and show you what it takes to close the gap. If we’re not a fit, you still leave with the audit.</p>
@@ -254,7 +220,7 @@ body.setup #setup { display: flex; }
       </div>
     </section>
 
-    <section class="slide close" hidden data-notes="Price is said out loud, not shown. Point at their number, give the investment, then: 'How would you like to get started, debit or credit?' Stop talking. Stall: acknowledge, isolate (money, timing, or whether it'll work), reframe with their numbers, ask again. Still no: book a follow-up within 48 hours with every decision maker. Never end with 'text me'. Their numbers save to GHL on their own when you open this slide. If you go back and change anything, open the Lead panel (L) and save again.">
+    <section class="slide close" hidden data-notes="Price is said out loud, not shown. Point at their number, give the investment, then: 'How would you like to get started, debit or credit?' Stop talking. Stall: acknowledge, isolate (money, timing, or whether it'll work), reframe with their numbers, ask again. Still no: book a follow-up within 48 hours with every decision maker. Never end with 'text me'. Then go to the last slide to send their audit.">
       <p class="eyebrow">Audit result</p>
       <p class="worth"><span id="closeName">Your business</span> is leaving<br><span class="big gapMonth">$0</span> a month on the table, with <span class="leakWord">0 leaks</span> to fix.</p>
       <div class="next">
@@ -264,40 +230,44 @@ body.setup #setup { display: flex; }
       </div>
     </section>
 
+    <section class="slide send" hidden data-notes="Whatever they decided on the last slide, finish here. 'I'll send you this audit and the roadmap so you have it in writing. What's the best email and phone?' Type it in while they watch. Switch off the email only if they'd rather not get it; it still saves to GHL either way.">
+      <p class="eyebrow">Your audit</p>
+      <h2>Where should we send your audit and roadmap?</h2>
+      <form id="sendForm" autocomplete="off" novalidate>
+        <div class="send-grid">
+          <label>First name<input id="cFirst" class="field" type="text" placeholder="First name"></label>
+          <label>Last name<input id="cLast" class="field" type="text" placeholder="Last name"></label>
+          <label>Email<input id="cEmail" class="field" type="email" placeholder="name@business.com"></label>
+          <label>Phone<input id="cPhone" class="field" type="tel" inputmode="tel" placeholder="(555) 555-5555"></label>
+        </div>
+        <div class="send-row">
+          <label class="toggle"><input id="cSend" type="checkbox" checked> Email the audit and next-step roadmap</label>
+          <button id="sendAudit" type="submit">Send my audit</button>
+        </div>
+        <p id="sendMsg" class="send-msg" role="status"></p>
+      </form>
+    </section>
   </div>
 </div>
 
 <div id="bar">
   <button id="prev" type="button" aria-label="Previous slide">‹ Back</button>
-  <span id="count">1 / 7</span>
+  <span id="count">1 / 8</span>
   <button id="next" type="button" aria-label="Next slide">Next ›</button>
   <span class="spacer"></span>
-  <button id="toggleLead" type="button"><span id="leadDot"></span>Lead (L)</button>
-  <button id="toggleNotes" type="button">Show notes (N)</button>
-  <button id="full" type="button">Full screen (F)</button>
-  <button id="clear" type="button">New call (clear)</button>
-</div>
-<div id="notes" hidden></div>
-
-<form id="lead" hidden autocomplete="off">
-  <label>First name<input id="lFirst" required></label>
-  <label>Last name<input id="lLast"></label>
-  <label>Phone<input id="lPhone" type="tel" inputmode="tel"></label>
-  <label>Email<input id="lEmail" type="email"></label>
-  <label>Business<input id="lBiz"></label>
-  <label>Rep
-    <select id="lRep">
+  <label class="rep">Rep
+    <select id="rep">
       <option value="">Pick your name</option>
       <option>Yousif</option>
       <option>Sumit</option>
       <option>Chris</option>
     </select>
   </label>
-  <div class="actions">
-    <button id="saveLead" type="submit">Save numbers to GHL now</button>
-    <span id="leadMsg"></span>
-  </div>
-</form>
+  <button id="toggleNotes" type="button">Show notes (N)</button>
+  <button id="full" type="button">Full screen (F)</button>
+  <button id="clear" type="button">New call (clear)</button>
+</div>
+<div id="notes" hidden></div>
 
 <script>
 (() => {
@@ -305,7 +275,6 @@ body.setup #setup { display: flex; }
   const viewport = document.getElementById('viewport');
   const slides = [...document.querySelectorAll('.slide')];
   const notes = document.getElementById('notes');
-  const lead = document.getElementById('lead');
   const count = document.getElementById('count');
   const $ = id => document.getElementById(id);
   let i = 0;
@@ -321,19 +290,11 @@ body.setup #setup { display: flex; }
   const team = store.get('auditTeam');
   const savedRep = store.get('auditRep');
   if (savedRep) {
-    ['sRep', 'lRep'].forEach(id => {
-      const sel = $(id);
-      const match = [...sel.options].find(o => o.text.toLowerCase() === savedRep.toLowerCase());
-      if (match) sel.value = match.value;
-      else { sel.add(new Option(savedRep, savedRep)); sel.value = savedRep; }
-    });
+    const match = [...$('rep').options].find(o => o.text.toLowerCase() === savedRep.toLowerCase());
+    if (match) $('rep').value = match.value;
+    else { $('rep').add(new Option(savedRep, savedRep)); $('rep').value = savedRep; }
   }
-  ['sRep', 'lRep'].forEach(id => $(id).addEventListener('change', () => {
-    store.set('auditRep', $(id).value);
-    $('sRep').value = $('lRep').value = $(id).value;
-  }));
-  let contactId = null;
-  let lastSaved = '';
+  $('rep').addEventListener('change', () => store.set('auditRep', $('rep').value));
 
   function fit() {
     const s = Math.min(viewport.clientWidth / 1600, viewport.clientHeight / 900);
@@ -344,8 +305,7 @@ body.setup #setup { display: flex; }
     slides.forEach((el, k) => { el.hidden = k !== i; });
     count.textContent = `${i + 1} / ${slides.length}`;
     notes.textContent = slides[i].dataset.notes || '';
-    // Last slide: the audit numbers go to the client's GHL contact on their own.
-    if (i === slides.length - 1 && contactId) save('final', true);
+    if (i === slides.length - 1 && !$('cFirst').value) setTimeout(() => $('cFirst').focus(), 50);
   }
 
   const num = id => {
@@ -379,68 +339,38 @@ body.setup #setup { display: flex; }
     });
   });
   document.querySelectorAll('.field').forEach(f => f.addEventListener('input', calc));
-  // The business name on the cover and in the lead panel stay in sync.
-  $('bizName').addEventListener('input', () => { $('lBiz').value = $('bizName').value; });
-  $('lBiz').addEventListener('input', () => { $('bizName').value = $('lBiz').value; calc(); });
 
-  const msg = (text, cls) => { $('leadMsg').textContent = text; $('leadMsg').className = cls || ''; };
-  const time = () => new Date().toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
-
-  async function post(body) {
-    const r = await fetch('/.netlify/functions/sales-audit', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ team, ...body }),
-    });
-    const j = await r.json().catch(() => ({}));
-    if (!r.ok) throw new Error(j.error || 'Could not save. Try again.');
-    return j;
-  }
-  const client = () => ({
-    rep: $('lRep').value, firstName: $('lFirst').value, lastName: $('lLast').value,
-    phone: $('lPhone').value, email: $('lEmail').value, business: $('lBiz').value,
-  });
-
-  // Adds the audit numbers to the client's contact as a note. quiet: auto-save on the last
-  // slide, which skips if nothing changed since the last save.
-  async function save(stage, quiet) {
+  // Last slide: email them the audit and roadmap, or just save it to GHL.
+  const sendLabel = () => { $('sendAudit').textContent = $('cSend').checked ? 'Send my audit' : 'Save to our system'; };
+  $('cSend').addEventListener('change', sendLabel);
+  const msg = (text, cls) => { $('sendMsg').textContent = text; $('sendMsg').className = 'send-msg ' + (cls || ''); };
+  $('sendForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const firstName = $('cFirst').value.trim(), email = $('cEmail').value.trim(), phone = $('cPhone').value.trim();
+    const sendEmail = $('cSend').checked;
+    if (!team) { msg('Open the deck from your team link (it has ?team= in it) so it can save.', 'err'); return; }
+    if (!firstName) { msg('Add their first name.', 'err'); $('cFirst').focus(); return; }
+    if (sendEmail && !email) { msg('Add their email to send the audit, or switch off the email.', 'err'); $('cEmail').focus(); return; }
+    if (!email && phone.replace(/\D/g, '').length < 10) { msg('Add an email or a full phone number.', 'err'); return; }
     const a = calc();
-    const checks = [...document.querySelectorAll('.check')].map((c, k) => `${c.querySelector('p').textContent} ${answers[k] === '1' ? 'Yes' : answers[k] === '0' ? 'No (leak)' : 'not asked'}`);
-    const snap = JSON.stringify([a, checks]);
-    if (quiet && snap === lastSaved) return;
-    const btn = $('saveLead'); btn.disabled = true; msg('Saving the audit numbers to GHL...');
+    const ans = [0, 1, 2, 3].map(k => answers[k] || '');
+    const checks = [...document.querySelectorAll('.check')].map((c, k) => `${c.querySelector('p').textContent} ${ans[k] === '1' ? 'Yes' : ans[k] === '0' ? 'No (leak)' : 'not asked'}`);
+    const btn = $('sendAudit'); btn.disabled = true; msg(sendEmail ? 'Sending...' : 'Saving...');
     try {
-      const j = await post({ ...client(), stage, contactId, audit: { ...a, checks } });
-      contactId = j.contactId || contactId; lastSaved = snap;
-      $('leadDot').classList.add('saved');
-      msg(`Audit numbers saved to GHL at ${time()}.`, 'ok');
+      const r = await fetch('/.netlify/functions/sales-audit', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          team, rep: $('rep').value, firstName, lastName: $('cLast').value.trim(), email, phone,
+          business: $('bizName').value.trim(), sendEmail, audit: { ...a, answers: ans, checks },
+        }),
+      });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) throw new Error(j.error || 'Could not save. Try again.');
+      if (sendEmail && !j.emailed) msg('Saved, but the email did not go out. Check the contact in GHL.', 'err');
+      else msg(sendEmail ? `Sent. The audit and roadmap are on the way to ${email}.` : 'Saved.', 'ok');
     } catch (err) {
       msg(err.message, 'err');
-      if (quiet && lead.hidden) toggleLead();
     } finally { btn.disabled = false; }
-  }
-  lead.addEventListener('submit', e => { e.preventDefault(); save('final', false); });
-
-  $('setupForm').addEventListener('submit', async e => {
-    e.preventDefault();
-    const sm = $('setupMsg');
-    const f = { firstName: $('sFirst').value.trim(), lastName: $('sLast').value.trim(), phone: $('sPhone').value.trim(), email: $('sEmail').value.trim(), business: $('sBiz').value.trim(), rep: $('sRep').value };
-    if (!team) { sm.textContent = 'Open the deck from your team link (it has ?team= in it) so it can save to GHL.'; return; }
-    if (!f.firstName || !f.business) { sm.textContent = 'Add the client\'s first name and business name.'; return; }
-    if (!f.email && f.phone.replace(/\D/g, '').length < 10) { sm.textContent = 'Add an email or a full phone number.'; return; }
-    if (!f.rep) { sm.textContent = 'Pick your name.'; return; }
-    sm.textContent = ''; $('createAudit').disabled = true; $('createAudit').textContent = 'Saving to GHL...';
-    try {
-      const j = await post({ ...f, stage: 'start' });
-      contactId = j.contactId;
-      $('lFirst').value = f.firstName; $('lLast').value = f.lastName; $('lPhone').value = f.phone;
-      $('lEmail').value = f.email; $('lBiz').value = $('bizName').value = f.business; $('lRep').value = f.rep;
-      $('leadDot').classList.add('saved');
-      msg(j.existed ? `${f.firstName} was already in GHL, so the "sales audit" tag was added. The numbers save when you reach the last slide.` : `${f.firstName} saved to GHL at ${time()}. The numbers save when you reach the last slide.`, 'ok');
-      document.body.classList.remove('setup');
-      calc(); show(0); fit();
-    } catch (err) {
-      sm.textContent = err.message;
-    } finally { $('createAudit').disabled = false; $('createAudit').textContent = 'Create audit and save to GHL'; }
   });
 
   $('prev').onclick = () => show(i - 1);
@@ -450,13 +380,7 @@ body.setup #setup { display: flex; }
     $('toggleNotes').textContent = notes.hidden ? 'Show notes (N)' : 'Hide notes (N)';
     fit();
   };
-  const toggleLead = () => {
-    lead.hidden = !lead.hidden;
-    if (!lead.hidden && !$('lFirst').value) $('lFirst').focus();
-    fit();
-  };
   $('toggleNotes').onclick = toggleNotes;
-  $('toggleLead').onclick = toggleLead;
   const fullscreen = () => {
     try {
       if (document.fullscreenElement) document.exitFullscreen();
@@ -465,28 +389,22 @@ body.setup #setup { display: flex; }
   };
   $('full').onclick = fullscreen;
   $('clear').onclick = () => {
-    document.querySelectorAll('.field, #lead input, #setup input').forEach(f => { f.value = ''; });
+    document.querySelectorAll('.field').forEach(f => { f.value = ''; });
+    $('cSend').checked = true; sendLabel(); msg('');
     Object.keys(answers).forEach(k => delete answers[k]);
     document.querySelectorAll('.yn button').forEach(b => b.setAttribute('aria-pressed', 'false'));
-    contactId = null; lastSaved = '';
-    $('leadDot').classList.remove('saved'); msg('');
-    if (!lead.hidden) toggleLead();
     calc(); show(0);
-    document.body.classList.add('setup'); $('sFirst').focus();
   };
   document.addEventListener('keydown', e => {
-    if (document.body.classList.contains('setup')) return;
-    if (e.target.matches('input, select')) { if (e.key === 'Escape') e.target.blur(); if (e.key === 'Enter' && e.target.classList.contains('field')) e.target.blur(); return; }
+    if (e.target.matches('input, select')) { if (e.key === 'Escape') e.target.blur(); if (e.key === 'Enter' && e.target.classList.contains('field') && !e.target.closest('#sendForm')) e.target.blur(); return; }
     if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); show(i + 1); }
     else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); show(i - 1); }
     else if (e.key === 'n' || e.key === 'N') toggleNotes();
-    else if (e.key === 'l' || e.key === 'L') toggleLead();
     else if (e.key === 'f' || e.key === 'F') fullscreen();
   });
   window.addEventListener('resize', fit);
   document.addEventListener('fullscreenchange', fit);
   show(0); calc(); fit();
-  $('sFirst').focus();
 })();
 </script>
 </body>
