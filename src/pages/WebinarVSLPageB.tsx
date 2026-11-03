@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Maximize2, Volume2, VolumeX } from 'lucide-react';
 import { useResumableVideo } from '../hooks/useResumableVideo';
+import { SpeedButton } from '../components/SpeedButton';
 
 // A/B variant B of /overview. Identical to WebinarVSLPage except the video,
 // so the test isolates the video as the only variable.
@@ -156,6 +157,10 @@ export default function WebinarVSLPageB() {
             {/* Custom controls: mute + fullscreen only, no seek/scrub bar.
                 Top-right, kept clear of the mobile top-bar block above. */}
             <div className="absolute top-3 right-3 z-30 flex items-center gap-2">
+              <SpeedButton
+                videoRef={videoElRef}
+                className="flex items-center justify-center bg-black/75 hover:bg-black/90 backdrop-blur-sm border border-white/25 text-white rounded-lg px-3.5 py-2 text-[13px] font-semibold transition-all active:scale-95 shadow-lg"
+              />
               <button
                 onClick={handleToggleMute}
                 aria-label={isMuted ? 'Unmute' : 'Mute'}

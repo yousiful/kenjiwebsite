@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Maximize2, Volume2, VolumeX } from 'lucide-react';
 import { useResumableVideo } from '../hooks/useResumableVideo';
+import { SpeedButton } from '../components/SpeedButton';
 
 // Video: "How to Get Paid for Running Ads" (3:09, a YouTube outlier, self-hosted so
 // viewers can't click through to YouTube). Pricing unlocks at 1:53, where Yousif starts
@@ -191,6 +192,10 @@ export default function WebinarVSLPage() {
             {/* Custom controls: mute + fullscreen only, no seek/scrub bar.
                 Top-right, matching /overview-b and the explainer video. */}
             <div className="absolute top-3 right-3 z-30 flex items-center gap-2">
+              <SpeedButton
+                videoRef={videoElRef}
+                className="flex items-center justify-center bg-black/70 hover:bg-black/90 backdrop-blur-sm border border-white/20 text-white rounded-lg px-3 py-2 text-xs font-semibold transition-all active:scale-95 shadow-lg"
+              />
               <button
                 onClick={handleToggleMute}
                 aria-label={isMuted ? 'Unmute' : 'Mute'}
