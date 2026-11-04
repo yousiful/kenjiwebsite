@@ -3,9 +3,11 @@ import { RefObject, useEffect } from 'react';
 // The two booking VSLs (Desktop\Output\VSL and Landing Pages\landing1_full / landing2_full), tested
 // against each other on /growth-quiz/book, /book and /book2 from 2026-10-10. One shared storage key,
 // so a visitor sees the same one on every booking page.
+// Yousif 2026-11-04: l1 dropped (1 play in 14 vs l2's 4 in 13 over 30 days). Now l2 vs l2p, the same
+// video with proof cards (HBR 2011 speed-to-lead, $3.35M/500+, $186K funnel, tint client, Google reviews).
 export const BOOK_VSLS = [
-  { id: 'l1', src: '/videos/book-vsl-1.mp4', poster: '/videos/book-vsl-1-poster.jpg' },
   { id: 'l2', src: '/videos/book-vsl-2.mp4', poster: '/videos/book-vsl-2-poster.jpg' },
+  { id: 'l2p', src: '/videos/book-vsl-2-proof.mp4', poster: '/videos/book-vsl-2-proof-poster.jpg' },
 ];
 export const BOOK_VSL_KEY = 'kenji-book-vsl';
 

@@ -383,7 +383,7 @@ const CommunityCard: React.FC<{ className?: string; heading?: string; sub?: stri
 export const GrowthQuizBookPage: React.FC = () => {
   const lead = useMemo(readLead, []);
   // Yousif 2026-10-10: short walkthrough video above the calendar, two versions tested for drop-off.
-  // ?vsl=l1 or ?vsl=l2 forces one. Results: kenjiai.com/funnel-stats/, click /growth-quiz/book.
+  // ?vsl=l2 or ?vsl=l2p forces one. Results: kenjiai.com/funnel-stats/, click /growth-quiz/book.
   const videoRef = useRef<HTMLVideoElement>(null);
   const [vsl] = useState(() => pickVslVariant(BOOK_VSLS, BOOK_VSL_KEY));
   useVslDropoff(videoRef, vsl.id);

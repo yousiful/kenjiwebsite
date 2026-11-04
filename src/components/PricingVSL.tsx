@@ -17,6 +17,8 @@ export const PRICING_VSL_KEY = 'kenji-pricing-vsl';
 const VARIANTS: { id: string; src: string; poster: string }[] = [
   { id: 'lt', src: '/videos/pricing-vsl-lowticket.mp4', poster: '/videos/pricing-vsl-lowticket-poster.jpg' },
   { id: 'gp3', src: '/overview/get-paid-running-ads.mp4', poster: '/overview/get-paid-thumb.jpg' },
+  // Yousif 2026-11-04: the /growth-quiz/book video (1:43) with proof cards added, as a third version.
+  { id: 'l2p', src: '/videos/book-vsl-2-proof.mp4', poster: '/videos/book-vsl-2-proof-poster.jpg' },
 ];
 
 export function PricingVSL() {

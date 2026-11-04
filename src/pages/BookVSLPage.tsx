@@ -7,7 +7,7 @@ import { VideoPreview } from '../components/VideoPreview';
 import { BOOK_VSLS, BOOK_VSL_KEY, pickVslVariant, useVslDropoff } from '../hooks/useVslDropoff';
 
 // Yousif 2026-10-10: both booking VSLs rotate here for a drop-off test (see BOOK_VSLS).
-// ?vsl=l1 or ?vsl=l2 forces one. Results: kenjiai.com/funnel-stats/, click /book in the page table.
+// ?vsl=l2 or ?vsl=l2p forces one. Results: kenjiai.com/funnel-stats/, click /book in the page table.
 
 type FbqWindow = Window & {
   fbq?: (...args: unknown[]) => void;
