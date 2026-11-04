@@ -350,6 +350,34 @@ const GrowthQuizPage: React.FC = () => {
 
 export default GrowthQuizPage;
 
+/* ---------- $7 community card: not-a-fit page, and on the booking page right after someone books ---------- */
+
+const CommunityCard: React.FC<{ className?: string; heading?: string; sub?: string; cta?: string }> = ({ className = '', heading, sub, cta }) => (
+  <div className={`${className} rounded-3xl border border-white/12 bg-white/[0.04] p-6 sm:p-8`}>
+    <h2 className="display text-[26px] sm:text-[30px] leading-tight font-extrabold">{heading || 'The Ad Optimization Community, $7'}</h2>
+    <p className="mt-2 text-[16px] text-[#A9B4C4]">{sub || 'Learn how ads, sales and follow-up work, so you can run them yourself.'}</p>
+    <ul className="mt-6 space-y-3 text-[17px]">
+      {[
+        'Paid ads training from our media buyers',
+        'Weekly live Q&As on sales, ads and AI systems',
+        'High-ticket sales masterclass',
+        'A private community of owners doing the same work',
+      ].map((t) => (
+        <li key={t} className="flex gap-3">
+          <Check className="w-5 h-5 mt-0.5 shrink-0 text-[#5EEAD4]" aria-hidden="true" />
+          <span>{t}</span>
+        </li>
+      ))}
+    </ul>
+    <a
+      href={LOW_TICKET_URL} onClick={() => track('LowTicketClick', false)}
+      className="mt-8 w-full inline-flex items-center justify-center gap-2.5 rounded-2xl bg-[#5EEAD4] text-[#06221E] font-bold text-[18px] px-7 py-4 hover:bg-[#7FF0DF] transition-colors"
+    >
+      {cta || 'Join for $7'} <ArrowRight className="w-5 h-5" aria-hidden="true" />
+    </a>
+  </div>
+);
+
 /* ---------- qualified: booking page ---------- */
 
 export const GrowthQuizBookPage: React.FC = () => {
@@ -397,10 +425,20 @@ export const GrowthQuizBookPage: React.FC = () => {
     return () => { window.removeEventListener('message', onHeight); s.remove(); };
   }, []);
 
+  // Yousif 11/3: once they've booked, offer the $7 community to learn ads while they wait for the call.
+  // Shown only after booking so it never pulls anyone away from picking a time.
+  const [booked, setBooked] = useState(false);
+  const afterRef = useRef<HTMLDivElement>(null);
+  useEffect(() => { if (booked) setTimeout(() => afterRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }), 1200); }, [booked]);
   useEffect(() => {
     // Track the actual booking when the GHL widget reports it.
     const onMsg = (e: MessageEvent) => {
-      if (typeof e.data === 'string' ? /booked|appointment/i.test(e.data) : /booked|appointment/i.test(JSON.stringify(e.data || ''))) track('Schedule', true, { vsl: vsl.id });
+      // GHL's widget posts ['msgsndr-booking-complete', ...] when a booking goes through.
+      const BOOKED = /booking-complete|booked|appointment/i;
+      if (typeof e.data === 'string' ? BOOKED.test(e.data) : BOOKED.test(JSON.stringify(e.data || ''))) {
+        track('Schedule', true, { vsl: vsl.id });
+        setBooked(true);
+      }
     };
     window.addEventListener('message', onMsg);
     return () => window.removeEventListener('message', onMsg);
@@ -435,6 +473,16 @@ export const GrowthQuizBookPage: React.FC = () => {
           <iframe src={src} title="Book your growth call" className="w-full block border-0" style={{ height: frameHeight, minHeight: 700 }} scrolling="auto" id={`${CALENDAR_ID}_booking`} />
         </div>
         <p className="mt-6 text-[15px] text-[#A9B4C4]">500+ businesses since 2013. Your answers are already with our team, so the call starts where you are.</p>
+        {booked && (
+          <div ref={afterRef}>
+            <CommunityCard
+              className="mt-10"
+              heading="You’re booked. Want a head start before the call?"
+              sub="Join our Ad Optimization Community for $7 and learn how ads, sales and follow-up work while you wait. Totally optional, your call is set either way."
+              cta="Join for $7"
+            />
+          </div>
+        )}
       </section>
     </Shell>
   );
@@ -455,29 +503,7 @@ export const GrowthQuizNextStepPage: React.FC = () => {
           Our done-for-you work is built for businesses already doing $10K+ a month with a budget to grow. You’re not quite there, and that’s a normal place to be. The better step right now is learning how to get customers yourself, so the business gets there faster.
         </p>
 
-        <div className="mt-10 rounded-3xl border border-white/12 bg-white/[0.04] p-6 sm:p-8">
-          <h2 className="display text-[26px] sm:text-[30px] leading-tight font-extrabold">The Ad Optimization Community, $7</h2>
-          <p className="mt-2 text-[16px] text-[#A9B4C4]">Learn how ads, sales and follow-up work, so you can run them yourself.</p>
-          <ul className="mt-6 space-y-3 text-[17px]">
-            {[
-              'Paid ads training from our media buyers',
-              'Weekly live Q&As on sales, ads and AI systems',
-              'High-ticket sales masterclass',
-              'A private community of owners doing the same work',
-            ].map((t) => (
-              <li key={t} className="flex gap-3">
-                <Check className="w-5 h-5 mt-0.5 shrink-0 text-[#5EEAD4]" aria-hidden="true" />
-                <span>{t}</span>
-              </li>
-            ))}
-          </ul>
-          <a
-            href={LOW_TICKET_URL} onClick={() => track('LowTicketClick', false)}
-            className="mt-8 w-full inline-flex items-center justify-center gap-2.5 rounded-2xl bg-[#5EEAD4] text-[#06221E] font-bold text-[18px] px-7 py-4 hover:bg-[#7FF0DF] transition-colors"
-          >
-            Join for $7 <ArrowRight className="w-5 h-5" aria-hidden="true" />
-          </a>
-        </div>
+        <CommunityCard className="mt-10" />
 
         <p className="mt-8 text-[16px] text-[#A9B4C4]">
           Once the business is past $10K a month, <a href="/growth-quiz" className="text-[#5EEAD4] underline underline-offset-4">take the quiz again</a> and we’ll talk.

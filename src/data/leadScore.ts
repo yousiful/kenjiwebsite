@@ -198,7 +198,8 @@ export function cleanAnswers(raw: unknown): Answers {
 
 // Same bar as /growth-quiz (Yousif 2026-10-07): $10K+/mo, $1K+/mo to grow, not just researching, decides.
 const DISQUALIFY: Record<string, string[]> = {
-  revenue: ['under_10k'], budget: ['under_1k'], timeline: ['researching'], decision: ['someone_else'],
+  // Budget no longer disqualifies (Yousif 11/3): both early ad takers failed only on "Under $1,000"; the $249.90/$297 plans fit that.
+  revenue: ['under_10k'], timeline: ['researching'], decision: ['someone_else'],
 };
 export const isQualified = (a: Answers) => Object.entries(DISQUALIFY).every(([q, bad]) => a[q] && !bad.includes(a[q]));
 
