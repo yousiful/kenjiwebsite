@@ -272,7 +272,7 @@ const FreeToolsPage: React.FC = () => {
     <>
       <Helmet>
         <title>Free AI Tools for Business | KenjiAI</title>
-        <meta name="description" content="Free tools for business owners: ROAS, LTV, Facebook ads budget and missed call calculators, an ICP generator, a Google review link generator and more. No signup needed." />
+        <meta name="description" content="Free tools for business owners: ROAS, LTV, ad budget and missed call calculators, an ICP generator, a Google review link generator and more. No signup." />
         <meta name="keywords" content="free AI tools, AI prompt generator, free PR tools, AI sales coach, free startup tools, ChatGPT prompts, GPT-4 prompts, AI business tools, free marketing tools, AI automation tools, prompt engineering, free AI software, business automation, AI productivity tools, free AI apps" />
         <link rel="canonical" href="https://kenjiai.com/free-tools" />
         <meta property="og:type" content="website" />

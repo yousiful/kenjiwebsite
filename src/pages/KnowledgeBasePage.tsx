@@ -130,10 +130,10 @@ const KnowledgeBasePage: React.FC = () => {
 
   return (
     <>
-      <PageSchema path="/knowledge" name={"KenjiAI Academy: Elite AI & Business Mastery"} description={"Access premium AI automation courses, sales mastery tracks, and the interactive AI knowledge assessment."} type="CollectionPage" />
+      <PageSchema path="/knowledge" name={"KenjiAI Academy: Elite AI & Business Mastery"} description={"KenjiAI Academy courses on AI automation, paid ads and sales follow-up, plus an interactive AI knowledge quiz to test what you learned at your own pace."} type="CollectionPage" />
       <Helmet>
         <title>KenjiAI Academy: Elite AI & Business Mastery</title>
-        <meta name="description" content="Access premium AI automation courses, sales mastery tracks, and the interactive AI knowledge assessment." />
+        <meta name="description" content="KenjiAI Academy courses on AI automation, paid ads and sales follow-up, plus an interactive AI knowledge quiz to test what you learned at your own pace." />
         <link rel="canonical" href="https://kenjiai.com/knowledge" />
       </Helmet>
 

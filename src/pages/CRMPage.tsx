@@ -268,6 +268,32 @@ const CRMPage: React.FC = () => {
             </div>
           </motion.div>
 
+          {/* How it works */}
+          <section className="mb-20 max-w-4xl mx-auto">
+            <h2 className="text-4xl font-bold text-white mb-8 text-center">
+              How KenjiAI CRM Works Day to Day
+            </h2>
+            <div className="space-y-5 text-gray-400 text-lg leading-relaxed">
+              <p>
+                Every lead lands in one place, whether it came from a Facebook ad, a Google search, a web form,
+                a missed call or a text. KenjiAI has had AI built into the CRM since 2022, so the system answers
+                new leads by call or text within seconds, asks the questions you would ask, and books the
+                appointment straight onto your calendar.
+              </p>
+              <p>
+                Your pipeline moves on its own. When a lead books, shows up, gets a quote or goes quiet, the deal
+                changes stage and the right follow-up starts, so nobody on your team has to remember who to call
+                back. Inbound and outbound calls are logged and recorded against the contact, next to every text
+                and email.
+              </p>
+              <p>
+                If you already run your jobs in ServiceTitan, Jobber or GoHighLevel, KenjiAI syncs both ways, so
+                contacts, appointments and deal stages stay the same in both systems. It fits home service
+                companies, clinics, agencies and sales teams who get more leads than they can call back by hand.
+              </p>
+            </div>
+          </section>
+
           {/* CTA Section */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}

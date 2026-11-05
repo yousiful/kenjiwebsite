@@ -1425,6 +1425,18 @@
       "content": "#3B82F6"
      },
      {
+      "name": "title",
+      "content": "Native AI Sales CRM & Telephony Infrastructure | KenjiAI"
+     },
+     {
+      "name": "description",
+      "content": "KenjiAI is a sales CRM with AI built in since 2022. Automate inbound and outbound calls and pipelines with two-way sync to ServiceTitan, Jobber and GoHighLevel."
+     },
+     {
+      "name": "keywords",
+      "content": "AI CRM, sales pipeline, contact management, sales automation, native AI CRM, small business CRM, Kenji CRM, telephony CRM"
+     },
+     {
       "name": "robots",
       "content": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
      },
@@ -1463,6 +1475,14 @@
      {
       "property": "og:url",
       "content": "https://kenjiai.com/crm"
+     },
+     {
+      "property": "og:title",
+      "content": "Native AI Sales CRM & Telephony Infrastructure | KenjiAI"
+     },
+     {
+      "property": "og:description",
+      "content": "KenjiAI is a sales CRM with AI built in since 2022. Automate inbound and outbound calls and pipelines with two-way sync to ServiceTitan, Jobber and GoHighLevel."
      },
      {
       "property": "og:image",
@@ -1508,6 +1528,14 @@
       "content": "https://kenjiai.com/crm"
      },
      {
+      "property": "twitter:title",
+      "content": "Native AI Sales CRM & Telephony Infrastructure | KenjiAI"
+     },
+     {
+      "property": "twitter:description",
+      "content": "KenjiAI is a sales CRM with AI built in since 2022. Automate inbound and outbound calls and pipelines with two-way sync to ServiceTitan, Jobber and GoHighLevel."
+     },
+     {
       "property": "twitter:image",
       "content": "https://kenjiai.com/og-image.png"
      },
@@ -1538,34 +1566,6 @@
      {
       "name": "twitter:data2",
       "content": "Performance-Based"
-     },
-     {
-      "name": "title",
-      "content": "Native AI Sales CRM & Telephony Infrastructure | KenjiAI"
-     },
-     {
-      "name": "description",
-      "content": "KenjiAI is a sales CRM with AI built in since 2022. Automate inbound and outbound calls and pipelines with two-way sync to ServiceTitan, Jobber and GoHighLevel."
-     },
-     {
-      "name": "keywords",
-      "content": "AI CRM, sales pipeline, contact management, sales automation, native AI CRM, small business CRM, Kenji CRM, telephony CRM"
-     },
-     {
-      "property": "og:title",
-      "content": "Native AI Sales CRM & Telephony Infrastructure | KenjiAI"
-     },
-     {
-      "property": "og:description",
-      "content": "KenjiAI is a sales CRM with AI built in since 2022. Automate inbound and outbound calls and pipelines with two-way sync to ServiceTitan, Jobber and GoHighLevel."
-     },
-     {
-      "property": "twitter:title",
-      "content": "Native AI Sales CRM & Telephony Infrastructure | KenjiAI"
-     },
-     {
-      "property": "twitter:description",
-      "content": "KenjiAI is a sales CRM with AI built in since 2022. Automate inbound and outbound calls and pipelines with two-way sync to ServiceTitan, Jobber and GoHighLevel."
      }
     ],
     "canonical": "https://kenjiai.com/crm",
@@ -1654,6 +1654,22 @@
     {
      "tag": "p",
      "text": "Connect your existing tools or use our built-in alternatives. Everything syncs automatically."
+    },
+    {
+     "tag": "h2",
+     "text": "How KenjiAI CRM Works Day to Day"
+    },
+    {
+     "tag": "p",
+     "text": "Every lead lands in one place, whether it came from a Facebook ad, a Google search, a web form, a missed call or a text. KenjiAI has had AI built into the CRM since 2022, so the system answers new leads by call or text within seconds, asks the questions you would ask, and books the appointment straight onto your calendar."
+    },
+    {
+     "tag": "p",
+     "text": "Your pipeline moves on its own. When a lead books, shows up, gets a quote or goes quiet, the deal changes stage and the right follow-up starts, so nobody on your team has to remember who to call back. Inbound and outbound calls are logged and recorded against the contact, next to every text and email."
+    },
+    {
+     "tag": "p",
+     "text": "If you already run your jobs in ServiceTitan, Jobber or GoHighLevel, KenjiAI syncs both ways, so contacts, appointments and deal stages stay the same in both systems. It fits home service companies, clinics, agencies and sales teams who get more leads than they can call back by hand."
     },
     {
      "tag": "h3",
@@ -2825,18 +2841,6 @@
       "content": "general"
      },
      {
-      "property": "og:type",
-      "content": "website"
-     },
-     {
-      "property": "og:url",
-      "content": "https://kenjiai.com/free-tools"
-     },
-     {
-      "property": "og:image",
-      "content": "https://kenjiai.com/og-image.png"
-     },
-     {
       "property": "og:image:width",
       "content": "1200"
      },
@@ -2880,6 +2884,10 @@
       "content": "Free AI Tools for Business | KenjiAI"
      },
      {
+      "property": "twitter:description",
+      "content": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation."
+     },
+     {
       "property": "twitter:image",
       "content": "https://kenjiai.com/og-image.png"
      },
@@ -2912,16 +2920,16 @@
       "content": "Performance-Based"
      },
      {
-      "property": "twitter:description",
-      "content": "Free tools for business owners: ROAS, LTV, Facebook ads budget and missed call calculators, an ICP generator, a Google review link generator and more. No signup needed."
-     },
-     {
       "name": "description",
-      "content": "Free tools for business owners: ROAS, LTV, Facebook ads budget and missed call calculators, an ICP generator, a Google review link generator and more. No signup needed."
+      "content": "Free tools for business owners: ROAS, LTV, ad budget and missed call calculators, an ICP generator, a Google review link generator and more. No signup."
      },
      {
       "name": "keywords",
       "content": "free AI tools, AI prompt generator, free PR tools, AI sales coach, free startup tools, ChatGPT prompts, GPT-4 prompts, AI business tools, free marketing tools, AI automation tools, prompt engineering, free AI software, business automation, AI productivity tools, free AI apps"
+     },
+     {
+      "property": "og:type",
+      "content": "website"
      },
      {
       "property": "og:title",
@@ -2932,13 +2940,21 @@
       "content": "Free calculators and AI tools for ads, follow-up and reviews: ROAS, LTV, ad budget, missed calls, ICP and review links. No signup needed."
      },
      {
+      "property": "og:url",
+      "content": "https://kenjiai.com/free-tools"
+     },
+     {
+      "property": "og:image",
+      "content": "https://kenjiai.com/og-image.png"
+     },
+     {
       "name": "twitter:card",
       "content": "summary_large_image"
      }
     ],
     "canonical": "https://kenjiai.com/free-tools",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@type\":\"CollectionPage\",\"name\":\"Free AI Tools by KenjiAI\",\"description\":\"A collection of free AI tools built by the KenjiAI team. No signup required, 100% free forever.\",\"url\":\"https://kenjiai.com/free-tools\",\"mainEntity\":{\"@type\":\"ItemList\",\"name\":\"Free AI Tools\",\"numberOfItems\":16,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"url\":\"https://kenjiai.com/tools/ltv-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Customer Lifetime Value (LTV) Calculator\",\"description\":\"Enter purchase value, how often customers buy, how long they stay, your margin, and your cost per customer. Get lifetime value in revenue and profit, your LTV:CAC ratio, the most you can pay per customer, and CAC payback.\",\"url\":\"https://kenjiai.com/tools/ltv-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":2,\"url\":\"https://kenjiai.com/invites\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Kenji Invites: Free Invitations with RSVP for Any Celebration\",\"description\":\"Make a beautiful invitation for a wedding, birthday, graduation, shower, holiday party or any celebration. Add your photos, send it by text or email from your own phone, and see who's coming.\",\"url\":\"https://kenjiai.com/invites\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":3,\"url\":\"https://kenjiai.com/funding\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Funding Finder: Grants, Loans and Investors Open Now\",\"description\":\"Every grant, SBA loan, revenue-based financing offer, accelerator, angel network and competition we can confirm is open for US small businesses and founders, with the deadline, official link and last-verified date. Refreshed every week.\",\"url\":\"https://kenjiai.com/funding\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":4,\"url\":\"https://kenjiai.com/tools/facebook-ads-budget-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Facebook Ads Budget Calculator\",\"description\":\"Enter the customers you want each month, your cost per lead, and your close rate. Get the daily and monthly Meta ads budget you need, cost per customer, and whether you have enough volume to exit the learning phase.\",\"url\":\"https://kenjiai.com/tools/facebook-ads-budget-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":5,\"url\":\"https://kenjiai.com/tools/roas-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"ROAS & Break-Even Calculator\",\"description\":\"Enter ad spend, revenue, order value, and margin. Get your ROAS, the break-even ROAS your margins require, the most you can pay per customer, and real profit after ad spend.\",\"url\":\"https://kenjiai.com/tools/roas-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":6,\"url\":\"https://kenjiai.com/tools/google-review-link-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Google Review Link Generator\",\"description\":\"Make a direct link to your Google review box plus a printable QR code, with ready-to-send text and email templates for asking customers.\",\"url\":\"https://kenjiai.com/tools/google-review-link-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":7,\"url\":\"https://kenjiai.com/tools/name-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Business & $100M Offer Name Generator\",\"description\":\"Generate viral business names, Alex Hormozi $100M Grand Slam offer titles, SaaS products, and lead magnets with domain checks, ad hooks, and conversion psychology.\",\"url\":\"https://kenjiai.com/tools/name-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":8,\"url\":\"https://kenjiai.com/trendpulse\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"TrendPulse & AdForge - Viral Trends, $100M Offers & Ad Hooks\",\"description\":\"Real-time trend radar, buyer intent miner, Alex Hormozi $100M Grand Slam Offer architect, and 6-vector psychological ad angle and viral UGC hook generator.\",\"url\":\"https://kenjiai.com/trendpulse\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":9,\"url\":\"https://kenjiai.com/tools/icp-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"ICP Generator - Ideal Customer Profile For Ad Targeting\",\"description\":\"Describe what you sell and what you charge. Get 2 or 3 named buyer segments with real Meta Ads detailed-targeting interests, exclusions, buying triggers, objection counters, and lookalike seeds you can configure a campaign from today.\",\"url\":\"https://kenjiai.com/tools/icp-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":10,\"url\":\"https://kenjiai.com/tools/missed-call-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Missed Call Revenue Loss Calculator\",\"description\":\"Interactive diagnostic tool for high-ticket businesses to calculate pipeline revenue lost to unanswered calls and discover ROI on 24/7 AI call answering agents.\",\"url\":\"https://kenjiai.com/tools/missed-call-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":11,\"url\":\"https://kenjiai.com/tools/song-prompt-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Song & Jingle Prompt Generator\",\"description\":\"Build a real, producer-grade prompt for Suno, Udio, or Producer.ai, not generic AI slop. Make a personal song with your name in it, or a commercial jingle/anthem for your business.\",\"url\":\"https://kenjiai.com/tools/song-prompt-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":12,\"url\":\"https://prompt.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Prompt Generator\",\"description\":\"Generate perfect AI prompts for any use case with our intelligent prompt engineering tool. Create optimized prompts for ChatGPT, Claude, GPT-4, and other AI models. Free forever, no signup required.\",\"url\":\"https://prompt.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":13,\"url\":\"https://prpro.kenjiai.com/\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"PR Pro - Free AI PR Tool\",\"description\":\"AI-powered PR campaigns that get you noticed by the right people and media outlets. Generate press releases, media lists, and outreach templates. Free AI PR automation tool.\",\"url\":\"https://prpro.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":14,\"url\":\"https://salescoach.kenjiai.com/\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Sales Coach AI - Free Sales Training\",\"description\":\"Your personal AI sales trainer that helps close more deals with data-driven insights, objection handling, and performance optimization. Free AI sales coaching and training.\",\"url\":\"https://salescoach.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":15,\"url\":\"https://dispute.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Dispute Resolution\",\"description\":\"Resolve disputes efficiently with AI-powered mediation, conflict analysis, and resolution strategies. Free AI dispute management and resolution tool for businesses.\",\"url\":\"https://dispute.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":16,\"url\":\"https://webinar.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Live Webinar Platform\",\"description\":\"Host engaging live webinars with AI-powered audience insights, automated follow-ups, and conversion tracking. Free webinar hosting and automation tool.\",\"url\":\"https://webinar.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}}]},\"breadcrumb\":{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Free AI Tools\",\"item\":\"https://kenjiai.com/free-tools\"}]}}"
+     "{\"@context\":\"https://schema.org\",\"@type\":\"CollectionPage\",\"name\":\"Free AI Tools by KenjiAI\",\"description\":\"A collection of free AI tools built by the KenjiAI team. No signup required, 100% free forever.\",\"url\":\"https://kenjiai.com/free-tools\",\"mainEntity\":{\"@type\":\"ItemList\",\"name\":\"Free AI Tools\",\"numberOfItems\":17,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"url\":\"https://kenjiai.com/tools/utm-builder\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"UTM Builder: UTM Link Generator with QR Code\",\"description\":\"Paste your page, pick Facebook, Instagram, Google Ads, email or text, name the campaign, and copy a clean UTM tracking link. Includes a downloadable QR code and Meta Ads dynamic parameters.\",\"url\":\"https://kenjiai.com/tools/utm-builder\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":2,\"url\":\"https://kenjiai.com/tools/ltv-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Customer Lifetime Value (LTV) Calculator\",\"description\":\"Enter purchase value, how often customers buy, how long they stay, your margin, and your cost per customer. Get lifetime value in revenue and profit, your LTV:CAC ratio, the most you can pay per customer, and CAC payback.\",\"url\":\"https://kenjiai.com/tools/ltv-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":3,\"url\":\"https://kenjiai.com/invites\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Kenji Invites: Free Invitations with RSVP for Any Celebration\",\"description\":\"Make a beautiful invitation for a wedding, birthday, graduation, shower, holiday party or any celebration. Add your photos, send it by text or email from your own phone, and see who's coming.\",\"url\":\"https://kenjiai.com/invites\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":4,\"url\":\"https://kenjiai.com/funding\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Funding Finder: Grants, Loans and Investors Open Now\",\"description\":\"Every grant, SBA loan, revenue-based financing offer, accelerator, angel network and competition we can confirm is open for US small businesses and founders, with the deadline, official link and last-verified date. Refreshed every week.\",\"url\":\"https://kenjiai.com/funding\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":5,\"url\":\"https://kenjiai.com/tools/facebook-ads-budget-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Facebook Ads Budget Calculator\",\"description\":\"Enter the customers you want each month, your cost per lead, and your close rate. Get the daily and monthly Meta ads budget you need, cost per customer, and whether you have enough volume to exit the learning phase.\",\"url\":\"https://kenjiai.com/tools/facebook-ads-budget-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":6,\"url\":\"https://kenjiai.com/tools/roas-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"ROAS & Break-Even Calculator\",\"description\":\"Enter ad spend, revenue, order value, and margin. Get your ROAS, the break-even ROAS your margins require, the most you can pay per customer, and real profit after ad spend.\",\"url\":\"https://kenjiai.com/tools/roas-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":7,\"url\":\"https://kenjiai.com/tools/google-review-link-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Google Review Link Generator\",\"description\":\"Make a direct link to your Google review box plus a printable QR code, with ready-to-send text and email templates for asking customers.\",\"url\":\"https://kenjiai.com/tools/google-review-link-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":8,\"url\":\"https://kenjiai.com/tools/name-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Business & $100M Offer Name Generator\",\"description\":\"Generate viral business names, Alex Hormozi $100M Grand Slam offer titles, SaaS products, and lead magnets with domain checks, ad hooks, and conversion psychology.\",\"url\":\"https://kenjiai.com/tools/name-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":9,\"url\":\"https://kenjiai.com/trendpulse\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"TrendPulse & AdForge - Viral Trends, $100M Offers & Ad Hooks\",\"description\":\"Real-time trend radar, buyer intent miner, Alex Hormozi $100M Grand Slam Offer architect, and 6-vector psychological ad angle and viral UGC hook generator.\",\"url\":\"https://kenjiai.com/trendpulse\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":10,\"url\":\"https://kenjiai.com/tools/icp-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"ICP Generator - Ideal Customer Profile For Ad Targeting\",\"description\":\"Describe what you sell and what you charge. Get 2 or 3 named buyer segments with real Meta Ads detailed-targeting interests, exclusions, buying triggers, objection counters, and lookalike seeds you can configure a campaign from today.\",\"url\":\"https://kenjiai.com/tools/icp-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":11,\"url\":\"https://kenjiai.com/tools/missed-call-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Missed Call Revenue Loss Calculator\",\"description\":\"Interactive diagnostic tool for high-ticket businesses to calculate pipeline revenue lost to unanswered calls and discover ROI on 24/7 AI call answering agents.\",\"url\":\"https://kenjiai.com/tools/missed-call-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":12,\"url\":\"https://kenjiai.com/tools/song-prompt-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Song & Jingle Prompt Generator\",\"description\":\"Build a real, producer-grade prompt for Suno, Udio, or Producer.ai, not generic AI slop. Make a personal song with your name in it, or a commercial jingle/anthem for your business.\",\"url\":\"https://kenjiai.com/tools/song-prompt-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":13,\"url\":\"https://prompt.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Prompt Generator\",\"description\":\"Generate perfect AI prompts for any use case with our intelligent prompt engineering tool. Create optimized prompts for ChatGPT, Claude, GPT-4, and other AI models. Free forever, no signup required.\",\"url\":\"https://prompt.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":14,\"url\":\"https://prpro.kenjiai.com/\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"PR Pro - Free AI PR Tool\",\"description\":\"AI-powered PR campaigns that get you noticed by the right people and media outlets. Generate press releases, media lists, and outreach templates. Free AI PR automation tool.\",\"url\":\"https://prpro.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":15,\"url\":\"https://salescoach.kenjiai.com/\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Sales Coach AI - Free Sales Training\",\"description\":\"Your personal AI sales trainer that helps close more deals with data-driven insights, objection handling, and performance optimization. Free AI sales coaching and training.\",\"url\":\"https://salescoach.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":16,\"url\":\"https://dispute.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Dispute Resolution\",\"description\":\"Resolve disputes efficiently with AI-powered mediation, conflict analysis, and resolution strategies. Free AI dispute management and resolution tool for businesses.\",\"url\":\"https://dispute.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":17,\"url\":\"https://webinar.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Live Webinar Platform\",\"description\":\"Host engaging live webinars with AI-powered audience insights, automated follow-ups, and conversion tracking. Free webinar hosting and automation tool.\",\"url\":\"https://webinar.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}}]},\"breadcrumb\":{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Free AI Tools\",\"item\":\"https://kenjiai.com/free-tools\"}]}}"
     ]
    },
    "blocks": [
@@ -2985,6 +3001,14 @@
     {
      "tag": "h2",
      "text": "Choose Your Free AI Tool"
+    },
+    {
+     "tag": "h3",
+     "text": "UTM Builder: UTM Link Generator with QR Code"
+    },
+    {
+     "tag": "p",
+     "text": "Paste your page, pick Facebook, Instagram, Google Ads, email or text, name the campaign, and copy a clean UTM tracking link. Includes a downloadable QR code and Meta Ads dynamic parameters."
     },
     {
      "tag": "h3",
@@ -3180,6 +3204,10 @@
     }
    ],
    "links": [
+    {
+     "href": "/tools/utm-builder",
+     "text": "Open the tool"
+    },
     {
      "href": "/tools/ltv-calculator",
      "text": "Open the tool"
@@ -17182,6 +17210,10 @@
       "content": "KenjiAI Academy: Elite AI & Business Mastery"
      },
      {
+      "property": "og:description",
+      "content": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation."
+     },
+     {
       "property": "og:image",
       "content": "https://kenjiai.com/og-image.png"
      },
@@ -17229,6 +17261,10 @@
       "content": "KenjiAI Academy: Elite AI & Business Mastery"
      },
      {
+      "property": "twitter:description",
+      "content": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation."
+     },
+     {
       "property": "twitter:image",
       "content": "https://kenjiai.com/og-image.png"
      },
@@ -17261,21 +17297,13 @@
       "content": "Performance-Based"
      },
      {
-      "property": "og:description",
-      "content": "Access premium AI automation courses, sales mastery tracks, and the interactive AI knowledge assessment."
-     },
-     {
-      "property": "twitter:description",
-      "content": "Access premium AI automation courses, sales mastery tracks, and the interactive AI knowledge assessment."
-     },
-     {
       "name": "description",
-      "content": "Access premium AI automation courses, sales mastery tracks, and the interactive AI knowledge assessment."
+      "content": "KenjiAI Academy courses on AI automation, paid ads and sales follow-up, plus an interactive AI knowledge quiz to test what you learned at your own pace."
      }
     ],
     "canonical": "https://kenjiai.com/knowledge",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"CollectionPage\",\"@id\":\"https://kenjiai.com/knowledge#webpage\",\"url\":\"https://kenjiai.com/knowledge\",\"name\":\"KenjiAI Academy: Elite AI & Business Mastery\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"Access premium AI automation courses, sales mastery tracks, and the interactive AI knowledge assessment.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/knowledge#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/knowledge#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"KenjiAI Academy: Elite AI & Business Mastery\",\"item\":\"https://kenjiai.com/knowledge\"}]}]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"CollectionPage\",\"@id\":\"https://kenjiai.com/knowledge#webpage\",\"url\":\"https://kenjiai.com/knowledge\",\"name\":\"KenjiAI Academy: Elite AI & Business Mastery\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI Academy courses on AI automation, paid ads and sales follow-up, plus an interactive AI knowledge quiz to test what you learned at your own pace.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/knowledge#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/knowledge#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"KenjiAI Academy: Elite AI & Business Mastery\",\"item\":\"https://kenjiai.com/knowledge\"}]}]}"
     ]
    },
    "blocks": [
@@ -18717,7 +18745,7 @@
   },
   "/paid-ads-for/chiropractic": {
    "head": {
-    "title": "Paid Ads Agency for Chiropractors + AI Automation | KenjiAI",
+    "title": "Paid Ads for Chiropractors + AI Automation | KenjiAI",
     "metas": [
      {
       "name": "viewport",
@@ -18844,11 +18872,11 @@
      },
      {
       "name": "title",
-      "content": "Paid Ads Agency for Chiropractors + AI Automation | KenjiAI"
+      "content": "Paid Ads for Chiropractors + AI Automation | KenjiAI"
      },
      {
       "name": "description",
-      "content": "KenjiAI runs Google and Facebook ads for chiropractic practices and automates new patient booking with AI — so you fill your schedule without a large front desk team."
+      "content": "KenjiAI runs Google and Facebook ads for chiropractic practices and books new patients with AI, so you fill your schedule without a big front desk team."
      },
      {
       "name": "keywords",
@@ -18856,25 +18884,25 @@
      },
      {
       "property": "og:title",
-      "content": "Paid Ads Agency for Chiropractors + AI Automation | KenjiAI"
+      "content": "Paid Ads for Chiropractors + AI Automation | KenjiAI"
      },
      {
       "property": "og:description",
-      "content": "KenjiAI runs Google and Facebook ads for chiropractic practices and automates new patient booking with AI — so you fill your schedule without a large front desk team."
+      "content": "KenjiAI runs Google and Facebook ads for chiropractic practices and books new patients with AI, so you fill your schedule without a big front desk team."
      },
      {
       "property": "twitter:title",
-      "content": "Paid Ads Agency for Chiropractors + AI Automation | KenjiAI"
+      "content": "Paid Ads for Chiropractors + AI Automation | KenjiAI"
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI runs Google and Facebook ads for chiropractic practices and automates new patient booking with AI — so you fill your schedule without a large front desk team."
+      "content": "KenjiAI runs Google and Facebook ads for chiropractic practices and books new patients with AI, so you fill your schedule without a big front desk team."
      }
     ],
     "canonical": "https://kenjiai.com/paid-ads-for/chiropractic",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/chiropractic#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/chiropractic\",\"name\":\"Paid Ads Agency for Chiropractors + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Google and Facebook ads for chiropractic practices and automates new patient booking with AI — so you fill your schedule without a large front desk team.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/chiropractic#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/chiropractic#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for Chiropractors + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/chiropractic\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/chiropractic#service\",\"name\":\"KenjiAI: Chiropractic Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/chiropractic\",\"description\":\"KenjiAI runs Google and Facebook ads for chiropractic practices and automates new patient booking with AI — so you fill your schedule without a large front desk team.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Chiropractic Paid Advertising\",\"AI Marketing Automation\"]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/chiropractic#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/chiropractic\",\"name\":\"Paid Ads for Chiropractors + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Google and Facebook ads for chiropractic practices and books new patients with AI, so you fill your schedule without a big front desk team.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/chiropractic#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/chiropractic#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads for Chiropractors + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/chiropractic\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/chiropractic#service\",\"name\":\"KenjiAI: Chiropractic Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/chiropractic\",\"description\":\"KenjiAI runs Google and Facebook ads for chiropractic practices and books new patients with AI, so you fill your schedule without a big front desk team.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Chiropractic Paid Advertising\",\"AI Marketing Automation\"]}"
     ]
    },
    "blocks": [
@@ -19032,7 +19060,7 @@
   },
   "/paid-ads-for/coaches": {
    "head": {
-    "title": "Paid Ads Agency for Coaches & Consultants + AI Automation | KenjiAI",
+    "title": "Paid Ads for Coaches & Consultants + AI | KenjiAI",
     "metas": [
      {
       "name": "viewport",
@@ -19159,11 +19187,11 @@
      },
      {
       "name": "title",
-      "content": "Paid Ads Agency for Coaches & Consultants + AI Automation | KenjiAI"
+      "content": "Paid Ads for Coaches & Consultants + AI | KenjiAI"
      },
      {
       "name": "description",
-      "content": "KenjiAI runs paid ads for high-ticket coaches and consultants, then automates the entire prospect journey with AI — from opt-in to discovery call booked."
+      "content": "KenjiAI runs paid ads for high-ticket coaches and consultants, then follows up with every prospect using AI, from opt-in to a booked discovery call."
      },
      {
       "name": "keywords",
@@ -19171,25 +19199,25 @@
      },
      {
       "property": "og:title",
-      "content": "Paid Ads Agency for Coaches & Consultants + AI Automation | KenjiAI"
+      "content": "Paid Ads for Coaches & Consultants + AI | KenjiAI"
      },
      {
       "property": "og:description",
-      "content": "KenjiAI runs paid ads for high-ticket coaches and consultants, then automates the entire prospect journey with AI — from opt-in to discovery call booked."
+      "content": "KenjiAI runs paid ads for high-ticket coaches and consultants, then follows up with every prospect using AI, from opt-in to a booked discovery call."
      },
      {
       "property": "twitter:title",
-      "content": "Paid Ads Agency for Coaches & Consultants + AI Automation | KenjiAI"
+      "content": "Paid Ads for Coaches & Consultants + AI | KenjiAI"
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI runs paid ads for high-ticket coaches and consultants, then automates the entire prospect journey with AI — from opt-in to discovery call booked."
+      "content": "KenjiAI runs paid ads for high-ticket coaches and consultants, then follows up with every prospect using AI, from opt-in to a booked discovery call."
      }
     ],
     "canonical": "https://kenjiai.com/paid-ads-for/coaches",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/coaches#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/coaches\",\"name\":\"Paid Ads Agency for Coaches & Consultants + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs paid ads for high-ticket coaches and consultants, then automates the entire prospect journey with AI — from opt-in to discovery call booked.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/coaches#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/coaches#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for Coaches & Consultants + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/coaches\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/coaches#service\",\"name\":\"KenjiAI: Coaching Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/coaches\",\"description\":\"KenjiAI runs paid ads for high-ticket coaches and consultants, then automates the entire prospect journey with AI — from opt-in to discovery call booked.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Coaching Paid Advertising\",\"AI Marketing Automation\"]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/coaches#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/coaches\",\"name\":\"Paid Ads for Coaches & Consultants + AI\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs paid ads for high-ticket coaches and consultants, then follows up with every prospect using AI, from opt-in to a booked discovery call.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/coaches#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/coaches#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads for Coaches & Consultants + AI\",\"item\":\"https://kenjiai.com/paid-ads-for/coaches\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/coaches#service\",\"name\":\"KenjiAI: Coaching Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/coaches\",\"description\":\"KenjiAI runs paid ads for high-ticket coaches and consultants, then follows up with every prospect using AI, from opt-in to a booked discovery call.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Coaching Paid Advertising\",\"AI Marketing Automation\"]}"
     ]
    },
    "blocks": [
@@ -19347,7 +19375,7 @@
   },
   "/paid-ads-for/contractors": {
    "head": {
-    "title": "Paid Ads Agency for General Contractors + AI Automation | KenjiAI",
+    "title": "Paid Ads for General Contractors + AI | KenjiAI",
     "metas": [
      {
       "name": "viewport",
@@ -19474,11 +19502,11 @@
      },
      {
       "name": "title",
-      "content": "Paid Ads Agency for General Contractors + AI Automation | KenjiAI"
+      "content": "Paid Ads for General Contractors + AI | KenjiAI"
      },
      {
       "name": "description",
-      "content": "KenjiAI runs Google and Facebook ads for general contractors and automates every lead with AI — so you book more estimates and close more projects."
+      "content": "KenjiAI runs Google and Facebook ads for general contractors and follows up on every lead with AI, so you book more estimates and close more projects."
      },
      {
       "name": "keywords",
@@ -19486,25 +19514,25 @@
      },
      {
       "property": "og:title",
-      "content": "Paid Ads Agency for General Contractors + AI Automation | KenjiAI"
+      "content": "Paid Ads for General Contractors + AI | KenjiAI"
      },
      {
       "property": "og:description",
-      "content": "KenjiAI runs Google and Facebook ads for general contractors and automates every lead with AI — so you book more estimates and close more projects."
+      "content": "KenjiAI runs Google and Facebook ads for general contractors and follows up on every lead with AI, so you book more estimates and close more projects."
      },
      {
       "property": "twitter:title",
-      "content": "Paid Ads Agency for General Contractors + AI Automation | KenjiAI"
+      "content": "Paid Ads for General Contractors + AI | KenjiAI"
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI runs Google and Facebook ads for general contractors and automates every lead with AI — so you book more estimates and close more projects."
+      "content": "KenjiAI runs Google and Facebook ads for general contractors and follows up on every lead with AI, so you book more estimates and close more projects."
      }
     ],
     "canonical": "https://kenjiai.com/paid-ads-for/contractors",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/contractors#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/contractors\",\"name\":\"Paid Ads Agency for General Contractors + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Google and Facebook ads for general contractors and automates every lead with AI — so you book more estimates and close more projects.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/contractors#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/contractors#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for General Contractors + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/contractors\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/contractors#service\",\"name\":\"KenjiAI: General Contracting Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/contractors\",\"description\":\"KenjiAI runs Google and Facebook ads for general contractors and automates every lead with AI — so you book more estimates and close more projects.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"General Contracting Paid Advertising\",\"AI Marketing Automation\"]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/contractors#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/contractors\",\"name\":\"Paid Ads for General Contractors + AI\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Google and Facebook ads for general contractors and follows up on every lead with AI, so you book more estimates and close more projects.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/contractors#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/contractors#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads for General Contractors + AI\",\"item\":\"https://kenjiai.com/paid-ads-for/contractors\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/contractors#service\",\"name\":\"KenjiAI: General Contracting Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/contractors\",\"description\":\"KenjiAI runs Google and Facebook ads for general contractors and follows up on every lead with AI, so you book more estimates and close more projects.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"General Contracting Paid Advertising\",\"AI Marketing Automation\"]}"
     ]
    },
    "blocks": [
@@ -19662,7 +19690,7 @@
   },
   "/paid-ads-for/dental": {
    "head": {
-    "title": "Paid Ads Agency for Dental Practices + AI Automation | KenjiAI",
+    "title": "Paid Ads for Dental Practices + AI Automation | KenjiAI",
     "metas": [
      {
       "name": "viewport",
@@ -19789,11 +19817,11 @@
      },
      {
       "name": "title",
-      "content": "Paid Ads Agency for Dental Practices + AI Automation | KenjiAI"
+      "content": "Paid Ads for Dental Practices + AI Automation | KenjiAI"
      },
      {
       "name": "description",
-      "content": "KenjiAI runs Google and Facebook ads for dental practices and automates patient booking with AI — so your front desk focuses on care, not chasing leads."
+      "content": "KenjiAI runs Google and Facebook ads for dental practices and books new patients with AI, so your front desk can focus on care, not chasing leads."
      },
      {
       "name": "keywords",
@@ -19801,25 +19829,25 @@
      },
      {
       "property": "og:title",
-      "content": "Paid Ads Agency for Dental Practices + AI Automation | KenjiAI"
+      "content": "Paid Ads for Dental Practices + AI Automation | KenjiAI"
      },
      {
       "property": "og:description",
-      "content": "KenjiAI runs Google and Facebook ads for dental practices and automates patient booking with AI — so your front desk focuses on care, not chasing leads."
+      "content": "KenjiAI runs Google and Facebook ads for dental practices and books new patients with AI, so your front desk can focus on care, not chasing leads."
      },
      {
       "property": "twitter:title",
-      "content": "Paid Ads Agency for Dental Practices + AI Automation | KenjiAI"
+      "content": "Paid Ads for Dental Practices + AI Automation | KenjiAI"
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI runs Google and Facebook ads for dental practices and automates patient booking with AI — so your front desk focuses on care, not chasing leads."
+      "content": "KenjiAI runs Google and Facebook ads for dental practices and books new patients with AI, so your front desk can focus on care, not chasing leads."
      }
     ],
     "canonical": "https://kenjiai.com/paid-ads-for/dental",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/dental#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/dental\",\"name\":\"Paid Ads Agency for Dental Practices + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Google and Facebook ads for dental practices and automates patient booking with AI — so your front desk focuses on care, not chasing leads.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/dental#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/dental#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for Dental Practices + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/dental\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/dental#service\",\"name\":\"KenjiAI: Dental Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/dental\",\"description\":\"KenjiAI runs Google and Facebook ads for dental practices and automates patient booking with AI — so your front desk focuses on care, not chasing leads.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Dental Paid Advertising\",\"AI Marketing Automation\"]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/dental#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/dental\",\"name\":\"Paid Ads for Dental Practices + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Google and Facebook ads for dental practices and books new patients with AI, so your front desk can focus on care, not chasing leads.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/dental#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/dental#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads for Dental Practices + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/dental\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/dental#service\",\"name\":\"KenjiAI: Dental Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/dental\",\"description\":\"KenjiAI runs Google and Facebook ads for dental practices and books new patients with AI, so your front desk can focus on care, not chasing leads.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Dental Paid Advertising\",\"AI Marketing Automation\"]}"
     ]
    },
    "blocks": [
@@ -20108,7 +20136,7 @@
      },
      {
       "name": "description",
-      "content": "KenjiAI manages Facebook, Google, and TikTok ads for e-commerce brands and automates post-purchase flows and abandoned cart recovery with AI — so you scale profitably."
+      "content": "KenjiAI runs Facebook, Google and TikTok ads for e-commerce brands and recovers abandoned carts and repeat buyers with AI, so you scale profitably."
      },
      {
       "name": "keywords",
@@ -20120,7 +20148,7 @@
      },
      {
       "property": "og:description",
-      "content": "KenjiAI manages Facebook, Google, and TikTok ads for e-commerce brands and automates post-purchase flows and abandoned cart recovery with AI — so you scale profitably."
+      "content": "KenjiAI runs Facebook, Google and TikTok ads for e-commerce brands and recovers abandoned carts and repeat buyers with AI, so you scale profitably."
      },
      {
       "property": "twitter:title",
@@ -20128,13 +20156,13 @@
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI manages Facebook, Google, and TikTok ads for e-commerce brands and automates post-purchase flows and abandoned cart recovery with AI — so you scale profitably."
+      "content": "KenjiAI runs Facebook, Google and TikTok ads for e-commerce brands and recovers abandoned carts and repeat buyers with AI, so you scale profitably."
      }
     ],
     "canonical": "https://kenjiai.com/paid-ads-for/ecommerce",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/ecommerce#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/ecommerce\",\"name\":\"Paid Ads Agency for E-commerce + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI manages Facebook, Google, and TikTok ads for e-commerce brands and automates post-purchase flows and abandoned cart recovery with AI — so you scale profitably.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/ecommerce#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/ecommerce#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for E-commerce + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/ecommerce\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/ecommerce#service\",\"name\":\"KenjiAI: E-commerce Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/ecommerce\",\"description\":\"KenjiAI manages Facebook, Google, and TikTok ads for e-commerce brands and automates post-purchase flows and abandoned cart recovery with AI — so you scale profitably.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"E-commerce Paid Advertising\",\"AI Marketing Automation\"]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/ecommerce#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/ecommerce\",\"name\":\"Paid Ads Agency for E-commerce + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Facebook, Google and TikTok ads for e-commerce brands and recovers abandoned carts and repeat buyers with AI, so you scale profitably.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/ecommerce#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/ecommerce#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for E-commerce + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/ecommerce\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/ecommerce#service\",\"name\":\"KenjiAI: E-commerce Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/ecommerce\",\"description\":\"KenjiAI runs Facebook, Google and TikTok ads for e-commerce brands and recovers abandoned carts and repeat buyers with AI, so you scale profitably.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"E-commerce Paid Advertising\",\"AI Marketing Automation\"]}"
     ]
    },
    "blocks": [
@@ -20292,7 +20320,7 @@
   },
   "/paid-ads-for/financial-advisors": {
    "head": {
-    "title": "Paid Ads Agency for Financial Advisors + AI Automation | KenjiAI",
+    "title": "Paid Ads for Financial Advisors + AI Automation | KenjiAI",
     "metas": [
      {
       "name": "viewport",
@@ -20419,11 +20447,11 @@
      },
      {
       "name": "title",
-      "content": "Paid Ads Agency for Financial Advisors + AI Automation | KenjiAI"
+      "content": "Paid Ads for Financial Advisors + AI Automation | KenjiAI"
      },
      {
       "name": "description",
-      "content": "KenjiAI runs paid ads for financial advisors and RIAs, and automates prospect nurturing with AI — so you spend time on AUM, not chasing unqualified leads."
+      "content": "KenjiAI runs paid ads for financial advisors and RIAs and nurtures every prospect with AI, so you spend your time growing AUM, not chasing leads."
      },
      {
       "name": "keywords",
@@ -20431,25 +20459,25 @@
      },
      {
       "property": "og:title",
-      "content": "Paid Ads Agency for Financial Advisors + AI Automation | KenjiAI"
+      "content": "Paid Ads for Financial Advisors + AI Automation | KenjiAI"
      },
      {
       "property": "og:description",
-      "content": "KenjiAI runs paid ads for financial advisors and RIAs, and automates prospect nurturing with AI — so you spend time on AUM, not chasing unqualified leads."
+      "content": "KenjiAI runs paid ads for financial advisors and RIAs and nurtures every prospect with AI, so you spend your time growing AUM, not chasing leads."
      },
      {
       "property": "twitter:title",
-      "content": "Paid Ads Agency for Financial Advisors + AI Automation | KenjiAI"
+      "content": "Paid Ads for Financial Advisors + AI Automation | KenjiAI"
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI runs paid ads for financial advisors and RIAs, and automates prospect nurturing with AI — so you spend time on AUM, not chasing unqualified leads."
+      "content": "KenjiAI runs paid ads for financial advisors and RIAs and nurtures every prospect with AI, so you spend your time growing AUM, not chasing leads."
      }
     ],
     "canonical": "https://kenjiai.com/paid-ads-for/financial-advisors",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/financial-advisors#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/financial-advisors\",\"name\":\"Paid Ads Agency for Financial Advisors + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs paid ads for financial advisors and RIAs, and automates prospect nurturing with AI — so you spend time on AUM, not chasing unqualified leads.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/financial-advisors#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/financial-advisors#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for Financial Advisors + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/financial-advisors\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/financial-advisors#service\",\"name\":\"KenjiAI: Financial Advisory Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/financial-advisors\",\"description\":\"KenjiAI runs paid ads for financial advisors and RIAs, and automates prospect nurturing with AI — so you spend time on AUM, not chasing unqualified leads.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Financial Advisory Paid Advertising\",\"AI Marketing Automation\"]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/financial-advisors#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/financial-advisors\",\"name\":\"Paid Ads for Financial Advisors + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs paid ads for financial advisors and RIAs and nurtures every prospect with AI, so you spend your time growing AUM, not chasing leads.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/financial-advisors#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/financial-advisors#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads for Financial Advisors + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/financial-advisors\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/financial-advisors#service\",\"name\":\"KenjiAI: Financial Advisory Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/financial-advisors\",\"description\":\"KenjiAI runs paid ads for financial advisors and RIAs and nurtures every prospect with AI, so you spend your time growing AUM, not chasing leads.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Financial Advisory Paid Advertising\",\"AI Marketing Automation\"]}"
     ]
    },
    "blocks": [
@@ -20607,7 +20635,7 @@
   },
   "/paid-ads-for/fitness": {
    "head": {
-    "title": "Paid Ads Agency for Gyms & Fitness Studios + AI Automation | KenjiAI",
+    "title": "Paid Ads for Gyms & Fitness Studios + AI | KenjiAI",
     "metas": [
      {
       "name": "viewport",
@@ -20734,11 +20762,11 @@
      },
      {
       "name": "title",
-      "content": "Paid Ads Agency for Gyms & Fitness Studios + AI Automation | KenjiAI"
+      "content": "Paid Ads for Gyms & Fitness Studios + AI | KenjiAI"
      },
      {
       "name": "description",
-      "content": "KenjiAI runs paid ads for gyms, fitness studios, and personal trainers, and automates member acquisition with AI — so you grow memberships without a big marketing team."
+      "content": "KenjiAI runs paid ads for gyms, fitness studios and personal trainers and follows up with every lead using AI, so memberships grow without a big team."
      },
      {
       "name": "keywords",
@@ -20746,25 +20774,25 @@
      },
      {
       "property": "og:title",
-      "content": "Paid Ads Agency for Gyms & Fitness Studios + AI Automation | KenjiAI"
+      "content": "Paid Ads for Gyms & Fitness Studios + AI | KenjiAI"
      },
      {
       "property": "og:description",
-      "content": "KenjiAI runs paid ads for gyms, fitness studios, and personal trainers, and automates member acquisition with AI — so you grow memberships without a big marketing team."
+      "content": "KenjiAI runs paid ads for gyms, fitness studios and personal trainers and follows up with every lead using AI, so memberships grow without a big team."
      },
      {
       "property": "twitter:title",
-      "content": "Paid Ads Agency for Gyms & Fitness Studios + AI Automation | KenjiAI"
+      "content": "Paid Ads for Gyms & Fitness Studios + AI | KenjiAI"
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI runs paid ads for gyms, fitness studios, and personal trainers, and automates member acquisition with AI — so you grow memberships without a big marketing team."
+      "content": "KenjiAI runs paid ads for gyms, fitness studios and personal trainers and follows up with every lead using AI, so memberships grow without a big team."
      }
     ],
     "canonical": "https://kenjiai.com/paid-ads-for/fitness",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/fitness#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/fitness\",\"name\":\"Paid Ads Agency for Gyms & Fitness Studios + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs paid ads for gyms, fitness studios, and personal trainers, and automates member acquisition with AI — so you grow memberships without a big marketing team.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/fitness#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/fitness#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for Gyms & Fitness Studios + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/fitness\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/fitness#service\",\"name\":\"KenjiAI: Fitness Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/fitness\",\"description\":\"KenjiAI runs paid ads for gyms, fitness studios, and personal trainers, and automates member acquisition with AI — so you grow memberships without a big marketing team.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Fitness Paid Advertising\",\"AI Marketing Automation\"]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/fitness#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/fitness\",\"name\":\"Paid Ads for Gyms & Fitness Studios + AI\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs paid ads for gyms, fitness studios and personal trainers and follows up with every lead using AI, so memberships grow without a big team.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/fitness#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/fitness#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads for Gyms & Fitness Studios + AI\",\"item\":\"https://kenjiai.com/paid-ads-for/fitness\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/fitness#service\",\"name\":\"KenjiAI: Fitness Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/fitness\",\"description\":\"KenjiAI runs paid ads for gyms, fitness studios and personal trainers and follows up with every lead using AI, so memberships grow without a big team.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Fitness Paid Advertising\",\"AI Marketing Automation\"]}"
     ]
    },
    "blocks": [
@@ -21053,7 +21081,7 @@
      },
      {
       "name": "description",
-      "content": "KenjiAI runs Google and Facebook ads for home service companies and automates every lead with AI — so you book more jobs without hiring more office staff."
+      "content": "KenjiAI runs Google and Facebook ads for home service companies and follows up on every lead with AI, so you book more jobs without more office staff."
      },
      {
       "name": "keywords",
@@ -21065,7 +21093,7 @@
      },
      {
       "property": "og:description",
-      "content": "KenjiAI runs Google and Facebook ads for home service companies and automates every lead with AI — so you book more jobs without hiring more office staff."
+      "content": "KenjiAI runs Google and Facebook ads for home service companies and follows up on every lead with AI, so you book more jobs without more office staff."
      },
      {
       "property": "twitter:title",
@@ -21073,13 +21101,13 @@
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI runs Google and Facebook ads for home service companies and automates every lead with AI — so you book more jobs without hiring more office staff."
+      "content": "KenjiAI runs Google and Facebook ads for home service companies and follows up on every lead with AI, so you book more jobs without more office staff."
      }
     ],
     "canonical": "https://kenjiai.com/paid-ads-for/home-services",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/home-services#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/home-services\",\"name\":\"Paid Ads Agency for Home Services + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Google and Facebook ads for home service companies and automates every lead with AI — so you book more jobs without hiring more office staff.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/home-services#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/home-services#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for Home Services + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/home-services\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/home-services#service\",\"name\":\"KenjiAI: Home Services Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/home-services\",\"description\":\"KenjiAI runs Google and Facebook ads for home service companies and automates every lead with AI — so you book more jobs without hiring more office staff.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Home Services Paid Advertising\",\"AI Marketing Automation\"]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/home-services#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/home-services\",\"name\":\"Paid Ads Agency for Home Services + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Google and Facebook ads for home service companies and follows up on every lead with AI, so you book more jobs without more office staff.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/home-services#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/home-services#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for Home Services + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/home-services\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/home-services#service\",\"name\":\"KenjiAI: Home Services Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/home-services\",\"description\":\"KenjiAI runs Google and Facebook ads for home service companies and follows up on every lead with AI, so you book more jobs without more office staff.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Home Services Paid Advertising\",\"AI Marketing Automation\"]}"
     ]
    },
    "blocks": [
@@ -21237,7 +21265,7 @@
   },
   "/paid-ads-for/hvac": {
    "head": {
-    "title": "Paid Ads Agency for HVAC Companies + AI Automation | KenjiAI",
+    "title": "Paid Ads Agency for HVAC + AI Automation | KenjiAI",
     "metas": [
      {
       "name": "viewport",
@@ -21364,11 +21392,11 @@
      },
      {
       "name": "title",
-      "content": "Paid Ads Agency for HVAC Companies + AI Automation | KenjiAI"
+      "content": "Paid Ads Agency for HVAC + AI Automation | KenjiAI"
      },
      {
       "name": "description",
-      "content": "KenjiAI runs Google and Facebook ads for HVAC companies and automates lead follow-up with AI — so you book more service calls and installs without adding office staff."
+      "content": "KenjiAI runs Google and Facebook ads for HVAC companies and follows up on every lead with AI, so you book more service calls and installs with the same team."
      },
      {
       "name": "keywords",
@@ -21376,25 +21404,25 @@
      },
      {
       "property": "og:title",
-      "content": "Paid Ads Agency for HVAC Companies + AI Automation | KenjiAI"
+      "content": "Paid Ads Agency for HVAC + AI Automation | KenjiAI"
      },
      {
       "property": "og:description",
-      "content": "KenjiAI runs Google and Facebook ads for HVAC companies and automates lead follow-up with AI — so you book more service calls and installs without adding office staff."
+      "content": "KenjiAI runs Google and Facebook ads for HVAC companies and follows up on every lead with AI, so you book more service calls and installs with the same team."
      },
      {
       "property": "twitter:title",
-      "content": "Paid Ads Agency for HVAC Companies + AI Automation | KenjiAI"
+      "content": "Paid Ads Agency for HVAC + AI Automation | KenjiAI"
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI runs Google and Facebook ads for HVAC companies and automates lead follow-up with AI — so you book more service calls and installs without adding office staff."
+      "content": "KenjiAI runs Google and Facebook ads for HVAC companies and follows up on every lead with AI, so you book more service calls and installs with the same team."
      }
     ],
     "canonical": "https://kenjiai.com/paid-ads-for/hvac",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/hvac#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/hvac\",\"name\":\"Paid Ads Agency for HVAC Companies + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Google and Facebook ads for HVAC companies and automates lead follow-up with AI — so you book more service calls and installs without adding office staff.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/hvac#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/hvac#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for HVAC Companies + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/hvac\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/hvac#service\",\"name\":\"KenjiAI: HVAC Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/hvac\",\"description\":\"KenjiAI runs Google and Facebook ads for HVAC companies and automates lead follow-up with AI — so you book more service calls and installs without adding office staff.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"HVAC Paid Advertising\",\"AI Marketing Automation\"]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/hvac#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/hvac\",\"name\":\"Paid Ads Agency for HVAC + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Google and Facebook ads for HVAC companies and follows up on every lead with AI, so you book more service calls and installs with the same team.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/hvac#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/hvac#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for HVAC + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/hvac\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/hvac#service\",\"name\":\"KenjiAI: HVAC Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/hvac\",\"description\":\"KenjiAI runs Google and Facebook ads for HVAC companies and follows up on every lead with AI, so you book more service calls and installs with the same team.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"HVAC Paid Advertising\",\"AI Marketing Automation\"]}"
     ]
    },
    "blocks": [
@@ -21552,7 +21580,7 @@
   },
   "/paid-ads-for/insurance": {
    "head": {
-    "title": "Paid Ads Agency for Insurance Agencies + AI Automation | KenjiAI",
+    "title": "Paid Ads for Insurance Agencies + AI Automation | KenjiAI",
     "metas": [
      {
       "name": "viewport",
@@ -21679,11 +21707,11 @@
      },
      {
       "name": "title",
-      "content": "Paid Ads Agency for Insurance Agencies + AI Automation | KenjiAI"
+      "content": "Paid Ads for Insurance Agencies + AI Automation | KenjiAI"
      },
      {
       "name": "description",
-      "content": "KenjiAI runs Google and Facebook ads for insurance agencies and automates lead follow-up with AI — so your agents spend time closing, not chasing."
+      "content": "KenjiAI runs Google and Facebook ads for insurance agencies and follows up on every lead with AI, so your agents spend their time closing, not chasing."
      },
      {
       "name": "keywords",
@@ -21691,25 +21719,25 @@
      },
      {
       "property": "og:title",
-      "content": "Paid Ads Agency for Insurance Agencies + AI Automation | KenjiAI"
+      "content": "Paid Ads for Insurance Agencies + AI Automation | KenjiAI"
      },
      {
       "property": "og:description",
-      "content": "KenjiAI runs Google and Facebook ads for insurance agencies and automates lead follow-up with AI — so your agents spend time closing, not chasing."
+      "content": "KenjiAI runs Google and Facebook ads for insurance agencies and follows up on every lead with AI, so your agents spend their time closing, not chasing."
      },
      {
       "property": "twitter:title",
-      "content": "Paid Ads Agency for Insurance Agencies + AI Automation | KenjiAI"
+      "content": "Paid Ads for Insurance Agencies + AI Automation | KenjiAI"
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI runs Google and Facebook ads for insurance agencies and automates lead follow-up with AI — so your agents spend time closing, not chasing."
+      "content": "KenjiAI runs Google and Facebook ads for insurance agencies and follows up on every lead with AI, so your agents spend their time closing, not chasing."
      }
     ],
     "canonical": "https://kenjiai.com/paid-ads-for/insurance",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/insurance#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/insurance\",\"name\":\"Paid Ads Agency for Insurance Agencies + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Google and Facebook ads for insurance agencies and automates lead follow-up with AI — so your agents spend time closing, not chasing.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/insurance#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/insurance#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for Insurance Agencies + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/insurance\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/insurance#service\",\"name\":\"KenjiAI: Insurance Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/insurance\",\"description\":\"KenjiAI runs Google and Facebook ads for insurance agencies and automates lead follow-up with AI — so your agents spend time closing, not chasing.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Insurance Paid Advertising\",\"AI Marketing Automation\"]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/insurance#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/insurance\",\"name\":\"Paid Ads for Insurance Agencies + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Google and Facebook ads for insurance agencies and follows up on every lead with AI, so your agents spend their time closing, not chasing.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/insurance#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/insurance#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads for Insurance Agencies + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/insurance\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/insurance#service\",\"name\":\"KenjiAI: Insurance Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/insurance\",\"description\":\"KenjiAI runs Google and Facebook ads for insurance agencies and follows up on every lead with AI, so your agents spend their time closing, not chasing.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Insurance Paid Advertising\",\"AI Marketing Automation\"]}"
     ]
    },
    "blocks": [
@@ -21998,7 +22026,7 @@
      },
      {
       "name": "description",
-      "content": "KenjiAI runs Google and Facebook ads for law firms and automates intake with AI — so your staff spends time on cases, not chasing unqualified leads."
+      "content": "KenjiAI runs Google and Facebook ads for law firms and handles intake with AI, so your staff spends time on cases instead of chasing unqualified leads."
      },
      {
       "name": "keywords",
@@ -22010,7 +22038,7 @@
      },
      {
       "property": "og:description",
-      "content": "KenjiAI runs Google and Facebook ads for law firms and automates intake with AI — so your staff spends time on cases, not chasing unqualified leads."
+      "content": "KenjiAI runs Google and Facebook ads for law firms and handles intake with AI, so your staff spends time on cases instead of chasing unqualified leads."
      },
      {
       "property": "twitter:title",
@@ -22018,13 +22046,13 @@
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI runs Google and Facebook ads for law firms and automates intake with AI — so your staff spends time on cases, not chasing unqualified leads."
+      "content": "KenjiAI runs Google and Facebook ads for law firms and handles intake with AI, so your staff spends time on cases instead of chasing unqualified leads."
      }
     ],
     "canonical": "https://kenjiai.com/paid-ads-for/legal",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/legal#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/legal\",\"name\":\"Paid Ads Agency for Law Firms + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Google and Facebook ads for law firms and automates intake with AI — so your staff spends time on cases, not chasing unqualified leads.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/legal#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/legal#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for Law Firms + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/legal\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/legal#service\",\"name\":\"KenjiAI: Legal Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/legal\",\"description\":\"KenjiAI runs Google and Facebook ads for law firms and automates intake with AI — so your staff spends time on cases, not chasing unqualified leads.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Legal Paid Advertising\",\"AI Marketing Automation\"]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/legal#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/legal\",\"name\":\"Paid Ads Agency for Law Firms + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Google and Facebook ads for law firms and handles intake with AI, so your staff spends time on cases instead of chasing unqualified leads.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/legal#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/legal#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for Law Firms + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/legal\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/legal#service\",\"name\":\"KenjiAI: Legal Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/legal\",\"description\":\"KenjiAI runs Google and Facebook ads for law firms and handles intake with AI, so your staff spends time on cases instead of chasing unqualified leads.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Legal Paid Advertising\",\"AI Marketing Automation\"]}"
     ]
    },
    "blocks": [
@@ -22313,7 +22341,7 @@
      },
      {
       "name": "description",
-      "content": "KenjiAI runs Google and Meta ads for med spas and automates the entire patient acquisition funnel — from first click to booked appointment — with AI."
+      "content": "KenjiAI runs Google and Meta ads for med spas and automates patient acquisition with AI, from the first click to a booked appointment."
      },
      {
       "name": "keywords",
@@ -22325,7 +22353,7 @@
      },
      {
       "property": "og:description",
-      "content": "KenjiAI runs Google and Meta ads for med spas and automates the entire patient acquisition funnel — from first click to booked appointment — with AI."
+      "content": "KenjiAI runs Google and Meta ads for med spas and automates patient acquisition with AI, from the first click to a booked appointment."
      },
      {
       "property": "twitter:title",
@@ -22333,13 +22361,13 @@
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI runs Google and Meta ads for med spas and automates the entire patient acquisition funnel — from first click to booked appointment — with AI."
+      "content": "KenjiAI runs Google and Meta ads for med spas and automates patient acquisition with AI, from the first click to a booked appointment."
      }
     ],
     "canonical": "https://kenjiai.com/paid-ads-for/med-spa",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/med-spa#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/med-spa\",\"name\":\"Paid Ads Agency for Med Spas + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Google and Meta ads for med spas and automates the entire patient acquisition funnel — from first click to booked appointment — with AI.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/med-spa#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/med-spa#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for Med Spas + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/med-spa\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/med-spa#service\",\"name\":\"KenjiAI: Med Spa Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/med-spa\",\"description\":\"KenjiAI runs Google and Meta ads for med spas and automates the entire patient acquisition funnel — from first click to booked appointment — with AI.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Med Spa Paid Advertising\",\"AI Marketing Automation\"]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/med-spa#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/med-spa\",\"name\":\"Paid Ads Agency for Med Spas + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Google and Meta ads for med spas and automates patient acquisition with AI, from the first click to a booked appointment.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/med-spa#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/med-spa#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for Med Spas + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/med-spa\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/med-spa#service\",\"name\":\"KenjiAI: Med Spa Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/med-spa\",\"description\":\"KenjiAI runs Google and Meta ads for med spas and automates patient acquisition with AI, from the first click to a booked appointment.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Med Spa Paid Advertising\",\"AI Marketing Automation\"]}"
     ]
    },
    "blocks": [
@@ -22497,7 +22525,7 @@
   },
   "/paid-ads-for/mortgage": {
    "head": {
-    "title": "Paid Ads Agency for Mortgage Brokers + AI Automation | KenjiAI",
+    "title": "Paid Ads for Mortgage Brokers + AI Automation | KenjiAI",
     "metas": [
      {
       "name": "viewport",
@@ -22624,11 +22652,11 @@
      },
      {
       "name": "title",
-      "content": "Paid Ads Agency for Mortgage Brokers + AI Automation | KenjiAI"
+      "content": "Paid Ads for Mortgage Brokers + AI Automation | KenjiAI"
      },
      {
       "name": "description",
-      "content": "KenjiAI runs paid ads for mortgage brokers and loan officers, and automates lead follow-up with AI — so you close more loans without buying expensive shared leads."
+      "content": "KenjiAI runs paid ads for mortgage brokers and loan officers and follows up on every lead with AI, so you close more loans without buying shared leads."
      },
      {
       "name": "keywords",
@@ -22636,25 +22664,25 @@
      },
      {
       "property": "og:title",
-      "content": "Paid Ads Agency for Mortgage Brokers + AI Automation | KenjiAI"
+      "content": "Paid Ads for Mortgage Brokers + AI Automation | KenjiAI"
      },
      {
       "property": "og:description",
-      "content": "KenjiAI runs paid ads for mortgage brokers and loan officers, and automates lead follow-up with AI — so you close more loans without buying expensive shared leads."
+      "content": "KenjiAI runs paid ads for mortgage brokers and loan officers and follows up on every lead with AI, so you close more loans without buying shared leads."
      },
      {
       "property": "twitter:title",
-      "content": "Paid Ads Agency for Mortgage Brokers + AI Automation | KenjiAI"
+      "content": "Paid Ads for Mortgage Brokers + AI Automation | KenjiAI"
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI runs paid ads for mortgage brokers and loan officers, and automates lead follow-up with AI — so you close more loans without buying expensive shared leads."
+      "content": "KenjiAI runs paid ads for mortgage brokers and loan officers and follows up on every lead with AI, so you close more loans without buying shared leads."
      }
     ],
     "canonical": "https://kenjiai.com/paid-ads-for/mortgage",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/mortgage#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/mortgage\",\"name\":\"Paid Ads Agency for Mortgage Brokers + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs paid ads for mortgage brokers and loan officers, and automates lead follow-up with AI — so you close more loans without buying expensive shared leads.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/mortgage#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/mortgage#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for Mortgage Brokers + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/mortgage\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/mortgage#service\",\"name\":\"KenjiAI: Mortgage Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/mortgage\",\"description\":\"KenjiAI runs paid ads for mortgage brokers and loan officers, and automates lead follow-up with AI — so you close more loans without buying expensive shared leads.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Mortgage Paid Advertising\",\"AI Marketing Automation\"]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/mortgage#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/mortgage\",\"name\":\"Paid Ads for Mortgage Brokers + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs paid ads for mortgage brokers and loan officers and follows up on every lead with AI, so you close more loans without buying shared leads.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/mortgage#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/mortgage#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads for Mortgage Brokers + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/mortgage\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/mortgage#service\",\"name\":\"KenjiAI: Mortgage Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/mortgage\",\"description\":\"KenjiAI runs paid ads for mortgage brokers and loan officers and follows up on every lead with AI, so you close more loans without buying shared leads.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Mortgage Paid Advertising\",\"AI Marketing Automation\"]}"
     ]
    },
    "blocks": [
@@ -22812,7 +22840,7 @@
   },
   "/paid-ads-for/pest-control": {
    "head": {
-    "title": "Paid Ads Agency for Pest Control Companies + AI Automation | KenjiAI",
+    "title": "Paid Ads for Pest Control + AI Automation | KenjiAI",
     "metas": [
      {
       "name": "viewport",
@@ -22939,11 +22967,11 @@
      },
      {
       "name": "title",
-      "content": "Paid Ads Agency for Pest Control Companies + AI Automation | KenjiAI"
+      "content": "Paid Ads for Pest Control + AI Automation | KenjiAI"
      },
      {
       "name": "description",
-      "content": "KenjiAI runs Google and Facebook ads for pest control companies and automates lead booking with AI — so you book more service calls without adding office staff."
+      "content": "KenjiAI runs Google and Facebook ads for pest control companies and books every lead with AI, so you take more service calls without adding office staff."
      },
      {
       "name": "keywords",
@@ -22951,25 +22979,25 @@
      },
      {
       "property": "og:title",
-      "content": "Paid Ads Agency for Pest Control Companies + AI Automation | KenjiAI"
+      "content": "Paid Ads for Pest Control + AI Automation | KenjiAI"
      },
      {
       "property": "og:description",
-      "content": "KenjiAI runs Google and Facebook ads for pest control companies and automates lead booking with AI — so you book more service calls without adding office staff."
+      "content": "KenjiAI runs Google and Facebook ads for pest control companies and books every lead with AI, so you take more service calls without adding office staff."
      },
      {
       "property": "twitter:title",
-      "content": "Paid Ads Agency for Pest Control Companies + AI Automation | KenjiAI"
+      "content": "Paid Ads for Pest Control + AI Automation | KenjiAI"
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI runs Google and Facebook ads for pest control companies and automates lead booking with AI — so you book more service calls without adding office staff."
+      "content": "KenjiAI runs Google and Facebook ads for pest control companies and books every lead with AI, so you take more service calls without adding office staff."
      }
     ],
     "canonical": "https://kenjiai.com/paid-ads-for/pest-control",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/pest-control#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/pest-control\",\"name\":\"Paid Ads Agency for Pest Control Companies + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Google and Facebook ads for pest control companies and automates lead booking with AI — so you book more service calls without adding office staff.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/pest-control#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/pest-control#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for Pest Control Companies + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/pest-control\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/pest-control#service\",\"name\":\"KenjiAI: Pest Control Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/pest-control\",\"description\":\"KenjiAI runs Google and Facebook ads for pest control companies and automates lead booking with AI — so you book more service calls without adding office staff.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Pest Control Paid Advertising\",\"AI Marketing Automation\"]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/pest-control#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/pest-control\",\"name\":\"Paid Ads for Pest Control + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Google and Facebook ads for pest control companies and books every lead with AI, so you take more service calls without adding office staff.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/pest-control#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/pest-control#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads for Pest Control + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/pest-control\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/pest-control#service\",\"name\":\"KenjiAI: Pest Control Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/pest-control\",\"description\":\"KenjiAI runs Google and Facebook ads for pest control companies and books every lead with AI, so you take more service calls without adding office staff.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Pest Control Paid Advertising\",\"AI Marketing Automation\"]}"
     ]
    },
    "blocks": [
@@ -23258,7 +23286,7 @@
      },
      {
       "name": "description",
-      "content": "KenjiAI runs Facebook and Google ads for real estate teams and automates every lead touchpoint with AI — so no buyer or seller lead ever goes cold."
+      "content": "KenjiAI runs Facebook and Google ads for real estate teams and follows up on every lead with AI, so no buyer or seller lead ever goes cold."
      },
      {
       "name": "keywords",
@@ -23270,7 +23298,7 @@
      },
      {
       "property": "og:description",
-      "content": "KenjiAI runs Facebook and Google ads for real estate teams and automates every lead touchpoint with AI — so no buyer or seller lead ever goes cold."
+      "content": "KenjiAI runs Facebook and Google ads for real estate teams and follows up on every lead with AI, so no buyer or seller lead ever goes cold."
      },
      {
       "property": "twitter:title",
@@ -23278,13 +23306,13 @@
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI runs Facebook and Google ads for real estate teams and automates every lead touchpoint with AI — so no buyer or seller lead ever goes cold."
+      "content": "KenjiAI runs Facebook and Google ads for real estate teams and follows up on every lead with AI, so no buyer or seller lead ever goes cold."
      }
     ],
     "canonical": "https://kenjiai.com/paid-ads-for/real-estate",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/real-estate#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/real-estate\",\"name\":\"Paid Ads Agency for Real Estate + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Facebook and Google ads for real estate teams and automates every lead touchpoint with AI — so no buyer or seller lead ever goes cold.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/real-estate#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/real-estate#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for Real Estate + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/real-estate\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/real-estate#service\",\"name\":\"KenjiAI: Real Estate Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/real-estate\",\"description\":\"KenjiAI runs Facebook and Google ads for real estate teams and automates every lead touchpoint with AI — so no buyer or seller lead ever goes cold.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Real Estate Paid Advertising\",\"AI Marketing Automation\"]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/real-estate#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/real-estate\",\"name\":\"Paid Ads Agency for Real Estate + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Facebook and Google ads for real estate teams and follows up on every lead with AI, so no buyer or seller lead ever goes cold.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/real-estate#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/real-estate#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for Real Estate + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/real-estate\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/real-estate#service\",\"name\":\"KenjiAI: Real Estate Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/real-estate\",\"description\":\"KenjiAI runs Facebook and Google ads for real estate teams and follows up on every lead with AI, so no buyer or seller lead ever goes cold.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Real Estate Paid Advertising\",\"AI Marketing Automation\"]}"
     ]
    },
    "blocks": [
@@ -23442,7 +23470,7 @@
   },
   "/paid-ads-for/recruiting": {
    "head": {
-    "title": "Paid Ads Agency for Recruiting Firms + AI Automation | KenjiAI",
+    "title": "Paid Ads for Recruiting Firms + AI Automation | KenjiAI",
     "metas": [
      {
       "name": "viewport",
@@ -23569,11 +23597,11 @@
      },
      {
       "name": "title",
-      "content": "Paid Ads Agency for Recruiting Firms + AI Automation | KenjiAI"
+      "content": "Paid Ads for Recruiting Firms + AI Automation | KenjiAI"
      },
      {
       "name": "description",
-      "content": "KenjiAI runs paid ads for recruiting and executive search firms, and automates candidate and client acquisition with AI — so your team closes placements faster."
+      "content": "KenjiAI runs paid ads for recruiting and executive search firms and automates candidate and client acquisition with AI, so you close placements faster."
      },
      {
       "name": "keywords",
@@ -23581,25 +23609,25 @@
      },
      {
       "property": "og:title",
-      "content": "Paid Ads Agency for Recruiting Firms + AI Automation | KenjiAI"
+      "content": "Paid Ads for Recruiting Firms + AI Automation | KenjiAI"
      },
      {
       "property": "og:description",
-      "content": "KenjiAI runs paid ads for recruiting and executive search firms, and automates candidate and client acquisition with AI — so your team closes placements faster."
+      "content": "KenjiAI runs paid ads for recruiting and executive search firms and automates candidate and client acquisition with AI, so you close placements faster."
      },
      {
       "property": "twitter:title",
-      "content": "Paid Ads Agency for Recruiting Firms + AI Automation | KenjiAI"
+      "content": "Paid Ads for Recruiting Firms + AI Automation | KenjiAI"
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI runs paid ads for recruiting and executive search firms, and automates candidate and client acquisition with AI — so your team closes placements faster."
+      "content": "KenjiAI runs paid ads for recruiting and executive search firms and automates candidate and client acquisition with AI, so you close placements faster."
      }
     ],
     "canonical": "https://kenjiai.com/paid-ads-for/recruiting",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/recruiting#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/recruiting\",\"name\":\"Paid Ads Agency for Recruiting Firms + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs paid ads for recruiting and executive search firms, and automates candidate and client acquisition with AI — so your team closes placements faster.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/recruiting#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/recruiting#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for Recruiting Firms + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/recruiting\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/recruiting#service\",\"name\":\"KenjiAI: Recruiting Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/recruiting\",\"description\":\"KenjiAI runs paid ads for recruiting and executive search firms, and automates candidate and client acquisition with AI — so your team closes placements faster.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Recruiting Paid Advertising\",\"AI Marketing Automation\"]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/recruiting#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/recruiting\",\"name\":\"Paid Ads for Recruiting Firms + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs paid ads for recruiting and executive search firms and automates candidate and client acquisition with AI, so you close placements faster.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/recruiting#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/recruiting#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads for Recruiting Firms + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/recruiting\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/recruiting#service\",\"name\":\"KenjiAI: Recruiting Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/recruiting\",\"description\":\"KenjiAI runs paid ads for recruiting and executive search firms and automates candidate and client acquisition with AI, so you close placements faster.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Recruiting Paid Advertising\",\"AI Marketing Automation\"]}"
     ]
    },
    "blocks": [
@@ -23757,7 +23785,7 @@
   },
   "/paid-ads-for/roofing": {
    "head": {
-    "title": "Paid Ads Agency for Roofing Companies + AI Automation | KenjiAI",
+    "title": "Paid Ads for Roofing Companies + AI Automation | KenjiAI",
     "metas": [
      {
       "name": "viewport",
@@ -23884,11 +23912,11 @@
      },
      {
       "name": "title",
-      "content": "Paid Ads Agency for Roofing Companies + AI Automation | KenjiAI"
+      "content": "Paid Ads for Roofing Companies + AI Automation | KenjiAI"
      },
      {
       "name": "description",
-      "content": "KenjiAI runs Google and Facebook ads for roofing companies and automates every lead with AI — so you book more inspections and close more jobs without adding office staff."
+      "content": "KenjiAI runs Google and Facebook ads for roofing companies and follows up on every lead with AI, so you book more inspections without more office staff."
      },
      {
       "name": "keywords",
@@ -23896,25 +23924,25 @@
      },
      {
       "property": "og:title",
-      "content": "Paid Ads Agency for Roofing Companies + AI Automation | KenjiAI"
+      "content": "Paid Ads for Roofing Companies + AI Automation | KenjiAI"
      },
      {
       "property": "og:description",
-      "content": "KenjiAI runs Google and Facebook ads for roofing companies and automates every lead with AI — so you book more inspections and close more jobs without adding office staff."
+      "content": "KenjiAI runs Google and Facebook ads for roofing companies and follows up on every lead with AI, so you book more inspections without more office staff."
      },
      {
       "property": "twitter:title",
-      "content": "Paid Ads Agency for Roofing Companies + AI Automation | KenjiAI"
+      "content": "Paid Ads for Roofing Companies + AI Automation | KenjiAI"
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI runs Google and Facebook ads for roofing companies and automates every lead with AI — so you book more inspections and close more jobs without adding office staff."
+      "content": "KenjiAI runs Google and Facebook ads for roofing companies and follows up on every lead with AI, so you book more inspections without more office staff."
      }
     ],
     "canonical": "https://kenjiai.com/paid-ads-for/roofing",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/roofing#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/roofing\",\"name\":\"Paid Ads Agency for Roofing Companies + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Google and Facebook ads for roofing companies and automates every lead with AI — so you book more inspections and close more jobs without adding office staff.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/roofing#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/roofing#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for Roofing Companies + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/roofing\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/roofing#service\",\"name\":\"KenjiAI: Roofing Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/roofing\",\"description\":\"KenjiAI runs Google and Facebook ads for roofing companies and automates every lead with AI — so you book more inspections and close more jobs without adding office staff.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Roofing Paid Advertising\",\"AI Marketing Automation\"]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/roofing#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/roofing\",\"name\":\"Paid Ads for Roofing Companies + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs Google and Facebook ads for roofing companies and follows up on every lead with AI, so you book more inspections without more office staff.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/roofing#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/roofing#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads for Roofing Companies + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/roofing\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/roofing#service\",\"name\":\"KenjiAI: Roofing Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/roofing\",\"description\":\"KenjiAI runs Google and Facebook ads for roofing companies and follows up on every lead with AI, so you book more inspections without more office staff.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Roofing Paid Advertising\",\"AI Marketing Automation\"]}"
     ]
    },
    "blocks": [
@@ -24072,7 +24100,7 @@
   },
   "/paid-ads-for/saas": {
    "head": {
-    "title": "Paid Ads Agency for SaaS Companies + AI Automation | KenjiAI",
+    "title": "Paid Ads Agency for SaaS + AI Automation | KenjiAI",
     "metas": [
      {
       "name": "viewport",
@@ -24199,11 +24227,11 @@
      },
      {
       "name": "title",
-      "content": "Paid Ads Agency for SaaS Companies + AI Automation | KenjiAI"
+      "content": "Paid Ads Agency for SaaS + AI Automation | KenjiAI"
      },
      {
       "name": "description",
-      "content": "KenjiAI runs paid ads for SaaS companies and gives you the AI automation platform to convert and retain every lead. No junior account managers. Senior operators only."
+      "content": "KenjiAI runs paid ads for SaaS companies and gives you the AI platform to follow up, convert and retain every lead. Senior operators only, no junior reps."
      },
      {
       "name": "keywords",
@@ -24211,25 +24239,25 @@
      },
      {
       "property": "og:title",
-      "content": "Paid Ads Agency for SaaS Companies + AI Automation | KenjiAI"
+      "content": "Paid Ads Agency for SaaS + AI Automation | KenjiAI"
      },
      {
       "property": "og:description",
-      "content": "KenjiAI runs paid ads for SaaS companies and gives you the AI automation platform to convert and retain every lead. No junior account managers. Senior operators only."
+      "content": "KenjiAI runs paid ads for SaaS companies and gives you the AI platform to follow up, convert and retain every lead. Senior operators only, no junior reps."
      },
      {
       "property": "twitter:title",
-      "content": "Paid Ads Agency for SaaS Companies + AI Automation | KenjiAI"
+      "content": "Paid Ads Agency for SaaS + AI Automation | KenjiAI"
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI runs paid ads for SaaS companies and gives you the AI automation platform to convert and retain every lead. No junior account managers. Senior operators only."
+      "content": "KenjiAI runs paid ads for SaaS companies and gives you the AI platform to follow up, convert and retain every lead. Senior operators only, no junior reps."
      }
     ],
     "canonical": "https://kenjiai.com/paid-ads-for/saas",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/saas#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/saas\",\"name\":\"Paid Ads Agency for SaaS Companies + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs paid ads for SaaS companies and gives you the AI automation platform to convert and retain every lead. No junior account managers. Senior operators only.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/saas#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/saas#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for SaaS Companies + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/saas\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/saas#service\",\"name\":\"KenjiAI: SaaS Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/saas\",\"description\":\"KenjiAI runs paid ads for SaaS companies and gives you the AI automation platform to convert and retain every lead. No junior account managers. Senior operators only.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"SaaS Paid Advertising\",\"AI Marketing Automation\"]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/saas#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/saas\",\"name\":\"Paid Ads Agency for SaaS + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs paid ads for SaaS companies and gives you the AI platform to follow up, convert and retain every lead. Senior operators only, no junior reps.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/saas#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/saas#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for SaaS + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/saas\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/saas#service\",\"name\":\"KenjiAI: SaaS Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/saas\",\"description\":\"KenjiAI runs paid ads for SaaS companies and gives you the AI platform to follow up, convert and retain every lead. Senior operators only, no junior reps.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"SaaS Paid Advertising\",\"AI Marketing Automation\"]}"
     ]
    },
    "blocks": [
@@ -24387,7 +24415,7 @@
   },
   "/paid-ads-for/solar": {
    "head": {
-    "title": "Paid Ads Agency for Solar Companies + AI Automation | KenjiAI",
+    "title": "Paid Ads for Solar Companies + AI Automation | KenjiAI",
     "metas": [
      {
       "name": "viewport",
@@ -24514,11 +24542,11 @@
      },
      {
       "name": "title",
-      "content": "Paid Ads Agency for Solar Companies + AI Automation | KenjiAI"
+      "content": "Paid Ads for Solar Companies + AI Automation | KenjiAI"
      },
      {
       "name": "description",
-      "content": "KenjiAI runs paid ads for solar installers and automates every lead with AI — from first click to in-home appointment booked, without buying expensive shared leads."
+      "content": "KenjiAI runs paid ads for solar installers and follows up on every lead with AI, from the first click to a booked in-home appointment. No shared leads."
      },
      {
       "name": "keywords",
@@ -24526,25 +24554,25 @@
      },
      {
       "property": "og:title",
-      "content": "Paid Ads Agency for Solar Companies + AI Automation | KenjiAI"
+      "content": "Paid Ads for Solar Companies + AI Automation | KenjiAI"
      },
      {
       "property": "og:description",
-      "content": "KenjiAI runs paid ads for solar installers and automates every lead with AI — from first click to in-home appointment booked, without buying expensive shared leads."
+      "content": "KenjiAI runs paid ads for solar installers and follows up on every lead with AI, from the first click to a booked in-home appointment. No shared leads."
      },
      {
       "property": "twitter:title",
-      "content": "Paid Ads Agency for Solar Companies + AI Automation | KenjiAI"
+      "content": "Paid Ads for Solar Companies + AI Automation | KenjiAI"
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI runs paid ads for solar installers and automates every lead with AI — from first click to in-home appointment booked, without buying expensive shared leads."
+      "content": "KenjiAI runs paid ads for solar installers and follows up on every lead with AI, from the first click to a booked in-home appointment. No shared leads."
      }
     ],
     "canonical": "https://kenjiai.com/paid-ads-for/solar",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/solar#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/solar\",\"name\":\"Paid Ads Agency for Solar Companies + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs paid ads for solar installers and automates every lead with AI — from first click to in-home appointment booked, without buying expensive shared leads.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/solar#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/solar#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for Solar Companies + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/solar\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/solar#service\",\"name\":\"KenjiAI: Solar Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/solar\",\"description\":\"KenjiAI runs paid ads for solar installers and automates every lead with AI — from first click to in-home appointment booked, without buying expensive shared leads.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Solar Paid Advertising\",\"AI Marketing Automation\"]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/solar#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/solar\",\"name\":\"Paid Ads for Solar Companies + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs paid ads for solar installers and follows up on every lead with AI, from the first click to a booked in-home appointment. No shared leads.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/solar#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/solar#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads for Solar Companies + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/solar\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/solar#service\",\"name\":\"KenjiAI: Solar Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/solar\",\"description\":\"KenjiAI runs paid ads for solar installers and follows up on every lead with AI, from the first click to a booked in-home appointment. No shared leads.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Solar Paid Advertising\",\"AI Marketing Automation\"]}"
     ]
    },
    "blocks": [
@@ -24702,7 +24730,7 @@
   },
   "/paid-ads-for/staffing": {
    "head": {
-    "title": "Paid Ads Agency for Staffing Agencies + AI Automation | KenjiAI",
+    "title": "Paid Ads for Staffing Agencies + AI Automation | KenjiAI",
     "metas": [
      {
       "name": "viewport",
@@ -24829,11 +24857,11 @@
      },
      {
       "name": "title",
-      "content": "Paid Ads Agency for Staffing Agencies + AI Automation | KenjiAI"
+      "content": "Paid Ads for Staffing Agencies + AI Automation | KenjiAI"
      },
      {
       "name": "description",
-      "content": "KenjiAI runs paid ads for staffing and recruiting firms, and automates candidate and client acquisition with AI — so your team focuses on placements, not prospecting."
+      "content": "KenjiAI runs paid ads for staffing firms and automates candidate and client acquisition with AI, so your team focuses on placements, not prospecting."
      },
      {
       "name": "keywords",
@@ -24841,25 +24869,25 @@
      },
      {
       "property": "og:title",
-      "content": "Paid Ads Agency for Staffing Agencies + AI Automation | KenjiAI"
+      "content": "Paid Ads for Staffing Agencies + AI Automation | KenjiAI"
      },
      {
       "property": "og:description",
-      "content": "KenjiAI runs paid ads for staffing and recruiting firms, and automates candidate and client acquisition with AI — so your team focuses on placements, not prospecting."
+      "content": "KenjiAI runs paid ads for staffing firms and automates candidate and client acquisition with AI, so your team focuses on placements, not prospecting."
      },
      {
       "property": "twitter:title",
-      "content": "Paid Ads Agency for Staffing Agencies + AI Automation | KenjiAI"
+      "content": "Paid Ads for Staffing Agencies + AI Automation | KenjiAI"
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI runs paid ads for staffing and recruiting firms, and automates candidate and client acquisition with AI — so your team focuses on placements, not prospecting."
+      "content": "KenjiAI runs paid ads for staffing firms and automates candidate and client acquisition with AI, so your team focuses on placements, not prospecting."
      }
     ],
     "canonical": "https://kenjiai.com/paid-ads-for/staffing",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/staffing#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/staffing\",\"name\":\"Paid Ads Agency for Staffing Agencies + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs paid ads for staffing and recruiting firms, and automates candidate and client acquisition with AI — so your team focuses on placements, not prospecting.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/staffing#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/staffing#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for Staffing Agencies + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/staffing\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/staffing#service\",\"name\":\"KenjiAI: Staffing Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/staffing\",\"description\":\"KenjiAI runs paid ads for staffing and recruiting firms, and automates candidate and client acquisition with AI — so your team focuses on placements, not prospecting.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Staffing Paid Advertising\",\"AI Marketing Automation\"]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/staffing#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/staffing\",\"name\":\"Paid Ads for Staffing Agencies + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs paid ads for staffing firms and automates candidate and client acquisition with AI, so your team focuses on placements, not prospecting.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/staffing#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/staffing#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads for Staffing Agencies + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/staffing\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/staffing#service\",\"name\":\"KenjiAI: Staffing Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/staffing\",\"description\":\"KenjiAI runs paid ads for staffing firms and automates candidate and client acquisition with AI, so your team focuses on placements, not prospecting.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Staffing Paid Advertising\",\"AI Marketing Automation\"]}"
     ]
    },
    "blocks": [
@@ -25017,7 +25045,7 @@
   },
   "/paid-ads-for/tax-relief": {
    "head": {
-    "title": "Paid Ads Agency for Tax Relief Firms + AI Automation | KenjiAI",
+    "title": "Paid Ads for Tax Relief Firms + AI Automation | KenjiAI",
     "metas": [
      {
       "name": "viewport",
@@ -25144,11 +25172,11 @@
      },
      {
       "name": "title",
-      "content": "Paid Ads Agency for Tax Relief Firms + AI Automation | KenjiAI"
+      "content": "Paid Ads for Tax Relief Firms + AI Automation | KenjiAI"
      },
      {
       "name": "description",
-      "content": "KenjiAI runs paid ads for tax relief and tax debt firms and automates every lead with AI, so you sign more qualified cases from the same spend. We already run acquisition for leaders in the space."
+      "content": "KenjiAI runs paid ads for tax relief firms and follows up on every lead with AI, so you sign more qualified cases from the same spend. We know this space."
      },
      {
       "name": "keywords",
@@ -25156,25 +25184,25 @@
      },
      {
       "property": "og:title",
-      "content": "Paid Ads Agency for Tax Relief Firms + AI Automation | KenjiAI"
+      "content": "Paid Ads for Tax Relief Firms + AI Automation | KenjiAI"
      },
      {
       "property": "og:description",
-      "content": "KenjiAI runs paid ads for tax relief and tax debt firms and automates every lead with AI, so you sign more qualified cases from the same spend. We already run acquisition for leaders in the space."
+      "content": "KenjiAI runs paid ads for tax relief firms and follows up on every lead with AI, so you sign more qualified cases from the same spend. We know this space."
      },
      {
       "property": "twitter:title",
-      "content": "Paid Ads Agency for Tax Relief Firms + AI Automation | KenjiAI"
+      "content": "Paid Ads for Tax Relief Firms + AI Automation | KenjiAI"
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI runs paid ads for tax relief and tax debt firms and automates every lead with AI, so you sign more qualified cases from the same spend. We already run acquisition for leaders in the space."
+      "content": "KenjiAI runs paid ads for tax relief firms and follows up on every lead with AI, so you sign more qualified cases from the same spend. We know this space."
      }
     ],
     "canonical": "https://kenjiai.com/paid-ads-for/tax-relief",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/tax-relief#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/tax-relief\",\"name\":\"Paid Ads Agency for Tax Relief Firms + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs paid ads for tax relief and tax debt firms and automates every lead with AI, so you sign more qualified cases from the same spend. We already run acquisition for leaders in the space.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/tax-relief#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/tax-relief#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads Agency for Tax Relief Firms + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/tax-relief\"}]}]}",
-     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/tax-relief#service\",\"name\":\"KenjiAI: Tax Relief Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/tax-relief\",\"description\":\"KenjiAI runs paid ads for tax relief and tax debt firms and automates every lead with AI, so you sign more qualified cases from the same spend. We already run acquisition for leaders in the space.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Tax Relief Paid Advertising\",\"AI Marketing Automation\"]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/paid-ads-for/tax-relief#webpage\",\"url\":\"https://kenjiai.com/paid-ads-for/tax-relief\",\"name\":\"Paid Ads for Tax Relief Firms + AI Automation\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI runs paid ads for tax relief firms and follows up on every lead with AI, so you sign more qualified cases from the same spend. We know this space.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/paid-ads-for/tax-relief#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/paid-ads-for/tax-relief#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Paid Ads for Tax Relief Firms + AI Automation\",\"item\":\"https://kenjiai.com/paid-ads-for/tax-relief\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@type\":\"Service\",\"@id\":\"https://kenjiai.com/paid-ads-for/tax-relief#service\",\"name\":\"KenjiAI: Tax Relief Paid Ads Agency\",\"url\":\"https://kenjiai.com/paid-ads-for/tax-relief\",\"description\":\"KenjiAI runs paid ads for tax relief firms and follows up on every lead with AI, so you sign more qualified cases from the same spend. We know this space.\",\"provider\":{\"@id\":\"https://kenjiai.com/#organization\"},\"areaServed\":{\"@type\":\"Country\",\"name\":\"United States\"},\"serviceType\":[\"Tax Relief Paid Advertising\",\"AI Marketing Automation\"]}"
     ]
    },
    "blocks": [

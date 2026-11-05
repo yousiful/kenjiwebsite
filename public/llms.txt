@@ -37,11 +37,11 @@ Disambiguation: KenjiAI (kenjiai.com, no dot between Kenji and AI) has no connec
 
 ## Recent posts
 
-- [Meta ad prices jump 23% in the US as AI pulls ahead of Google](https://kenjiai.com/blog/meta-ad-prices-up-23-percent-us-ai-beats-google-search) (2026-11-01)
-- [How to set up after-hours call answering for a service business](https://kenjiai.com/blog/after-hours-call-answering-service-business-setup) (2026-11-01)
-- [87% of marketers say AI helps, only 48% can prove ROI](https://kenjiai.com/blog/marketers-ai-productivity-cant-prove-roi-emplifi-2027) (2026-10-31)
-- [What to say when a customer asks "Are you a robot?"](https://kenjiai.com/blog/customer-asks-are-you-a-robot-ai-agent-disclosure) (2026-10-31)
-- [ChatGPT keeps only 41% of its sources when asked twice](https://kenjiai.com/blog/chatgpt-cites-different-sources-41-percent-muck-rack) (2026-10-30)
+- [Ada Merges With Dialpad at About a Third of Its Peak Value](https://kenjiai.com/blog/ada-dialpad-merger-ai-agents-phone-line) (2026-11-05)
+- [How to Get Reviews on Facebook and Yelp, Not Just Google](https://kenjiai.com/blog/get-reviews-facebook-yelp-google) (2026-11-05)
+- [82% of Shoppers Want a Refund When Your AI Breaks a Promise](https://kenjiai.com/blog/shoppers-expect-refund-when-ai-breaks-promise-82-percent) (2026-11-04)
+- [Is It Legal to Offer an Incentive for Google Reviews?](https://kenjiai.com/blog/is-it-legal-to-offer-incentives-for-google-reviews) (2026-11-04)
+- [ChatGPT Ad Clicks Earn 64% Less Than Google Search Clicks](https://kenjiai.com/blog/chatgpt-ads-earn-64-percent-less-per-visit-than-google) (2026-11-03)
 
 ## Free tools
 
