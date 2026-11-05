@@ -41,6 +41,7 @@ export const internalRoutes = [
   '/onboarding',
   '/futureyou',
   '/launch-time',
+  '/freedom',
   '/workshop',
   '/special',
   '/call-center-upgrade',
