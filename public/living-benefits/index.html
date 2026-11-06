@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Living Benefits Policy Builder | Kenji Insurance Team</title>
-<meta name="description" content="See how far $100 or $200 a month gets you in life insurance with living benefits, and why starting now beats waiting. Free 2 minute plan builder.">
+<title>Living Benefits Calculator | Kenji Insurance Team</title>
+<meta name="description" content="See how far $100 or $200 a month goes in cash value, death benefit and living benefits. Free calculator, then apply in 2 minutes.">
 <link rel="canonical" href="https://kenjiai.com/living-benefits">
-<meta property="og:title" content="How far does $100 a month go in life insurance?">
-<meta property="og:description" content="Build your protection plan in 2 minutes. Coverage for your family plus money while you're alive if serious illness hits.">
+<meta property="og:title" content="What can $100 a month build for you?">
+<meta property="og:description" content="Cash value, protection for your family, and money while you're alive if serious illness hits. Try the free calculator.">
 <meta property="og:url" content="https://kenjiai.com/living-benefits">
 <meta property="og:image" content="https://kenjiai.com/og-image.png">
 <link rel="icon" href="/favicon.ico">
@@ -23,22 +23,19 @@
 #lbpb {
   --bg: #0a0a0a; --card: #141414; --card2: #1b1b1b; --line: #2a2a2a;
   --text: #ffffff; --muted: #a3a3a3; --accent: #2dd4bf; --accent-ink: #04201c;
-  --warn: #fbbf24; --err: #f87171;
+  --gold: #fbbf24; --violet: #a78bfa; --err: #f87171;
   font-family: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
   color: var(--text); background: var(--bg);
-  max-width: 560px; margin: 0 auto; padding: 20px 16px 28px; min-height: 100vh;
+  max-width: 600px; margin: 0 auto; padding: 20px 16px 28px; min-height: 100vh;
   display: flex; flex-direction: column; overflow-x: hidden; line-height: 1.5;
 }
 #lbpb .top { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; min-height: 40px; }
-#lbpb .back {
-  background: none; border: 1px solid var(--line); color: var(--text); border-radius: 12px;
-  width: 40px; height: 40px; font-size: 20px; cursor: pointer; flex: none;
-}
+#lbpb .top[hidden] { display: none; }
+#lbpb .back { background: none; border: 1px solid var(--line); color: var(--text); border-radius: 12px; width: 40px; height: 40px; font-size: 20px; cursor: pointer; flex: none; }
 #lbpb .back[hidden] { display: none; }
 #lbpb .bar { flex: 1; height: 8px; background: var(--card2); border-radius: 99px; overflow: hidden; }
 #lbpb .bar i { display: block; height: 100%; width: 0; background: var(--accent); border-radius: 99px; transition: width .4s ease; }
 #lbpb .count { font-size: 13px; color: var(--muted); min-width: 44px; text-align: right; }
-#lbpb .stage { position: relative; flex: 1; }
 #lbpb .screen { display: none; animation: lbIn .35s ease both; }
 #lbpb .screen.on { display: block; }
 #lbpb .screen.rev { animation-name: lbInRev; }
@@ -46,30 +43,28 @@
 @keyframes lbInRev { from { opacity: 0; transform: translateX(-28px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { #lbpb .screen { animation: none; } #lbpb .bar i { transition: none; } }
 #lbpb .cheer { color: var(--accent); font-weight: 700; font-size: 14px; margin: 0 0 6px; }
-#lbpb h1 { font-size: 32px; line-height: 1.15; margin: 8px 0 12px; font-weight: 800; letter-spacing: -.02em; }
+#lbpb h1 { font-size: 31px; line-height: 1.15; margin: 6px 0 10px; font-weight: 800; letter-spacing: -.02em; }
 #lbpb h2 { font-size: 25px; line-height: 1.2; margin: 0 0 8px; font-weight: 800; letter-spacing: -.01em; }
 #lbpb h3 { font-size: 18px; margin: 0 0 6px; }
-#lbpb p.sub { color: var(--muted); margin: 0 0 20px; font-size: 16px; }
+#lbpb p.sub { color: var(--muted); margin: 0 0 18px; font-size: 16px; }
 #lbpb .opts { display: grid; gap: 10px; margin-bottom: 16px; }
 #lbpb .opts.two { grid-template-columns: 1fr 1fr; }
 #lbpb .opts.three { grid-template-columns: 1fr 1fr 1fr; }
-#lbpb .opts.three .opt { justify-content: center; padding: 14px 4px; font-size: 15px; }
-#lbpb .opts.three .opt[aria-pressed="true"]::after { content: none; }
 #lbpb .opt {
   display: flex; align-items: center; gap: 12px; width: 100%; text-align: left;
   background: var(--card); border: 2px solid var(--line); color: var(--text);
   border-radius: 16px; padding: 16px; font: inherit; font-size: 16px; font-weight: 600;
-  cursor: pointer; min-height: 60px; transition: border-color .15s, background .15s;
+  cursor: pointer; min-height: 58px; transition: border-color .15s, background .15s;
 }
 #lbpb .opt .ic { font-size: 24px; flex: none; width: 32px; text-align: center; }
 #lbpb .opt[aria-pressed="true"] { border-color: var(--accent); background: #0f2422; }
 #lbpb .opt[aria-pressed="true"]::after { content: "\2713"; margin-left: auto; color: var(--accent); font-weight: 800; }
-#lbpb .opts.two .opt { justify-content: center; text-align: center; }
+#lbpb .opts.two .opt, #lbpb .opts.three .opt { justify-content: center; text-align: center; }
 #lbpb .opts.two .opt[aria-pressed="true"]::after { margin-left: 6px; }
-#lbpb button:focus-visible, #lbpb input:focus-visible, #lbpb select:focus-visible, #lbpb a:focus-visible {
-  outline: 3px solid var(--accent); outline-offset: 2px;
-}
-#lbpb label.f { display: block; font-weight: 600; font-size: 15px; margin: 14px 0 6px; }
+#lbpb .opts.three .opt { padding: 14px 4px; font-size: 15px; }
+#lbpb .opts.three .opt[aria-pressed="true"]::after { content: none; }
+#lbpb button:focus-visible, #lbpb input:focus-visible, #lbpb select:focus-visible, #lbpb a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+#lbpb label.f, #lbpb p.f { display: block; font-weight: 600; font-size: 15px; margin: 14px 0 6px; }
 #lbpb input[type=text], #lbpb input[type=email], #lbpb input[type=tel], #lbpb input[type=number], #lbpb select {
   width: 100%; background: var(--card); border: 2px solid var(--line); color: var(--text);
   border-radius: 14px; padding: 14px; font: inherit; font-size: 17px; min-height: 54px;
@@ -78,96 +73,183 @@
   background-position: calc(100% - 22px) 50%, calc(100% - 16px) 50%; background-size: 6px 6px; background-repeat: no-repeat; padding-right: 40px; }
 #lbpb .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 #lbpb .row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-#lbpb .cta {
-  width: 100%; background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 16px;
-  padding: 18px; font: inherit; font-size: 18px; font-weight: 800; cursor: pointer; margin-top: 18px; min-height: 60px;
-}
+#lbpb .cta { width: 100%; background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 16px; padding: 18px; font: inherit; font-size: 18px; font-weight: 800; cursor: pointer; margin-top: 18px; min-height: 60px; }
 #lbpb .cta:disabled { opacity: .45; cursor: not-allowed; }
 #lbpb .cta.ghost { background: transparent; color: var(--text); border: 2px solid var(--line); }
 #lbpb .note { background: #0f2422; border: 1px solid #1e4a45; color: #ccfbf1; border-radius: 14px; padding: 12px 14px; font-size: 14px; margin: 12px 0; }
 #lbpb .note.warn { background: #2a2109; border-color: #5c4710; color: #fde68a; }
-#lbpb .err { color: var(--err); font-size: 14px; margin: 8px 0 0; min-height: 0; }
+#lbpb .err { color: var(--err); font-size: 14px; margin: 8px 0 0; }
 #lbpb .err:empty { display: none; }
-#lbpb .big { font-size: 44px; font-weight: 800; text-align: center; margin: 8px 0 0; letter-spacing: -.02em; }
-#lbpb .perday { text-align: center; color: var(--accent); font-weight: 700; margin: 0 0 14px; }
-#lbpb input[type=range] { width: 100%; accent-color: var(--accent); height: 36px; }
-#lbpb .ends { display: flex; justify-content: space-between; color: var(--muted); font-size: 13px; }
-#lbpb .tip {
-  display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%;
-  border: 1px solid var(--muted); color: var(--muted); background: none; font: inherit; font-size: 12px; font-weight: 700;
-  cursor: pointer; vertical-align: middle; margin-left: 4px; padding: 0;
-}
+#lbpb input[type=range] { width: 100%; accent-color: var(--accent); height: 36px; margin: 0; }
+#lbpb .ends { display: flex; justify-content: space-between; color: var(--muted); font-size: 12px; }
+#lbpb .tip { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--muted); color: var(--muted); background: none; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; vertical-align: middle; margin-left: 4px; padding: 0; }
 #lbpb .tipbox { display: none; background: var(--card2); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; font-size: 14px; color: #e5e5e5; margin: 8px 0; }
 #lbpb .tipbox.on { display: block; }
 #lbpb .check { display: flex; gap: 12px; align-items: flex-start; font-size: 13px; color: #d4d4d4; margin-top: 16px; cursor: pointer; }
 #lbpb .check input { width: 22px; height: 22px; accent-color: var(--accent); flex: none; margin-top: 2px; }
 #lbpb .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px; margin: 12px 0; }
-#lbpb .plan { border: 2px solid var(--accent); }
-#lbpb .plan .tag { display: inline-block; background: var(--accent); color: var(--accent-ink); font-weight: 800; font-size: 12px; border-radius: 99px; padding: 4px 10px; letter-spacing: .04em; text-transform: uppercase; }
-#lbpb .range { font-size: 30px; font-weight: 800; margin: 10px 0 2px; letter-spacing: -.01em; }
 #lbpb .small { font-size: 13px; color: var(--muted); }
+#lbpb .body { font-size: 15px; color: #d4d4d4; margin: 0; }
 #lbpb ul.riders { list-style: none; margin: 0; padding: 0; }
 #lbpb ul.riders li { display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); }
 #lbpb ul.riders li:first-child { border-top: 0; }
-#lbpb ul.riders .ok { color: var(--accent); font-weight: 800; font-size: 18px; flex: none; }
+#lbpb ul.riders .ok { color: var(--accent); font-weight: 800; font-size: 18px; flex: none; min-width: 14px; }
 #lbpb ul.riders b { display: block; }
 #lbpb ul.riders span.d { color: var(--muted); font-size: 14px; }
-#lbpb .cmps { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
-#lbpb .cmp { background: var(--card2); border: 2px solid var(--line); border-radius: 14px; padding: 12px 8px; text-align: center; }
-#lbpb .cmp.mine { border-color: var(--accent); }
-#lbpb .cmp .amt { font-weight: 800; font-size: 17px; }
-#lbpb .cmp .day { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
-#lbpb .cmp .cov { font-weight: 800; font-size: 16px; color: var(--accent); line-height: 1.25; }
-#lbpb .cmp .lbl { font-size: 12px; color: var(--muted); }
-#lbpb .now { border-color: #5c4710; }
-#lbpb ul.wait { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 10px; }
-#lbpb ul.wait li { display: grid; grid-template-columns: 1fr; gap: 4px; font-size: 14px; }
-#lbpb ul.wait .w { font-weight: 700; }
-#lbpb ul.wait .bar2 { height: 12px; background: var(--card2); border-radius: 99px; overflow: hidden; }
-#lbpb ul.wait .bar2 i { display: block; height: 100%; background: var(--accent); border-radius: 99px; }
-#lbpb ul.wait li.later .bar2 i { background: var(--warn); }
-#lbpb ul.wait .v { color: #d4d4d4; }
+#lbpb .spin { width: 44px; height: 44px; border: 4px solid var(--line); border-top-color: var(--accent); border-radius: 50%; margin: 40px auto 16px; animation: lbSpin .8s linear infinite; }
+@keyframes lbSpin { to { transform: rotate(360deg); } }
 #lbpb .love { text-align: center; color: var(--muted); font-size: 13px; margin: 14px 0 0; }
 #lbpb .love b { color: var(--text); }
 #lbpb .cal { width: 100%; min-height: 640px; border: 0; border-radius: 16px; background: #fff; margin-top: 12px; }
-#lbpb .spin { width: 44px; height: 44px; border: 4px solid var(--line); border-top-color: var(--accent); border-radius: 50%; margin: 40px auto 16px; animation: lbSpin .8s linear infinite; }
-@keyframes lbSpin { to { transform: rotate(360deg); } }
 #lbpb footer { margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 11px; line-height: 1.55; color: #8a8a8a; }
 #lbpb footer p { margin: 0 0 6px; }
 #lbpb .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---------- Calculator ---------- */
+#lbpb .ctl { margin: 4px 0 14px; }
+#lbpb .ctl .lab { display: flex; justify-content: space-between; align-items: baseline; font-weight: 600; font-size: 15px; }
+#lbpb .ctl .val { font-size: 24px; font-weight: 800; color: var(--accent); }
+#lbpb .ctl .val small { font-size: 13px; color: var(--muted); font-weight: 600; }
+#lbpb .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+#lbpb .chip { background: var(--card2); border: 1px solid var(--line); color: var(--text); border-radius: 99px; padding: 8px 14px; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; min-height: 40px; }
+#lbpb .chip[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+#lbpb .seg { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: 4px; }
+#lbpb .seg button { background: none; border: 0; color: var(--muted); font: inherit; font-weight: 700; font-size: 14px; border-radius: 10px; padding: 10px 4px; cursor: pointer; min-height: 44px; }
+#lbpb .seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+#lbpb .seg.three { grid-template-columns: 1fr 1fr 1fr; }
+#lbpb .kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+#lbpb .kpi { background: var(--card2); border: 1px solid var(--line); border-radius: 14px; padding: 12px; }
+#lbpb .kpi .k { font-size: 12px; color: var(--muted); font-weight: 600; display: flex; align-items: center; gap: 6px; }
+#lbpb .kpi .k i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+#lbpb .kpi .v { font-size: 22px; font-weight: 800; letter-spacing: -.01em; }
+#lbpb .tabs { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; margin: 4px 0 10px; }
+#lbpb .tabs button { background: var(--card2); border: 1px solid var(--line); color: var(--muted); border-radius: 12px; font: inherit; font-size: 13px; font-weight: 700; padding: 10px 4px; cursor: pointer; min-height: 44px; }
+#lbpb .tabs button[aria-selected="true"] { color: var(--text); border-color: var(--accent); }
+#lbpb svg.chart { width: 100%; height: auto; display: block; touch-action: pan-y; }
+#lbpb svg.chart text { fill: #8a8a8a; font-size: 10px; font-family: inherit; }
+#lbpb .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--muted); margin-top: 6px; }
+#lbpb .legend span { display: inline-flex; align-items: center; gap: 6px; }
+#lbpb .legend i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+#lbpb .scrub .lab { margin-top: 10px; }
+#lbpb table.tbl { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 8px; }
+#lbpb table.tbl th, #lbpb table.tbl td { text-align: right; padding: 8px 4px; border-top: 1px solid var(--line); white-space: nowrap; }
+#lbpb table.tbl th:first-child, #lbpb table.tbl td:first-child { text-align: left; }
+#lbpb table.tbl th { color: var(--muted); font-weight: 600; font-size: 12px; border-top: 0; }
+#lbpb .disc { font-size: 11.5px; color: #9a9a9a; line-height: 1.5; margin: 10px 0 0; }
+#lbpb ul.wait { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 10px; }
+#lbpb ul.wait li { display: grid; gap: 4px; font-size: 14px; }
+#lbpb ul.wait .w { font-weight: 700; }
+#lbpb ul.wait .bar2 { height: 12px; background: var(--card2); border-radius: 99px; overflow: hidden; }
+#lbpb ul.wait .bar2 i { display: block; height: 100%; background: var(--accent); border-radius: 99px; }
+#lbpb ul.wait li.later .bar2 i { background: var(--gold); }
+#lbpb ul.wait .v { color: #d4d4d4; }
+#lbpb .sticky { position: sticky; bottom: 0; padding: 10px 0 12px; background: linear-gradient(transparent, var(--bg) 30%); z-index: 2; }
+#lbpb .sticky .cta { margin-top: 0; box-shadow: 0 8px 30px rgba(45, 212, 191, .25); }
 #lbpb-confetti { position: fixed; inset: 0; pointer-events: none; z-index: 9999; }
-@media (max-width: 360px) { #lbpb h1 { font-size: 28px; } #lbpb h2 { font-size: 22px; } #lbpb .opts.two { grid-template-columns: 1fr; } }
+@media (max-width: 360px) { #lbpb h1 { font-size: 27px; } #lbpb h2 { font-size: 22px; } #lbpb .opts.two { grid-template-columns: 1fr; } #lbpb .kpi .v { font-size: 19px; } }
 </style>
 
 <div id="lbpb">
-  <div class="top">
-    <button class="back" id="lb-back" type="button" aria-label="Go back" hidden>&#8592;</button>
+  <div class="top" id="lb-top" hidden>
+    <button class="back" id="lb-back" type="button" aria-label="Go back">&#8592;</button>
     <div class="bar" role="progressbar" aria-label="Progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="lb-barwrap"><i id="lb-bar"></i></div>
     <div class="count" id="lb-count" aria-live="polite"></div>
   </div>
 
-  <div class="stage" id="lb-stage" aria-live="polite">
+  <div class="stage">
 
-    <!-- 0 Welcome -->
-    <section class="screen" data-s="welcome">
-      <p class="cheer">Free. No exam. No pressure.</p>
-      <h1>Build your protection plan in 2 minutes.</h1>
-      <p class="sub">See how far $100 or $200 a month really gets you: coverage for your family, plus money you can use while you're alive if a heart attack, stroke, or cancer hits.</p>
+    <!-- ===================== TOOL ===================== -->
+    <section class="screen" data-s="tool">
+      <p class="cheer">Living Benefits Calculator</p>
+      <h1>See what $100 or $200 a month can build for you.</h1>
+      <p class="sub">Move the sliders. Watch your cash value, your family's protection, and the money you could use while you're alive if a heart attack, stroke, or cancer hits.</p>
+
       <div class="card">
-        <h3>What you'll see at the end</h3>
+        <div class="ctl">
+          <div class="lab"><label for="t-amt">I can put in</label><span class="val" id="t-amt-out">$200<small>/mo</small></span></div>
+          <input type="range" id="t-amt" min="50" max="1000" step="10" value="200" aria-describedby="t-amt-day">
+          <div class="ends"><span>$50</span><span id="t-amt-day">about $6.67 a day</span><span>$1,000</span></div>
+          <div class="chips" data-chips="amt">
+            <button class="chip" type="button" data-v="100">$100</button>
+            <button class="chip" type="button" data-v="200">$200</button>
+            <button class="chip" type="button" data-v="300">$300</button>
+            <button class="chip" type="button" data-v="500">$500</button>
+          </div>
+        </div>
+        <div class="ctl">
+          <div class="lab"><label for="t-age">My age</label><span class="val" id="t-age-out">35</span></div>
+          <input type="range" id="t-age" min="18" max="70" step="1" value="35">
+          <div class="ends"><span>18</span><span>70</span></div>
+        </div>
+        <div class="row">
+          <div class="ctl"><p class="f" style="margin:0 0 6px">Gender</p>
+            <div class="seg" data-seg="gender"><button type="button" data-v="male">Male</button><button type="button" data-v="female">Female</button></div></div>
+          <div class="ctl"><p class="f" style="margin:0 0 6px">Nicotine?</p>
+            <div class="seg" data-seg="tobacco"><button type="button" data-v="no">No</button><button type="button" data-v="yes">Yes</button></div></div>
+        </div>
+        <div class="ctl" style="margin-bottom:0">
+          <p class="f" style="margin:0 0 6px">I care most about
+            <button type="button" class="tip" aria-expanded="false" aria-controls="tip-design">?</button></p>
+          <div class="tipbox" id="tip-design"><b>Max protection</b> puts more of each dollar into coverage, so your death benefit and living benefits pot are as big as possible. <b>Max cash value</b> keeps coverage at the lowest amount the tax rules allow (called non-MEC), so more of each dollar builds cash you can borrow from.</div>
+          <div class="seg" data-seg="design"><button type="button" data-v="protect">Max protection</button><button type="button" data-v="cash">Max cash value</button></div>
+        </div>
+      </div>
+
+      <div class="card" id="t-out">
+        <div class="kpis">
+          <div class="kpi"><div class="k"><i style="background:#ffffff"></i>Death benefit</div><div class="v" id="k-db">$0</div></div>
+          <div class="kpi"><div class="k"><i style="background:var(--violet)"></i>Living benefits pot</div><div class="v" id="k-lb">$0</div></div>
+          <div class="kpi"><div class="k"><i style="background:var(--accent)"></i>Cash value at <span id="k-age1">65</span></div><div class="v" id="k-cv">$0</div></div>
+          <div class="kpi"><div class="k"><i style="background:#737373"></i>You put in by <span id="k-age2">65</span></div><div class="v" id="k-paid">$0</div></div>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Chart view">
+          <button type="button" role="tab" data-tab="cv" aria-selected="true">Cash value</button>
+          <button type="button" role="tab" data-tab="db" aria-selected="false">Death benefit</button>
+          <button type="button" role="tab" data-tab="lb" aria-selected="false">Living benefits</button>
+        </div>
+        <svg class="chart" id="t-chart" viewBox="0 0 340 210" role="img" aria-label="Projection chart"></svg>
+        <div class="legend" id="t-legend"></div>
+        <p class="body" id="t-tabtext" style="margin-top:10px"></p>
+
+        <div class="ctl scrub">
+          <div class="lab"><label for="t-at">Show me age</label><span class="val" id="t-at-out">65</span></div>
+          <input type="range" id="t-at" min="36" max="100" step="1" value="65">
+        </div>
+
+        <p class="f" style="margin:10px 0 6px">Hypothetical interest rate
+          <button type="button" class="tip" aria-expanded="false" aria-controls="tip-rate">?</button></p>
+        <div class="tipbox" id="tip-rate">Indexed universal life earns interest tied to a market index, with a 0% floor so you never lose money to a down market. Some years you earn more, some years 0%. Flip between rates to see the range. Your agent's official illustration uses the carrier's own rates.</div>
+        <div class="seg three" data-seg="rate"><button type="button" data-v="0">0%</button><button type="button" data-v="0.04">4%</button><button type="button" data-v="0.06">6%</button></div>
+        <div class="note warn" id="t-lapse" hidden></div>
+
+        <table class="tbl" id="t-tbl"><thead><tr><th>Age</th><th>You put in</th><th>Cash value</th><th>Death benefit</th></tr></thead><tbody></tbody></table>
+        <p class="disc">Hypothetical example for education only. This is not an illustration, quote, or guarantee of any kind. It assumes the same rate every year and uses simplified estimates of policy charges; real index credits change every year and can be 0%. Cash value shown is after estimated charges and surrender charges. Living benefits pay a portion of the death benefit early, reduced by a discount, and only for covered conditions diagnosed after the policy starts. Loans and withdrawals reduce cash value and the death benefit. Your licensed agent will provide the carrier's official illustration.</p>
+      </div>
+
+      <div class="card">
+        <h3>&#9200; Why now beats later</h3>
+        <p class="body" style="margin-bottom:10px">Same <b id="w-amt">$200</b> a month, cash value at age <b id="w-age">65</b>, depending on when you start:</p>
+        <ul class="wait" id="t-wait"></ul>
         <ul class="riders">
-          <li><span class="ok">&#10003;</span><span>The plan type that fits your goals</span></li>
-          <li><span class="ok">&#10003;</span><span>A coverage estimate at your budget</span></li>
-          <li><span class="ok">&#10003;</span><span>The living benefits you'd want on it, in plain English</span></li>
+          <li><span class="ok">1</span><span><b>Every birthday costs you.</b><span class="d">Your price is set by your age when you apply. The same dollars buy less every year you wait.</span></span></li>
+          <li><span class="ok">2</span><span><b>Your health is your ticket in.</b><span class="d">One diagnosis can raise your price or take you off the table. Living benefits have to be in place before you get sick, not after.</span></span></li>
+          <li><span class="ok">3</span><span><b>Time does the heavy lifting.</b><span class="d">Every year you start sooner is another year your cash value builds.</span></span></li>
         </ul>
       </div>
-      <button class="cta" type="button" data-next>Let's go</button>
+
+      <div class="card">
+        <h3>The living benefits you'd get</h3>
+        <ul class="riders" id="t-riders"></ul>
+      </div>
+
+      <div class="sticky"><button class="cta" type="button" data-next>Apply for these living benefits</button></div>
       <p class="love">Brought to you with love by the <b>Kenji Insurance Team</b> &#10084;&#65039;</p>
     </section>
 
-    <!-- 1 Goals -->
+    <!-- ===================== SURVEY ===================== -->
     <section class="screen" data-s="goals">
-      <p class="cheer">Let's start with the why.</p>
+      <p class="cheer">Let's build your real plan. About 2 minutes.</p>
       <h2>What matters most to you?</h2>
       <p class="sub">Pick up to 2.</p>
       <div class="opts" data-multi="goals" data-max="2">
@@ -180,7 +262,6 @@
       <button class="cta" type="button" data-next>Next</button>
     </section>
 
-    <!-- 2 Family history -->
     <section class="screen" data-s="famhist">
       <p class="cheer">Quick one about your family.</p>
       <h2>Has a parent or sibling had any of these?</h2>
@@ -194,7 +275,7 @@
       </div>
       <div id="lb-fam-follow" hidden>
         <div class="note">This is exactly what living benefits are built for.</div>
-        <p class="f" style="font-weight:600;margin:14px 0 8px">Did it happen before age 60?</p>
+        <p class="f">Did it happen before age 60?</p>
         <div class="opts two" data-single="famBefore60">
           <button class="opt" type="button" data-v="yes">Yes</button>
           <button class="opt" type="button" data-v="no">No</button>
@@ -204,37 +285,15 @@
       <button class="cta" type="button" data-next>Next</button>
     </section>
 
-    <!-- 3 Budget -->
-    <section class="screen" data-s="budget">
-      <p class="cheer">Now the fun part.</p>
-      <h2>What monthly budget feels comfortable?</h2>
-      <p class="sub">You can always change this with your agent.</p>
-      <div class="card">
-        <p class="big" id="lb-budget-out">$150</p>
-        <p class="perday" id="lb-budget-day">About $5 a day</p>
-        <label class="sr" for="lb-budget">Monthly budget</label>
-        <input type="range" id="lb-budget" min="50" max="500" step="10" value="150">
-        <div class="ends"><span>$50</span><span>$500</span></div>
-      </div>
-      <button class="cta" type="button" data-next>Next</button>
-    </section>
-
-    <!-- 4 DOB + gender -->
     <section class="screen" data-s="dob">
-      <p class="cheer">Rates are based on age, so this one matters.</p>
+      <p class="cheer">Your exact age sets your price.</p>
       <h2>When were you born?</h2>
       <label class="f" for="lb-dob">Date of birth</label>
       <input type="text" id="lb-dob" inputmode="numeric" placeholder="mm/dd/yyyy" maxlength="10" autocomplete="bday">
-      <p class="f" style="font-weight:600;margin:18px 0 8px">Gender</p>
-      <div class="opts two" data-single="gender">
-        <button class="opt" type="button" data-v="male">Male</button>
-        <button class="opt" type="button" data-v="female">Female</button>
-      </div>
       <p class="err" data-err></p>
       <button class="cta" type="button" data-next>Next</button>
     </section>
 
-    <!-- 5 State -->
     <section class="screen" data-s="state">
       <p class="cheer">Easy one.</p>
       <h2>What state do you live in?</h2>
@@ -244,20 +303,6 @@
       <button class="cta" type="button" data-next>Next</button>
     </section>
 
-    <!-- 6 Tobacco -->
-    <section class="screen" data-s="tobacco">
-      <p class="cheer">Nice, you're moving fast.</p>
-      <h2>Any tobacco or nicotine in the last 12 months?</h2>
-      <p class="sub">That includes vapes, pouches, cigars and chew.</p>
-      <div class="opts two" data-single="tobacco" data-auto>
-        <button class="opt" type="button" data-v="yes">Yes</button>
-        <button class="opt" type="button" data-v="no">No</button>
-      </div>
-      <p class="err" data-err></p>
-      <button class="cta" type="button" data-next>Next</button>
-    </section>
-
-    <!-- 7 Height + weight -->
     <section class="screen" data-s="build">
       <p class="cheer">Nice, halfway there!</p>
       <h2>Height and weight</h2>
@@ -271,7 +316,6 @@
       <button class="cta" type="button" data-next>Next</button>
     </section>
 
-    <!-- 8 Own health -->
     <section class="screen" data-s="health">
       <p class="cheer">Almost done with the health stuff.</p>
       <h2>Do you have any of these?</h2>
@@ -283,7 +327,7 @@
         <button class="opt" type="button" data-v="heart"><span class="ic" aria-hidden="true">&#129728;</span>Heart condition</button>
         <button class="opt" type="button" data-v="none"><span class="ic" aria-hidden="true">&#128170;</span>None of these</button>
       </div>
-      <p class="f" style="font-weight:600;margin:18px 0 8px">Any prescriptions?</p>
+      <p class="f">Any prescriptions?</p>
       <div class="opts two" data-single="rx">
         <button class="opt" type="button" data-v="yes">Yes</button>
         <button class="opt" type="button" data-v="no">No</button>
@@ -296,14 +340,13 @@
       <button class="cta" type="button" data-next>Next</button>
     </section>
 
-    <!-- 9 Work + income -->
     <section class="screen" data-s="work">
       <p class="cheer">You're doing great.</p>
       <h2>Tell us about your work</h2>
       <p class="sub">Helps us size coverage and the disability waiver.</p>
       <label class="f" for="lb-occ">Occupation</label>
       <input type="text" id="lb-occ" placeholder="e.g. nurse, electrician, business owner" autocomplete="organization-title">
-      <p class="f" style="font-weight:600;margin:18px 0 8px">Self-employed?</p>
+      <p class="f">Self-employed?</p>
       <div class="opts two" data-single="selfEmployed">
         <button class="opt" type="button" data-v="yes">Yes</button>
         <button class="opt" type="button" data-v="no">No</button>
@@ -318,11 +361,10 @@
       <button class="cta" type="button" data-next>Next</button>
     </section>
 
-    <!-- 10 Coverage today -->
     <section class="screen" data-s="existing">
-      <p class="cheer">Two quick ones and you're at the finish line.</p>
+      <p class="cheer">One more and you're at the finish line.</p>
       <h2>Coverage you have today</h2>
-      <p class="f" style="font-weight:600;margin:6px 0 8px">Any life insurance right now?</p>
+      <p class="f" style="margin-top:6px">Any life insurance right now?</p>
       <div class="opts two" data-single="hasExisting">
         <button class="opt" type="button" data-v="yes">Yes</button>
         <button class="opt" type="button" data-v="no">No</button>
@@ -335,7 +377,7 @@
           <option>$250K to $500K</option><option>$500K to $1M</option><option>Over $1M</option><option>Not sure</option>
         </select>
       </div>
-      <p class="f" style="font-weight:600;margin:18px 0 8px">Want the option to add coverage later without a medical exam?
+      <p class="f">Want the option to add coverage later without a medical exam?
         <button type="button" class="tip" aria-expanded="false" aria-controls="tip-gi">?</button></p>
       <div class="tipbox" id="tip-gi">This is called a Guaranteed Insurability rider. As life changes (marriage, a baby, a new house), you can buy more coverage at set times without proving your health again.</div>
       <div class="opts two" data-single="wantGI">
@@ -346,11 +388,10 @@
       <button class="cta" type="button" data-next>Next</button>
     </section>
 
-    <!-- 11 Contact -->
     <section class="screen" data-s="contact">
-      <p class="cheer">Last step! Your plan is ready.</p>
-      <h2>Where should we send your plan?</h2>
-      <p class="sub">A licensed agent will use this to build your official numbers.</p>
+      <p class="cheer">Last step!</p>
+      <h2>Where should your agent reach you?</h2>
+      <p class="sub">Your licensed agent will run your official numbers and walk you through applying.</p>
       <div class="row">
         <div><label class="f" for="lb-fn">First name</label><input type="text" id="lb-fn" autocomplete="given-name"></div>
         <div><label class="f" for="lb-ln">Last name</label><input type="text" id="lb-ln" autocomplete="family-name"></div>
@@ -359,13 +400,13 @@
       <input type="email" id="lb-em" autocomplete="email" inputmode="email">
       <label class="f" for="lb-ph">Mobile</label>
       <input type="tel" id="lb-ph" autocomplete="tel" inputmode="tel" placeholder="(555) 555-5555">
-      <p class="f" style="font-weight:600;margin:18px 0 8px">Best time to reach you</p>
+      <p class="f">Best time to reach you</p>
       <div class="opts three" data-single="bestTime">
         <button class="opt" type="button" data-v="Morning">Morning</button>
         <button class="opt" type="button" data-v="Afternoon">Afternoon</button>
         <button class="opt" type="button" data-v="Evening">Evening</button>
       </div>
-      <p class="f" style="font-weight:600;margin:6px 0 8px">Best way to reach you</p>
+      <p class="f" style="margin-top:0">Best way to reach you</p>
       <div class="opts three" data-single="contactPref">
         <button class="opt" type="button" data-v="Call">Call</button>
         <button class="opt" type="button" data-v="Text">Text</button>
@@ -373,74 +414,26 @@
       </div>
       <label class="check" for="lb-consent">
         <input type="checkbox" id="lb-consent">
-        <span>I agree to be contacted by Media Traffics / KenjiAI and its licensed agent by call, text, and email, including automated means, about life insurance. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
+        <span id="lb-consent-text">I agree to be contacted by Media Traffics / KenjiAI and its licensed agent by call, text, and email, including automated means, about life insurance. Consent is not a condition of purchase. Msg &amp; data rates may apply. Reply STOP to opt out.</span>
       </label>
       <div class="note">&#128274; Sensitive details are collected later through the carrier's secure application. We never ask for your SSN, license or bank info here.</div>
       <p class="err" data-err></p>
-      <button class="cta" type="button" data-next>See my plan</button>
+      <button class="cta" type="button" id="lb-send">Send my application request</button>
     </section>
 
-    <!-- 12 Results -->
-    <section class="screen" data-s="results">
-      <p class="cheer" id="lb-res-hi">Here's your plan!</p>
-      <div class="card plan">
-        <span class="tag" id="lb-res-tag">Recommended</span>
-        <h2 style="margin-top:10px" id="lb-res-name">Living Benefits Plan</h2>
-        <p class="small" id="lb-res-why" style="font-size:15px;color:#d4d4d4"></p>
-        <p class="range" id="lb-res-range"></p>
-        <p class="small">in coverage at <b id="lb-res-budget"></b> a month</p>
-        <p class="small" style="margin-top:10px"><b>Estimate only.</b> Your agent will run an official illustration.</p>
-      </div>
-      <div class="card">
-        <h3>How far your money goes</h3>
-        <p class="small" style="font-size:15px;color:#d4d4d4;margin:0 0 4px">About the price of a coffee or two a day. Here's the protection it buys you.</p>
-        <div class="cmps" id="lb-cmp"></div>
-        <p class="small" style="font-size:15px;color:#d4d4d4;margin:12px 0 0">That coverage is the pot your living benefits draw from. Get hit with a heart attack, stroke, or cancer and you can ask for part of it early, while you're alive, for bills, treatment, or a paycheck you can't earn. Whatever's left still goes to your family.</p>
-      </div>
-      <div class="card now">
-        <h3>&#9200; Why now beats later</h3>
-        <p class="small" style="font-size:15px;color:#d4d4d4;margin:0 0 10px">Same <b id="lb-wait-budget"></b> a month, depending on when you start:</p>
-        <ul class="wait" id="lb-wait"></ul>
-        <ul class="riders" style="margin-top:6px">
-          <li><span class="ok">1</span><span><b>Every birthday costs you coverage.</b><span class="d">Your price is based on your age when you apply. The same dollars buy less every year you wait.</span></span></li>
-          <li><span class="ok">2</span><span><b>Your health is your ticket in.</b><span class="d">One diagnosis can raise your price or take you off the table. Living benefits have to be in place before you get sick, not after.</span></span></li>
-          <li><span class="ok">3</span><span><b>Time does the heavy lifting.</b><span class="d">Starting sooner gives your cash value more years to build. Your agent will show you the real numbers.</span></span></li>
-        </ul>
-      </div>
-      <div class="card">
-        <h3>How it's set up
-          <button type="button" class="tip" aria-expanded="false" aria-controls="tip-db">?</button></h3>
-        <div class="tipbox" id="tip-db"></div>
-        <p class="small" id="lb-res-db" style="font-size:15px;color:#d4d4d4;margin:0"></p>
-      </div>
-      <div class="card">
-        <h3>Your living benefits checklist</h3>
-        <ul class="riders" id="lb-res-riders"></ul>
-      </div>
-      <div class="card" id="lb-res-dis" hidden>
-        <h3>&#129657; One more thing about disability</h3>
-        <p class="small" style="font-size:15px;color:#d4d4d4;margin:0">You may also want a separate disability income policy. Life insurance riders cover your premium, not your paycheck.</p>
-      </div>
-      <p class="err" data-err></p>
-      <button class="cta" type="button" id="lb-send">Send to my agent</button>
-      <button class="cta ghost" type="button" id="lb-book">Book a call</button>
-      <div id="lb-cal-wrap" hidden></div>
-    </section>
-
-    <!-- 13 Sending -->
     <section class="screen" data-s="sending">
       <div class="spin" aria-hidden="true"></div>
-      <h2 style="text-align:center">Sending your plan...</h2>
+      <h2 style="text-align:center">Sending to your agent...</h2>
       <p class="sub" style="text-align:center">Just a second.</p>
     </section>
 
-    <!-- 14 Success -->
     <section class="screen" data-s="done">
       <p class="cheer" style="text-align:center;font-size:40px;margin:10px 0 0">&#127881;</p>
       <h1 style="text-align:center">You're all set!</h1>
-      <p class="sub" style="text-align:center">Your agent will reach out at your preferred time.</p>
-      <button class="cta ghost" type="button" id="lb-book2">Want to pick a time now? Book a call</button>
-      <div id="lb-cal-wrap2" hidden></div>
+      <p class="sub" style="text-align:center">Your agent will reach out at your preferred time with your official numbers and next steps to apply.</p>
+      <div class="card" id="lb-done-sum"></div>
+      <button class="cta ghost" type="button" id="lb-book">Want to pick a time now? Book a call</button>
+      <div id="lb-cal-wrap" hidden></div>
     </section>
   </div>
 
@@ -466,29 +459,246 @@
   var PRODUCT_TARGET = "Transamerica Financial Foundation IUL II"; // sent to GHL only, never shown on the page
   /* ================================================================ */
 
-  var KEY = "lbpb_v1";
+  var KEY = "lbpb_v2";
   var root = document.getElementById("lbpb");
   var screens = Array.prototype.slice.call(root.querySelectorAll(".screen"));
   var order = screens.map(function (s) { return s.getAttribute("data-s"); });
-  var QUESTION_STEPS = order.indexOf("contact"); // steps 1..contact count toward progress
-  var A = { goals: [], famHistory: [], health: [], budget: 150, state: "TX", step: 0 };
-  var leadSent = false;
+  var FIRST_Q = order.indexOf("goals"), LAST_Q = order.indexOf("contact"), QN = LAST_Q - FIRST_Q + 1;
+  var A = { amt: 200, age: 35, gender: "male", tobacco: "no", design: "protect", rate: 0.06, at: 65, tab: "cv",
+            goals: [], famHistory: [], health: [], state: "TX", step: 0 };
 
   function $(id) { return document.getElementById(id); }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(A)); } catch (e) {} }
   function load() { try { var s = JSON.parse(localStorage.getItem(KEY) || "null"); if (s) A = Object.assign(A, s); } catch (e) {} }
+  function money(x) {
+    x = Math.max(0, x || 0);
+    if (x >= 1e6) return "$" + (x / 1e6).toFixed(2).replace(/\.?0+$/, "") + "M";
+    if (x >= 1e4) return "$" + Math.round(x / 1000) + "K";
+    if (x >= 1000) return "$" + (x / 1000).toFixed(1).replace(/\.0$/, "") + "K";
+    return "$" + Math.round(x);
+  }
+  function lerp(pts, a) {
+    if (a <= pts[0][0]) return pts[0][1];
+    for (var i = 0; i < pts.length - 1; i++) if (a <= pts[i + 1][0]) {
+      var t = (a - pts[i][0]) / (pts[i + 1][0] - pts[i][0]);
+      return pts[i][1] * Math.pow(pts[i + 1][1] / pts[i][1], t);
+    }
+    return pts[pts.length - 1][1];
+  }
 
-  /* ---------- Agent footer ---------- */
+  /* =================== Hypothetical IUL model ===================
+     Simplified, for education. Annual steps. Charges: premium load, admin fee,
+     per-$1,000 fee for 10 years, cost of insurance on the amount at risk,
+     surrender charge for 10 years. Not a carrier illustration. */
+  var COI = [[18, .55], [25, .6], [30, .7], [35, .85], [40, 1.15], [45, 1.7], [50, 2.6], [55, 4], [60, 6.2], [65, 9.8], [70, 15.5], [75, 25], [80, 42], [85, 70], [90, 115], [95, 185], [100, 290]];
+  var SEVENPAY = [[18, 9], [25, 11], [30, 13], [35, 16], [40, 19.5], [45, 24], [50, 29], [55, 36], [60, 44], [65, 54], [70, 66]]; // min non-MEC: annual premium per $1,000
+  // IRC 7702 corridor: death benefit must be at least this multiple of cash value
+  var CORR = [[18, 2.5], [40, 2.5], [45, 2.15], [50, 1.85], [55, 1.5], [60, 1.3], [65, 1.2], [70, 1.15], [75, 1.05], [90, 1.05], [95, 1], [100, 1]];
+  function dbFor(o, face, av, age) { var c = lerp(CORR, age) * av; return o.design === "cash" ? Math.max(face + av, c) : Math.max(face, c); }
+  function coi(age, o) { var r = lerp(COI, age); if (o.gender === "female") r *= .8; if (o.tobacco === "yes") r *= 2.1; return r; }
+  function run(o, face, rate) {
+    var prem = o.amt * 12, av = 0, paid = 0, rows = [], lapse = null;
+    for (var y = 0; o.age + y <= 100; y++) {
+      var age = o.age + y;
+      paid += prem;
+      av += prem * (y < 10 ? 0.92 : 0.96);
+      var nar = Math.max(0, dbFor(o, face, av, age) - av);
+      av -= 120 + (y < 10 ? face / 1000 * 1.2 : 0) + coi(age, o) * nar / 1000;
+      if (av < 0) { lapse = age; break; }
+      av *= 1 + rate;
+      var sc = y < 10 ? prem * 0.9 * (10 - y) / 10 : 0;
+      rows.push({ age: age + 1, paid: paid, cv: Math.max(0, av - sc), av: av, db: dbFor(o, face, av, age + 1) });
+    }
+    return { rows: rows, lapse: lapse };
+  }
+  function faceFor(o) {
+    if (o.design === "cash") return Math.max(25000, Math.round(o.amt * 12 / lerp(SEVENPAY, Math.min(o.age, 70)) * 1000 / 1000) * 1000);
+    // Max protection: the largest level death benefit this premium keeps in force to 100 at a 5% hypothetical rate.
+    var lo = 25000, hi = 5e6;
+    for (var i = 0; i < 40; i++) { var mid = (lo + hi) / 2; if (run(o, mid, 0.05).lapse) hi = mid; else lo = mid; }
+    return Math.max(25000, Math.floor(lo / 5000) * 5000);
+  }
+  function project(o) {
+    var face = faceFor(o), r = run(o, face, o.rate);
+    return { face: face, rows: r.rows, lapse: r.lapse };
+  }
+  function rowAt(p, age) {
+    for (var i = 0; i < p.rows.length; i++) if (p.rows[i].age === age) return p.rows[i];
+    return null;
+  }
+
+  /* =================== Tool UI =================== */
+  var RIDERS = {
+    critical: ["Critical Illness", "Access part of your death benefit after a covered heart attack, stroke, or cancer diagnosis."],
+    chronic: ["Chronic Illness", "Access part of it if you can't do 2 of 6 daily activities like bathing or dressing."],
+    terminal: ["Terminal Illness", "Get part of it early if you're diagnosed with a terminal illness."],
+    wp: ["Disability Waiver of Premium", "If you become disabled and can't work, your premiums can be waived."],
+    gi: ["Guaranteed Insurability", "Add more coverage at set times later without a new medical exam."],
+    olp: ["Overloan Protection", "Helps keep the policy from lapsing if your loans get large."]
+  };
+  function riderKeys() {
+    var k = A.design === "cash" ? ["critical", "chronic", "terminal", "wp", "olp"] : ["critical", "chronic", "terminal", "gi", "wp", "olp"];
+    if (A.wantGI === "yes" && k.indexOf("gi") < 0) k.push("gi");
+    return k;
+  }
+  function paintRiders() {
+    var ul = $("t-riders"); ul.innerHTML = "";
+    riderKeys().forEach(function (k) {
+      var li = document.createElement("li");
+      li.innerHTML = '<span class="ok" aria-hidden="true">&#10003;</span><span><b></b><span class="d"></span></span>';
+      li.querySelector("b").textContent = RIDERS[k][0]; li.querySelector(".d").textContent = RIDERS[k][1];
+      ul.appendChild(li);
+    });
+  }
+
+  var last = null;
+  function renderTool() {
+    $("t-amt").value = A.amt; $("t-age").value = A.age;
+    $("t-amt-out").innerHTML = "$" + A.amt + "<small>/mo</small>";
+    $("t-amt-day").textContent = "about $" + (A.amt / 30).toFixed(2).replace(/\.00$/, "") + " a day";
+    $("t-age-out").textContent = A.age;
+    $("t-at").min = A.age + 1;
+    if (A.at <= A.age) A.at = Math.min(100, Math.max(65, A.age + 10));
+    $("t-at").value = A.at; $("t-at-out").textContent = A.at;
+    paintPressed();
+
+    var p = project(A); last = p;
+    var at = rowAt(p, A.at) || p.rows[p.rows.length - 1] || { cv: 0, db: 0, paid: 0, age: A.at };
+    var lapsed = p.lapse && A.at >= p.lapse;
+    $("k-db").textContent = lapsed ? "$0" : money(at.db);
+    $("k-lb").textContent = lapsed ? "$0" : "up to " + money(at.db);
+    $("k-cv").textContent = lapsed ? "$0" : money(at.cv);
+    $("k-paid").textContent = money(A.amt * 12 * (A.at - A.age));
+    $("k-age1").textContent = A.at; $("k-age2").textContent = A.at;
+    var l = $("t-lapse");
+    if (p.lapse) { l.hidden = false; l.textContent = "At " + Math.round(A.rate * 100) + "% every year, this example would need more money put in by about age " + p.lapse + " to stay in force. Your agent can design around that."; }
+    else l.hidden = true;
+
+    var tb = $("t-tbl").querySelector("tbody"); tb.innerHTML = "";
+    [A.age + 10, A.age + 20, 65, 75, 85].filter(function (x, i, arr) { return x > A.age && x <= 100 && arr.indexOf(x) === i; })
+      .sort(function (a, b) { return a - b; }).forEach(function (age) {
+        var r = rowAt(p, age), tr = document.createElement("tr");
+        var cells = [age, money(A.amt * 12 * (age - A.age)), r ? money(r.cv) : "$0", r ? money(r.db) : "lapsed"];
+        cells.forEach(function (c) { var td = document.createElement("td"); td.textContent = c; tr.appendChild(td); });
+        tb.appendChild(tr);
+      });
+
+    drawChart(p);
+    renderWait();
+    paintRiders();
+    save();
+  }
+
+  function drawChart(p) {
+    var svg = $("t-chart"), W = 340, H = 210, L = 44, R = 10, T = 12, B = 26;
+    var rows = p.rows.filter(function (r) { return r.age <= 100; });
+    if (!rows.length) { svg.innerHTML = ""; return; }
+    var a0 = A.age, a1 = Math.min(100, rows[rows.length - 1].age, Math.max(A.at + 5, 90));
+    rows = rows.filter(function (r) { return r.age <= a1; });
+    var series;
+    if (A.tab === "cv") series = [{ k: "cv", c: "#2dd4bf", n: "Cash value", fill: true }, { k: "paid", c: "#737373", n: "You put in", dash: true }];
+    else if (A.tab === "db") series = [{ k: "db", c: "#ffffff", n: "Death benefit", fill: true }, { k: "paid", c: "#737373", n: "You put in", dash: true }];
+    else series = [{ k: "db", c: "#a78bfa", n: "Living benefits pot", fill: true }, { k: "cv", c: "#2dd4bf", n: "Cash value" }];
+    var max = 0;
+    rows.forEach(function (r) { series.forEach(function (s) { max = Math.max(max, r[s.k]); }); });
+    max = niceMax(max || 1000);
+    function X(age) { return L + (age - a0) / Math.max(1, a1 - a0) * (W - L - R); }
+    function Y(v) { return T + (1 - v / max) * (H - T - B); }
+    var h = "";
+    for (var g = 0; g <= 4; g++) {
+      var v = max * g / 4, y = Y(v);
+      h += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y + '" y2="' + y + '" stroke="#262626" stroke-width="1"/>';
+      h += '<text x="' + (L - 6) + '" y="' + (y + 3) + '" text-anchor="end">' + money(v) + '</text>';
+    }
+    var step = (a1 - a0) > 40 ? 10 : 5;
+    for (var a = Math.ceil(a0 / step) * step; a <= a1; a += step) h += '<text x="' + X(a) + '" y="' + (H - 8) + '" text-anchor="middle">' + a + '</text>';
+    series.forEach(function (s) {
+      var pts = [[X(a0), Y(0)]].concat(rows.map(function (r) { return [X(r.age), Y(r[s.k])]; }));
+      var d = pts.map(function (q, i) { return (i ? "L" : "M") + q[0].toFixed(1) + " " + q[1].toFixed(1); }).join(" ");
+      if (s.fill) h += '<path d="' + d + " L" + pts[pts.length - 1][0].toFixed(1) + " " + Y(0) + ' Z" fill="' + s.c + '" opacity=".14"/>';
+      h += '<path d="' + d + '" fill="none" stroke="' + s.c + '" stroke-width="2.5"' + (s.dash ? ' stroke-dasharray="5 4"' : "") + ' stroke-linejoin="round"/>';
+    });
+    if (p.lapse && p.lapse <= a1) h += '<line x1="' + X(p.lapse) + '" x2="' + X(p.lapse) + '" y1="' + T + '" y2="' + (H - B) + '" stroke="#fbbf24" stroke-dasharray="3 3"/><text x="' + (X(p.lapse) - 4) + '" y="' + (T + 10) + '" text-anchor="end" style="fill:#fbbf24">needs more</text>';
+    var at = rowAt(p, A.at);
+    if (A.at <= a1) {
+      h += '<line x1="' + X(A.at) + '" x2="' + X(A.at) + '" y1="' + T + '" y2="' + (H - B) + '" stroke="#ffffff" stroke-opacity=".35"/>';
+      if (at) series.forEach(function (s) { h += '<circle cx="' + X(A.at) + '" cy="' + Y(at[s.k]) + '" r="4.5" fill="' + s.c + '" stroke="#0a0a0a" stroke-width="2"/>'; });
+    }
+    svg.innerHTML = h;
+    $("t-legend").innerHTML = series.map(function (s) { return '<span><i style="background:' + s.c + '"></i>' + s.n + "</span>"; }).join("");
+    svg.setAttribute("aria-label", series.map(function (s) { return s.n; }).join(" and ") + " from age " + a0 + " to " + a1);
+    var t = $("t-tabtext"), r = at || { cv: 0, db: 0 };
+    if (A.tab === "cv") t.textContent = A.design === "cash"
+      ? "Max cash value mode: coverage is kept lean so more of each dollar builds cash you can borrow from later for retirement, a business, or emergencies. Early years are lower because of start-up charges."
+      : "Max protection mode puts most of each dollar into coverage. Switch to Max cash value to see how much faster the cash builds.";
+    else if (A.tab === "db") t.textContent = "If you pass, your family gets about " + money(r.db) + " at age " + A.at + ", generally income tax free." + (A.design === "cash" ? " In this mode the death benefit grows with your cash value." : "");
+    else t.textContent = "This is the pot your living benefits draw from. Hit with a covered heart attack, stroke, or cancer at " + A.at + "? You could ask for part of your " + money(r.db) + " early, while you're alive, for bills, treatment, or the paycheck you can't earn. What you don't use still goes to your family.";
+  }
+  function niceMax(v) { var e = Math.pow(10, Math.floor(Math.log10(v))), m = v / e; return (m <= 1 ? 1 : m <= 2 ? 2 : m <= 2.5 ? 2.5 : m <= 5 ? 5 : 10) * e; }
+
+  function renderWait() {
+    var target = Math.max(65, A.age + 15);
+    if (target > 100) target = 100;
+    $("w-amt").textContent = "$" + A.amt; $("w-age").textContent = target;
+    var base = null, ul = $("t-wait"); ul.innerHTML = "";
+    [[0, "Start now"], [5, "Wait 5 years"], [10, "Wait 10 years"]].forEach(function (w) {
+      var a = A.age + w[0]; if (a > 70 || a >= target) return;
+      var p = project(Object.assign({}, A, { age: a })), r = rowAt(p, target), v = r ? r.cv : 0;
+      if (base === null) base = v || 1;
+      var li = document.createElement("li"), pct = Math.round((1 - v / base) * 100);
+      li.innerHTML = '<span class="w"></span><span class="bar2"><i></i></span><span class="v"></span>';
+      li.querySelector(".w").textContent = w[1] + " (start at " + a + ")";
+      li.querySelector("i").style.width = Math.max(4, Math.round(v / base * 100)) + "%";
+      li.querySelector(".v").textContent = money(v) + " cash value" + (pct > 0 ? ", " + pct + "% less" : "") + " | " + money(p.face) + " coverage";
+      if (w[0]) li.classList.add("later");
+      ul.appendChild(li);
+    });
+  }
+
+  $("t-amt").addEventListener("input", function () { A.amt = +this.value; renderTool(); });
+  $("t-age").addEventListener("input", function () { A.age = +this.value; renderTool(); });
+  $("t-at").addEventListener("input", function () { A.at = +this.value; renderTool(); });
+  root.querySelector('[data-chips="amt"]').addEventListener("click", function (e) { var b = e.target.closest(".chip"); if (b) { A.amt = +b.getAttribute("data-v"); renderTool(); } });
+  root.querySelectorAll("[data-seg]").forEach(function (g) {
+    g.addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      var k = g.getAttribute("data-seg"), v = b.getAttribute("data-v");
+      A[k] = k === "rate" ? +v : v; renderTool();
+    });
+  });
+  root.querySelector(".tabs").addEventListener("click", function (e) { var b = e.target.closest("[data-tab]"); if (b) { A.tab = b.getAttribute("data-tab"); renderTool(); } });
+  // drag/tap on the chart moves the age marker
+  (function () {
+    var svg = $("t-chart"), down = false;
+    function at(e) {
+      var r = svg.getBoundingClientRect(), x = ((e.touches ? e.touches[0].clientX : e.clientX) - r.left) / r.width * 340;
+      var a1 = Math.min(100, Math.max(A.at + 5, 90)), age = Math.round(A.age + (x - 44) / (340 - 54) * (a1 - A.age));
+      A.at = Math.max(A.age + 1, Math.min(100, age)); renderTool();
+    }
+    svg.addEventListener("mousedown", function (e) { down = true; at(e); });
+    window.addEventListener("mouseup", function () { down = false; });
+    svg.addEventListener("mousemove", function (e) { if (down) at(e); });
+    svg.addEventListener("click", at);
+  })();
+
+  function paintPressed() {
+    root.querySelector('[data-chips="amt"]').querySelectorAll(".chip").forEach(function (b) { b.setAttribute("aria-pressed", +b.getAttribute("data-v") === A.amt); });
+    root.querySelectorAll("[data-seg]").forEach(function (g) {
+      var v = A[g.getAttribute("data-seg")];
+      g.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-v")) === String(v)); });
+    });
+    root.querySelectorAll("[data-tab]").forEach(function (b) { b.setAttribute("aria-selected", b.getAttribute("data-tab") === A.tab); });
+  }
+
+  /* =================== Survey =================== */
   $("lb-agent").textContent = "Licensed agent: " + AGENT_DISCLOSURE.name + (AGENT_DISCLOSURE.license ? " | License: " + AGENT_DISCLOSURE.license : "") + " | Licensed in: " + AGENT_DISCLOSURE.states;
-  if (/^CALENDAR_EMBED_URL$/.test(CALENDAR_EMBED_URL)) { $("lb-book").hidden = true; $("lb-book2").hidden = true; }
+  if (/^CALENDAR_EMBED_URL$/.test(CALENDAR_EMBED_URL)) $("lb-book").hidden = true;
 
-  /* ---------- Fill selects ---------- */
   var STATES = ["AL","AK","AZ","AR","CA","CO","CT","DE","DC","FL","GA","HI","ID","IL","IN","IA","KS","KY","LA","ME","MD","MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ","NM","NY","NC","ND","OH","OK","OR","PA","RI","SC","SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"];
   STATES.forEach(function (s) { var o = document.createElement("option"); o.value = o.textContent = s; $("lb-state").appendChild(o); });
-  [4,5,6,7].forEach(function (f) { var o = document.createElement("option"); o.value = f; o.textContent = f + " ft"; $("lb-ft").appendChild(o); });
+  [4, 5, 6, 7].forEach(function (f) { var o = document.createElement("option"); o.value = f; o.textContent = f + " ft"; $("lb-ft").appendChild(o); });
   for (var i = 0; i < 12; i++) { var o = document.createElement("option"); o.value = i; o.textContent = i + " in"; $("lb-in").appendChild(o); }
 
-  /* ---------- Option buttons ---------- */
   root.querySelectorAll("[data-multi]").forEach(function (g) {
     var key = g.getAttribute("data-multi"), max = +g.getAttribute("data-max") || 99, none = g.getAttribute("data-none");
     g.addEventListener("click", function (e) {
@@ -496,21 +706,13 @@
       var v = b.getAttribute("data-v"), arr = A[key] || [];
       if (arr.indexOf(v) > -1) arr = arr.filter(function (x) { return x !== v; });
       else if (v === none) arr = [none];
-      else {
-        arr = arr.filter(function (x) { return x !== none; });
-        if (arr.length >= max) arr.shift();
-        arr.push(v);
-      }
+      else { arr = arr.filter(function (x) { return x !== none; }); if (arr.length >= max) arr.shift(); arr.push(v); }
       A[key] = arr; paint(); save();
     });
   });
   root.querySelectorAll("[data-single]").forEach(function (g) {
     var key = g.getAttribute("data-single");
-    g.addEventListener("click", function (e) {
-      var b = e.target.closest(".opt"); if (!b) return;
-      A[key] = b.getAttribute("data-v"); paint(); save();
-      if (g.hasAttribute("data-auto")) setTimeout(next, 220);
-    });
+    g.addEventListener("click", function (e) { var b = e.target.closest(".opt"); if (!b) return; A[key] = b.getAttribute("data-v"); paint(); save(); });
   });
   function paint() {
     root.querySelectorAll("[data-multi]").forEach(function (g) {
@@ -521,28 +723,16 @@
       var v = A[g.getAttribute("data-single")];
       g.querySelectorAll(".opt").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-v") === v); });
     });
-    var famAny = (A.famHistory || []).some(function (x) { return x !== "none"; });
-    $("lb-fam-follow").hidden = !famAny;
+    $("lb-fam-follow").hidden = !(A.famHistory || []).some(function (x) { return x !== "none"; });
     $("lb-rx-wrap").hidden = A.rx !== "yes";
     $("lb-exist-wrap").hidden = A.hasExisting !== "yes";
   }
-
-  /* ---------- Tooltips ---------- */
   root.addEventListener("click", function (e) {
     var t = e.target.closest(".tip"); if (!t) return;
     var box = $(t.getAttribute("aria-controls")), on = !box.classList.contains("on");
     box.classList.toggle("on", on); t.setAttribute("aria-expanded", on);
   });
 
-  /* ---------- Budget ---------- */
-  function paintBudget() {
-    $("lb-budget").value = A.budget;
-    $("lb-budget-out").textContent = "$" + A.budget;
-    $("lb-budget-day").textContent = "About $" + (A.budget / 30).toFixed(A.budget % 30 === 0 ? 0 : 2).replace(/\.00$/, "") + " a day";
-  }
-  $("lb-budget").addEventListener("input", function () { A.budget = +this.value; paintBudget(); save(); });
-
-  /* ---------- Text inputs bound to answers ---------- */
   var BIND = { "lb-dob": "dob", "lb-state": "state", "lb-ft": "heightFt", "lb-in": "heightIn", "lb-lbs": "weight",
     "lb-rx": "rxText", "lb-occ": "occupation", "lb-income": "income", "lb-exist-amt": "existingAmount",
     "lb-fn": "firstName", "lb-ln": "lastName", "lb-em": "email", "lb-ph": "phone" };
@@ -562,19 +752,10 @@
     $("lb-consent").checked = !!A.consent;
   }
   $("lb-consent").addEventListener("change", function () { A.consent = this.checked; save(); });
-  function maskDob(v) {
-    v = v.replace(/\D/g, "").slice(0, 8);
-    if (v.length > 4) return v.slice(0, 2) + "/" + v.slice(2, 4) + "/" + v.slice(4);
-    if (v.length > 2) return v.slice(0, 2) + "/" + v.slice(2);
-    return v;
-  }
+  function maskDob(v) { v = v.replace(/\D/g, "").slice(0, 8); return v.length > 4 ? v.slice(0, 2) + "/" + v.slice(2, 4) + "/" + v.slice(4) : v.length > 2 ? v.slice(0, 2) + "/" + v.slice(2) : v; }
   function maskPhone(v) {
-    v = v.replace(/\D/g, "");
-    if (v.length === 11 && v[0] === "1") v = v.slice(1);
-    v = v.slice(0, 10);
-    if (v.length > 6) return "(" + v.slice(0, 3) + ") " + v.slice(3, 6) + "-" + v.slice(6);
-    if (v.length > 3) return "(" + v.slice(0, 3) + ") " + v.slice(3);
-    return v;
+    v = v.replace(/\D/g, ""); if (v.length === 11 && v[0] === "1") v = v.slice(1); v = v.slice(0, 10);
+    return v.length > 6 ? "(" + v.slice(0, 3) + ") " + v.slice(3, 6) + "-" + v.slice(6) : v.length > 3 ? "(" + v.slice(0, 3) + ") " + v.slice(3) : v;
   }
   function stateNote() {
     var n = $("lb-state-note"), st = A.state || "TX";
@@ -582,9 +763,7 @@
     n.hidden = false;
     n.textContent = "Heads up: our agent is licensed in " + LICENSED_STATES.join(" and ") + " right now. You can still finish and we'll let you know your options in " + st + ".";
   }
-
-  /* ---------- Validation ---------- */
-  function age() {
+  function dobAge() {
     var m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(A.dob || ""); if (!m) return null;
     var mo = +m[1], d = +m[2], y = +m[3], dt = new Date(y, mo - 1, d);
     if (dt.getFullYear() !== y || dt.getMonth() !== mo - 1 || dt.getDate() !== d) return null;
@@ -596,22 +775,17 @@
     goals: function () { return A.goals.length ? "" : "Pick at least one goal."; },
     famhist: function () {
       if (!A.famHistory.length) return "Pick one, or choose None of these.";
-      var any = A.famHistory.some(function (x) { return x !== "none"; });
-      return any && !A.famBefore60 ? "Let us know if it happened before age 60." : "";
+      return A.famHistory.some(function (x) { return x !== "none"; }) && !A.famBefore60 ? "Let us know if it happened before age 60." : "";
     },
     dob: function () {
-      var a = age();
+      var a = dobAge();
       if (a == null) return "Enter a real date like 04/15/1985.";
-      if (a < 18) return "You need to be 18 or older to use this tool.";
-      if (a > 80) return "This plan is available up to age 80. Your agent can still help with other options, so pick the closest and we'll sort it out.";
-      return A.gender ? "" : "Pick male or female.";
+      if (a < 18) return "You need to be 18 or older to apply.";
+      if (a > 80) return "These plans are available up to age 80. Your agent can still go over other options.";
+      return "";
     },
-    tobacco: function () { return A.tobacco ? "" : "Pick yes or no."; },
     build: function () { var w = +A.weight; return w >= 70 && w <= 600 ? "" : "Enter your weight in pounds."; },
-    health: function () {
-      if (!A.health.length) return "Pick one, or choose None of these.";
-      return A.rx ? "" : "Let us know about prescriptions.";
-    },
+    health: function () { if (!A.health.length) return "Pick one, or choose None of these."; return A.rx ? "" : "Let us know about prescriptions."; },
     work: function () {
       if (!(A.occupation || "").trim()) return "Add your occupation.";
       if (!A.selfEmployed) return "Let us know if you're self-employed.";
@@ -631,222 +805,119 @@
     }
   };
 
-  /* ---------- Plan logic ---------- */
-  var RIDERS = {
-    terminal: ["Terminal Illness", "Get part of your death benefit early if you're diagnosed with a terminal illness."],
-    chronic: ["Chronic Illness", "Access part of your benefit if you can't do 2 of 6 daily activities like bathing or dressing."],
-    critical: ["Critical Illness", "Access part of your benefit after a covered heart attack, stroke, or cancer diagnosis."],
-    gi: ["Guaranteed Insurability", "Add more coverage at set times later without a new medical exam."],
-    wp: ["Disability Waiver of Premium", "If you become disabled and can't work, your premiums can be waived."],
-    olp: ["Overloan Protection", "Helps keep the policy from lapsing if your loans get large."]
-  };
-  function plan() {
-    var g = A.goals, famAny = A.famHistory.some(function (x) { return x !== "none"; });
-    var lb = g.indexOf("sickness") > -1 || famAny || g.indexOf("family") > -1 || g.indexOf("disability") > -1;
-    var cashOnly = g.length === 1 && g[0] === "cash" && !famAny;
-    if (cashOnly) lb = false;
-    var p = lb ? {
-      key: "living-benefits", name: "Living Benefits Plan",
-      why: famAny ? "Your family history is exactly why this plan exists. It pays you while you're alive if a serious illness hits, not just your family later."
-                  : "Built to pay you while you're alive if a serious illness hits, and protect your family if you pass.",
-      db: "Level death benefit", dbTip: "Your coverage amount stays the same for life, so more of your budget goes to protection.",
-      dbText: "Level death benefit, with coverage set as high as your budget allows.",
-      riders: ["terminal", "chronic", "critical", "gi", "wp", "olp"]
-    } : {
-      key: "cash-builder", name: "Cash Builder Plan",
-      why: "Built to grow cash value you can borrow from later, while still covering your family.",
-      db: "Increasing death benefit", dbTip: "Your coverage can grow along with your cash value. Your agent sets the coverage at the lowest amount the tax rules allow (called non-MEC), so more of your money goes toward cash value and loans keep their tax advantages.",
-      dbText: "Increasing death benefit, set at the minimum non-MEC amount so more of each payment builds cash value.",
-      riders: ["wp", "olp", "chronic", "critical", "terminal"]
-    };
-    if (A.wantGI === "yes" && p.riders.indexOf("gi") < 0) p.riders.push("gi");
-    p.disabilityCard = g.indexOf("disability") > -1;
-    return p;
+  /* =================== Submit =================== */
+  function planKey() {
+    var fam = A.famHistory.some(function (x) { return x !== "none"; });
+    if (A.goals.length === 1 && A.goals[0] === "cash" && !fam) return "cash-builder";
+    if (A.goals.indexOf("sickness") > -1 || fam) return "living-benefits";
+    return A.design === "cash" ? "cash-builder" : "living-benefits";
   }
-  // Rough monthly cost per $1,000 of coverage. Ballpark only, never shown as a quote.
-  function estimate(p, ageOverride, budgetOverride) {
-    var a = ageOverride || age() || 40;
-    var budget = budgetOverride || A.budget;
-    var pts = [[18, .42], [25, .45], [30, .52], [35, .62], [40, .78], [45, 1.0], [50, 1.35], [55, 1.85], [60, 2.6], [65, 3.6], [70, 5.2], [75, 7.4], [80, 10.5]];
-    var r = pts[pts.length - 1][1];
-    for (var i = 0; i < pts.length - 1; i++) {
-      if (a <= pts[i + 1][0]) { var t = (a - pts[i][0]) / (pts[i + 1][0] - pts[i][0]); r = pts[i][1] + Math.max(0, t) * (pts[i + 1][1] - pts[i][1]); break; }
-    }
-    if (A.gender === "female") r *= 0.85;
-    if (A.tobacco === "yes") r *= 1.9;
-    var conds = A.health.filter(function (x) { return x !== "none"; }).length;
-    if (conds) r *= 1 + 0.15 * conds;
-    if (p.key === "cash-builder") r *= 2.2; // more of each dollar goes to cash value, less to coverage
-    var mid = budget / r * 1000;
-    function rnd(x) { return x >= 1e6 ? Math.round(x / 50000) * 50000 : Math.round(x / 5000) * 5000; }
-    return [Math.max(25000, rnd(mid * 0.8)), Math.max(50000, rnd(mid * 1.15)), mid];
-  }
-  function perDay(b) { var d = b / 30; return "$" + (d >= 10 ? Math.round(d) : d.toFixed(2).replace(/\.00$/, "")); }
-  // "How far your money goes" + "why now": same budget, today vs waiting
-  function renderCompare(p) {
-    var amts = [100, 200];
-    if (amts.indexOf(A.budget) < 0) amts.push(A.budget);
-    amts.sort(function (x, y) { return x - y; });
-    var box = $("lb-cmp"); box.innerHTML = "";
-    amts.forEach(function (b) {
-      var e = estimate(p, null, b), d = document.createElement("div");
-      d.className = "cmp" + (b === A.budget ? " mine" : "");
-      d.innerHTML = '<div class="amt"></div><div class="day"></div><div class="cov"></div><div class="lbl">in coverage</div>';
-      d.querySelector(".amt").textContent = "$" + b + "/mo";
-      d.querySelector(".day").textContent = "about " + perDay(b) + " a day" + (b === A.budget ? " (your pick)" : "");
-      d.querySelector(".cov").textContent = money(e[0]) + " to " + money(e[1]);
-      box.appendChild(d);
-    });
-    var a = age() || 40, now = estimate(p)[2], rows = $("lb-wait"); rows.innerHTML = "";
-    [[0, "Start now"], [5, "Wait 5 years"], [10, "Wait 10 years"]].forEach(function (w) {
-      if (a + w[0] > 80) return;
-      var m = estimate(p, a + w[0])[2], li = document.createElement("li");
-      var pct = Math.round((1 - m / now) * 100);
-      li.innerHTML = '<span class="w"></span><span class="bar2"><i></i></span><span class="v"></span>';
-      li.querySelector(".w").textContent = w[1] + " (age " + (a + w[0]) + ")";
-      li.querySelector("i").style.width = Math.max(8, Math.round(m / now * 100)) + "%";
-      li.querySelector(".v").textContent = "about " + money(m) + (pct > 0 ? ", " + pct + "% less" : "");
-      if (w[0]) li.classList.add("later");
-      rows.appendChild(li);
-    });
-  }
-  function money(x) { return x >= 1e6 ? "$" + (x / 1e6).toFixed(x % 1e6 ? 2 : 0).replace(/0$/, "") + "M" : "$" + Math.round(x / 1000) + "K"; }
-  function renderResults() {
-    var p = plan(), r = estimate(p);
-    $("lb-res-hi").textContent = (A.firstName ? A.firstName + ", here's" : "Here's") + " your plan!";
-    $("lb-res-name").textContent = p.name;
-    $("lb-res-why").textContent = p.why;
-    $("lb-res-range").textContent = "Roughly " + money(r[0]) + " to " + money(r[1]);
-    $("lb-res-budget").textContent = "$" + A.budget;
-    $("tip-db").textContent = p.dbTip;
-    $("lb-res-db").textContent = p.dbText;
-    var ul = $("lb-res-riders"); ul.innerHTML = "";
-    p.riders.forEach(function (k) {
-      var li = document.createElement("li");
-      li.innerHTML = '<span class="ok" aria-hidden="true">&#10003;</span><span><b></b><span class="d"></span></span>';
-      li.querySelector("b").textContent = RIDERS[k][0];
-      li.querySelector(".d").textContent = RIDERS[k][1];
-      ul.appendChild(li);
-    });
-    $("lb-res-dis").hidden = !p.disabilityCard;
-    renderCompare(p);
-    $("lb-wait-budget").textContent = "$" + A.budget;
-    return { plan: p, range: r };
-  }
-
-  /* ---------- Submit ---------- */
-  function utms() {
-    var o = {}, q = new URLSearchParams(location.search);
-    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid", "gclid"].forEach(function (k) { if (q.get(k)) o[k] = q.get(k); });
-    return o;
-  }
-  function payload(stage) {
-    var res = renderResults(), p = res.plan;
-    var famAny = A.famHistory.some(function (x) { return x !== "none"; });
-    var tags = ["life-lead", p.key, "budget-" + A.budget];
-    if (famAny) tags.push("family-history");
+  function payload() {
+    var p = project(A), key = planKey(), fam = A.famHistory.some(function (x) { return x !== "none"; });
+    var at65 = rowAt(p, Math.max(65, A.age + 1)) || {};
+    var tags = ["life-lead", key, "budget-" + A.amt, "life-agent-requested"];
+    if (fam) tags.push("family-history");
     if (LICENSED_STATES.indexOf(A.state) < 0) tags.push("out-of-state");
-    var phone = "+1" + (A.phone || "").replace(/\D/g, "");
+    var riders = riderKeys().map(function (k) { return RIDERS[k][0]; });
+    if (A.goals.indexOf("disability") > -1) riders.push("(also discuss separate disability income policy)");
     return {
-      first_name: (A.firstName || "").trim(), last_name: (A.lastName || "").trim(),
-      email: (A.email || "").trim(), phone: phone, state: A.state, date_of_birth: A.dob,
-      tags: tags, tags_csv: tags.join(","), source: "living-benefits-builder", stage: stage,
-      plan_profile: p.name, death_benefit_option: p.db,
-      riders: p.riders.map(function (k) { return RIDERS[k][0]; }), riders_csv: p.riders.map(function (k) { return RIDERS[k][0]; }).join(", "),
-      estimated_coverage_low: res.range[0], estimated_coverage_high: res.range[1],
-      product_target: PRODUCT_TARGET,
+      first_name: (A.firstName || "").trim(), last_name: (A.lastName || "").trim(), email: (A.email || "").trim(),
+      phone: "+1" + (A.phone || "").replace(/\D/g, ""), state: A.state, date_of_birth: A.dob,
+      tags: tags, source: "living-benefits-page", stage: "requested_agent",
+      plan_profile: key === "cash-builder" ? "Cash Builder Plan" : "Living Benefits Plan",
+      death_benefit_option: A.design === "cash" ? "Increasing death benefit, minimum non-MEC face" : "Level death benefit, max coverage",
+      riders: riders, product_target: PRODUCT_TARGET,
+      projection: {
+        monthly: A.amt, tool_age: A.age, design: A.design, rate_viewed: A.rate, face: p.face,
+        cv_at_65: Math.round(at65.cv || 0), db_at_65: Math.round(at65.db || 0), lapse_age_at_rate: p.lapse
+      },
       answers: {
         goals: A.goals, family_history: A.famHistory, family_before_60: A.famBefore60 || null,
-        monthly_budget: A.budget, age: age(), gender: A.gender, state: A.state, tobacco_12mo: A.tobacco,
+        monthly_budget: A.amt, age: dobAge(), gender: A.gender, state: A.state, tobacco_12mo: A.tobacco,
         height: A.heightFt + "'" + A.heightIn + '"', weight_lbs: +A.weight,
         health_conditions: A.health, prescriptions: A.rx, prescriptions_detail: A.rxText || "",
         occupation: A.occupation, self_employed: A.selfEmployed, income_range: A.income,
         has_existing_coverage: A.hasExisting, existing_coverage_amount: A.existingAmount || "",
         wants_guaranteed_insurability: A.wantGI, best_time: A.bestTime, preferred_contact: A.contactPref
       },
-      consent: { agreed: true, text: root.querySelector("label.check span").textContent, at: new Date().toISOString() },
+      consent: { agreed: true, text: $("lb-consent-text").textContent, at: new Date().toISOString() },
       utm: utms(), page_url: location.href, referrer: document.referrer || "", timestamp: new Date().toISOString()
     };
   }
-  function post(stage) {
-    if (/PASTE_GHL/.test(GHL_WEBHOOK_URL)) return Promise.reject(new Error("Webhook URL not set"));
-    return fetch(GHL_WEBHOOK_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload(stage)) })
-      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r; });
+  function utms() {
+    var o = {}, q = new URLSearchParams(location.search);
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid", "gclid"].forEach(function (k) { if (q.get(k)) o[k] = q.get(k); });
+    return o;
   }
+  $("lb-send").addEventListener("click", function () {
+    var err = screens[order.indexOf("contact")].querySelector("[data-err]"), msg = V.contact();
+    err.textContent = msg; if (msg) return;
+    var body = JSON.stringify(payload());
+    go(order.indexOf("sending"), false, true);
+    fetch(GHL_WEBHOOK_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: body })
+      .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); })
+      .then(function () {
+        var p = project(A), at = rowAt(p, Math.max(65, A.age + 1)) || {};
+        $("lb-done-sum").innerHTML = '<h3>What you asked about</h3><p class="body"></p>';
+        $("lb-done-sum").querySelector("p").textContent = "$" + A.amt + " a month, " + (A.design === "cash" ? "max cash value" : "max protection") +
+          ". In this example that's about " + money(p.face) + " in coverage and living benefits, and " + money(at.cv) + " in cash value by age " + at.age +
+          " at " + Math.round(A.rate * 100) + "%. Your agent will confirm the real numbers.";
+        try { localStorage.removeItem(KEY); } catch (e) {}
+        go(order.indexOf("done"), false, true); confetti();
+      })
+      .catch(function () {
+        go(order.indexOf("contact"), true, true);
+        err.textContent = "Hmm, that didn't go through. Check your connection and tap the button again.";
+      });
+  });
 
-  /* ---------- Calendar ---------- */
-  function showCal(wrapId) {
-    var w = $(wrapId);
-    if (/^CALENDAR_EMBED_URL$/.test(CALENDAR_EMBED_URL)) {
-      w.hidden = false; w.innerHTML = '<div class="note warn">Booking calendar coming soon. Your agent will call you to set a time.</div>'; return;
-    }
+  function showCal() {
+    var w = $("lb-cal-wrap");
     if (!w.querySelector("iframe")) {
       var f = document.createElement("iframe");
       f.className = "cal"; f.title = "Book a call"; f.loading = "lazy";
-      var u = CALENDAR_EMBED_URL + (CALENDAR_EMBED_URL.indexOf("?") > -1 ? "&" : "?") +
-        "first_name=" + encodeURIComponent(A.firstName || "") + "&last_name=" + encodeURIComponent(A.lastName || "") +
-        "&email=" + encodeURIComponent(A.email || "") + "&phone=" + encodeURIComponent(A.phone || "");
-      f.src = u; w.appendChild(f);
+      f.src = CALENDAR_EMBED_URL + (CALENDAR_EMBED_URL.indexOf("?") > -1 ? "&" : "?") + "first_name=" + encodeURIComponent(A.firstName || "") +
+        "&last_name=" + encodeURIComponent(A.lastName || "") + "&email=" + encodeURIComponent(A.email || "") + "&phone=" + encodeURIComponent(A.phone || "");
+      w.appendChild(f);
     }
     w.hidden = false; w.scrollIntoView({ behavior: "smooth", block: "start" });
   }
-  $("lb-book").addEventListener("click", function () { showCal("lb-cal-wrap"); });
-  $("lb-book2").addEventListener("click", function () { showCal("lb-cal-wrap2"); });
+  $("lb-book").addEventListener("click", showCal);
 
-  $("lb-send").addEventListener("click", function () {
-    var btn = this, err = screens[A.step].querySelector("[data-err]");
-    err.textContent = ""; btn.disabled = true;
-    go(order.indexOf("sending"), false, true);
-    post("requested_agent").then(function () {
-      try { localStorage.removeItem(KEY); } catch (e) {}
-      go(order.indexOf("done"), false, true); confetti();
-    }).catch(function () {
-      go(order.indexOf("results"), true, true);
-      btn.disabled = false; btn.textContent = "Try again";
-      screens[order.indexOf("results")].querySelector("[data-err]").textContent = "Hmm, that didn't go through. Check your connection and tap Try again.";
-    });
-  });
-
-  /* ---------- Navigation ---------- */
+  /* =================== Navigation =================== */
   function go(n, rev, noSave) {
     screens.forEach(function (s, i) { s.classList.toggle("on", i === n); s.classList.toggle("rev", i === n && !!rev); });
     A.step = n; if (!noSave) save();
-    var name = order[n];
-    var qn = Math.min(n, QUESTION_STEPS);
-    var pct = name === "welcome" ? 0 : name === "results" || name === "sending" || name === "done" ? 100 : Math.round(qn / (QUESTION_STEPS + 1) * 100);
-    $("lb-bar").style.width = pct + "%";
-    $("lb-barwrap").setAttribute("aria-valuenow", pct);
-    $("lb-count").textContent = n > 0 && n <= QUESTION_STEPS ? n + " of " + QUESTION_STEPS : "";
-    $("lb-back").hidden = n === 0 || name === "sending" || name === "done";
-    if (name === "results") renderResults();
-    if (name === "budget") paintBudget();
+    var name = order[n], inQ = n >= FIRST_Q && n <= LAST_Q;
+    $("lb-top").hidden = !(inQ || name === "sending" || name === "done");
+    $("lb-back").hidden = !inQ;
+    var pct = name === "done" || name === "sending" ? 100 : inQ ? Math.round((n - FIRST_Q) / QN * 100) : 0;
+    $("lb-bar").style.width = pct + "%"; $("lb-barwrap").setAttribute("aria-valuenow", pct);
+    $("lb-count").textContent = inQ ? (n - FIRST_Q + 1) + " of " + QN : "";
+    if (name === "tool") renderTool();
     if (name === "state") stateNote();
-    var h = screens[n].querySelector("h1, h2");
-    if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); }
+    if (n > 0) { var h = screens[n].querySelector("h1, h2"); if (h) { h.setAttribute("tabindex", "-1"); h.focus({ preventScroll: true }); } }
     window.scrollTo({ top: Math.max(0, root.getBoundingClientRect().top + window.scrollY - 10), behavior: "smooth" });
   }
   function next() {
-    var name = order[A.step], err = screens[A.step].querySelector("[data-err]");
-    var msg = V[name] ? V[name]() : "";
+    var name = order[A.step], err = screens[A.step].querySelector("[data-err]"), msg = V[name] ? V[name]() : "";
     if (err) err.textContent = msg;
     if (msg) return;
-    if (name === "contact" && !leadSent) {
-      // Save the lead as soon as they consent, so nobody who sees results is lost. Final "Send to my agent" upserts the same contact.
-      leadSent = true; post("viewed_results").catch(function () { leadSent = false; });
-    }
-    go(A.step + 1);
+    if (name === "tool" && !A.goals.length) A.goals = A.design === "cash" ? ["cash"] : ["sickness"];
+    go(A.step + 1); paint();
   }
   root.addEventListener("click", function (e) { if (e.target.closest("[data-next]")) next(); });
   $("lb-back").addEventListener("click", function () { go(Math.max(0, A.step - 1), true); });
   root.addEventListener("keydown", function (e) {
-    if (e.key === "Enter" && e.target.tagName === "INPUT" && e.target.type !== "checkbox") { e.preventDefault(); next(); }
+    if (e.key === "Enter" && e.target.tagName === "INPUT" && e.target.type !== "checkbox" && e.target.type !== "range") {
+      e.preventDefault(); if (order[A.step] === "contact") $("lb-send").click(); else next();
+    }
   });
 
-  /* ---------- Confetti ---------- */
   function confetti() {
     if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     var c = $("lbpb-confetti"), x = c.getContext("2d"), W = c.width = innerWidth, H = c.height = innerHeight;
-    var cols = ["#2dd4bf", "#ffffff", "#5eead4", "#fbbf24"], ps = [];
+    var cols = ["#2dd4bf", "#ffffff", "#a78bfa", "#fbbf24"], ps = [];
     for (var i = 0; i < 90; i++) ps.push({ x: Math.random() * W, y: -20 - Math.random() * H * .4, r: 4 + Math.random() * 5, vy: 2 + Math.random() * 3, vx: -1.5 + Math.random() * 3, a: Math.random() * 6, c: cols[i % 4] });
     var t0 = performance.now();
     (function f(t) {
@@ -856,10 +927,10 @@
     })(t0);
   }
 
-  /* ---------- Start ---------- */
+  /* =================== Start =================== */
   load();
-  if (["sending", "done"].indexOf(order[A.step]) > -1) A.step = order.indexOf("results");
-  fillInputs(); paint(); paintBudget();
+  if (["sending", "done"].indexOf(order[A.step]) > -1 || A.step >= order.length) A.step = 0;
+  fillInputs(); paint();
   go(A.step || 0, false, true);
 })();
 </script>

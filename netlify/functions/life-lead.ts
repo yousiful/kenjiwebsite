@@ -62,11 +62,13 @@ export const handler: Handler = async (event: HandlerEvent) => {
   const stage = s(p.stage, 30) === 'requested_agent' ? 'requested_agent' : 'viewed_results';
   const tags = (Array.isArray(p.tags) ? p.tags : []).map((t: unknown) => s(t, 40).toLowerCase()).filter(Boolean).slice(0, 8);
   if (!tags.includes('life-lead')) tags.unshift('life-lead');
-  if (stage === 'requested_agent') tags.push('life-agent-requested');
+  if (stage === 'requested_agent' && !tags.includes('life-agent-requested')) tags.push('life-agent-requested');
 
   const dob = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(s(p.date_of_birth, 10));
   const a = p.answers || {};
   const u = p.utm || {};
+  const pr = p.projection || {};
+  const k = (n: unknown) => `$${Math.round(+n / 1000) || 0}K`;
 
   try {
     const r = await fetch(`${GHL_BASE}/contacts/upsert`, {
@@ -85,26 +87,25 @@ export const handler: Handler = async (event: HandlerEvent) => {
 
     const cid = data?.contact?.id;
     if (cid) {
-      const lines =
-        stage === 'requested_agent'
-          ? [`Living Benefits Builder: tapped "Send to my agent". Wants a ${s(a.preferred_contact, 10) || 'call'} in the ${s(a.best_time, 12) || 'any time'}.`]
-          : [
-              'Living Benefits Policy Builder (kenjiai.com/living-benefits)',
-              `Plan: ${s(p.plan_profile, 40)} | ${s(p.death_benefit_option, 40)} | target product: ${s(p.product_target, 80)}`,
-              `Riders: ${list(p.riders)}`,
-              `Budget: $${s(a.monthly_budget, 6)}/mo | page estimate $${Math.round(+p.estimated_coverage_low / 1000)}K to $${Math.round(+p.estimated_coverage_high / 1000)}K (rough, not a quote)`,
-              `Goals: ${nice(a.goals)}`,
-              `Family history: ${nice(a.family_history)}${a.family_before_60 ? ' | before 60: ' + s(a.family_before_60, 5) : ''}`,
-              `DOB: ${s(p.date_of_birth, 10)} (age ${s(a.age, 3)}) | ${s(a.gender, 10)} | State: ${s(p.state, 2)} | Tobacco 12 mo: ${s(a.tobacco_12mo, 5)}`,
-              `Height ${s(a.height, 10)} | Weight ${s(a.weight_lbs, 5)} lbs`,
-              `Health: ${nice(a.health_conditions)} | Rx: ${s(a.prescriptions, 5)}${s(a.prescriptions_detail, 200) ? ' (' + s(a.prescriptions_detail, 200) + ')' : ''}`,
-              `Work: ${s(a.occupation, 80)} | self-employed: ${s(a.self_employed, 5)} | income: ${s(a.income_range, 30)}`,
-              `Existing coverage: ${s(a.has_existing_coverage, 5)}${s(a.existing_coverage_amount, 30) ? ' (' + s(a.existing_coverage_amount, 30) + ')' : ''} | wants GI rider: ${s(a.wants_guaranteed_insurability, 5)}`,
-              `Best time: ${s(a.best_time, 12)} | Prefers: ${s(a.preferred_contact, 10)}`,
-              Object.keys(u).length && `UTM: ${Object.entries(u).map(([k, v]) => `${k}=${s(v, 80)}`).join(' ')}`,
-              `Consent (TCPA) agreed ${s(p.consent?.at, 30)}: "${s(p.consent?.text, 400)}"`,
-              'SSN, license and bank info NOT collected; those go in the carrier secure application.',
-            ].filter(Boolean);
+      const lines = [
+        `Living Benefits Calculator (kenjiai.com/living-benefits)${stage === 'requested_agent' ? ': APPLY REQUEST, wants a ' + (s(a.preferred_contact, 10) || 'call') + ' in the ' + (s(a.best_time, 12) || 'any time') : ''}`,
+        `Plan: ${s(p.plan_profile, 40)} | ${s(p.death_benefit_option, 40)} | target product: ${s(p.product_target, 80)}`,
+        `Riders: ${list(p.riders)}`,
+        `Budget: $${s(a.monthly_budget, 6)}/mo`,
+        pr.face && `Calculator (hypothetical, not a quote): ${pr.design === 'cash' ? 'max cash value' : 'max protection'}, age ${s(pr.tool_age, 3)}, viewed at ${Math.round(+pr.rate_viewed * 100)}%: face ${k(pr.face)}, cash value at 65 ${k(pr.cv_at_65)}, death benefit at 65 ${k(pr.db_at_65)}${pr.lapse_age_at_rate ? ', needs more premium by ' + s(pr.lapse_age_at_rate, 3) : ''}`,
+        p.estimated_coverage_low && `Page estimate: ${k(p.estimated_coverage_low)} to ${k(p.estimated_coverage_high)} (rough, not a quote)`,
+        `Goals: ${nice(a.goals)}`,
+        `Family history: ${nice(a.family_history)}${a.family_before_60 ? ' | before 60: ' + s(a.family_before_60, 5) : ''}`,
+        `DOB: ${s(p.date_of_birth, 10)} (age ${s(a.age, 3)}) | ${s(a.gender, 10)} | State: ${s(p.state, 2)} | Tobacco 12 mo: ${s(a.tobacco_12mo, 5)}`,
+        `Height ${s(a.height, 10)} | Weight ${s(a.weight_lbs, 5)} lbs`,
+        `Health: ${nice(a.health_conditions)} | Rx: ${s(a.prescriptions, 5)}${s(a.prescriptions_detail, 200) ? ' (' + s(a.prescriptions_detail, 200) + ')' : ''}`,
+        `Work: ${s(a.occupation, 80)} | self-employed: ${s(a.self_employed, 5)} | income: ${s(a.income_range, 30)}`,
+        `Existing coverage: ${s(a.has_existing_coverage, 5)}${s(a.existing_coverage_amount, 30) ? ' (' + s(a.existing_coverage_amount, 30) + ')' : ''} | wants GI rider: ${s(a.wants_guaranteed_insurability, 5)}`,
+        `Best time: ${s(a.best_time, 12)} | Prefers: ${s(a.preferred_contact, 10)}`,
+        Object.keys(u).length && `UTM: ${Object.entries(u).map(([k, v]) => `${k}=${s(v, 80)}`).join(' ')}`,
+        `Consent (TCPA) agreed ${s(p.consent?.at, 30)}: "${s(p.consent?.text, 400)}"`,
+        'SSN, license and bank info NOT collected; those go in the carrier secure application.',
+      ].filter(Boolean);
       await fetch(`${GHL_BASE}/contacts/${cid}/notes`, {
         method: 'POST',
         headers,
