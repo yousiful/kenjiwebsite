@@ -11,6 +11,10 @@
 /about-yousif-alias        /about-yousif-alias/index.html      200!
 /about-yousif-alias/       /about-yousif-alias/index.html      200
 
+# Living Benefits Policy Builder (life insurance lead page) - static HTML, bypass SPA fallback
+/living-benefits           /living-benefits/index.html         200!
+/living-benefits/          /living-benefits/index.html         200
+
 # AI Call Center Upgrade — static HTML, bypass SPA fallback
 /call-center-upgrade       /call-center-upgrade/index.html     200
 /call-center-upgrade/      /call-center-upgrade/index.html     200
