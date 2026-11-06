@@ -89,7 +89,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
     if (cid) {
       const lines = [
         `Living Benefits Calculator (kenjiai.com/living-benefits)${stage === 'requested_agent' ? ': APPLY REQUEST, wants a ' + (s(a.preferred_contact, 10) || 'call') + ' in the ' + (s(a.best_time, 12) || 'any time') : ''}`,
-        `Plan: ${s(p.plan_profile, 40)} | ${s(p.death_benefit_option, 40)} | target product: ${s(p.product_target, 80)}`,
+        `Plan: ${s(p.plan_profile, 40)} | ${s(p.death_benefit_option, 80)} | target product: ${s(p.product_target, 80)}`,
         `Riders: ${list(p.riders)}`,
         `Budget: $${s(a.monthly_budget, 6)}/mo`,
         pr.face && `Calculator (hypothetical, not a quote): ${pr.design === 'cash' ? 'max cash value' : 'max protection'}, age ${s(pr.tool_age, 3)}, viewed at ${Math.round(+pr.rate_viewed * 100)}%: face ${k(pr.face)}, cash value at 65 ${k(pr.cv_at_65)}, death benefit at 65 ${k(pr.db_at_65)}${pr.lapse_age_at_rate ? ', needs more premium by ' + s(pr.lapse_age_at_rate, 3) : ''}`,
