@@ -2954,7 +2954,7 @@
     ],
     "canonical": "https://kenjiai.com/free-tools",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@type\":\"CollectionPage\",\"name\":\"Free AI Tools by KenjiAI\",\"description\":\"A collection of free AI tools built by the KenjiAI team. No signup required, 100% free forever.\",\"url\":\"https://kenjiai.com/free-tools\",\"mainEntity\":{\"@type\":\"ItemList\",\"name\":\"Free AI Tools\",\"numberOfItems\":17,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"url\":\"https://kenjiai.com/tools/utm-builder\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"UTM Builder: UTM Link Generator with QR Code\",\"description\":\"Paste your page, pick Facebook, Instagram, Google Ads, email or text, name the campaign, and copy a clean UTM tracking link. Includes a downloadable QR code and Meta Ads dynamic parameters.\",\"url\":\"https://kenjiai.com/tools/utm-builder\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":2,\"url\":\"https://kenjiai.com/tools/ltv-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Customer Lifetime Value (LTV) Calculator\",\"description\":\"Enter purchase value, how often customers buy, how long they stay, your margin, and your cost per customer. Get lifetime value in revenue and profit, your LTV:CAC ratio, the most you can pay per customer, and CAC payback.\",\"url\":\"https://kenjiai.com/tools/ltv-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":3,\"url\":\"https://kenjiai.com/invites\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Kenji Invites: Free Invitations with RSVP for Any Celebration\",\"description\":\"Make a beautiful invitation for a wedding, birthday, graduation, shower, holiday party or any celebration. Add your photos, send it by text or email from your own phone, and see who's coming.\",\"url\":\"https://kenjiai.com/invites\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":4,\"url\":\"https://kenjiai.com/funding\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Funding Finder: Grants, Loans and Investors Open Now\",\"description\":\"Every grant, SBA loan, revenue-based financing offer, accelerator, angel network and competition we can confirm is open for US small businesses and founders, with the deadline, official link and last-verified date. Refreshed every week.\",\"url\":\"https://kenjiai.com/funding\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":5,\"url\":\"https://kenjiai.com/tools/facebook-ads-budget-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Facebook Ads Budget Calculator\",\"description\":\"Enter the customers you want each month, your cost per lead, and your close rate. Get the daily and monthly Meta ads budget you need, cost per customer, and whether you have enough volume to exit the learning phase.\",\"url\":\"https://kenjiai.com/tools/facebook-ads-budget-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":6,\"url\":\"https://kenjiai.com/tools/roas-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"ROAS & Break-Even Calculator\",\"description\":\"Enter ad spend, revenue, order value, and margin. Get your ROAS, the break-even ROAS your margins require, the most you can pay per customer, and real profit after ad spend.\",\"url\":\"https://kenjiai.com/tools/roas-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":7,\"url\":\"https://kenjiai.com/tools/google-review-link-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Google Review Link Generator\",\"description\":\"Make a direct link to your Google review box plus a printable QR code, with ready-to-send text and email templates for asking customers.\",\"url\":\"https://kenjiai.com/tools/google-review-link-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":8,\"url\":\"https://kenjiai.com/tools/name-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Business & $100M Offer Name Generator\",\"description\":\"Generate viral business names, Alex Hormozi $100M Grand Slam offer titles, SaaS products, and lead magnets with domain checks, ad hooks, and conversion psychology.\",\"url\":\"https://kenjiai.com/tools/name-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":9,\"url\":\"https://kenjiai.com/trendpulse\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"TrendPulse & AdForge - Viral Trends, $100M Offers & Ad Hooks\",\"description\":\"Real-time trend radar, buyer intent miner, Alex Hormozi $100M Grand Slam Offer architect, and 6-vector psychological ad angle and viral UGC hook generator.\",\"url\":\"https://kenjiai.com/trendpulse\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":10,\"url\":\"https://kenjiai.com/tools/icp-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"ICP Generator - Ideal Customer Profile For Ad Targeting\",\"description\":\"Describe what you sell and what you charge. Get 2 or 3 named buyer segments with real Meta Ads detailed-targeting interests, exclusions, buying triggers, objection counters, and lookalike seeds you can configure a campaign from today.\",\"url\":\"https://kenjiai.com/tools/icp-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":11,\"url\":\"https://kenjiai.com/tools/missed-call-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Missed Call Revenue Loss Calculator\",\"description\":\"Interactive diagnostic tool for high-ticket businesses to calculate pipeline revenue lost to unanswered calls and discover ROI on 24/7 AI call answering agents.\",\"url\":\"https://kenjiai.com/tools/missed-call-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":12,\"url\":\"https://kenjiai.com/tools/song-prompt-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Song & Jingle Prompt Generator\",\"description\":\"Build a real, producer-grade prompt for Suno, Udio, or Producer.ai, not generic AI slop. Make a personal song with your name in it, or a commercial jingle/anthem for your business.\",\"url\":\"https://kenjiai.com/tools/song-prompt-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":13,\"url\":\"https://prompt.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Prompt Generator\",\"description\":\"Generate perfect AI prompts for any use case with our intelligent prompt engineering tool. Create optimized prompts for ChatGPT, Claude, GPT-4, and other AI models. Free forever, no signup required.\",\"url\":\"https://prompt.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":14,\"url\":\"https://prpro.kenjiai.com/\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"PR Pro - Free AI PR Tool\",\"description\":\"AI-powered PR campaigns that get you noticed by the right people and media outlets. Generate press releases, media lists, and outreach templates. Free AI PR automation tool.\",\"url\":\"https://prpro.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":15,\"url\":\"https://salescoach.kenjiai.com/\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Sales Coach AI - Free Sales Training\",\"description\":\"Your personal AI sales trainer that helps close more deals with data-driven insights, objection handling, and performance optimization. Free AI sales coaching and training.\",\"url\":\"https://salescoach.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":16,\"url\":\"https://dispute.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Dispute Resolution\",\"description\":\"Resolve disputes efficiently with AI-powered mediation, conflict analysis, and resolution strategies. Free AI dispute management and resolution tool for businesses.\",\"url\":\"https://dispute.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":17,\"url\":\"https://webinar.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Live Webinar Platform\",\"description\":\"Host engaging live webinars with AI-powered audience insights, automated follow-ups, and conversion tracking. Free webinar hosting and automation tool.\",\"url\":\"https://webinar.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}}]},\"breadcrumb\":{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Free AI Tools\",\"item\":\"https://kenjiai.com/free-tools\"}]}}"
+     "{\"@context\":\"https://schema.org\",\"@type\":\"CollectionPage\",\"name\":\"Free AI Tools by KenjiAI\",\"description\":\"A collection of free AI tools built by the KenjiAI team. No signup required, 100% free forever.\",\"url\":\"https://kenjiai.com/free-tools\",\"mainEntity\":{\"@type\":\"ItemList\",\"name\":\"Free AI Tools\",\"numberOfItems\":18,\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"url\":\"https://kenjiai.com/tools/speed-to-lead-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Speed to Lead Calculator: What Slow Lead Response Costs You\",\"description\":\"Enter your monthly leads, deal value, close rate, and how long it takes you to reply. See the revenue you lose each month to slow lead response and what answering in under 5 minutes is worth.\",\"url\":\"https://kenjiai.com/tools/speed-to-lead-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":2,\"url\":\"https://kenjiai.com/tools/utm-builder\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"UTM Builder: UTM Link Generator with QR Code\",\"description\":\"Paste your page, pick Facebook, Instagram, Google Ads, email or text, name the campaign, and copy a clean UTM tracking link. Includes a downloadable QR code and Meta Ads dynamic parameters.\",\"url\":\"https://kenjiai.com/tools/utm-builder\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":3,\"url\":\"https://kenjiai.com/tools/ltv-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Customer Lifetime Value (LTV) Calculator\",\"description\":\"Enter purchase value, how often customers buy, how long they stay, your margin, and your cost per customer. Get lifetime value in revenue and profit, your LTV:CAC ratio, the most you can pay per customer, and CAC payback.\",\"url\":\"https://kenjiai.com/tools/ltv-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":4,\"url\":\"https://kenjiai.com/invites\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Kenji Invites: Free Invitations with RSVP for Any Celebration\",\"description\":\"Make a beautiful invitation for a wedding, birthday, graduation, shower, holiday party or any celebration. Add your photos, send it by text or email from your own phone, and see who's coming.\",\"url\":\"https://kenjiai.com/invites\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":5,\"url\":\"https://kenjiai.com/funding\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Funding Finder: Grants, Loans and Investors Open Now\",\"description\":\"Every grant, SBA loan, revenue-based financing offer, accelerator, angel network and competition we can confirm is open for US small businesses and founders, with the deadline, official link and last-verified date. Refreshed every week.\",\"url\":\"https://kenjiai.com/funding\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":6,\"url\":\"https://kenjiai.com/tools/facebook-ads-budget-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Facebook Ads Budget Calculator\",\"description\":\"Enter the customers you want each month, your cost per lead, and your close rate. Get the daily and monthly Meta ads budget you need, cost per customer, and whether you have enough volume to exit the learning phase.\",\"url\":\"https://kenjiai.com/tools/facebook-ads-budget-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":7,\"url\":\"https://kenjiai.com/tools/roas-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"ROAS & Break-Even Calculator\",\"description\":\"Enter ad spend, revenue, order value, and margin. Get your ROAS, the break-even ROAS your margins require, the most you can pay per customer, and real profit after ad spend.\",\"url\":\"https://kenjiai.com/tools/roas-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":8,\"url\":\"https://kenjiai.com/tools/google-review-link-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Google Review Link Generator\",\"description\":\"Make a direct link to your Google review box plus a printable QR code, with ready-to-send text and email templates for asking customers.\",\"url\":\"https://kenjiai.com/tools/google-review-link-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":9,\"url\":\"https://kenjiai.com/tools/name-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Business & $100M Offer Name Generator\",\"description\":\"Generate viral business names, Alex Hormozi $100M Grand Slam offer titles, SaaS products, and lead magnets with domain checks, ad hooks, and conversion psychology.\",\"url\":\"https://kenjiai.com/tools/name-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":10,\"url\":\"https://kenjiai.com/trendpulse\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"TrendPulse & AdForge - Viral Trends, $100M Offers & Ad Hooks\",\"description\":\"Real-time trend radar, buyer intent miner, Alex Hormozi $100M Grand Slam Offer architect, and 6-vector psychological ad angle and viral UGC hook generator.\",\"url\":\"https://kenjiai.com/trendpulse\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":11,\"url\":\"https://kenjiai.com/tools/icp-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"ICP Generator - Ideal Customer Profile For Ad Targeting\",\"description\":\"Describe what you sell and what you charge. Get 2 or 3 named buyer segments with real Meta Ads detailed-targeting interests, exclusions, buying triggers, objection counters, and lookalike seeds you can configure a campaign from today.\",\"url\":\"https://kenjiai.com/tools/icp-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":12,\"url\":\"https://kenjiai.com/tools/missed-call-calculator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Missed Call Revenue Loss Calculator\",\"description\":\"Interactive diagnostic tool for high-ticket businesses to calculate pipeline revenue lost to unanswered calls and discover ROI on 24/7 AI call answering agents.\",\"url\":\"https://kenjiai.com/tools/missed-call-calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":13,\"url\":\"https://kenjiai.com/tools/song-prompt-generator\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Song & Jingle Prompt Generator\",\"description\":\"Build a real, producer-grade prompt for Suno, Udio, or Producer.ai, not generic AI slop. Make a personal song with your name in it, or a commercial jingle/anthem for your business.\",\"url\":\"https://kenjiai.com/tools/song-prompt-generator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":14,\"url\":\"https://prompt.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Prompt Generator\",\"description\":\"Generate perfect AI prompts for any use case with our intelligent prompt engineering tool. Create optimized prompts for ChatGPT, Claude, GPT-4, and other AI models. Free forever, no signup required.\",\"url\":\"https://prompt.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":15,\"url\":\"https://prpro.kenjiai.com/\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"PR Pro - Free AI PR Tool\",\"description\":\"AI-powered PR campaigns that get you noticed by the right people and media outlets. Generate press releases, media lists, and outreach templates. Free AI PR automation tool.\",\"url\":\"https://prpro.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":16,\"url\":\"https://salescoach.kenjiai.com/\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Sales Coach AI - Free Sales Training\",\"description\":\"Your personal AI sales trainer that helps close more deals with data-driven insights, objection handling, and performance optimization. Free AI sales coaching and training.\",\"url\":\"https://salescoach.kenjiai.com/\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":17,\"url\":\"https://dispute.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"AI Dispute Resolution\",\"description\":\"Resolve disputes efficiently with AI-powered mediation, conflict analysis, and resolution strategies. Free AI dispute management and resolution tool for businesses.\",\"url\":\"https://dispute.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}},{\"@type\":\"ListItem\",\"position\":18,\"url\":\"https://webinar.kenjiai.com\",\"item\":{\"@type\":\"SoftwareApplication\",\"name\":\"Live Webinar Platform\",\"description\":\"Host engaging live webinars with AI-powered audience insights, automated follow-ups, and conversion tracking. Free webinar hosting and automation tool.\",\"url\":\"https://webinar.kenjiai.com\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}}]},\"breadcrumb\":{\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Free AI Tools\",\"item\":\"https://kenjiai.com/free-tools\"}]}}"
     ]
    },
    "blocks": [
@@ -3001,6 +3001,14 @@
     {
      "tag": "h2",
      "text": "Choose Your Free AI Tool"
+    },
+    {
+     "tag": "h3",
+     "text": "Speed to Lead Calculator: What Slow Lead Response Costs You"
+    },
+    {
+     "tag": "p",
+     "text": "Enter your monthly leads, deal value, close rate, and how long it takes you to reply. See the revenue you lose each month to slow lead response and what answering in under 5 minutes is worth."
     },
     {
      "tag": "h3",
@@ -3204,6 +3212,10 @@
     }
    ],
    "links": [
+    {
+     "href": "/tools/speed-to-lead-calculator",
+     "text": "Open the tool"
+    },
     {
      "href": "/tools/utm-builder",
      "text": "Open the tool"
@@ -30736,6 +30748,248 @@
      "text": "all free tools"
     }
    ]
+  },
+  "/tools/speed-to-lead-calculator": {
+   "head": {
+    "title": "Speed to Lead Calculator: Lead Response Time Cost | KenjiAI",
+    "metas": [
+     {
+      "name": "viewport",
+      "content": "width=device-width, initial-scale=1.0"
+     },
+     {
+      "name": "theme-color",
+      "content": "#3B82F6"
+     },
+     {
+      "name": "title",
+      "content": "Speed to Lead Calculator: Lead Response Time Cost | KenjiAI"
+     },
+     {
+      "name": "keywords",
+      "content": "AI call center, inbound AI receptionist, outbound speed to lead, database reactivation, AI voice agents, business automation CRM, KenjiAI"
+     },
+     {
+      "name": "robots",
+      "content": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+     },
+     {
+      "name": "language",
+      "content": "English"
+     },
+     {
+      "name": "author",
+      "content": "KenjiAI"
+     },
+     {
+      "name": "publisher",
+      "content": "KenjiAI"
+     },
+     {
+      "name": "copyright",
+      "content": "KenjiAI"
+     },
+     {
+      "name": "revisit-after",
+      "content": "1 days"
+     },
+     {
+      "name": "distribution",
+      "content": "global"
+     },
+     {
+      "name": "rating",
+      "content": "general"
+     },
+     {
+      "property": "og:type",
+      "content": "website"
+     },
+     {
+      "property": "og:image",
+      "content": "https://kenjiai.com/og-image.png"
+     },
+     {
+      "property": "og:image:width",
+      "content": "1200"
+     },
+     {
+      "property": "og:image:height",
+      "content": "630"
+     },
+     {
+      "property": "og:image:alt",
+      "content": "KenjiAI - AI Business Automation Platform with Voice Agents, Smart CRM, and Free AI Tools"
+     },
+     {
+      "property": "og:site_name",
+      "content": "KenjiAI"
+     },
+     {
+      "property": "og:locale",
+      "content": "en_US"
+     },
+     {
+      "name": "format-detection",
+      "content": "telephone=yes"
+     },
+     {
+      "name": "HandheldFriendly",
+      "content": "true"
+     },
+     {
+      "content": "ie=edge"
+     },
+     {
+      "property": "twitter:card",
+      "content": "summary_large_image"
+     },
+     {
+      "property": "twitter:url",
+      "content": "https://kenjiai.com/tools/speed-to-lead-calculator"
+     },
+     {
+      "property": "twitter:title",
+      "content": "Speed to Lead Calculator: Lead Response Time Cost | KenjiAI"
+     },
+     {
+      "property": "twitter:description",
+      "content": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation."
+     },
+     {
+      "property": "twitter:image",
+      "content": "https://kenjiai.com/og-image.png"
+     },
+     {
+      "property": "twitter:image:alt",
+      "content": "KenjiAI - AI Business Automation Platform"
+     },
+     {
+      "property": "twitter:creator",
+      "content": "@KenjiAI"
+     },
+     {
+      "property": "twitter:site",
+      "content": "@KenjiAI"
+     },
+     {
+      "name": "twitter:label1",
+      "content": "Built for"
+     },
+     {
+      "name": "twitter:data1",
+      "content": "Business Owners & Entrepreneurs"
+     },
+     {
+      "name": "twitter:label2",
+      "content": "Pricing"
+     },
+     {
+      "name": "twitter:data2",
+      "content": "Performance-Based"
+     },
+     {
+      "name": "description",
+      "content": "Free speed to lead calculator. Enter your leads, deal value, close rate, and lead response time to see the revenue you lose every month by answering leads late."
+     },
+     {
+      "property": "og:title",
+      "content": "Speed to Lead Calculator | KenjiAI"
+     },
+     {
+      "property": "og:description",
+      "content": "See how much revenue slow lead response costs you each month, and what answering in under 5 minutes is worth."
+     },
+     {
+      "property": "og:url",
+      "content": "https://kenjiai.com/tools/speed-to-lead-calculator"
+     }
+    ],
+    "canonical": "https://kenjiai.com/tools/speed-to-lead-calculator",
+    "jsonld": [
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/tools/speed-to-lead-calculator#webpage\",\"url\":\"https://kenjiai.com/tools/speed-to-lead-calculator\",\"name\":\"Speed to Lead Calculator: What Slow Lead Response Costs You\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"Free speed to lead calculator. Enter your leads, deal value, close rate, and lead response time to see the revenue you lose every month by answering leads late.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/tools/speed-to-lead-calculator#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/tools/speed-to-lead-calculator#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Free Tools\",\"item\":\"https://kenjiai.com/free-tools\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Speed to Lead Calculator: What Slow Lead Response Costs You\",\"item\":\"https://kenjiai.com/tools/speed-to-lead-calculator\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"SoftwareApplication\",\"name\":\"KenjiAI Speed to Lead Calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Web\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"KenjiAI\",\"url\":\"https://kenjiai.com\"}},{\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"What is speed to lead?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"The time between a lead coming in (a form, a call, an ad message) and someone from your business actually reaching that person. It is measured in minutes, and for most businesses it is the cheapest sales number to improve.\"}},{\"@type\":\"Question\",\"name\":\"What is a good lead response time?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Under 5 minutes. A 2011 Harvard Business Review study of 2,241 US companies found firms that reached out within an hour were nearly 7 times as likely to qualify the lead as firms that waited longer, and over 60 times as likely as firms that waited a day. The average response time in that study was 42 hours.\"}},{\"@type\":\"Question\",\"name\":\"How does this calculator work out lost revenue?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"It treats your close rate today as the result of your current response time. It then estimates the close rate you would get answering within 5 minutes using a drop-off curve: a lead answered in 1 hour closes about 55% as well as one answered in 5 minutes, and one answered in 24 hours about 38% as well. Extra customers times your deal value is the revenue you are leaving behind.\"}},{\"@type\":\"Question\",\"name\":\"Are these numbers exaggerated?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"They lean the other way. The published research shows gaps of 7x or more at the one-hour mark. We use under 2x, so the figure here is one you can defend to a partner or an accountant. Your real gap is probably larger.\"}},{\"@type\":\"Question\",\"name\":\"Does speed to lead matter for phone calls too?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"More than for forms. A call that goes to voicemail is a lead with no response at all, and most callers dial the next business on the list instead of leaving a message. Count missed calls in your response time, not only web leads.\"}},{\"@type\":\"Question\",\"name\":\"How do I get my response time under 5 minutes?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Send an instant text reply to every new form lead, route leads to a phone that rings instead of an inbox someone checks later, and have calls answered after hours by a person or an AI receptionist. Then check your average once a week so it does not drift.\"}}]}]}"
+    ]
+   },
+   "blocks": [
+    {
+     "tag": "h1",
+     "text": "Speed to Lead Calculator"
+    },
+    {
+     "tag": "p",
+     "text": "See how much revenue your lead response time costs you each month, and what answering every lead in under 5 minutes is worth."
+    },
+    {
+     "tag": "p",
+     "text": "Every lead you answer this late costs you about $150 in sales you would likely have closed. An instant text reply on every form is the cheapest fix you can make this week."
+    },
+    {
+     "tag": "h2",
+     "text": "What each response time is worth to you"
+    },
+    {
+     "tag": "p",
+     "text": "Monthly revenue from the same 100 leads, answered at different speeds."
+    },
+    {
+     "tag": "h2",
+     "text": "Speed to lead questions people ask"
+    },
+    {
+     "tag": "h3",
+     "text": "What is speed to lead?"
+    },
+    {
+     "tag": "p",
+     "text": "The time between a lead coming in (a form, a call, an ad message) and someone from your business actually reaching that person. It is measured in minutes, and for most businesses it is the cheapest sales number to improve."
+    },
+    {
+     "tag": "h3",
+     "text": "What is a good lead response time?"
+    },
+    {
+     "tag": "p",
+     "text": "Under 5 minutes. A 2011 Harvard Business Review study of 2,241 US companies found firms that reached out within an hour were nearly 7 times as likely to qualify the lead as firms that waited longer, and over 60 times as likely as firms that waited a day. The average response time in that study was 42 hours."
+    },
+    {
+     "tag": "h3",
+     "text": "How does this calculator work out lost revenue?"
+    },
+    {
+     "tag": "p",
+     "text": "It treats your close rate today as the result of your current response time. It then estimates the close rate you would get answering within 5 minutes using a drop-off curve: a lead answered in 1 hour closes about 55% as well as one answered in 5 minutes, and one answered in 24 hours about 38% as well. Extra customers times your deal value is the revenue you are leaving behind."
+    },
+    {
+     "tag": "h3",
+     "text": "Are these numbers exaggerated?"
+    },
+    {
+     "tag": "p",
+     "text": "They lean the other way. The published research shows gaps of 7x or more at the one-hour mark. We use under 2x, so the figure here is one you can defend to a partner or an accountant. Your real gap is probably larger."
+    },
+    {
+     "tag": "h3",
+     "text": "Does speed to lead matter for phone calls too?"
+    },
+    {
+     "tag": "p",
+     "text": "More than for forms. A call that goes to voicemail is a lead with no response at all, and most callers dial the next business on the list instead of leaving a message. Count missed calls in your response time, not only web leads."
+    },
+    {
+     "tag": "h3",
+     "text": "How do I get my response time under 5 minutes?"
+    },
+    {
+     "tag": "p",
+     "text": "Send an instant text reply to every new form lead, route leads to a phone that rings instead of an inbox someone checks later, and have calls answered after hours by a person or an AI receptionist. Then check your average once a week so it does not drift."
+    },
+    {
+     "tag": "p",
+     "text": "Free to use on your own site or blog. Paste this snippet."
+    }
+   ],
+   "links": []
   },
   "/tools/utm-builder": {
    "head": {

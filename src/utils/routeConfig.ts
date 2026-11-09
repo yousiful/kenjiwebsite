@@ -60,6 +60,7 @@ export const internalRoutes = [
   '/tools/facebook-ads-budget-calculator',
   '/tools/ltv-calculator',
   '/tools/utm-builder',
+  '/tools/speed-to-lead-calculator',
   '/tools/name-generator',
   '/tools/business-name-generator',
   '/trendpulse',

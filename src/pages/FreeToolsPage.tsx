@@ -1,10 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, AlertCircle, PhoneCall, Flame, Music, Target, Building2, Calculator, Wallet, Heart } from 'lucide-react';
+import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, AlertCircle, PhoneCall, Flame, Music, Target, Building2, Calculator, Wallet, Heart, Timer } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 const FreeToolsPage: React.FC = () => {
   const freeTools = [
+    {
+      name: "Speed to Lead Calculator: What Slow Lead Response Costs You",
+      description: "Enter your monthly leads, deal value, close rate, and how long it takes you to reply. See the revenue you lose each month to slow lead response and what answering in under 5 minutes is worth.",
+      url: "/tools/speed-to-lead-calculator",
+      icon: Timer,
+      gradient: "from-red-600 via-orange-600 to-amber-500",
+      features: ["Monthly Revenue Lost", "Customers Missed", "Cost Per Late Lead", "Response Time Breakdown"],
+      category: "Marketing & Growth",
+      keywords: ["speed to lead", "lead response time", "speed to lead calculator", "lead response time statistics"],
+      revenue: "See what slow replies cost you"
+    },
     {
       name: "UTM Builder: UTM Link Generator with QR Code",
       description: "Paste your page, pick Facebook, Instagram, Google Ads, email or text, name the campaign, and copy a clean UTM tracking link. Includes a downloadable QR code and Meta Ads dynamic parameters.",
