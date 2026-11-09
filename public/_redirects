@@ -15,6 +15,10 @@
 /living-benefits           /living-benefits/index.html         200!
 /living-benefits/          /living-benefits/index.html         200
 
+# Agency income calculator (recruiting) - static HTML, bypass SPA fallback
+/agency-income             /agency-income/index.html           200!
+/agency-income/            /agency-income/index.html           200
+
 # AI Call Center Upgrade — static HTML, bypass SPA fallback
 /call-center-upgrade       /call-center-upgrade/index.html     200
 /call-center-upgrade/      /call-center-upgrade/index.html     200

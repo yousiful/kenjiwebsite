@@ -45,7 +45,8 @@ export const handler: Handler = async (event: HandlerEvent) => {
   const locationId = process.env.GHL_LOCATION_ID || DEFAULT_LOCATION_ID;
 
   const licensed = p.licensed === 'yes';
-  const tags = ['agency-recruit', licensed ? 'agency-licensed' : 'agency-non-licensed'];
+  const fromCalc = s(p.source, 40) === 'income-calculator';
+  const tags = ['agency-recruit', licensed ? 'agency-licensed' : 'agency-non-licensed', ...(fromCalc ? ['agency-calculator'] : [])];
   const headers = { Authorization: `Bearer ${token}`, Version: GHL_VERSION, 'Content-Type': 'application/json', Accept: 'application/json' };
 
   try {
@@ -58,7 +59,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
         city: s(p.city, 80) || undefined,
         state: s(p.state, 40) || undefined,
         postalCode: s(p.zip, 12) || undefined,
-        source: 'agency-page',
+        source: fromCalc ? 'agency-income-calculator' : 'agency-page',
         tags,
       }),
     });
@@ -68,7 +69,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
     const cid = data?.contact?.id;
     if (cid) {
       const lines = [
-        'Life insurance agency sign-up (kenjiai.com/agency)',
+        fromCalc ? 'Life insurance agency lead from the income calculator (kenjiai.com/agency-income)' : 'Life insurance agency sign-up (kenjiai.com/agency)',
         `Legal name: ${[firstName, s(p.middle_name, 60), lastName].filter(Boolean).join(' ')}${s(p.suffix, 10) ? ' ' + s(p.suffix, 10) : ''}`,
         s(p.preferred_name, 60) && `Goes by: ${s(p.preferred_name, 60)}`,
         `Email: ${email} | Mobile: ${phone}`,
@@ -89,6 +90,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
         `Employment now: ${s(p.employment, 60) || 'not given'} | Hours per week: ${s(p.hours, 20) || 'not given'}`,
         `Referred by: ${s(p.referred_by, 120) || 'nobody named'}`,
         s(p.notes, 1000) && `Notes: ${s(p.notes, 1000)}`,
+        s(p.consent_text, 400) && `Consent agreed: ${s(p.consent_text, 400)}`,
         'SSN and date of birth NOT collected; they go in the official secure application after the Zoom.',
       ].filter(Boolean);
       await fetch(`${GHL_BASE}/contacts/${cid}/notes`, {

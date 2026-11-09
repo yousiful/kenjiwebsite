@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agency Income Calculator | Kenji Insurance Team</title>
+<meta name="description" content="See what you could earn as an agent, a broker with your own outlet, or a founder with outlets under you. Move the numbers, see the math.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://kenjiai.com/agency-income">
+<meta property="og:title" content="What could you earn building your own agency?">
+<meta property="og:description" content="Agent, broker, founder. Move the numbers and see the monthly payout math for each stage.">
+<meta property="og:url" content="https://kenjiai.com/agency-income">
+<meta property="og:image" content="https://kenjiai.com/og-image.png">
+<link rel="icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+html, body { margin: 0; background: #0a0a0a; }
+#ai, #ai * { box-sizing: border-box; }
+#ai {
+  --bg: #0a0a0a; --card: #141414; --card2: #1b1b1b; --line: #2a2a2a;
+  --text: #fff; --muted: #a3a3a3; --accent: #2dd4bf; --accent-ink: #04201c;
+  --gold: #fbbf24; --violet: #a78bfa; --err: #f87171;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: var(--text); background: var(--bg); line-height: 1.5;
+  max-width: 760px; margin: 0 auto; padding: 28px 16px 40px; overflow-x: hidden;
+}
+#ai .eyebrow { color: var(--accent); font-weight: 700; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 8px; }
+#ai h1 { font-size: 34px; line-height: 1.12; margin: 0 0 10px; font-weight: 800; letter-spacing: -.02em; }
+#ai h2 { font-size: 24px; line-height: 1.2; margin: 0 0 8px; font-weight: 800; }
+#ai h3 { font-size: 17px; margin: 0 0 4px; }
+#ai p.sub { color: var(--muted); margin: 0 0 20px; font-size: 16px; }
+#ai .card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 20px; margin: 16px 0; }
+#ai .tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0 6px; }
+#ai .tab { background: var(--card); border: 2px solid var(--line); color: var(--text); border-radius: 18px; padding: 14px 8px 12px; cursor: pointer; font: inherit; text-align: center; transition: border-color .15s, background .15s; }
+#ai .tab svg { width: 100%; height: 64px; display: block; margin-bottom: 6px; }
+#ai .tab b { display: block; font-size: 15px; letter-spacing: .06em; }
+#ai .tab small { display: block; color: var(--muted); font-size: 12px; }
+#ai .tab .pay { display: block; color: var(--gold); font-weight: 800; font-size: 15px; margin-top: 6px; }
+#ai .tab[aria-selected="true"] { border-color: var(--accent); background: #0f2422; }
+#ai .arrow { text-align: center; color: var(--muted); font-size: 12px; margin: 0 0 10px; }
+#ai .ctl { margin: 16px 0 4px; }
+#ai .ctl .lab { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-weight: 600; font-size: 15px; }
+#ai .ctl .lab output { color: var(--accent); font-weight: 800; font-size: 17px; white-space: nowrap; }
+#ai .ctl .hint { color: var(--muted); font-size: 13px; margin-top: 2px; }
+#ai input[type=range] { width: 100%; accent-color: var(--accent); height: 30px; margin: 4px 0 0; }
+#ai select, #ai input[type=text], #ai input[type=email], #ai input[type=tel], #ai input[type=number] {
+  width: 100%; background: var(--card2); border: 2px solid var(--line); color: var(--text);
+  border-radius: 14px; padding: 12px 14px; font: inherit; font-size: 16px; min-height: 50px;
+}
+#ai button:focus-visible, #ai input:focus-visible, #ai select:focus-visible, #ai a:focus-visible, #ai summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+#ai .big { text-align: center; padding: 26px 18px; background: linear-gradient(160deg, #0f2422, #141414 60%); border-color: #1f4a44; }
+#ai .big .k { color: var(--muted); font-weight: 600; font-size: 14px; }
+#ai .big .v { font-size: 46px; font-weight: 800; letter-spacing: -.02em; color: var(--gold); line-height: 1.1; margin: 4px 0; }
+#ai .big .y { color: var(--muted); font-size: 15px; }
+#ai .lines { margin: 14px 0 0; padding: 0; list-style: none; text-align: left; }
+#ai .lines li { display: flex; justify-content: space-between; gap: 12px; padding: 9px 0; border-top: 1px solid var(--line); font-size: 15px; }
+#ai .lines li span:last-child { font-weight: 700; white-space: nowrap; }
+#ai .math { color: var(--muted); font-size: 13px; margin-top: 10px; text-align: left; }
+#ai .cmp { display: grid; gap: 12px; }
+#ai .cmp .r { display: grid; grid-template-columns: 92px 1fr 98px; align-items: center; gap: 10px; font-size: 14px; }
+#ai .cmp .b { height: 16px; background: var(--card2); border-radius: 99px; overflow: hidden; }
+#ai .cmp .b i { display: block; height: 100%; border-radius: 99px; transition: width .4s ease; }
+#ai .cmp .r span:last-child { text-align: right; font-weight: 700; }
+#ai table { width: 100%; border-collapse: collapse; font-size: 14px; }
+#ai th, #ai td { padding: 8px 6px; border-top: 1px solid var(--line); text-align: left; }
+#ai th { color: var(--muted); font-weight: 600; }
+#ai td input { min-height: 40px; padding: 6px 8px; width: 80px; }
+#ai details summary { cursor: pointer; font-weight: 700; color: var(--accent); }
+#ai .reality { border-color: #4a3a14; background: #17130a; }
+#ai .reality h3 { color: var(--gold); }
+#ai .reality ul { margin: 8px 0 0; padding-left: 18px; color: #d4d4d4; font-size: 14px; }
+#ai .reality li { margin: 6px 0; }
+#ai .reality a { color: var(--gold); }
+#ai .cta { width: 100%; background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 16px; padding: 18px; font: inherit; font-size: 18px; font-weight: 800; cursor: pointer; margin-top: 16px; min-height: 60px; }
+#ai .cta:disabled { opacity: .5; cursor: not-allowed; }
+#ai .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+#ai label.f { display: block; font-weight: 600; font-size: 14px; margin: 12px 0 6px; }
+#ai .seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+#ai .seg button { background: var(--card2); border: 2px solid var(--line); color: var(--text); border-radius: 12px; padding: 10px 4px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; min-height: 46px; }
+#ai .seg button[aria-pressed="true"] { border-color: var(--accent); background: #0f2422; }
+#ai .check { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--muted); margin-top: 14px; }
+#ai .check input { margin-top: 3px; width: 18px; height: 18px; flex: none; accent-color: var(--accent); }
+#ai .err { color: var(--err); font-size: 14px; min-height: 20px; margin: 8px 0 0; }
+#ai .hp { position: absolute; left: -9999px; }
+#ai footer { color: #737373; font-size: 12px; margin-top: 28px; }
+#ai iframe { width: 100%; border: 0; display: block; min-height: 760px; background: #fff; border-radius: 16px; }
+@media (max-width: 520px) {
+  #ai h1 { font-size: 28px; }
+  #ai .big .v { font-size: 38px; }
+  #ai .tab { padding: 10px 4px; }
+  #ai .tab svg { height: 48px; }
+  #ai .tab b { font-size: 13px; letter-spacing: .03em; }
+  #ai .cmp .r { grid-template-columns: 70px 1fr 86px; font-size: 13px; }
+  #ai .row { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { #ai .cmp .b i { transition: none; } }
+</style>
+</head>
+<body>
+<div id="ai">
+  <p class="eyebrow">Kenji Insurance Team</p>
+  <h1>The power of multi-handed income</h1>
+  <p class="sub">Pick a stage, move the numbers, and see the monthly payout math. Start as an agent helping families yourself, open your own outlet as a broker, then build outlets under you as a founder.</p>
+
+  <div class="card">
+    <div class="ctl">
+      <div class="lab"><label for="inc">Average family's monthly income</label><output id="inc-o"></output></div>
+      <input type="range" id="inc" min="2000" max="15000" step="250" value="5000">
+      <div class="hint">The 10% rule: each family you help puts 10% of their income toward protection and savings. That's <b id="prem-o"></b>/mo per family, <b id="ann-o"></b> a year.</div>
+    </div>
+  </div>
+
+  <div class="tabs" role="tablist" aria-label="Stage">
+    <button class="tab" role="tab" data-st="agent" aria-selected="true">
+      <svg viewBox="0 0 120 64" aria-hidden="true"><circle cx="60" cy="16" r="10" fill="#fbbf24"/><path d="M42 62v-18c0-10 8-16 18-16s18 6 18 16v18z" fill="#2dd4bf"/><path d="M60 30l-3 6 3 16 3-16z" fill="#f97316"/><rect x="76" y="44" width="16" height="12" rx="2" fill="#a78bfa"/></svg>
+      <b>AGENT</b><small>You</small><span class="pay" id="tp-agent"></span>
+    </button>
+    <button class="tab" role="tab" data-st="broker" aria-selected="false">
+      <svg viewBox="0 0 120 64" aria-hidden="true"><rect x="24" y="22" width="72" height="40" rx="3" fill="#1b1b1b" stroke="#3a3a3a"/><path d="M20 22h80l-6-12H26z" fill="#e5e5e5"/><path d="M20 22h10v6a5 5 0 01-10 0zM40 22h10v6a5 5 0 01-10 0zM60 22h10v6a5 5 0 01-10 0zM80 22h10v6a5 5 0 01-10 0z" fill="#3b82f6"/><g fill="#2dd4bf"><circle cx="40" cy="42" r="4"/><circle cx="54" cy="42" r="4"/><circle cx="68" cy="42" r="4"/><circle cx="82" cy="42" r="4"/><circle cx="47" cy="54" r="4"/><circle cx="61" cy="54" r="4"/><circle cx="75" cy="54" r="4"/></g></svg>
+      <b>BROKER</b><small>Your outlet, 10 to 15 agents</small><span class="pay" id="tp-broker"></span>
+    </button>
+    <button class="tab" role="tab" data-st="ceo" aria-selected="false">
+      <svg viewBox="0 0 120 64" aria-hidden="true"><g stroke="#3a3a3a"><path d="M60 30L22 14M60 30L98 14M60 30L22 50M60 30L98 50" fill="none"/></g><rect x="44" y="20" width="32" height="22" rx="2" fill="#1b1b1b" stroke="#2dd4bf" stroke-width="2"/><path d="M42 20h36l-4-7H46z" fill="#3b82f6"/><g fill="#1b1b1b" stroke="#a78bfa" stroke-width="1.5"><rect x="8" y="6" width="26" height="16" rx="2"/><rect x="86" y="6" width="26" height="16" rx="2"/><rect x="8" y="42" width="26" height="16" rx="2"/><rect x="86" y="42" width="26" height="16" rx="2"/></g></svg>
+      <b>CEO</b><small>Founder, outlets under you</small><span class="pay" id="tp-ceo"></span>
+    </button>
+  </div>
+  <p class="arrow">Agent &rarr; Broker &rarr; CEO</p>
+
+  <div class="card" data-panel="agent">
+    <h2>Agent</h2>
+    <p class="sub" style="margin:0">You help families yourself. Your contract level sets your cut of each family's yearly premium.</p>
+    <div class="ctl"><div class="lab"><label for="a-fam">Families you help a month</label><output id="a-fam-o"></output></div><input type="range" id="a-fam" min="1" max="12" step="1" value="3"></div>
+    <div class="ctl"><div class="lab"><label for="a-lvl">Your contract level</label></div><select id="a-lvl"></select></div>
+  </div>
+
+  <div class="card" data-panel="broker" hidden>
+    <h2>Broker</h2>
+    <p class="sub" style="margin:0">You run your own outlet. You still help families, and you earn the difference between your level and your agents' level on every family they help.</p>
+    <div class="ctl"><div class="lab"><label for="b-you">Families you help yourself a month</label><output id="b-you-o"></output></div><input type="range" id="b-you" min="0" max="10" step="1" value="2"></div>
+    <div class="ctl"><div class="lab"><label for="b-team">Families your agents help a month</label><output id="b-team-o"></output></div><input type="range" id="b-team" min="0" max="40" step="1" value="6"><div class="hint">All of your agents together, not each one.</div></div>
+    <div class="row">
+      <div class="ctl"><div class="lab"><label for="b-lvl">Your contract level</label></div><select id="b-lvl"></select></div>
+      <div class="ctl"><div class="lab"><label for="b-agl">Your agents' average level</label></div><select id="b-agl"></select></div>
+    </div>
+  </div>
+
+  <div class="card" data-panel="ceo" hidden>
+    <h2>CEO (founder)</h2>
+    <p class="sub" style="margin:0">Your own outlet keeps running (the broker numbers), and brokers you developed open outlets of their own. You earn a generation override on every family those outlets help.</p>
+    <div class="ctl"><div class="lab"><label for="c-out">Outlets under you</label><output id="c-out-o"></output></div><input type="range" id="c-out" min="1" max="20" step="1" value="6"></div>
+    <div class="ctl"><div class="lab"><label for="c-fam">Families each outlet helps a month</label><output id="c-fam-o"></output></div><input type="range" id="c-fam" min="2" max="30" step="1" value="8"></div>
+    <div class="ctl"><div class="lab"><label for="c-gen">Generation override on each outlet</label><output id="c-gen-o"></output></div><input type="range" id="c-gen" min="1" max="20" step="0.5" value="12"><div class="hint">Your upline confirms the real override for your contract.</div></div>
+  </div>
+
+  <div class="card big" aria-live="polite">
+    <div class="k" id="out-k">Apx. payout as an agent</div>
+    <div class="v" id="out-v"></div>
+    <div class="y" id="out-y"></div>
+    <ul class="lines" id="out-lines"></ul>
+    <p class="math" id="out-math"></p>
+  </div>
+
+  <div class="card">
+    <h3>All three stages, same numbers</h3>
+    <p class="sub" style="font-size:14px;margin-bottom:14px">Monthly payout at each stage with the settings above.</p>
+    <div class="cmp" id="cmp"></div>
+  </div>
+
+  <div class="card">
+    <details>
+      <summary>Contract levels and settings</summary>
+      <p class="sub" style="font-size:14px;margin:10px 0">Example levels. Your upline confirms your real contract level and how promotions work. Edit any number to match yours.</p>
+      <table><thead><tr><th>Level</th><th>Contract %</th></tr></thead><tbody id="lvl-table"></tbody></table>
+      <div class="row">
+        <div class="ctl"><div class="lab"><label for="s-factor">Product payout, % of yearly premium</label></div><input type="number" id="s-factor" min="10" max="150" step="5" value="100"><div class="hint">Varies by product and carrier.</div></div>
+        <div class="ctl"><div class="lab"><label for="s-stick">Policies that stay on the books</label></div><input type="number" id="s-stick" min="10" max="100" step="5" value="100"><div class="hint">Lapsed policies get charged back.</div></div>
+      </div>
+    </details>
+  </div>
+
+  <div class="card reality">
+    <h3>Read this before you plan your life around a number</h3>
+    <ul>
+      <li>This is a calculator, not a promise. It only shows what the math pays <b>if</b> you hit the numbers you typed in. Most people don't hit them, especially early on.</li>
+      <li>The company publishes what it actually paid: in 2025 it paid an average of <b>$11,443 for the whole year</b> to its life insurance-licensed agents in the U.S. and Canada (<a href="https://www.worldfinancialgroup.com/legal/earnings-disclosure" target="_blank" rel="noopener">earnings disclosure</a>). Many agents earn far less, and some earn nothing.</li>
+      <li>You're an independent contractor. Licensing, travel, marketing and other business costs come out of your pocket and aren't in these numbers.</li>
+      <li>Commissions are usually advanced. If a family cancels their policy early, that commission gets charged back.</li>
+      <li>Income comes from helping families get protected. Recruiting by itself pays nothing.</li>
+    </ul>
+  </div>
+
+  <div class="card" id="join">
+    <div id="form-wrap">
+      <h2>Want to see if this fits you?</h2>
+      <p class="sub">Book a Zoom with Yousif. We'll go over licensing for your state, how contract levels work, and what your first 90 days look like.</p>
+      <div class="row">
+        <div><label class="f" for="fn">First name</label><input type="text" id="fn" autocomplete="given-name"></div>
+        <div><label class="f" for="ln">Last name</label><input type="text" id="ln" autocomplete="family-name"></div>
+      </div>
+      <div class="row">
+        <div><label class="f" for="em">Email</label><input type="email" id="em" autocomplete="email" inputmode="email"></div>
+        <div><label class="f" for="ph">Mobile</label><input type="tel" id="ph" autocomplete="tel" inputmode="tel" placeholder="(555) 555-5555"></div>
+      </div>
+      <label class="f" for="stt">State you live in</label>
+      <input type="text" id="stt" autocomplete="address-level1" placeholder="Michigan">
+      <p class="f" style="font-weight:600;font-size:14px;margin:12px 0 6px">Do you have a life insurance license?</p>
+      <div class="seg" id="lic">
+        <button type="button" data-v="yes" aria-pressed="false">Yes</button>
+        <button type="button" data-v="in-progress" aria-pressed="false">In progress</button>
+        <button type="button" data-v="no" aria-pressed="false">Not yet</button>
+      </div>
+      <input type="text" id="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="check" for="consent"><input type="checkbox" id="consent"><span id="consent-text">I agree to be contacted by Media Traffics / KenjiAI by call, text, and email, including automated means, about joining the agency. Consent is not a condition of anything. Msg &amp; data rates may apply. Reply STOP to opt out.</span></label>
+      <p class="err" id="err"></p>
+      <button class="cta" type="button" id="send">Book my Zoom</button>
+    </div>
+    <div id="done" hidden>
+      <h2>You're in, <span id="done-name"></span>. Pick a time.</h2>
+      <p class="sub">After the Zoom you'll get the official secure application, which is where your Social Security number and date of birth go. We never ask for those here.</p>
+      <iframe id="cal" title="Book your agency Zoom" scrolling="auto"></iframe>
+    </div>
+  </div>
+
+  <footer>
+    <p>Figures are hypothetical examples based on the inputs above, not a guarantee or typical result. Actual earnings depend on your effort, skill, licensing, products, carrier contracts and persistency. Insurance products offered through licensed agents. Not all products are available in all states.</p>
+    <p>Kenji Insurance Team</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var CAL = "https://api.leadconnectorhq.com/widget/booking/2THiTyEJKI1brtcypqQg";
+  var ENDPOINT = "/.netlify/functions/agency-join";
+  var LEVELS = [
+    { name: "Training Associate", pct: 25 },
+    { name: "Associate", pct: 35 },
+    { name: "Senior Associate", pct: 45 },
+    { name: "Marketing Director", pct: 50 },
+    { name: "Senior Marketing Director", pct: 65 }
+  ];
+  var $ = function (id) { return document.getElementById(id); };
+  var money = function (n) { return "$" + Math.round(n).toLocaleString("en-US"); };
+  var stage = "agent";
+  var lic = "";
+
+  function fillSelects() {
+    [["a-lvl", 1], ["b-lvl", 4], ["b-agl", 1]].forEach(function (s) {
+      var el = $(s[0]), keep = el.value === "" ? s[1] : +el.value;
+      el.innerHTML = LEVELS.map(function (l, i) { return '<option value="' + i + '">' + l.name + " (" + l.pct + "%)</option>"; }).join("");
+      el.value = keep;
+    });
+    $("lvl-table").innerHTML = LEVELS.map(function (l, i) {
+      return "<tr><td>" + l.name + '</td><td><input type="number" min="0" max="150" step="0.5" data-li="' + i + '" value="' + l.pct + '" aria-label="' + l.name + ' contract percent"></td></tr>';
+    }).join("");
+  }
+
+  function v(id) { return parseFloat($(id).value) || 0; }
+  function pct(i) { return LEVELS[+i].pct / 100; }
+
+  function calc() {
+    var prem = v("inc") * 0.10, annual = prem * 12;
+    var f = Math.max(0, v("s-factor")) / 100, stick = Math.min(100, Math.max(0, v("s-stick"))) / 100;
+    var per = annual * f * stick; // commissionable premium per family
+    var aL = pct($("a-lvl").value), bL = pct($("b-lvl").value), gL = pct($("b-agl").value);
+    var spread = Math.max(0, bL - gL);
+
+    var agent = { personal: v("a-fam") * per * aL };
+    agent.total = agent.personal;
+
+    var broker = { personal: v("b-you") * per * bL, team: v("b-team") * per * spread };
+    broker.total = broker.personal + broker.team;
+
+    var outFam = v("c-out") * v("c-fam");
+    var ceo = { own: broker.total, outlets: outFam * per * v("c-gen") / 100 };
+    ceo.total = ceo.own + ceo.outlets;
+
+    return { prem: prem, annual: annual, per: per, aL: aL, bL: bL, gL: gL, spread: spread, outFam: outFam, agent: agent, broker: broker, ceo: ceo };
+  }
+
+  function li(a, b) { return "<li><span>" + a + "</span><span>" + b + "</span></li>"; }
+
+  function render() {
+    var r = calc();
+    $("inc-o").textContent = money(v("inc"));
+    $("prem-o").textContent = money(r.prem);
+    $("ann-o").textContent = money(r.annual);
+    $("a-fam-o").textContent = v("a-fam");
+    $("b-you-o").textContent = v("b-you");
+    $("b-team-o").textContent = v("b-team");
+    $("c-out-o").textContent = v("c-out");
+    $("c-fam-o").textContent = v("c-fam");
+    $("c-gen-o").textContent = v("c-gen") + "%";
+    $("tp-agent").textContent = money(r.agent.total) + "/m";
+    $("tp-broker").textContent = money(r.broker.total) + "/m";
+    $("tp-ceo").textContent = money(r.ceo.total) + "/m";
+
+    var basis = "Each family = " + money(r.prem) + "/mo = " + money(r.annual) + "/yr premium";
+    if (r.per !== r.annual) basis += ", " + money(r.per) + " counted after payout % and policies that stay";
+    var t, lines, math;
+    if (stage === "agent") {
+      t = r.agent.total;
+      lines = li("Families you help", v("a-fam") + " a month") + li("Your cut per family (" + Math.round(r.aL * 100) + "%)", money(r.per * r.aL));
+      math = basis + ". " + v("a-fam") + " families x " + money(r.per) + " x " + Math.round(r.aL * 100) + "% = " + money(t) + ".";
+    } else if (stage === "broker") {
+      t = r.broker.total;
+      lines = li("From families you help (" + v("b-you") + ")", money(r.broker.personal)) +
+        li("From your agents' families (" + v("b-team") + ")", money(r.broker.team)) +
+        li("Total families through your outlet", (v("b-you") + v("b-team")) + " a month");
+      math = basis + ". Your agents' families pay you the spread: " + Math.round(r.bL * 100) + "% minus " + Math.round(r.gL * 100) + "% = " + Math.round(r.spread * 100) + "%." +
+        (r.spread === 0 ? " Your level has to be above your agents' level to earn on their families." : "");
+    } else {
+      t = r.ceo.total;
+      lines = li("Your own outlet (broker numbers)", money(r.ceo.own)) +
+        li("Outlets under you (" + r.outFam + " families)", money(r.ceo.outlets)) +
+        li("Families across all outlets", (r.outFam + v("b-you") + v("b-team")) + " a month");
+      math = basis + ". " + v("c-out") + " outlets x " + v("c-fam") + " families x " + money(r.per) + " x " + v("c-gen") + "% override = " + money(r.ceo.outlets) + ".";
+    }
+    $("out-k").textContent = "Apx. payout as " + (stage === "agent" ? "an agent" : stage === "broker" ? "a broker" : "a founder");
+    $("out-v").textContent = money(t) + "/m";
+    $("out-y").textContent = money(t * 12) + " a year if you keep that pace every month";
+    $("out-lines").innerHTML = lines;
+    $("out-math").textContent = math;
+
+    var max = Math.max(r.ceo.total, 1);
+    $("cmp").innerHTML = [["Agent", r.agent.total, "#2dd4bf"], ["Broker", r.broker.total, "#a78bfa"], ["CEO", r.ceo.total, "#fbbf24"]].map(function (x) {
+      return '<div class="r"><span>' + x[0] + '</span><div class="b"><i style="width:' + Math.max(2, x[1] / max * 100) + "%;background:" + x[2] + '"></i></div><span>' + money(x[1]) + "/m</span></div>";
+    }).join("");
+  }
+
+  function setStage(s) {
+    stage = s;
+    document.querySelectorAll("#ai .tab").forEach(function (b) { b.setAttribute("aria-selected", b.dataset.st === s ? "true" : "false"); });
+    document.querySelectorAll("#ai [data-panel]").forEach(function (p) { p.hidden = p.dataset.panel !== s; });
+    render();
+  }
+
+  fillSelects();
+  document.querySelectorAll("#ai .tab").forEach(function (b) { b.addEventListener("click", function () { setStage(b.dataset.st); }); });
+  document.querySelectorAll("#ai input[type=range], #ai select, #s-factor, #s-stick").forEach(function (el) { el.addEventListener("input", render); });
+  $("lvl-table").addEventListener("input", function (e) {
+    var i = e.target.dataset.li; if (i === undefined) return;
+    LEVELS[+i].pct = Math.max(0, parseFloat(e.target.value) || 0);
+    ["a-lvl", "b-lvl", "b-agl"].forEach(function (id) {
+      var el = $(id), keep = el.value;
+      el.innerHTML = LEVELS.map(function (l, j) { return '<option value="' + j + '">' + l.name + " (" + l.pct + "%)</option>"; }).join("");
+      el.value = keep;
+    });
+    render();
+  });
+  document.querySelectorAll("#lic button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      lic = b.dataset.v;
+      document.querySelectorAll("#lic button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+    });
+  });
+  setStage("agent");
+
+  function snapshot() {
+    var r = calc();
+    return [
+      "Agency income calculator (kenjiai.com/agency-income)",
+      "Licensed: " + (lic || "not answered"),
+      "Was looking at: " + stage.toUpperCase(),
+      "Family income " + money(v("inc")) + "/mo, 10% = " + money(r.prem) + "/mo premium",
+      "Agent: " + v("a-fam") + " families/mo at " + Math.round(r.aL * 100) + "% = " + money(r.agent.total) + "/m",
+      "Broker: " + v("b-you") + " own + " + v("b-team") + " agent families, " + Math.round(r.bL * 100) + "% over " + Math.round(r.gL * 100) + "% = " + money(r.broker.total) + "/m",
+      "CEO: " + v("c-out") + " outlets x " + v("c-fam") + " families at " + v("c-gen") + "% = " + money(r.ceo.total) + "/m"
+    ].join("\n");
+  }
+
+  $("send").addEventListener("click", function () {
+    var fn = $("fn").value.trim(), ln = $("ln").value.trim(), em = $("em").value.trim(), ph = $("ph").value.trim();
+    var e = !fn || !ln ? "Add your first and last name." :
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em) ? "Check your email." :
+      ph.replace(/\D/g, "").length < 10 ? "Add a 10-digit mobile number." :
+      !lic ? "Tell us if you're licensed." :
+      !$("consent").checked ? "Check the box so we can reach you about the Zoom." : "";
+    $("err").textContent = e;
+    if (e) return;
+    var btn = $("send"); btn.disabled = true; btn.textContent = "Sending...";
+    fetch(ENDPOINT, {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        first_name: fn, last_name: ln, email: em, phone: ph, state: $("stt").value.trim(),
+        licensed: lic === "yes" ? "yes" : "no", prelicense: lic === "in-progress" ? "in progress" : "",
+        company: $("company").value, consent: true, consent_text: $("consent-text").textContent,
+        source: "income-calculator", notes: snapshot()
+      })
+    }).then(function (res) {
+      if (!res.ok) throw new Error();
+      var q = new URLSearchParams({ first_name: fn, last_name: ln, email: em, phone: ph });
+      $("cal").src = CAL + "?" + q.toString();
+      $("done-name").textContent = fn;
+      $("form-wrap").hidden = true; $("done").hidden = false;
+      $("join").scrollIntoView({ behavior: "smooth" });
+    }).catch(function () {
+      $("err").textContent = "That didn't go through. Check your connection and try again.";
+      btn.disabled = false; btn.textContent = "Book my Zoom";
+    });
+  });
+
+  window.addEventListener("message", function (e) {
+    if (!/leadconnectorhq\.com|msgsndr\.com/.test(e.origin)) return;
+    var d = e.data, h = Array.isArray(d) && d[0] === "highlevel.setHeight" ? Number(d[1] && d[1].height) : NaN;
+    if (h > 300 && h < 5000) $("cal").style.height = Math.ceil(h) + 24 + "px";
+  });
+})();
+</script>
+</body>
+</html>
