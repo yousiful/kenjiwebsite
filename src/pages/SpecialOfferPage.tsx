@@ -84,7 +84,7 @@ const FAQS = [
 const PATH = '/special';
 const TITLE = 'Done-For-You Ads: $5K Now, $5K After 10X | KenjiAI';
 const DESCRIPTION =
-  'We fix your offer, build your funnel and follow-up, and run your ads for 6 to 12 months. $5,000 to start. The second $5,000 is only due after we’ve brought in $50,000 in tracked sales.';
+  'We fix your offer, build your funnel and follow-up, and run your ads for 6 to 12 months. $5,000 to start, the second $5,000 only after $50,000 in tracked sales.';
 
 const structuredData = {
   '@context': 'https://schema.org',

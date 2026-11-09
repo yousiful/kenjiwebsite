@@ -180,7 +180,7 @@ export default function AgentSetupPage() {
           canonical and told Google /setup was a duplicate of /. */}
       <SEOHead
         title="Done-For-You AI Agent Setup | KenjiAI"
-        description="We install Claude Code, OpenClaw, and custom AI agents on your computer, wired to your business to make money, automate operations, or trade markets. Done for you in 48 hours."
+        description="We install Claude Code, OpenClaw and custom AI agents on your computer, wired to your business to make money, run operations or trade markets. Done in 48 hours."
         canonical="https://kenjiai.com/setup"
         structuredData={SETUP_STRUCTURED_DATA}
       />

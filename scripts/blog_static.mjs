@@ -16,6 +16,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { build } from 'esbuild';
+import { metaDescription, pageTitle } from './seo_text.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -92,15 +93,13 @@ ${blogList.map((a) => `<article class="mb-8"><h2 class="text-white text-xl font-
 }));
 
 // /blog/<slug> for each non-podcast article
-// Same rule as src/pages/BlogPost.tsx: keep the brand suffix only while the title fits ~60 chars.
-const blogTitle = (t) => [`${t} | KenjiAI Blog`, `${t} | KenjiAI`].find((x) => x.length <= 60) || t;
 for (const a of posts) {
   const url = `${SITE}/blog/${a.slug}`;
   const section = a.isCourse ? ['Academy', `${SITE}/knowledge`] : ['Blog', `${SITE}/blog`];
   write(`blog/${a.slug}.html`, render({
     url,
-    title: blogTitle(a.title),
-    description: a.excerpt,
+    title: pageTitle(a.title, a.seoTitle),
+    description: a.metaDescription || metaDescription(a.excerpt),
     image: a.image,
     ogType: 'article',
     graph: [

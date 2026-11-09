@@ -13,6 +13,7 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import { metaDescription, pageTitle } from './seo_text.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -107,8 +108,8 @@ for (const ep of episodes) {
     `<p class="text-gray-300 leading-relaxed"><span class="text-cyan-400 font-mono text-xs mr-2">${esc(p.t)}</span>${esc(p.text)}</p>`).join('\n');
   write(`blog/${ep.slug}.html`, render({
     url,
-    title: `${fullTitle} | KenjiAI Blog`,
-    description: ep.summary,
+    title: pageTitle(fullTitle),
+    description: metaDescription(ep.summary),
     image: ep.image,
     ogType: 'article',
     graph: [

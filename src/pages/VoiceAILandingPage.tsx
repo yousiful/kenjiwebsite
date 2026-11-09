@@ -291,7 +291,7 @@ const VoiceAILandingPage: React.FC = () => {
 
   return (
     <>
-      <PageSchema path="/voice-ai" name={"AI Voice Front Desk & AI Caller \u2014 Starts Free"} description={"Deploy an AI voice agent that answers calls 24/7, qualifies leads, books appointments, and closes deals \u2014 starting at $0/month. Plans from $0 to $375/mo with done-for-you ads."} extra={VOICE_AI_SCHEMA} />
+      <PageSchema path="/voice-ai" name={"AI Voice Front Desk & AI Caller, Starts Free"} description={"An AI voice agent that answers calls 24/7, qualifies leads, books appointments and closes deals. Plans from $0 to $375/mo, with done-for-you ads."} extra={VOICE_AI_SCHEMA} />
       <Helmet>
         <script>
           {`
@@ -312,10 +312,10 @@ const VoiceAILandingPage: React.FC = () => {
           src="https://www.facebook.com/tr?id=${META_CONFIG.pixelId}&ev=PageView&noscript=1"
           />`}
         </noscript>
-        <title>AI Voice Front Desk & AI Caller — Starts Free | KenjiAI</title>
+        <title>AI Voice Front Desk & AI Caller, Starts Free | KenjiAI</title>
         <meta
           name="description"
-          content="Deploy an AI voice agent that answers calls 24/7, qualifies leads, books appointments, and closes deals — starting at $0/month. Plans from $0 to $375/mo with done-for-you ads."
+          content="An AI voice agent that answers calls 24/7, qualifies leads, books appointments and closes deals. Plans from $0 to $375/mo, with done-for-you ads."
         />
         <link rel="canonical" href="https://kenjiai.com/voice-ai" />
       </Helmet>

@@ -9,6 +9,7 @@ import PageSchema from '../components/PageSchema';
 import { ORG_ID, WEBSITE_ID, podcastEpisode } from '../lib/schema';
 import { getArticleBySlug, getAllArticles } from '../data/articles';
 import PodcastPlayer from '../components/PodcastPlayer';
+import { metaDescription, pageTitle } from '../utils/seoText';
 
 const BlogPost: React.FC = () => {
   const { slug } = useParams();
@@ -88,12 +89,12 @@ const BlogPost: React.FC = () => {
         ]}
       />
       <Helmet>
-        <title>{[`${article.title} | KenjiAI Blog`, `${article.title} | KenjiAI`].find((x) => x.length <= 60) || article.title}</title>
-        <meta name="description" content={article.excerpt} />
+        <title>{pageTitle(article.title, article.seoTitle)}</title>
+        <meta name="description" content={article.metaDescription || metaDescription(article.excerpt)} />
         <meta name="keywords" content={article.keywords.join(', ')} />
         <meta name="author" content={article.author} />
         <meta property="og:title" content={article.title} />
-        <meta property="og:description" content={article.excerpt} />
+        <meta property="og:description" content={article.metaDescription || metaDescription(article.excerpt)} />
         <meta property="og:image" content={article.image} />
         <meta property="og:type" content="article" />
         <meta property="article:published_time" content={article.date} />

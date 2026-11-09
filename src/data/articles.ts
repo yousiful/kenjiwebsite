@@ -21,6 +21,10 @@ export const getPodcastEpisodes = (): PodcastEpisode[] =>
 export interface Article {
   slug: string;
   title: string;
+  /** Shorter <title> for search results when `title` runs past ~60 chars. */
+  seoTitle?: string;
+  /** Hand-written meta description; otherwise the excerpt is trimmed to ~155 chars. */
+  metaDescription?: string;
   excerpt: string;
   category: string;
   date: string;
@@ -437,6 +441,7 @@ export const articles: Record<string, Article> = {
   'ai-voice-agents-what-they-cost-are-they-worth-it': {
     slug: 'ai-voice-agents-what-they-cost-are-they-worth-it',
     title: "AI Voice Agents: What They Are, What They Cost, and Whether They're Worth It",
+    seoTitle: "AI Voice Agents: What They Cost and Are They Worth It",
     excerpt: "AI voice agents answer calls, call new leads back and book appointments around the clock. Here is what they actually cost per minute in 2026, the costs people forget, and how to tell if one pays for itself.",
     category: 'AI Voice',
     date: '2026-04-08',
@@ -564,6 +569,7 @@ export const articles: Record<string, Article> = {
   'get-more-google-reviews-autopilot': {
     slug: 'get-more-google-reviews-autopilot',
     title: 'How to Get More Google Reviews on Autopilot (Without Breaking Google’s Rules)',
+    seoTitle: "How to Get More Google Reviews on Autopilot",
     excerpt: "Customers now expect recent reviews, a 4.5 star average and replies from the owner. Here is how to ask every customer automatically, what the 2026 data says, and the review tactic that can get all your reviews deleted.",
     category: 'Reputation',
     date: '2026-04-01',
@@ -921,6 +927,7 @@ export const articles: Record<string, Article> = {
   'why-your-marketing-agency-is-fired-ai-agents': {
     slug: 'why-your-marketing-agency-is-fired-ai-agents',
     title: 'Why Your Marketing Agency is Fired: The Rise of Autonomous Sales Agents',
+    seoTitle: "Why Agencies Get Fired: The Rise of AI Sales Agents",
     excerpt: 'Agencies are struggling to compete with 24/7 AI agents.',
     category: 'Viral News',
     date: '2026-04-19',
@@ -1392,6 +1399,7 @@ export const articles: Record<string, Article> = {
   'ai-marketing-ads-vs-manual-campaigns-2026': {
     slug: 'ai-marketing-ads-vs-manual-campaigns-2026',
     title: 'Are AI Marketing Ads Actually Outperforming Manual Campaigns in 2026?',
+    seoTitle: "AI Ads vs Manual Campaigns: Which Performs Better in 2026?",
     excerpt: 'Why 90% of prompt-wrapper AI ads fail, and the exact full-funnel algorithmic infrastructure Media Traffics uses to scale thousands of companies with 3x-6x ROAS.',
     category: 'Marketing AI',
     date: '2026-09-20',
@@ -1440,6 +1448,7 @@ export const articles: Record<string, Article> = {
   'why-agencies-get-fired-lead-response-time-voice-ai': {
     slug: 'why-agencies-get-fired-lead-response-time-voice-ai',
     title: 'Why Marketing Agencies Get Fired Over Lead Response Time—And How Voice AI Fixes It',
+    seoTitle: "Lead Response Time Gets Agencies Fired. Voice AI Fixes It",
     excerpt: 'Delayed follow-up destroys 85%+ of paid ad budget. Discover how 60-second speed-to-lead voice dialing from KenjiAI and Media Traffics multiplies booked meetings by 391%.',
     category: 'Lead Conversion',
     date: '2026-09-19',
@@ -1494,6 +1503,7 @@ export const articles: Record<string, Article> = {
   'media-traffics-kenjiai-reviews-kinjaai-guide': {
     slug: 'media-traffics-kenjiai-reviews-kinjaai-guide',
     title: 'Media Traffics & KenjiAI Reviews: Everything Business Owners Need to Know About KinjaAI',
+    seoTitle: "KenjiAI Reviews (KinjaAI): What Business Owners Should Know",
     excerpt: 'A transparent breakdown of Media Traffics LLC, the KenjiAI voice platform, resolving the KinjaAI name confusion, and verified results from scaling thousands of companies.',
     category: 'Reviews & Reputation',
     date: '2026-09-18',
@@ -1553,6 +1563,7 @@ export const articles: Record<string, Article> = {
   'how-autonomous-marketing-ai-ads-save-25-hours-a-week': {
     slug: 'how-autonomous-marketing-ai-ads-save-25-hours-a-week',
     title: 'How Autonomous Marketing AI Ads and Telephony Save Founders 25+ Hours Every Week',
+    seoTitle: "How AI Ads and Phone Automation Save Founders 25+ Hours",
     excerpt: 'Escaping the qualification hamster wheel: how combining Media Traffics AI ad campaigns with KenjiAI autonomous voice agents frees founders to focus on high-level growth.',
     category: 'Productivity & Growth',
     date: '2026-09-17',
@@ -1609,6 +1620,7 @@ export const articles: Record<string, Article> = {
   'speed-to-lead-why-leads-go-cold': {
     slug: 'speed-to-lead-why-leads-go-cold',
     title: 'Speed to Lead: Why Your Leads Go Cold Before You Ever Call Them Back',
+    seoTitle: "Speed to Lead: Why Your Leads Go Cold Before You Call",
     excerpt: 'A Harvard Business Review study of 2,241 companies found 23% never responded to a lead at all, and the average response took 42 hours. Here is what that actually costs you and how to fix it.',
     category: 'AI Marketing',
     date: '2026-09-30',
@@ -1683,6 +1695,7 @@ export const articles: Record<string, Article> = {
   'self-liquidating-offers-ad-spend-pays-for-itself': {
     slug: 'self-liquidating-offers-ad-spend-pays-for-itself',
     title: 'Self-Liquidating Offers: How a Low-Priced Front End Can Cover Your Ad Spend',
+    seoTitle: "Self-Liquidating Offers: Make Your Front End Pay for Ads",
     excerpt: 'A self-liquidating offer is built so the front-end sale pays for the ad that brought the customer in. Here is how order bumps, upsells, and AOV make that math work, with a simple worked example.',
     category: 'AI Marketing',
     date: '2026-09-30',
@@ -1755,6 +1768,7 @@ export const articles: Record<string, Article> = {
   'attention-is-not-a-business-celebrity-brand-shutdowns': {
     slug: 'attention-is-not-a-business-celebrity-brand-shutdowns',
     title: 'Attention Is Not a Business: What a Wave of Celebrity Brand Shutdowns Teaches Small Businesses',
+    seoTitle: "Attention Is Not a Business: Lessons From Celebrity Brands",
     excerpt: 'Messi, Alex Cooper, Kim Kardashian, Gwen Stefani, and Drew Barrymore all had brands with massive built-in audiences shut down anyway. Millions of followers is not the same as an offer people want.',
     category: 'Viral News',
     date: '2026-09-30',
@@ -1818,6 +1832,7 @@ export const articles: Record<string, Article> = {
   'meta-muse-ai-agent-success-what-it-means-for-business': {
     slug: 'meta-muse-ai-agent-success-what-it-means-for-business',
     title: 'Meta\'s Muse AI Just Beat ChatGPT\'s Download Numbers. Here\'s Why That Matters For Your Business.',
+    seoTitle: "Meta's Muse AI Beat ChatGPT Downloads: What It Means for You",
     excerpt: 'Muse hit #1 on the App Store and added $192B to Meta\'s market cap in two weeks by doing tasks instead of just chatting. That same shift is already live in KenjiAI\'s AI Call Center.',
     category: 'Viral News',
     date: '2026-09-22',
@@ -1869,6 +1884,7 @@ export const articles: Record<string, Article> = {
   'can-ai-agents-call-your-leads-fcc-rules': {
     slug: 'can-ai-agents-call-your-leads-fcc-rules',
     title: 'Can an AI Agent Legally Call Your Leads? What the FCC Ruling Means for Your Business',
+    seoTitle: "Can an AI Agent Legally Call Your Leads? The FCC Rules",
     excerpt: 'In February 2024 the FCC ruled that AI-generated voices count as "artificial" voices under the TCPA. Here is what that means for AI agents calling your leads, and how to word your lead form so your calls are covered.',
     category: 'AI Voice',
     date: '2026-10-23',
@@ -2059,6 +2075,7 @@ export const articles: Record<string, Article> = {
   'missed-calls-cost-local-business': {
     slug: 'missed-calls-cost-local-business',
     title: 'How Many Calls Is Your Business Missing? What 70 Million Calls Show',
+    seoTitle: "How Many Calls Is Your Business Missing? 70M Calls Show",
     excerpt: "Invoca's 2026 benchmarks found only 56% of callers reach a person. Here is how to work out what missed calls cost your business, and the three fixes in order of cost.",
     category: 'AI Voice',
     date: '2026-10-23',
@@ -2187,6 +2204,7 @@ export const articles: Record<string, Article> = {
   'performance-based-marketing-how-it-works': {
     slug: 'performance-based-marketing-how-it-works',
     title: 'Performance-Based Marketing: How Pay-for-Results Pricing Works and What to Ask Before You Sign',
+    seoTitle: "Performance-Based Marketing: How Pay-for-Results Works",
     excerpt: 'Performance-based marketing ties what you pay to results instead of hours. How the common pricing models work, where they go wrong, and the questions to ask any agency before you sign.',
     category: 'AI Marketing',
     date: '2026-10-23',
