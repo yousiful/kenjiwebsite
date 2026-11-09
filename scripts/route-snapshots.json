@@ -11895,6 +11895,10 @@
       "content": "Free Holiday Party Invitations with RSVP | Kenji Invites"
      },
      {
+      "property": "twitter:description",
+      "content": "Make a free holiday, Christmas or Friendsgiving party invitation with RSVP. Evergreen and champagne designs, a gift exchange, and head counts. No ads."
+     },
+     {
       "property": "twitter:image",
       "content": "https://kenjiai.com/og-image.png"
      },
@@ -11927,10 +11931,6 @@
       "content": "Performance-Based"
      },
      {
-      "property": "twitter:description",
-      "content": "Make a free holiday, Christmas or Friendsgiving party invitation with RSVP. Evergreen and champagne designs, a gift exchange, and head counts. No ads."
-     },
-     {
       "name": "description",
       "content": "Make a free holiday, Christmas or Friendsgiving party invitation with RSVP. Evergreen and champagne designs, a gift exchange, and head counts. No ads."
      },
@@ -11949,7 +11949,7 @@
     ],
     "canonical": "https://kenjiai.com/invites/holiday-party-invitations",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/invites/holiday-party-invitations#webpage\",\"url\":\"https://kenjiai.com/invites/holiday-party-invitations\",\"name\":\"Free holiday party invitations\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"Make a free holiday, Christmas or Friendsgiving party invitation with RSVP. Evergreen and champagne designs, a gift exchange, and head counts. No ads.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/invites/holiday-party-invitations#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/invites/holiday-party-invitations#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Kenji Invites\",\"item\":\"https://kenjiai.com/invites\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Holiday party invitations\",\"item\":\"https://kenjiai.com/invites/holiday-party-invitations\"}]},{\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"Can I use it for an office holiday party?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes. Post the shared link in the team chat, and each person replies with their name and how many are coming. Free, no ads.\"}},{\"@type\":\"Question\",\"name\":\"Can guests say what dish they are bringing?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes. The RSVP has a note box. They can write what they are bringing and you see it on the guest list.\"}},{\"@type\":\"Question\",\"name\":\"Is it free?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes. No ads, no guest accounts.\"}},{\"@type\":\"Question\",\"name\":\"Do my guests need an account or an app?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"No. Each guest gets a link. It opens in the browser on any phone or computer, and they answer with one tap.\"}},{\"@type\":\"Question\",\"name\":\"Who can see my guest list?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Only you, and any co-host you add. Guests see the invitation and their own answer, never anyone else on the list.\"}}]},{\"@type\":\"WebApplication\",\"name\":\"Kenji Invites: Holiday party invitations\",\"url\":\"https://kenjiai.com/invites/holiday-party-invitations\",\"applicationCategory\":\"LifestyleApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/invites/holiday-party-invitations#webpage\",\"url\":\"https://kenjiai.com/invites/holiday-party-invitations\",\"name\":\"Free holiday party invitations\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"Make a free holiday, Christmas or Friendsgiving party invitation with RSVP. Evergreen and champagne designs, a gift exchange, and head counts. No ads.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/invites/holiday-party-invitations#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/invites/holiday-party-invitations#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Kenji Invites\",\"item\":\"https://kenjiai.com/invites\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Holiday party invitations\",\"item\":\"https://kenjiai.com/invites/holiday-party-invitations\"}]},{\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"When should I send Christmas party invitations?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"For a party on a December weekend, send them by mid November. People book those weekends early. For a smaller dinner, 2 to 3 weeks ahead is fine.\"}},{\"@type\":\"Question\",\"name\":\"Can I use it for an office holiday party?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes. Post the shared link in the team chat, and each person replies with their name and how many are coming. Free, no ads.\"}},{\"@type\":\"Question\",\"name\":\"Can guests say what dish they are bringing?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes. The RSVP has a note box. They can write what they are bringing and you see it on the guest list.\"}},{\"@type\":\"Question\",\"name\":\"How do I word a gift exchange on the invitation?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Keep it to one line with the kind of exchange and the limit, like \\\"White elephant, one wrapped gift, $25 or less\\\". Put the full rules in the notes for that part of the evening.\"}},{\"@type\":\"Question\",\"name\":\"Can I add photos?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes, up to 8. Last year's party, the tree, or the family on the couch all work. We arrange them on the card for you.\"}},{\"@type\":\"Question\",\"name\":\"Do guests need an account or an app to reply?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"No. They open the link, tap yes or no, and say how many are coming. Nothing to download and nothing to sign up for.\"}},{\"@type\":\"Question\",\"name\":\"Is it free?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes. No ads, no guest accounts.\"}},{\"@type\":\"Question\",\"name\":\"Do my guests need an account or an app?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"No. Each guest gets a link. It opens in the browser on any phone or computer, and they answer with one tap.\"}},{\"@type\":\"Question\",\"name\":\"Who can see my guest list?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Only you, and any co-host you add. Guests see the invitation and their own answer, never anyone else on the list.\"}}]},{\"@type\":\"WebApplication\",\"name\":\"Kenji Invites: Holiday party invitations\",\"url\":\"https://kenjiai.com/invites/holiday-party-invitations\",\"applicationCategory\":\"LifestyleApplication\",\"operatingSystem\":\"Any\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"}}]}"
     ]
    },
    "blocks": [
@@ -12023,7 +12023,7 @@
     },
     {
      "tag": "p",
-     "text": "The Millers' Holiday Party Cocoa, cookies and carols Saturday, December 13 at 7 PM Ugly sweaters strongly encouraged"
+     "text": "The Millers' Holiday Party Cocoa, cookies and carols Saturday, December 12 at 7 PM Ugly sweaters strongly encouraged"
     },
     {
      "tag": "figcaption",
@@ -12040,6 +12040,46 @@
     {
      "tag": "p",
      "text": "White Elephant Night Bring one wrapped gift, $25 or less Friday, December 18 at 8 PM"
+    },
+    {
+     "tag": "figcaption",
+     "text": "OFFICE PARTY"
+    },
+    {
+     "tag": "p",
+     "text": "Our team holiday party Dinner, drinks and a long overdue thank you Thursday, December 17, 6 to 9 PM Partners welcome. Please reply by December 7."
+    },
+    {
+     "tag": "figcaption",
+     "text": "HANUKKAH"
+    },
+    {
+     "tag": "p",
+     "text": "Latkes and lights Join us for Hanukkah dinner and candle lighting Saturday, December 5 at 5:30 PM Bring your appetite, we have the dreidels"
+    },
+    {
+     "tag": "figcaption",
+     "text": "COOKIE SWAP"
+    },
+    {
+     "tag": "p",
+     "text": "Cookie Swap at Anna's Bring a dozen of your favorite, go home with a dozen of everyone else's Sunday, December 6, 2 to 4 PM Recipe cards appreciated"
+    },
+    {
+     "tag": "figcaption",
+     "text": "FAMILY CHRISTMAS EVE"
+    },
+    {
+     "tag": "p",
+     "text": "Christmas Eve dinner At Grandma's, as always Thursday, December 24 at 4 PM Tell us how many are coming so we set enough places"
+    },
+    {
+     "tag": "figcaption",
+     "text": "HOLIDAY BRUNCH"
+    },
+    {
+     "tag": "p",
+     "text": "Pajamas and pancakes A slow holiday brunch, come as you are Saturday, December 19 at 10 AM"
     },
     {
      "tag": "figcaption",
@@ -12071,6 +12111,22 @@
     },
     {
      "tag": "dt",
+     "text": "Office holiday party"
+    },
+    {
+     "tag": "dd",
+     "text": "4 to 6 weeks before, so people can plan around travel and school events"
+    },
+    {
+     "tag": "dt",
+     "text": "Hanukkah or a small family dinner"
+    },
+    {
+     "tag": "dd",
+     "text": "2 to 3 weeks before"
+    },
+    {
+     "tag": "dt",
      "text": "New Year's Eve"
     },
     {
@@ -12083,7 +12139,7 @@
     },
     {
      "tag": "dd",
-     "text": "1 week before"
+     "text": "1 week before, or 10 days before if you are ordering catering"
     },
     {
      "tag": "h2",
@@ -12099,6 +12155,10 @@
     },
     {
      "tag": "li",
+     "text": "An end time, if it is a weeknight"
+    },
+    {
+     "tag": "li",
      "text": "Dress code: ugly sweaters, cocktail, pajamas"
     },
     {
@@ -12107,7 +12167,15 @@
     },
     {
      "tag": "li",
-     "text": "\"Bring a dish\" with a sign-up, for potlucks"
+     "text": "\"Bring a dish\" for potlucks, and a note to say what they are bringing"
+    },
+    {
+     "tag": "li",
+     "text": "Whether kids and partners are invited"
+    },
+    {
+     "tag": "li",
+     "text": "Parking notes, since most guests arrive at once and after dark"
     },
     {
      "tag": "h2",
@@ -12152,6 +12220,38 @@
     {
      "tag": "p",
      "text": "Invitations sent before Thanksgiving get the best turnout for December weekends."
+    },
+    {
+     "tag": "h3",
+     "text": "Text it instead of emailing it"
+    },
+    {
+     "tag": "p",
+     "text": "December inboxes are full of sale emails. When you text each guest their own link from your phone, it gets opened, and they reply with two taps."
+    },
+    {
+     "tag": "h3",
+     "text": "Set seats for each guest"
+    },
+    {
+     "tag": "p",
+     "text": "When you add a guest you choose how many seats they get. For an office party that might be 2 for everyone. For a family dinner it is the size of each household. Replies can't go over it, so the head count you see is the one you cook for."
+    },
+    {
+     "tag": "h3",
+     "text": "Use the reply note for food and allergies"
+    },
+    {
+     "tag": "p",
+     "text": "Ask guests to write what they are bringing, or anything they can't eat, in their RSVP note. It shows next to their name, so Friendsgiving doesn't end with five pies and no stuffing."
+    },
+    {
+     "tag": "h3",
+     "text": "One shared link for big groups"
+    },
+    {
+     "tag": "p",
+     "text": "For a team channel or a neighborhood group chat, turn on the shared link. Each person types their name and how many are coming, and you choose the most anyone can bring."
     },
     {
      "tag": "h2",
@@ -12215,6 +12315,14 @@
     },
     {
      "tag": "summary",
+     "text": "When should I send Christmas party invitations?"
+    },
+    {
+     "tag": "p",
+     "text": "For a party on a December weekend, send them by mid November. People book those weekends early. For a smaller dinner, 2 to 3 weeks ahead is fine."
+    },
+    {
+     "tag": "summary",
      "text": "Can I use it for an office holiday party?"
     },
     {
@@ -12228,6 +12336,30 @@
     {
      "tag": "p",
      "text": "Yes. The RSVP has a note box. They can write what they are bringing and you see it on the guest list."
+    },
+    {
+     "tag": "summary",
+     "text": "How do I word a gift exchange on the invitation?"
+    },
+    {
+     "tag": "p",
+     "text": "Keep it to one line with the kind of exchange and the limit, like \"White elephant, one wrapped gift, $25 or less\". Put the full rules in the notes for that part of the evening."
+    },
+    {
+     "tag": "summary",
+     "text": "Can I add photos?"
+    },
+    {
+     "tag": "p",
+     "text": "Yes, up to 8. Last year's party, the tree, or the family on the couch all work. We arrange them on the card for you."
+    },
+    {
+     "tag": "summary",
+     "text": "Do guests need an account or an app to reply?"
+    },
+    {
+     "tag": "p",
+     "text": "No. They open the link, tap yes or no, and say how many are coming. Nothing to download and nothing to sign up for."
     },
     {
      "tag": "summary",
