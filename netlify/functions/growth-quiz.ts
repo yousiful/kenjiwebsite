@@ -45,14 +45,24 @@ const json = (statusCode: number, body: unknown) => ({
   body: JSON.stringify(body),
 });
 
-export function isQualified(answers: Record<string, string>): boolean {
+export // Quick mode (/growth-quiz?quick=1, the gate in front of the calendar): 2 questions, budget decides.
+const QUICK_DISQUALIFY: Record<string, string[]> = { budget: ['under_1k'] };
+// Anyone we already marked as a bad fit goes to the low-ticket page, whatever they answer this time
+// (Yousif 11/10: a Sept unqualified lead saw an ad and re-booked the calendar).
+const BLOCK_TAGS = ['unqualified lead', 'disqualified', 'quiz not qualified', 'bad lead'];
+
+function isQualifiedQuick(answers: Record<string, string>) {
+  return Object.entries(QUICK_DISQUALIFY).every(([q, bad]) => answers[q] && !bad.includes(answers[q]));
+}
+
+function isQualified(answers: Record<string, string>): boolean {
   return Object.entries(DISQUALIFY).every(([q, bad]) => answers[q] && !bad.includes(answers[q]));
 }
 
 export const handler: Handler = async (event: HandlerEvent) => {
   if (event.httpMethod !== 'POST') return { statusCode: 405, body: 'Method Not Allowed' };
 
-  let body: { first_name?: string; email?: string; phone?: string; answers?: Record<string, string>; page?: string };
+  let body: { first_name?: string; email?: string; phone?: string; answers?: Record<string, string>; page?: string; mode?: string };
   try { body = JSON.parse(event.body || '{}'); } catch { return json(400, { error: 'Invalid JSON' }); }
 
   const firstName = String(body.first_name || '').trim().slice(0, 60);
@@ -69,7 +79,8 @@ export const handler: Handler = async (event: HandlerEvent) => {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return json(400, { error: 'Please enter a valid email address.' });
   if (phone.replace(/\D/g, '').length < 10) return json(400, { error: 'Please enter a phone number we can reach you on.' });
 
-  const qualified = isQualified(answers);
+  const quick = body.mode === 'quick';
+  let qualified = quick ? isQualifiedQuick(answers) : isQualified(answers);
 
   const token = process.env.GHL_PIT;
   const locationId = process.env.GHL_LOCATION_ID || DEFAULT_LOCATION_ID;
@@ -84,7 +95,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
       body: JSON.stringify({
         locationId, firstName, email, phone,
         source: 'kenjiai.com/growth-quiz',
-        tags: ['growth quiz', qualified ? 'quiz qualified' : 'quiz not qualified'],
+        tags: ['growth quiz'],
       }),
     });
     const data: any = await r.json().catch(() => ({}));
@@ -94,6 +105,14 @@ export const handler: Handler = async (event: HandlerEvent) => {
       return json(200, { ok: true, qualified, saved: false });
     }
     contactId = data?.contact?.id || null;
+    const existingTags: string[] = (data?.contact?.tags || []).map((t: string) => String(t).toLowerCase());
+    if (qualified && existingTags.some((t) => BLOCK_TAGS.includes(t))) qualified = false;
+    if (contactId) {
+      await fetch(`${GHL_BASE}/contacts/${contactId}/tags`, {
+        method: 'POST', headers,
+        body: JSON.stringify({ tags: [qualified ? 'quiz qualified' : 'quiz not qualified', ...(quick ? ['booking gate'] : [])] }),
+      }).catch(() => null);
+    }
   } catch (e) {
     console.error('[growth-quiz] upsert threw', e);
     return json(200, { ok: true, qualified, saved: false });
@@ -101,7 +120,7 @@ export const handler: Handler = async (event: HandlerEvent) => {
 
   if (contactId) {
     const note = [
-      `Growth quiz (kenjiai.com/growth-quiz): ${qualified ? 'QUALIFIED, sent to the booking page' : 'NOT QUALIFIED, sent to the $7 offer'}`,
+      `Growth quiz${quick ? ' (2-question booking gate)' : ''} (kenjiai.com/growth-quiz): ${qualified ? 'QUALIFIED, sent to the booking page' : 'NOT QUALIFIED, sent to the $7 offer'}`,
       ...Object.keys(LABELS).map((q) => `${QUESTION_LABEL[q]}: ${answers[q] ? LABELS[q][answers[q]] : 'not answered'}`),
     ].join('\n');
     await fetch(`${GHL_BASE}/contacts/${contactId}/notes`, { method: 'POST', headers, body: JSON.stringify({ body: note }) }).catch(() => null);

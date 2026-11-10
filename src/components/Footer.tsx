@@ -105,9 +105,7 @@ const Footer: React.FC = () => {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
-                href="https://safeclick.kenjiai.com/widget/booking/jB82SG2CBq9Nh8103IfC"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/growth-quiz?quick=1"
                 className="flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-sm text-gray-200 border border-gray-700 hover:border-blue-500 hover:text-blue-400 transition-all duration-300 bg-gray-900/50"
               >
                 <HeadphonesIcon className="w-4 h-4" />

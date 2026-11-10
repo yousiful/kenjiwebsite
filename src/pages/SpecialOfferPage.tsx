@@ -14,7 +14,7 @@ import { faqPage, service } from '../lib/schema';
    button falls back to the 15-minute walkthrough calendar so the page never dead-ends. */
 const LINKS = {
   PAY_UPFRONT_URL: '#pay-link-coming',
-  BOOK_URL: 'https://api.leadconnectorhq.com/widget/booking/jB82SG2CBq9Nh8103IfC', // "#1 Client Attraction System Walkthrough"
+  BOOK_URL: '/growth-quiz?quick=1', // 2-question gate in front of the "#1 Client Attraction System Walkthrough" calendar
 };
 const PAY_LIVE = !LINKS.PAY_UPFRONT_URL.startsWith('#');
 const START_URL = PAY_LIVE ? LINKS.PAY_UPFRONT_URL : LINKS.BOOK_URL;

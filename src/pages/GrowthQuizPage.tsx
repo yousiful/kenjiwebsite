@@ -91,6 +91,11 @@ const DISQUALIFY: Record<string, string[]> = {
   role: ['launching', 'browsing'], revenue: ['under_10k'], budget: ['under_1k'], timeline: ['researching'], decision: ['someone_else'],
 };
 const qualifiedLocally = (a: Record<string, string>) => Object.entries(DISQUALIFY).every(([q, bad]) => a[q] && !bad.includes(a[q]));
+// ?quick=1 is the 2-question gate every "book a call" link goes through (Yousif 11/10). Budget decides,
+// mirrored from QUICK_DISQUALIFY in netlify/functions/growth-quiz.ts, which also turns away contacts already tagged as a bad fit.
+const QUICK_IDS = ['industry', 'budget'];
+const quickQualifiedLocally = (a: Record<string, string>) => !!a.budget && a.budget !== 'under_1k';
+const isQuickMode = () => typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('quick') === '1';
 
 // The site-wide GTM container doesn't load the Meta pixel on these pages, so the funnel loads
 // its own. "Client Attraction/Kenji" pixel, owned by the Media ADZ ad account the quiz ads run from.
@@ -172,22 +177,24 @@ export const Shell: React.FC<{ title: string; description: string; children: Rea
 
 const GrowthQuizPage: React.FC = () => {
   const navigate = useNavigate();
-  const [step, setStep] = useState(-1); // -1 intro, 0..n-1 questions, n contact
+  const quick = useMemo(isQuickMode, []);
+  const questions = useMemo(() => (quick ? QUESTIONS.filter((x) => QUICK_IDS.includes(x.id)) : QUESTIONS), [quick]);
+  const [step, setStep] = useState(quick ? 0 : -1); // -1 intro, 0..n-1 questions, n contact
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [lead, setLead] = useState<Lead>({ first_name: '', email: '', phone: '' });
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [dir, setDir] = useState(1);
   const advanceTimer = useRef<number | null>(null);
-  const total = QUESTIONS.length;
-  const q = step >= 0 && step < total ? QUESTIONS[step] : null;
+  const total = questions.length;
+  const q = step >= 0 && step < total ? questions[step] : null;
 
-  useEffect(() => { ensurePixel(); return () => { if (advanceTimer.current) window.clearTimeout(advanceTimer.current); }; }, []);
+  useEffect(() => { ensurePixel(); if (quick) track('QuizStarted', false); return () => { if (advanceTimer.current) window.clearTimeout(advanceTimer.current); }; }, []);
 
   // The homepage asks question 1 inline and links here with ?role=<answer>, so the quiz picks up at question 2.
   useEffect(() => {
     const role = new URLSearchParams(window.location.search).get('role');
-    if (role && QUESTIONS[0].options.some((o) => o.value === role)) {
+    if (!quick && role && QUESTIONS[0].options.some((o) => o.value === role)) {
       setAnswers((a) => ({ ...a, [QUESTIONS[0].id]: role }));
       track('QuizStarted', false);
       setStep(1);
@@ -221,11 +228,11 @@ const GrowthQuizPage: React.FC = () => {
   const submit = async () => {
     if (busy || !lead.first_name.trim() || !lead.email.trim() || !lead.phone.trim()) return;
     setBusy(true); setError('');
-    let qualified = qualifiedLocally(answers);
+    let qualified = quick ? quickQualifiedLocally(answers) : qualifiedLocally(answers);
     try {
       const r = await fetch('/.netlify/functions/growth-quiz', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...lead, answers }),
+        body: JSON.stringify({ ...lead, answers, mode: quick ? 'quick' : undefined }),
       });
       const data = await r.json().catch(() => ({}));
       if (r.status === 400) { setError(data.error || 'Please check your details.'); setBusy(false); return; }
