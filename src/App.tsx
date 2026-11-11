@@ -78,6 +78,7 @@ const HelpArticlePage = lazyRoute(() => import('./pages/help/HelpArticlePage'));
 const GitHubToolsPage = lazyRoute(() => import('./pages/GitHubToolsPage'));
 const PodcastPage = lazyRoute(() => import('./pages/PodcastPage'));
 const PartnerUpPage = lazyRoute(() => import('./pages/PartnerUpPage'));
+const AffiliatePage = lazyRoute(() => import('./pages/AffiliatePage'));
 const ModernPage = lazyRoute(() => import('./pages/ModernPage'));
 const GrowthQuizPage = lazyRoute(() => import('./pages/GrowthQuizPage'));
 const GrowthQuizBookPage = lazyRoute(() => import('./pages/GrowthQuizPage').then((m) => ({ default: m.GrowthQuizBookPage })));
@@ -398,6 +399,7 @@ function App() {
                       <Route path="/helpful-links" element={<HelpfulLinksPage />} />
                       <Route path="/github-tools" element={<GitHubToolsPage />} />
                       <Route path="/partnerup" element={<PartnerUpPage />} />
+                      <Route path="/affiliate" element={<AffiliatePage />} />
                       <Route path="/modern" element={<ModernPage />} />
                       <Route path="/growth-quiz" element={<GrowthQuizPage />} />
                       <Route path="/growth-quiz/book" element={<GrowthQuizBookPage />} />

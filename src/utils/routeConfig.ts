@@ -34,6 +34,7 @@ export const internalRoutes = [
   '/helpful-links',
   '/github-tools',
   '/partnerup',
+  '/affiliate',
   '/modern',
   '/growth-quiz',
   '/lead-score',
