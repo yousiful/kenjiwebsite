@@ -6,10 +6,12 @@ import { FileText, Scale, UserCheck, CreditCard, Ban, AlertCircle } from 'lucide
 export default function TermsOfServicePage() {
   return (
     <>
-      <PageSchema path="/terms" name={"Terms of Service"} description={"KenjiAI Terms of Service - Legal terms and conditions for using our AI automation platform."} />
+      <PageSchema path="/terms" name={"Terms of Service"} description={"The terms for using KenjiAI, our free tools and our AI automation platform: accounts, billing, acceptable use, results, and how either side can end service."} />
       <Helmet>
         <title>Terms of Service | KenjiAI</title>
-        <meta name="description" content="KenjiAI Terms of Service - Legal terms and conditions for using our AI automation platform." />
+        <meta name="description" content="The terms for using KenjiAI, our free tools and our AI automation platform: accounts, billing, acceptable use, results, and how either side can end service." />
+        <meta property="og:description" content="The terms for using KenjiAI, our free tools and our AI automation platform: accounts, billing, acceptable use, results, and how either side can end service." />
+        <meta property="twitter:description" content="The terms for using KenjiAI, our free tools and our AI automation platform: accounts, billing, acceptable use, results, and how either side can end service." />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://kenjiai.com/terms" />
       </Helmet>

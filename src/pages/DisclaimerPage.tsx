@@ -6,10 +6,12 @@ import { AlertTriangle, TrendingUp, DollarSign, BarChart, Shield, FileText } fro
 export default function DisclaimerPage() {
   return (
     <>
-      <PageSchema path="/disclaimer" name={"Disclaimer"} description={"Important disclaimers about KenjiAI services, results, and limitations."} />
+      <PageSchema path="/disclaimer" name={"Disclaimer"} description={"What to know before you use KenjiAI: results vary by business, testimonials reflect individual clients, and nothing here is legal, tax or financial advice."} />
       <Helmet>
         <title>Disclaimer | KenjiAI</title>
-        <meta name="description" content="Important disclaimers about KenjiAI services, results, and limitations." />
+        <meta name="description" content="What to know before you use KenjiAI: results vary by business, testimonials reflect individual clients, and nothing here is legal, tax or financial advice." />
+        <meta property="og:description" content="What to know before you use KenjiAI: results vary by business, testimonials reflect individual clients, and nothing here is legal, tax or financial advice." />
+        <meta property="twitter:description" content="What to know before you use KenjiAI: results vary by business, testimonials reflect individual clients, and nothing here is legal, tax or financial advice." />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://kenjiai.com/disclaimer" />
       </Helmet>

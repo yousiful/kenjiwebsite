@@ -2264,16 +2264,16 @@
       "content": "Performance-Based"
      },
      {
+      "name": "description",
+      "content": "What to know before you use KenjiAI: results vary by business, testimonials reflect individual clients, and nothing here is legal, tax or financial advice."
+     },
+     {
       "property": "og:description",
-      "content": "Important disclaimers about KenjiAI services, results, and limitations."
+      "content": "What to know before you use KenjiAI: results vary by business, testimonials reflect individual clients, and nothing here is legal, tax or financial advice."
      },
      {
       "property": "twitter:description",
-      "content": "Important disclaimers about KenjiAI services, results, and limitations."
-     },
-     {
-      "name": "description",
-      "content": "Important disclaimers about KenjiAI services, results, and limitations."
+      "content": "What to know before you use KenjiAI: results vary by business, testimonials reflect individual clients, and nothing here is legal, tax or financial advice."
      },
      {
       "name": "robots",
@@ -2282,7 +2282,7 @@
     ],
     "canonical": "https://kenjiai.com/disclaimer",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/disclaimer#webpage\",\"url\":\"https://kenjiai.com/disclaimer\",\"name\":\"Disclaimer\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"Important disclaimers about KenjiAI services, results, and limitations.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/disclaimer#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/disclaimer#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Disclaimer\",\"item\":\"https://kenjiai.com/disclaimer\"}]}]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/disclaimer#webpage\",\"url\":\"https://kenjiai.com/disclaimer\",\"name\":\"Disclaimer\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"What to know before you use KenjiAI: results vary by business, testimonials reflect individual clients, and nothing here is legal, tax or financial advice.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/disclaimer#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/disclaimer#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Disclaimer\",\"item\":\"https://kenjiai.com/disclaimer\"}]}]}"
     ]
    },
    "blocks": [
@@ -27043,16 +27043,16 @@
       "content": "Performance-Based"
      },
      {
+      "name": "description",
+      "content": "How KenjiAI collects, uses and protects your personal information, which tools and partners touch your data, and how to ask us to see or delete it."
+     },
+     {
       "property": "og:description",
-      "content": "KenjiAI Privacy Policy - Learn how we collect, use, and protect your personal information."
+      "content": "How KenjiAI collects, uses and protects your personal information, which tools and partners touch your data, and how to ask us to see or delete it."
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI Privacy Policy - Learn how we collect, use, and protect your personal information."
-     },
-     {
-      "name": "description",
-      "content": "KenjiAI Privacy Policy - Learn how we collect, use, and protect your personal information."
+      "content": "How KenjiAI collects, uses and protects your personal information, which tools and partners touch your data, and how to ask us to see or delete it."
      },
      {
       "name": "robots",
@@ -27061,7 +27061,7 @@
     ],
     "canonical": "https://kenjiai.com/privacy",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/privacy#webpage\",\"url\":\"https://kenjiai.com/privacy\",\"name\":\"Privacy Policy\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI Privacy Policy - Learn how we collect, use, and protect your personal information.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/privacy#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/privacy#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Privacy Policy\",\"item\":\"https://kenjiai.com/privacy\"}]}]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/privacy#webpage\",\"url\":\"https://kenjiai.com/privacy\",\"name\":\"Privacy Policy\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"How KenjiAI collects, uses and protects your personal information, which tools and partners touch your data, and how to ask us to see or delete it.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/privacy#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/privacy#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Privacy Policy\",\"item\":\"https://kenjiai.com/privacy\"}]}]}"
     ]
    },
    "blocks": [
@@ -28889,16 +28889,16 @@
       "content": "Performance-Based"
      },
      {
+      "name": "description",
+      "content": "The terms for using KenjiAI, our free tools and our AI automation platform: accounts, billing, acceptable use, results, and how either side can end service."
+     },
+     {
       "property": "og:description",
-      "content": "KenjiAI Terms of Service - Legal terms and conditions for using our AI automation platform."
+      "content": "The terms for using KenjiAI, our free tools and our AI automation platform: accounts, billing, acceptable use, results, and how either side can end service."
      },
      {
       "property": "twitter:description",
-      "content": "KenjiAI Terms of Service - Legal terms and conditions for using our AI automation platform."
-     },
-     {
-      "name": "description",
-      "content": "KenjiAI Terms of Service - Legal terms and conditions for using our AI automation platform."
+      "content": "The terms for using KenjiAI, our free tools and our AI automation platform: accounts, billing, acceptable use, results, and how either side can end service."
      },
      {
       "name": "robots",
@@ -28907,7 +28907,7 @@
     ],
     "canonical": "https://kenjiai.com/terms",
     "jsonld": [
-     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/terms#webpage\",\"url\":\"https://kenjiai.com/terms\",\"name\":\"Terms of Service\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"KenjiAI Terms of Service - Legal terms and conditions for using our AI automation platform.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/terms#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/terms#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Terms of Service\",\"item\":\"https://kenjiai.com/terms\"}]}]}"
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/terms#webpage\",\"url\":\"https://kenjiai.com/terms\",\"name\":\"Terms of Service\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"The terms for using KenjiAI, our free tools and our AI automation platform: accounts, billing, acceptable use, results, and how either side can end service.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/terms#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/terms#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Terms of Service\",\"item\":\"https://kenjiai.com/terms\"}]}]}"
     ]
    },
    "blocks": [

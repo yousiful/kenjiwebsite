@@ -6,10 +6,12 @@ import { Shield, Lock, Eye, Database, UserCheck, Globe } from 'lucide-react';
 export default function PrivacyPolicyPage() {
   return (
     <>
-      <PageSchema path="/privacy" name={"Privacy Policy"} description={"KenjiAI Privacy Policy - Learn how we collect, use, and protect your personal information."} />
+      <PageSchema path="/privacy" name={"Privacy Policy"} description={"How KenjiAI collects, uses and protects your personal information, which tools and partners touch your data, and how to ask us to see or delete it."} />
       <Helmet>
         <title>Privacy Policy | KenjiAI</title>
-        <meta name="description" content="KenjiAI Privacy Policy - Learn how we collect, use, and protect your personal information." />
+        <meta name="description" content="How KenjiAI collects, uses and protects your personal information, which tools and partners touch your data, and how to ask us to see or delete it." />
+        <meta property="og:description" content="How KenjiAI collects, uses and protects your personal information, which tools and partners touch your data, and how to ask us to see or delete it." />
+        <meta property="twitter:description" content="How KenjiAI collects, uses and protects your personal information, which tools and partners touch your data, and how to ask us to see or delete it." />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://kenjiai.com/privacy" />
       </Helmet>

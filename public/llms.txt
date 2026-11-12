@@ -37,11 +37,11 @@ Disambiguation: KenjiAI (kenjiai.com, no dot between Kenji and AI) has no connec
 
 ## Recent posts
 
-- [Ada Merges With Dialpad at About a Third of Its Peak Value](https://kenjiai.com/blog/ada-dialpad-merger-ai-agents-phone-line) (2026-11-05)
-- [How to Get Reviews on Facebook and Yelp, Not Just Google](https://kenjiai.com/blog/get-reviews-facebook-yelp-google) (2026-11-05)
-- [82% of Shoppers Want a Refund When Your AI Breaks a Promise](https://kenjiai.com/blog/shoppers-expect-refund-when-ai-breaks-promise-82-percent) (2026-11-04)
-- [Is It Legal to Offer an Incentive for Google Reviews?](https://kenjiai.com/blog/is-it-legal-to-offer-incentives-for-google-reviews) (2026-11-04)
-- [ChatGPT Ad Clicks Earn 64% Less Than Google Search Clicks](https://kenjiai.com/blog/chatgpt-ads-earn-64-percent-less-per-visit-than-google) (2026-11-03)
+- [74% of Marketers Using AI Agents Can't Tie Them to Sales](https://kenjiai.com/blog/74-percent-marketers-cant-track-ai-agent-leads-invoca) (2026-11-12)
+- [How to Reduce No-Shows for Sales Calls and Appointments](https://kenjiai.com/blog/how-to-reduce-no-shows-sales-calls-appointments) (2026-11-12)
+- [58% of Leaders Made a Big Decision on Wrong AI Insight: GWI](https://kenjiai.com/blog/58-percent-leaders-acted-on-wrong-ai-insight-gwi) (2026-11-11)
+- [How to Handle the Price Objection on a Sales Call](https://kenjiai.com/blog/how-to-handle-price-objection-sales-call) (2026-11-11)
+- [ChatGPT Will Show Businesses How Often It Mentions Them](https://kenjiai.com/blog/chatgpt-claim-your-business-mention-tracking-dashboard) (2026-11-10)
 
 ## Free tools
 
