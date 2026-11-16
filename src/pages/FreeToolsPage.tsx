@@ -1,10 +1,21 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, AlertCircle, PhoneCall, Flame, Music, Target, Building2, Calculator, Wallet, Heart, Timer } from 'lucide-react';
+import { ExternalLink, Zap, Users, Megaphone, Brain, Star, ArrowRight, Gift, Sparkles, AlertCircle, PhoneCall, Flame, Music, Target, Building2, Calculator, Wallet, Heart, Timer, Percent } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 const FreeToolsPage: React.FC = () => {
   const freeTools = [
+    {
+      name: "Profit Margin & Markup Calculator",
+      description: "Enter what a job costs you and what you charge. Get your profit margin, markup, and profit per job, plus the exact price to charge for the margin you want and a margin-to-markup cheat sheet.",
+      url: "/tools/profit-margin-calculator",
+      icon: Percent,
+      gradient: "from-emerald-600 via-green-600 to-lime-600",
+      features: ["Margin & Markup", "Profit Per Job", "Price For Target Margin", "Margin to Markup Table"],
+      category: "Marketing & Growth",
+      keywords: ["profit margin calculator", "markup calculator", "margin vs markup", "how much to charge for a job"],
+      revenue: "Price every job for real profit"
+    },
     {
       name: "Speed to Lead Calculator: What Slow Lead Response Costs You",
       description: "Enter your monthly leads, deal value, close rate, and how long it takes you to reply. See the revenue you lose each month to slow lead response and what answering in under 5 minutes is worth.",

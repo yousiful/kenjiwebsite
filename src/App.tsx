@@ -103,6 +103,7 @@ const FacebookAdsBudgetCalculatorPage = lazyRoute(() => import('./pages/Facebook
 const LTVCalculatorPage = lazyRoute(() => import('./pages/LTVCalculatorPage'));
 const UTMBuilderPage = lazyRoute(() => import('./pages/UTMBuilderPage'));
 const SpeedToLeadCalculatorPage = lazyRoute(() => import('./pages/SpeedToLeadCalculatorPage'));
+const ProfitMarginCalculatorPage = lazyRoute(() => import('./pages/ProfitMarginCalculatorPage'));
 const TrendPulsePage = lazyRoute(() => import('./pages/TrendPulsePage'));
 const NameGeneratorPage = lazyRoute(() => import('./pages/NameGeneratorPage'));
 const BookPage = lazyRoute(() => import('./pages/BookPage'));
@@ -365,6 +366,7 @@ function App() {
                       <Route path="/tools/ltv-calculator" element={<LTVCalculatorPage />} />
                       <Route path="/tools/utm-builder" element={<UTMBuilderPage />} />
                       <Route path="/tools/speed-to-lead-calculator" element={<SpeedToLeadCalculatorPage />} />
+                      <Route path="/tools/profit-margin-calculator" element={<ProfitMarginCalculatorPage />} />
                       <Route path="/tools/name-generator" element={<NameGeneratorPage />} />
                       <Route path="/tools/business-name-generator" element={<Navigate to="/tools/name-generator" replace />} />
                       <Route path="/trendpulse" element={<TrendPulsePage />} />

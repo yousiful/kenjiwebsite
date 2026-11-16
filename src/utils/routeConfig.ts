@@ -62,6 +62,7 @@ export const internalRoutes = [
   '/tools/ltv-calculator',
   '/tools/utm-builder',
   '/tools/speed-to-lead-calculator',
+  '/tools/profit-margin-calculator',
   '/tools/name-generator',
   '/tools/business-name-generator',
   '/trendpulse',
