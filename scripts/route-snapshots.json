@@ -30991,6 +30991,284 @@
     }
    ]
   },
+  "/tools/profit-margin-calculator": {
+   "head": {
+    "title": "Profit Margin & Markup Calculator | KenjiAI",
+    "metas": [
+     {
+      "name": "viewport",
+      "content": "width=device-width, initial-scale=1.0"
+     },
+     {
+      "name": "theme-color",
+      "content": "#3B82F6"
+     },
+     {
+      "name": "title",
+      "content": "Profit Margin & Markup Calculator | KenjiAI"
+     },
+     {
+      "name": "keywords",
+      "content": "AI call center, inbound AI receptionist, outbound speed to lead, database reactivation, AI voice agents, business automation CRM, KenjiAI"
+     },
+     {
+      "name": "robots",
+      "content": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+     },
+     {
+      "name": "language",
+      "content": "English"
+     },
+     {
+      "name": "author",
+      "content": "KenjiAI"
+     },
+     {
+      "name": "publisher",
+      "content": "KenjiAI"
+     },
+     {
+      "name": "copyright",
+      "content": "KenjiAI"
+     },
+     {
+      "name": "revisit-after",
+      "content": "1 days"
+     },
+     {
+      "name": "distribution",
+      "content": "global"
+     },
+     {
+      "name": "rating",
+      "content": "general"
+     },
+     {
+      "property": "og:type",
+      "content": "website"
+     },
+     {
+      "property": "og:image",
+      "content": "https://kenjiai.com/og-image.png"
+     },
+     {
+      "property": "og:image:width",
+      "content": "1200"
+     },
+     {
+      "property": "og:image:height",
+      "content": "630"
+     },
+     {
+      "property": "og:image:alt",
+      "content": "KenjiAI - AI Business Automation Platform with Voice Agents, Smart CRM, and Free AI Tools"
+     },
+     {
+      "property": "og:site_name",
+      "content": "KenjiAI"
+     },
+     {
+      "property": "og:locale",
+      "content": "en_US"
+     },
+     {
+      "name": "format-detection",
+      "content": "telephone=yes"
+     },
+     {
+      "name": "HandheldFriendly",
+      "content": "true"
+     },
+     {
+      "content": "ie=edge"
+     },
+     {
+      "property": "twitter:card",
+      "content": "summary_large_image"
+     },
+     {
+      "property": "twitter:url",
+      "content": "https://kenjiai.com/tools/profit-margin-calculator"
+     },
+     {
+      "property": "twitter:title",
+      "content": "Profit Margin & Markup Calculator | KenjiAI"
+     },
+     {
+      "property": "twitter:description",
+      "content": "KenjiAI deploys 24/7 autonomous Inbound & Outbound AI call centers. Sub-500ms voice receptionists, 60s speed-to-lead dialing, and automated database reactivation."
+     },
+     {
+      "property": "twitter:image",
+      "content": "https://kenjiai.com/og-image.png"
+     },
+     {
+      "property": "twitter:image:alt",
+      "content": "KenjiAI - AI Business Automation Platform"
+     },
+     {
+      "property": "twitter:creator",
+      "content": "@KenjiAI"
+     },
+     {
+      "property": "twitter:site",
+      "content": "@KenjiAI"
+     },
+     {
+      "name": "twitter:label1",
+      "content": "Built for"
+     },
+     {
+      "name": "twitter:data1",
+      "content": "Business Owners & Entrepreneurs"
+     },
+     {
+      "name": "twitter:label2",
+      "content": "Pricing"
+     },
+     {
+      "name": "twitter:data2",
+      "content": "Performance-Based"
+     },
+     {
+      "name": "description",
+      "content": "Free profit margin and markup calculator for service businesses. Enter your cost and price to get margin, markup and profit, or the price that hits your target."
+     },
+     {
+      "property": "og:title",
+      "content": "Profit Margin & Markup Calculator | KenjiAI"
+     },
+     {
+      "property": "og:description",
+      "content": "See your real margin and markup on every job, and the price you need to charge to hit your target."
+     },
+     {
+      "property": "og:url",
+      "content": "https://kenjiai.com/tools/profit-margin-calculator"
+     }
+    ],
+    "canonical": "https://kenjiai.com/tools/profit-margin-calculator",
+    "jsonld": [
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"WebPage\",\"@id\":\"https://kenjiai.com/tools/profit-margin-calculator#webpage\",\"url\":\"https://kenjiai.com/tools/profit-margin-calculator\",\"name\":\"Profit Margin & Markup Calculator\",\"isPartOf\":{\"@id\":\"https://kenjiai.com/#website\"},\"publisher\":{\"@id\":\"https://kenjiai.com/#organization\"},\"inLanguage\":\"en-US\",\"description\":\"Free profit margin and markup calculator for service businesses. Enter your cost and price to get margin, markup and profit, or the price that hits your target.\",\"breadcrumb\":{\"@id\":\"https://kenjiai.com/tools/profit-margin-calculator#breadcrumb\"}},{\"@type\":\"BreadcrumbList\",\"@id\":\"https://kenjiai.com/tools/profit-margin-calculator#breadcrumb\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"Home\",\"item\":\"https://kenjiai.com/\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"Free Tools\",\"item\":\"https://kenjiai.com/free-tools\"},{\"@type\":\"ListItem\",\"position\":3,\"name\":\"Profit Margin & Markup Calculator\",\"item\":\"https://kenjiai.com/tools/profit-margin-calculator\"}]}]}",
+     "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"SoftwareApplication\",\"name\":\"KenjiAI Profit Margin & Markup Calculator\",\"applicationCategory\":\"BusinessApplication\",\"operatingSystem\":\"Web\",\"offers\":{\"@type\":\"Offer\",\"price\":\"0\",\"priceCurrency\":\"USD\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"KenjiAI\",\"url\":\"https://kenjiai.com\"}},{\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"What is the difference between margin and markup?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Both use the same profit, they divide by different numbers. Margin is profit divided by the price. Markup is profit divided by your cost. A job that costs $600 and sells for $1,000 has a $400 profit, a 40% margin, and a 66.7% markup.\"}},{\"@type\":\"Question\",\"name\":\"How do I calculate profit margin?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Subtract your cost from your price, then divide by the price and multiply by 100. ($1,000 - $600) / $1,000 = 0.40, so a 40% margin.\"}},{\"@type\":\"Question\",\"name\":\"How do I calculate markup?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Subtract your cost from your price, then divide by your cost and multiply by 100. ($1,000 - $600) / $600 = 0.667, so a 66.7% markup.\"}},{\"@type\":\"Question\",\"name\":\"What price do I charge to get a certain margin?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Divide your cost by (1 minus the margin you want). For a 50% margin on a $600 job: $600 / 0.50 = $1,200. Adding 50% to your cost only gets you $900, which is a 33% margin.\"}},{\"@type\":\"Question\",\"name\":\"What is a good profit margin for a service business?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Most trades and home service businesses aim for a 40% to 60% gross margin on each job, because rent, trucks, insurance, software, and the owner's salary still have to come out of what is left. Under 30% gross usually leaves very little once overhead is paid.\"}},{\"@type\":\"Question\",\"name\":\"Should I count my own labor in the cost?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Yes. Put in what you would pay someone else to do the work, even if you do it yourself. If you leave it out, the margin looks great on paper and you end up working for free.\"}}]}]}"
+    ]
+   },
+   "blocks": [
+    {
+     "tag": "h1",
+     "text": "Profit Margin & Markup Calculator"
+    },
+    {
+     "tag": "p",
+     "text": "Enter what a job costs you and what you charge. See your margin, your markup, and the price you need to hit the margin you want."
+    },
+    {
+     "tag": "p",
+     "text": "To hit a 50.0% margin you need to charge $1,200, which is $200 more per job. Or bring your cost down to $500 at today's price."
+    },
+    {
+     "tag": "h2",
+     "text": "Margin to markup cheat sheet"
+    },
+    {
+     "tag": "p",
+     "text": "Adding 30% to your cost does not give you a 30% margin. Here is the markup each margin really takes, and the price on your $600 cost."
+    },
+    {
+     "tag": "tr",
+     "text": "MARGIN MARKUP NEEDED PRICE"
+    },
+    {
+     "tag": "tr",
+     "text": "10% 11.1% $667"
+    },
+    {
+     "tag": "tr",
+     "text": "20% 25.0% $750"
+    },
+    {
+     "tag": "tr",
+     "text": "25% 33.3% $800"
+    },
+    {
+     "tag": "tr",
+     "text": "30% 42.9% $857"
+    },
+    {
+     "tag": "tr",
+     "text": "40% 66.7% $1,000"
+    },
+    {
+     "tag": "tr",
+     "text": "50% 100.0% $1,200"
+    },
+    {
+     "tag": "tr",
+     "text": "60% 150.0% $1,500"
+    },
+    {
+     "tag": "tr",
+     "text": "70% 233.3% $2,000"
+    },
+    {
+     "tag": "h2",
+     "text": "Margin and markup questions people ask"
+    },
+    {
+     "tag": "h3",
+     "text": "What is the difference between margin and markup?"
+    },
+    {
+     "tag": "p",
+     "text": "Both use the same profit, they divide by different numbers. Margin is profit divided by the price. Markup is profit divided by your cost. A job that costs $600 and sells for $1,000 has a $400 profit, a 40% margin, and a 66.7% markup."
+    },
+    {
+     "tag": "h3",
+     "text": "How do I calculate profit margin?"
+    },
+    {
+     "tag": "p",
+     "text": "Subtract your cost from your price, then divide by the price and multiply by 100. ($1,000 - $600) / $1,000 = 0.40, so a 40% margin."
+    },
+    {
+     "tag": "h3",
+     "text": "How do I calculate markup?"
+    },
+    {
+     "tag": "p",
+     "text": "Subtract your cost from your price, then divide by your cost and multiply by 100. ($1,000 - $600) / $600 = 0.667, so a 66.7% markup."
+    },
+    {
+     "tag": "h3",
+     "text": "What price do I charge to get a certain margin?"
+    },
+    {
+     "tag": "p",
+     "text": "Divide your cost by (1 minus the margin you want). For a 50% margin on a $600 job: $600 / 0.50 = $1,200. Adding 50% to your cost only gets you $900, which is a 33% margin."
+    },
+    {
+     "tag": "h3",
+     "text": "What is a good profit margin for a service business?"
+    },
+    {
+     "tag": "p",
+     "text": "Most trades and home service businesses aim for a 40% to 60% gross margin on each job, because rent, trucks, insurance, software, and the owner's salary still have to come out of what is left. Under 30% gross usually leaves very little once overhead is paid."
+    },
+    {
+     "tag": "h3",
+     "text": "Should I count my own labor in the cost?"
+    },
+    {
+     "tag": "p",
+     "text": "Yes. Put in what you would pay someone else to do the work, even if you do it yourself. If you leave it out, the margin looks great on paper and you end up working for free."
+    },
+    {
+     "tag": "p",
+     "text": "Free to use on your own site or blog. Paste this snippet."
+    }
+   ],
+   "links": []
+  },
   "/tools/roas-calculator": {
    "head": {
     "title": "ROAS Calculator & Break-Even ROAS Calculator | KenjiAI",

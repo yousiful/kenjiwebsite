@@ -131,12 +131,12 @@ const ProfitMarginCalculatorPage: React.FC = () => {
 
   return (
     <div className={`min-h-screen ${isEmbed ? 'bg-gray-900 p-4' : 'pt-24 pb-20 px-4 sm:px-6 lg:px-8 text-white'}`}>
-      <PageSchema path="/tools/profit-margin-calculator" name={"Profit Margin & Markup Calculator"} description={"Free profit margin and markup calculator for service businesses. Enter your cost and price to get margin, markup, and profit, or pick a target margin and get the price to charge."} />
+      <PageSchema path="/tools/profit-margin-calculator" name={"Profit Margin & Markup Calculator"} description={"Free profit margin and markup calculator for service businesses. Enter your cost and price to get margin, markup and profit, or the price that hits your target."} />
       <Helmet>
         <title>Profit Margin & Markup Calculator | KenjiAI</title>
         <meta
           name="description"
-          content="Free profit margin and markup calculator for service businesses. Enter your cost and price to get margin, markup, and profit, or pick a target margin and get the price to charge."
+          content="Free profit margin and markup calculator for service businesses. Enter your cost and price to get margin, markup and profit, or the price that hits your target."
         />
         <link rel="canonical" href="https://kenjiai.com/tools/profit-margin-calculator" />
         <meta property="og:title" content="Profit Margin & Markup Calculator | KenjiAI" />

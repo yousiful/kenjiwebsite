@@ -37,11 +37,11 @@ Disambiguation: KenjiAI (kenjiai.com, no dot between Kenji and AI) has no connec
 
 ## Recent posts
 
-- [74% of Marketers Using AI Agents Can't Tie Them to Sales](https://kenjiai.com/blog/74-percent-marketers-cant-track-ai-agent-leads-invoca) (2026-11-12)
-- [How to Reduce No-Shows for Sales Calls and Appointments](https://kenjiai.com/blog/how-to-reduce-no-shows-sales-calls-appointments) (2026-11-12)
-- [58% of Leaders Made a Big Decision on Wrong AI Insight: GWI](https://kenjiai.com/blog/58-percent-leaders-acted-on-wrong-ai-insight-gwi) (2026-11-11)
-- [How to Handle the Price Objection on a Sales Call](https://kenjiai.com/blog/how-to-handle-price-objection-sales-call) (2026-11-11)
-- [ChatGPT Will Show Businesses How Often It Mentions Them](https://kenjiai.com/blog/chatgpt-claim-your-business-mention-tracking-dashboard) (2026-11-10)
+- [How Plumbers Use AI Agents and Reviews to Fill the Schedule](https://kenjiai.com/blog/plumbers-ai-agent-reviews-playbook) (2026-11-19)
+- [Only 17% of Shoppers Research With AI Chat. Reviews Lead at 40%](https://kenjiai.com/blog/ai-chat-17-percent-product-research-reviews-40-doubleverify) (2026-11-19)
+- [What Is Missed Call Text Back and Why Every Business Needs It](https://kenjiai.com/blog/missed-call-text-back-what-it-is-how-it-works) (2026-11-18)
+- [How to Clip a Live Stream Into Shorts, Reels and TikToks Free](https://kenjiai.com/blog/how-to-clip-live-stream-into-shorts-reels-tiktoks-free) (2026-11-18)
+- [70% of Sales Leaders Say Humans Still Beat AI in Big Deals](https://kenjiai.com/blog/70-percent-sales-leaders-humans-beat-ai-complex-deals-richardson) (2026-11-18)
 
 ## Free tools
 
@@ -51,6 +51,7 @@ All free, no signup unless noted. Hub: [All free tools](https://kenjiai.com/free
 - [ROAS and break-even ROAS calculator](https://kenjiai.com/tools/roas-calculator): ROAS, break-even ROAS, the most you can pay per purchase and profit after ad spend.
 - [Facebook ads budget calculator](https://kenjiai.com/tools/facebook-ads-budget-calculator): The daily and monthly Meta ads budget needed to hit a lead or sales goal.
 - [Customer lifetime value (LTV) calculator](https://kenjiai.com/tools/ltv-calculator): LTV, LTV:CAC ratio, maximum allowable acquisition cost and payback period.
+- [Profit margin and markup calculator](https://kenjiai.com/tools/profit-margin-calculator): Margin, markup and profit per job from cost and price, plus the price to charge to hit a target margin.
 - [Speed to lead calculator](https://kenjiai.com/tools/speed-to-lead-calculator): The revenue a business loses each month to slow lead response, and what answering every lead in under 5 minutes is worth.
 - [UTM builder](https://kenjiai.com/tools/utm-builder): UTM tracking links for Facebook, Instagram, Google Ads, email and text, with copy, a QR code and Meta Ads dynamic parameters.
 - [Ideal customer profile (ICP) generator](https://kenjiai.com/tools/icp-generator): Buyer segments with Meta Ads interests, exclusions, triggers and lookalike seeds.
