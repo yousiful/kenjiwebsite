@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, Check, Loader2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { BOOK_VSLS, BOOK_VSL_KEY, pickVslVariant, useVslDropoff } from '../hooks/useVslDropoff';
 import { VideoPreview } from '../components/VideoPreview';
+import { HolidayStrip } from '../components/HolidayStrip';
 
 /* Growth quiz: one question per screen, then contact details, then the server decides where
    they go. Qualified -> /growth-quiz/book (calendar). Not yet -> /growth-quiz/next-step ($7 offer). */
@@ -163,6 +164,7 @@ export const Shell: React.FC<{ title: string; description: string; children: Rea
         .gq :focus-visible { outline: 2px solid #5EEAD4; outline-offset: 3px; border-radius: 14px; }
         .gq input { caret-color: #5EEAD4; }
       `}</style>
+      <HolidayStrip variant="seasonal" />
       <header className="px-5 pt-6 sm:pt-8 max-w-6xl mx-auto">
         <img src="/kenji-logo.webp" alt="KenjiAI" className="h-9 sm:h-10 w-auto object-contain" />
       </header>

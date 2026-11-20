@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Check, Crown } from 'lucide-react';
 import { PRICING_VSL_KEY } from './PricingVSL';
+import { HolidayTag, isHolidayLive } from './HolidayStrip';
 
 const CHECKOUT_URL = 'https://freedom.kenjiai.com/finishhere';
 const CALL_URL = 'https://go.mediatraffics.com/leads';
@@ -88,6 +89,7 @@ export function PricingNew() {
         transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         className="max-w-3xl mx-auto text-center mb-12 sm:mb-14"
       >
+        {isHolidayLive() && <HolidayTag className="mb-4 !text-[14px] px-3 py-1">Black Friday, through Nov 30</HolidayTag>}
         <h2 className="text-4xl sm:text-5xl font-black text-white leading-tight tracking-tight mb-5">
           Simple pricing. <span className="text-emerald-400">Done for you.</span>
         </h2>

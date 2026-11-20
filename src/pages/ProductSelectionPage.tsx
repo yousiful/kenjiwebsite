@@ -6,6 +6,7 @@ import { PricingNew } from '../components/PricingNew';
 import { PricingVSL } from '../components/PricingVSL';
 import { ReviewsNative } from '../components/ReviewsNative';
 import FAQ from '../components/FAQ';
+import { HolidayStrip } from '../components/HolidayStrip';
 
 // Prices mirror what PricingNew renders. Update both together.
 const PRICING_SCHEMA = [
@@ -52,6 +53,7 @@ const ProductSelectionPage: React.FC = () => {
 
       <div className="min-h-screen" style={{ backgroundColor: '#0B0E14' }}>
         <div className="pt-16">
+          <HolidayStrip variant="offer" href="#plans" />
           <PricingVSL />
           <PricingNew />
           <ReviewsNative />

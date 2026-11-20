@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Check, Lock, Star, Tag, Video } from 'lucide-react';
 import { VideoPreview } from '../components/VideoPreview';
+import { HolidayStrip } from '../components/HolidayStrip';
 import { useVslDropoff } from '../hooks/useVslDropoff';
 
 // Yousif, 2026-10-23: "Launch Time by Freedom Club", laid out like the Skool about page of a
@@ -132,6 +133,8 @@ export default function LaunchTimePage() {
         <meta name="description" content="Learn to run your own ads and close your own clients. Weekly live calls, ads and sales training, and the AI systems we use every day." />
         <meta name="robots" content="noindex, follow" />
       </Helmet>
+
+      <HolidayStrip variant="seasonal" />
 
       <header className="sticky top-0 z-20 bg-white/95 backdrop-blur border-b border-[#E7E5E1]">
         <div className="max-w-3xl mx-auto px-4 h-14 flex items-center gap-3">

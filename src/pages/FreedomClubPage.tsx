@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Check, Lock, ShieldCheck, Star, Zap } from 'lucide-react';
+import { HolidayStrip } from '../components/HolidayStrip';
 
 // Yousif, 2026-11-05: new low-ticket page for Freedom Club ($7/month), laid out like a short
 // direct-response book page (price in the headline area, one big button, guarantee, "why $7",
@@ -120,6 +121,8 @@ export default function FreedomClubPage() {
         <meta name="description" content="The ads and sales system behind $3.35M in client sales, taught step by step. $7 a month, cancel anytime." />
         <meta name="robots" content="noindex, follow" />
       </Helmet>
+
+      <HolidayStrip variant="seasonal" />
 
       <main className="max-w-2xl mx-auto px-5 sm:px-6 pb-20">
         <section className="pt-8 sm:pt-14">

@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Check, Minus, Phone } from 'lucide-react';
 import SEOHead from '../components/SEOHead';
+import { HolidayStrip } from '../components/HolidayStrip';
 import { ReviewsNative } from '../components/ReviewsNative';
 import { ResultsDisclaimer } from '../components/ResultsDisclaimer';
 import { service } from '../lib/schema';
@@ -127,6 +128,8 @@ const HomePage: React.FC = () => {
           .kh :focus-visible { outline: 2px solid #5EEAD4; outline-offset: 3px; border-radius: 14px; }
           .kh a { text-underline-offset: 4px; }
         `}</style>
+
+        <HolidayStrip variant="offer" />
 
         {/* ---------- First viewport: the argument + the action ---------- */}
         <section className="px-5 sm:px-8 pt-10 sm:pt-12 pb-16 sm:pb-20" aria-labelledby="home-h1">
