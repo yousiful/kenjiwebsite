@@ -43,6 +43,7 @@ export const internalRoutes = [
   '/futureyou',
   '/launch-time',
   '/freedom',
+  '/bmf',
   '/workshop',
   '/special',
   '/call-center-upgrade',
