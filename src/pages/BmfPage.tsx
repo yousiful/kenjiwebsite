@@ -421,7 +421,23 @@ export function BmfWelcomePage() {
       <main className="max-w-2xl mx-auto px-4 pt-10 sm:pt-14 text-[17px] leading-relaxed" aria-live="polite">
         {state.status === 'loading' && <p className="text-[#6B6B6B]">Confirming your order...</p>}
 
-        {state.status === 'unpaid' && (
+        {state.status === 'unpaid' && !sessionId && (
+          <>
+            <h1 className={`${display} text-[38px] font-extrabold leading-tight`}>Ready for the 90-Day BMF Grind?</h1>
+            <p className="mt-4">
+              Brenten takes 4 to 6 new clients a month. Pick a time for a game plan call and he'll go over your schedule, your history and
+              your 90-day goal. If it's a fit, he'll show you how the program works. If it's not, he'll tell you.
+            </p>
+            <a
+              href={CALENDAR}
+              className={`${display} mt-6 flex items-center justify-center w-full rounded-lg bg-black text-white text-[22px] font-bold py-4 hover:bg-[#222]`}
+            >
+              Book your game plan call
+            </a>
+          </>
+        )}
+
+        {state.status === 'unpaid' && sessionId && (
           <>
             <h1 className={`${display} text-[38px] font-extrabold leading-tight`}>We couldn't confirm your payment yet.</h1>
             <p className="mt-4">
