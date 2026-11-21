@@ -258,7 +258,7 @@ const Footer: React.FC = () => {
             <strong>Meta & Platform Trademark Notice:</strong> This site is NOT a part of the Facebook™ or Meta™ website or Meta Platforms, Inc. Additionally, this site is NOT endorsed or sponsored by Meta Platforms, Inc. in any way. FACEBOOK™ and META™ are registered trademarks of META PLATFORMS, INC. Google™ and YouTube™ are trademarks of Google LLC.
           </p>
           <p className="text-[11px] text-gray-500">
-            Operated by Nataki LLC / KenjiAI • 32 N Gould St, Sheridan, WY 82801 • Support: <a href="mailto:support@mediatraffics.com" className="underline hover:text-gray-300">support@mediatraffics.com</a> • Phone: +1-213-344-0705
+            Operated by Media Traffics LLC / KenjiAI • 32 N Gould St, Sheridan, WY 82801 • Support: <a href="mailto:support@mediatraffics.com" className="underline hover:text-gray-300">support@mediatraffics.com</a> • Phone: +1-213-344-0705
           </p>
         </div>
       </div>
@@ -268,7 +268,7 @@ const Footer: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-gray-600 text-xs">
-              © {new Date().getFullYear()} KenjiAI (Nataki LLC). All Rights Reserved.
+              © {new Date().getFullYear()} KenjiAI (Media Traffics LLC). All Rights Reserved.
             </p>
             <div className="flex items-center gap-5 text-xs text-gray-600">
               <Link to="/terms" className="hover:text-blue-400 transition-colors">Terms of Service</Link>
