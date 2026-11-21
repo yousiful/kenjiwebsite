@@ -59,7 +59,7 @@ export const handler: Handler = async (event) => {
   if (event.httpMethod !== 'POST') return json(405, { error: 'POST only' });
   if (!process.env.STRIPE_SECRET_KEY) return json(503, { error: 'Checkout is not connected yet.' });
 
-  let body: { bumps?: unknown; fbp?: string; fbc?: string } = {};
+  let body: { bumps?: unknown; fbp?: string; fbc?: string; email?: string } = {};
   try {
     body = JSON.parse(event.body || '{}');
   } catch {
@@ -69,6 +69,7 @@ export const handler: Handler = async (event) => {
   const bumps = BUMPS.filter((b) => picked.includes(b));
   const items: ItemId[] = ['protein', ...bumps];
   const bumpList = bumps.join(',') || 'none';
+  const email = String(body.email || '').trim().slice(0, 120);
 
   try {
     const prices = await priceIds();
@@ -79,6 +80,7 @@ export const handler: Handler = async (event) => {
       customer_creation: 'always',
       allow_promotion_codes: 'false',
       billing_address_collection: 'auto',
+      ...(/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) ? { customer_email: email } : {}),
       success_url: `${SITE}/bmf/welcome?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${SITE}/bmf`,
       metadata: { client: 'bmf_fitness', offer: 'bmf-protein-fix', bumps: bumpList, fbp: body.fbp?.slice(0, 200), fbc: body.fbc?.slice(0, 300) },

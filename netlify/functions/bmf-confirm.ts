@@ -25,10 +25,10 @@ import { stripe } from './_vidgen/stripe';
 const GHL_BASE = 'https://services.leadconnectorhq.com';
 const GHL_VERSION = '2021-07-28';
 const BMF_LOCATION_ID = '7SedyQeyOPPnx5D7vRNe';
-const BMF_PIXEL_ID = '2263283320889296';
+export const BMF_PIXEL_ID = '2263283320889296';
 const BUMP_TAGS: Record<string, string> = { kickstart: 'bmf kickstart $27', starter: 'bmf starter $47' };
 const BUMP_LABELS: Record<string, string> = { kickstart: '14-Day Kickstart $27', starter: '30-Day Starter $47' };
-const sha256 = (v: string) => crypto.createHash('sha256').update(v.trim().toLowerCase()).digest('hex');
+export const sha256 = (v: string) => crypto.createHash('sha256').update(v.trim().toLowerCase()).digest('hex');
 
 const json = (statusCode: number, body: unknown) => ({
   statusCode,
@@ -42,7 +42,7 @@ function store(event: HandlerEvent) {
 }
 
 /** Upsert into Brenten's location, add tags (added, never replaced), add a note. */
-async function toGhl(c: { name: string; email: string; phone: string }, tags: string[], note: string) {
+export async function toGhl(c: { name: string; email: string; phone: string }, tags: string[], note: string) {
   const token = process.env.BMF_GHL_PIT;
   if (!token) return 'no BMF_GHL_PIT';
   const headers = { Authorization: `Bearer ${token}`, Version: GHL_VERSION, 'Content-Type': 'application/json', Accept: 'application/json' };

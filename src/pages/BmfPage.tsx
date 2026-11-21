@@ -3,7 +3,8 @@ import { Helmet } from 'react-helmet-async';
 import { Check, Download } from 'lucide-react';
 
 // Client funnel for Brenten Fortner / BMF Fitness (2026-11-20), Launch Time pattern.
-// $9 BMF 7-Day Protein Fix + optional bumps ($27 14-Day Kickstart, $47 30-Day Starter), paid on
+// Step 1 (11/20 v2): 6-question BMF Protein Score quiz + opt-in -> lead tagged "bmf quiz lead" in his
+// GHL (bmf-lead.ts). Step 2: score + $9 BMF 7-Day Protein Fix + optional bumps ($27 14-Day Kickstart, $47 30-Day Starter), paid on
 // our Stripe with honest BMF labels (netlify/functions/bmf-checkout.ts). /bmf/welcome confirms
 // payment (bmf-confirm.ts), hands over the PDF and runs the 90-Day Grind application.
 // Buyers and applicants are tagged in HIS GHL location. Pixel: his 2263283320889296, initialised
@@ -39,19 +40,6 @@ const BUMPS = [
 ] as const;
 type BumpId = (typeof BUMPS)[number]['id'];
 
-const INSIDE = [
-  'Seven days of high-protein eating, laid out day by day',
-  'Everyday foods you can find at any grocery store',
-  'Meals that fit a busy week, so you are not cooking for an hour every night',
-  'A simple way to keep going after day 7',
-];
-
-const FOR_YOU = [
-  'You are 25 to 45, busy, and want to get leaner and stronger',
-  'You train, or want to, but you are guessing on food',
-  'You want a plan you can follow without living in the gym',
-];
-
 const display = 'font-["Barlow_Condensed",sans-serif]';
 
 function Shell({ children, title }: { children: React.ReactNode; title: string }) {
@@ -80,11 +68,77 @@ function Shell({ children, title }: { children: React.ReactNode; title: string }
   );
 }
 
-export default function BmfPage() {
+// ---------- /bmf : step 1 quiz + opt-in (lead in his GHL), step 2 score + $9 offer ----------
+
+const PHOTO = '/bmf/brenten.jpg';
+
+type Answers = { goal?: string; weight?: string; meals?: string; plan?: string; days?: string; blocker?: string };
+type Lead = { name: string; email: string; phone: string };
+type Result = { score: number; band: 'Guessing' | 'Close' | 'Dialed in'; protein: number; perMeal: number };
+
+const QUIZ: { key: keyof Answers; label: string; hint?: string; options?: string[] }[] = [
+  { key: 'goal', label: "What's your main goal right now?", options: ['Lose fat', 'Build muscle', 'Get stronger', 'Get back in shape'] },
+  { key: 'weight', label: "What's your goal bodyweight?", hint: 'In pounds. Your protein number is built from your goal weight, not your current weight.' },
+  { key: 'meals', label: 'How many of your meals a day have a real protein source?', hint: 'Chicken, eggs, fish, lean beef, Greek yogurt, cottage cheese, a shake.', options: ['0 to 1', '2', '3 or more'] },
+  { key: 'plan', label: 'How often do you plan your food ahead?', options: ['Rarely, I eat what is closest', 'Some days', 'Most days'] },
+  { key: 'days', label: 'How many days a week do you train?', options: ['0', '1 to 2', '3 to 4', '5 or more'] },
+  { key: 'blocker', label: 'What gets in the way most?', options: ['No time to cook', "I don't know what to eat", 'Cravings and snacking', 'Staying consistent'] },
+];
+
+const PTS: Record<string, Record<string, number>> = {
+  meals: { '0 to 1': 8, '2': 22, '3 or more': 38 },
+  plan: { 'Rarely, I eat what is closest': 6, 'Some days': 17, 'Most days': 30 },
+  days: { '0': 6, '1 to 2': 14, '3 to 4': 24, '5 or more': 32 },
+};
+
+function scoreOf(a: Answers): Result {
+  const score = Math.min(100, (PTS.meals[a.meals || ''] || 0) + (PTS.plan[a.plan || ''] || 0) + (PTS.days[a.days || ''] || 0));
+  const band: Result['band'] = score < 45 ? 'Guessing' : score < 75 ? 'Close' : 'Dialed in';
+  const protein = Math.round((Number(a.weight) || 0) * 0.8);
+  return { score, band, protein, perMeal: Math.round(protein / 3) };
+}
+
+const BAND_COPY: Record<Result['band'], string> = {
+  Guessing: "You're training on guesswork. Most of your meals are light on protein and nothing is planned, so the work you put in doesn't show the way it should. This is the easiest place to make fast progress.",
+  Close: "You've got some of it, but there are gaps. A couple of meals a day carry your protein and the rest is whatever's around. Closing that gap is usually what gets people unstuck.",
+  'Dialed in': "You're ahead of most people. Your habits are solid, so the next step is hitting your number every day on purpose instead of most days by accident.",
+};
+
+const BLOCKER_TIP: Record<string, string> = {
+  'No time to cook': 'The 45-minute prep plan covers the whole week, so weeknights are heat and eat.',
+  "I don't know what to eat": 'Every meal is written out for you, with the protein listed, plus the grocery list.',
+  'Cravings and snacking': 'Protein at every meal keeps you full, and there are 5 easy swaps for the snacks you reach for.',
+  'Staying consistent': 'A 7-day checklist so you can see every day you hit your number.',
+};
+
+const PLAN_ITEMS = [
+  'How to find and hit your daily protein number',
+  '7 days of breakfast, lunch, dinner and a snack, protein listed for each',
+  'A 45-minute prep plan, grocery list and 5 easy swaps',
+  'A 7-day checklist to keep you honest',
+];
+
+const ss = {
+  get: (k: string) => {
+    try { return JSON.parse(sessionStorage.getItem(k) || 'null'); } catch { return null; }
+  },
+  set: (k: string, v: unknown) => {
+    try { sessionStorage.setItem(k, JSON.stringify(v)); } catch { /* private mode */ }
+  },
+};
+
+function Progress({ step, total }: { step: number; total: number }) {
+  return (
+    <div className="h-1.5 w-full rounded-full bg-[#E5E5E5]" role="progressbar" aria-valuemin={0} aria-valuemax={total} aria-valuenow={step}>
+      <div className="h-1.5 rounded-full bg-[#ff3b1f] transition-all" style={{ width: `${(step / total) * 100}%` }} />
+    </div>
+  );
+}
+
+function OrderBox({ email }: { email: string }) {
   const [bumps, setBumps] = useState<BumpId[]>([]);
   const [state, setState] = useState<'idle' | 'loading' | 'error'>('idle');
   const total = 9 + BUMPS.filter((b) => bumps.includes(b.id)).reduce((s, b) => s + b.price, 0);
-
   const toggle = (id: BumpId) => setBumps((cur) => (cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id]));
 
   const pay = async () => {
@@ -95,7 +149,7 @@ export default function BmfPage() {
       const r = await fetch('/.netlify/functions/bmf-checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ bumps, fbp: cookie('_fbp'), fbc: cookie('_fbc') }),
+        body: JSON.stringify({ bumps, email, fbp: cookie('_fbp'), fbc: cookie('_fbc') }),
       });
       const d = await r.json().catch(() => ({}));
       if (!r.ok || !d.url) throw new Error(d.error || 'checkout');
@@ -105,115 +159,298 @@ export default function BmfPage() {
     }
   };
 
+  const label = state === 'loading' ? 'Opening secure checkout...' : `Pay $${total} and get the guide`;
+
   return (
-    <Shell title="BMF 7-Day Protein Fix | BMF Fitness">
-      <main className="max-w-2xl mx-auto px-4">
-        <section className="pt-10 sm:pt-14">
-          <p className="text-sm font-semibold tracking-wide text-[#6B6B6B]">BMF 7-Day Protein Fix · $9</p>
-          <h1 className={`${display} mt-2 text-[40px] sm:text-[52px] leading-[1.02] font-extrabold tracking-tight`}>
-            Seven days of eating right, without guessing what to eat
-          </h1>
-          <p className="mt-4 text-[18px] leading-relaxed text-[#333]">
-            A simple high-protein eating guide from coach Brenten Fortner. Shop once, follow it for a week, and
-            see how much easier training feels when your food is handled.
-          </p>
-          <a href="#order" className="mt-6 inline-block rounded-lg bg-black text-white font-semibold px-6 py-3.5 hover:bg-[#222]">
-            Get the guide for $9
-          </a>
-        </section>
+    <section id="order" className="mt-10 scroll-mt-6 rounded-xl border-2 border-black p-5 sm:p-6" data-track-section="bmf_order">
+      <h2 className={`${display} text-[30px] font-bold`}>Your order</h2>
+      <div className="mt-3 flex items-baseline justify-between text-[17px]">
+        <span>BMF 7-Day Protein Fix (PDF)</span>
+        <span className="font-semibold tabular-nums">$9</span>
+      </div>
+      <div className="mt-5 space-y-3">
+        {BUMPS.map((b) => {
+          const on = bumps.includes(b.id);
+          return (
+            <label key={b.id} className={`flex gap-3 rounded-lg border p-4 cursor-pointer transition-colors ${on ? 'border-black bg-[#F4F4F4]' : 'border-[#D4D4D4] hover:border-[#888]'}`}>
+              <input type="checkbox" className="mt-1 h-5 w-5 shrink-0 accent-black" checked={on} onChange={() => toggle(b.id)} data-bump={b.id} />
+              <span>
+                <span className="flex items-baseline justify-between gap-3">
+                  <span className="font-semibold">{b.title}</span>
+                  <span className="font-semibold tabular-nums">+${b.price}</span>
+                </span>
+                <span className="mt-1 block text-[15px] text-[#444] leading-relaxed">{b.body}</span>
+              </span>
+            </label>
+          );
+        })}
+      </div>
+      <div className="mt-5 flex items-baseline justify-between border-t border-[#E5E5E5] pt-4 text-[18px]">
+        <span className="font-semibold">Total today</span>
+        <span className="font-bold tabular-nums" data-testid="bmf-total">${total}</span>
+      </div>
+      <button
+        type="button"
+        onClick={pay}
+        disabled={state === 'loading'}
+        className={`${display} mt-5 w-full rounded-lg bg-black text-white text-[22px] font-bold tracking-wide py-4 hover:bg-[#222] disabled:opacity-70 disabled:cursor-wait focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black/30`}
+      >
+        {label}
+      </button>
+      {state === 'error' && (
+        <p className="mt-3 text-sm text-[#B42318] text-center" role="alert">
+          Checkout didn't open. Try again, or email <a className="underline" href={`mailto:${SUPPORT}`}>{SUPPORT}</a> and we'll sort it out.
+        </p>
+      )}
+      <p className="mt-4 text-[13px] text-[#555] leading-relaxed text-center">
+        One-time payment, no subscription. Secure checkout processed by KenjiAI, BMF Fitness's marketing partner. Your statement will show {DESCRIPTOR}.
+      </p>
+    </section>
+  );
+}
 
-        <section className="mt-12" data-track-section="bmf_inside">
-          <h2 className={`${display} text-[28px] font-bold`}>What's inside</h2>
-          <ul className="mt-4 space-y-3 text-[17px]">
-            {INSIDE.map((t) => (
-              <li key={t} className="flex gap-3"><Check className="w-5 h-5 mt-1 shrink-0" aria-hidden="true" /><span>{t}</span></li>
-            ))}
-          </ul>
-          <p className="mt-4 text-[15px] text-[#555]">It's a PDF you download right after checkout. One-time payment, no subscription.</p>
-        </section>
+function Results({ lead, answers }: { lead: Lead; answers: Answers }) {
+  const r = scoreOf(answers);
+  const first = lead.name.trim().split(/\s+/)[0];
+  const tip = BLOCKER_TIP[answers.blocker || ''];
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+  return (
+    <main className="max-w-2xl mx-auto px-4 pt-8 sm:pt-12" aria-live="polite">
+      <p className="text-sm font-semibold tracking-wide text-[#6B6B6B]">{first ? `${first}, here's` : "Here's"} your BMF Protein Score</p>
+      <div className="mt-3 rounded-2xl bg-black text-white p-6 sm:p-8">
+        <div className="flex items-end gap-4">
+          <span className={`${display} text-[88px] leading-[.85] font-extrabold tabular-nums`} data-testid="bmf-score">{r.score}</span>
+          <span className="pb-2 text-[#BFBFBF]">out of 100</span>
+          <span className={`${display} ml-auto mb-2 rounded-full bg-[#ff3b1f] px-4 py-1 text-[20px] font-bold uppercase tracking-wide`}>{r.band}</span>
+        </div>
+        <div className="mt-5 h-2 rounded-full bg-[#333]"><div className="h-2 rounded-full bg-[#ff3b1f]" style={{ width: `${r.score}%` }} /></div>
+        <p className="mt-5 text-[17px] leading-relaxed text-[#E5E5E5]">{BAND_COPY[r.band]}</p>
+      </div>
 
-        <section className="mt-12" data-track-section="bmf_for_you">
-          <h2 className={`${display} text-[28px] font-bold`}>Who it's for</h2>
-          <ul className="mt-4 space-y-3 text-[17px]">
-            {FOR_YOU.map((t) => (
-              <li key={t} className="flex gap-3"><Check className="w-5 h-5 mt-1 shrink-0" aria-hidden="true" /><span>{t}</span></li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="mt-12 rounded-xl bg-[#F4F4F4] p-6" data-track-section="bmf_note">
-          <h2 className={`${display} text-[28px] font-bold`}>A note from Brenten</h2>
-          <div className="mt-3 space-y-4 text-[17px] leading-relaxed">
-            <p>
-              Most people I talk to are busy, and they're guessing on food. They train hard and then eat whatever is
-              closest, so the work doesn't show.
-            </p>
-            <p>
-              Protein is the first thing I fix with every client I coach. It keeps you full between meals and helps you hold
-              on to muscle while you lean out. This guide is the same starting point I give them.
-            </p>
-            <p>Follow it for seven days and pay attention to how you feel. If you want me to build the rest of your plan after that, I'll show you how on the next page.</p>
+      {r.protein > 0 && (
+        <div className="mt-4 grid grid-cols-2 gap-3">
+          <div className="rounded-xl border border-[#D4D4D4] p-4">
+            <p className="text-sm text-[#555]">Your daily protein number</p>
+            <p className={`${display} text-[40px] font-extrabold tabular-nums`}>{r.protein} g</p>
+            <p className="text-[13px] text-[#555]">0.8 g per pound of your {answers.weight} lb goal</p>
           </div>
-          <p className="mt-4 font-semibold">Brenten Fortner</p>
+          <div className="rounded-xl border border-[#D4D4D4] p-4">
+            <p className="text-sm text-[#555]">That's about</p>
+            <p className={`${display} text-[40px] font-extrabold tabular-nums`}>{r.perMeal} g</p>
+            <p className="text-[13px] text-[#555]">per meal, over 3 meals</p>
+          </div>
+        </div>
+      )}
+
+      <section className="mt-10">
+        <p className="text-sm font-semibold tracking-wide text-[#ff3b1f] uppercase">Your plan</p>
+        <h1 className={`${display} mt-1 text-[38px] sm:text-[46px] leading-[1.02] font-extrabold`}>Start with the BMF 7-Day Protein Fix</h1>
+        <p className="mt-3 text-[17px] leading-relaxed text-[#333]">
+          It's the first thing Brenten fixes with every client he coaches. One week, every meal laid out, built so you hit your number without
+          guessing. $9, instant PDF.
+        </p>
+        <ul className="mt-5 space-y-3 text-[17px]">
+          {PLAN_ITEMS.map((t) => (
+            <li key={t} className="flex gap-3"><Check className="w-5 h-5 mt-1 shrink-0" aria-hidden="true" /><span>{t}</span></li>
+          ))}
+        </ul>
+        {tip && <p className="mt-4 rounded-lg bg-[#F4F4F4] p-4 text-[16px]"><b>You said "{answers.blocker}".</b> {tip}</p>}
+      </section>
+
+      <section className="mt-10 rounded-xl bg-[#F4F4F4] p-5 sm:p-6 grid grid-cols-[96px_1fr] sm:grid-cols-[130px_1fr] gap-4 items-start" data-track-section="bmf_note">
+        <img src={PHOTO} alt="Brenten Fortner" width={130} height={173} className="w-full rounded-lg object-cover" />
+        <div className="text-[16px] leading-relaxed">
+          <p>Most people I talk to are busy and guessing on food. They train hard, then eat whatever is closest, so the work doesn't show.</p>
+          <p className="mt-3">Follow this for seven days and pay attention to how you feel. If you want me to build the rest of your plan after that, I'll show you how on the next page.</p>
+          <p className="mt-3 font-semibold">Brenten Fortner</p>
           <p className="text-sm text-[#555]">ISSA certified personal trainer, BMF Fitness</p>
-        </section>
+        </div>
+      </section>
 
-        <section id="order" className="mt-12 scroll-mt-6 rounded-xl border-2 border-black p-5 sm:p-6" data-track-section="bmf_order">
-          <h2 className={`${display} text-[30px] font-bold`}>Your order</h2>
-          <div className="mt-3 flex items-baseline justify-between text-[17px]">
-            <span>BMF 7-Day Protein Fix (PDF)</span>
-            <span className="font-semibold tabular-nums">$9</span>
-          </div>
+      <OrderBox email={lead.email} />
+    </main>
+  );
+}
 
-          <div className="mt-5 space-y-3">
-            {BUMPS.map((b) => {
-              const on = bumps.includes(b.id);
-              return (
-                <label
-                  key={b.id}
-                  className={`flex gap-3 rounded-lg border p-4 cursor-pointer transition-colors ${on ? 'border-black bg-[#F4F4F4]' : 'border-[#D4D4D4] hover:border-[#888]'}`}
-                >
-                  <input
-                    type="checkbox"
-                    className="mt-1 h-5 w-5 shrink-0 accent-black"
-                    checked={on}
-                    onChange={() => toggle(b.id)}
-                    data-bump={b.id}
-                  />
-                  <span>
-                    <span className="flex items-baseline justify-between gap-3">
-                      <span className="font-semibold">{b.title}</span>
-                      <span className="font-semibold tabular-nums">+${b.price}</span>
-                    </span>
-                    <span className="mt-1 block text-[15px] text-[#444] leading-relaxed">{b.body}</span>
-                  </span>
-                </label>
-              );
-            })}
-          </div>
+export default function BmfPage() {
+  const [saved] = useState(() => ss.get('bmf_quiz') as { lead: Lead; answers: Answers } | null);
+  const n = QUIZ.length;
+  const [answers, setAnswers] = useState<Answers>(saved?.answers || {});
+  // -1 intro, 0..n-1 questions, n opt-in, n+1 results
+  const [step, setStep] = useState<number>(saved?.lead ? n + 1 : -1);
+  const [lead, setLead] = useState<Lead>(saved?.lead || { name: '', email: '', phone: '' });
+  const [hp, setHp] = useState('');
+  const [state, setState] = useState<'idle' | 'sending' | 'error'>('idle');
+  const [err, setErr] = useState('');
 
-          <div className="mt-5 flex items-baseline justify-between border-t border-[#E5E5E5] pt-4 text-[18px]">
-            <span className="font-semibold">Total today</span>
-            <span className="font-bold tabular-nums" data-testid="bmf-total">${total}</span>
-          </div>
+  const pick = (key: keyof Answers, v: string) => {
+    setAnswers((a) => ({ ...a, [key]: v }));
+    setTimeout(() => setStep((s) => s + 1), 180);
+  };
 
-          <button
-            type="button"
-            onClick={pay}
-            disabled={state === 'loading'}
-            className={`${display} mt-5 w-full rounded-lg bg-black text-white text-[22px] font-bold tracking-wide py-4 hover:bg-[#222] disabled:opacity-70 disabled:cursor-wait focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-black/30`}
-          >
-            {state === 'loading' ? 'Opening secure checkout...' : `Pay $${total} and get the guide`}
-          </button>
-          {state === 'error' && (
-            <p className="mt-3 text-sm text-[#B42318] text-center" role="alert">
-              Checkout didn't open. Try again, or email <a className="underline" href={`mailto:${SUPPORT}`}>{SUPPORT}</a> and we'll sort it out.
+  const optIn = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setState('sending');
+    const r = scoreOf(answers);
+    const eventId = `bmflead_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
+    try {
+      const res = await fetch('/.netlify/functions/bmf-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...lead, answers, score: r.score, band: r.band, protein: r.protein, event_id: eventId, fbp: cookie('_fbp'), fbc: cookie('_fbc'), company: hp }),
+      });
+      const d = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setErr(d.error || '');
+        throw new Error('lead');
+      }
+      fbq('trackSingle', PIXEL, 'Lead', { content_name: 'BMF Protein Score quiz' }, { eventID: eventId });
+      ft('cta_bmf-lead');
+      ss.set('bmf_quiz', { lead, answers });
+      setState('idle');
+      setStep(n + 1);
+    } catch {
+      setState('error');
+    }
+  };
+
+  if (step === n + 1) {
+    return (
+      <Shell title="Your BMF Protein Score | BMF Fitness">
+        <Results lead={lead} answers={answers} />
+      </Shell>
+    );
+  }
+
+  const q = step >= 0 && step < n ? QUIZ[step] : null;
+  const weightOk = Number(answers.weight) >= 90 && Number(answers.weight) <= 400;
+  const back = (
+    <button type="button" onClick={() => setStep((s) => s - 1)} className="underline">Back</button>
+  );
+
+  return (
+    <Shell title="What's your BMF Protein Score? | BMF Fitness">
+      <main className="max-w-xl mx-auto px-4 pt-8 sm:pt-12">
+        {step === -1 && (
+          <section>
+            <div className="grid grid-cols-[1fr_112px] sm:grid-cols-[1fr_150px] gap-4 items-center">
+              <div>
+                <p className="text-sm font-semibold tracking-wide text-[#ff3b1f] uppercase">Free 60-second quiz</p>
+                <h1 className={`${display} mt-1 text-[40px] sm:text-[50px] leading-[1.0] font-extrabold tracking-tight`}>What's your BMF Protein Score?</h1>
+              </div>
+              <img src={PHOTO} alt="Coach Brenten Fortner" width={150} height={200} className="w-full rounded-xl object-cover" />
+            </div>
+            <p className="mt-4 text-[18px] leading-relaxed text-[#333]">
+              Answer 6 quick questions. You'll get your score, your daily protein number, and the $9 plan coach Brenten Fortner starts every client on.
             </p>
-          )}
-          <p className="mt-4 text-[13px] text-[#555] leading-relaxed text-center">
-            Secure checkout processed by KenjiAI, BMF Fitness's marketing partner. Your statement will show {DESCRIPTOR}.
-          </p>
-        </section>
+            <button
+              type="button"
+              onClick={() => { ft('cta_bmf-quiz-start'); setStep(0); }}
+              className={`${display} mt-6 w-full rounded-lg bg-black text-white text-[22px] font-bold tracking-wide py-4 hover:bg-[#222]`}
+            >
+              Get my score
+            </button>
+            <p className="mt-3 text-center text-sm text-[#6B6B6B]">ISSA certified personal trainer · Princeton, Indiana</p>
+          </section>
+        )}
+
+        {q && (
+          <section>
+            <div className="flex items-center gap-3 text-sm text-[#6B6B6B]">
+              {back}
+              <span className="ml-auto">{step + 1} of {n}</span>
+            </div>
+            <div className="mt-2"><Progress step={step + 1} total={n + 1} /></div>
+            <h1 className={`${display} mt-6 text-[32px] sm:text-[38px] leading-[1.05] font-extrabold`}>{q.label}</h1>
+            {q.hint && <p className="mt-2 text-[15px] text-[#555]">{q.hint}</p>}
+            {q.options ? (
+              <div className="mt-6 grid gap-3">
+                {q.options.map((o) => {
+                  const on = answers[q.key] === o;
+                  return (
+                    <button
+                      key={o}
+                      type="button"
+                      onClick={() => pick(q.key, o)}
+                      className={`text-left rounded-xl border-2 px-5 py-4 text-[18px] font-semibold transition-colors ${on ? 'border-black bg-black text-white' : 'border-[#D4D4D4] hover:border-black'}`}
+                    >
+                      {o}
+                    </button>
+                  );
+                })}
+              </div>
+            ) : (
+              <form onSubmit={(e) => { e.preventDefault(); if (weightOk) setStep((s) => s + 1); }} className="mt-6">
+                <label className="block">
+                  <span className="sr-only">Goal bodyweight in pounds</span>
+                  <div className="flex items-center rounded-xl border-2 border-[#D4D4D4] focus-within:border-black px-5">
+                    <input
+                      type="number"
+                      inputMode="numeric"
+                      min={90}
+                      max={400}
+                      autoFocus
+                      value={answers.weight || ''}
+                      onChange={(e) => setAnswers((a) => ({ ...a, weight: e.target.value }))}
+                      className="w-full py-4 text-[24px] font-semibold outline-none bg-transparent"
+                      placeholder="180"
+                    />
+                    <span className="text-[18px] text-[#555]">lb</span>
+                  </div>
+                </label>
+                <button type="submit" disabled={!weightOk} className={`${display} mt-4 w-full rounded-lg bg-black text-white text-[22px] font-bold py-4 disabled:opacity-40`}>
+                  Next
+                </button>
+              </form>
+            )}
+          </section>
+        )}
+
+        {step === n && (
+          <section>
+            <div className="flex items-center gap-3 text-sm text-[#6B6B6B]">
+              {back}
+              <span className="ml-auto">Last step</span>
+            </div>
+            <div className="mt-2"><Progress step={n} total={n + 1} /></div>
+            <h1 className={`${display} mt-6 text-[32px] sm:text-[38px] leading-[1.05] font-extrabold`}>Your score is ready. Where should we send it?</h1>
+            <p className="mt-2 text-[16px] text-[#555]">You'll see your results on the next screen, and we'll send a copy so you have your protein number saved.</p>
+            <form onSubmit={optIn} className="mt-6 grid gap-3">
+              {([
+                ['name', 'First and last name', 'text', 'name'],
+                ['email', 'Email', 'email', 'email'],
+                ['phone', 'Mobile number', 'tel', 'tel'],
+              ] as const).map(([k, label, type, auto]) => (
+                <label key={k} className="block">
+                  <span className="text-sm text-[#555]">{label}</span>
+                  <input
+                    type={type}
+                    autoComplete={auto}
+                    required
+                    value={lead[k]}
+                    onChange={(e) => setLead((c) => ({ ...c, [k]: e.target.value }))}
+                    className="mt-1 w-full rounded-lg border-2 border-[#D4D4D4] px-4 py-3 text-[17px] focus:outline-none focus:border-black"
+                  />
+                </label>
+              ))}
+              <input type="text" name="company" tabIndex={-1} autoComplete="off" value={hp} onChange={(e) => setHp(e.target.value)} className="hidden" aria-hidden="true" />
+              <button
+                type="submit"
+                disabled={state === 'sending'}
+                className={`${display} mt-2 w-full rounded-lg bg-[#ff3b1f] text-white text-[22px] font-bold tracking-wide py-4 hover:brightness-95 disabled:opacity-60`}
+              >
+                {state === 'sending' ? 'Scoring...' : 'Show my score'}
+              </button>
+              {state === 'error' && (
+                <p className="text-sm text-[#B42318] text-center" role="alert">{err || "That didn't go through. Check your info and try again."}</p>
+              )}
+              <p className="text-[12px] text-[#6B6B6B] leading-relaxed">
+                By submitting, you agree that BMF Fitness can contact you by email, call or text about your results and coaching. Message and data
+                rates may apply. Reply STOP to opt out at any time. We never sell your information.
+              </p>
+            </form>
+          </section>
+        )}
       </main>
     </Shell>
   );
