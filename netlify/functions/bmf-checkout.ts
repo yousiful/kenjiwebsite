@@ -16,9 +16,9 @@ const SITE = 'https://kenjiai.com';
 export const DESCRIPTOR_SUFFIX = 'BMFFITNESS';
 
 const ITEMS = {
-  protein: { name: 'BMF 7-Day Protein Fix', cents: 900, key: 'bmf_protein_fix_9', description: 'A 7-day high-protein eating guide from BMF Fitness coach Brenten Fortner (PDF download).' },
-  kickstart: { name: 'BMF 14-Day Kickstart', cents: 2700, key: 'bmf_kickstart_27', description: 'A 2-week custom workout and meal plan from Brenten Fortner, delivered in the BMF Fitness coaching app.' },
-  starter: { name: 'BMF 30-Day Starter', cents: 4700, key: 'bmf_starter_47', description: 'First month of BMF Fitness app access, a custom plan and 1 group check-in. Credited toward the 90-Day BMF Grind if you upgrade.' },
+  protein: { name: 'BMF $9 Offer', cents: 900, key: 'bmf_protein_fix_9' },
+  kickstart: { name: 'BMF $27 Add-on', cents: 2700, key: 'bmf_kickstart_27' },
+  starter: { name: 'BMF $47 Add-on', cents: 4700, key: 'bmf_starter_47' },
 } as const;
 type ItemId = keyof typeof ITEMS;
 const BUMPS: ItemId[] = ['kickstart', 'starter'];
@@ -40,7 +40,6 @@ async function priceIds(): Promise<Record<ItemId, string>> {
     if (byKey[item.key]) continue;
     const product = await stripe('POST', 'products', {
       name: item.name,
-      description: item.description,
       metadata: { client: 'bmf_fitness', source: 'kenjiai.com/bmf' },
     });
     const price = await stripe('POST', 'prices', {
@@ -85,7 +84,7 @@ export const handler: Handler = async (event) => {
       metadata: { client: 'bmf_fitness', offer: 'bmf-protein-fix', bumps: bumpList, fbp: body.fbp?.slice(0, 200), fbc: body.fbc?.slice(0, 300) },
       payment_intent_data: {
         statement_descriptor_suffix: DESCRIPTOR_SUFFIX,
-        description: `BMF Fitness: ${items.map((i) => ITEMS[i].name).join(' + ')}`,
+        description: `BMF order: ${items.map((i) => ITEMS[i].name).join(' + ')}`,
         metadata: { client: 'bmf_fitness', bumps: bumpList },
       },
     });
